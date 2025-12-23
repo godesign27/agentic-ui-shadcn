@@ -1,0 +1,119 @@
+---
+BRAND SETUP MODE
+
+This prompt is for generating brand color token scales from base brand color inputs.
+
+Your task is to generate deterministic color scales (50-900) and write them as tokens only.
+Do NOT generate UI components or modify component files.
+
+────────────────────────────────
+INPUT
+
+Accept base brand color(s) as input:
+- Primary brand color (required)
+- Secondary brand color (optional: brand-2)
+- Tertiary brand color (optional: brand-3)
+- Quaternary brand color (optional: brand-4)
+
+Input format: Hex color codes (e.g., #3b82f6)
+
+────────────────────────────────
+DETERMINISTIC COLOR SCALE GENERATION
+
+Generate full color scales (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) for each provided brand color using these deterministic rules:
+
+For each base color:
+1. **500 = base color** (the provided input color)
+2. **Lighter shades (50-400)**: Systematically lighten by increasing lightness
+   - 50: Lightest (95-98% lightness)
+   - 100: Very light (90-93% lightness)
+   - 200: Light (80-85% lightness)
+   - 300: Medium-light (70-75% lightness)
+   - 400: Slightly light (60-65% lightness)
+3. **Darker shades (600-900)**: Systematically darken by decreasing lightness
+   - 600: Slightly dark (45-50% lightness)
+   - 700: Medium-dark (35-40% lightness)
+   - 800: Dark (25-30% lightness)
+   - 900: Darkest (15-20% lightness)
+
+**Algorithm (HSL-based)**:
+- Convert base color to HSL
+- For lighter shades: Increase L (lightness) while maintaining H (hue) and S (saturation) proportionally
+- For darker shades: Decrease L (lightness) while maintaining H (hue) and S (saturation) proportionally
+- Convert back to hex for output
+
+**Saturation adjustment**:
+- Lighter shades (50-400): Gradually reduce saturation by 5-10% per step to avoid washed-out colors
+- Darker shades (600-900): Gradually increase saturation by 5-10% per step to maintain color richness
+
+────────────────────────────────
+TOKEN OUTPUT FORMAT
+
+Write colors ONLY as token definitions. Use the canonical token names per BRAND_THEMING.md:
+
+For primary brand color:
+- brand-50 through brand-900 (11 tokens total)
+- brand (alias for brand-500)
+- brand-text-on (calculated for sufficient contrast on brand-500)
+
+For secondary brand color (if provided):
+- brand-2-50 through brand-2-900 (11 tokens total)
+- brand-2 (alias for brand-2-500)
+- brand-2-text-on (calculated for sufficient contrast on brand-2-500)
+
+For tertiary brand color (if provided):
+- brand-3-50 through brand-3-900 (11 tokens total)
+- brand-3 (alias for brand-3-500)
+- brand-3-text-on (calculated for sufficient contrast on brand-3-500)
+
+For quaternary brand color (if provided):
+- brand-4-50 through brand-4-900 (11 tokens total)
+- brand-4 (alias for brand-4-500)
+- brand-4-text-on (calculated for sufficient contrast on brand-4-500)
+
+────────────────────────────────
+CONTRAST CALCULATION FOR TEXT-ON COLORS
+
+Calculate brand-text-on colors using WCAG AA contrast requirements:
+- For brand-500: Calculate whether white (#ffffff) or black (#000000) provides better contrast
+- Use the color that meets WCAG AA (4.5:1 contrast ratio minimum)
+- If neither meets AA, adjust lightness to find the closest color that does
+
+Apply same logic for brand-2-text-on, brand-3-text-on, brand-4-text-on.
+
+────────────────────────────────
+OUTPUT LOCATION
+
+Write token definitions to the implementation repository's token configuration location:
+- Check implementation repository documentation for token file location
+- Common locations: /styles/tokens.css, /tokens/brand.css, /design-tokens/brand.json
+- If location is unclear, ask user or use most appropriate location per implementation structure
+
+Output format should match implementation repository's token system (CSS variables, JSON, etc.).
+
+────────────────────────────────
+CONSTRAINTS
+
+- Do NOT generate UI components or markup
+- Do NOT modify component files
+- Do NOT create new token concepts beyond color scales
+- Do NOT use subjective color adjustments (use deterministic algorithm only)
+- Do NOT hard-code colors in output (write as tokens only)
+- Do NOT generate example usage code
+- Write ONLY token definitions
+
+────────────────────────────────
+VALIDATION
+
+Before completing, verify:
+- [ ] All color scales (50-900) generated for each provided brand color
+- [ ] All tokens use canonical names per BRAND_THEMING.md
+- [ ] Text-on colors meet WCAG AA contrast requirements
+- [ ] Output is token definitions only (no UI code)
+- [ ] Algorithm is deterministic and repeatable
+- [ ] No component files modified
+
+────────────────────────────────
+
+After completing this task, execute /prompts/changelog_prompt.md.
+
