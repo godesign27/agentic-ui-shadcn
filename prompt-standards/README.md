@@ -31,4 +31,11 @@ These standards are **optional**—agents may operate without them, but followin
 - **start-prompt-template.md**: Canonical pattern for initializing agent sessions
 - **feature-scope-guidelines.md**: Definitions and expectations for feature scoping
 - **token-efficiency-guidelines.md**: Guidance for minimizing token consumption
+- **changelog_prompt.md**: Post-change documentation prompt for maintaining project notes
+
+## Post-change documentation prompt
+
+Implementation repositories can copy `/prompt-standards/changelog_prompt.md` to their own `/prompts` directory for use after code changes.
+
+**One-line invocation convention**: After completing this task, execute `/prompts/changelog_prompt.md`.
 
