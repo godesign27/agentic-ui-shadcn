@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Library Demo - Agentic AI UI Control System</title>
+  <link rel="stylesheet" href="/assets/prompt-drawer/prompt-drawer.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #111827;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #ffffff;
+    }
+    h1 {
+      margin-top: 0;
+      color: #111827;
+    }
+    .demo-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #f9fafb;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+    .demo-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #3b82f6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .demo-button:hover {
+      background: #2563eb;
+    }
+    .demo-button:focus {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+      font-size: 0.875em;
+    }
+    .note {
+      padding: 1rem;
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0.25rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prompt Library Demo</h1>
+  
+  <div class="demo-section">
+    <h2>About</h2>
+    <p>
+      This page demonstrates the Prompt Library drawer component. The drawer provides
+      quick access to all prompts in the Agentic AI UI Control System, organized by category.
+    </p>
+  </div>
+
+  <div class="demo-section">
+    <h2>How to Use</h2>
+    <p>
+      <strong>Keyboard shortcut:</strong> Press <code>Cmd+L</code> (Mac) or <code>Ctrl+L</code> (Windows/Linux)
+      to open or close the prompt drawer.
+    </p>
+    <p>
+      <strong>Button:</strong> Click the button below to open the drawer manually.
+    </p>
+    <button class="demo-button" onclick="openPromptDrawer()">Open Prompt Library</button>
+  </div>
+
+  <div class="demo-section">
+    <h2>Features</h2>
+    <ul>
+      <li>Browse prompts grouped by category</li>
+      <li>View full prompt content</li>
+      <li>Copy prompts to clipboard with one click</li>
+      <li>Keyboard accessible (ESC to close, Tab to navigate)</li>
+      <li>Focus trap when drawer is open</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <strong>Note:</strong> This demo requires the repository to be served via a local web server.
+    The prompts are loaded via fetch, which doesn't work with the <code>file://</code> protocol.
+  </div>
+
+  <script type="module" src="/assets/prompt-drawer/prompt-drawer.js"></script>
+</body>
+</html>
+

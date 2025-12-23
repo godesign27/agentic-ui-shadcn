@@ -1,0 +1,40 @@
+{
+  "prompts": [
+    {
+      "id": "small-feature",
+      "title": "Small Feature",
+      "category": "Building Features",
+      "description": "Template for implementing small features: 1-3 components, minimal custom logic, single file output (50-200 lines).",
+      "file": "/prompts/small-feature.md"
+    },
+    {
+      "id": "medium-feature",
+      "title": "Medium Feature",
+      "category": "Building Features",
+      "description": "Template for implementing medium features: 3-7 components, custom composition logic, multiple sections/files (200-500 lines).",
+      "file": "/prompts/medium-feature.md"
+    },
+    {
+      "id": "large-feature",
+      "title": "Large Feature",
+      "category": "Building Features",
+      "description": "Template for implementing large features: 7+ components, complex state management, multiple files/sections (500+ lines).",
+      "file": "/prompts/large-feature.md"
+    },
+    {
+      "id": "brand-setup",
+      "title": "Brand Setup",
+      "category": "Theming",
+      "description": "Generate deterministic brand color token scales (50-900) from base brand color inputs using HSL-based algorithm.",
+      "file": "/prompts/brand-setup.md"
+    },
+    {
+      "id": "changelog-prompt",
+      "title": "Changelog Prompt",
+      "category": "Project Notes",
+      "description": "Post-change documentation prompt for updating project notes (annotations.md and changelog.md) after code changes.",
+      "file": "/prompt-standards/changelog_prompt.md"
+    }
+  ]
+}
+
