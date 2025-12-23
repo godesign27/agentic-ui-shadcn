@@ -1,6 +1,6 @@
 /**
  * Prompt Drawer - A right-side drawer for browsing and copying prompts
- * Hotkey: Cmd+L (Mac) or Ctrl+L (Windows/Linux)
+ * Hotkeys: Cmd+L / Ctrl+L or Cmd+K / Ctrl+K (Mac/Windows/Linux)
  */
 
 class PromptDrawer {
@@ -16,6 +16,7 @@ class PromptDrawer {
   init() {
     this.createDrawer();
     this.setupHotkeys();
+    this.setupClickTriggers();
     this.loadPrompts();
   }
 
@@ -80,19 +81,49 @@ class PromptDrawer {
 
   setupHotkeys() {
     document.addEventListener('keydown', (e) => {
+      // Ignore shortcuts when typing in form elements
+      const target = e.target;
+      const isFormElement = target.tagName === 'INPUT' || 
+                           target.tagName === 'TEXTAREA' || 
+                           target.tagName === 'SELECT' ||
+                           target.isContentEditable;
+      
+      if (isFormElement) {
+        return;
+      }
+
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const modifier = isMac ? e.metaKey : e.ctrlKey;
       
-      // Cmd/Ctrl+L to toggle
-      if (modifier && e.key === 'l' && !e.shiftKey && !e.altKey) {
+      // Only handle if Cmd/Ctrl is pressed, ignore other modifiers
+      if (!modifier || e.shiftKey || e.altKey) {
+        return;
+      }
+      
+      // Cmd/Ctrl+L or Cmd/Ctrl+K to toggle
+      if ((e.key === 'l' || e.key === 'k') && !e.shiftKey && !e.altKey) {
         e.preventDefault();
         this.toggle();
+        return;
       }
 
       // ESC to close
       if (e.key === 'Escape' && this.isOpen) {
         e.preventDefault();
         this.close();
+      }
+    });
+  }
+
+  setupClickTriggers() {
+    // Delegated click handler for data-open-prompt-drawer attribute
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-open-prompt-drawer]');
+      if (trigger) {
+        e.preventDefault();
+        if (!this.isOpen) {
+          this.open();
+        }
       }
     });
   }

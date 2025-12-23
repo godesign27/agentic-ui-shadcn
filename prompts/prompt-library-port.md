@@ -2,7 +2,7 @@
 PROMPT LIBRARY PORT — INSTALL CMD/CTRL+L DRAWER
 
 Purpose:
-Port the Prompt Library drawer (Cmd/Ctrl+L hotkey) from the Agentic AI UI Control System into a local project.
+Port the Prompt Library drawer (Cmd/Ctrl+L or Cmd/Ctrl+K hotkeys) from the Agentic AI UI Control System into a local project.
 
 ────────────────────────────────
 PREREQUISITES
@@ -64,14 +64,40 @@ Add these two lines to any HTML page where the drawer should be available:
 Replace [assets-path] with the actual path where assets are stored.
 
 ────────────────────────────────
-STEP 5 — Verify Functionality
+STEP 5 — Create Verification Start Page
+
+Create a minimal verification page to test the drawer installation:
+
+Preferred path: /start/index.html
+(If routing constraints exist, use the closest equivalent path)
+
+Content requirements:
+- H1: "Hello World"
+- One short line: "Prompt Library installed. Use Cmd/Ctrl+L or Cmd/Ctrl+K."
+- CTA button labeled "Open Prompt Library" that uses:
+  ```html
+  <button data-open-prompt-drawer>Open Prompt Library</button>
+  ```
+- Include the drawer CSS and JS references:
+  ```html
+  <link rel="stylesheet" href="/[assets-path]/prompt-drawer/prompt-drawer.css">
+  <script type="module" src="/[assets-path]/prompt-drawer/prompt-drawer.js"></script>
+  ```
+
+Constraints:
+- Do NOT generate any additional UI beyond this verification page
+- Keep the page minimal and focused on verification only
+
+────────────────────────────────
+STEP 6 — Verify Functionality
 
 Test the following:
-1. Hotkey: Press Cmd+L (Mac) or Ctrl+L (Windows/Linux) — drawer should open
+1. Hotkey: Press Cmd+L or Cmd+K (Mac) or Ctrl+L or Ctrl+K (Windows/Linux) — drawer should open
 2. ESC key: Press ESC when drawer is open — drawer should close
-3. Prompt loading: Click a prompt in the list — content should load
-4. Copy button: Click "Copy Prompt" — content should copy to clipboard
-5. Focus trap: Tab through elements — focus should stay within drawer
+3. Declarative trigger: Click button with data-open-prompt-drawer — drawer should open
+4. Prompt loading: Click a prompt in the list — content should load
+5. Copy button: Click "Copy Prompt" — content should copy to clipboard
+6. Focus trap: Tab through elements — focus should stay within drawer
 
 If any test fails:
 - Check browser console for errors
@@ -80,24 +106,14 @@ If any test fails:
 - Verify PROMPTS_INDEX.json is accessible
 
 ────────────────────────────────
-STEP 6 — Optional: Add Manual Trigger
-
-If you want a button to open the drawer manually:
-
-```html
-<button onclick="openPromptDrawer()">Open Prompt Library</button>
-```
-
-The openPromptDrawer() function is automatically available globally.
-
-────────────────────────────────
 CONSTRAINTS
 
 - Do NOT modify prompt-drawer.js core functionality
-- Do NOT change hotkey bindings (Cmd/Ctrl+L, ESC)
+- Do NOT change hotkey bindings (Cmd/Ctrl+L, Cmd/Ctrl+K, ESC)
 - Do NOT remove accessibility features (ARIA, focus trap)
 - Only update file paths to match project structure
 - Maintain the same directory structure for assets
+- Do NOT add additional UI to the verification Start page beyond the specified requirements
 
 ────────────────────────────────
 TROUBLESHOOTING
@@ -125,9 +141,12 @@ Before completing, verify:
 - [ ] All drawer assets copied to target project
 - [ ] PROMPTS_INDEX.json exists and is valid
 - [ ] File paths updated to match project structure
+- [ ] Verification Start page created at /start/index.html (or equivalent)
+- [ ] Start page includes H1 "Hello World" and CTA button with data-open-prompt-drawer
 - [ ] HTML includes both CSS and JS references
-- [ ] Hotkey (Cmd/Ctrl+L) opens drawer
+- [ ] Hotkey (Cmd/Ctrl+L or Cmd/Ctrl+K) opens drawer
 - [ ] ESC closes drawer
+- [ ] Declarative trigger (data-open-prompt-drawer) opens drawer
 - [ ] Prompts load and display correctly
 - [ ] Copy button works
 - [ ] Focus trap functions properly
