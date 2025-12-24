@@ -14,6 +14,54 @@ This repository does **not** contain:
 
 Implementation repositories (e.g., `agentic-ui-bootstrap`) reference this system to ensure consistent, accessible, and governed UI generation across different frameworks. Agents generating UI code must read and adhere to the rules and principles defined in this repository before producing any implementation code.
 
+## Quick Start
+
+### Viewing the Demo
+
+To view the Hello World demo page with the Prompt Library drawer:
+
+```bash
+python3 -m http.server 8080
+```
+
+Then open: http://localhost:8080/
+
+**Shortcuts:**
+- Press `Cmd+L` (Mac) or `Ctrl+L` (Windows/Linux) to open the Prompt Library drawer
+- Press `Cmd+K` (Mac) or `Ctrl+K` (Windows/Linux) as an alternative shortcut
+- Press `ESC` to close the drawer or return to the list view
+
+### Using in Your Project
+
+To use the Prompt Library drawer in your own project:
+
+1. **Copy the drawer assets** to your project:
+   - Copy `/public/assets/prompt-drawer/prompt-drawer.js` to your assets folder
+   - Copy `/public/assets/prompt-drawer/prompt-drawer.css` to your assets folder
+
+2. **Copy the prompts** to your project:
+   - Copy `/public/prompts/` directory to your project
+   - Or create your own `PROMPTS_INDEX.json` following the same structure
+
+3. **Update file paths** in `prompt-drawer.js`:
+   - Update the fetch path for `PROMPTS_INDEX.json` to match your project structure
+   - Ensure prompt file paths in your index match your project structure
+
+4. **Add to your HTML pages**:
+   ```html
+   <link rel="stylesheet" href="/path/to/prompt-drawer.css">
+   <script src="/path/to/prompt-drawer.js" defer></script>
+   ```
+
+5. **Add a trigger button** (optional):
+   ```html
+   <button data-open-prompt-drawer>Open Prompt Library</button>
+   ```
+
+**Note:** The drawer requires a web server (not `file://` protocol) due to fetch API restrictions.
+
+For detailed porting instructions, see `/prompts/prompt-library-port.md` or use the Prompt Library drawer to view it.
+
 ## Read Order
 
 Agents must read documentation in this order:

@@ -1,0 +1,96 @@
+---
+MEDIUM FEATURE MODE
+
+This prompt is for implementing medium features: multi-component compositions, pattern implementations, or moderate customizations.
+
+Scope: 3-7 components, custom composition logic allowed, multiple sections/files (200-500 lines).
+
+────────────────────────────────
+PRE-FLIGHT
+
+Before proceeding:
+1. Verify you have read core instruction layer documentation per AGENT_RULES.md
+2. Confirm access to implementation repository's COMPONENTS_INDEX.md
+3. Identify which components (3-7) from the index will be used
+4. Check /patterns directory for existing patterns that match the request
+
+If components are not in the index:
+- Reject the request or propose alternatives using existing components
+- Do NOT invent new components
+
+If a pattern exists in /patterns:
+- Use the established pattern rather than inventing a new approach
+
+────────────────────────────────
+COMPOSITION REQUIREMENTS
+
+- Use ONLY components listed in COMPONENTS_INDEX.md (closed-world assumption)
+- Use ONLY patterns documented in /patterns directory (closed-world assumption)
+- Compose from existing building blocks; do not modify core component implementations
+- Custom composition logic is permitted for connecting components
+- Reference component snippets from /components directory
+- Reference pattern examples from /patterns directory
+
+────────────────────────────────
+COMPLEXITY LIMITS
+
+Medium features must NOT include:
+- Complex state dependencies across multiple independent workflows
+- Advanced accessibility requirements beyond standard patterns (e.g., complex modals)
+- Extensive responsive behavior requiring custom breakpoint logic
+- Integration with external systems beyond UI scope
+- Complete application pages (use large feature template)
+
+If the request exceeds these limits, classify as large feature and use appropriate template.
+
+────────────────────────────────
+VALIDATION CHECKLIST
+
+Before outputting code, verify:
+- [ ] All components (3-7) exist in COMPONENTS_INDEX.md
+- [ ] Pattern compliance verified if using established patterns from /patterns
+- [ ] Token usage complies with TOKENS_REFERENCE.md throughout (no hard-coded values)
+- [ ] Brand tokens used when available per BRAND_THEMING.md Agent Detection Rule
+- [ ] Accessibility for interactive elements validated per ACCESSIBILITY.md
+- [ ] Responsive behavior verified across breakpoints
+- [ ] Output size: 200-500 lines (approximate, may span multiple files)
+- [ ] No new dependencies or build tooling changes
+
+────────────────────────────────
+OUTPUT REQUIREMENTS
+
+- Multiple sections or files as needed
+- Framework-agnostic language (reference tokens, not framework classes)
+- Include only necessary code (no verbose explanations)
+- Ensure WCAG 2.1 AA compliance for all interactive elements
+- Use tokens for all spacing, colors, typography
+- Document composition logic where it connects multiple components
+
+────────────────────────────────
+INTERACTION PATTERNS
+
+Moderate interaction patterns are permitted:
+- Component state changes (show/hide, expand/collapse)
+- Form validation and submission workflows
+- Data display with sorting/filtering (using existing patterns)
+- Multi-step workflows within a single view
+
+Ensure all interactions are:
+- Keyboard accessible per ACCESSIBILITY.md
+- Screen reader friendly
+- Using established patterns where available
+
+────────────────────────────────
+CONSTRAINTS
+
+- Do NOT create components not in the index
+- Do NOT create patterns not documented in /patterns
+- Do NOT add dependencies or modify build tooling
+- Do NOT restate governance rules in output
+- Do NOT exceed medium feature complexity limits
+
+────────────────────────────────
+
+After completing this task, execute /prompts/changelog_prompt.md.
+---
+

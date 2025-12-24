@@ -1,0 +1,15 @@
+{
+  "prompts": [
+    { "id":"start","title":"Start / Initialize","description":"Universal entry point for setting up project context in agentic AI tools","category":"GETTING STARTED","file":"/public/prompts/start.txt" },
+    { "id":"repo-update-check","title":"Repository Update Check","description":"Check this governance repo for meaningful updates and summarize changes","category":"GETTING STARTED","file":"/public/prompts/repo-update-check.txt" },
+    { "id":"prompt-library-port","title":"Prompt Library Port","description":"Port the Prompt Library drawer + shortcuts into a local project","category":"GETTING STARTED","file":"/public/prompts/prompt-library-port.txt" },
+
+    { "id":"small-feature","title":"Small Feature","description":"For small UI additions (1–3 components, minimal logic)","category":"BUILDING FEATURES","file":"/public/prompts/small-feature.txt" },
+    { "id":"medium-feature","title":"Medium Feature","description":"For mini-workflows (3–6 components, light logic)","category":"BUILDING FEATURES","file":"/public/prompts/medium-feature.txt" },
+    { "id":"large-feature","title":"Large Feature","description":"For full pages / workflows (4+ components, API integration possible)","category":"BUILDING FEATURES","file":"/public/prompts/large-feature.txt" },
+
+    { "id":"brand-setup","title":"Brand Setup","description":"Capture brand colors and generate tonal scales (50–900) for tokens/themes","category":"THEMING","file":"/public/prompts/brand-setup.txt" },
+    { "id":"changelog-prompt","title":"Changelog Prompt","description":"Update /project-notes/changelog.md + annotations.md after changes","category":"PROJECT NOTES","file":"/public/prompts/changelog-prompt.txt" }
+  ]
+}
+

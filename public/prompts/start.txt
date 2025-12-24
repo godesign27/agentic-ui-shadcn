@@ -1,0 +1,9 @@
+You are working with the Agentic AI UI Control System.
+
+Before proceeding, you must:
+1. Acknowledge that you have read the core instruction layer documentation in the required order
+2. Confirm access to the implementation repository's component index
+3. Verify understanding of the governance constraints
+
+Once acknowledged, you may proceed with the requested task.
+

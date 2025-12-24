@@ -1,0 +1,72 @@
+---
+SMALL FEATURE MODE
+
+This prompt is for implementing small features: single component usage, minor modifications, or simple compositions.
+
+Scope: 1-3 components, minimal custom logic, single file output (50-200 lines).
+
+────────────────────────────────
+PRE-FLIGHT
+
+Before proceeding:
+1. Verify you have read core instruction layer documentation per AGENT_RULES.md
+2. Confirm access to implementation repository's COMPONENTS_INDEX.md
+3. Identify which components (1-3) from the index will be used
+
+If components are not in the index:
+- Reject the request or propose alternatives using existing components
+- Do NOT invent new components
+
+────────────────────────────────
+COMPOSITION REQUIREMENTS
+
+- Use ONLY components listed in COMPONENTS_INDEX.md (closed-world assumption)
+- Compose from existing building blocks; do not modify core component implementations
+- Reference component snippets from /components directory
+- If a pattern exists in /patterns, use it rather than inventing
+
+────────────────────────────────
+COMPLEXITY LIMITS
+
+Small features must NOT include:
+- Complex state management
+- Multi-step workflows
+- Advanced interactions requiring custom JavaScript
+- Multiple independent workflows
+- Modals or complex dialogs (use page-first UX per DESIGN_PRINCIPLES.md)
+
+If the request exceeds these limits, classify as medium or large feature and use appropriate template.
+
+────────────────────────────────
+VALIDATION CHECKLIST
+
+Before outputting code, verify:
+- [ ] All components exist in COMPONENTS_INDEX.md
+- [ ] Token usage complies with TOKENS_REFERENCE.md (no hard-coded values)
+- [ ] Brand tokens used when available per BRAND_THEMING.md Agent Detection Rule
+- [ ] Accessibility basics: semantic HTML, proper labels, keyboard navigation per ACCESSIBILITY.md
+- [ ] Output size: 50-200 lines (approximate)
+- [ ] No new dependencies or build tooling changes
+
+────────────────────────────────
+OUTPUT REQUIREMENTS
+
+- Single code block or file
+- Framework-agnostic language (reference tokens, not framework classes)
+- Include only necessary code (no verbose explanations)
+- Ensure WCAG 2.1 AA compliance minimum
+- Use tokens for all spacing, colors, typography
+
+────────────────────────────────
+CONSTRAINTS
+
+- Do NOT create components not in the index
+- Do NOT add dependencies or modify build tooling
+- Do NOT restate governance rules in output
+- Do NOT exceed small feature complexity limits
+
+────────────────────────────────
+
+After completing this task, execute /prompts/changelog_prompt.md.
+---
+

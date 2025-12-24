@@ -1,0 +1,158 @@
+---
+PROMPT LIBRARY PORT — INSTALL CMD/CTRL+L DRAWER
+
+Purpose:
+Port the Prompt Library drawer (Cmd/Ctrl+L or Cmd/Ctrl+K hotkeys) from the Agentic AI UI Control System into a local project.
+
+────────────────────────────────
+PREREQUISITES
+
+Before starting:
+1. Confirm the project has a web server (not file:// protocol)
+2. Identify where to place assets (e.g., /assets, /public, /static)
+3. Identify where prompts are stored (e.g., /prompts, /docs/prompts)
+4. Determine if a prompts index file exists or needs creation
+
+────────────────────────────────
+STEP 1 — Copy Drawer Assets
+
+Copy these files from the source repository to the target project:
+
+Source: /assets/prompt-drawer/prompt-drawer.js
+Target: [project-assets-path]/prompt-drawer/prompt-drawer.js
+
+Source: /assets/prompt-drawer/prompt-drawer.css
+Target: [project-assets-path]/prompt-drawer/prompt-drawer.css
+
+Maintain the same directory structure (prompt-drawer/ folder).
+
+────────────────────────────────
+STEP 2 — Create or Update Prompts Index
+
+If the project has a prompts index:
+- Update it to match the expected JSON structure
+- Ensure it includes: id, title, category, description, file (relative path)
+
+If the project does not have a prompts index:
+- Create PROMPTS_INDEX.json in the prompts directory
+- Structure: { "prompts": [ { "id": "...", "title": "...", "category": "...", "description": "...", "file": "/path/to/prompt.md" } ] }
+- Add entries for all prompts that should be accessible
+
+────────────────────────────────
+STEP 3 — Update File Paths
+
+In prompt-drawer.js, verify these paths match the target project structure:
+
+1. Prompts index path (default: "/prompts/PROMPTS_INDEX.json")
+   - Update if prompts are in a different location
+   - Ensure path is relative to web root
+
+2. Prompt file paths in index
+   - Verify all "file" entries in PROMPTS_INDEX.json use correct relative paths
+   - Paths should be relative to web root (start with "/")
+
+────────────────────────────────
+STEP 4 — Add to HTML Pages
+
+Add these two lines to any HTML page where the drawer should be available:
+
+```html
+<link rel="stylesheet" href="/[assets-path]/prompt-drawer/prompt-drawer.css">
+<script type="module" src="/[assets-path]/prompt-drawer/prompt-drawer.js"></script>
+```
+
+Replace [assets-path] with the actual path where assets are stored.
+
+────────────────────────────────
+STEP 5 — Create Verification Start Page
+
+Create a minimal verification page to test the drawer installation:
+
+Preferred path: /start/index.html
+(If routing constraints exist, use the closest equivalent path)
+
+Content requirements:
+- H1: "Hello World"
+- One short line: "Prompt Library installed. Use Cmd/Ctrl+L or Cmd/Ctrl+K."
+- CTA button labeled "Open Prompt Library" that uses:
+  ```html
+  <button data-open-prompt-drawer>Open Prompt Library</button>
+  ```
+- Include the drawer CSS and JS references:
+  ```html
+  <link rel="stylesheet" href="/[assets-path]/prompt-drawer/prompt-drawer.css">
+  <script type="module" src="/[assets-path]/prompt-drawer/prompt-drawer.js"></script>
+  ```
+
+Constraints:
+- Do NOT generate any additional UI beyond this verification page
+- Keep the page minimal and focused on verification only
+
+────────────────────────────────
+STEP 6 — Verify Functionality
+
+Test the following:
+1. Hotkey: Press Cmd+L or Cmd+K (Mac) or Ctrl+L or Ctrl+K (Windows/Linux) — drawer should open
+2. ESC key: Press ESC when drawer is open — drawer should close
+3. Declarative trigger: Click button with data-open-prompt-drawer — drawer should open
+4. Prompt loading: Click a prompt in the list — content should load
+5. Copy button: Click "Copy Prompt" — content should copy to clipboard
+6. Focus trap: Tab through elements — focus should stay within drawer
+
+If any test fails:
+- Check browser console for errors
+- Verify file paths are correct
+- Ensure web server is running (not file://)
+- Verify PROMPTS_INDEX.json is accessible
+
+────────────────────────────────
+CONSTRAINTS
+
+- Do NOT modify prompt-drawer.js core functionality
+- Do NOT change hotkey bindings (Cmd/Ctrl+L, Cmd/Ctrl+K, ESC)
+- Do NOT remove accessibility features (ARIA, focus trap)
+- Only update file paths to match project structure
+- Maintain the same directory structure for assets
+- Do NOT add additional UI to the verification Start page beyond the specified requirements
+
+────────────────────────────────
+TROUBLESHOOTING
+
+If prompts fail to load:
+- Check browser console for fetch errors
+- Verify PROMPTS_INDEX.json path is correct
+- Ensure JSON file is valid (no syntax errors)
+- Confirm web server is serving files correctly
+
+If drawer doesn't open:
+- Check browser console for JavaScript errors
+- Verify prompt-drawer.js is loaded (check Network tab)
+- Ensure no JavaScript errors are blocking execution
+
+If styles are missing:
+- Verify prompt-drawer.css path is correct
+- Check that CSS file is being served
+- Ensure no CSS conflicts are overriding styles
+
+────────────────────────────────
+VALIDATION
+
+Before completing, verify:
+- [ ] All drawer assets copied to target project
+- [ ] PROMPTS_INDEX.json exists and is valid
+- [ ] File paths updated to match project structure
+- [ ] Verification Start page created at /start/index.html (or equivalent)
+- [ ] Start page includes H1 "Hello World" and CTA button with data-open-prompt-drawer
+- [ ] HTML includes both CSS and JS references
+- [ ] Hotkey (Cmd/Ctrl+L or Cmd/Ctrl+K) opens drawer
+- [ ] ESC closes drawer
+- [ ] Declarative trigger (data-open-prompt-drawer) opens drawer
+- [ ] Prompts load and display correctly
+- [ ] Copy button works
+- [ ] Focus trap functions properly
+
+────────────────────────────────
+
+After completing this task, execute /prompts/changelog_prompt.md.
+---
+

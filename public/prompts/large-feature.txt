@@ -1,0 +1,147 @@
+---
+LARGE FEATURE MODE
+
+This prompt is for implementing large features: complete pages, complex workflows, or significant multi-component systems.
+
+Scope: 7+ components, complex state management, multiple files/sections (500+ lines).
+
+────────────────────────────────
+PRE-FLIGHT
+
+Before proceeding:
+1. Verify you have read core instruction layer documentation per AGENT_RULES.md
+2. Confirm access to implementation repository's COMPONENTS_INDEX.md
+3. Identify which components (7+) from the index will be used
+4. Review /patterns directory for applicable patterns
+5. Review /examples directory for similar implementations
+
+If components are not in the index:
+- Reject the request or propose alternatives using existing components
+- Do NOT invent new components
+
+If patterns exist in /patterns:
+- Use established patterns rather than inventing new approaches
+
+────────────────────────────────
+COMPOSITION REQUIREMENTS
+
+- Use ONLY components listed in COMPONENTS_INDEX.md (closed-world assumption)
+- Use ONLY patterns documented in /patterns directory (closed-world assumption)
+- Compose from existing building blocks; do not modify core component implementations
+- Complex composition and state management logic is permitted
+- Reference component snippets from /components directory
+- Reference pattern examples from /patterns directory
+- Maintain pattern consistency across the feature
+
+────────────────────────────────
+UI COMPOSITION vs BACKEND IMPLEMENTATION
+
+Separate concerns clearly:
+
+UI Composition (in scope):
+- Component structure and layout
+- Client-side state management for UI interactions
+- Form validation and user input handling
+- UI routing and navigation patterns
+- Accessibility implementation
+
+Backend Implementation (out of scope):
+- API endpoints and server logic
+- Database operations
+- Authentication/authorization server-side logic
+- External service integrations
+- Data persistence mechanisms
+
+Document backend integration expectations in annotations, but do not implement backend code.
+
+────────────────────────────────
+COMPLEXITY REQUIREMENTS
+
+Large features must include:
+- Complex state dependencies and management
+- Multiple independent workflows or sections
+- Advanced interaction patterns (modals, complex forms, data tables)
+- Comprehensive responsive behavior across all breakpoints
+- Performance considerations (lazy loading, efficient rendering)
+
+If the request requires:
+- Framework modifications
+- Build tooling changes
+- Dependencies not in the implementation
+- New components not in the index
+
+Reject or propose alternatives per AGENT_RULES.md.
+
+────────────────────────────────
+VALIDATION CHECKLIST
+
+Before outputting code, verify:
+- [ ] Comprehensive component index verification (all 7+ components exist)
+- [ ] Full accessibility audit: WCAG 2.1 AA compliance per ACCESSIBILITY.md
+- [ ] Complete token compliance check: no hard-coded values per TOKENS_REFERENCE.md
+- [ ] Brand tokens used when available per BRAND_THEMING.md Agent Detection Rule
+- [ ] Responsive design verified across all breakpoints (mobile, tablet, desktop, large desktop)
+- [ ] Pattern consistency validated across all sections
+- [ ] State management logic documented and accessible
+- [ ] Performance considerations addressed (efficient rendering, lazy loading where appropriate)
+- [ ] Output size: 500+ lines (may require multiple files)
+- [ ] No new dependencies or build tooling changes
+
+────────────────────────────────
+STATE AND FLOW RIGOR
+
+For complex state management:
+- Document state dependencies clearly
+- Ensure state changes are predictable and traceable
+- Use established state management patterns from /patterns
+- Ensure state persists appropriately (session storage, URL params, etc.)
+- Handle error states and loading states explicitly
+
+For multi-step workflows:
+- Provide clear navigation between steps
+- Indicate progress and current step
+- Allow users to go back/forward appropriately
+- Validate each step before proceeding
+- Ensure keyboard navigation works throughout
+
+────────────────────────────────
+OUTPUT REQUIREMENTS
+
+- Multiple files and sections as needed
+- Framework-agnostic language (reference tokens, not framework classes)
+- Include only necessary code (no verbose explanations)
+- Ensure WCAG 2.1 AA compliance for all interactive elements
+- Use tokens for all spacing, colors, typography
+- Document state management approach
+- Document backend integration expectations in annotations
+- Organize code logically (separate files for major sections/workflows)
+
+────────────────────────────────
+ACCESSIBILITY RIGOR
+
+Large features require comprehensive accessibility:
+- Full semantic HTML structure with landmarks
+- Complete keyboard navigation support
+- Screen reader announcements for dynamic content
+- Focus management for modals and complex interactions
+- Form validation with accessible error messages
+- Table semantics for data tables
+- ARIA usage where appropriate (without redundancy)
+
+Refer to ACCESSIBILITY.md pre-flight checklist and ensure all items are verified.
+
+────────────────────────────────
+CONSTRAINTS
+
+- Do NOT create components not in the index
+- Do NOT create patterns not documented in /patterns
+- Do NOT add dependencies or modify build tooling
+- Do NOT implement backend code (document expectations only)
+- Do NOT restate governance rules in output
+- Do NOT exceed large feature scope (if larger, break into multiple features)
+
+────────────────────────────────
+
+After completing this task, execute /prompts/changelog_prompt.md.
+---
+
