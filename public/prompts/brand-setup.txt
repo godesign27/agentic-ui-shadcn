@@ -22,6 +22,12 @@ DETERMINISTIC COLOR SCALE GENERATION
 
 Generate full color scales (50, 100, 200, 300, 400, 500, 600, 700, 800, 900) for each provided brand color using these deterministic rules:
 
+**REQUIRED: 50-900 Scale Generation**
+- Each provided base color MUST generate all 10 tonal steps: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900
+- Steps MUST be written as CSS variables (tokens), not hard-coded into components
+- Token naming MUST be deterministic and consistent with this repo's token conventions
+- All tokens must be accessible via CSS custom properties (e.g., --brand-50, --brand-100, etc.)
+
 For each base color:
 1. **500 = base color** (the provided input color)
 2. **Lighter shades (50-400)**: Systematically lighten by increasing lightness
@@ -103,6 +109,32 @@ CONSTRAINTS
 - Write ONLY token definitions
 
 ────────────────────────────────
+BRAND PREVIEW PAGE (REQUIRED)
+
+Create a Brand Preview page to visually verify all generated brand tokens.
+
+**File location**: /start/brand-preview.html
+
+**Page requirements**:
+- Render a simple preview UI of all brand tokens
+- Display --brand-* scales (50-900) with swatches
+- Display --brand-2-* scales (50-900) if secondary color provided
+- Display --brand-3-* scales (50-900) if tertiary color provided
+- Display --brand-4-* scales (50-900) if quaternary color provided
+- For each swatch, show:
+  - Color swatch (visual representation)
+  - Token name (e.g., --brand-500)
+  - Hex value (computed from CSS or displayed as text in markup)
+- Include light/dark preview guidance if theming supports it
+- Be usable as a quick visual verification page (no build tools required)
+- Use static HTML with inline styles or minimal CSS (no framework dependencies)
+
+**Purpose**: 
+- Visual verification that all tokens are generated correctly
+- Quick reference for designers and developers
+- Validation that color scales are properly accessible
+
+────────────────────────────────
 VALIDATION
 
 Before completing, verify:
@@ -112,6 +144,25 @@ Before completing, verify:
 - [ ] Output is token definitions only (no UI code)
 - [ ] Algorithm is deterministic and repeatable
 - [ ] No component files modified
+- [ ] Brand Preview page created at /start/brand-preview.html
+- [ ] Preview page displays all generated token swatches with names and hex values
+
+────────────────────────────────
+OPTIONAL: PROMPT LIBRARY INTEGRATION (NON-BLOCKING)
+
+If a Prompt Library drawer exists in this project:
+- Add an entry to PROMPTS_INDEX.json under a "Theming" category
+- The entry should reference the Brand Setup prompt itself
+- The goal is discoverability, not execution
+
+Rules:
+- This step is optional
+- Do NOT fail the task if the Prompt Library does not exist
+- Do NOT modify drawer UI or behavior
+- Do NOT duplicate entries
+
+Purpose:
+Make Brand Setup discoverable alongside other system prompts without coupling branding to UI generation.
 
 ────────────────────────────────
 
