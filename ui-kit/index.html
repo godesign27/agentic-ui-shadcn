@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Kit (Implementation Repos) - Agentic AI UI Control System</title>
+  <link rel="stylesheet" href="/ui-kit/ui-kit.css">
+</head>
+<body>
+  <div class="uikit-layout">
+    <main class="uikit-main">
+      <header class="uikit-header">
+        <div class="uikit-header-row">
+          <div>
+            <h1 class="uikit-title">UI Kit (Implementation Repos)</h1>
+            <p class="uikit-subtitle">Browse component libraries from implementation repositories</p>
+          </div>
+          <div class="uikit-header-actions">
+            <a href="/" class="uikit-btn uikit-btn-outline">Back to Home</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="uikit-content">
+        <div class="uikit-content-section">
+          <h2 class="uikit-section-title">What is a UI Kit?</h2>
+          <p class="uikit-section-text">
+            A UI Kit is a browsable component gallery that allows you to:
+          </p>
+          <ul class="uikit-feature-list">
+            <li>View all available components in an implementation repository</li>
+            <li>Verify component availability before generating code</li>
+            <li>Preview component examples and copy code snippets</li>
+            <li>Avoid hallucination by referencing actual component implementations</li>
+          </ul>
+        </div>
+
+        <div class="uikit-content-section">
+          <h2 class="uikit-section-title">Core Repository vs Implementation Repos</h2>
+          <p class="uikit-section-text">
+            This repository (<strong>agentic-ai-ui-control-system</strong>) is the core governance and instruction layer. 
+            It defines rules, principles, and contracts but does not contain UI components.
+          </p>
+          <p class="uikit-section-text">
+            <strong>UI Kits live in implementation repositories</strong> where actual components are built and maintained. 
+            Each implementation repository (Bootstrap, shadcn, Material, etc.) has its own UI Kit that showcases 
+            its specific component library.
+          </p>
+        </div>
+
+        <div class="uikit-content-section">
+          <h2 class="uikit-section-title">Available UI Kits</h2>
+          <div class="uikit-implementations-grid">
+            <div class="uikit-implementation-card">
+              <div class="uikit-card-header">
+                <h3 class="uikit-card-title">Bootstrap UI Kit</h3>
+                <span class="uikit-card-badge">Available</span>
+              </div>
+              <p class="uikit-card-desc">
+                Browse Bootstrap components, patterns, and examples from the agentic-ui-bootstrap repository.
+              </p>
+              <a href="https://github.com/godesign27/agentic-ui-bootstrap" class="uikit-btn uikit-btn-primary" target="_blank" rel="noopener noreferrer">
+                View Bootstrap UI Kit →
+              </a>
+            </div>
+
+            <div class="uikit-implementation-card uikit-card-coming-soon">
+              <div class="uikit-card-header">
+                <h3 class="uikit-card-title">shadcn/ui UI Kit</h3>
+                <span class="uikit-card-badge uikit-badge-coming-soon">Coming Soon</span>
+              </div>
+              <p class="uikit-card-desc">
+                shadcn/ui implementation coming soon.
+              </p>
+              <span class="uikit-btn uikit-btn-disabled">Coming Soon</span>
+            </div>
+
+            <div class="uikit-implementation-card uikit-card-coming-soon">
+              <div class="uikit-card-header">
+                <h3 class="uikit-card-title">Material Design UI Kit</h3>
+                <span class="uikit-card-badge uikit-badge-coming-soon">Coming Soon</span>
+              </div>
+              <p class="uikit-card-desc">
+                Material Design implementation coming soon.
+              </p>
+              <span class="uikit-btn uikit-btn-disabled">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

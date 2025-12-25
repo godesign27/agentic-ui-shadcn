@@ -26,6 +26,11 @@ python3 -m http.server 8080
 
 Then open: http://localhost:8080/
 
+**Available Pages:**
+- **Home** (`/`) - Hello World page with Prompt Library and UI Kit buttons
+- **UI Kit** (`/ui-kit/`) - Landing page linking to implementation repository UI Kits
+- **Prompt Library** - Press `Cmd+L` or `Cmd+K` to open the drawer
+
 **Shortcuts:**
 - Press `Cmd+L` (Mac) or `Ctrl+L` (Windows/Linux) to open the Prompt Library drawer
 - Press `Cmd+K` (Mac) or `Ctrl+K` (Windows/Linux) as an alternative shortcut
@@ -81,11 +86,18 @@ After reading the core documentation, agents must then read the implementation r
 This core system is implemented in the following repositories:
 
 - **agentic-ui-bootstrap** - Bootstrap implementation with component library, patterns, and examples
+  - UI Kit: Browse components at `/ui-kit/` in the implementation repository
 
 Future implementations:
 - **agentic-ui-shadcn** - shadcn/ui implementation
 - **agentic-ui-material** - Material Design implementation
 - Custom design system implementations
+
+## UI Kit
+
+The core repository provides a UI Kit landing page (`/ui-kit/`) that explains what UI Kits are and links to implementation repository UI Kits. 
+
+**Note:** This core repository is governance-only and does not contain UI components. Actual UI Kits with browsable component galleries live in implementation repositories (e.g., `agentic-ui-bootstrap`).
 
 ## Licensing
 
