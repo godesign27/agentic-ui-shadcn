@@ -1,0 +1,559 @@
+{
+  "version": "1.0.0",
+  "source": "shadcn/ui",
+  "enforcement": "closed-world",
+  "lastUpdated": "2025-12-25",
+  "components": [
+    {
+      "id": "ui:accordion",
+      "name": "Accordion",
+      "importPath": "@/components/ui/accordion",
+      "files": [
+        "src/components/ui/accordion.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:alert",
+      "name": "Alert",
+      "importPath": "@/components/ui/alert",
+      "files": [
+        "src/components/ui/alert.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:alert-dialog",
+      "name": "AlertDialog",
+      "importPath": "@/components/ui/alert-dialog",
+      "files": [
+        "src/components/ui/alert-dialog.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:aspect-ratio",
+      "name": "AspectRatio",
+      "importPath": "@/components/ui/aspect-ratio",
+      "files": [
+        "src/components/ui/aspect-ratio.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:avatar",
+      "name": "Avatar",
+      "importPath": "@/components/ui/avatar",
+      "files": [
+        "src/components/ui/avatar.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:badge",
+      "name": "Badge",
+      "importPath": "@/components/ui/badge",
+      "files": [
+        "src/components/ui/badge.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:breadcrumb",
+      "name": "Breadcrumb",
+      "importPath": "@/components/ui/breadcrumb",
+      "files": [
+        "src/components/ui/breadcrumb.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:button",
+      "name": "Button",
+      "importPath": "@/components/ui/button",
+      "files": [
+        "src/components/ui/button.tsx"
+      ],
+      "category": "Forms",
+      "propsNotes": "Supports variants: default, destructive, outline, secondary, ghost, link. Sizes: default, sm, lg, icon. Uses class-variance-authority for variant management.",
+      "a11yNotes": "Native button element with focus-visible ring. Supports disabled state. Keyboard accessible by default.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:calendar",
+      "name": "Calendar",
+      "importPath": "@/components/ui/calendar",
+      "files": [
+        "src/components/ui/calendar.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:card",
+      "name": "Card",
+      "importPath": "@/components/ui/card",
+      "files": [
+        "src/components/ui/card.tsx"
+      ],
+      "category": "Layout",
+      "propsNotes": "Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter. Uses CSS variables for theming.",
+      "a11yNotes": "Semantic container. Ensure proper heading hierarchy when using CardTitle.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:carousel",
+      "name": "Carousel",
+      "importPath": "@/components/ui/carousel",
+      "files": [
+        "src/components/ui/carousel.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:checkbox",
+      "name": "Checkbox",
+      "importPath": "@/components/ui/checkbox",
+      "files": [
+        "src/components/ui/checkbox.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:collapsible",
+      "name": "Collapsible",
+      "importPath": "@/components/ui/collapsible",
+      "files": [
+        "src/components/ui/collapsible.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:command",
+      "name": "Command",
+      "importPath": "@/components/ui/command",
+      "files": [
+        "src/components/ui/command.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:context-menu",
+      "name": "ContextMenu",
+      "importPath": "@/components/ui/context-menu",
+      "files": [
+        "src/components/ui/context-menu.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:dialog",
+      "name": "Dialog",
+      "importPath": "@/components/ui/dialog",
+      "files": [
+        "src/components/ui/dialog.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "name": "DropdownMenu",
+      "importPath": "@/components/ui/dropdown-menu",
+      "files": [
+        "src/components/ui/dropdown-menu.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:form",
+      "name": "Form",
+      "importPath": "@/components/ui/form",
+      "files": [
+        "src/components/ui/form.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:hover-card",
+      "name": "HoverCard",
+      "importPath": "@/components/ui/hover-card",
+      "files": [
+        "src/components/ui/hover-card.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:input",
+      "name": "Input",
+      "importPath": "@/components/ui/input",
+      "files": [
+        "src/components/ui/input.tsx"
+      ],
+      "category": "Forms",
+      "propsNotes": "Standard HTML input with shadcn styling. Supports all native input props and types.",
+      "a11yNotes": "Requires associated label element. Supports aria-describedby for error messages. Focus-visible ring included.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:label",
+      "name": "Label",
+      "importPath": "@/components/ui/label",
+      "files": [
+        "src/components/ui/label.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:menubar",
+      "name": "Menubar",
+      "importPath": "@/components/ui/menubar",
+      "files": [
+        "src/components/ui/menubar.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:navigation-menu",
+      "name": "NavigationMenu",
+      "importPath": "@/components/ui/navigation-menu",
+      "files": [
+        "src/components/ui/navigation-menu.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:pagination",
+      "name": "Pagination",
+      "importPath": "@/components/ui/pagination",
+      "files": [
+        "src/components/ui/pagination.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:popover",
+      "name": "Popover",
+      "importPath": "@/components/ui/popover",
+      "files": [
+        "src/components/ui/popover.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:progress",
+      "name": "Progress",
+      "importPath": "@/components/ui/progress",
+      "files": [
+        "src/components/ui/progress.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:radio-group",
+      "name": "RadioGroup",
+      "importPath": "@/components/ui/radio-group",
+      "files": [
+        "src/components/ui/radio-group.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:resizable",
+      "name": "Resizable",
+      "importPath": "@/components/ui/resizable",
+      "files": [
+        "src/components/ui/resizable.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:scroll-area",
+      "name": "ScrollArea",
+      "importPath": "@/components/ui/scroll-area",
+      "files": [
+        "src/components/ui/scroll-area.tsx"
+      ],
+      "category": "Layout",
+      "propsNotes": "Custom scrollable container using Radix UI ScrollArea. Composed of ScrollArea and ScrollBar components.",
+      "a11yNotes": "Keyboard scrollable. Maintains focus management within scrollable region.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:select",
+      "name": "Select",
+      "importPath": "@/components/ui/select",
+      "files": [
+        "src/components/ui/select.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:separator",
+      "name": "Separator",
+      "importPath": "@/components/ui/separator",
+      "files": [
+        "src/components/ui/separator.tsx"
+      ],
+      "category": "Layout",
+      "propsNotes": "Visual divider. Supports horizontal (default) and vertical orientations. Uses Radix UI Separator primitive.",
+      "a11yNotes": "Decorative by default. Does not interfere with screen reader navigation.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:sheet",
+      "name": "Sheet",
+      "importPath": "@/components/ui/sheet",
+      "files": [
+        "src/components/ui/sheet.tsx"
+      ],
+      "category": "Overlay",
+      "propsNotes": "Slide-out panel from screen edge. Composed of Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter. Supports side: top, bottom, left, right.",
+      "a11yNotes": "Focus trap when open. ESC key closes. Returns focus to trigger on close. Uses Radix UI Dialog primitive with proper ARIA attributes.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:sidebar",
+      "name": "Sidebar",
+      "importPath": "@/components/ui/sidebar",
+      "files": [
+        "src/components/ui/sidebar.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:skeleton",
+      "name": "Skeleton",
+      "importPath": "@/components/ui/skeleton",
+      "files": [
+        "src/components/ui/skeleton.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:slider",
+      "name": "Slider",
+      "importPath": "@/components/ui/slider",
+      "files": [
+        "src/components/ui/slider.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:sonner",
+      "name": "Sonner",
+      "importPath": "@/components/ui/sonner",
+      "files": [
+        "src/components/ui/sonner.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:switch",
+      "name": "Switch",
+      "importPath": "@/components/ui/switch",
+      "files": [
+        "src/components/ui/switch.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:table",
+      "name": "Table",
+      "importPath": "@/components/ui/table",
+      "files": [
+        "src/components/ui/table.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:tabs",
+      "name": "Tabs",
+      "importPath": "@/components/ui/tabs",
+      "files": [
+        "src/components/ui/tabs.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:textarea",
+      "name": "Textarea",
+      "importPath": "@/components/ui/textarea",
+      "files": [
+        "src/components/ui/textarea.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:toast",
+      "name": "Toast",
+      "importPath": "@/components/ui/toast",
+      "files": [
+        "src/components/ui/toast.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:toaster",
+      "name": "Toaster",
+      "importPath": "@/components/ui/toaster",
+      "files": [
+        "src/components/ui/toaster.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:toggle",
+      "name": "Toggle",
+      "importPath": "@/components/ui/toggle",
+      "files": [
+        "src/components/ui/toggle.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:toggle-group",
+      "name": "ToggleGroup",
+      "importPath": "@/components/ui/toggle-group",
+      "files": [
+        "src/components/ui/toggle-group.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:tooltip",
+      "name": "Tooltip",
+      "importPath": "@/components/ui/tooltip",
+      "files": [
+        "src/components/ui/tooltip.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    }
+  ],
+  "patterns": [],
+  "layouts": [],
+  "forbidden": [
+    "Do not install external UI libraries (Material UI, Ant Design, Chakra UI, etc.) unless explicitly approved and added to this index",
+    "Do not create new UI components outside src/components/ui/ and src/components/patterns/",
+    "Do not modify base component implementations in src/components/ui/ unless explicitly required by task",
+    "Do not import from non-approved paths (only @/components/ui/*, @/components/patterns/*, @/components/layout/*)",
+    "Do not generate raw bespoke UI markup when an equivalent shadcn/ui component exists",
+    "Do not use third-party component libraries without adding to this index first",
+    "Do not create duplicate components that replicate shadcn/ui functionality"
+  ]
+}

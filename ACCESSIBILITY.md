@@ -68,6 +68,24 @@ Focus indicators must:
 - Have sufficient contrast with background
 - Not rely solely on color changes
 
+### shadcn/ui Focus Rings
+
+**CRITICAL**: Do not remove or disable focus rings in shadcn/ui components.
+
+- shadcn/ui components use `focus-visible:ring-2` Tailwind utilities for focus indicators
+- These focus rings are essential for keyboard navigation accessibility
+- Never add `outline-none` without providing an alternative visible focus indicator
+- The `ring-offset-background` ensures focus rings are visible against any background
+
+Example (Button component already includes proper focus):
+```tsx
+// ✅ Good: Button component already has focus-visible:ring-2
+<Button>Click me</Button>
+
+// ❌ Bad: Removing focus ring
+<Button className="outline-none">Click me</Button>
+```
+
 ## Form Accessibility
 
 Forms must include:
@@ -113,14 +131,41 @@ Modals and dialogs must:
 - **ARIA attributes**: Use `role="dialog"` or `<dialog>` element, `aria-modal="true"`, `aria-labelledby` or `aria-label`
 - **Screen reader announcement**: Announce modal opening to screen readers
 
-Example structure:
-```html
-<div role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <h2 id="modal-title">Modal Title</h2>
-  <!-- Modal content -->
-  <button>Close</button>
-</div>
+### shadcn/ui Sheet Component
+
+When using the `ui:sheet` component (indexed in COMPONENTS_INDEX.json):
+
+- **Focus management**: The Sheet component (built on Radix UI Dialog) automatically handles:
+  - Focus trap when open
+  - ESC key to close
+  - Return focus to trigger on close
+  - Proper ARIA attributes
+- **Do not override**: Do not modify or disable these built-in accessibility features
+- **Composition**: Use SheetHeader, SheetTitle, SheetDescription for proper semantic structure
+
+Example:
+```tsx
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+
+<Sheet>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Modal Title</SheetTitle>
+    </SheetHeader>
+    {/* Content */}
+  </SheetContent>
+</Sheet>
 ```
+
+### Focus Management for Overlays
+
+For any overlay components (Sheet, Dialog, Dropdown, etc.):
+
+- **Focus trap**: Must trap focus within the overlay when open
+- **Initial focus**: Set focus appropriately (first interactive element or container)
+- **Return focus**: Return focus to the triggering element when closed
+- **Keyboard navigation**: Ensure all interactive elements are keyboard accessible
+- **Escape handling**: ESC key must close the overlay (handled by Radix UI primitives in shadcn components)
 
 ## ARIA Usage Guidelines
 
@@ -140,20 +185,40 @@ Avoid:
 - Overuse of ARIA when semantic HTML is sufficient
 - ARIA attributes that contradict native element semantics
 
+## shadcn/ui Component Accessibility
+
+shadcn/ui components are built on Radix UI primitives, which provide built-in accessibility:
+
+- **Radix UI primitives**: All shadcn/ui components use Radix UI under the hood, which handles:
+  - Keyboard navigation
+  - Focus management
+  - ARIA attributes
+  - Screen reader announcements
+- **Do not override**: Do not modify or disable Radix UI accessibility features
+- **Composition**: When composing from shadcn/ui components, maintain their accessibility features
+
+### Component-Specific Notes
+
+- **Button**: Native button element with focus-visible ring. Supports disabled state.
+- **Input**: Requires associated label. Supports aria-describedby for error messages.
+- **Sheet**: Focus trap, ESC closes, returns focus to trigger. Uses Radix Dialog primitive.
+- **Card**: Ensure proper heading hierarchy when using CardTitle (use h2, h3, etc. as appropriate).
+
 ## Pre-flight Checklist for Agents
 
 Before outputting any code, verify:
 
 - [ ] All images have appropriate `alt` attributes
 - [ ] All interactive elements are keyboard accessible
-- [ ] Focus indicators are visible and have sufficient contrast
+- [ ] Focus indicators are visible and have sufficient contrast (do not remove focus rings)
 - [ ] Form inputs have associated labels
 - [ ] Headings are in proper hierarchy (h1 → h2 → h3, no skipping levels)
 - [ ] Color contrast meets WCAG AA standards (4.5:1 for text)
 - [ ] Semantic HTML elements are used appropriately
 - [ ] ARIA attributes are used correctly and not redundantly
 - [ ] Tables use proper semantic structure with headers
-- [ ] Modals/dialogs trap focus and can be closed with Escape
+- [ ] Modals/dialogs (Sheet) trap focus and can be closed with Escape
 - [ ] Dynamic content updates are announced to screen readers where appropriate
 - [ ] Skip links are provided for pages with repetitive navigation
+- [ ] shadcn/ui component accessibility features are not disabled or overridden
 

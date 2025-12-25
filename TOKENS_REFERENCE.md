@@ -1,122 +1,224 @@
 # Tokens Reference
 
-This document defines the framework-agnostic token system contract that all generated UI code must follow.
+This document defines the token system for this shadcn/ui implementation repository. All generated code must use tokens instead of hard-coded values.
 
-## What Are Tokens?
+## shadcn/ui Token System
 
-Tokens are named design values that represent design decisions in a systematic way. Instead of hard-coding values like `#3b82f6` or `16px`, tokens provide semantic names like `brand-primary` or `spacing-md` that can be mapped to specific values by implementation repositories.
+This repository uses **CSS variables** defined in `src/index.css` for theming. Tokens are accessed via Tailwind CSS utilities and CSS variable references.
 
-Tokens ensure:
-- **Consistency**: Same token name produces consistent values across the interface
-- **Maintainability**: Changing a token value updates all usages
-- **Theming**: Tokens can be remapped for different themes (light/dark, brand variations)
-- **Accessibility**: Token values can be adjusted to meet contrast requirements
+### Token Location
+
+All design tokens are defined as CSS variables in:
+- `src/index.css` - Contains `:root` (light mode) and `.dark` (dark mode) variable definitions
 
 ## Token Categories
 
-Implementation repositories must provide tokens in the following categories:
-
 ### Colors
 
-Color tokens must include:
-- **Brand colors**: Primary brand colors (see BRAND_THEMING.md for canonical names)
-- **Semantic colors**: Success, warning, error, info
-- **Neutral colors**: Grays, whites, blacks for text and backgrounds
-- **Text colors**: Colors for body text, headings, muted text
-- **Background colors**: Colors for page backgrounds, card backgrounds, surface colors
-- **Border colors**: Colors for borders and dividers
+Color tokens use HSL format without the `hsl()` wrapper (e.g., `210 40% 98%`). Colors are accessed via Tailwind utilities or direct CSS variable references.
 
-Color tokens must support light and dark theme variants.
+**Available color tokens** (defined in `src/index.css`):
+
+- **Background**: `--background`, `--foreground`
+- **Card**: `--card`, `--card-foreground`
+- **Popover**: `--popover`, `--popover-foreground`
+- **Primary**: `--primary`, `--primary-foreground`
+- **Secondary**: `--secondary`, `--secondary-foreground`
+- **Muted**: `--muted`, `--muted-foreground`
+- **Accent**: `--accent`, `--accent-foreground`
+- **Destructive**: `--destructive`, `--destructive-foreground`
+- **Border**: `--border`
+- **Input**: `--input`
+- **Ring**: `--ring`
+
+**Usage in Tailwind**:
+```tsx
+// Background colors
+<div className="bg-background text-foreground">
+<div className="bg-primary text-primary-foreground">
+<div className="bg-card text-card-foreground">
+
+// Border colors
+<div className="border border-border">
+
+// Input styling
+<input className="border-input" />
+```
+
+**Usage in CSS**:
+```css
+.custom-element {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+```
 
 ### Typography
 
-Typography tokens must include:
-- **Font families**: Primary and secondary font stacks
-- **Font sizes**: Scale from smallest to largest (e.g., xs, sm, base, lg, xl, 2xl, etc.)
-- **Font weights**: Light, normal, medium, semibold, bold
-- **Line heights**: Appropriate line heights for each font size
-- **Letter spacing**: Tracking values where applicable
+Typography uses Tailwind CSS utilities. Font sizes, weights, and line heights are defined via Tailwind's typography scale.
+
+**Font Sizes** (Tailwind utilities):
+- `text-xs` (12px)
+- `text-sm` (14px)
+- `text-base` (16px)
+- `text-lg` (18px)
+- `text-xl` (20px)
+- `text-2xl` (24px)
+- `text-3xl` (30px)
+- etc.
+
+**Font Weights**:
+- `font-light` (300)
+- `font-normal` (400)
+- `font-medium` (500)
+- `font-semibold` (600)
+- `font-bold` (700)
+
+**Usage**:
+```tsx
+<h1 className="text-3xl font-bold">Heading</h1>
+<p className="text-base font-normal">Body text</p>
+```
 
 ### Spacing
 
-Spacing tokens must include:
-- **Scale**: Consistent spacing scale (e.g., 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px)
-- **Semantic names**: Names that indicate usage (e.g., `spacing-xs`, `spacing-sm`, `spacing-md`, `spacing-lg`, `spacing-xl`)
-- **Component spacing**: Specific spacing for common patterns (e.g., form field spacing, card padding)
+Spacing uses Tailwind CSS spacing scale (4px base unit). Never use hard-coded pixel values.
+
+**Spacing Scale**:
+- `p-1` (4px), `p-2` (8px), `p-3` (12px), `p-4` (16px)
+- `p-6` (24px), `p-8` (32px), `p-12` (48px), `p-16` (64px)
+- Same scale applies to margin (`m-*`), gap (`gap-*`), etc.
+
+**Usage**:
+```tsx
+<div className="p-4 m-6 gap-4">
+  {/* Use Tailwind spacing utilities */}
+</div>
+```
 
 ### Radius
 
-Border radius tokens must include:
-- **Scale**: Consistent radius scale (e.g., none, sm, md, lg, full)
-- **Usage-specific**: Tokens for buttons, cards, inputs, modals
+Border radius uses CSS variable `--radius` or Tailwind rounded utilities.
+
+**Available tokens**:
+- `--radius` (default radius, typically 0.5rem)
+- Tailwind: `rounded-sm`, `rounded-md`, `rounded-lg`, `rounded-full`
+
+**Usage**:
+```tsx
+<div className="rounded-lg">
+<button className="rounded-md">
+```
 
 ### Shadows
 
-Shadow tokens must include:
-- **Elevation levels**: Multiple shadow levels for depth (e.g., sm, md, lg, xl)
-- **Usage-specific**: Tokens for cards, modals, dropdowns, focus states
+Shadows use Tailwind shadow utilities. No custom shadow tokens are defined (use Tailwind defaults).
+
+**Usage**:
+```tsx
+<div className="shadow-sm">
+<div className="shadow-md">
+<div className="shadow-lg">
+```
 
 ## Prohibition of Hard-Coded Values
 
 Agents must **not** use hard-coded values in generated code where tokens should be used:
 
 **Prohibited:**
-- Hard-coded hex colors: `#3b82f6`, `#10b981`, `#ef4444`
-- Hard-coded pixel values: `16px`, `24px`, `1.5rem` (unless part of token system)
-- Hard-coded font sizes: `14px`, `18px` (use typography tokens)
-- Hard-coded spacing: `margin: 20px` (use spacing tokens)
+- ❌ Hard-coded hex colors: `#3b82f6`, `#10b981`, `#ef4444`
+- ❌ Hard-coded pixel values: `16px`, `24px`, `1.5rem` (unless part of Tailwind utility)
+- ❌ Hard-coded font sizes: `14px`, `18px` (use Tailwind text utilities)
+- ❌ Hard-coded spacing: `margin: 20px` (use Tailwind spacing utilities)
+- ❌ Direct HSL values: `hsl(210, 40%, 50%)` (use CSS variables)
 
 **Required:**
-- Token references: Use the implementation repository's token naming convention
-- Semantic values: Reference tokens by their semantic meaning
-
-## Token Mapping in Implementation Repositories
-
-Implementation repositories map tokens to framework-specific implementations:
-
-- **Bootstrap**: Tokens map to CSS custom properties or Sass variables
-- **shadcn**: Tokens map to CSS variables in the design system
-- **Material**: Tokens map to Material Design tokens
-- **Custom**: Tokens map to the custom design system's token system
-
-Agents must use the token names as defined in the implementation repository's token documentation, not invent new token names.
+- ✅ CSS variables via Tailwind: `bg-primary`, `text-foreground`
+- ✅ Tailwind spacing utilities: `p-4`, `m-6`, `gap-4`
+- ✅ Tailwind typography utilities: `text-base`, `font-semibold`
+- ✅ Tailwind radius utilities: `rounded-lg`, `rounded-md`
+- ✅ CSS variable references: `hsl(var(--primary))`
 
 ## Token Usage Examples
 
 ### Colors
-```html
-<!-- Use token names, not hex values -->
-<div class="bg-brand-primary text-brand-text-on">
-  <!-- Implementation maps bg-brand-primary to actual color -->
-</div>
+```tsx
+// ✅ Good: Using Tailwind utilities with CSS variables
+<div className="bg-primary text-primary-foreground">
+<button className="bg-destructive text-destructive-foreground">
+<div className="border border-border">
+
+// ❌ Bad: Hard-coded colors
+<div style={{ backgroundColor: '#3b82f6' }}>
+<div className="bg-[#3b82f6]">
 ```
 
 ### Spacing
-```html
-<!-- Use spacing tokens, not pixel values -->
-<div class="p-spacing-md m-spacing-lg">
-  <!-- Implementation maps spacing tokens to actual values -->
-</div>
+```tsx
+// ✅ Good: Using Tailwind spacing utilities
+<div className="p-4 m-6 gap-4">
+<Card className="p-6">
+
+// ❌ Bad: Hard-coded spacing
+<div style={{ padding: '16px', margin: '24px' }}>
+<div className="p-[16px]">
 ```
 
 ### Typography
-```html
-<!-- Use typography tokens, not hard-coded sizes -->
-<h1 class="text-heading-xl font-weight-bold">
-  <!-- Implementation maps typography tokens to actual values -->
-</h1>
+```tsx
+// ✅ Good: Using Tailwind typography utilities
+<h1 className="text-3xl font-bold">
+<p className="text-base font-normal">
+
+// ❌ Bad: Hard-coded typography
+<h1 style={{ fontSize: '30px', fontWeight: 700 }}>
+<h1 className="text-[30px]">
 ```
+
+## Light/Dark Theme Support
+
+All color tokens support light and dark themes via CSS variables:
+
+- **Light mode**: Variables defined in `:root` selector in `src/index.css`
+- **Dark mode**: Variables defined in `.dark` selector in `src/index.css`
+
+Theme switching is handled by adding/removing the `dark` class on the root element (typically `<html>` or `<body>`).
+
+**Usage** (automatic via CSS variables):
+```tsx
+// Colors automatically adapt to theme
+<div className="bg-background text-foreground">
+  {/* Light: white bg, dark text. Dark: dark bg, light text */}
+</div>
+```
+
+## Brand Token Integration
+
+When brand tokens are provided (via Brand Setup prompt), they are added to `src/index.css` as CSS variables following the same pattern:
+
+- Brand colors: `--brand-50` through `--brand-900`
+- Brand primary: `--brand` (alias for `--brand-500`)
+- Brand foreground: `--brand-foreground`
+
+See BRAND_THEMING.md for brand token usage guidelines.
 
 ## Token Discovery
 
 Agents must:
-1. Read the implementation repository's token documentation
-2. Use only tokens that are documented and available
-3. Not assume token names without verification
-4. Reference the implementation's token mapping documentation
+1. Read `src/index.css` to see available CSS variables
+2. Use Tailwind utilities that map to CSS variables (e.g., `bg-primary` uses `--primary`)
+3. Check `tailwind.config.js` for custom token mappings
+4. Reference this document for token usage patterns
 
 If a required token does not exist, agents must either:
 - Use the closest available token
 - Request token addition (if the task requires it)
 - Reject the request if tokens are essential and unavailable
 
+## Summary
+
+- **Colors**: Use Tailwind utilities (`bg-primary`, `text-foreground`) or CSS variables (`hsl(var(--primary))`)
+- **Spacing**: Use Tailwind spacing utilities (`p-4`, `m-6`, `gap-4`)
+- **Typography**: Use Tailwind typography utilities (`text-base`, `font-semibold`)
+- **Radius**: Use Tailwind rounded utilities (`rounded-lg`) or CSS variable (`var(--radius)`)
+- **Never**: Hard-code hex colors, pixel values, or other design tokens

@@ -1,103 +1,199 @@
 # Brand Theming
 
-This document defines the framework-agnostic theming contract for integrating brand colors and theme modes into generated UI code.
+This document defines the theming system for integrating brand colors into this shadcn/ui implementation repository.
 
-## Consumer Brand Integration
+## shadcn/ui Theme System
 
-Consumers of implementation repositories can provide brand values through a brand configuration mechanism (e.g., a `brand.css` file, configuration object, or design token overrides). The exact mechanism varies by implementation repository, but the contract remains consistent.
+This repository uses **CSS variables** defined in `src/index.css` for theming. Brand tokens are added as CSS variables following the same pattern as default shadcn/ui tokens.
 
-## Theme Mode Support
+### Theme Mode Support
 
-All generated code must support light and dark theme modes via a theme mode attribute. The implementation repository defines the specific attribute name (e.g., `data-bs-theme`, `data-theme`, `class="dark"`), but the concept is framework-agnostic.
+Theme switching is handled via the `dark` class on the root element (typically `<html>` or `<body>`):
 
-Generated code must:
+- **Light mode**: Variables defined in `:root` selector
+- **Dark mode**: Variables defined in `.dark` selector
+
+All color tokens automatically adapt to the current theme mode. Generated code must:
 - Work correctly in both light and dark modes
-- Use tokens that adapt to the current theme mode
-- Not hard-code colors that would break in either mode
+- Use CSS variables that adapt to the current theme mode
+- Never hard-code colors that would break in either mode
 
-## Canonical Brand Token Names
+## Brand Token Integration
 
-When brand tokens are provided by the consumer, the following canonical token names must be supported:
+Brand tokens are added to `src/index.css` as CSS variables in HSL format (without `hsl()` wrapper, e.g., `210 40% 98%`).
 
-### Primary Brand Colors
-- **brand**: Primary brand color (main brand identity)
-- **brand-2**: Secondary brand color (complementary to primary)
-- **brand-3**: Tertiary brand color (additional brand variation)
-- **brand-4**: Quaternary brand color (additional brand variation)
+### Canonical Brand Token Names
 
-### Brand Text Color
-- **brand-text-on**: Text color that provides sufficient contrast when placed on brand-colored backgrounds
+When brand tokens are provided (via Brand Setup prompt), the following canonical token names are used:
 
-Implementation repositories map these canonical names to their specific token systems. For example:
-- Bootstrap might map to `--bs-brand`, `--bs-brand-2`, etc.
-- shadcn might map to `--brand`, `--brand-2`, etc.
-- Material might map to Material Design brand tokens
+**Primary Brand Colors:**
+- `--brand-50` through `--brand-900` (full color scale)
+- `--brand` (alias for `--brand-500`, the base brand color)
+- `--brand-foreground` (text color with sufficient contrast on `--brand`)
+
+**Secondary Brand Colors** (if provided):
+- `--brand-2-50` through `--brand-2-900`
+- `--brand-2` (alias for `--brand-2-500`)
+- `--brand-2-foreground`
+
+**Tertiary/Quaternary** (if provided):
+- Same pattern: `--brand-3-*`, `--brand-4-*`
+
+### Token Location
+
+Brand tokens are added to `src/index.css`:
+
+```css
+:root {
+  /* Default shadcn/ui tokens */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  /* ... */
+
+  /* Brand tokens (added by Brand Setup) */
+  --brand-50: 210 40% 98%;
+  --brand-100: 210 40% 96%;
+  /* ... */
+  --brand-500: 210 40% 50%;
+  /* ... */
+  --brand-900: 210 40% 15%;
+  --brand: var(--brand-500);
+  --brand-foreground: 0 0% 100%;
+}
+
+.dark {
+  /* Dark mode brand tokens */
+  --brand-50: 210 40% 10%;
+  /* ... */
+}
+```
+
+### Tailwind Integration
+
+Brand tokens are mapped in `tailwind.config.js` to enable Tailwind utilities:
+
+```js
+colors: {
+  brand: {
+    50: 'hsl(var(--brand-50))',
+    100: 'hsl(var(--brand-100))',
+    // ... etc
+    DEFAULT: 'hsl(var(--brand))',
+    foreground: 'hsl(var(--brand-foreground))',
+  }
+}
+```
 
 ## Agent Detection Rule
 
 Agents must follow this rule when generating code:
 
-**If the consumer provides brand tokens (brand, brand-2, brand-3, brand-4, brand-text-on), prefer brand utilities over default framework colors. Otherwise, use default framework colors.**
+**If brand tokens are available in `src/index.css`, prefer brand utilities over default shadcn/ui colors. Otherwise, use default shadcn/ui colors (primary, secondary, etc.).**
 
 This means:
-1. **Check for brand tokens**: Determine if brand tokens are available in the implementation
-2. **Prefer brand when available**: Use `bg-brand`, `text-brand`, `border-brand` instead of `bg-primary`, `text-primary`, etc.
-3. **Fallback to defaults**: If brand tokens are not available, use the framework's default color system (e.g., `bg-primary`, `text-primary`)
+1. **Check for brand tokens**: Look for `--brand` or `--brand-50` variables in `src/index.css`
+2. **Prefer brand when available**: Use `bg-brand`, `text-brand-foreground`, `border-brand` instead of `bg-primary`, `text-primary-foreground`, etc.
+3. **Fallback to defaults**: If brand tokens are not available, use shadcn/ui default colors (`bg-primary`, `text-primary-foreground`, etc.)
 
 ### Example Application
 
 **Scenario 1: Brand tokens available**
-```html
-<!-- Use brand tokens -->
-<button class="bg-brand text-brand-text-on">Primary Action</button>
+```tsx
+// ✅ Use brand tokens
+<Button className="bg-brand text-brand-foreground">
+  Primary Action
+</Button>
+
+<div className="border border-brand">
+  Brand accent
+</div>
 ```
 
 **Scenario 2: Brand tokens not available**
-```html
-<!-- Use default framework colors -->
-<button class="bg-primary text-white">Primary Action</button>
+```tsx
+// ✅ Use default shadcn/ui colors
+<Button className="bg-primary text-primary-foreground">
+  Primary Action
+</Button>
+
+<div className="border border-primary">
+  Primary accent
+</div>
 ```
-
-## Theme Mode Implementation
-
-Generated code must respect the theme mode attribute. This typically means:
-
-- **Light mode**: Default appearance with light backgrounds and dark text
-- **Dark mode**: Inverted appearance with dark backgrounds and light text
-- **Token adaptation**: All color tokens automatically adapt based on theme mode
-
-Agents must not:
-- Hard-code colors that only work in one theme mode
-- Assume a specific theme mode is active
-- Create theme-specific code paths unless necessary
-
-## No Framework Rebuild Required
-
-This theming system does **not** require rebuilding the underlying UI framework. Instead:
-
-- Brand tokens override or extend existing framework tokens
-- Theme mode support uses the framework's existing theme mechanism
-- Implementation repositories handle the mapping between canonical token names and framework-specific implementations
-
-Agents must work within the existing framework's theming capabilities, not request framework modifications.
 
 ## Brand Token Usage Guidelines
 
 When using brand tokens:
 
-1. **Primary actions**: Use `brand` for primary CTAs and important actions
-2. **Secondary actions**: Use `brand-2` or framework defaults for secondary actions
-3. **Accents**: Use `brand-3` and `brand-4` sparingly for accents and highlights
-4. **Text on brand**: Always use `brand-text-on` for text placed on brand-colored backgrounds to ensure contrast
+1. **Primary actions**: Use `bg-brand text-brand-foreground` for primary CTAs and important actions
+2. **Secondary actions**: Use `bg-brand-2 text-brand-2-foreground` (if available) or default `bg-secondary` for secondary actions
+3. **Accents**: Use `brand-3` and `brand-4` sparingly for accents and highlights (if available)
+4. **Text on brand**: Always use `text-brand-foreground` (or `text-brand-2-foreground`, etc.) for text placed on brand-colored backgrounds to ensure contrast
 5. **Consistency**: Use brand tokens consistently throughout the interface when available
 
-## Implementation Repository Requirements
+### Usage Examples
 
-Implementation repositories must:
-- Document how consumers provide brand values
-- Map canonical token names to framework-specific tokens
-- Support theme mode switching via theme mode attribute
-- Provide fallback to default framework colors when brand tokens are not provided
+```tsx
+// Primary brand color
+<Button className="bg-brand text-brand-foreground hover:bg-brand/90">
+  Primary Action
+</Button>
 
-Agents must reference the implementation repository's brand theming documentation for specific usage instructions.
+// Brand border
+<div className="border-2 border-brand rounded-lg p-4">
+  Brand accent container
+</div>
 
+// Brand background with foreground text
+<div className="bg-brand-100 text-brand-900 p-4">
+  Light brand background
+</div>
+
+// Brand scale usage
+<div className="bg-brand-50 text-brand-900">Lightest</div>
+<div className="bg-brand-500 text-brand-foreground">Base</div>
+<div className="bg-brand-900 text-brand-50">Darkest</div>
+```
+
+## Theme Mode Implementation
+
+Brand tokens automatically support light and dark themes:
+
+- **Light mode**: Brand colors defined in `:root` selector
+- **Dark mode**: Adjusted brand colors defined in `.dark` selector (typically darker/lighter variants)
+
+Generated code must:
+- Use CSS variables that automatically adapt to theme mode
+- Never hard-code brand colors
+- Test in both light and dark modes
+
+## Brand Setup Process
+
+Brand tokens are added via the "Brand Setup" prompt (see `public/prompts/brand-setup.txt`):
+
+1. User provides base brand color(s) (hex format)
+2. System generates full color scales (50-900) using deterministic algorithm
+3. CSS variables are written to `src/index.css` in HSL format
+4. Tailwind config is updated with brand color mappings
+5. Brand Preview page displays generated scales
+
+After brand setup, agents should prefer brand tokens over default colors.
+
+## No Framework Rebuild Required
+
+This theming system does **not** require rebuilding shadcn/ui components. Instead:
+
+- Brand tokens are added as CSS variables alongside default tokens
+- Tailwind utilities automatically work with brand tokens once mapped
+- Components use CSS variables, so brand tokens work immediately
+- Theme mode switching works automatically via `.dark` class
+
+Agents must work within the existing CSS variable system, not request framework modifications.
+
+## Summary
+
+- **Token format**: CSS variables in HSL format (e.g., `--brand: 210 40% 50%`)
+- **Usage**: Tailwind utilities (`bg-brand`, `text-brand-foreground`) or CSS (`hsl(var(--brand))`)
+- **Theme modes**: Automatic via `:root` and `.dark` selectors
+- **Detection**: Check `src/index.css` for `--brand` variables
+- **Preference**: Use brand tokens when available, fallback to default shadcn/ui colors

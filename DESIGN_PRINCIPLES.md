@@ -1,13 +1,42 @@
 # Design Principles
 
-This document defines the framework-agnostic decision framework that agents must follow when generating UI code.
+This document defines the decision framework that agents must follow when generating UI code in this shadcn/ui implementation repository.
+
+## Composition from shadcn/ui Primitives
+
+**Primary Rule**: Prefer composing solutions from shadcn/ui components over creating custom implementations.
+
+- **Use indexed components**: Only use components listed in `components/COMPONENTS_INDEX.json`
+- **Compose, don't invent**: Build features by combining shadcn/ui components
+- **Keep components thin**: Components should be compositions, not new primitives
+- **Pattern directory**: Check `src/components/patterns/*` for reusable compositions before creating new markup
+
+Example composition:
+```tsx
+// ✅ Good: Composing from indexed components
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+
+export function FeatureCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Feature</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Action</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
 
 ## Clarity Over Density
 
 Prioritize clear, readable interfaces over information density. This means:
-- Generous spacing between elements
+- Generous spacing between elements (use Tailwind spacing utilities)
 - Clear visual hierarchy through typography and spacing
-- Sufficient contrast between text and backgrounds
+- Sufficient contrast between text and backgrounds (use CSS variables)
 - Readable font sizes (minimum 14px for body text, preferably 16px)
 - Adequate touch targets (minimum 44x44px for interactive elements)
 
@@ -15,7 +44,7 @@ Avoid cramming too much information into small spaces, even if it means addition
 
 ## Page-First UX
 
-Prefer full-page experiences over modal overlays when possible. Use modals only when:
+Prefer full-page experiences over modal overlays when possible. Use Sheet/Dialog components only when:
 - The task requires immediate user attention and cannot be deferred
 - The content is truly secondary or supplementary to the main page
 - The interaction is brief and self-contained (e.g., confirmation dialogs)
@@ -26,34 +55,47 @@ Do **not** use modals for:
 - Content that benefits from more space
 - Multi-step processes that would be better as a dedicated page flow
 
-When modals are necessary, ensure they are accessible (see ACCESSIBILITY.md) and can be dismissed via keyboard.
+When modals are necessary, use the indexed `ui:sheet` component and ensure they are accessible (see ACCESSIBILITY.md).
 
 ## Consistency & Reuse Over Novelty
 
 Prioritize consistency with existing patterns and components over creating new, novel solutions. This means:
-- Reuse components from the implementation repository's component index
-- Follow established patterns from the implementation repository's patterns directory
+- Reuse components from `components/COMPONENTS_INDEX.json`
+- Follow established patterns from `src/components/patterns/*` (if indexed)
 - Maintain visual consistency with existing examples
-- Use consistent spacing, typography, and color application
+- Use consistent spacing (Tailwind utilities), typography, and color application (CSS variables)
 
 Avoid:
-- Creating new component variations when existing components can be composed
+- Creating new component variations when existing shadcn/ui components can be composed
 - Introducing new interaction patterns without justification
 - Deviating from established visual patterns without clear benefit
+- Creating custom components that duplicate shadcn/ui functionality
 
-## Utility-First Spacing
+## Tailwind Utility-First Approach
 
-Where the implementation framework supports utility-first spacing classes, prefer them for:
-- Margin and padding adjustments
-- Component composition and layout
-- Responsive spacing adjustments
+Use Tailwind CSS utility classes for styling:
+- Margin and padding: `m-4`, `p-6`, `gap-4`, etc.
+- Layout: `flex`, `grid`, `container`, etc.
+- Responsive: `md:`, `lg:`, etc.
+- Colors: Use CSS variables via Tailwind (e.g., `bg-primary`, `text-foreground`)
 
 However, avoid:
-- Framework-specific class naming in documentation (describe conceptually)
+- Hard-coding pixel values (use Tailwind spacing scale)
+- Hard-coding colors (use CSS variables)
 - Over-reliance on utility classes for complex styling that should be component-scoped
-- Utility classes that would violate token system requirements
+- Creating custom utility classes that duplicate Tailwind functionality
 
-The goal is consistent, token-based spacing that can be applied efficiently, not framework-specific class naming.
+The goal is consistent, token-based styling using Tailwind utilities and CSS variables.
+
+## shadcn/ui Component Variants
+
+Use shadcn/ui component variants appropriately:
+- **Button**: default, destructive, outline, secondary, ghost, link
+- **Card**: Use CardHeader, CardTitle, CardDescription, CardContent, CardFooter composition
+- **Input**: Standard input with shadcn styling, supports all native input props
+- **Sheet**: Use for slide-out panels with proper focus management
+
+Do not create custom variants when existing variants suffice. Compose from existing components instead.
 
 ## Pattern Restrictions
 
@@ -67,9 +109,9 @@ Avoid carousels unless:
 - The carousel is accessible (keyboard navigable, screen reader friendly, pause controls)
 
 Prefer alternatives:
-- Grid layouts with pagination
+- Grid layouts with pagination (compose from Card components)
 - Tabbed interfaces for categorized content
-- Accordion or expandable sections
+- Accordion or expandable sections (if indexed)
 
 ### Tooltips and Popovers
 
@@ -83,7 +125,7 @@ Do **not** use for:
 - Primary actions or navigation
 - Content that should be part of the main interface
 
-Ensure all tooltips and popovers are keyboard accessible and screen reader friendly.
+Ensure all tooltips and popovers are keyboard accessible and screen reader friendly. Only use if indexed in `components/COMPONENTS_INDEX.json`.
 
 ### Scrollspy
 
@@ -103,10 +145,10 @@ All generated interfaces must be responsive and work across:
 - Large desktop screens (1440px and up)
 
 Use:
+- Tailwind responsive breakpoints (`sm:`, `md:`, `lg:`, `xl:`, `2xl:`)
 - Flexible layouts that adapt to available space
-- Responsive typography that scales appropriately
-- Touch-friendly targets on mobile devices
-- Appropriate breakpoints for the implementation framework
+- Responsive typography using Tailwind text size utilities
+- Touch-friendly targets on mobile devices (minimum 44x44px)
 
 ## Performance Considerations
 
@@ -115,16 +157,29 @@ Consider performance implications:
 - Use semantic HTML that browsers can optimize
 - Avoid unnecessary JavaScript for styling-only concerns
 - Prefer CSS solutions over JavaScript for animations and interactions
+- Use React best practices (memoization, lazy loading when appropriate)
 
-## Progressive Enhancement
+## React Best Practices
 
-Build interfaces that work without JavaScript, then enhance with JavaScript where appropriate:
-- Forms should submit and validate without JavaScript
-- Navigation should work via standard links
-- Content should be accessible without client-side rendering
+Follow React and TypeScript best practices:
+- Use TypeScript for type safety
+- Use functional components with hooks
+- Proper prop typing
+- Avoid unnecessary re-renders
+- Use React Router for navigation (already configured)
+- Follow shadcn/ui component patterns and conventions
 
-Add JavaScript enhancements for:
-- Improved user experience
-- Dynamic interactions
-- Real-time updates
+## CSS Variables and Theming
 
+All styling must use CSS variables for theming:
+- Colors: `hsl(var(--primary))`, `hsl(var(--background))`, etc.
+- Spacing: Tailwind utilities (which use consistent spacing scale)
+- Typography: Tailwind text utilities
+- Radius: `var(--radius)` or Tailwind rounded utilities
+
+Never hard-code:
+- Hex colors (use CSS variables)
+- Pixel values for spacing (use Tailwind utilities)
+- Font sizes (use Tailwind text utilities)
+
+See TOKENS_REFERENCE.md for complete token system.
