@@ -2,7 +2,7 @@
  * AILauncher — preferred AI Assisted entry point.
  *
  * Two forms:
- *   - 'avatar-chat'  (default): pill with ZAIDYN avatar + "Chat" label
+ *   - 'avatar-chat'  (default): pill with Guild avatar + "Chat" label
  *   - 'avatar-only'           : compact circular button, avatar only
  */
 
@@ -18,7 +18,7 @@ export type AILauncherSurface = LauncherSurface;
 
 export interface AILauncherProps {
   variant?: LauncherVariant;
-  /** Surface tone. `dark` = near-black pill (default). `light` = white pill. `brand` = ZSAI blue. */
+  /** Surface tone. `dark` = near-black pill (default). `light` = white pill. `brand` = AI_RAMP blue. */
   surface?: LauncherSurface;
   active?: boolean;
   unread?: boolean;
@@ -138,8 +138,8 @@ export function AILauncher({
   loading = false,
   disabled = false,
   disabledReason,
-  tooltipLabel = 'Open ZAIDYN Agent',
-  ariaLabel = 'Open ZAIDYN Agent chat',
+  tooltipLabel = 'Open Guild Agent',
+  ariaLabel = 'Open Guild Agent chat',
   onClick,
 }: AILauncherProps) {
   const [hover, setHover] = useState(false);
@@ -185,7 +185,7 @@ export function AILauncher({
     transition: 'background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease',
     transform: pressed && !disabled ? 'translateY(0.5px)' : 'none',
     userSelect: 'none',
-    ...AI_TYPOGRAPHY['@zsai-button-label'],
+    ...AI_TYPOGRAPHY['@ai-button-label'],
     letterSpacing: '-0.1px',
     WebkitFontSmoothing: 'antialiased',
   };

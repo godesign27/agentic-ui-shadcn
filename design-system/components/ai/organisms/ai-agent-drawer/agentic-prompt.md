@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Drawer
 
-You are implementing the **AI Agent Drawer** (`ai-agent-drawer`) from the ZAIDYN AI Design System.
+You are implementing the **AI Agent Drawer** (`ai-agent-drawer`) from the Guild AI Design System.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Agent Drawer** (`ai-agent-drawer`) from the ZAIDYN
 | **Category** | AI organisms |
 | **Source** | `components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx` |
 
-> Self-contained under `components/ai/` — do **not** require `@zaidyn/ai-ui`.
+> Self-contained under `components/ai/` — do **not** require `an external AI UI package`.
 
 ## Mandatory read order (before writing code)
 
@@ -33,7 +33,7 @@ Use the co-located `AIAgentDrawer.tsx` and its relative imports. Fetch dependenc
 
 ## Hard rules
 
-- AI Avatar = three ZSAI blues + white cross-star. No orange ring.
+- AI Avatar = three AI_RAMP blues + white cross-star. No orange ring.
 - Load `components/ai/tokens/css/ai-surface.css` so `--ai-*` surface vars resolve.
 - Quick chips = `AIButton` `variant="secondary"`.
 - Do not invent atoms — copy from sibling folders in `components/ai/`.

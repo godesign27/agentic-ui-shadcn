@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ai-default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="ai-component" content="ai-accordion" />
+  <meta name="ai-export" content="AIAccordion" />
+  <title>AI Accordion — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root, [data-theme="ai-default"] {
+    --ai-brand: #4D60E6;
+    --ai-brand-hover: #3544A4;
+    --ai-brand-surface: #F5F6FF;
+    --ai-brand-border: #BECAFE;
+    --ai-text: #2F2C3C;
+    --ai-helper: #716E79;
+    --ai-border: #DEDCDE;
+    --ai-bg: #FFFFFF;
+    --ai-page-bg: #F4F3F3;
+    --ai-error: #B21111;
+    --ai-error-bg: #FFEDE9;
+    --ai-success: #0A6E5E;
+    --ai-radius-sm: 6px;
+    --ai-radius-md: 12px;
+    --ai-radius-lg: 16px;
+    --ai-card-radius: 16px;
+    --ai-focus: #4D60E6;
+  }
+  body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    background: var(--ai-page-bg);
+    color: var(--ai-text);
+    line-height: 1.5;
+  }
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+  .subtitle { color: var(--ai-helper); font-size: 14px; margin: 0 0 8px; max-width: 760px; }
+  .agent-path { font-size: 12px; color: var(--ai-helper); margin: 0 0 32px; font-family: monospace; }
+  section { margin-bottom: 48px; }
+  h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+  .section-desc { font-size: 13px; color: var(--ai-helper); margin: 0 0 20px; }
+  .demo-surface {
+    background: var(--ai-bg);
+    border: 1px solid var(--ai-border);
+    border-radius: var(--ai-radius-sm);
+    padding: 28px 32px;
+  }
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .state-card { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .state-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: #87848D; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .btn-ai {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 8px 16px; border-radius: var(--ai-radius-sm); border: none;
+    background: var(--ai-brand); color: #fff; font-family: inherit;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .btn-ai:hover { background: var(--ai-brand-hover); }
+  .btn-ai.secondary {
+    background: transparent; color: var(--ai-brand);
+    border: 1px solid var(--ai-brand-border);
+  }
+  .btn-ai.secondary:hover { background: var(--ai-brand-surface); }
+  @keyframes ai-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .ai-spin { animation: none !important; } }
+
+      .ai-acc { border: 1px solid var(--ai-brand-border); border-radius: var(--ai-card-radius); background: var(--ai-brand-surface); overflow: hidden; }
+      .ai-acc + .ai-acc { margin-top: 8px; }
+      .ai-acc-hdr {
+        display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px;
+        border: none; background: transparent; cursor: pointer; text-align: left; font-family: inherit;
+      }
+      .ai-acc.open .ai-acc-hdr { background: #FAFAFA; border-bottom: 1px solid var(--ai-brand-border); }
+      .ai-acc-title { flex: 1; font-size: 14px; font-weight: 600; color: var(--ai-text); }
+      .ai-acc-sub { font-size: 12px; color: var(--ai-helper); display: block; font-weight: 400; margin-top: 2px; }
+      .ai-acc-chev { color: var(--ai-brand); transition: transform 0.2s; font-size: 18px; line-height: 1; }
+      .ai-acc.open .ai-acc-chev { transform: rotate(-180deg); }
+      .ai-acc-body { display: none; padding: 16px; font-size: 14px; color: var(--ai-helper); }
+      .ai-acc.open .ai-acc-body { display: block; }
+      .ai-chip { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--ai-brand-surface); border: 1px solid var(--ai-brand-border); color: var(--ai-brand); }
+    </style>
+</head>
+<body>
+  <div class="page">
+    <h1>AI Accordion</h1>
+    <p class="subtitle">Standalone HTML preview for <strong>AIAccordion</strong> — open this file directly or serve from the repo. Canonical React: <code>AIAccordion.tsx</code> in this folder.</p>
+    <p class="agent-path">components/ai/molecules/ai-accordion/ai-accordion.preview.html</p>
+
+    <section>
+      <h2>Stacked disclosures</h2>
+      <p class="section-desc">Rounded AI card surface · brand chevron · optional status chip.</p>
+      <div class="demo-surface" style="padding:20px;background:#FAFAFA;">
+        <div class="ai-acc open">
+          <button type="button" class="ai-acc-hdr" aria-expanded="true" onclick="toggleAcc(this)">
+            <span class="ai-acc-title">Reasoning summary<span class="ai-acc-sub">3 steps · 2 sources cited</span></span>
+            <span class="ai-chip">Draft</span>
+            <span class="ai-acc-chev">▾</span>
+          </button>
+          <div class="ai-acc-body">The agent compared Q3 forecasts against baseline scenarios and flagged two territories with &gt;12% variance from plan.</div>
+        </div>
+        <div class="ai-acc">
+          <button type="button" class="ai-acc-hdr" aria-expanded="false" onclick="toggleAcc(this)">
+            <span class="ai-acc-title">Data sources</span>
+            <span class="ai-acc-chev">▾</span>
+          </button>
+          <div class="ai-acc-body">CRM export · Market research panel · Internal forecast model v2.4</div>
+        </div>
+      </div>
+    </section>
+    <script>
+      function toggleAcc(btn) {
+        const acc = btn.closest('.ai-acc');
+        const open = acc.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      }
+    </script>
+  </div>
+</body>
+</html>

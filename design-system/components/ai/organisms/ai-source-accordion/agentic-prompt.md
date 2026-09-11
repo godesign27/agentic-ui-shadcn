@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Source Accordion
 
-You are implementing the **AI Source Accordion** (`ai-source-accordion`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Source Accordion** (`ai-source-accordion`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

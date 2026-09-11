@@ -5,7 +5,7 @@
   "repoModule": "aiPopupMenu",
   "tier": "molecules",
   "status": "experimental",
-  "description": "AIPopupMenu is the AI skin of the standard ZDS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role=\"button\", aria-haspopup=\"menu\", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.",
+  "description": "AIPopupMenu is the AI skin of the standard DS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role=\"button\", aria-haspopup=\"menu\", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.",
   "intent": "A trigger + hidden AIMenu overlay \u2014 AI dialog chrome, opens on click, closes on outside-click / Escape.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-popup-menu/ai-popup-menu.md",
@@ -90,7 +90,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -112,7 +112,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

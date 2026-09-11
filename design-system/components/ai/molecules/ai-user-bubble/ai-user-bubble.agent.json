@@ -5,7 +5,7 @@
   "repoModule": "aiUserBubble",
   "tier": "molecules",
   "status": "active",
-  "description": "AIUserBubble renders a right-aligned message pill representing the user's sent text. Two surface variants: light (default) uses a gray (#E8E6ED) surface for chat threads on dark or brand backgrounds; dark uses a deep indigo (#1F2A66 / ZSAI[100]) fill with white text for use on white or light-gray surfaces. Both achieve WCAG AAA contrast ratios. The bubble uses Open Sans at 16px (default) or 14px (medium) with 1.55\u20131.4 line-height and max-width of 82%.",
+  "description": "AIUserBubble renders a right-aligned message pill representing the user's sent text. Two surface variants: light (default) uses a gray (#E8E6ED) surface for chat threads on dark or brand backgrounds; dark uses a deep indigo (#1F2A66 / AI_RAMP[100]) fill with white text for use on white or light-gray surfaces. Both achieve WCAG AAA contrast ratios. The bubble uses Open Sans at 16px (default) or 14px (medium) with 1.55\u20131.4 line-height and max-width of 82%.",
   "intent": "Message container for the human user's input in a conversational AI interface. Visually distinct from AI-generated responses \u2014 positioned right-aligned with a light fill.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-user-bubble/ai-user-bubble.md",
@@ -50,7 +50,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -72,7 +72,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

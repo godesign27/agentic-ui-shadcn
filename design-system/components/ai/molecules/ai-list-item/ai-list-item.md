@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiListItem`  
 **Component type:** React molecule  
@@ -20,7 +20,7 @@ AIListItem is the canonical row used inside AI-led lists. It supports six varian
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -41,8 +41,8 @@ AIListItem is the canonical row used inside AI-led lists. It supports six varian
 
 1. **Leading icon** _(Shared)_ — 32×32 tinted square. Variant chooses a default lucide icon; consumer can override.
 2. **Eyebrow row** _(Shared)_ — Optional uppercase type tag + secondary label + status pill (with dot).
-3. **Title** _(Unique)_ — @zsai-h5 (14/700/1.4). The headline of the row.
-4. **Body** _(Unique)_ — @zsai-section-subtitle (13/400/1.55). 1–2 line narrative.
+3. **Title** _(Unique)_ — @ai-h5 (14/700/1.4). The headline of the row.
+4. **Body** _(Unique)_ — @ai-section-subtitle (13/400/1.55). 1–2 line narrative.
 5. **Footer chips** _(Shared)_ — Metric pill · source · freshness · confidence — appear only if provided.
 6. **Action affordance** _(Shared)_ — Either an inline actionLabel (text + chevron) or a trailing-edge chevron when clickable.
 
@@ -90,7 +90,7 @@ AIListItem is the canonical row used inside AI-led lists. It supports six varian
 ### Status tones
 | Token | Value | Usage |
 | --- | --- | --- |
-| `status.needsReview` | `ZS_ORANGE[70]` | Needs Review pill text |
+| `status.needsReview` | `SIGNAL_ORANGE[70]` | Needs Review pill text |
 | `status.balanced` | `var(--ai-status-success-text)` | Balanced pill text |
 | `status.recommended` | `var(--ai-status-info-text)` | Recommended pill text |
 
@@ -122,9 +122,9 @@ import { AIListItem } from '@/components/ai/molecules/ai-list-item/AIListItem';
 ## Agent rules
 
 1. Read this mirror spec and `ai-list-item.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-list-item/ai-list-item.agent.json`.
 

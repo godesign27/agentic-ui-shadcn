@@ -14,7 +14,7 @@
     "agentIndexPath": "design-system/generated/agent-index.json",
     "primaryJavascript": "ai/atomic/chip-brief/AIChipBrief.tsx",
     "agentMarkdown": [],
-    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+    "note": "Canonical TSX lives in Guild AI Design System (external)."
   },
   "platforms": [
     "web",

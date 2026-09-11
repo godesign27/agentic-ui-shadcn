@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 import { AI } from '../../tokens/ai-tokens';
 
-// Hard rule: three concentric ZSAI blue circles + white cross-star.
+// Hard rule: three concentric AI_RAMP blue circles + white cross-star.
 // Fills: decorative.wash (#A6B4FC) / brand (#4D60E6) / brandInk (#1F2A66).
 // No orange gradient ring. No "Z" letterform. No emoji. No theme inversion.
 
@@ -22,7 +22,7 @@ export function AIAvatar({ size = 34 }: { size?: number }) {
       height={size}
       fill="none"
       viewBox="0 0 42 42"
-      aria-label="ZAIDYN Agent"
+      aria-label="Guild Agent"
       style={{ flexShrink: 0, filter: 'drop-shadow(0 4px 14px rgba(77,96,230,0.35))' }}
     >
       <circle cx="21" cy="21" r="21" fill={OUTER} />
@@ -42,7 +42,7 @@ export function AIAvatar3D() {
   const shine = `av3d-shine-${uid}`;
   const shadow = `av3d-shadow-${uid}`;
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-label="ZAIDYN Agent" style={{ flexShrink: 0 }}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-label="Guild Agent" style={{ flexShrink: 0 }}>
       <defs>
         <radialGradient id={outer} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13 11) rotate(45) scale(32)">
           <stop offset="0%" stopColor="#D2DBFF" />

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Typography
 
-You are implementing the **AI Typography** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Typography** atom from the Guild AI Design System mirror.
 
 ---
 

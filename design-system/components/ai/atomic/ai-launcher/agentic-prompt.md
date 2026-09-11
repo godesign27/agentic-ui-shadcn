@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Launcher
 
-You are implementing the **AI Launcher** (`ai-launcher`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Launcher** (`ai-launcher`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -34,8 +34,8 @@ Implement `AILauncher` exactly as specified in the mirror. Match props, tokens, 
 - `disabled` (`boolean`) default ``false`` — AI unavailable. Use disabledReason to explain in the tooltip.
 - `disabledReason` (`string`) default ``—`` — Tooltip copy shown on the disabled state.
 - `highContrast` (`boolean`) default ``false`` — Force the near-black surface on already-dark contexts.
-- `tooltipLabel` (`string`) default ``'Open ZAIDYN Agent'`` — Tooltip text.
-- `ariaLabel` (`string`) default ``'Open ZAIDYN Agent chat'`` — Accessible label for the button.
+- `tooltipLabel` (`string`) default ``'Open Guild Agent'`` — Tooltip text.
+- `ariaLabel` (`string`) default ``'Open Guild Agent chat'`` — Accessible label for the button.
 - `onClick` (`() => void`) default ``—`` — Open the AI Assisted Side Drawer or Floating Hanging Panel.
 
 ## Rules

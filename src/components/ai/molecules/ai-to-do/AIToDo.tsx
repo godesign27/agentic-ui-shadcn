@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { RiCheckLine, RiArrowDownSLine, RiArrowUpSLine, RiCheckboxCircleLine } from '@remixicon/react';
-import { F, AI, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { F, AI, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ─── Color tokens ─────────────────────────────────────────────────────────────
-// All foreground/background pairs against ZSAI_TAN[00] (#F6F2EB) meet WCAG AA
+// All foreground/background pairs against COMPANION_TAN[00] (#F6F2EB) meet WCAG AA
 // (≥4.5:1 normal text). White on the colored icon circles meets AA against
 // each color (success-green / brand-blue / helper-gray / orange).
 const TODO_SUCCESS_GREEN = '#0E8170';   // one step lighter — 4.7:1 white-on-green (AA), 4.9:1 on tan
@@ -176,7 +176,7 @@ export function AIToDo({
     <section style={{
       width: '100%',
       boxSizing: 'border-box',
-      background: ZSAI_TAN['00'],
+      background: COMPANION_TAN['00'],
       border: `1px solid ${isAllComplete ? `${AI.color.action.primary}33` : 'rgba(60,42,29,0.10)'}`,
       borderRadius: AI.radius.md,
       padding: 16,
@@ -203,7 +203,7 @@ export function AIToDo({
         <span aria-hidden="true" style={{
           width: 20, height: 20,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          color: isAllComplete ? AI.color.action.primary : 'var(--ai-zds-text)',
+          color: isAllComplete ? AI.color.action.primary : 'var(--ai-ds-text)',
           transition: 'color 0.3s ease',
         }}>
           {isAllComplete ? (
@@ -220,24 +220,24 @@ export function AIToDo({
         </span>
 
         <span style={{
-          ...AI_TYPOGRAPHY['@zsai-h5'],
-          color: isAllComplete ? AI.color.action.primary : 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-h5'],
+          color: isAllComplete ? AI.color.action.primary : 'var(--ai-ds-text)',
           transition: 'color 0.3s ease',
         }}>{title}</span>
 
         <span aria-hidden="true" style={{
-          ...AI_TYPOGRAPHY['@zsai-meta-label'],
-          color: 'var(--ai-zds-helper)',
+          ...AI_TYPOGRAPHY['@ai-meta-label'],
+          color: 'var(--ai-ds-helper)',
         }}>·</span>
 
         <span style={{
-          ...AI_TYPOGRAPHY['@zsai-meta-label'],
-          color: 'var(--ai-zds-helper)',
+          ...AI_TYPOGRAPHY['@ai-meta-label'],
+          color: 'var(--ai-ds-helper)',
         }}>{completedCount} of {total} complete</span>
 
         {isAllComplete && (
           <span style={{
-            ...AI_TYPOGRAPHY['@zsai-action-link'],
+            ...AI_TYPOGRAPHY['@ai-action-link'],
             color: AI.color.action.primary,
             background: `${AI.color.action.primary}14`,
             border: `1px solid ${AI.color.action.primary}33`,
@@ -250,7 +250,7 @@ export function AIToDo({
         <span style={{ flex: 1 }} />
 
         {collapsible && (
-          <span aria-hidden="true" style={{ color: 'var(--ai-zds-helper)' }}>
+          <span aria-hidden="true" style={{ color: 'var(--ai-ds-helper)' }}>
             {collapsed ? <RiArrowDownSLine size={18} /> : <RiArrowUpSLine size={18} />}
           </span>
         )}
@@ -310,7 +310,7 @@ export function AIToDo({
               : isBlocked    ? 600
               :                300;
 
-            // Text colors: all chosen to clear WCAG AA (≥4.5:1) on ZSAI_TAN[00].
+            // Text colors: all chosen to clear WCAG AA (≥4.5:1) on COMPANION_TAN[00].
             const color =
                 isInProgress ? TODO_TEXT_INPROGRESS
               : isCompleted  ? TODO_TEXT_COMPLETED
@@ -318,7 +318,7 @@ export function AIToDo({
               :                TODO_TEXT_PENDING;
 
             const labelStyle: React.CSSProperties = {
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
               fontWeight,
               color,
             };
@@ -361,8 +361,8 @@ export function AIToDo({
                     {item.note && (
                       <span style={{
                         display: 'block',
-                        ...AI_TYPOGRAPHY['@zsai-meta-label'],
-                        color: 'var(--ai-zds-helper)',
+                        ...AI_TYPOGRAPHY['@ai-meta-label'],
+                        color: 'var(--ai-ds-helper)',
                         marginTop: 2,
                       }}>{item.note}</span>
                     )}

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Profile Card
 
-You are implementing the **AI Profile Card** (`ai-profile-card`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Profile Card** (`ai-profile-card`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

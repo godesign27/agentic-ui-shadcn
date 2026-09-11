@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardWorkstream`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ AICardWorkstream is the canonical entry-point card for any AI-operated workstrea
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -76,7 +76,7 @@ AICardWorkstream is the canonical entry-point card for any AI-operated workstrea
 | --- | --- | --- |
 | `workstream.type.map` | `#0A9963` | Map / territory workstream icon |
 | `workstream.type.roster` | `#D97706` | Roster / people workstream icon |
-| `workstream.type.data` | `#4D60E6` | Data / pipeline workstream icon (ZSAI brand) |
+| `workstream.type.data` | `#4D60E6` | Data / pipeline workstream icon (AI_RAMP brand) |
 | `workstream.type.forecast` | `#9B59B6` | Forecast / predictive workstream icon |
 
 ### Status tones
@@ -130,9 +130,9 @@ import { AICardWorkstream } from '@/components/ai/organisms/ai-card-workstream/A
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-workstream.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-workstream/ai-card-workstream.agent.json`.
 

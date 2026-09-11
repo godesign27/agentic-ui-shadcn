@@ -1,5 +1,5 @@
 /**
- * AIObjectiveCard — ZAIDYN Agentic AI Group
+ * AIObjectiveCard — Guild Agentic AI Group
  *
  * Compact reusable card that surfaces a goal, constraint, operating mode,
  * autonomy boundary, review requirement, optimization target, risk guardrail,
@@ -18,13 +18,13 @@
  *   - Pass `onInspect` to override the default drawer behavior entirely.
  *
  * Brand discipline:
- *   - AI emphasis uses ZSAI brand blue / purple — no teal.
- *   - ZS orange is reserved for risk-guardrail / autonomy-boundary types.
+ *   - AI emphasis uses AI_RAMP brand blue / purple — no teal.
+ *   - Guild orange is reserved for risk-guardrail / autonomy-boundary types.
  *   - Color always pairs with text so meaning isn't color-dependent.
  */
 
 import React from 'react';
-import { AI, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIReasoningQuote } from '../../atomic/ai-reasoning-quote/AIReasoningQuote';
 import { AIMetricTile } from '../../atomic/ai-metric-tile/AIMetricTile';
@@ -107,12 +107,12 @@ interface TypeCfg {
 
 const TYPE_CFG: Record<AIObjectiveType, TypeCfg> = {
   'primary-goal':        { label: 'PRIMARY GOAL',        icon: 'zs-icon-goal',         tintBg: AI.color.brandSubtle,     tintBorder: AI.color.brandBorder,     tintText: AI.color.text.primary, dot: AI.color.brand  },
-  'constraint':          { label: 'CONSTRAINT',          icon: 'zs-icon-lock',         tintBg: 'var(--ai-card-bg-raised)', tintBorder: 'var(--ai-card-border)', tintText: 'var(--ai-zds-text)', dot: AI.color.brand },
+  'constraint':          { label: 'CONSTRAINT',          icon: 'zs-icon-lock',         tintBg: 'var(--ai-card-bg-raised)', tintBorder: 'var(--ai-card-border)', tintText: 'var(--ai-ds-text)', dot: AI.color.brand },
   'operating-mode':      { label: 'OPERATING MODE',      icon: 'zs-icon-settings',     tintBg: AI.color.brandSubtle,     tintBorder: AI.color.brandBorder,     tintText: AI.color.text.secondary, dot: AI.color.brand  },
-  'autonomy-boundary':   { label: 'AUTONOMY BOUNDARY',   icon: 'zs-icon-stop-circle',  tintBg: ZS_ORANGE[10],            tintBorder: ZS_ORANGE[30],            tintText: ZS_ORANGE[80], dot: ZS_ORANGE[60], warning: true },
+  'autonomy-boundary':   { label: 'AUTONOMY BOUNDARY',   icon: 'zs-icon-stop-circle',  tintBg: SIGNAL_ORANGE[10],            tintBorder: SIGNAL_ORANGE[30],            tintText: SIGNAL_ORANGE[80], dot: SIGNAL_ORANGE[60], warning: true },
   'review-requirement':  { label: 'REVIEW REQUIREMENT',  icon: 'zs-icon-check-circle', tintBg: AI.color.brandSubtle,     tintBorder: AI.color.brandBorder,     tintText: AI.color.text.primary, dot: AI.color.brand  },
   'optimization-target': { label: 'OPTIMIZATION TARGET', icon: 'zs-icon-data-arrow-up', tintBg: AI.color.brandSubtle,    tintBorder: AI.color.brandBorder,     tintText: AI.color.text.secondary, dot: AI.color.brand  },
-  'risk-guardrail':      { label: 'RISK GUARDRAIL',      icon: 'zs-icon-error-triangle',        tintBg: ZS_ORANGE[10],            tintBorder: ZS_ORANGE[30],            tintText: ZS_ORANGE[80], dot: ZS_ORANGE[60], warning: true },
+  'risk-guardrail':      { label: 'RISK GUARDRAIL',      icon: 'zs-icon-error-triangle',        tintBg: SIGNAL_ORANGE[10],            tintBorder: SIGNAL_ORANGE[30],            tintText: SIGNAL_ORANGE[80], dot: SIGNAL_ORANGE[60], warning: true },
   'knowledge-input':     { label: 'KNOWLEDGE INPUT',     icon: 'zs-icon-bookmark',     tintBg: AI.color.brandSubtle,     tintBorder: AI.color.brandBorder,     tintText: AI.color.text.secondary, dot: AI.color.brand  },
   'assumption':          { label: 'ASSUMPTION',          icon: 'zs-icon-help',         tintBg: 'rgba(178,170,255,0.18)', tintBorder: 'rgba(178,170,255,0.40)', tintText: AI.color.text.primary, dot: AI.color.brand  },
 };
@@ -191,8 +191,8 @@ export function AIObjectiveCard(props: AIObjectiveCardProps) {
     setInternalOpen(true);
   }, [onInspect]);
 
-  const accentColor = cfg.warning ? ZS_ORANGE[80] : AI.color.text.secondary;
-  const accentHover = cfg.warning ? ZS_ORANGE[60] : AI.color.brand;
+  const accentColor = cfg.warning ? SIGNAL_ORANGE[80] : AI.color.text.secondary;
+  const accentHover = cfg.warning ? SIGNAL_ORANGE[60] : AI.color.brand;
 
   return (
     <>
@@ -213,7 +213,7 @@ export function AIObjectiveCard(props: AIObjectiveCardProps) {
           background: 'var(--ai-card-bg)',
           border: `1px solid ${
             elevated ? accentHover :
-            cfg.warning ? ZS_ORANGE[30] :
+            cfg.warning ? SIGNAL_ORANGE[30] :
             'var(--ai-card-border)'
           }`,
           borderRadius: AI.radius.md,
@@ -264,8 +264,8 @@ export function AIObjectiveCard(props: AIObjectiveCardProps) {
                 }} />
                 <span style={{
                   flex: 1, minWidth: 0,
-                  ...AI_TYPOGRAPHY['@zsai-body-small'],
-                  color: 'var(--ai-zds-text)',
+                  ...AI_TYPOGRAPHY['@ai-body-small'],
+                  color: 'var(--ai-ds-text)',
                   lineHeight: 1.5,
                   textAlign: 'left' as const,
                 }}>
@@ -315,7 +315,7 @@ function AIObjectiveCardDrawer({
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
-  const accentColor = cfg.warning ? ZS_ORANGE[80] : AI.color.text.secondary;
+  const accentColor = cfg.warning ? SIGNAL_ORANGE[80] : AI.color.text.secondary;
 
   return (
     <div
@@ -364,13 +364,13 @@ function AIObjectiveCardDrawer({
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
             <div style={{
               fontFamily: F, fontSize: 18, fontWeight: 700,
-              color: 'var(--ai-zds-text)', lineHeight: 1.25,
+              color: 'var(--ai-ds-text)', lineHeight: 1.25,
               textAlign: 'left' as const,
             }}>
               {title}
             </div>
             <div style={{
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
               color: cfg.tintText, fontWeight: 700, letterSpacing: '0.08em',
             }}>
               {cfg.label}
@@ -382,7 +382,7 @@ function AIObjectiveCardDrawer({
             aria-label="Close objective details"
             style={{
               width: 32, height: 32, borderRadius: 8, background: 'transparent',
-              border: 'none', cursor: 'pointer', color: 'var(--ai-zds-helper)',
+              border: 'none', cursor: 'pointer', color: 'var(--ai-ds-helper)',
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               flexShrink: 0,
             }}
@@ -405,7 +405,7 @@ function AIObjectiveCardDrawer({
 
           {/* Targets / Measures */}
           {detail?.targets && detail.targets.length > 0 && (
-            <Section eyebrow="TARGETS & MEASURES" eyebrowIcon="zs-icon-data-arrow-up" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="TARGETS & MEASURES" eyebrowIcon="zs-icon-data-arrow-up" eyebrowTone="var(--ai-ds-helper)">
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: detail.targets.length === 1 ? '1fr' : '1fr 1fr',
@@ -429,7 +429,7 @@ function AIObjectiveCardDrawer({
             <Section
               eyebrow={cfg.warning ? 'GUARDRAILS' : 'CONDITIONS'}
               eyebrowIcon={cfg.warning ? 'zs-icon-error-triangle' : 'zs-icon-check-circle'}
-              eyebrowTone="var(--ai-zds-helper)"
+              eyebrowTone="var(--ai-ds-helper)"
             >
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {items.map((it, i) => (
@@ -440,8 +440,8 @@ function AIObjectiveCardDrawer({
                     }} />
                     <span style={{
                       flex: 1, minWidth: 0,
-                      ...AI_TYPOGRAPHY['@zsai-body-small'],
-                      color: 'var(--ai-zds-text)',
+                      ...AI_TYPOGRAPHY['@ai-body-small'],
+                      color: 'var(--ai-ds-text)',
                       lineHeight: 1.5,
                       textAlign: 'left' as const,
                     }}>
@@ -455,7 +455,7 @@ function AIObjectiveCardDrawer({
 
           {/* Related (autonomy-style bullets) */}
           {detail?.related && detail.related.length > 0 && (
-            <Section eyebrow="RELATED" eyebrowIcon="zs-icon-layers" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="RELATED" eyebrowIcon="zs-icon-layers" eyebrowTone="var(--ai-ds-helper)">
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {detail.related.map((r, i) => (
                   <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
@@ -465,10 +465,10 @@ function AIObjectiveCardDrawer({
                       marginTop: 6, flexShrink: 0,
                     }} />
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontFamily: F, fontSize: 13, fontWeight: 600, color: 'var(--ai-zds-text)', lineHeight: 1.35, textAlign: 'left' as const }}>
+                      <div style={{ fontFamily: F, fontSize: 13, fontWeight: 600, color: 'var(--ai-ds-text)', lineHeight: 1.35, textAlign: 'left' as const }}>
                         {r.label}
                       </div>
-                      <div style={{ fontFamily: F, fontSize: 13, color: 'var(--ai-zds-helper)', lineHeight: 1.4, marginTop: 2, textAlign: 'left' as const }}>
+                      <div style={{ fontFamily: F, fontSize: 13, color: 'var(--ai-ds-helper)', lineHeight: 1.4, marginTop: 2, textAlign: 'left' as const }}>
                         {r.scope}
                       </div>
                     </div>
@@ -480,7 +480,7 @@ function AIObjectiveCardDrawer({
 
           {/* Sources — composed AISourceTile atoms */}
           {detail?.sources && detail.sources.length > 0 && (
-            <Section eyebrow="SOURCES" eyebrowIcon="zs-icon-data" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="SOURCES" eyebrowIcon="zs-icon-data" eyebrowTone="var(--ai-ds-helper)">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {detail.sources.map((s, i) => (
                   <AISourceTile
@@ -544,7 +544,7 @@ function Section({
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
         <Glyph name={eyebrowIcon} size={14} color={eyebrowTone} />
         <span style={{
-          ...AI_TYPOGRAPHY['@zsai-meta-label'],
+          ...AI_TYPOGRAPHY['@ai-meta-label'],
           color: eyebrowTone,
           fontWeight: 700, letterSpacing: '0.10em',
         }}>

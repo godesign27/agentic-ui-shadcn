@@ -1,5 +1,5 @@
 /**
- * AISourceAccordion — ZAIDYN Agentic AI Group
+ * AISourceAccordion — Guild Agentic AI Group
  *
  * Question-scoped, collapsible multi-select surface. Wraps a stack of
  * selectable AISourceTile rows under a header that pairs the question with
@@ -173,7 +173,7 @@ export function AISourceAccordion({
             width: 20, height: 20,
             transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
             transition: 'transform 180ms ease',
-            color: 'var(--ai-zds-helper)',
+            color: 'var(--ai-ds-helper)',
             flexShrink: 0,
           }}
         >
@@ -181,8 +181,8 @@ export function AISourceAccordion({
         </span>
         <span style={{
           flex: 1, minWidth: 0,
-          ...AI_TYPOGRAPHY['@zsai-card-title'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-card-title'],
+          color: 'var(--ai-ds-text)',
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
         }}>
           {question}
@@ -195,7 +195,7 @@ export function AISourceAccordion({
             background: AI.color.brandSubtle,
             border: `1px solid ${AI.color.brandBorder}`,
             color: AI.color.text.secondary,
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
             fontWeight: 700,
           }}>
             {selectedIds.length} selected
@@ -324,8 +324,8 @@ function CustomInputRow({
           flex: 1, minWidth: 0,
           background: 'transparent', border: 'none', outline: 'none',
           fontFamily: F,
-          ...AI_TYPOGRAPHY['@zsai-body-small'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-body-small'],
+          color: 'var(--ai-ds-text)',
         }}
       />
       <button
@@ -339,7 +339,7 @@ function CustomInputRow({
           width: 24, height: 24, borderRadius: 6,
           background: canSubmit ? AI.color.brand : 'transparent',
           border: `1px solid ${canSubmit ? AI.color.brand : 'var(--ai-card-border)'}`,
-          color: canSubmit ? '#FFFFFF' : 'var(--ai-zds-helper)',
+          color: canSubmit ? '#FFFFFF' : 'var(--ai-ds-helper)',
           cursor: canSubmit ? 'pointer' : 'default',
           transition: 'background 0.15s ease, border-color 0.15s ease, color 0.15s ease',
         }}

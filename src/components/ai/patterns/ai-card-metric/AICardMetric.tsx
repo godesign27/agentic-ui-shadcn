@@ -1,5 +1,5 @@
 import React from 'react';
-import { AI, ZDS, F, ZS_AMBER, ZS_GREEN } from '../../tokens/ai-tokens';
+import { AI, DS, F, SIGNAL_AMBER, SIGNAL_GREEN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIMetricValue } from '../../atomic/ai-metric-value/AIMetricValue';
 import { AITrendIndicator, type AITrendIndicatorTone } from '../../atomic/ai-trend-indicator/AITrendIndicator';
@@ -28,12 +28,12 @@ export type AIMetricAccent = 'teal' | 'indigo' | 'amber' | 'red' | 'green' | 'gr
 // Accent hexes match metric-card.accent.* from the component Tokens table.
 // Amber/green use ramp step 60 (not status fill AA anchors at step 80).
 const ACCENT: Record<AIMetricAccent, string> = {
-  teal:   '#0A6E5E',                 // ZDS data-viz teal (no AI Tier-2 alias)
+  teal:   '#0A6E5E',                 // DS data-viz teal (no AI Tier-2 alias)
   indigo: AI.color.brand,            // #4D60E6
-  amber:  ZS_AMBER[60],              // #E67E22 — caution / review
+  amber:  SIGNAL_AMBER[60],              // #E67E22 — caution / review
   red:    AI.color.status.error,     // #C0392B
-  green:  ZS_GREEN[60],              // #27AE60 — positive
-  gray:   ZDS.iconDefault,
+  green:  SIGNAL_GREEN[60],              // #27AE60 — positive
+  gray:   DS.iconDefault,
 };
 
 /** Gallery / bare-mount defaults — Simple density (Total Sales). */
@@ -93,10 +93,10 @@ export interface AICardMetricProps {
   accent?:           AIMetricAccent;
   trend?:            { delta: string; label?: string; tone?: AITrendIndicatorTone };
 
-  // `basic` density — title + icon (top-right) + value only. Pass a ZAIDYN
+  // `basic` density — title + icon (top-right) + value only. Pass a Guild
   // icon name like 'zs-icon-wrench' (preferred) OR a React node such as a
-  // Lucide component when the desired icon does not exist in the ZAIDYN
-  // library. The ZAIDYN icon is wrapped in `.zs-master-style` automatically.
+  // Lucide component when the desired icon does not exist in the Guild
+  // library. The Guild icon is wrapped in `.zs-master-style` automatically.
   icon?:             string | React.ReactNode;
 
   // Rich + Robust
@@ -174,7 +174,7 @@ function Skeleton({ width = 110, height = 22, mt = 0 }: { width?: number; height
 
 // Subtle inline separator between trend delta and RiTargetLine / Threshold text.
 function TrendSep() {
-  return <span aria-hidden="true" style={{ color: 'var(--ai-zds-helper)', opacity: 0.5 }}>·</span>;
+  return <span aria-hidden="true" style={{ color: 'var(--ai-ds-helper)', opacity: 0.5 }}>·</span>;
 }
 
 // Pulls the confidence number → conf-high / conf-med / conf-low tone.
@@ -297,7 +297,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                 fontFamily: F,
                 fontSize: 14,
                 fontWeight: 600,
-                color: 'var(--ai-zds-text)',
+                color: 'var(--ai-ds-text)',
                 lineHeight: 1.3,
                 minWidth: 0,
                 overflow: 'hidden',
@@ -313,7 +313,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                 style={{
                   flexShrink: 0,
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--ai-zds-helper)',
+                  color: 'var(--ai-ds-helper)',
                   width: 20, height: 20, lineHeight: 0,
                 }}
               >
@@ -341,7 +341,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
               />
               <span
                 style={{
-                  ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+                  ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
                   fontFamily: F,
                   // One step lighter than helper so the eyebrow reads as
                   // metadata above the value, not as competing label text.
@@ -377,7 +377,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
             )}
             {trend && target && <TrendSep />}
             {target && (
-              <span style={{ fontFamily: F, fontSize: 14, color: 'var(--ai-zds-text)' }}>
+              <span style={{ fontFamily: F, fontSize: 14, color: 'var(--ai-ds-text)' }}>
                 {target}
               </span>
             )}
@@ -390,10 +390,10 @@ export function AICardMetric(props: AICardMetricProps = {}) {
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             paddingTop: 10, borderTop: '1px solid #F3F4F6',
-            fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper)',
+            fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper)',
           }}>
             <span>{secondaryMetric.label}</span>
-            <span style={{ color: 'var(--ai-zds-text)', fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>
+            <span style={{ color: 'var(--ai-ds-text)', fontWeight: 600, fontVariantNumeric: 'tabular-nums' }}>
               {secondaryMetric.value}
             </span>
           </div>
@@ -409,7 +409,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                 size="sm"
                 noDot
                 icon={source.icon ?? 'zs-icon-data-table'}
-                accentColor="var(--ai-zds-helper)"
+                accentColor="var(--ai-ds-helper)"
                 accentBg="var(--ai-card-bg-raised)"
               />
             )}
@@ -420,7 +420,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                 size="sm"
                 noDot
                 icon="zs-icon-clock-pending"
-                accentColor="var(--ai-zds-helper)"
+                accentColor="var(--ai-ds-helper)"
                 accentBg="var(--ai-card-bg-raised)"
               />
             )}
@@ -477,7 +477,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                   background: 'none', border: 'none', padding: 0, cursor: 'pointer',
                   display: 'inline-flex', alignItems: 'center', gap: 3,
                   fontFamily: F, fontSize: 14, fontWeight: 500,
-                  color: 'var(--ai-zds-helper)',
+                  color: 'var(--ai-ds-helper)',
                 }}
               >
                 <ExternalGlyph size={9} />
@@ -492,7 +492,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
                   size="sm"
                   noDot
                   icon="zs-icon-clock-pending"
-                  accentColor="var(--ai-zds-helper)"
+                  accentColor="var(--ai-ds-helper)"
                   accentBg="var(--ai-card-bg-raised)"
                 />
               </div>
@@ -509,7 +509,7 @@ export function AICardMetric(props: AICardMetricProps = {}) {
               size="sm"
               noDot
               icon={source.icon ?? 'zs-icon-data-table'}
-              accentColor="var(--ai-zds-helper)"
+              accentColor="var(--ai-ds-helper)"
               accentBg="var(--ai-card-bg-raised)"
             />
           </div>

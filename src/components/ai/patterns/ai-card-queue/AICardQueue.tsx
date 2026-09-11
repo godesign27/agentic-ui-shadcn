@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIBadge, QueueStatus } from '../../atomic/ai-badge/AIBadge';
 
@@ -33,7 +33,7 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '6px 14px', borderRadius: AI.radius.sm,
   border: '1px solid transparent', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
 };
 
 export function AICardQueue({
@@ -56,7 +56,7 @@ export function AICardQueue({
       border: '1px solid var(--ai-card-border)',
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 320,
     }}>
       {/* Header */}
@@ -67,8 +67,8 @@ export function AICardQueue({
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div>
-          <div style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: 'var(--ai-zds-text)' }}>{title}</div>
-          {summary && <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)', marginTop: 2 }}>{summary}</div>}
+          <div style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: 'var(--ai-ds-text)' }}>{title}</div>
+          {summary && <div style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)', marginTop: 2 }}>{summary}</div>}
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <AIBadge queue="running" count={running || undefined} />
@@ -95,12 +95,12 @@ export function AICardQueue({
             background: approvedIds.has(item.id) ? 'var(--ai-status-success-bg)' : 'transparent',
             borderBottom: idx < items.length - 1 ? '1px solid var(--ai-card-border)' : 'none',
           }}>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-btn-disabled-text)', width: 18, textAlign: 'right', flexShrink: 0 }}>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-btn-disabled-text)', width: 18, textAlign: 'right', flexShrink: 0 }}>
               {idx + 1}
             </span>
             <div style={{ flex: 1 }}>
-              <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)' }}>{item.label}</div>
-              {item.eta && <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>ETA {item.eta}</div>}
+              <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)' }}>{item.label}</div>
+              {item.eta && <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>ETA {item.eta}</div>}
             </div>
             <AIBadge queue={approvedIds.has(item.id) ? 'complete' : item.status} />
             {item.status === 'needs-approval' && !approvedIds.has(item.id) && (
@@ -127,7 +127,7 @@ export function AICardQueue({
             Approve All ({needsApproval.length})
           </button>
         )}
-        <button onClick={onPause} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-zds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
+        <button onClick={onPause} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-ds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
           Pause
         </button>
         <button onClick={onViewDetails} style={{ ...BTN_BASE, background: 'transparent', color: AI.color.brand, border: 'none' }}>

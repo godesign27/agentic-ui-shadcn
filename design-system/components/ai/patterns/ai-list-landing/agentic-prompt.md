@@ -1,6 +1,6 @@
 # Agentic Prompt — AI List Landing
 
-You are implementing the **AI List Landing** (`ai-list-landing`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI List Landing** (`ai-list-landing`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

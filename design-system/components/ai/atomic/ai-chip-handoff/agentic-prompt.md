@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Handoff Chip
 
-You are implementing the **AI Handoff Chip** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Handoff Chip** atom from the Guild AI Design System mirror.
 
 ---
 

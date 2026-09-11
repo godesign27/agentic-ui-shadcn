@@ -5,8 +5,8 @@
   "repoModule": "aiToolbar",
   "tier": "molecules",
   "status": "experimental",
-  "description": "AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy and behavior \u2014 a role=\"toolbar\" strip of icon-link actions with optional labels (icon-only items get a hover / focus tooltip), interactive hover / focus / press / select states \u2014 but wears the ZAIDYN AI surface. The AI brand color (--aiu-brand = ZSAI[80]) replaces the standard teal ramp (teal[80]) everywhere a hover / selected / pressed fill appears; the container uses AI corner radius (--aiu-radius-md) and AI elevation (--aiu-shadow-md), and items use the AI focus ring. A `floating` variant wraps the bar in a positioned stage and adds a six-dot grabber so the user can drag it anywhere within the stage (position clamps to bounds). Everything resolves to --aiu-* CSS custom properties in src/styles/ai-utilities.css, so editing that CSS restyles the toolbar; typography is the Open Sans face already loaded by the kit.",
-  "intent": "ZDS Toolbar on the AI surface \u2014 --aiu-brand fills, 16px radius, soft-blue elevation, and a draggable floating variant.",
+  "description": "AIToolbar is the AI skin of the standard DS Toolbar. It keeps the same anatomy and behavior \u2014 a role=\"toolbar\" strip of icon-link actions with optional labels (icon-only items get a hover / focus tooltip), interactive hover / focus / press / select states \u2014 but wears the Guild AI surface. The AI brand color (--aiu-brand = AI_RAMP[80]) replaces the standard teal ramp (teal[80]) everywhere a hover / selected / pressed fill appears; the container uses AI corner radius (--aiu-radius-md) and AI elevation (--aiu-shadow-md), and items use the AI focus ring. A `floating` variant wraps the bar in a positioned stage and adds a six-dot grabber so the user can drag it anywhere within the stage (position clamps to bounds). Everything resolves to --aiu-* CSS custom properties in src/styles/ai-utilities.css, so editing that CSS restyles the toolbar; typography is the Open Sans face already loaded by the kit.",
+  "intent": "DS Toolbar on the AI surface \u2014 --aiu-brand fills, 16px radius, soft-blue elevation, and a draggable floating variant.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-toolbar/ai-toolbar.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -113,7 +113,7 @@
     "import": "import { AIToolbar } from './AIToolbar'",
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package."
     ]
   },
   "figma": [],

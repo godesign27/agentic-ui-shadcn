@@ -20,7 +20,7 @@ Call-to-action button for AI surfaces. Primary carries the brand gradient CTA, s
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
@@ -223,7 +223,7 @@ import { AIAction } from 'ai/atomic/button/AIButton';
 
 ## Canonical implementation
 
-Copy verbatim from `ai/atomic/button/AIButton.tsx` in the ZAIDYN AI Design System bundle — do not rewrite from this description. Key implementation facts:
+Copy verbatim from `ai/atomic/button/AIButton.tsx` in the Guild AI Design System bundle — do not rewrite from this description. Key implementation facts:
 
 - **SIZE_MAP** — sm/md/lg with explicit `minWidth` for status width preservation
 - **Spinner / CheckIcon** — 20×20 SVG glyphs; spinner uses `@keyframes aibtn-spin` at 0.7s

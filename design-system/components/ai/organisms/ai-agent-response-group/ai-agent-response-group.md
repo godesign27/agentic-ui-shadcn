@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiAgentResponseGroup`  
 **Component type:** React organism  
@@ -27,7 +27,7 @@ Four variants are controlled by a single `variant` prop:
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -61,8 +61,8 @@ Four variants are controlled by a single `variant` prop:
 
 1. **Card surface** _(Unique)_ — Raised card with `var(--ai-card-bg-raised)`, `var(--ai-card-border)`, and `AI.radius.lg` corners.
 2. **Message header** _(Shared)_ — AIMessageHeader — bot avatar dot, agent label, right-aligned timestamp.
-3. **Alert sub-row** _(Optional)_ — Orange signal row: `var(--ai-signal-surface)` bg, ZS Orange icon, bold label. Present only in with-alert variant.
-4. **Message body** _(Shared)_ — AIMessageBody — prose content at @zsai-bubble-body. Bold brand-color spans for emphasis.
+3. **Alert sub-row** _(Optional)_ — Orange signal row: `var(--ai-signal-surface)` bg, Signal Orange icon, bold label. Present only in with-alert variant.
+4. **Message body** _(Shared)_ — AIMessageBody — prose content at @ai-bubble-body. Bold brand-color spans for emphasis.
 5. **Action footer** _(Optional)_ — AIMessageFooter with primary pill button + secondary outline pill. Present in with-actions and with-alert variants.
 6. **Response footer** _(Optional)_ — AIResponseFooter with sources, freshness, and optional feedback bar. Present only in with-footer variant.
 
@@ -103,7 +103,7 @@ Four variants are controlled by a single `variant` prop:
 | --- | --- | --- |
 | `--ai-signal-surface` | `#FEFBF4` | Alert row background |
 | `--ai-signal-border` | `#FFD68F` | Alert row border |
-| `ZS_ORANGE[70]` | `#CB6100` | Alert label and icon color |
+| `SIGNAL_ORANGE[70]` | `#CB6100` | Alert label and icon color |
 
 ### Action buttons
 | Token | Value | Usage |
@@ -183,9 +183,9 @@ import { AIAgentResponseGroup } from '@/components/ai/organisms/ai-agent-respons
 ## Agent rules
 
 1. Read this mirror spec and `ai-agent-response-group.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-agent-response-group/ai-agent-response-group.agent.json`.
 

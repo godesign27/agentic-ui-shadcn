@@ -1,6 +1,6 @@
 # Agentic Prompt — Conversational AI Output Showcase
 
-You are implementing the **Conversational AI Output Showcase** (`conversational-ai-output-showcase`) from the ZAIDYN AI Design System mirror.
+You are implementing the **Conversational AI Output Showcase** (`conversational-ai-output-showcase`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

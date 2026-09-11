@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiPopupMenu`  
 **Component type:** React molecule  
@@ -14,13 +14,13 @@
 
 A trigger + hidden AIMenu overlay — AI dialog chrome, opens on click, closes on outside-click / Escape.
 
-AIPopupMenu is the AI skin of the standard ZDS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role="button", aria-haspopup="menu", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.
+AIPopupMenu is the AI skin of the standard DS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role="button", aria-haspopup="menu", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.
 
 **Export:** `AIMenu`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -46,8 +46,8 @@ AIPopupMenu is the AI skin of the standard ZDS Popup Menu. A hidden AIMenu is re
 ## When not to use
 
 - The menu is always visible — use `ai-menu`
-- You need the neutral standard styling — use `zds-popup-menu`
-- It is a form select control — use `zds-dropdown`
+- You need the neutral standard styling — use `ds-popup-menu`
+- It is a form select control — use `ds-dropdown`
 
 ## Anatomy
 
@@ -90,17 +90,17 @@ AIPopupMenu is the AI skin of the standard ZDS Popup Menu. A hidden AIMenu is re
 ### Text & icons
 | Token | Value | Usage |
 | --- | --- | --- |
-| `zds.textDefault` | `#2f2c3c` | Item text |
-| `zds.textHelper` | `#5b5864` | Group title |
+| `DS.textDefault` | `#2f2c3c` | Item text |
+| `DS.textHelper` | `#5b5864` | Group title |
 | `ai.color.brand` | `#4D60E6` | Leading icon / checkmark |
-| `@zsai-menu-item` | `14 / 400 / 1.4` | Item typography |
+| `@ai-menu-item` | `14 / 400 / 1.4` | Item typography |
 
 ### Selection & active
 | Token | Value | Usage |
 | --- | --- | --- |
 | `ai.color.action.primary` | `#4D60E6` | Active item fill |
 | `ai.color.surface.default` | `#F5F6FF` | Multi-select selected bg |
-| `zds.menuHoverBg` | `rgba(178,176,182,0.4)` | Hover background |
+| `DS.menuHoverBg` | `rgba(178,176,182,0.4)` | Hover background |
 
 ## Flows
 
@@ -146,9 +146,9 @@ import { AIPopupMenu } from 'ai/molecules/ai-menu/AIMenu';
 ## Agent rules
 
 1. Read this mirror spec and `ai-popup-menu.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-popup-menu/ai-popup-menu.agent.json`.
 

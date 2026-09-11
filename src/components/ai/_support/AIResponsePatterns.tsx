@@ -1,5 +1,5 @@
 import React from 'react';
-import { F, AI, ZDS } from '../tokens/ai-tokens';
+import { F, AI, DS } from '../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../tokens/ai-typography';
 import { AIMessageHeader } from '../atomic/ai-message-header/AIMessageHeader';
 import { AIMessageBody } from '../atomic/ai-message-body/AIMessageBody';
@@ -40,7 +40,7 @@ export function AnalyticalResponse() {
         },
       ]}
       sources={[
-        { label: 'ZAIDYN Analytics' },
+        { label: 'Guild Analytics' },
         { label: 'Territory DB' },
         { label: '+ 2 more' },
       ]}
@@ -64,13 +64,13 @@ export function QAResponse() {
             <circle cx="8" cy="8" r="8" fill="var(--ai-status-info-text)" />
             <path d="M4.5 8.5l2.5 2 4-5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-h5'], fontFamily: F, fontWeight: 600, color: 'var(--ai-status-info-text)' }}>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-h5'], fontFamily: F, fontWeight: 600, color: 'var(--ai-status-info-text)' }}>
             Currently Aligned — 94% coverage across primary territories
           </span>
         </div>
         <AIResponseFooter
-          sources={[{ label: 'ZAIDYN Analytics', freshness: 'fresh' }]}
-          attribution="ZAIDYN Analytics"
+          sources={[{ label: 'Guild Analytics', freshness: 'fresh' }]}
+          attribution="Guild Analytics"
           updatedAt="just now"
           showFeedback
         />
@@ -101,15 +101,15 @@ export function ActionableResponse() {
         <div style={{ margin: '0 0 12px', borderRadius: AI.radius.xs, overflow: 'hidden', border: '1px solid var(--ai-card-border)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 66px 72px', background: 'var(--ai-track-bg)', borderBottom: '1px solid var(--ai-card-border)' }}>
             {['Territory', 'Rep', 'Current', 'Proposed'].map(h => (
-              <div key={h} style={{ padding: '6px 10px', ...AI_TYPOGRAPHY['@zsai-overline'], color: ZDS.textDisabled, fontFamily: F }}>{h}</div>
+              <div key={h} style={{ padding: '6px 10px', ...AI_TYPOGRAPHY['@ai-overline'], color: DS.textDisabled, fontFamily: F }}>{h}</div>
             ))}
           </div>
           {rows.map((row, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 66px 72px', borderTop: i > 0 ? '1px solid var(--ai-card-border)' : 'none', background: i % 2 === 0 ? 'var(--ai-card-bg)' : 'var(--ai-row-alt)' }}>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-table-cell'], fontFamily: F, color: ZDS.textDefault }}>{row.territory}</div>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-meta-label'], fontFamily: F, color: ZDS.textHelper }}>{row.rep}</div>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-meta-label'], fontFamily: F, color: ZDS.textDisabled }}>{row.current}</div>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-table-cell'], fontFamily: F, color: AI.color.action.primary }}>{row.proposed}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-table-cell'], fontFamily: F, color: DS.textDefault }}>{row.territory}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-meta-label'], fontFamily: F, color: DS.textHelper }}>{row.rep}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-meta-label'], fontFamily: F, color: DS.textDisabled }}>{row.current}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-table-cell'], fontFamily: F, color: AI.color.action.primary }}>{row.proposed}</div>
             </div>
           ))}
         </div>
@@ -119,8 +119,8 @@ export function ActionableResponse() {
           { label: 'Edit',                       variant: 'secondary',  onClick: () => {} },
         ]} />
         <AIResponseFooter
-          sources={[{ label: 'ZAIDYN Territory DB', freshness: 'fresh' }, { label: 'Coverage Model' }]}
-          attribution="ZAIDYN Analytics"
+          sources={[{ label: 'Guild Territory DB', freshness: 'fresh' }, { label: 'Coverage Model' }]}
+          attribution="Guild Analytics"
           updatedAt="just now"
           showFeedback
           showRationale
@@ -145,8 +145,8 @@ export function ContextualResponse() {
 
         {/* ai-suggestion.* — suggestion / call-to-action card */}
         <div style={{ margin: '0 0 12px', background: AI.color.surface.default, border: `1px solid ${AI.color.border.default}`, borderRadius: AI.radius.md, padding: '10px 12px' }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-overline'], color: AI.color.text.secondary, fontFamily: F }}>SUGGESTED SECTION</span>
-          <p style={{ margin: '6px 0 0', ...AI_TYPOGRAPHY['@zsai-card-title'], fontFamily: F, color: ZDS.textDefault }}>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-overline'], color: AI.color.text.secondary, fontFamily: F }}>SUGGESTED SECTION</span>
+          <p style={{ margin: '6px 0 0', ...AI_TYPOGRAPHY['@ai-card-title'], fontFamily: F, color: DS.textDefault }}>
             <strong>Q1 Performance Comparison</strong> — Territory coverage before/after with KPI delta table
           </p>
         </div>
@@ -186,26 +186,26 @@ export function AwaitingApprovalResponse() {
             <circle cx="12" cy="12" r="10" stroke="#F59E0B" strokeWidth="2" />
             <path d="M12 6v6l4 2" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-h6'], color: 'var(--ai-status-warning-text)', fontFamily: F }}>Awaiting your approval</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-h6'], color: 'var(--ai-status-warning-text)', fontFamily: F }}>Awaiting your approval</span>
         </div>
 
         <div style={{ padding: '12px 16px 10px' }}>
           <AIMessageBody>
-            Review the proposed territory reassignments before I apply them to ZAIDYN:
+            Review the proposed territory reassignments before I apply them to Guild:
           </AIMessageBody>
         </div>
 
         <div style={{ margin: '0 12px 12px', borderRadius: AI.radius.xs, overflow: 'hidden', border: '1px solid var(--ai-card-border)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 80px', background: 'var(--ai-track-bg)', borderBottom: '1px solid var(--ai-card-border)' }}>
             {['Territory', 'Rep', 'Action'].map(h => (
-              <div key={h} style={{ padding: '6px 10px', ...AI_TYPOGRAPHY['@zsai-overline'], color: ZDS.textDisabled, fontFamily: F }}>{h}</div>
+              <div key={h} style={{ padding: '6px 10px', ...AI_TYPOGRAPHY['@ai-overline'], color: DS.textDisabled, fontFamily: F }}>{h}</div>
             ))}
           </div>
           {rows.map((row, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 80px', borderTop: i > 0 ? '1px solid var(--ai-card-border)' : 'none' }}>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-table-cell'], fontFamily: F, color: ZDS.textDefault }}>{row.territory}</div>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-meta-label'], fontFamily: F, color: ZDS.textHelper }}>{row.rep}</div>
-              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@zsai-table-cell'], fontFamily: F, color: 'var(--ai-status-warning-text)' }}>{row.action}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-table-cell'], fontFamily: F, color: DS.textDefault }}>{row.territory}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-meta-label'], fontFamily: F, color: DS.textHelper }}>{row.rep}</div>
+              <div style={{ padding: '7px 10px', ...AI_TYPOGRAPHY['@ai-table-cell'], fontFamily: F, color: 'var(--ai-status-warning-text)' }}>{row.action}</div>
             </div>
           ))}
         </div>
@@ -219,7 +219,7 @@ export function AwaitingApprovalResponse() {
         </div>
         <div style={{ padding: '0 4px' }}>
           <AIResponseFooter
-            attribution="This action will modify 2 territory assignments in ZAIDYN. This cannot be undone."
+            attribution="This action will modify 2 territory assignments in Guild. This cannot be undone."
             showFeedback
           />
         </div>

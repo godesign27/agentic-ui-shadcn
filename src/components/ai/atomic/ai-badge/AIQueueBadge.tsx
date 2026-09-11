@@ -28,8 +28,8 @@ export function AIQueueBadge({
 
   // Custom label path — match Angular visual (dot + label + optional count)
   const cfg: Record<AIQueueStatus, { bg: string; color: string }> = {
-    queued:         { bg: 'var(--zsai-10,#E6E9FF)', color: 'var(--zsai-80,#3F50C7)' },
-    running:        { bg: 'var(--zsai-20,#D2D6FF)', color: 'var(--zsai-90,#2D3DA3)' },
+    queued:         { bg: 'var(--ai-ramp-10,#E6E9FF)', color: 'var(--ai-ramp-80,#3F50C7)' },
+    running:        { bg: 'var(--ai-ramp-20,#D2D6FF)', color: 'var(--ai-ramp-90,#2D3DA3)' },
     blocked:        { bg: 'var(--zs-surface-error,#FFEDE9)', color: 'var(--zs-text-error,#C0392B)' },
     'needs-approval': { bg: 'var(--zs-surface-warning,#FFF9F1)', color: 'var(--zs-text-warning,#854D0E)' },
     complete:       { bg: 'var(--zs-surface-success,#EAF4EE)', color: 'var(--zs-text-success,#1F6B40)' },

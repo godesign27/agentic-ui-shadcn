@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Chip
 
-You are implementing the **AI Chip** (`ai-chip`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Chip** (`ai-chip`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

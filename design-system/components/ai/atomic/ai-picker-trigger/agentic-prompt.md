@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Picker Trigger
 
-You are implementing the **AI Picker Trigger** (`ai-picker-trigger`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Picker Trigger** (`ai-picker-trigger`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

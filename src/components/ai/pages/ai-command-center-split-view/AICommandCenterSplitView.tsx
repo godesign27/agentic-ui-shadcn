@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { F, ZDS, AI, AI_THEME } from '../../tokens/ai-tokens';
+import { F, DS, AI, AI_THEME } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar } from '../../atomic/ai-avatar/AIAvatar';
 import { AIUserBubble } from '../../molecules/ai-user-bubble/AIUserBubble';
@@ -62,7 +62,7 @@ function AnalysisPlaceholder() {
         <div key={c.label} style={{ background: c.bg, border: `1px solid ${c.border}30`, borderLeft: `3px solid ${c.border}`, borderRadius: '8px', padding: '12px 14px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
             <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, color: c.color, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{c.label}</span>
-            <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, marginLeft: 'auto', background: 'var(--ai-track-bg)', padding: '1px 6px', borderRadius: '10px' }}>High Confidence</span>
+            <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, marginLeft: 'auto', background: 'var(--ai-track-bg)', padding: '1px 6px', borderRadius: '10px' }}>High Confidence</span>
           </div>
           <div style={{ height: '10px', borderRadius: '4px', background: 'var(--ai-track-bg)', width: c.width, marginBottom: '5px' }} />
           <div style={{ height: '8px',  borderRadius: '4px', background: 'var(--ai-track-bg)', width: '90%' }} />
@@ -94,7 +94,7 @@ function WorkflowPlaceholder({ activeStep = 0 }: { activeStep?: number }) {
                 ) : isDone ? (
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 ) : (
-                  <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, color: ZDS.textHelper }}>{i + 1}</span>
+                  <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, color: DS.textHelper }}>{i + 1}</span>
                 )}
               </div>
               {i < labels.length - 1 && (
@@ -102,7 +102,7 @@ function WorkflowPlaceholder({ activeStep = 0 }: { activeStep?: number }) {
               )}
             </div>
             <div style={{ paddingTop: '5px', paddingBottom: i < labels.length - 1 ? '14px' : '0' }}>
-              <span style={{ fontFamily: F, fontSize: '14px', color: isActive || isDone ? ZDS.textDefault : ZDS.textHelper }}>{label}</span>
+              <span style={{ fontFamily: F, fontSize: '14px', color: isActive || isDone ? DS.textDefault : DS.textHelper }}>{label}</span>
               {isActive && <div style={{ fontFamily: F, fontSize: '12px', color: AI.color.action.primary, marginTop: '2px' }}>In progress…</div>}
               {isDone   && <div style={{ fontFamily: F, fontSize: '12px', color: '#27AE60',                  marginTop: '2px' }}>Completed</div>}
             </div>
@@ -127,17 +127,17 @@ function TablePlaceholder() {
         <thead>
           <tr style={{ background: AI.color.brandSurface }}>
             {cols.map(c => (
-              <th key={c} style={{ padding: '8px 12px', fontSize: '12px', fontWeight: 700, color: ZDS.textHelper, textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '1px solid var(--ai-divider)', whiteSpace: 'nowrap' }}>{c}</th>
+              <th key={c} style={{ padding: '8px 12px', fontSize: '12px', fontWeight: 700, color: DS.textHelper, textAlign: 'left', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '1px solid var(--ai-divider)', whiteSpace: 'nowrap' }}>{c}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map(([territory, rep, coverage, priority, flagged], i) => (
             <tr key={i} style={{ background: i % 2 === 0 ? 'var(--ai-card-bg)' : 'var(--ai-row-alt)' }}>
-              <td style={{ padding: '8px 12px', fontSize: '12px', color: ZDS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{territory}</td>
-              <td style={{ padding: '8px 12px', fontSize: '12px', color: ZDS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{rep}</td>
+              <td style={{ padding: '8px 12px', fontSize: '12px', color: DS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{territory}</td>
+              <td style={{ padding: '8px 12px', fontSize: '12px', color: DS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{rep}</td>
               <td style={{ padding: '8px 12px', fontSize: '12px', fontWeight: 600, color: flagged ? '#E74C3C' : '#27AE60', borderBottom: '1px solid var(--ai-divider)' }}>{coverage}</td>
-              <td style={{ padding: '8px 12px', fontSize: '12px', color: ZDS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{priority}</td>
+              <td style={{ padding: '8px 12px', fontSize: '12px', color: DS.textDefault, borderBottom: '1px solid var(--ai-divider)' }}>{priority}</td>
             </tr>
           ))}
         </tbody>
@@ -158,13 +158,13 @@ function ScenarioPlaceholder() {
           {s.recommended && (
             <span style={{ position: 'absolute', top: '10px', right: '12px', fontFamily: F, fontSize: '12px', fontWeight: 700, color: AI.color.action.primary, background: AI.color.brandSurface, border: `1px solid ${AI.color.brandBorder}`, padding: '2px 7px', borderRadius: '10px' }}>Recommended</span>
           )}
-          <div style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: ZDS.textDefault, marginBottom: '3px' }}>{s.label}: {s.sub}</div>
-          <div style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, marginBottom: '10px' }}>
+          <div style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: DS.textDefault, marginBottom: '3px' }}>{s.label}: {s.sub}</div>
+          <div style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, marginBottom: '10px' }}>
             Projected outcome: <span style={{ color: s.outColor, fontWeight: 600 }}>{s.outcome}</span>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['Preview', 'Apply', 'Compare'].map(a => (
-              <button key={a} style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, background: 'none', border: '1px solid var(--ai-btn-outline-border)', borderRadius: '6px', padding: '3px 10px', cursor: 'pointer' }}>{a}</button>
+              <button key={a} style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, background: 'none', border: '1px solid var(--ai-btn-outline-border)', borderRadius: '6px', padding: '3px 10px', cursor: 'pointer' }}>{a}</button>
             ))}
           </div>
         </div>
@@ -176,8 +176,8 @@ function ScenarioPlaceholder() {
 function DraftPlaceholder() {
   return (
     <div style={{ background: 'var(--ai-card-bg)', borderRadius: '10px', border: '1px solid var(--ai-divider)', padding: '20px', fontFamily: F }}>
-      <div style={{ fontSize: '14px', fontWeight: 600, color: ZDS.textDefault, marginBottom: '4px' }}>Q3 Territory Review — Draft</div>
-      <div style={{ fontSize: '12px', color: ZDS.textHelper, marginBottom: '16px' }}>Generated draft · Pending review</div>
+      <div style={{ fontSize: '14px', fontWeight: 600, color: DS.textDefault, marginBottom: '4px' }}>Q3 Territory Review — Draft</div>
+      <div style={{ fontSize: '12px', color: DS.textHelper, marginBottom: '16px' }}>Generated draft · Pending review</div>
       {[100, 85, 92, 60, 88].map((w, i) => (
         <div key={i} style={{ height: i === 0 ? '11px' : '9px', borderRadius: '4px', background: 'var(--ai-track-bg)', width: `${w}%`, marginBottom: '8px' }} />
       ))}
@@ -197,7 +197,7 @@ function ApprovalPlaceholder() {
   ];
   return (
     <div style={{ background: 'var(--ai-card-bg)', borderRadius: '10px', border: '1px solid var(--ai-divider)', padding: '16px', fontFamily: F }}>
-      <div style={{ fontSize: '14px', fontWeight: 600, color: ZDS.textDefault, marginBottom: '14px' }}>Approval: Q3 Budget Workflow</div>
+      <div style={{ fontSize: '14px', fontWeight: 600, color: DS.textDefault, marginBottom: '14px' }}>Approval: Q3 Budget Workflow</div>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
         {stages.map((s, i) => (
           <React.Fragment key={s.label}>
@@ -205,11 +205,11 @@ function ApprovalPlaceholder() {
               <div style={{ width: '32px', height: '32px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '4px', background: s.status === 'done' ? '#27AE60' : s.status === 'active' ? AI.color.action.primary : 'var(--ai-track-bg)' }}>
                 {s.status === 'done'
                   ? <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7L5.5 10L11.5 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  : <span style={{ fontSize: '12px', fontWeight: 600, color: s.status === 'active' ? 'white' : ZDS.textHelper }}>{i + 1}</span>
+                  : <span style={{ fontSize: '12px', fontWeight: 600, color: s.status === 'active' ? 'white' : DS.textHelper }}>{i + 1}</span>
                 }
               </div>
-              <span style={{ fontFamily: F, fontSize: '12px', color: s.status === 'pending' ? ZDS.textHelper : ZDS.textDefault, textAlign: 'center', lineHeight: 1.3 }}>{s.label}</span>
-              <span style={{ fontFamily: F, fontSize: '9px', color: ZDS.textHelper, textAlign: 'center' }}>{s.person}</span>
+              <span style={{ fontFamily: F, fontSize: '12px', color: s.status === 'pending' ? DS.textHelper : DS.textDefault, textAlign: 'center', lineHeight: 1.3 }}>{s.label}</span>
+              <span style={{ fontFamily: F, fontSize: '9px', color: DS.textHelper, textAlign: 'center' }}>{s.person}</span>
             </div>
             {i < stages.length - 1 && (
               <div style={{ height: '1px', background: i === 0 ? '#27AE60' : 'var(--ai-divider)', width: '28px', marginBottom: '28px', flexShrink: 0 }} />
@@ -219,7 +219,7 @@ function ApprovalPlaceholder() {
       </div>
       <div style={{ display: 'flex', gap: '8px' }}>
         <button style={{ fontFamily: F, fontSize: '12px', color: 'white', background: AI.color.action.primary, border: 'none', borderRadius: '6px', padding: '6px 14px', cursor: 'pointer', fontWeight: 600 }}>Review</button>
-        <button style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, background: 'none', border: '1px solid var(--ai-btn-outline-border)', borderRadius: '6px', padding: '6px 14px', cursor: 'pointer' }}>Escalate</button>
+        <button style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, background: 'none', border: '1px solid var(--ai-btn-outline-border)', borderRadius: '6px', padding: '6px 14px', cursor: 'pointer' }}>Escalate</button>
       </div>
     </div>
   );
@@ -257,7 +257,7 @@ function HandoffPlaceholder() {
 function OutputPlaceholderContent({ type, workflowStep = 0 }: { type: OutputPlaceholderType; workflowStep?: number }) {
   const subtitles: Record<OutputPlaceholderType, string> = {
     analysis:  'AI-generated analysis based on your prompt.',
-    workflow:  'Structured workflow steps generated by ZAIDYN Agent.',
+    workflow:  'Structured workflow steps generated by Guild Agent.',
     table:     'Tabular data generated from your request.',
     scenario:  'AI-modeled scenarios with projected outcomes.',
     draft:     'Generated draft ready for review and editing.',
@@ -269,7 +269,7 @@ function OutputPlaceholderContent({ type, workflowStep = 0 }: { type: OutputPlac
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
       {type !== 'dashboard' && type !== 'handoff' && type !== 'queue' && (
-        <p style={{ margin: 0, fontFamily: F, fontSize: '14px', color: ZDS.textHelper, lineHeight: 1.55 }}>{subtitles[type]}</p>
+        <p style={{ margin: 0, fontFamily: F, fontSize: '14px', color: DS.textHelper, lineHeight: 1.55 }}>{subtitles[type]}</p>
       )}
       {type === 'analysis'  && <AnalysisPlaceholder />}
       {type === 'workflow'  && <WorkflowPlaceholder activeStep={workflowStep} />}
@@ -314,7 +314,7 @@ function RightOutputPane({ outputStatus, outputType, workflowStep = 0, onHide }:
     const [hov, setHov] = React.useState(false);
     return (
       <button aria-label={label} onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} title={label}
-        style={{ width: 28, height: 28, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: hov ? 'var(--ai-btn-outline-hover-bg)' : 'none', border: 'none', cursor: 'pointer', color: hov ? ZDS.textDefault : ZDS.iconDefault, borderRadius: '6px', transition: 'all 0.12s' }}
+        style={{ width: 28, height: 28, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: hov ? 'var(--ai-btn-outline-hover-bg)' : 'none', border: 'none', cursor: 'pointer', color: hov ? DS.textDefault : DS.iconDefault, borderRadius: '6px', transition: 'all 0.12s' }}
       >
         {icon}
       </button>
@@ -327,9 +327,9 @@ function RightOutputPane({ outputStatus, outputType, workflowStep = 0, onHide }:
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', height: '48px', padding: '0 16px', background: 'var(--ai-card-bg)', borderBottom: '1px solid var(--ai-divider)', flexShrink: 0 }}>
         <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: outputStatus === 'ready' ? '#27AE60' : AI.color.action.primary, flexShrink: 0, transition: 'background 0.3s' }} />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <span style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: ZDS.textDefault, letterSpacing: '-0.1px' }}>{title}</span>
+          <span style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: DS.textDefault, letterSpacing: '-0.1px' }}>{title}</span>
           {outputStatus === 'ready' && (
-            <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, marginLeft: '8px' }}>Conditional AI Output</span>
+            <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, marginLeft: '8px' }}>Conditional AI Output</span>
           )}
         </div>
         <ActionBtn label="Copy output" icon={
@@ -362,7 +362,7 @@ function RightOutputPane({ outputStatus, outputType, workflowStep = 0, onHide }:
         {outputStatus === 'ready' && <OutputPlaceholderContent type={outputType} workflowStep={workflowStep} />}
         {outputStatus === 'idle' && (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-            <span style={{ fontFamily: F, fontSize: '14px', color: ZDS.textHelper, opacity: 0.6 }}>No generated output for this prompt</span>
+            <span style={{ fontFamily: F, fontSize: '14px', color: DS.textHelper, opacity: 0.6 }}>No generated output for this prompt</span>
           </div>
         )}
       </div>
@@ -371,7 +371,7 @@ function RightOutputPane({ outputStatus, outputType, workflowStep = 0, onHide }:
       {outputStatus === 'ready' && (
         <div style={{ padding: '10px 16px', borderTop: '1px solid var(--ai-divider)', display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0, background: 'var(--ai-card-bg)' }}>
           <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#27AE60', flexShrink: 0 }} />
-          <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper }}>Output ready · ZAIDYN Agent · Just now</span>
+          <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper }}>Output ready · Guild Agent · Just now</span>
           <div style={{ flex: 1 }} />
           <button style={{ fontFamily: F, fontSize: '12px', color: AI.color.action.primary, background: 'none', border: 'none', cursor: 'pointer', padding: '0' }}>View sources</button>
         </div>
@@ -390,7 +390,7 @@ function ChipButton({ label, onClick }: { label: string; onClick: () => void }) 
       onMouseLeave={() => setHov(false)}
       style={{
         fontFamily: F, fontSize: '12px',
-        color: hov ? AI.color.action.primary : ZDS.textHelper,
+        color: hov ? AI.color.action.primary : DS.textHelper,
         background: hov ? AI.color.brandSurface : 'var(--ai-card-bg)',
         border: hov ? `1.5px solid ${AI.color.brandBorder}` : '1.5px solid var(--ai-btn-outline-border)',
         borderRadius: '100px', padding: '5px 14px', cursor: 'pointer',
@@ -544,11 +544,11 @@ export function AICommandCenterSplitView({
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '10px' }}>
             <AIAvatar />
-            <h1 style={{ ...AI_TYPOGRAPHY['@zsai-h1'], color: ZDS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
+            <h1 style={{ ...AI_TYPOGRAPHY['@ai-h1'], color: DS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
               {greeting}, Theo!
             </h1>
           </div>
-          <p style={{ ...AI_TYPOGRAPHY['@zsai-subtitle-2'], color: ZDS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
+          <p style={{ ...AI_TYPOGRAPHY['@ai-subtitle-2'], color: DS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
             Ask me anything, or choose a quick action below
           </p>
           <AIInputCard inputValue={inputValue} onInputChange={setInputValue} onSend={handleSend} hasMessages={false} />
@@ -573,7 +573,7 @@ export function AICommandCenterSplitView({
           {/* Chat pane header */}
           <div style={{ height: '48px', padding: '0 16px', display: 'flex', alignItems: 'center', gap: '10px', borderBottom: '1px solid var(--ai-divider)', flexShrink: 0 }}>
             <AIAvatar size={24} />
-            <span style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: ZDS.textDefault }}>ZAIDYN Agent</span>
+            <span style={{ fontFamily: F, fontSize: '14px', fontWeight: 600, color: DS.textDefault }}>Guild Agent</span>
             <div style={{ flex: 1 }} />
             {!showOutputPane && (
               <button onClick={() => setShowOutputPane(true)} title="Show output pane"

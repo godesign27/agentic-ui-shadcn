@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardDataTable`  
 **Component type:** React organism  
@@ -14,7 +14,7 @@
 
 One reusable table block — compact in chat, contextual in a drawer, governed in a review flow. Density picks how much trust + action context comes along.
 
-AICardDataTable is the canonical pattern for AI-generated tables across ZAIDYN. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.
+AICardDataTable is the canonical pattern for AI-generated tables across Guild. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.
 
 **Export:** `AICardDataTable`
 
@@ -24,7 +24,7 @@ Higher-density-only props are ignored at lower densities with a dev warning — 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -96,7 +96,7 @@ Higher-density-only props are ignored at lower densities with a dev warning — 
 | `title` | `string` | `—` | Table title (H3). |
 | `subtitle` | `string` | `—` | Rich+. Sub-line under the title. |
 | `intro` | `string` | `—` | Conversational lead-in sentence rendered above the card shell. |
-| `generatedBy` | `string` | `—` | Robust. Uppercase brand-color attribution label ("ZAIDYN AI"). |
+| `generatedBy` | `string` | `—` | Robust. Uppercase brand-color attribution label ("Guild AI"). |
 | `timestamp` | `string` | `—` | Robust. Freshness or "Generated" timestamp. |
 | `confidence` | `"low" \| "medium" \| "high" \| "unknown"` | `—` | Header trust pill. Hidden when "unknown" or omitted. |
 | `risk` | `"low" \| "medium" \| "high" \| "critical" \| "unknown"` | `—` | Header risk pill. Hidden when "unknown" or omitted. |
@@ -177,7 +177,7 @@ import { AICardDataTable } from 'ai/organisms/ai-card-data-table/AICardDataTable
 // Robust — review / approval flow
 <AICardDataTable
   density="robust"
-  generatedBy="ZAIDYN AI"
+  generatedBy="Guild AI"
   timestamp="Generated 2h ago"
   title="Q2 Coverage — approval review"
   confidence="medium" risk="medium"
@@ -199,9 +199,9 @@ import { AICardDataTable } from 'ai/organisms/ai-card-data-table/AICardDataTable
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-data-table.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-data-table/ai-card-data-table.agent.json`.
 

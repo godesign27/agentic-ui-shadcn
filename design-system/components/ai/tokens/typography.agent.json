@@ -5,7 +5,7 @@
   "repoModule": "aiTypographyTokens",
   "tier": "tokens",
   "status": "active",
-  "description": "Open Sans type scale keyed by @zsai-* semantic names. Spread onto inline styles for matched fontSize, fontWeight, lineHeight, letterSpacing.",
+  "description": "Open Sans type scale keyed by @ai-* semantic names. Spread onto inline styles for matched fontSize, fontWeight, lineHeight, letterSpacing.",
   "intent": "Never hardcode font sizes. Spread AI_TYPOGRAPHY tokens in TS components; use .zs-master-style + semantic HTML for page typography.",
   "authority": {
     "mirrorSpec": "components/ai/tokens/typography.md",
@@ -21,19 +21,19 @@
   "states": [],
   "javascriptApi": {
     "exports": ["AI_TYPOGRAPHY", "AITypographyToken"],
-    "import": "import { AI_TYPOGRAPHY } from './ai-typography'; import { F, ZDS } from './ai-tokens'",
+    "import": "import { AI_TYPOGRAPHY } from './ai-typography'; import { F, DS } from './ai-tokens'",
     "notes": [
-      "37 @zsai-* tokens: 20 standard scale + 17 AI extensions",
+      "37 @ai-* tokens: 20 standard scale + 17 AI extensions",
       "Always apply fontFamily: F from ai-tokens.ts",
-      "Spread token: style={{ ...AI_TYPOGRAPHY['@zsai-body-small'], color: ZDS.textDefault }}"
+      "Spread token: style={{ ...AI_TYPOGRAPHY['@ai-body-small'], color: DS.textDefault }}"
     ]
   },
   "tokens": {
     "cssVars": [
-      "@zsai-font-family",
-      "@zsai-font-size",
-      "@zsai-text-color",
-      "@zsai-helper-text-color"
+      "@ai-font-family",
+      "@ai-font-size",
+      "@ai-text-color",
+      "@ai-helper-text-color"
     ]
   },
   "accessibility": {

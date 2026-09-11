@@ -86,15 +86,15 @@ export function AIList({
         )}
         <h2 style={{
           margin: 0,
-          ...AI_TYPOGRAPHY['@zsai-h4'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-h4'],
+          color: 'var(--ai-ds-text)',
         }}>
           {title}
         </h2>
         {typeof resolvedCount === 'number' && (
           <span style={{
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
             padding: '2px 8px',
             background: 'var(--ai-card-bg-raised)',
             border: '1px solid var(--ai-card-border)',
@@ -103,7 +103,7 @@ export function AIList({
         )}
         <span style={{ flex: 1 }} />
         {collapsible && (
-          <span aria-hidden="true" style={{ color: 'var(--ai-zds-helper)' }}>
+          <span aria-hidden="true" style={{ color: 'var(--ai-ds-helper)' }}>
             {isCollapsed ? <RiArrowDownSLine size={18} /> : <RiArrowUpSLine size={18} />}
           </span>
         )}
@@ -113,8 +113,8 @@ export function AIList({
       {intro && !isCollapsed && (
         <p style={{
           margin: '0 0 14px',
-          ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-          color: 'var(--ai-zds-helper)',
+          ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+          color: 'var(--ai-ds-helper)',
           maxWidth: 720,
         }}>
           {intro}
@@ -127,8 +127,8 @@ export function AIList({
           {status === 'loading' && (
             <div style={{
               padding: 24, textAlign: 'center',
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-              color: 'var(--ai-zds-helper)',
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+              color: 'var(--ai-ds-helper)',
               background: 'var(--ai-card-bg-raised)',
               border: '1px dashed var(--ai-card-border)',
               borderRadius: AI.radius.sm,
@@ -138,8 +138,8 @@ export function AIList({
           {status === 'empty' && (
             <div style={{
               padding: 24,
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-              color: 'var(--ai-zds-helper)',
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+              color: 'var(--ai-ds-helper)',
               background: 'var(--ai-card-bg-raised)',
               border: '1px dashed var(--ai-card-border)',
               borderRadius: AI.radius.sm,
@@ -150,7 +150,7 @@ export function AIList({
           {status === 'error' && (
             <div style={{
               padding: 16,
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
               color: 'var(--ai-status-error-text)',
               background: 'var(--ai-status-error-bg)',
               border: '1px solid var(--ai-status-error-border)',
@@ -169,8 +169,8 @@ export function AIList({
               {items.length === 0 && (
                 <div style={{
                   padding: 16,
-                  ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-                  color: 'var(--ai-zds-helper)',
+                  ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+                  color: 'var(--ai-ds-helper)',
                   background: 'var(--ai-card-bg-raised)',
                   border: '1px dashed var(--ai-card-border)',
                   borderRadius: AI.radius.sm,
@@ -191,7 +191,7 @@ export function AIList({
           {status === 'dataStale' && (
             <div style={{
               marginTop: 10,
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
               color: 'var(--ai-status-warning-text)',
             }}>Data may be stale. Refresh to get the latest signals.</div>
           )}
@@ -202,7 +202,7 @@ export function AIList({
                 type="button"
                 onClick={footerAction.onClick}
                 style={{
-                  ...AI_TYPOGRAPHY['@zsai-button-label'],
+                  ...AI_TYPOGRAPHY['@ai-button-label'],
                   background: 'transparent',
                   border: 'none',
                   padding: 0,

@@ -1,7 +1,7 @@
 ---
 version: stable
-name: ZAIDYN-AI-design-system
-description: The AI brand design system — rounded corners, ZSAI blue/purple gradients, a warm Tan companion neutral, and an orange escalation signal, built on a calm neutral foundation. On AI-native surfaces this is the brand layer — always choose AI-brand tokens over standard ZDS chrome styles. Normative values live in components/ai/tokens/; UI references AI.* / CSS vars, never raw hex. Typography is Open Sans only.
+name: Guild-AI-design-system
+description: The AI brand design system — rounded corners, AI_RAMP blue/purple gradients, a warm Tan companion neutral, and an orange escalation signal, built on a calm neutral foundation. On AI-native surfaces this is the brand layer — always choose AI-brand tokens over standard DS chrome styles. Normative values live in components/ai/tokens/; UI references AI.* / CSS vars, never raw hex. Typography is Open Sans only.
 
 # Every value below is the CURRENT resolved value from
 # components/ai/tokens/ai-tokens.ts (+ tokens/css/ai-surface.css, global.css).
@@ -45,33 +45,33 @@ colors:
   surface-5: "#1A1628"         # var(--surface-color-5) — nav / inverse
 
   # ── AI Tier 1 — raw palettes (never used directly in component code) ──────
-  # ZSAI — brand indigo; primary accent at step 80.
-  zsai-00: "#F5F6FF"  # var(--zsai-00) — lightest brand tint
-  zsai-10: "#E0E7FF"  # var(--zsai-10) — brand subtle surface
-  zsai-20: "#D2DBFF"  # var(--zsai-20)
-  zsai-30: "#BECAFE"  # var(--zsai-30)
-  zsai-40: "#A6B4FC"  # var(--zsai-40)
-  zsai-50: "#90A3F9"  # var(--zsai-50)
-  zsai-60: "#7F95F2"  # var(--zsai-60)
-  zsai-70: "#657CEC"  # var(--zsai-70)
-  zsai-80: "#4D60E6"  # var(--zsai-80) — primary brand accent
-  zsai-90: "#3544A4"  # var(--zsai-90)
-  zsai-100: "#1F2A66" # var(--zsai-100) — darkest brand ink
-  # ZS Orange — signal / attention / escalation (10% role)
-  zs-orange-80: "#A54F00"  # var(--zs-orange-80) — signal default (AA)
-  zs-orange-60: "#EC7200"  # var(--zs-orange-60) — signal accent
-  zs-orange-10: "#FFF1D6"  # var(--zs-orange-10) — signal tinted bg
-  # ZSAI Tan — companion warm neutral (30% role)
-  zsai-tan-00: "#F6F2EB"  # var(--zsai-tan-00) — warmest paper surface
-  zsai-tan-10: "#ECE6DD"  # var(--zsai-tan-10) — companion card bg
-  zsai-tan-20: "#F1E4D0"  # var(--zsai-tan-20) — companion highlight
-  zsai-tan-30: "#E8D6BF"  # var(--zsai-tan-30) — companion border
-  zsai-tan-100: "#3C2A1D" # var(--zsai-tan-100) — companion ink
-  # ZS status anchors (semantic only; not in the 60-30-10 mix)
-  zs-red-60: "#C0392B"    # error fill default (AI.color.status.error)
-  zs-red-70: "#A5322A"    # error hover / pressed
-  zs-green-80: "#0A6E5E"  # success fill (AA 6.16:1)
-  zs-amber-80: "#8A640C"  # warning fill (AA 5.37:1)
+  # AI_RAMP — brand indigo; primary accent at step 80.
+  ai-ramp-00: "#F5F6FF"  # var(--ai-ramp-00) — lightest brand tint
+  ai-ramp-10: "#E0E7FF"  # var(--ai-ramp-10) — brand subtle surface
+  ai-ramp-20: "#D2DBFF"  # var(--ai-ramp-20)
+  ai-ramp-30: "#BECAFE"  # var(--ai-ramp-30)
+  ai-ramp-40: "#A6B4FC"  # var(--ai-ramp-40)
+  ai-ramp-50: "#90A3F9"  # var(--ai-ramp-50)
+  ai-ramp-60: "#7F95F2"  # var(--ai-ramp-60)
+  ai-ramp-70: "#657CEC"  # var(--ai-ramp-70)
+  ai-ramp-80: "#4D60E6"  # var(--ai-ramp-80) — primary brand accent
+  ai-ramp-90: "#3544A4"  # var(--ai-ramp-90)
+  ai-ramp-100: "#1F2A66" # var(--ai-ramp-100) — darkest brand ink
+  # Signal Orange — signal / attention / escalation (10% role)
+  signal-orange-80: "#A54F00"  # var(--signal-orange-80) — signal default (AA)
+  signal-orange-60: "#EC7200"  # var(--signal-orange-60) — signal accent
+  signal-orange-10: "#FFF1D6"  # var(--signal-orange-10) — signal tinted bg
+  # AI_RAMP Tan — companion warm neutral (30% role)
+  ai-ramp-tan-00: "#F6F2EB"  # var(--ai-ramp-tan-00) — warmest paper surface
+  ai-ramp-tan-10: "#ECE6DD"  # var(--ai-ramp-tan-10) — companion card bg
+  ai-ramp-tan-20: "#F1E4D0"  # var(--ai-ramp-tan-20) — companion highlight
+  ai-ramp-tan-30: "#E8D6BF"  # var(--ai-ramp-tan-30) — companion border
+  ai-ramp-tan-100: "#3C2A1D" # var(--ai-ramp-tan-100) — companion ink
+  # Guild status anchors (semantic only; not in the 60-30-10 mix)
+  error-red-60: "#C0392B"    # error fill default (AI.color.status.error)
+  error-red-70: "#A5322A"    # error hover / pressed
+  signal-green-80: "#0A6E5E"  # success fill (AA 6.16:1)
+  signal-amber-80: "#8A640C"  # warning fill (AA 5.37:1)
 
   # ── AI Tier 2 — semantic aliases (AI.* → --color-ai-*) ───────────────────
   ai-action-primary: "#4D60E6"        # var(--color-ai-action-primary) — filled button / active chip
@@ -136,7 +136,7 @@ elevation:
   ai-card-raised: "0 4px 16px 0 rgba(77, 96, 230, 0.14)"      # var(--elevation-ai-card-raised)
 
 dataviz:
-  # Categorical chart series (ZS_DATAVIZ). Chart / tile use only — never interactive UI.
+  # Categorical chart series (DATAVIZ). Chart / tile use only — never interactive UI.
   cat-1: "#DB6C03"
   cat-2: "#3287C4"
   cat-3: "#8D38FC"
@@ -213,19 +213,19 @@ components:
     accent: "{colors.ai-brand}"
 ---
 
-# ZAIDYN Agentic AI Design System — design.md
+# Guild Agentic AI Design System — design.md
 
-**Audience:** AI agents generating or modifying **AI-native** Zaidyn product UI.
+**Audience:** AI agents generating or modifying **AI-native** Guild product UI.
 
 **Authority:** Agent context layer — not a second source of truth. Normative values live in
 `components/ai/tokens/`, per-component `*.md` / `*.agent.json`, co-located TSX, and
 `{slug}.preview.html`. If anything disagrees with those sources (or `src/` for standard
-ZSUI), follow those sources.
+product UI), follow those sources.
 
 **Strategy companion:** [`design-intent.md`](../../design-intent.md) — maturity spectrum,
 pattern catalog, governance (L3), and brand dimensions.
 
-**Standard ZDS chrome:** For tables, fields, nav shells, and non-AI product UI, read
+**Standard DS chrome:** For tables, fields, nav shells, and non-AI product UI, read
 [`../design.md`](../design.md). Compose AI surfaces **on** standard layout where appropriate.
 
 **Index:** [`llms.txt`](llms.txt) · Registry: [`registry.v1.2.json`](registry.v1.2.json).
@@ -234,17 +234,17 @@ pattern catalog, governance (L3), and brand dimensions.
 
 ## Overview
 
-ZAIDYN AI is a **calm, governed enterprise AI design system.** On AI-native surfaces there
+Guild AI is a **calm, governed enterprise AI design system.** On AI-native surfaces there
 is one brand — the **AI brand** — expressed as **rounded corners** (`var(--radius-ai-*)` /
-`AI.radius.*`), **ZSAI blue/purple gradients**, a warm **Tan companion** neutral, and a
+`AI.radius.*`), **AI_RAMP blue/purple gradients**, a warm **Tan companion** neutral, and a
 single **orange escalation signal**, all sitting on a quiet neutral foundation (white
 canvases, default ink, subtle borders). Rounded-and-gradient reads as "the AI at work" —
 considered, trustworthy, and distinctly branded.
 
-> **On AI-native UI, always choose AI-brand tokens** over standard ZDS teal / square-corner
-> chrome. Standard ZSUI remains the product shell for non-AI chrome — see
+> **On AI-native UI, always choose AI-brand tokens** over standard DS teal / square-corner
+> chrome. Standard product UI remains the product shell for non-AI chrome — see
 > [`../design.md`](../design.md). For AI surfaces, see
-> [AI vs standard ZDS chrome](#ai-vs-standard-zds-chrome).
+> [AI vs standard DS chrome](#ai-vs-standard-ds-chrome).
 
 **Source of truth for values:** [`tokens/ai-tokens.ts`](tokens/ai-tokens.ts),
 [`tokens/ai-typography.ts`](tokens/ai-typography.ts), and CSS under [`tokens/css/`](tokens/css/)
@@ -262,7 +262,7 @@ brand-tinted so depth reads as "AI presence" rather than generic depth.
 - **AI is always rounded** — every AI surface and control uses `var(--radius-ai-*)`.
 - Open Sans only, weights 300 / 400 / 500 / 600 / 700, with a hard **12px floor**.
 - Elevation is shadow-based; AI elevation is brand-tinted (`rgba(77,96,230,…)`).
-- The AI layer follows a fixed **60-30-10** palette rhythm: ZSAI brand 60% · Tan companion
+- The AI layer follows a fixed **60-30-10** palette rhythm: AI_RAMP brand 60% · Tan companion
   30% · orange signal 10%.
 - **AI panels and drawers stay white** — Tan is an accent for smaller moments (card/section
   headers, chips), never a panel fill.
@@ -291,18 +291,18 @@ resolve it in favor of these.
 - **Tokens are the source of truth.** Every AI visual decision flows from
   `components/ai/tokens/` (`AI.*` / CSS vars); do not invent hex, radii, or type sizes.
 
-## AI vs standard ZDS chrome
+## AI vs standard DS chrome
 
-Standard ZSUI (teal primary, product tables/fields/nav) remains the **product shell**.
-**AI-native surfaces** must not borrow ZDS brand chrome for identity.
+Standard product UI (teal primary, product tables/fields/nav) remains the **product shell**.
+**AI-native surfaces** must not borrow DS brand chrome for identity.
 
 | On AI-native surfaces, do not use | Use instead |
 |---|---|
-| ZDS teal primary / interactive primary | `AI.color.action.primary` / `var(--color-ai-action-primary)` #4D60E6 |
-| ZDS teal accents as AI identity | AI brand + signal tokens (`var(--color-ai-signal-*)` for escalation only) |
+| DS teal primary / interactive primary | `AI.color.action.primary` / `var(--color-ai-action-primary)` #4D60E6 |
+| DS teal accents as AI identity | AI brand + signal tokens (`var(--color-ai-signal-*)` for escalation only) |
 | Square corners on AI cards/controls | `AI.radius.*` / `var(--radius-ai-*)` — AI is always rounded |
-| Plain ZDS tabs as AI identity | `zds-ai-tab` / AI-styled tabs with `var(--color-ai-*)` |
-| ZDS link ramp as AI text identity | `var(--color-ai-text-secondary)`, `var(--color-ai-brand)` |
+| Plain DS tabs as AI identity | `ai-tab` / AI-styled tabs with `var(--color-ai-*)` |
+| DS link ramp as AI text identity | `var(--color-ai-text-secondary)`, `var(--color-ai-brand)` |
 
 Neutral foundation tokens (white canvas, text ramp, border, focus `#027AFF`, surface ramp,
 spacing, type scale, data-viz) are the **shared base** the AI brand sits on — keep them.
@@ -381,16 +381,16 @@ makes sense.
 
 ### Font Family
 - **All text**: `"Open Sans", system-ui, sans-serif` — use `AI_TYPOGRAPHY` /
-  [`tokens/ai-typography.ts`](tokens/ai-typography.ts) and `@zsai-*` spreads. Weights:
+  [`tokens/ai-typography.ts`](tokens/ai-typography.ts) and `@ai-*` spreads. Weights:
   300 / 400 / 500 / 600 / 700. **No other font family is permitted for body/UI text.**
-- **Icons**: ZAIDYN `zs-icon-*` catalog (see [`../atoms/icons.md`](../atoms/icons.md)).
+- **Icons**: Guild `zs-icon-*` catalog (see [`../atoms/icons.md`](../atoms/icons.md)).
   Icon glyphs are exempt from the 12px text floor.
 
 ### Hierarchy
 
 Type scale tokens: `var(--text-xs)` 12 · `var(--text-base)` 16 · `var(--text-lg)` 24 ·
 `var(--text-xl)` 32 · `var(--text-2xl)` 48. The AI type scale mirrors these as
-`var(--zsai-font-size-12 … --zsai-font-size-64)` for CSS-driven AI surfaces.
+`var(--ai-ramp-font-size-12 … --ai-ramp-font-size-64)` for CSS-driven AI surfaces.
 
 | Token / role | Size | Weight | Line Height | Use |
 |---|---|---|---|---|
@@ -420,7 +420,7 @@ Type scale tokens: `var(--text-xs)` 12 · `var(--text-base)` 16 · `var(--text-l
 
 ### Note on Font Substitutes
 Open Sans is the only UI face. If a face fails to load, fall back to `system-ui` then
-generic `sans-serif`; do **not** introduce a third family. Prefer `AI_TYPOGRAPHY['@zsai-*']`
+generic `sans-serif`; do **not** introduce a third family. Prefer `AI_TYPOGRAPHY['@ai-*']`
 spreads — no raw `fontSize` / `fontWeight` in component code.
 
 ## Layout
@@ -487,7 +487,7 @@ a quiet, consistent "AI is here" cue. **Prefer shadow over border for lift.**
 | `var(--radius-ai-full)` | 100px | AI pill chips |
 
 > **AI components always use corner radius — never square corners.** Every AI surface, card,
-> panel, and control resolves to `AI.radius.*` / `var(--radius-ai-*)`. Do not use square ZDS
+> panel, and control resolves to `AI.radius.*` / `var(--radius-ai-*)`. Do not use square DS
 > chrome corners on AI-native UI.
 
 ### Geometry
@@ -566,7 +566,7 @@ signal: `var(--color-ai-signal-default)` (#A54F00) text over `var(--color-ai-sig
 ### Do
 - Reference `AI.*` or CSS vars (`var(--color-ai-action-primary)` / `var(--ai-action-primary)`),
   never raw hex.
-- Use AI-brand tokens for every AI-branded moment; when a ZDS chrome token and an AI token
+- Use AI-brand tokens for every AI-branded moment; when a DS chrome token and an AI token
   both exist for the same AI purpose, choose the AI one.
 - Keep **AI panels and drawers white**.
 - Use the Tan companion only for **smaller moments** — card headers, section headers, chips.
@@ -579,11 +579,11 @@ signal: `var(--color-ai-signal-default)` (#A54F00) text over `var(--color-ai-sig
 - Open `{slug}.preview.html` when validating states.
 
 ### Don't
-- Don't use **standard ZDS teal / square chrome** as AI identity on AI-native surfaces.
+- Don't use **standard DS teal / square chrome** as AI identity on AI-native surfaces.
 - Don't render **square corners on AI** components — AI is always rounded.
 - Don't hard-code hex.
 - Don't fill AI **drawer or panel backgrounds with Tan** — those surfaces stay white.
-- Don't use raw Tier-1 ramp values (`ZSAI[80]`, `--zsai-80`) in component code — use Tier-2
+- Don't use raw Tier-1 ramp values (`AI_RAMP[80]`, `--ai-ramp-80`) in component code — use Tier-2
   `AI.*` / `--color-ai-*`.
 - Don't apply the AI orange **signal** to backgrounds, data fills, or informational states —
   only to actionable escalation moments, and never above 10%. Orange is **not** semantic
@@ -663,7 +663,7 @@ is doing and calm when asking for a decision.
 
 1. Change ONE token or component at a time; reference `AI.*` or `var(--color-ai-*)` /
    `var(--radius-ai-*)`.
-2. Use AI-brand tokens on AI surfaces; do not reach for ZDS teal identity tokens.
+2. Use AI-brand tokens on AI surfaces; do not reach for DS teal identity tokens.
 3. Never inline hex — the token is the contract.
 4. AI stays rounded (`AI.radius.*`) — never square.
 5. Express lift with shadows, not borders; tint AI lift toward `rgba(77,96,230,…)`.
@@ -683,7 +683,7 @@ is doing and calm when asking for a decision.
   this document names the mapping pattern (semantic → component slot).
 - **Dark-mode coverage** is scoped (`data-theme` / `.dark` surfaces for insight/badge/picker);
   not every component is exhaustively dark-tokenized.
-- **Tier-1 ramps** (`ZSAI`, `ZS_ORANGE`, `ZSAI_TAN`, …) are never for component code — use
+- **Tier-1 ramps** (`AI_RAMP`, `SIGNAL_ORANGE`, `COMPANION_TAN`, …) are never for component code — use
   Tier-2 `AI.*` only.
 - **Data-viz palettes** are chart/tile only — never interactive UI, brand, or status.
 
@@ -731,29 +731,29 @@ value shown is the current resolved value only. Never hard-code the hex.
 
 | CSS Variable | Value | Usage |
 |---|---|---|
-| `--zsai-00` | #F5F6FF | Lightest brand tint |
-| `--zsai-10` | #E0E7FF | Brand subtle surface |
-| `--zsai-20` | #D2DBFF | — |
-| `--zsai-30` | #BECAFE | — |
-| `--zsai-40` | #A6B4FC | — |
-| `--zsai-50` | #90A3F9 | — |
-| `--zsai-60` | #7F95F2 | — |
-| `--zsai-70` | #657CEC | — |
-| `--zsai-80` | #4D60E6 | Primary brand accent |
-| `--zsai-90` | #3544A4 | — |
-| `--zsai-100` | #1F2A66 | Darkest brand ink |
-| `--zs-orange-80` | #A54F00 | Signal default (AA) |
-| `--zs-orange-60` | #EC7200 | Signal accent |
-| `--zs-orange-10` | #FFF1D6 | Signal tinted bg |
-| `--zsai-tan-00` | #F6F2EB | Warmest paper surface |
-| `--zsai-tan-10` | #ECE6DD | Companion card bg |
-| `--zsai-tan-20` | #F1E4D0 | Companion highlight |
-| `--zsai-tan-30` | #E8D6BF | Companion border |
-| `--zsai-tan-100` | #3C2A1D | Companion ink |
-| `ZS_RED[60]` | #C0392B | Error fill (status only, no CSS var at Tier 1) |
-| `ZS_RED[70]` | #A5322A | Error hover / pressed |
-| `ZS_GREEN[80]` | #0A6E5E | Success fill (AA 6.16:1) |
-| `ZS_AMBER[80]` | #8A640C | Warning fill (AA 5.37:1) |
+| `--ai-ramp-00` | #F5F6FF | Lightest brand tint |
+| `--ai-ramp-10` | #E0E7FF | Brand subtle surface |
+| `--ai-ramp-20` | #D2DBFF | — |
+| `--ai-ramp-30` | #BECAFE | — |
+| `--ai-ramp-40` | #A6B4FC | — |
+| `--ai-ramp-50` | #90A3F9 | — |
+| `--ai-ramp-60` | #7F95F2 | — |
+| `--ai-ramp-70` | #657CEC | — |
+| `--ai-ramp-80` | #4D60E6 | Primary brand accent |
+| `--ai-ramp-90` | #3544A4 | — |
+| `--ai-ramp-100` | #1F2A66 | Darkest brand ink |
+| `--signal-orange-80` | #A54F00 | Signal default (AA) |
+| `--signal-orange-60` | #EC7200 | Signal accent |
+| `--signal-orange-10` | #FFF1D6 | Signal tinted bg |
+| `--ai-ramp-tan-00` | #F6F2EB | Warmest paper surface |
+| `--ai-ramp-tan-10` | #ECE6DD | Companion card bg |
+| `--ai-ramp-tan-20` | #F1E4D0 | Companion highlight |
+| `--ai-ramp-tan-30` | #E8D6BF | Companion border |
+| `--ai-ramp-tan-100` | #3C2A1D | Companion ink |
+| `SIGNAL_RED[60]` | #C0392B | Error fill (status only, no CSS var at Tier 1) |
+| `SIGNAL_RED[70]` | #A5322A | Error hover / pressed |
+| `SIGNAL_GREEN[80]` | #0A6E5E | Success fill (AA 6.16:1) |
+| `SIGNAL_AMBER[80]` | #8A640C | Warning fill (AA 5.37:1) |
 
 ### AI Tier 2 — semantic color aliases (`--color-ai-*`)
 
@@ -828,24 +828,24 @@ value shown is the current resolved value only. Never hard-code the hex.
 
 ### AI — type scale & weights
 
-Open Sans only. The `--zsai-font-size-*` tokens drive CSS-styled AI surfaces; the element
+Open Sans only. The `--ai-ramp-font-size-*` tokens drive CSS-styled AI surfaces; the element
 scale (`--text-*`) covers structural HTML. Snap to the ladder — never invent an off-scale
 size, and never go below the **12px floor**.
 
 | CSS Variable | Value | Element scale | Use |
 |---|---|---|---|
-| `--zsai-font-size-12` | 12px | `--text-xs` | Meta / caption / helper (floor) |
-| `--zsai-font-size-14` | 14px | — | Compact body · button label · table header |
-| `--zsai-font-size-15` | 15px | — | Dense body (AI reading surfaces) |
-| `--zsai-font-size-16` | 16px | `--text-base` | Body · control label · minor header |
-| `--zsai-font-size-20` | 20px | — | Lead-in / large label |
-| `--zsai-font-size-22` | 22px | — | Metric / KPI value |
-| `--zsai-font-size-24` | 24px | `--text-lg` | Subsection header (h3) |
-| `--zsai-font-size-26` | 26px | — | Large subsection / AI panel title |
-| `--zsai-font-size-32` | 32px | `--text-xl` | Section header (h2) |
-| `--zsai-font-size-34` | 34px | — | Emphasis heading |
-| `--zsai-font-size-48` | 48px | `--text-2xl` | Page title (h1) |
-| `--zsai-font-size-64` | 64px | — | Hero / display |
+| `--ai-ramp-font-size-12` | 12px | `--text-xs` | Meta / caption / helper (floor) |
+| `--ai-ramp-font-size-14` | 14px | — | Compact body · button label · table header |
+| `--ai-ramp-font-size-15` | 15px | — | Dense body (AI reading surfaces) |
+| `--ai-ramp-font-size-16` | 16px | `--text-base` | Body · control label · minor header |
+| `--ai-ramp-font-size-20` | 20px | — | Lead-in / large label |
+| `--ai-ramp-font-size-22` | 22px | — | Metric / KPI value |
+| `--ai-ramp-font-size-24` | 24px | `--text-lg` | Subsection header (h3) |
+| `--ai-ramp-font-size-26` | 26px | — | Large subsection / AI panel title |
+| `--ai-ramp-font-size-32` | 32px | `--text-xl` | Section header (h2) |
+| `--ai-ramp-font-size-34` | 34px | — | Emphasis heading |
+| `--ai-ramp-font-size-48` | 48px | `--text-2xl` | Page title (h1) |
+| `--ai-ramp-font-size-64` | 64px | — | Hero / display |
 
 | Weight token | Value | Use |
 |---|---|---|
@@ -856,19 +856,19 @@ size, and never go below the **12px floor**.
 | `--font-weight-bold` | 700 | Component headings · table headers |
 
 > Font family for **all** text is `"Open Sans", system-ui, sans-serif`. Prefer
-> `AI_TYPOGRAPHY['@zsai-*']` spreads from [`tokens/ai-typography.ts`](tokens/ai-typography.ts).
+> `AI_TYPOGRAPHY['@ai-*']` spreads from [`tokens/ai-typography.ts`](tokens/ai-typography.ts).
 > Do not introduce any other family.
 
 ### Data visualization (chart / tile use only)
 
 | Token | Value | | Token | Value |
 |---|---|---|---|---|
-| `ZS_DATAVIZ[1]` | #DB6C03 | | `ZS_DATAVIZ[7]` | #686EFF |
-| `ZS_DATAVIZ[2]` | #3287C4 | | `ZS_DATAVIZ[8]` | #566C32 |
-| `ZS_DATAVIZ[3]` | #8D38FC | | `ZS_DATAVIZ[9]` | #BC5422 |
-| `ZS_DATAVIZ[4]` | #2DA40C | | `ZS_DATAVIZ[10]` | #299C91 |
-| `ZS_DATAVIZ[5]` | #ED39DB | | `ZS_DATAVIZ[11]` | #FD595F |
-| `ZS_DATAVIZ[6]` | #764204 | | `ZS_DATAVIZ[12]` | #795106 |
+| `DATAVIZ[1]` | #DB6C03 | | `DATAVIZ[7]` | #686EFF |
+| `DATAVIZ[2]` | #3287C4 | | `DATAVIZ[8]` | #566C32 |
+| `DATAVIZ[3]` | #8D38FC | | `DATAVIZ[9]` | #BC5422 |
+| `DATAVIZ[4]` | #2DA40C | | `DATAVIZ[10]` | #299C91 |
+| `DATAVIZ[5]` | #ED39DB | | `DATAVIZ[11]` | #FD595F |
+| `DATAVIZ[6]` | #764204 | | `DATAVIZ[12]` | #795106 |
 
 > Use data-viz colors sequentially for chart series only — never for interactive UI states,
 > brand, or status.
@@ -879,13 +879,13 @@ size, and never go below the **12px floor**.
 
 ### Core rule
 
-Use the existing ZAIDYN Agentic AI Design System first. Do not invent components, colors,
+Use the existing Guild Agentic AI Design System first. Do not invent components, colors,
 radii, shadows, spacing, or interaction patterns when `components/ai/` already has one.
 
 When creating product UI:
 
 1. Reuse existing AI Library components ([`llms.txt`](llms.txt)).
-2. Reuse standard Zaidyn components only for non-AI chrome ([`../design.md`](../design.md)).
+2. Reuse standard Guild components only for non-AI chrome ([`../design.md`](../design.md)).
 3. Compose atoms → molecules → organisms → patterns → pages.
 4. Create custom UI only when no existing component meets the need — document why.
 5. Open `{slug}.preview.html` when validating states.
@@ -900,7 +900,7 @@ When creating product UI:
 | 4 | [`tokens/ai-tokens.ts`](tokens/ai-tokens.ts) + [`ai-typography.ts`](tokens/ai-typography.ts) | Programmatic tokens |
 | 5 | [`tokens/*.md`](tokens/) | Token narrative |
 | 6 | `<tier>/<slug>/<slug>.md` + `.agent.json` + TSX + `.preview.html` | Module contracts |
-| 7 | [`../design.md`](../design.md) | Standard ZDS when embedding in product chrome |
+| 7 | [`../design.md`](../design.md) | Standard DS when embedding in product chrome |
 
 ### Experience modes
 
@@ -926,7 +926,7 @@ L3 mechanisms (traceability, explainability, reversibility, escalation) are mand
 1. Existing page (`pages/`)
 2. Existing pattern (`patterns/` — cards, task tracker, list landing, dashboard)
 3. Existing organism / molecule / atomic
-4. Existing standard Zaidyn module — only for non-AI chrome
+4. Existing standard Guild module — only for non-AI chrome
 5. New composition of existing parts
 6. New custom component only if necessary
 
@@ -996,7 +996,7 @@ used, a11y, trust signals, responsive notes, open questions.
 | [`../../design-intent.md`](../../design-intent.md) | Strategy & brand reference |
 | [`llms.txt`](llms.txt) | AI component index |
 | [`tokens/agentic-prompt.md`](tokens/agentic-prompt.md) | Token-layer agent briefing |
-| [`../design.md`](../design.md) | Standard ZDS (separate token set) |
+| [`../design.md`](../design.md) | Standard DS (separate token set) |
 | [`../agent-instructions.md`](../agent-instructions.md) | Navigation and reading order |
 | [`../../AGENT_INSTRUCTIONS.md`](../../AGENT_INSTRUCTIONS.md) | Global agent rules |
 

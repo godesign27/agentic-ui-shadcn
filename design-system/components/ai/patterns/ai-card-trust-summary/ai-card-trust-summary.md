@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardTrustSummary`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ The Trust Summary Card is the primary governance surface for AI-generated output
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -39,7 +39,7 @@ The Trust Summary Card is the primary governance surface for AI-generated output
 
 ## Anatomy
 
-1. **Header** _(Shared)_ — Title + Risk badge (Low / Medium / High). headerTone="gray" (default) or "tan" (#F6F2EB ZSAI_TAN[00]) for companion contexts.
+1. **Header** _(Shared)_ — Title + Risk badge (Low / Medium / High). headerTone="gray" (default) or "tan" (#F6F2EB COMPANION_TAN[00]) for companion contexts.
 2. **Confidence bar** _(Unique)_ — Horizontal progress bar — color-tinted track + filled bar matching the high/medium/low tone.
 3. **Icon rows** _(Unique)_ — Risk Level · Data Quality · Last Refreshed — each with a 14px inline SVG icon and a colored value on the right.
 4. **Source chips** _(Shared)_ — Bordered pill chips listing the data sources that informed the output.
@@ -51,7 +51,7 @@ The Trust Summary Card is the primary governance surface for AI-generated output
 - **High Confidence** _(confidence ≥ 70)_ — Green confidence bar + Low Risk badge.
 - **Medium Confidence** _(40 ≤ confidence < 70)_ — Amber confidence bar + Medium Risk badge.
 - **Low Confidence** _(confidence < 40)_ — Red confidence bar + High Risk badge — review required.
-- **Tan header** _(headerTone="tan")_ — Card header uses ZSAI_TAN[00] (#F6F2EB) instead of the default gray raised surface. Use for companion / warm panel contexts.
+- **Tan header** _(headerTone="tan")_ — Card header uses COMPANION_TAN[00] (#F6F2EB) instead of the default gray raised surface. Use for companion / warm panel contexts.
 
 ## Props API
 
@@ -64,7 +64,7 @@ The Trust Summary Card is the primary governance surface for AI-generated output
 | `sources` | `string[]` | `undefined` | Source chip labels rendered as bordered pills. Falls back to "N sources" if absent. |
 | `sourceCount` | `number` | `undefined` | Number of data sources — used when `sources` is not provided. |
 | `requiresReview` | `boolean` | `required` | Toggles the Request Review footer button. |
-| `headerTone` | `"gray" \| "tan"` | `"gray"` | Header background tone. gray = default raised card surface. tan = ZSAI_TAN[00] (#F6F2EB) for companion / warm panel contexts. |
+| `headerTone` | `"gray" \| "tan"` | `"gray"` | Header background tone. gray = default raised card surface. tan = COMPANION_TAN[00] (#F6F2EB) for companion / warm panel contexts. |
 | `onRequestReview` | `() => void` | `undefined` | Called when the Request Review button is clicked. |
 | `onViewSources` | `() => void` | `undefined` | Called when "View sources" link is clicked. |
 
@@ -102,9 +102,9 @@ import { AICardTrustSummary } from '@/components/ai/organisms/ai-card-trust-summ
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-trust-summary.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-trust-summary/ai-card-trust-summary.agent.json`.
 

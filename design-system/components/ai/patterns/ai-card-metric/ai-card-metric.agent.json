@@ -116,7 +116,7 @@
         "ReactNode"
       ],
       "default": "\u2014",
-      "hint": "basic only. ZAIDYN zs-icon-* preferred, or any React node."
+      "hint": "basic only. Guild zs-icon-* preferred, or any React node."
     },
     {
       "name": "trend",
@@ -257,9 +257,9 @@
     "import": "import { AICardMetric } from './AICardMetric'",
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
-      "Accent amber/green use ZS_AMBER[60] / ZS_GREEN[60] per metric-card.accent tokens.",
+      "Accent amber/green use SIGNAL_AMBER[60] / SIGNAL_GREEN[60] per metric-card.accent tokens.",
       "Compose from co-located atoms \u2014 do not invent lookalikes.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -268,8 +268,8 @@
     "cssVars": [
       "--ai-card-bg",
       "--ai-card-border",
-      "--ai-zds-text",
-      "--ai-zds-helper"
+      "--ai-ds-text",
+      "--ai-ds-helper"
     ],
     "semantic": [
       "metric-card.accent.teal",
@@ -294,7 +294,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX",
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX",
       "Do not pass robust-only props at simple/rich density (dev warning)"
     ]
   },

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiConversationalAiOutputShowcase`  
 **Component type:** React page  
@@ -20,7 +20,7 @@ The Conversational AI Output Showcase is the primary educational reference for t
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -39,7 +39,7 @@ The Conversational AI Output Showcase is the primary educational reference for t
 
 ## When to use
 
-- On-boarding new product designers or engineers to the ZAIDYN AI system
+- On-boarding new product designers or engineers to the Guild AI system
 - Deciding which components belong in a new AI Led or AI Assisted surface
 - Presenting the AI component library to stakeholders or design review
 - Exploring how atoms compose into groups in a real workflow context
@@ -82,9 +82,9 @@ import ConversationalAIOutputShowcase from '@/pages/ConversationalAIOutputShowca
 ## Agent rules
 
 1. Read this mirror spec and `conversational-ai-output-showcase.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.agent.json`.
 

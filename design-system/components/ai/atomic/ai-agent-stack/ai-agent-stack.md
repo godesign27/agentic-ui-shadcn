@@ -20,7 +20,7 @@ The AI Agent Stack compresses a group of AI agents into a compact overlapping av
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

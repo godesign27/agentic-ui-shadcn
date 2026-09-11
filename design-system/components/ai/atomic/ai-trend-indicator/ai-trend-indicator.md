@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiTrendIndicator`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 How is this metric trending? One row, three tones — green up, red down, gray flat. Pairs with `ai-metric-value` inside every metric card.
 
-Renders a directional arrow + signed delta + a secondary "vs Close" label. Caller passes a pre-formatted delta string (`+8.4%`, `-3.1%`, `0.0%`, `+4`) so the atom stays unit-agnostic. Inline SVG arrow keeps the atom font-independent — works on surfaces that have not loaded the ZAIDYN icon font.
+Renders a directional arrow + signed delta + a secondary "vs Close" label. Caller passes a pre-formatted delta string (`+8.4%`, `-3.1%`, `0.0%`, `+4`) so the atom stays unit-agnostic. Inline SVG arrow keeps the atom font-independent — works on surfaces that have not loaded the Guild icon font.
 
 **Export:** `AITrendIndicator`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -71,9 +71,9 @@ import { AITrendIndicator } from 'ai/atomic/trend-indicator/AITrendIndicator';
 ## Agent rules
 
 1. Read this mirror spec and `ai-trend-indicator.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-trend-indicator/ai-trend-indicator.agent.json`.
 

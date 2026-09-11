@@ -1,19 +1,19 @@
 import React, { useState, useRef, useEffect, useId } from 'react';
 import { RiArrowRightSLine, RiCheckLine } from '@remixicon/react';
-import { F, AI, ZDS } from '../../tokens/ai-tokens';
+import { F, AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 /**
  * AIMenu + AIPopupMenu — AI-styled Menu and Popup Menu.
  *
- * Shares the ZDS Menu behavior/prop surface (see zds/zds-menu.tsx) but wears
+ * Shares the DS Menu behavior/prop surface (see ds/ds-menu.tsx) but wears
  * the AI dialog chrome: the same surface/border/shadow/radius already used by
  * the AICommandCenterDialog `PlusMenu` and the AIPicker `PopoverShell` —
  *   • surface  var(--ai-card-bg) + AI.color.brandBorder
  *   • radius   AI.radius.sm (12px)
  *   • shadow   layered soft-blue elevation
- *   • hover    ZDS.menuHoverBg   • group title ZDS.textHelper
- *   • type     AI_TYPOGRAPHY['@zsai-menu-item']
+ *   • hover    DS.menuHoverBg   • group title DS.textHelper
+ *   • type     AI_TYPOGRAPHY['@ai-menu-item']
  *   • active   AI.color.action.primary fill / white text
  *   • selected AI.color.surface.default bg + AI.color.brand checkmark
  *   • focus    brand focus ring
@@ -105,14 +105,14 @@ export function AIMenu({
         const k = keyFor(it, i);
 
         if (it.type === 'separator') {
-          return <hr key={k} role="separator" style={{ border: 'none', borderTop: `1px solid ${inverse ? 'rgba(255,255,255,0.18)' : ZDS.border}`, margin: '6px 0' }} />;
+          return <hr key={k} role="separator" style={{ border: 'none', borderTop: `1px solid ${inverse ? 'rgba(255,255,255,0.18)' : DS.border}`, margin: '6px 0' }} />;
         }
 
         if (it.type === 'group-title') {
           return (
             <div key={k} role="presentation" style={{
               padding: `6px ${cfg.padX}px 4px`, fontFamily: F, fontSize: 12, fontWeight: 700,
-              letterSpacing: '0.05em', textTransform: 'uppercase', color: inverse ? 'rgba(255,255,255,0.66)' : ZDS.textHelper,
+              letterSpacing: '0.05em', textTransform: 'uppercase', color: inverse ? 'rgba(255,255,255,0.66)' : DS.textHelper,
               pointerEvents: 'none', userSelect: 'none',
             }}>{it.label}</div>
           );
@@ -124,15 +124,15 @@ export function AIMenu({
         const bg = it.active
           ? AI.color.action.primary
           : hovered || subOpen
-            ? (inverse ? 'rgba(255,255,255,0.12)' : ZDS.menuHoverBg)
+            ? (inverse ? 'rgba(255,255,255,0.12)' : DS.menuHoverBg)
             : it.selected
               ? (inverse ? 'rgba(255,255,255,0.08)' : AI.color.surface.default)
               : 'transparent';
         const fg = it.active
           ? AI.color.text.onAction
           : it.disabled
-            ? (inverse ? 'rgba(255,255,255,0.4)' : ZDS.textDisabled)
-            : (inverse ? '#FFFFFF' : ZDS.textDefault);
+            ? (inverse ? 'rgba(255,255,255,0.4)' : DS.textDisabled)
+            : (inverse ? '#FFFFFF' : DS.textDefault);
         const iconColor = it.active ? AI.color.text.onAction : (inverse ? 'rgba(255,255,255,0.86)' : AI.color.brand);
 
         return (
@@ -165,7 +165,7 @@ export function AIMenu({
                 background: bg, color: fg, border: 'none', textAlign: 'left',
                 cursor: it.disabled ? 'not-allowed' : 'pointer', opacity: it.disabled ? 0.55 : 1,
                 transition: 'background 0.12s ease', boxSizing: 'border-box',
-                ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F,
+                ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F,
               }}
             >
               {multiSelect && (

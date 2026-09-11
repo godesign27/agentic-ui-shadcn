@@ -12,7 +12,7 @@
 
 ## Purpose
 
-Identity mark for the ZAIDYN AI agent — the visual anchor that signals AI presence across every surface and interaction.
+Identity mark for the Guild AI agent — the visual anchor that signals AI presence across every surface and interaction.
 
 **Exports:** `AIAvatar` (34px default) and `BotAvatar` (18px inline attribution).
 
@@ -57,7 +57,7 @@ Both render the **same** BRAND blue concentric rings + white cross-star monogram
 | Outer ring | BRAND[30] `#B4BDFF` — outermost circle (soft halo) |
 | Mid ring | BRAND[60] `#5A6DFF` — middle ring |
 | Core | BRAND[100] `#1F2A66` — dark core behind monogram |
-| Monogram | White cross-star SVG path — ZAIDYN brand glyph |
+| Monogram | White cross-star SVG path — Guild brand glyph |
 
 **Layer order (back → front):** outer circle → mid circle → core circle → monogram path.
 
@@ -129,7 +129,7 @@ Presentational only — same SVG structure everywhere; only `size` varies.
 
 | Export | Requirement |
 |--------|-------------|
-| `AIAvatar` | `aria-label="ZAIDYN Agent"` on SVG |
+| `AIAvatar` | `aria-label="Guild Agent"` on SVG |
 | `BotAvatar` | `aria-hidden="true"` when adjacent text attributes the message |
 
 ## Props API
@@ -160,7 +160,7 @@ export function AIAvatar({ size = 34 }: { size?: number }) {
       height={size}
       fill="none"
       viewBox="0 0 42 42"
-      aria-label="ZAIDYN Agent"
+      aria-label="Guild Agent"
       style={{ flexShrink: 0, filter: 'drop-shadow(0 4px 14px rgba(90,109,255,0.45))' }}
     >
       <circle cx="21" cy="21" r="21" fill="#B4BDFF" />

@@ -5,7 +5,7 @@
   "repoModule": "aiAvatar",
   "tier": "atomic",
   "status": "active",
-  "description": "ZAIDYN AI agent identity \u2014 three concentric BRAND blue rings (#B4BDFF \u2192 #5A6DFF \u2192 #1F2A66) with white cross-star monogram. AIAvatar 34px, BotAvatar 18px. No orange gradient ring.",
+  "description": "Guild AI agent identity \u2014 three concentric BRAND blue rings (#B4BDFF \u2192 #5A6DFF \u2192 #1F2A66) with white cross-star monogram. AIAvatar 34px, BotAvatar 18px. No orange gradient ring.",
   "intent": "Presentational fixed-color SVG. Same structure for both exports; only size, optional drop-shadow, and a11y differ. Do not theme-adapt fills for dark mode.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-avatar/ai-avatar.md",
@@ -48,7 +48,7 @@
     "import": "import { AIAvatar, BotAvatar } from '@ai/atomic/avatar/AIAvatar'",
     "notes": [
       "Presentational SVG \u2014 no useId(), no linearGradient",
-      "AIAvatar: optional drop-shadow filter; aria-label ZAIDYN Agent",
+      "AIAvatar: optional drop-shadow filter; aria-label Guild Agent",
       "BotAvatar: no drop-shadow; aria-hidden when text attributes speaker",
       "Fixed fills: #B4BDFF, #5A6DFF, #1F2A66, white path \u2014 same on light and dark surfaces"
     ]
@@ -72,7 +72,7 @@
     "role": "img",
     "keyboard": [],
     "requiredAttributes": [
-      "AIAvatar: aria-label on SVG (e.g. ZAIDYN Agent)",
+      "AIAvatar: aria-label on SVG (e.g. Guild Agent)",
       "BotAvatar: aria-hidden when message text attributes speaker"
     ]
   },

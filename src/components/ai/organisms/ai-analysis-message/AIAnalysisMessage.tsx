@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { F, AI, ZDS, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { F, AI, DS, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIMessageHeader } from '../../atomic/ai-message-header/AIMessageHeader';
 import { AIMessageBody } from '../../atomic/ai-message-body/AIMessageBody';
@@ -99,10 +99,10 @@ function ErrorState() {
       flexDirection: 'column',
       gap: '4px',
     }}>
-      <span style={{ ...AI_TYPOGRAPHY['@zsai-overline'], fontFamily: F, color: 'var(--ai-status-error-text)' }}>
+      <span style={{ ...AI_TYPOGRAPHY['@ai-overline'], fontFamily: F, color: 'var(--ai-status-error-text)' }}>
         Analysis Unavailable
       </span>
-      <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontFamily: F, color: 'var(--ai-zds-text)' }}>
+      <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontFamily: F, color: 'var(--ai-ds-text)' }}>
         The analysis could not be completed. Please try again or check your data sources.
       </span>
     </div>
@@ -117,7 +117,7 @@ function EmptyState() {
       padding: '16px 14px',
       textAlign: 'center',
     }}>
-      <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontFamily: F, color: 'var(--ai-zds-helper)' }}>
+      <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontFamily: F, color: 'var(--ai-ds-helper)' }}>
         No insights found for this query. Try adjusting the filters or data range.
       </span>
     </div>
@@ -238,7 +238,7 @@ export function AIAnalysisMessage({
                     fontSize: '10px',
                     fontFamily: F,
                     fontWeight: 500,
-                    color: pickerOpen ? AI.color.action.primary : 'var(--ai-zds-helper)',
+                    color: pickerOpen ? AI.color.action.primary : 'var(--ai-ds-helper)',
                     padding: '3px 8px',
                     transition: 'all 0.12s',
                   }}
@@ -303,7 +303,7 @@ export function AIAnalysisMessage({
                             fontSize: '11px',
                             fontFamily: F,
                             fontWeight: isActive ? 600 : 400,
-                            color: isActive ? AI.color.action.primary : 'var(--ai-zds-text)',
+                            color: isActive ? AI.color.action.primary : 'var(--ai-ds-text)',
                             textAlign: 'left',
                             transition: 'background 0.1s',
                           }}

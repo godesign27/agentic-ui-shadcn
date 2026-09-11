@@ -1,5 +1,5 @@
 /**
- * AIAgentTaskCard — ZAIDYN Agentic AI Group
+ * AIAgentTaskCard — Guild Agentic AI Group
  *
  * Reusable task record card for a delegated AI task. Surfaces durable task
  * ID, original intent, mutable parameters, assigned agent, status, health,
@@ -11,14 +11,14 @@
  *   rich    — adds intent, mutable params, health, confidence/risk, links
  *   robust  — adds agent stack, Needs Input flow, review/approval, sources
  *
- * Brand: no teal. AI emphasis via AI.color.brand (#4D60E6). ZS orange ONLY
- * on Needs-Input / blocked / warning states. ZSAI tan never appears here
+ * Brand: no teal. AI emphasis via AI.color.brand (#4D60E6). Guild orange ONLY
+ * on Needs-Input / blocked / warning states. AI_RAMP tan never appears here
  * — it's reserved for the supervisor agent header in the page pattern.
  * All status + health pair a glyph WITH text label — never color alone.
  */
 
 import React from 'react';
-import { AI, ZS_ORANGE, ZDS, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_ORANGE, DS, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIChip, type AIStatusPillTone } from '../../atomic/ai-chip/AIChip';
 import { AIProgress } from '../../atomic/ai-progress/AIProgress';
@@ -181,16 +181,16 @@ interface HealthCfg {
 
 const HEALTH_CFG: Record<AIAgentTaskHealth, HealthCfg> = {
   'healthy':            { label: 'Healthy',            icon: 'zs-icon-check-circle',  tone: 'success',  fg: '#1F6B40', bg: '#EAF4EE',                 border: '#CDE3D5'                 },
-  'at-risk':            { label: 'At risk',            icon: 'zs-icon-error-triangle',tone: 'warning',  fg: ZS_ORANGE[80], bg: ZS_ORANGE[10],         border: ZS_ORANGE[30]             },
-  'needs-attention':    { label: 'Needs attention',    icon: 'zs-icon-info-fill',     tone: 'warning',  fg: ZS_ORANGE[80], bg: ZS_ORANGE[10],         border: ZS_ORANGE[30]             },
-  'source-delayed':     { label: 'Source delayed',     icon: 'zs-icon-clock-pending', tone: 'warning',  fg: ZS_ORANGE[80], bg: ZS_ORANGE[10],         border: ZS_ORANGE[30]             },
+  'at-risk':            { label: 'At risk',            icon: 'zs-icon-error-triangle',tone: 'warning',  fg: SIGNAL_ORANGE[80], bg: SIGNAL_ORANGE[10],         border: SIGNAL_ORANGE[30]             },
+  'needs-attention':    { label: 'Needs attention',    icon: 'zs-icon-info-fill',     tone: 'warning',  fg: SIGNAL_ORANGE[80], bg: SIGNAL_ORANGE[10],         border: SIGNAL_ORANGE[30]             },
+  'source-delayed':     { label: 'Source delayed',     icon: 'zs-icon-clock-pending', tone: 'warning',  fg: SIGNAL_ORANGE[80], bg: SIGNAL_ORANGE[10],         border: SIGNAL_ORANGE[30]             },
   'source-unavailable': { label: 'Source unavailable', icon: 'zs-icon-close-circle',  tone: 'critical', fg: '#7A1010', bg: 'var(--ai-status-error-bg)', border: 'var(--ai-status-error-border)' },
-  'stale':              { label: 'Stale',              icon: 'zs-icon-clock-pending', tone: 'warning',  fg: ZS_ORANGE[80], bg: ZS_ORANGE[10],         border: ZS_ORANGE[30]             },
+  'stale':              { label: 'Stale',              icon: 'zs-icon-clock-pending', tone: 'warning',  fg: SIGNAL_ORANGE[80], bg: SIGNAL_ORANGE[10],         border: SIGNAL_ORANGE[30]             },
   'high-urgency':       { label: 'High urgency',       icon: 'zs-icon-error-triangle',tone: 'critical', fg: '#7A1010', bg: 'var(--ai-status-error-bg)', border: 'var(--ai-status-error-border)' },
-  'low-confidence':     { label: 'Low confidence',     icon: 'zs-icon-help',          tone: 'info',     fg: ZSAIBrandText(), bg: 'var(--ai-brand-surface)', border: 'var(--ai-brand-border)' },
+  'low-confidence':     { label: 'Low confidence',     icon: 'zs-icon-help',          tone: 'info',     fg: AI_RAMPBrandText(), bg: 'var(--ai-brand-surface)', border: 'var(--ai-brand-border)' },
 };
 
-function ZSAIBrandText() { return AI.color.text.primary; }
+function AI_RAMPBrandText() { return AI.color.text.primary; }
 
 const TASKTYPE_CFG: Record<AIAgentTaskType, { icon: string; label: string }> = {
   'immediate':  { icon: 'zs-icon-loader',   label: 'Immediate' },
@@ -203,7 +203,7 @@ const TASKTYPE_CFG: Record<AIAgentTaskType, { icon: string; label: string }> = {
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Renders a ZAIDYN font glyph. The `icons.css` cascade scopes the
+ * Renders a Guild font glyph. The `icons.css` cascade scopes the
  * font-family + ::before content rules to a `.zs-master-style` ancestor,
  * so the wrapper-and-child structure is required.
  */
@@ -236,8 +236,8 @@ function ParameterChip({ p }: { p: AIAgentTaskParameter }) {
       padding: '3px 8px', borderRadius: 999,
       background: p.mutable ? 'var(--ai-brand-surface)' : 'var(--ai-card-bg-raised)',
       border: `1px solid ${p.mutable ? 'var(--ai-brand-border)' : 'var(--ai-card-border)'}`,
-      ...AI_TYPOGRAPHY['@zsai-meta-label'],
-      color: p.mutable ? 'var(--ai-brand-text)' : 'var(--ai-zds-helper)',
+      ...AI_TYPOGRAPHY['@ai-meta-label'],
+      color: p.mutable ? 'var(--ai-brand-text)' : 'var(--ai-ds-helper)',
       whiteSpace: 'nowrap' as const,
     }}>
       {p.mutable && <Glyph name="zs-icon-edit" size={10} color="currentColor" />}
@@ -253,13 +253,13 @@ function SourceChip({ s }: { s: AIAgentTaskSource }) {
       padding: '3px 8px', borderRadius: 999,
       background: 'transparent',
       border: '1px solid var(--ai-card-border)',
-      ...AI_TYPOGRAPHY['@zsai-meta-label'],
-      color: 'var(--ai-zds-text)',
+      ...AI_TYPOGRAPHY['@ai-meta-label'],
+      color: 'var(--ai-ds-text)',
       whiteSpace: 'nowrap' as const,
     }}>
-      <Glyph name="zs-icon-doc-generic" size={10} color="var(--ai-zds-helper)" />
+      <Glyph name="zs-icon-doc-generic" size={10} color="var(--ai-ds-helper)" />
       {s.label}
-      {s.freshness && <span style={{ color: 'var(--ai-zds-helper)', fontWeight: 400 }}>· {s.freshness}</span>}
+      {s.freshness && <span style={{ color: 'var(--ai-ds-helper)', fontWeight: 400 }}>· {s.freshness}</span>}
     </span>
   );
 }
@@ -276,19 +276,19 @@ function NeedsInputPanel({
       marginTop: 10,
       padding: 12,
       borderRadius: AI.radius.sm,
-      background: ZS_ORANGE['00'],
-      border: `1px solid ${ZS_ORANGE[20]}`,
-      borderLeft: `4px solid ${ZS_ORANGE[60]}`,
+      background: SIGNAL_ORANGE['00'],
+      border: `1px solid ${SIGNAL_ORANGE[20]}`,
+      borderLeft: `4px solid ${SIGNAL_ORANGE[60]}`,
     }}>
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: ZS_ORANGE[80], marginBottom: 6 }}>
-        <Glyph name="zs-icon-help" size={12} color={ZS_ORANGE[80]} />
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: SIGNAL_ORANGE[80], marginBottom: 6 }}>
+        <Glyph name="zs-icon-help" size={12} color={SIGNAL_ORANGE[80]} />
         Needs input
       </div>
-      <div style={{ ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-text)', marginBottom: data.whyNeeded ? 4 : 8 }}>
+      <div style={{ ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-text)', marginBottom: data.whyNeeded ? 4 : 8 }}>
         <strong>{data.gap}</strong>
       </div>
       {data.whyNeeded && (
-        <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)', marginBottom: 8 }}>
+        <div style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)', marginBottom: 8 }}>
           {data.whyNeeded}
         </div>
       )}
@@ -298,8 +298,8 @@ function NeedsInputPanel({
             <button key={s} onClick={() => onResolve?.(s)} style={{
               padding: '4px 10px', borderRadius: 999,
               background: '#FFFFFF',
-              border: `1px solid ${ZS_ORANGE[40]}`,
-              color: ZS_ORANGE[80],
+              border: `1px solid ${SIGNAL_ORANGE[40]}`,
+              color: SIGNAL_ORANGE[80],
               fontFamily: F, fontSize: 12, fontWeight: 600,
               cursor: 'pointer',
             }}>
@@ -309,8 +309,8 @@ function NeedsInputPanel({
           <button onClick={() => onResolve?.()} style={{
             padding: '4px 10px', borderRadius: 999,
             background: 'transparent',
-            border: `1px solid ${ZS_ORANGE[20]}`,
-            color: ZS_ORANGE[80],
+            border: `1px solid ${SIGNAL_ORANGE[20]}`,
+            color: SIGNAL_ORANGE[80],
             fontFamily: F, fontSize: 12, fontWeight: 500,
             cursor: 'pointer',
           }}>
@@ -366,7 +366,7 @@ function Basic(props: AIAgentTaskCardProps) {
         <Glyph name={statusCfg.icon} size={14} color={ribbonColor(statusCfg.ribbon)} />
         <span style={{
           flex: 1, minWidth: 0,
-          ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-text)', fontWeight: 600,
+          ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-text)', fontWeight: 600,
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' as const,
         }}>
           {props.title}
@@ -381,22 +381,22 @@ function Basic(props: AIAgentTaskCardProps) {
         <AIChip kind="status" label={statusCfg.label} tone={statusCfg.pillTone} size="sm" />
         <code style={{
           fontFamily: 'ui-monospace, monospace',
-          fontSize: 12, color: 'var(--ai-zds-helper)',
+          fontSize: 12, color: 'var(--ai-ds-helper)',
         }}>{props.taskId}</code>
         {hasGap && (
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 4,
-            color: ZS_ORANGE[80],
+            color: SIGNAL_ORANGE[80],
             fontFamily: F, fontSize: 12, fontWeight: 600,
           }}>
-            <Glyph name="zs-icon-error-triangle" size={11} color={ZS_ORANGE[80]} />
+            <Glyph name="zs-icon-error-triangle" size={11} color={SIGNAL_ORANGE[80]} />
             {props.needsInput!.gap}
           </span>
         )}
         {props.agent && (
           <span style={{
             marginLeft: 'auto',
-            ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)',
           }}>
             {props.agent.name}
           </span>
@@ -439,12 +439,12 @@ function Simple(props: AIAgentTaskCardProps) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, padding: '14px 16px' }}>
         {/* Title row */}
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-          <Glyph name={typeCfg.icon} size={16} color={ribbonColor(statusCfg.ribbon) ?? 'var(--ai-zds-helper)'} />
+          <Glyph name={typeCfg.icon} size={16} color={ribbonColor(statusCfg.ribbon) ?? 'var(--ai-ds-helper)'} />
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-body'], color: 'var(--ai-zds-text)', fontWeight: 600 }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-body'], color: 'var(--ai-ds-text)', fontWeight: 600 }}>
               {props.title}
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3, ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3, ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
               <code style={{ fontFamily: 'ui-monospace, monospace' }}>{props.taskId}</code>
               <span>· {typeCfg.label}</span>
               {props.agent && <span>· {props.agent.name}</span>}
@@ -466,7 +466,7 @@ function Simple(props: AIAgentTaskCardProps) {
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 background: 'transparent', border: '1px solid var(--ai-card-border)',
                 borderRadius: 6, cursor: 'pointer',
-                color: 'var(--ai-zds-helper)',
+                color: 'var(--ai-ds-helper)',
                 flexShrink: 0,
               }}
             >
@@ -497,7 +497,7 @@ function Simple(props: AIAgentTaskCardProps) {
           borderTop: '1px dashed var(--ai-card-border)',
           display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap',
         }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>Sources</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>Sources</span>
           {props.sources!.map((s, i) => <SourceChip key={`${s.label}-${i}`} s={s} />)}
         </div>
       )}
@@ -536,8 +536,8 @@ function Rich(props: AIAgentTaskCardProps) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
           <Glyph name={typeCfg.icon} size={18} color={ribbonColor(statusCfg.ribbon) ?? 'var(--ai-brand-text)'} />
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: 'var(--ai-zds-text)' }}>{props.title}</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3, ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: 'var(--ai-ds-text)' }}>{props.title}</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3, ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
               <code style={{ fontFamily: 'ui-monospace, monospace' }}>{props.taskId}</code>
               <span>· {typeCfg.label}</span>
               {props.agent && <span>· {props.agent.name}</span>}
@@ -553,7 +553,7 @@ function Rich(props: AIAgentTaskCardProps) {
           <div style={{
             padding: '8px 10px', background: 'var(--ai-card-bg-raised)',
             borderLeft: `3px solid ${AI.color.brand}`,
-            ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-text)',
           }}>
             <span style={{ fontWeight: 700, color: 'var(--ai-brand-text)' }}>Intent.</span>{' '}
             {props.originalIntent}
@@ -578,7 +578,7 @@ function Rich(props: AIAgentTaskCardProps) {
           borderTop: '1px dashed var(--ai-card-border)',
           display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap',
         }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>Sources</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>Sources</span>
           {props.sources!.map((s, i) => <SourceChip key={`${s.label}-${i}`} s={s} />)}
         </div>
       )}
@@ -617,8 +617,8 @@ function Robust(props: AIAgentTaskCardProps) {
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
           <Glyph name={typeCfg.icon} size={20} color={ribbonColor(statusCfg.ribbon) ?? 'var(--ai-brand-text)'} />
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-h6'], color: 'var(--ai-zds-text)' }}>{props.title}</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-h6'], color: 'var(--ai-ds-text)' }}>{props.title}</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
               <code style={{ fontFamily: 'ui-monospace, monospace' }}>{props.taskId}</code>
               <span>· {typeCfg.label}</span>
               {props.lastUpdated && <span>· {props.lastUpdated}</span>}
@@ -631,17 +631,17 @@ function Robust(props: AIAgentTaskCardProps) {
         {/* Assigned agents */}
         {(stackAgents.length > 0 || props.agent) && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>Assigned</span>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>Assigned</span>
             {stackAgents.length > 0 ? (
               <>
                 <AIAgentStack agents={stackAgents} maxVisible={4} size={22} />
-                <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-text)' }}>
+                <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-text)' }}>
                   {props.agentStack!.map((a) => a.name).join(' · ')}
                 </span>
               </>
             ) : (
-              <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-text)', fontWeight: 600 }}>
-                {props.agent!.name}{props.agent!.role && <span style={{ color: 'var(--ai-zds-helper)', fontWeight: 400 }}> · {props.agent!.role}</span>}
+              <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-text)', fontWeight: 600 }}>
+                {props.agent!.name}{props.agent!.role && <span style={{ color: 'var(--ai-ds-helper)', fontWeight: 400 }}> · {props.agent!.role}</span>}
               </span>
             )}
           </div>
@@ -654,9 +654,9 @@ function Robust(props: AIAgentTaskCardProps) {
             background: 'var(--ai-card-bg-raised)',
             borderLeft: `3px solid ${AI.color.brand}`,
             borderRadius: AI.radius.xs,
-            ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-text)',
           }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-brand-text)', marginBottom: 3, fontWeight: 700 }}>Original intent</div>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-brand-text)', marginBottom: 3, fontWeight: 700 }}>Original intent</div>
             {props.originalIntent}
           </div>
         )}
@@ -664,7 +664,7 @@ function Robust(props: AIAgentTaskCardProps) {
         {/* Mutable parameters */}
         {props.parameters && props.parameters.length > 0 && (
           <div>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)', marginBottom: 6 }}>Mutable parameters</div>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)', marginBottom: 6 }}>Mutable parameters</div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {props.parameters.map((p) => <ParameterChip key={p.key} p={p} />)}
             </div>
@@ -693,12 +693,12 @@ function Robust(props: AIAgentTaskCardProps) {
             padding: '6px 10px', borderRadius: AI.radius.xs,
             background: 'var(--ai-brand-surface)',
             border: '1px solid var(--ai-brand-border)',
-            ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-brand-text)',
+            ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-brand-text)',
           }}>
             <Glyph name="zs-icon-eye-open" size={11} color="var(--ai-brand-text)" />
             <span style={{ fontWeight: 600 }}>{props.reviewState.label}</span>
             {props.reviewState.reviewer && (
-              <span style={{ color: 'var(--ai-zds-helper)' }}>· {props.reviewState.reviewer}</span>
+              <span style={{ color: 'var(--ai-ds-helper)' }}>· {props.reviewState.reviewer}</span>
             )}
           </div>
         )}
@@ -711,7 +711,7 @@ function Robust(props: AIAgentTaskCardProps) {
           borderTop: '1px dashed var(--ai-card-border)',
           display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap',
         }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>Sources</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>Sources</span>
           {props.sources!.map((s, i) => <SourceChip key={`${s.label}-${i}`} s={s} />)}
         </div>
       )}
@@ -741,7 +741,7 @@ function Robust(props: AIAgentTaskCardProps) {
 
 function ribbonColor(ribbon?: StatusCfg['ribbon']): string | undefined {
   switch (ribbon) {
-    case 'orange':  return ZS_ORANGE[60];
+    case 'orange':  return SIGNAL_ORANGE[60];
     case 'red':     return 'var(--ai-status-error-text)';
     case 'brand':   return AI.color.brand;
     case 'success': return '#1F6B40';

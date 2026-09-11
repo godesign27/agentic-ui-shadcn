@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiNotification`  
 **Component type:** React molecule  
@@ -14,13 +14,13 @@
 
 AI-detected events surfaced clearly, actionably and with accountability. Eight severity variants map to distinct visual treatments — info, opportunity, warning, urgent, success, blocked, approval and escalated.
 
-Canonical molecules from the ZAIDYN AI Design System.
+Canonical molecules from the Guild AI Design System.
 
 **Export:** `AINotification`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -57,22 +57,22 @@ Canonical molecules from the ZAIDYN AI Design System.
 2. **Severity Icon** _(Shared)_ — Inline SVG icon unique per severity variant
 3. **Severity Title** _(Unique)_ — Bold label, severity labelColor, 12px/700
 4. **Dismiss Control** _(Shared)_ — Optional × button with aria-label; only for dismissible notifications
-5. **Message Body** _(Unique)_ — 13px/400, ZDS.textDefault, lineHeight 1.55
+5. **Message Body** _(Unique)_ — 13px/400, DS.textDefault, lineHeight 1.55
 6. **Action Row** _(Shared)_ — Text link primary action + optional secondary, snooze, why-this, mark-reviewed
-7. **Attribution Footer** _(Shared)_ — 10px, ZDS.textHelper — attribution label + timestamp
+7. **Attribution Footer** _(Shared)_ — 10px, DS.textHelper — attribution label + timestamp
 
 ## State variations
 
 - **Basic** _(variant="basic")_ — Minimal severity card — icon · title · message · optional single action. No attribution, chips, secondary action, or dismiss/snooze. Use in tight inline surfaces and digest stacks where extra metadata is noise.
 - **Enhanced** _(variant="enhanced")_ — Full notification card (default) — adds attribution, timestamp, chips, primary + secondary actions, rationale link, dismiss/snooze controls. Use as the primary output form when the user needs context to act.
-- **Info** _(severity="info")_ — Neutral AI-detected update. ZSAI blue-purple accent.
+- **Info** _(severity="info")_ — Neutral AI-detected update. AI_RAMP blue-purple accent.
 - **Opportunity** _(severity="opportunity")_ — Positive business opportunity. Teal accent.
-- **Warning** _(severity="warning")_ — Non-critical risk or gap. ZS Orange accent.
+- **Warning** _(severity="warning")_ — Non-critical risk or gap. Signal Orange accent.
 - **Urgent** _(severity="urgent")_ — Action required soon. Semantic red accent with pulse.
 - **Success** _(severity="success")_ — AI workflow or analysis finished. Green accent.
 - **Blocked** _(severity="blocked")_ — AI cannot continue without input. Purple accent.
 - **Approval** _(severity="approval")_ — Change ready for human approval. Blue accent.
-- **Escalated** _(severity="escalated")_ — Escalated to human owner. ZS Orange accent.
+- **Escalated** _(severity="escalated")_ — Escalated to human owner. Signal Orange accent.
 
 ## Props API
 
@@ -105,7 +105,7 @@ Canonical molecules from the ZAIDYN AI Design System.
 ### Warning
 | Token | Value | Usage |
 | --- | --- | --- |
-| `borderColor` | `ZS_ORANGE[60] #EC7200` | Left accent bar and title for warning and escalated severity |
+| `borderColor` | `SIGNAL_ORANGE[60] #EC7200` | Left accent bar and title for warning and escalated severity |
 
 ### Urgent
 | Token | Value | Usage |
@@ -166,7 +166,7 @@ import { AINotification, AINotificationStack } from '@/components/ai/molecules/a
   message="Northeast region now has 31 accounts without an assigned rep. Review before Q3 lock."
   primaryAction={{ label: 'Review gaps', onClick: () => {} }}
   isDismissible
-  attribution="ZAIDYN AI"
+  attribution="Guild AI"
   timestamp="Just now"
 />
 
@@ -185,9 +185,9 @@ import { AINotification, AINotificationStack } from '@/components/ai/molecules/a
 ## Agent rules
 
 1. Read this mirror spec and `ai-notification.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-notification/ai-notification.agent.json`.
 

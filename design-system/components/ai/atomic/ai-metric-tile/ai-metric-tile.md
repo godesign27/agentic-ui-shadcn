@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiMetricTile`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 Compact raised tile for a single metric reading — eyebrow + value + optional qualifier.
 
-AIMetricTile is the canonical surface for surfacing a single metric reading — confidence, trend, threshold, target — inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow ("CONFIDENCE", "TREND", "HALT THRESHOLD") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone ("High" in brand blue, "Medium" in ZS orange, "Low" in ZS orange deep, neutral in helper grey).
+AIMetricTile is the canonical surface for surfacing a single metric reading — confidence, trend, threshold, target — inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow ("CONFIDENCE", "TREND", "HALT THRESHOLD") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone ("High" in brand blue, "Medium" in Guild orange, "Low" in Guild orange deep, neutral in helper grey).
 
 **Export:** `AIMetricTile`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -47,8 +47,8 @@ AIMetricTile is the canonical surface for surfacing a single metric reading — 
 ## State variations
 
 - **Positive qualifier** _(positive)_ — Brand-blue qualifier — High confidence, on-track.
-- **Attention qualifier** _(attention)_ — ZS orange qualifier — Medium confidence.
-- **Critical qualifier** _(critical)_ — ZS orange deep qualifier — Low confidence, halted.
+- **Attention qualifier** _(attention)_ — Guild orange qualifier — Medium confidence.
+- **Critical qualifier** _(critical)_ — Guild orange deep qualifier — Low confidence, halted.
 - **Neutral** _(neutral)_ — Helper grey — no qualitative judgment.
 
 ## Props API
@@ -76,9 +76,9 @@ import { AIMetricTile } from '@/components/ai/atomic/metric-tile/AIMetricTile';
 ## Agent rules
 
 1. Read this mirror spec and `ai-metric-tile.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-metric-tile/ai-metric-tile.agent.json`.
 

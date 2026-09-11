@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Learning Feedback
 
-You are implementing the **AI Card Learning Feedback** (`ai-card-learning-feedback`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Learning Feedback** (`ai-card-learning-feedback`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

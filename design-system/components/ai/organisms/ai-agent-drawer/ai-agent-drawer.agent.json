@@ -5,7 +5,7 @@
   "repoModule": "aiAgentDrawer",
   "tier": "organisms",
   "status": "beta",
-  "description": "Composable ZAIDYN Agent panel content. Self-contained under components/ai/.",
+  "description": "Composable Guild Agent panel content. Self-contained under components/ai/.",
   "intent": "Canonical AI assistant panel content for any container.",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-agent-drawer/ai-agent-drawer.md",
@@ -35,17 +35,17 @@
     "notes": [
       "Self-contained under components/ai/.",
       "Load components/ai/tokens/css/ai-surface.css.",
-      "Do not require @zaidyn/ai-ui for agent implementations.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Do not require an external AI UI package for agent implementations.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
   "rules": {
     "forbiddenUsage": [
       "Do not invent dependency atomics",
-      "Do not require @zaidyn/ai-ui for agents",
+      "Do not require an external AI UI package for agents",
       "Do not render orange avatar ring",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "generatedAt": "2026-08-10T00:00:00.000Z",

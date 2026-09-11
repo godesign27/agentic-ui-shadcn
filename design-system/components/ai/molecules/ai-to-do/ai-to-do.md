@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiToDo`  
 **Component type:** React molecule  
@@ -14,13 +14,13 @@
 
 Calm checklist the agent uses to narrate its plan and progress.
 
-AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between "done" and "to do" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on ZSAI_TAN[00]. When every item is completed, the list flips to a calm "Complete" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an "All done" badge appears, and the progress bar runs one shimmer sweep before settling.
+AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between "done" and "to do" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on COMPANION_TAN[00]. When every item is completed, the list flips to a calm "Complete" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an "All done" badge appears, and the progress bar runs one shimmer sweep before settling.
 
 **Export:** `AIToDo`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -39,13 +39,13 @@ AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what
 
 ## Anatomy
 
-1. **Tan surface** _(Shared)_ — ZSAI_TAN[00] background with a soft tan border — signals agent companion context.
+1. **Tan surface** _(Shared)_ — COMPANION_TAN[00] background with a soft tan border — signals agent companion context.
 2. **List icon** _(Unique)_ — Three-line hamburger glyph that anchors the list role. Swaps to a filled Done when the whole list is complete.
-3. **Title + count** _(Unique)_ — Section title (@zsai-h5) followed by "Close of N complete" meta label.
+3. **Title + count** _(Unique)_ — Section title (@ai-h5) followed by "Close of N complete" meta label.
 4. **Progress bar** _(Shared)_ — Brand-accent fill over a low-contrast tan track. Width animates 450ms on value change; shimmers while the agent is working.
 5. **Status icons** _(Shared)_ — Solid filled circle-with-check for "done" states (success-green completed; brand-blue in-progress with a pulsing ring). Hollow outlined check in gray for pending — clear at-a-glance difference between done and to-do. Orange outlined ring + dot for blocked.
 6. **In-progress row** _(Unique)_ — Faint brand-accent surface + heavy (700) font weight. Only one row should be in this state at a time.
-7. **Item note** _(Shared)_ — Optional secondary line in @zsai-meta-label below the label.
+7. **Item note** _(Shared)_ — Optional secondary line in @ai-meta-label below the label.
 
 ## State variations
 
@@ -71,7 +71,7 @@ AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what
 ### Surface
 | Token | Value | Usage |
 | --- | --- | --- |
-| `todo.surface` | `ZSAI_TAN[00] #F6F2EB` | Card surface — agent companion context |
+| `todo.surface` | `COMPANION_TAN[00] #F6F2EB` | Card surface — agent companion context |
 | `todo.border` | `rgba(60,42,29,0.10)` | Hairline tan border |
 
 ### Status (icon fill)
@@ -82,7 +82,7 @@ AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what
 | `todo.icon.pending` | `#5B5864` | Pending — hollow ring + check (helper text token); transparent fill |
 | `todo.icon.blocked` | `#A5570B` | Blocked — orange ring + dot |
 
-### Text (AA on ZSAI_TAN[00])
+### Text (AA on COMPANION_TAN[00])
 | Token | Value | Usage |
 | --- | --- | --- |
 | `todo.text.completed` | `#5B5864` | Completed copy · weight 500 · ratio 5.4:1 |
@@ -127,9 +127,9 @@ import { AIToDo } from '@/components/ai/molecules/ai-to-do/AIToDo';
 ## Agent rules
 
 1. Read this mirror spec and `ai-to-do.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-to-do/ai-to-do.agent.json`.
 

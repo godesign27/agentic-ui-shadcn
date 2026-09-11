@@ -6,12 +6,12 @@ import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 /**
  * AIPickerTrigger — Atom
  *
- * The AI-branded input shell that replaces the standard ZDS picker trigger when
+ * The AI-branded input shell that replaces the standard DS picker trigger when
  * AI is present. Visual only: label, value display, trailing icon, and (at
  * rich/robust density) an AI badge. It holds NO suggestion logic, calendar, or
  * popover — those belong to the `ai-picker` group that composes this atom.
  *
- * Tokens follow the library brand ramp (AI.color.*, ZSAI indigo). The spec's
+ * Tokens follow the library brand ramp (AI.color.*, AI_RAMP indigo). The spec's
  * "$color-blue-*" maps to brandBorder / border.focus / text.primary so the
  * trigger stays consistent with every other AI atom.
  */
@@ -71,7 +71,7 @@ function AIBadge({ label }: { label: string }) {
         border: '1px solid var(--ai-badge-border, #BECAFE)',
         color: 'var(--ai-badge-color, #4D60E6)',
         fontFamily: '"Open Sans", sans-serif',
-        ...AI_TYPOGRAPHY['@zsai-caption-2'],
+        ...AI_TYPOGRAPHY['@ai-caption-2'],
       }}
     >
       <Sparkle size={11} />
@@ -118,8 +118,8 @@ export function AIPickerTrigger({
       // Selected fills with the tan companion surface (in dark mode) — pin ink dark.
       ? 'var(--ai-picker-menu-text, #2f2c3c)'
       : hasValue
-        ? 'var(--ai-zds-text, #2f2c3c)'
-        : 'var(--ai-zds-helper, #716e79)';
+        ? 'var(--ai-ds-text, #2f2c3c)'
+        : 'var(--ai-ds-helper, #716e79)';
 
   // Theme-aware brand ink: #1F2A66 on light, #9AABFF on dark — meets WCAG AA
   // against both the white and #1A1628 page backgrounds (the fixed indigo
@@ -138,7 +138,7 @@ export function AIPickerTrigger({
         ? 'var(--ai-picker-menu-text, #2f2c3c)'
         : (density === 'rich' || density === 'robust')
           ? AI.color.brand
-          : 'var(--ai-zds-helper, #5b5864)';
+          : 'var(--ai-ds-helper, #5b5864)';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6, width: '100%', fontFamily: '"Open Sans", sans-serif' }}>
@@ -146,7 +146,7 @@ export function AIPickerTrigger({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, minHeight: 20 }}>
         <span style={{
           color: disabled ? 'var(--ai-input-disabled-text, #A8A6AE)' : 'var(--ai-picker-label-color, #1F2A66)',
-          ...AI_TYPOGRAPHY['@zsai-caption-2'],
+          ...AI_TYPOGRAPHY['@ai-caption-2'],
         }}>{label}</span>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
           {showBadge && <AIBadge label={aiLabel} />}
@@ -181,7 +181,7 @@ export function AIPickerTrigger({
           boxSizing: 'border-box',
         }}
       >
-        <span style={{ color: valueColor, ...AI_TYPOGRAPHY['@zsai-body-small'] }}>
+        <span style={{ color: valueColor, ...AI_TYPOGRAPHY['@ai-body-small'] }}>
           {hasValue ? value : placeholder}
         </span>
         <Icon size={18} color={iconColor} />
@@ -189,7 +189,7 @@ export function AIPickerTrigger({
 
       {/* Error message */}
       {error && errorMessage && (
-        <span style={{ color: 'var(--ai-status-error-text, #C0392B)', ...AI_TYPOGRAPHY['@zsai-caption-1'] }}>
+        <span style={{ color: 'var(--ai-status-error-text, #C0392B)', ...AI_TYPOGRAPHY['@ai-caption-1'] }}>
           {errorMessage}
         </span>
       )}

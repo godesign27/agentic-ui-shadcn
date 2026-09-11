@@ -1,22 +1,22 @@
 import React from 'react';
-import { AI, ZDS, F } from '../../tokens/ai-tokens';
+import { AI, DS, F } from '../../tokens/ai-tokens';
 
 /**
  * AI Node Card
  * ============
- * A 1:1 port of the roster TreeCard that the ZDS Node Connector wires together
+ * A 1:1 port of the roster TreeCard that the DS Node Connector wires together
  * (standardEntries/phaseNodeConnector.tsx). Same props, same six states, same
  * counts, same six type icons, same 242px width / 3px accent bar / 50% defocus.
  *
- * The AI treatment is **theme only**, and narrowly so: the ZDS *accent* — teal
+ * The AI treatment is **theme only**, and narrowly so: the DS *accent* — teal
  * #2f6f7b, and its subtle fill #eaf4f6 — becomes AI brand. Everything
- * structural stays on the ZDS neutrals, read through the `ZDS` namespace in
+ * structural stays on the DS neutrals, read through the `DS` namespace in
  * ai-tokens.ts. That is what makes this a theme rather than a redesign — the
  * two cards are interchangeable inside the same tree, and a reviewer can diff
  * them line for line.
  *
  * One geometric departure: AI surfaces are rounded, so the card takes
- * `AI.radius.md` where the ZDS card takes 2px.
+ * `AI.radius.md` where the DS card takes 2px.
  *
  * Two props are additive, both default-off, both AI-only:
  *
@@ -28,16 +28,16 @@ import { AI, ZDS, F } from '../../tokens/ai-tokens';
  * With both omitted the card renders the standard card, re-accented.
  */
 
-// ── Palette — the ZDS reads, one for one ─────────────────────────────────────
+// ── Palette — the DS reads, one for one ─────────────────────────────────────
 // Only the two teal reads move. Everything else is neutral and stays neutral.
 const BRAND    = AI.color.brand;         // was --zs-text-primary / --zs-border-primary (#2f6f7b)
 const SEL_BG   = AI.color.brandSurface;  // was --zs-background-primary-subtle (#eaf4f6)
-const SURFACE  = ZDS.surface;            // --zs-background-default
-const BORDER   = ZDS.borderSubtle;       // --zs-border-neutral-subtle
-const TEXT     = ZDS.textDefault;        // --zs-text-default
-const HELPER   = ZDS.textHelper;         // --zs-text-helper
-const DISABLED = ZDS.iconDisabled;       // --zs-icon-neutral-disabled
-const ON_DARK  = ZDS.textInverse;        // --zs-text-inverse
+const SURFACE  = DS.surface;            // --zs-background-default
+const BORDER   = DS.borderSubtle;       // --zs-border-neutral-subtle
+const TEXT     = DS.textDefault;        // --zs-text-default
+const HELPER   = DS.textHelper;         // --zs-text-helper
+const DISABLED = DS.iconDisabled;       // --zs-icon-neutral-disabled
+const ON_DARK  = DS.textInverse;        // --zs-text-inverse
 
 export type AINodeCardState = 'base' | 'active' | 'selected' | 'hover' | 'defocused' | 'disabled';
 export type AINodeAttention = 'none' | 'spark' | 'review' | 'new';
@@ -153,7 +153,7 @@ export function AINodeCard({
         borderRightColor: hovered ? BRAND : BORDER,
         borderLeftColor: hovered ? BRAND : BORDER,
         borderBottomColor: barred || hovered ? BRAND : BORDER,
-        // The one geometric departure from the ZDS card (2px) — AI surfaces are
+        // The one geometric departure from the DS card (2px) — AI surfaces are
         // rounded. Everything else about the box is 1:1.
         borderRadius: AI.radius.md,
         boxShadow: hovered ? AI.shadow.card.raised : AI.shadow.card.default,

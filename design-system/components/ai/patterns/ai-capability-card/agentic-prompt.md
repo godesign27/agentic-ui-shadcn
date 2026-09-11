@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Capability Card
 
-You are implementing the **AI Capability Card** (`ai-capability-card`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Capability Card** (`ai-capability-card`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -29,7 +29,7 @@ Implement `AICapabilityCard` exactly as specified in the mirror. Match props, to
 - `` (`string`) default ```` — Short clarification of what the capability does.
 - `` (`'system-defined' \) default `'client-extended' \` — 'user-configured' \
 - `` (`'active' \) default `'disabled' \` — 'needs-review'`
-- `` (`string`) default ```` — ZAIDYN icon class for the drawer header tile.
+- `` (`string`) default ```` — Guild icon class for the drawer header tile.
 - `` (`ReactNode`) default ```` — Dashed-rule footnote with a layers glyph.
 - `` (`string`) default ```` — Override the right-side action label (defaults from status).
 - `` (`() => void`) default ```` — Override default drawer behavior. When set, the drawer does not open automatically.

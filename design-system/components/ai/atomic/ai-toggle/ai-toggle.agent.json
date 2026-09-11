@@ -5,7 +5,7 @@
   "repoModule": "aiToggle",
   "tier": "atomic",
   "status": "active",
-  "description": "AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than ZDS border so the white thumb stays visible \u2014 meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role=\"switch\" + aria-checked.",
+  "description": "AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than DS border so the white thumb stays visible \u2014 meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role=\"switch\" + aria-checked.",
   "intent": "Track + thumb switch with high-contrast OFF state. White thumb passes 3:1 contrast against both ON and OFF tracks.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-toggle/ai-toggle.md",
@@ -98,7 +98,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -120,7 +120,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiDatePicker`  
 **Component type:** React molecule  
@@ -12,15 +12,15 @@
 
 ## Purpose
 
-The ZDS Date Picker on the AI surface — AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.
+The DS Date Picker on the AI surface — AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.
 
-The AI Date Picker mirrors the ZDS Date Picker (src/datePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link — but is restyled onto the ZAIDYN AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the ZSAI indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from ZDS; the anatomy, states, and keyboard model are identical.
+The AI Date Picker mirrors the DS Date Picker (src/datePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link — but is restyled onto the Guild AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the AI_RAMP indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.
 
 **Export:** `AIDatePicker`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -44,7 +44,7 @@ The AI Date Picker mirrors the ZDS Date Picker (src/datePicker/) 1:1 in structur
 
 ## When not to use
 
-- On a standard ZDS surface — use the ZDS Date Picker instead
+- On a standard DS surface — use the DS Date Picker instead
 - Don't drop the today ring or the AI Action Field trigger
 
 ## Anatomy
@@ -133,9 +133,9 @@ import { AIDatePicker } from '@/components/ai/molecules/date-picker/AIDatePicker
 ## Agent rules
 
 1. Read this mirror spec and `ai-date-picker.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-date-picker/ai-date-picker.agent.json`.
 

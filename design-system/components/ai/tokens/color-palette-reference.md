@@ -1,7 +1,7 @@
 # AI Color Palette Reference
 
 **Last Updated:** 2026-07-06  
-**Source:** ZAIDYN AI Design System token bundle (`ai-tokens.bundle.md`)
+**Source:** Guild AI Design System token bundle (`ai-tokens.bundle.md`)
 
 ---
 
@@ -9,10 +9,10 @@
 
 Full palette dump. Two systems live side-by-side:
 
-- **AI namespace** (`AI.*`, `ZSAI`, `ZS_ORANGE`, `ZSAI_TAN`, `ZDS.*`) — used by every AI component in this project. Consumed via `import` from `ai-tokens.ts`.
-- **ZDS color system** (`--zs-*` / `@zs-*`) — the standard-library color foundation. Consumed via CSS custom properties inside `zs-master-style`-scoped surfaces. Source of truth: `/src/imports/ZS.tokens.json`.
+- **AI namespace** (`AI.*`, `AI_RAMP`, `SIGNAL_ORANGE`, `COMPANION_TAN`, `DS.*`) — used by every AI component in this project. Consumed via `import` from `ai-tokens.ts`.
+- **DS color system** (`--zs-*` / `@zs-*`) — the standard-library color foundation. Consumed via CSS custom properties inside `zs-master-style`-scoped surfaces. Source of truth: `/src/imports/Guild.tokens.json`.
 
-Semantic roles below always reference the ZDS palette — warning is Dark Yellow, error is Red, success is Green, info is Indigo. Brand/Orange is an accent color and must NOT be used for semantic warning.
+Semantic roles below always reference the DS palette — warning is Dark Yellow, error is Red, success is Green, info is Indigo. Brand/Orange is an accent color and must NOT be used for semantic warning.
 
 ---
 
@@ -20,63 +20,63 @@ Semantic roles below always reference the ZDS palette — warning is Dark Yellow
 
 ### AI Tier 1 palettes
 
-### ZSAI (Indigo brand — `AI.color.brand` family)
+### AI_RAMP (Indigo brand — `AI.color.brand` family)
 
-_The primary AI brand ramp. Consumed via `AI.color.brand`, `AI.color.brandStrong`, `AI.color.brandSurface`. Access at Tier 1 as `ZSAI[step]`._
-
-| Variable | Step | Hex |
-|----------|------|-----|
-| `ZSAI-00` | 00 | `#F5F6FF` |
-| `ZSAI-10` | 10 | `#D6DEFD` |
-| `ZSAI-20` | 20 | `#B8C6FB` |
-| `ZSAI-30` | 30 | `#9BAEF7` |
-| `ZSAI-40` | 40 | `#7F95F2` |
-| `ZSAI-50` | 50 | `#657CEC` |
-| `ZSAI-60` | 60 | `#4D60E6` |
-| `ZSAI-70` | 70 | `#4152C4` |
-| `ZSAI-80` | 80 | `#3544A4` |
-| `ZSAI-90` | 90 | `#2A3784` |
-| `ZSAI-100` | 100 | `#1F2A66` |
-
-### ZS_ORANGE (Brand accent — attention / escalation, NOT warning)
-
-_Reserved for brand accents such as launcher pulses. Do not use for semantic warning — use Dark Yellow. Access as `ZS_ORANGE[step]`._
+_The primary AI brand ramp. Consumed via `AI.color.brand`, `AI.color.brandStrong`, `AI.color.brandSurface`. Access at Tier 1 as `AI_RAMP[step]`._
 
 | Variable | Step | Hex |
 |----------|------|-----|
-| `ZS_ORANGE-00` | 00 | `#FEFBF4` |
-| `ZS_ORANGE-10` | 10 | `#FFF1D6` |
-| `ZS_ORANGE-20` | 20 | `#FFD68F` |
-| `ZS_ORANGE-30` | 30 | `#FFC657` |
-| `ZS_ORANGE-40` | 40 | `#FFB234` |
-| `ZS_ORANGE-50` | 50 | `#FF9900` |
-| `ZS_ORANGE-60` | 60 | `#EC7200` |
-| `ZS_ORANGE-70` | 70 | `#CB6100` |
-| `ZS_ORANGE-80` | 80 | `#A54F00` |
-| `ZS_ORANGE-90` | 90 | `#663000` |
-| `ZS_ORANGE-100` | 100 | `#481A00` |
+| `AI_RAMP-00` | 00 | `#F5F6FF` |
+| `AI_RAMP-10` | 10 | `#D6DEFD` |
+| `AI_RAMP-20` | 20 | `#B8C6FB` |
+| `AI_RAMP-30` | 30 | `#9BAEF7` |
+| `AI_RAMP-40` | 40 | `#7F95F2` |
+| `AI_RAMP-50` | 50 | `#657CEC` |
+| `AI_RAMP-60` | 60 | `#4D60E6` |
+| `AI_RAMP-70` | 70 | `#4152C4` |
+| `AI_RAMP-80` | 80 | `#3544A4` |
+| `AI_RAMP-90` | 90 | `#2A3784` |
+| `AI_RAMP-100` | 100 | `#1F2A66` |
 
-### ZSAI_TAN (Companion warm neutral surface)
+### SIGNAL_ORANGE (Brand accent — attention / escalation, NOT warning)
 
-_Warm neutral surface for background regions that want more warmth than Gray. Used by containers and companion surfaces (10% accent role). Access as `ZSAI_TAN[step]`._
+_Reserved for brand accents such as launcher pulses. Do not use for semantic warning — use Dark Yellow. Access as `SIGNAL_ORANGE[step]`._
 
 | Variable | Step | Hex |
 |----------|------|-----|
-| `ZSAI_TAN-00` | 00 | `#F6F2EB` |
-| `ZSAI_TAN-10` | 10 | `#ECE6DD` |
-| `ZSAI_TAN-20` | 20 | `#F1E4D0` |
-| `ZSAI_TAN-30` | 30 | `#E8D6BF` |
-| `ZSAI_TAN-40` | 40 | `#DCC6B0` |
-| `ZSAI_TAN-50` | 50 | `#CDB39C` |
-| `ZSAI_TAN-60` | 60 | `#B89580` |
-| `ZSAI_TAN-70` | 70 | `#9A7560` |
-| `ZSAI_TAN-80` | 80 | `#7A5944` |
-| `ZSAI_TAN-90` | 90 | `#5A3E2C` |
-| `ZSAI_TAN-100` | 100 | `#3C2A1D` |
+| `SIGNAL_ORANGE-00` | 00 | `#FEFBF4` |
+| `SIGNAL_ORANGE-10` | 10 | `#FFF1D6` |
+| `SIGNAL_ORANGE-20` | 20 | `#FFD68F` |
+| `SIGNAL_ORANGE-30` | 30 | `#FFC657` |
+| `SIGNAL_ORANGE-40` | 40 | `#FFB234` |
+| `SIGNAL_ORANGE-50` | 50 | `#FF9900` |
+| `SIGNAL_ORANGE-60` | 60 | `#EC7200` |
+| `SIGNAL_ORANGE-70` | 70 | `#CB6100` |
+| `SIGNAL_ORANGE-80` | 80 | `#A54F00` |
+| `SIGNAL_ORANGE-90` | 90 | `#663000` |
+| `SIGNAL_ORANGE-100` | 100 | `#481A00` |
 
-### ZDS (namespaced neutrals available inside `ai-tokens.ts`)
+### COMPANION_TAN (Companion warm neutral surface)
 
-_Access as `ZDS.{name}` from `ai-tokens.ts` — this is the AI-library projection of ZDS neutrals for use inside `AI.*` semantic aliases._
+_Warm neutral surface for background regions that want more warmth than Gray. Used by containers and companion surfaces (10% accent role). Access as `COMPANION_TAN[step]`._
+
+| Variable | Step | Hex |
+|----------|------|-----|
+| `COMPANION_TAN-00` | 00 | `#F6F2EB` |
+| `COMPANION_TAN-10` | 10 | `#ECE6DD` |
+| `COMPANION_TAN-20` | 20 | `#F1E4D0` |
+| `COMPANION_TAN-30` | 30 | `#E8D6BF` |
+| `COMPANION_TAN-40` | 40 | `#DCC6B0` |
+| `COMPANION_TAN-50` | 50 | `#CDB39C` |
+| `COMPANION_TAN-60` | 60 | `#B89580` |
+| `COMPANION_TAN-70` | 70 | `#9A7560` |
+| `COMPANION_TAN-80` | 80 | `#7A5944` |
+| `COMPANION_TAN-90` | 90 | `#5A3E2C` |
+| `COMPANION_TAN-100` | 100 | `#3C2A1D` |
+
+### DS (namespaced neutrals available inside `ai-tokens.ts`)
+
+_Access as `DS.{name}` from `ai-tokens.ts` — this is the AI-library projection of DS neutrals for use inside `AI.*` semantic aliases._
 
 | Step | Hex |
 |------|-----|
@@ -125,13 +125,13 @@ _Access as `ZDS.{name}` from `ai-tokens.ts` — this is the AI-library projectio
 
 ---
 
-## 2. ZDS color system (from `ZS.tokens.json`)
+## 2. DS color system (from `Guild.tokens.json`)
 
 ### Brand palettes
 
 ### Brand / Teal
 
-_Primary ZDS brand color — used for selection accents, navigation chrome, brand marks._
+_Primary DS brand color — used for selection accents, navigation chrome, brand marks._
 
 | Variable | Step | Hex |
 |----------|------|-----|
@@ -297,8 +297,8 @@ _Focus / active — used for `--zs-border-focus` (Blue 60)._
 
 | Namespace | File |
 |-----------|------|
-| AI namespace (`AI.*` / `ZSAI` / `ZS_ORANGE` / `ZSAI_TAN` / `ZDS`) | `components/ai/tokens/ai-tokens.ts` |
-| ZDS palette (`Brand/*`, `Semantic/*`, `Dataviz/*`, `Opacity/*`)   | `src/imports/ZS.tokens.json` |
+| AI namespace (`AI.*` / `AI_RAMP` / `SIGNAL_ORANGE` / `COMPANION_TAN` / `DS`) | `components/ai/tokens/ai-tokens.ts` |
+| DS palette (`Brand/*`, `Semantic/*`, `Dataviz/*`, `Opacity/*`)   | `src/imports/Guild.tokens.json` |
 | CSS custom properties (`--ai-*`, `--ai-type-*-*`)                 | Generated from Downloads → global.css |
 
 _Regenerate any of these bundles from Downloads → Design Tokens whenever the source-of-truth files change._

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Stack
 
-You are implementing the **AI Agent Stack** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Stack** atom from the Guild AI Design System mirror.
 
 ---
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS, F } from '../../tokens/ai-tokens';
+import { AI, DS, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export interface RationaleSource {
@@ -141,9 +141,9 @@ export function AIRationalePanel({
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: AI.color.brand }}>
           <IconInfo />
-          <span style={{ fontSize: 14, fontFamily: F, color: 'var(--ai-zds-text)' }}>Why this decision?</span>
+          <span style={{ fontSize: 14, fontFamily: F, color: 'var(--ai-ds-text)' }}>Why this decision?</span>
         </div>
-        <span style={{ color: 'var(--ai-zds-helper)' }}>
+        <span style={{ color: 'var(--ai-ds-helper)' }}>
           <IconChevron open={open} />
         </span>
       </button>
@@ -154,11 +154,11 @@ export function AIRationalePanel({
 
           {/* What I found */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, color: 'var(--ai-zds-text)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, color: 'var(--ai-ds-text)' }}>
               <IconSearch />
-              <span style={{ ...AI_TYPOGRAPHY['@zsai-panel-section-head'], fontFamily: F, color: 'var(--ai-zds-text)' }}>What I found</span>
+              <span style={{ ...AI_TYPOGRAPHY['@ai-panel-section-head'], fontFamily: F, color: 'var(--ai-ds-text)' }}>What I found</span>
             </div>
-            <p style={{ margin: 0, fontSize: 12, fontFamily: F, color: 'var(--ai-zds-text)', lineHeight: 1.65 }}>
+            <p style={{ margin: 0, fontSize: 12, fontFamily: F, color: 'var(--ai-ds-text)', lineHeight: 1.65 }}>
               {whatFound}
             </p>
           </div>
@@ -169,7 +169,7 @@ export function AIRationalePanel({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, color: AI.color.brand }}>
               <IconLightbulb />
-              <span style={{ ...AI_TYPOGRAPHY['@zsai-panel-section-head'], fontFamily: F, color: 'var(--ai-zds-text)' }}>Why it matters</span>
+              <span style={{ ...AI_TYPOGRAPHY['@ai-panel-section-head'], fontFamily: F, color: 'var(--ai-ds-text)' }}>Why it matters</span>
             </div>
             <p style={{ margin: 0, fontSize: 12, fontFamily: F, color: AI.color.brand, lineHeight: 1.65 }}>
               {whyMatters}
@@ -180,9 +180,9 @@ export function AIRationalePanel({
             <>
               <div style={{ height: 1, background: AI.color.border.default }} />
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, color: 'var(--ai-zds-text)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, color: 'var(--ai-ds-text)' }}>
                   <IconScales />
-                  <span style={{ ...AI_TYPOGRAPHY['@zsai-panel-section-head'], fontFamily: F, color: 'var(--ai-zds-text)' }}>What I considered</span>
+                  <span style={{ ...AI_TYPOGRAPHY['@ai-panel-section-head'], fontFamily: F, color: 'var(--ai-ds-text)' }}>What I considered</span>
                 </div>
                 <ul style={{ margin: 0, padding: '0 0 0 16px', listStyle: 'disc', display: 'flex', flexDirection: 'column', gap: 3 }}>
                   {considered.map((item, i) => (
@@ -199,19 +199,19 @@ export function AIRationalePanel({
             <>
               <div style={{ height: 1, background: AI.color.border.default }} />
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10, color: 'var(--ai-zds-text)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10, color: 'var(--ai-ds-text)' }}>
                   <IconPaperclip />
-                  <span style={{ ...AI_TYPOGRAPHY['@zsai-panel-section-head'], fontFamily: F, color: 'var(--ai-zds-text)' }}>Assumptions + Sources</span>
+                  <span style={{ ...AI_TYPOGRAPHY['@ai-panel-section-head'], fontFamily: F, color: 'var(--ai-ds-text)' }}>Assumptions + Sources</span>
                 </div>
 
                 {assumptions.length > 0 && (
                   <div style={{ marginBottom: sources.length > 0 ? 10 : 0 }}>
-                    <div style={{ fontSize: 12, fontFamily: F, fontWeight: 700, color: 'var(--ai-zds-helper)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 5 }}>
+                    <div style={{ fontSize: 12, fontFamily: F, fontWeight: 700, color: 'var(--ai-ds-helper)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 5 }}>
                       Assumptions
                     </div>
                     <ul style={{ margin: 0, padding: '0 0 0 16px', listStyle: 'disc', display: 'flex', flexDirection: 'column', gap: 2 }}>
                       {assumptions.map((a, i) => (
-                        <li key={i} style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-zds-text)', lineHeight: 1.55 }}>
+                        <li key={i} style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-ds-text)', lineHeight: 1.55 }}>
                           {a}
                         </li>
                       ))}
@@ -221,7 +221,7 @@ export function AIRationalePanel({
 
                 {sources.length > 0 && (
                   <div>
-                    <div style={{ fontSize: 12, fontFamily: F, fontWeight: 700, color: 'var(--ai-zds-helper)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 5 }}>
+                    <div style={{ fontSize: 12, fontFamily: F, fontWeight: 700, color: 'var(--ai-ds-helper)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 5 }}>
                       Sources
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>

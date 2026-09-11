@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardAgentReasoning`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ AICardAgentReasoning is the canonical "what the agent is thinking" card for AI-l
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -52,7 +52,7 @@ AICardAgentReasoning is the canonical "what the agent is thinking" card for AI-l
 
 ## Anatomy
 
-1. **Card surface** _(Unique)_ — Subtle brand-tinted gradient (AI.gradient.surface.subtle) + 1px ZSAI[30] border + 20px padding.
+1. **Card surface** _(Unique)_ — Subtle brand-tinted gradient (AI.gradient.surface.subtle) + 1px AI_RAMP[30] border + 20px padding.
 2. **Agent header** _(Shared)_ — Brain avatar bubble + agent name + AGENT chip + REASONING & ANALYSIS eyebrow.
 3. **Live pill** _(Shared)_ — Top-right "● LIVE" status — green dot + bold label.
 4. **AI Summary panel** _(Unique)_ — White inner card — "AI SUMMARY" eyebrow, brief headline, divider, longer quoted analysis.
@@ -70,7 +70,7 @@ AICardAgentReasoning is the canonical "what the agent is thinking" card for AI-l
 | Prop | RiFontSize2 | Default | Description |
 | --- | --- | --- | --- |
 | `density` | `'basic' \| 'simple'` | `—` | Required. Drives whether the Optimization Drivers panel renders. |
-| `agentName` | `string` | `'Zaidyn'` | Bold display name in the header. |
+| `agentName` | `string` | `'Guild'` | Bold display name in the header. |
 | `agentRole` | `string` | `'AGENT'` | Small tier chip next to the name. |
 | `agentEyebrow` | `string` | `'REASONING & ANALYSIS'` | Uppercase subtitle eyebrow under the name. |
 | `live` | `boolean` | `true` | Show the green "● LIVE" pill in the top right. |
@@ -86,30 +86,30 @@ AICardAgentReasoning is the canonical "what the agent is thinking" card for AI-l
 | Token | Value | Usage |
 | --- | --- | --- |
 | `card.surface` | `AI.gradient.surface.subtle` | Subtle brand-tinted gradient backdrop |
-| `card.border` | `ZSAI[30]` | Outer card border + inner panel borders |
+| `card.border` | `AI_RAMP[30]` | Outer card border + inner panel borders |
 | `card.radius` | `AI.radius.lg` | 20px outer radius |
 
 ### Agent identity
 | Token | Value | Usage |
 | --- | --- | --- |
-| `avatar.bubble.bg` | `ZSAI[20]` | Brain-icon bubble background |
-| `avatar.brain.color` | `ZSAI[90]` | Brain glyph stroke |
-| `role.chip.bg` | `ZSAI[20]` | "AGENT" chip background |
-| `role.chip.border` | `ZSAI[30]` | "AGENT" chip border |
-| `role.chip.text` | `ZSAI[90]` | "AGENT" chip label |
+| `avatar.bubble.bg` | `AI_RAMP[20]` | Brain-icon bubble background |
+| `avatar.brain.color` | `AI_RAMP[90]` | Brain glyph stroke |
+| `role.chip.bg` | `AI_RAMP[20]` | "AGENT" chip background |
+| `role.chip.border` | `AI_RAMP[30]` | "AGENT" chip border |
+| `role.chip.text` | `AI_RAMP[90]` | "AGENT" chip label |
 
 ### AI Summary eyebrow
 | Token | Value | Usage |
 | --- | --- | --- |
-| `eyebrow.color` | `ZSAI[90]` | "AI SUMMARY" / panel eyebrows |
+| `eyebrow.color` | `AI_RAMP[90]` | "AI SUMMARY" / panel eyebrows |
 
 ### Driver intensity
 | Token | Value | Usage |
 | --- | --- | --- |
-| `driver.high.bg` | `ZSAI[30]` | High intensity chip background |
-| `driver.high.border` | `AI.color.border.subtle — ZSAI[60]` | High intensity chip border |
-| `driver.high.text` | `ZSAI[100]` | High intensity chip text |
-| `driver.med-low.text` | `var(--ai-zds-helper)` | Medium / Low intensity labels (no chip) |
+| `driver.high.bg` | `AI_RAMP[30]` | High intensity chip background |
+| `driver.high.border` | `AI.color.border.subtle — AI_RAMP[60]` | High intensity chip border |
+| `driver.high.text` | `AI_RAMP[100]` | High intensity chip text |
+| `driver.med-low.text` | `var(--ai-ds-helper)` | Medium / Low intensity labels (no chip) |
 
 ### Footer
 | Token | Value | Usage |
@@ -134,7 +134,7 @@ import { AICardAgentReasoning } from '@/components/ai/organisms/ai-card-agent-re
 
 <AICardAgentReasoning
   density="simple"
-  agentName="Zaidyn"
+  agentName="Guild"
   agentRole="AGENT"
   agentEyebrow="REASONING & ANALYSIS"
   summary={{
@@ -156,9 +156,9 @@ import { AICardAgentReasoning } from '@/components/ai/organisms/ai-card-agent-re
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-agent-reasoning.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-agent-reasoning/ai-card-agent-reasoning.agent.json`.
 

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiInsightCallout`  
 **Component type:** React atomic  
@@ -20,7 +20,7 @@ Pale brand-blue card surface (`var(--ai-brand-surface)` + brand border) with a l
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -41,7 +41,7 @@ Pale brand-blue card surface (`var(--ai-brand-surface)` + brand border) with a l
 
 1. **Surface** _(Unique)_ — Tone-tinted card with matching border. Brand radius.
 2. **Sparkle** _(Unique)_ — Inline SVG sparkle + secondary star — AI presence signal.
-3. **Eyebrow** _(Shared)_ — `@zsai-micro-eyebrow` typography in tone color.
+3. **Eyebrow** _(Shared)_ — `@ai-micro-eyebrow` typography in tone color.
 4. **Body quote** _(Unique)_ — Italic blockquote, quoted text, 12.5px / 1.55. Tone-neutral text color so the quote stays readable on any tone surface.
 
 ## State variations
@@ -70,9 +70,9 @@ import { AIInsightCallout } from 'ai/atomic/insight-callout/AIInsightCallout';
 ## Agent rules
 
 1. Read this mirror spec and `ai-insight-callout.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-insight-callout/ai-insight-callout.agent.json`.
 

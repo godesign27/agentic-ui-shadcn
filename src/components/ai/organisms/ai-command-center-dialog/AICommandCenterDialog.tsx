@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { RiMicLine, RiArrowUpLine, RiArrowRightLine, RiAddLine, RiAttachmentLine, RiFolderAddLine, RiFlashlightLine, RiArrowRightSLine } from '@remixicon/react';
-import { F, ZDS, AI, AI_THEME } from '../../tokens/ai-tokens';
+import { F, DS, AI, AI_THEME } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar, AIAvatar3D } from '../../atomic/ai-avatar/AIAvatar';
 import { AIUserBubble } from '../../molecules/ai-user-bubble/AIUserBubble';
@@ -18,7 +18,7 @@ export type CommandCenterTheme   = 'gray' | 'aqua';
 
 /**
  * Dialog title size variant.
- *   'md' — 16 / 700, matches Standard zds-dialog title (default).
+ *   'md' — 16 / 700, matches Standard ds-dialog title (default).
  *   'lg' — 24 / 700, larger heading for full-page hero contexts.
  * Per typography.md §2 (16 body / 18–24 heading tier).
  */
@@ -90,16 +90,16 @@ function PlusMenu({ mode, onModeChange, onClose }: {
       position: 'absolute', bottom: 'calc(100% + 8px)', left: 0,
       width: '220px', background: 'var(--ai-card-bg)', borderRadius: '12px',
       boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.12)',
-      border: `1px solid ${ZDS.border}`, overflow: 'hidden', zIndex: 100,
+      border: `1px solid ${DS.border}`, overflow: 'hidden', zIndex: 100,
     }}>
-      <div style={{ padding: '6px 0 2px', borderBottom: `1px solid ${ZDS.border}` }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>ADD CONTENT</div>
+      <div style={{ padding: '6px 0 2px', borderBottom: `1px solid ${DS.border}` }}>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: DS.textHelper, letterSpacing: '0.05em' }}>ADD CONTENT</div>
         {ADD_ITEMS.map(({ icon: Icon, label, hasArrow }) => (
           <PlusMenuItem key={label} icon={Icon} label={label} hasArrow={hasArrow} onClick={onClose} />
         ))}
       </div>
       <div style={{ padding: '6px 0' }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>MODE</div>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: DS.textHelper, letterSpacing: '0.05em' }}>MODE</div>
         {MODE_ITEMS.map(m => (
           <ModeItem key={m} label={m} isActive={mode === m} onSelect={() => { onModeChange(m); onClose(); }} />
         ))}
@@ -116,12 +116,12 @@ function PlusMenuItem({ icon: Icon, label, hasArrow, onClick }: {
     <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
       display: 'flex', alignItems: 'center', gap: '10px',
       width: '100%', padding: '9px 14px',
-      background: hov ? ZDS.menuHoverBg : 'transparent',
+      background: hov ? DS.menuHoverBg : 'transparent',
       border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s',
     }}>
-      <Icon size={15} color={hov ? ZDS.iconHover : ZDS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, color: ZDS.textDefault }}>{label}</span>
-      {hasArrow && <RiArrowRightSLine size={13} color={ZDS.iconDefault} />}
+      <Icon size={15} color={hov ? DS.iconHover : DS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, color: DS.textDefault }}>{label}</span>
+      {hasArrow && <RiArrowRightSLine size={13} color={DS.iconDefault} />}
     </button>
   );
 }
@@ -132,10 +132,10 @@ function ModeItem({ label, isActive, onSelect }: { label: string; isActive: bool
     <button onClick={onSelect} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
       display: 'flex', alignItems: 'center', gap: '10px',
       width: '100%', padding: '9px 14px',
-      background: hov ? ZDS.menuHoverBg : 'transparent',
+      background: hov ? DS.menuHoverBg : 'transparent',
       border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.12s',
     }}>
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: ZDS.textDefault }}>{label}</span>
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: DS.textDefault }}>{label}</span>
       {isActive && (
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
           <path d="M2 6.5l3.5 3.5 6-6" stroke={AI.color.action.primary} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -184,7 +184,7 @@ function SlimBar({ inputValue, onInputChange, onSend, sendIconDirection = 'up' }
             background: plusOpen ? 'rgba(77, 96, 230,0.10)' : 'var(--ai-btn-outline-hover-bg)',
             border: plusOpen ? `1.5px solid ${AI.color.action.primary}` : '1.5px solid transparent',
             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: plusOpen ? AI.color.action.primary : ZDS.iconDefault, transition: 'all 0.15s ease',
+            color: plusOpen ? AI.color.action.primary : DS.iconDefault, transition: 'all 0.15s ease',
           }}
         >
           <RiAddLine size={17} strokeWidth={2} />
@@ -207,9 +207,9 @@ function SlimBar({ inputValue, onInputChange, onSend, sendIconDirection = 'up' }
         onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); onSend(); } }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        placeholder="Message ZAIDYN Agent..."
-        aria-label="Message ZAIDYN"
-        style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', ...AI_TYPOGRAPHY['@zsai-input-text'], fontFamily: F, color: ZDS.textDefault, minWidth: 0 }}
+        placeholder="Message Guild Agent..."
+        aria-label="Message Guild"
+        style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', ...AI_TYPOGRAPHY['@ai-input-text'], fontFamily: F, color: DS.textDefault, minWidth: 0 }}
       />
 
       <button
@@ -220,7 +220,7 @@ function SlimBar({ inputValue, onInputChange, onSend, sendIconDirection = 'up' }
           background: filled ? AI.gradient.action.full : 'var(--ai-track-bg)',
           border: 'none', cursor: filled ? 'pointer' : 'default',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: filled ? AI.color.text.onAction : ZDS.iconDefault, flexShrink: 0,
+          color: filled ? AI.color.text.onAction : DS.iconDefault, flexShrink: 0,
           transition: 'background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease',
           boxShadow: filled ? `0 4px 14px ${AI.shadow.action.emphasis}` : 'none',
         }}
@@ -291,12 +291,12 @@ function RobustDialog({ theme = 'gray', greeting, subtitle, showBackground, titl
           }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: subtitle ? '10px' : '28px' }}>
             {theme === 'aqua' ? <AIAvatar3D /> : <AIAvatar />}
-            <h1 style={{ fontSize: titleCfg.fontSize, fontWeight: 700, color: ZDS.textDefault, margin: 0, letterSpacing: titleCfg.letterSpacing, lineHeight: 1.3, fontFamily: F }}>
+            <h1 style={{ fontSize: titleCfg.fontSize, fontWeight: 700, color: DS.textDefault, margin: 0, letterSpacing: titleCfg.letterSpacing, lineHeight: 1.3, fontFamily: F }}>
               {greeting}
             </h1>
           </div>
           {subtitle && (
-            <p style={{ fontSize: '14px', color: ZDS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
+            <p style={{ fontSize: '14px', color: DS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
               {subtitle}
             </p>
           )}
@@ -387,7 +387,7 @@ function SlimDialog({ theme = 'gray', greeting, showBackground, titleSize = 'md'
           )}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <AIAvatar3D />
-            <h1 style={{ fontSize: titleCfg.fontSize, fontWeight: 700, color: ZDS.textDefault, margin: 0, letterSpacing: titleCfg.letterSpacing, lineHeight: 1.3, fontFamily: F }}>
+            <h1 style={{ fontSize: titleCfg.fontSize, fontWeight: 700, color: DS.textDefault, margin: 0, letterSpacing: titleCfg.letterSpacing, lineHeight: 1.3, fontFamily: F }}>
               {greeting}
             </h1>
           </div>

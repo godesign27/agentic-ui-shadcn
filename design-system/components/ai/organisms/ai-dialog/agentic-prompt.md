@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Dialog
 
-You are implementing the **AI Dialog** group from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Dialog** group from the Guild AI Design System mirror.
 
 Fetch specs and implementation guidance from the GitHub repository below.
 

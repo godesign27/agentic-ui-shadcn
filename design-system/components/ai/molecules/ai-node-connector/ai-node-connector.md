@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiNodeConnector`  
 **Component type:** React molecule  
@@ -14,13 +14,13 @@
 
 The standard connector with the theme swapped — plus the four states an agent graph needs.
 
-An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the ZDS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient="auto", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The ZDS accent — teal #2f6f7b, and its subtle fill #eaf4f6 — becomes AI brand; every neutral stays neutral, read through the ZDS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone — structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge — a corner disc marking a node the model has surfaced — plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.
+An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the DS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient="auto", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The DS accent — teal #2f6f7b, and its subtle fill #eaf4f6 — becomes AI brand; every neutral stays neutral, read through the DS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone — structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge — a corner disc marking a node the model has surfaced — plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.
 
 **Export:** `node-connector`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -45,7 +45,7 @@ An AI Node Connector is the edge drawn between a parent node and a child node on
 
 ## When not to use
 
-- Don't use it on a standard surface — use zds-node-connector, so the accent stays teal
+- Don't use it on a standard surface — use ds-node-connector, so the accent stays teal
 - Don't use it as a plain divider or rule — it carries hierarchy meaning
 - Don't expect it to lay itself out: width / height / indent come from the caller
 - Don't spend a lifecycle intent on a structural edge — color on an edge should mean the edge is doing something
@@ -111,7 +111,7 @@ An AI Node Connector is the edge drawn between a parent node and a child node on
 | Token | Value | Usage |
 | --- | --- | --- |
 | `--zs-background-extra-bold` | `#1a1628` | Connector stroke and both endpoint markers — kept, identical to the standard connector |
-| `@zs-node-connector-dashed-border-color` | `#9c9aa1` | Suggested intent — kept |
+| `@ds-node-connector-dashed-border-color` | `#9c9aa1` | Suggested intent — kept |
 | `--zs-border-neutral-subtle` | `#d5d3d8` | Muted intent, and the resting card border — kept |
 
 ### Lifecycle (AI only)
@@ -220,9 +220,9 @@ import { AINodeConnector } from './components/ai/molecules/node-connector/AINode
 ## Agent rules
 
 1. Read this mirror spec and `ai-node-connector.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-node-connector/ai-node-connector.agent.json`.
 

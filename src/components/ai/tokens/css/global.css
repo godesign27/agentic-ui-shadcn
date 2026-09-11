@@ -1,5 +1,5 @@
 /*
- * ZAIDYN AI Design System — Global Tokens
+ * Guild AI Design System — Global Tokens
  * Generated 2026-08-06T14:24:12.011Z
  *
  * Drop this file into your project and reference tokens via the CSS variables
@@ -11,10 +11,10 @@
  *
  * Structure:
  *   :root {
- *     ZSAI palette         --zsai-{step}
- *     ZS Orange palette    --zs-orange-{step}
- *     ZS Red palette       --zs-red-{step}
- *     ZSAI Tan palette     --zsai-tan-{step}
+ *     AI_RAMP palette         --ai-ramp-{step}
+ *     Signal Orange palette    --signal-orange-{step}
+ *     Error Red palette       --error-red-{step}
+ *     AI_RAMP Tan palette     --ai-ramp-tan-{step}
  *     Semantic AI aliases  --color-ai-*, --gradient-ai-*, --radius-ai-*,
  *                          --elevation-ai-*
  *     Typography           --ai-type-{token}-{prop}
@@ -26,103 +26,103 @@
   /* Font family */
   --ai-font-family: "Open Sans", sans-serif;
 
-  /* ZSAI palette (Tier 1 — never reference in component code) */
-  --zsai-10: #E0E7FF;
-  --zsai-20: #D2DBFF;
-  --zsai-30: #BECAFE;
-  --zsai-40: #A6B4FC;
-  --zsai-50: #90A3F9;
-  --zsai-60: #7F95F2;
-  --zsai-70: #657CEC;
-  --zsai-80: #4D60E6;
-  --zsai-90: #3544A4;
-  --zsai-100: #1F2A66;
-  --zsai-00: #F5F6FF;
+  /* AI_RAMP palette (Tier 1 — never reference in component code) */
+  --ai-ramp-10: #E0E7FF;
+  --ai-ramp-20: #D2DBFF;
+  --ai-ramp-30: #BECAFE;
+  --ai-ramp-40: #A6B4FC;
+  --ai-ramp-50: #90A3F9;
+  --ai-ramp-60: #7F95F2;
+  --ai-ramp-70: #657CEC;
+  --ai-ramp-80: #4D60E6;
+  --ai-ramp-90: #3544A4;
+  --ai-ramp-100: #1F2A66;
+  --ai-ramp-00: #F5F6FF;
 
-  /* ZS Orange palette (Tier 1) */
-  --zs-orange-10: #FFF1D6;
-  --zs-orange-20: #FFD68F;
-  --zs-orange-30: #FFC657;
-  --zs-orange-40: #FFB234;
-  --zs-orange-50: #FF9900;
-  --zs-orange-60: #EC7200;
-  --zs-orange-70: #CB6100;
-  --zs-orange-80: #A54F00;
-  --zs-orange-90: #663000;
-  --zs-orange-100: #481A00;
-  --zs-orange-00: #FEFBF4;
+  /* Signal Orange palette (Tier 1) */
+  --signal-orange-10: #FFF1D6;
+  --signal-orange-20: #FFD68F;
+  --signal-orange-30: #FFC657;
+  --signal-orange-40: #FFB234;
+  --signal-orange-50: #FF9900;
+  --signal-orange-60: #EC7200;
+  --signal-orange-70: #CB6100;
+  --signal-orange-80: #A54F00;
+  --signal-orange-90: #663000;
+  --signal-orange-100: #481A00;
+  --signal-orange-00: #FEFBF4;
 
-  /* ZS Red palette (Tier 1) */
-  --zs-red-10: #FBE4E1;
-  --zs-red-20: #F3C6C0;
-  --zs-red-30: #EBA097;
-  --zs-red-40: #E0776D;
-  --zs-red-50: #D65043;
-  --zs-red-60: #C0392B;
-  --zs-red-70: #A5322A;
-  --zs-red-80: #9A241A;
-  --zs-red-90: #6E1710;
-  --zs-red-100: #4A0E08;
-  --zs-red-00: #FEF4F3;
+  /* Error Red palette (Tier 1) */
+  --error-red-10: #FBE4E1;
+  --error-red-20: #F3C6C0;
+  --error-red-30: #EBA097;
+  --error-red-40: #E0776D;
+  --error-red-50: #D65043;
+  --error-red-60: #C0392B;
+  --error-red-70: #A5322A;
+  --error-red-80: #9A241A;
+  --error-red-90: #6E1710;
+  --error-red-100: #4A0E08;
+  --error-red-00: #FEF4F3;
 
-  /* ZSAI Tan palette (Tier 1) */
-  --zsai-tan-10: #ECE6DD;
-  --zsai-tan-20: #F1E4D0;
-  --zsai-tan-30: #E8D6BF;
-  --zsai-tan-40: #DCC6B0;
-  --zsai-tan-50: #CDB39C;
-  --zsai-tan-60: #B89580;
-  --zsai-tan-70: #9A7560;
-  --zsai-tan-80: #7A5944;
-  --zsai-tan-90: #5A3E2C;
-  --zsai-tan-100: #3C2A1D;
-  --zsai-tan-00: #F6F2EB;
+  /* AI_RAMP Tan palette (Tier 1) */
+  --ai-ramp-tan-10: #ECE6DD;
+  --ai-ramp-tan-20: #F1E4D0;
+  --ai-ramp-tan-30: #E8D6BF;
+  --ai-ramp-tan-40: #DCC6B0;
+  --ai-ramp-tan-50: #CDB39C;
+  --ai-ramp-tan-60: #B89580;
+  --ai-ramp-tan-70: #9A7560;
+  --ai-ramp-tan-80: #7A5944;
+  --ai-ramp-tan-90: #5A3E2C;
+  --ai-ramp-tan-100: #3C2A1D;
+  --ai-ramp-tan-00: #F6F2EB;
 
   /* AI semantic aliases (Tier 2 — consume these in components) */
-  --zsai-10: #E0E7FF;
-  --zsai-20: #D2DBFF;
-  --zsai-30: #BECAFE;
-  --zsai-40: #A6B4FC;
-  --zsai-50: #90A3F9;
-  --zsai-60: #7F95F2;
-  --zsai-70: #657CEC;
-  --zsai-80: #4D60E6;
-  --zsai-90: #3544A4;
-  --zsai-100: #1F2A66;
-  --zsai-00: #F5F6FF;
-  --zs-orange-10: #FFF1D6;
-  --zs-orange-20: #FFD68F;
-  --zs-orange-30: #FFC657;
-  --zs-orange-40: #FFB234;
-  --zs-orange-50: #FF9900;
-  --zs-orange-60: #EC7200;
-  --zs-orange-70: #CB6100;
-  --zs-orange-80: #A54F00;
-  --zs-orange-90: #663000;
-  --zs-orange-100: #481A00;
-  --zs-orange-00: #FEFBF4;
-  --zs-red-10: #FBE4E1;
-  --zs-red-20: #F3C6C0;
-  --zs-red-30: #EBA097;
-  --zs-red-40: #E0776D;
-  --zs-red-50: #D65043;
-  --zs-red-60: #C0392B;
-  --zs-red-70: #A5322A;
-  --zs-red-80: #9A241A;
-  --zs-red-90: #6E1710;
-  --zs-red-100: #4A0E08;
-  --zs-red-00: #FEF4F3;
-  --zsai-tan-10: #ECE6DD;
-  --zsai-tan-20: #F1E4D0;
-  --zsai-tan-30: #E8D6BF;
-  --zsai-tan-40: #DCC6B0;
-  --zsai-tan-50: #CDB39C;
-  --zsai-tan-60: #B89580;
-  --zsai-tan-70: #9A7560;
-  --zsai-tan-80: #7A5944;
-  --zsai-tan-90: #5A3E2C;
-  --zsai-tan-100: #3C2A1D;
-  --zsai-tan-00: #F6F2EB;
+  --ai-ramp-10: #E0E7FF;
+  --ai-ramp-20: #D2DBFF;
+  --ai-ramp-30: #BECAFE;
+  --ai-ramp-40: #A6B4FC;
+  --ai-ramp-50: #90A3F9;
+  --ai-ramp-60: #7F95F2;
+  --ai-ramp-70: #657CEC;
+  --ai-ramp-80: #4D60E6;
+  --ai-ramp-90: #3544A4;
+  --ai-ramp-100: #1F2A66;
+  --ai-ramp-00: #F5F6FF;
+  --signal-orange-10: #FFF1D6;
+  --signal-orange-20: #FFD68F;
+  --signal-orange-30: #FFC657;
+  --signal-orange-40: #FFB234;
+  --signal-orange-50: #FF9900;
+  --signal-orange-60: #EC7200;
+  --signal-orange-70: #CB6100;
+  --signal-orange-80: #A54F00;
+  --signal-orange-90: #663000;
+  --signal-orange-100: #481A00;
+  --signal-orange-00: #FEFBF4;
+  --error-red-10: #FBE4E1;
+  --error-red-20: #F3C6C0;
+  --error-red-30: #EBA097;
+  --error-red-40: #E0776D;
+  --error-red-50: #D65043;
+  --error-red-60: #C0392B;
+  --error-red-70: #A5322A;
+  --error-red-80: #9A241A;
+  --error-red-90: #6E1710;
+  --error-red-100: #4A0E08;
+  --error-red-00: #FEF4F3;
+  --ai-ramp-tan-10: #ECE6DD;
+  --ai-ramp-tan-20: #F1E4D0;
+  --ai-ramp-tan-30: #E8D6BF;
+  --ai-ramp-tan-40: #DCC6B0;
+  --ai-ramp-tan-50: #CDB39C;
+  --ai-ramp-tan-60: #B89580;
+  --ai-ramp-tan-70: #9A7560;
+  --ai-ramp-tan-80: #7A5944;
+  --ai-ramp-tan-90: #5A3E2C;
+  --ai-ramp-tan-100: #3C2A1D;
+  --ai-ramp-tan-00: #F6F2EB;
   --color-ai-action-primary: #4D60E6;
   --color-ai-action-primary-hover: #3544A4;
   --color-ai-action-primary-active: #1F2A66;
@@ -183,22 +183,22 @@
   --radius-ai-lg: 20px;
   --radius-ai-full: 100px;
 
-  /* ZDS neutrals */
-  --zds-font: "Open Sans", sans-serif;
-  --zds-text-default: #2f2c3c;
-  --zds-text-helper: #5b5864;
-  --zds-text-disabled: #716e79;
-  --zds-icon-default: #5b5864;
-  --zds-icon-hover: #2f2c3c;
-  --zds-menu-hover-bg: rgba(178,176,182,0.4);
-  --zds-border: #B2B0B6;
-  --zds-border-func: #5b5864;
-  --zds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
-  --zds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
-  --zds-surface: var(--zs-background-default, #ffffff);
-  --zds-text-inverse: var(--zs-text-inverse, #ffffff);
-  --zds-ink-bold: var(--zs-background-extra-bold, #1a1628);
-  --zds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
+  /* DS neutrals */
+  --ds-font: "Open Sans", sans-serif;
+  --ds-text-default: #2f2c3c;
+  --ds-text-helper: #5b5864;
+  --ds-text-disabled: #716e79;
+  --ds-icon-default: #5b5864;
+  --ds-icon-hover: #2f2c3c;
+  --ds-menu-hover-bg: rgba(178,176,182,0.4);
+  --ds-border: #B2B0B6;
+  --ds-border-func: #5b5864;
+  --ds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
+  --ds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
+  --ds-surface: var(--zs-background-default, #ffffff);
+  --ds-text-inverse: var(--zs-text-inverse, #ffffff);
+  --ds-ink-bold: var(--zs-background-extra-bold, #1a1628);
+  --ds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
 
   /* Typography — AI_TYPOGRAPHY tokens */
   --ai-type-super-hero-size: 64px;

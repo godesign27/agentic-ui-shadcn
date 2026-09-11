@@ -1,5 +1,5 @@
 import React from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIChip, type MemoryVariant } from '../../atomic/ai-chip/AIChip';
 import { AIWhyThisLink } from '../../molecules/ai-why-this-link/AIWhyThisLink';
@@ -27,7 +27,7 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '5px 12px', borderRadius: AI.radius.sm,
   border: '1px solid transparent', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-caption-1'],
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-caption-1'],
 };
 
 const VARIANT_BG: Record<MemoryVariant, string> = {
@@ -65,7 +65,7 @@ export function AICardMemory({
       border: `1px solid ${VARIANT_BORDER[variant]}`,
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 300,
       opacity: isRemoved ? 0.7 : 1,
     }}>
@@ -76,14 +76,14 @@ export function AICardMemory({
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
       }}>
         <AIChip kind="memory" variant={variant} label={variant.replace(/-/g, ' ')} />
-        <span style={{ fontSize: 12, color: 'var(--ai-zds-helper)' }}>{source}</span>
+        <span style={{ fontSize: 12, color: 'var(--ai-ds-helper)' }}>{source}</span>
       </div>
 
       {/* Content */}
       <div style={{ padding: '12px 16px' }}>
         <p style={{
-          margin: 0, ...AI_TYPOGRAPHY['@zsai-body-extra-small'],
-          color: isIgnored || isRemoved ? 'var(--ai-btn-disabled-text)' : 'var(--ai-zds-text)',
+          margin: 0, ...AI_TYPOGRAPHY['@ai-body-extra-small'],
+          color: isIgnored || isRemoved ? 'var(--ai-btn-disabled-text)' : 'var(--ai-ds-text)',
           textDecoration: isRemoved ? 'line-through' : 'none',
         }}>
           {content}
@@ -95,13 +95,13 @@ export function AICardMemory({
         {!isRemoved && !isIgnored ? (
           <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
             <AIWhyThisLink variant="view-sources" />
-            <span style={{ fontSize: 12, color: 'var(--ai-zds-helper)', marginLeft: 'auto' }}>
+            <span style={{ fontSize: 12, color: 'var(--ai-ds-helper)', marginLeft: 'auto' }}>
               {date}
             </span>
           </div>
         ) : (
           <div style={{ marginTop: 8, display: 'flex' }}>
-            <span style={{ fontSize: 12, color: 'var(--ai-zds-helper)', marginLeft: 'auto' }}>
+            <span style={{ fontSize: 12, color: 'var(--ai-ds-helper)', marginLeft: 'auto' }}>
               {date}
             </span>
           </div>
@@ -120,12 +120,12 @@ export function AICardMemory({
           </button>
         )}
         {!isRemoved && (
-          <button onClick={onReview} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-zds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
+          <button onClick={onReview} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-ds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
             Review
           </button>
         )}
         {!isIgnored && !isRemoved && (
-          <button onClick={onIgnore} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-zds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
+          <button onClick={onIgnore} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-ds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
             Ignore
           </button>
         )}

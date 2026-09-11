@@ -56,7 +56,7 @@ export interface AISuggestionCompareProps {
   density?:           AISuggestionDensity;
   title?:             string;
   summary?:           string;
-  generatedBy?:       string;                        // "ZAIDYN AI"
+  generatedBy?:       string;                        // "Guild AI"
   timestamp?:         string;                        // "Generated 2h ago"
   suggestions?:       AISuggestionItem[];
   layout?:            AISuggestionLayout;            // default: density-driven
@@ -101,14 +101,14 @@ const RISK_STYLE: Record<AISuggestionRisk, { bg: string; border: string; text: s
   medium:   { bg: '#FBF1DA', border: '#EAD5A6', text: '#854D0E', label: 'Medium risk' },
   high:     { bg: 'var(--ai-status-error-bg, #FBEFEF)',    border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'High risk' },
   critical: { bg: 'var(--ai-status-error-bg, #FBEFEF)',    border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'Critical risk' },
-  unknown:  { bg: 'var(--ai-card-bg-raised, #F5F4F7)',     border: 'var(--ai-card-border, #E5E7EB)',         text: 'var(--ai-zds-helper, #6B6876)',          label: 'Risk unknown' },
+  unknown:  { bg: 'var(--ai-card-bg-raised, #F5F4F7)',     border: 'var(--ai-card-border, #E5E7EB)',         text: 'var(--ai-ds-helper, #6B6876)',          label: 'Risk unknown' },
 };
 
 const CONFIDENCE_STYLE: Record<AISuggestionConfidence, { bg: string; border: string; text: string; label: string }> = {
   high:    { bg: '#EAF4EE', border: '#CDE3D5', text: '#1F6B40', label: 'High confidence' },
   medium:  { bg: '#FBF1DA', border: '#EAD5A6', text: '#854D0E', label: 'Medium confidence' },
   low:     { bg: 'var(--ai-status-error-bg, #FBEFEF)', border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'Low confidence' },
-  unknown: { bg: 'var(--ai-card-bg-raised, #F5F4F7)',  border: 'var(--ai-card-border, #E5E7EB)',         text: 'var(--ai-zds-helper, #6B6876)',          label: 'Confidence unknown' },
+  unknown: { bg: 'var(--ai-card-bg-raised, #F5F4F7)',  border: 'var(--ai-card-border, #E5E7EB)',         text: 'var(--ai-ds-helper, #6B6876)',          label: 'Confidence unknown' },
 };
 
 function Pill({ tone, label }: { tone: { bg: string; border: string; text: string }; label: string }) {
@@ -206,7 +206,7 @@ function SuggestionCard({
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
           {isRecommended && <RecommendedTag />}
           {s.disabled && (
-            <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+            <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
               Unavailable
             </span>
           )}
@@ -216,7 +216,7 @@ function SuggestionCard({
       {/* Option title */}
       <h4 style={{
         margin: 0, fontFamily: F, fontSize: 14, fontWeight: 700,
-        color: 'var(--ai-zds-text, #1A1628)', lineHeight: 1.35,
+        color: 'var(--ai-ds-text, #1A1628)', lineHeight: 1.35,
       }}>
         {s.title}
       </h4>
@@ -232,7 +232,7 @@ function SuggestionCard({
         </div>
         <div style={{
           fontFamily: F, fontSize: 13, fontWeight: 600,
-          color: 'var(--ai-zds-text, #2F2C3C)', lineHeight: 1.4,
+          color: 'var(--ai-ds-text, #2F2C3C)', lineHeight: 1.4,
         }}>
           {s.benefit}
         </div>
@@ -249,7 +249,7 @@ function SuggestionCard({
             Tradeoff
           </div>
           <div style={{
-            fontFamily: F, fontSize: 13, color: 'var(--ai-zds-text, #2F2C3C)', lineHeight: 1.4,
+            fontFamily: F, fontSize: 13, color: 'var(--ai-ds-text, #2F2C3C)', lineHeight: 1.4,
           }}>
             {s.tradeoff}
           </div>
@@ -258,7 +258,7 @@ function SuggestionCard({
 
       {/* Risk note — short colour text on top of the risk pill */}
       {s.riskNote && density !== 'simple' && (
-        <div style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+        <div style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
           {s.riskNote}
         </div>
       )}
@@ -281,7 +281,7 @@ function SuggestionCard({
               }}>{m.label}</span>
               <span style={{
                 fontFamily: F, fontSize: 14, fontWeight: 700,
-                color: 'var(--ai-zds-text, #1A1628)',
+                color: 'var(--ai-ds-text, #1A1628)',
               }}>{m.value}</span>
             </div>
           ))}
@@ -303,7 +303,7 @@ function SuggestionCard({
             <AIChip kind="brief"
               label={s.source} size="sm" noDot
               icon="zs-icon-data-table"
-              accentColor="var(--ai-zds-helper, #6B6876)"
+              accentColor="var(--ai-ds-helper, #6B6876)"
               accentBg="var(--ai-card-bg-raised, #F5F4F7)"
             />
           )}
@@ -311,7 +311,7 @@ function SuggestionCard({
             <AIChip kind="brief"
               label={s.freshness} size="sm" noDot
               icon="zs-icon-clock-pending"
-              accentColor="var(--ai-zds-helper, #6B6876)"
+              accentColor="var(--ai-ds-helper, #6B6876)"
               accentBg="var(--ai-card-bg-raised, #F5F4F7)"
             />
           )}
@@ -417,7 +417,7 @@ export const SAMPLE_SUGGESTION_COMPARE = {
   density: 'rich' as AISuggestionDensity,
   title: 'Compare next-best coverage options',
   summary: 'Two viable paths to recover Mid-Atlantic reach before Q3 freeze.',
-  generatedBy: 'ZAIDYN AI',
+  generatedBy: 'Guild AI',
   timestamp: 'Generated 1h ago',
   suggestions: SAMPLE_SUGGESTIONS,
 };
@@ -519,10 +519,10 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
                   </span>
                 )}
                 {generatedBy && timestamp && (
-                  <span style={{ color: 'var(--ai-zds-helper, #9CA3AF)', opacity: 0.6 }}>·</span>
+                  <span style={{ color: 'var(--ai-ds-helper, #9CA3AF)', opacity: 0.6 }}>·</span>
                 )}
                 {timestamp && (
-                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
                     {timestamp}
                   </span>
                 )}
@@ -533,7 +533,7 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
             {title && (
               <h3 id={titleId} style={{
                 margin: 0, fontFamily: F, fontSize: 15, fontWeight: 700,
-                color: 'var(--ai-zds-text, #1A1628)', lineHeight: 1.3,
+                color: 'var(--ai-ds-text, #1A1628)', lineHeight: 1.3,
               }}>
                 {title}
               </h3>
@@ -541,7 +541,7 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
             {summary && (
               <p style={{
                 margin: 0, fontFamily: F, fontSize: 13, lineHeight: 1.55,
-                color: 'var(--ai-zds-text, #2F2C3C)',
+                color: 'var(--ai-ds-text, #2F2C3C)',
               }}>
                 {summary}
               </p>
@@ -571,7 +571,7 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
           {isEmpty && !isError && (
             <div role="status" style={{
               fontFamily: F, fontSize: 13,
-              color: 'var(--ai-zds-helper, #6B6876)',
+              color: 'var(--ai-ds-helper, #6B6876)',
               background: tintedBg,
               border: `1px solid ${divider}`,
               borderRadius: 8, padding: '12px 14px',
@@ -584,7 +584,7 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
             <>
               <div role="status" aria-live="polite" style={{
                 fontFamily: F, fontSize: 12,
-                color: 'var(--ai-zds-helper, #6B6876)',
+                color: 'var(--ai-ds-helper, #6B6876)',
               }}>
                 {loadingLabel}
               </div>
@@ -603,7 +603,7 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
               {isUpdating && (
                 <div role="status" aria-live="polite" style={{
                   fontFamily: F, fontSize: 12,
-                  color: 'var(--ai-zds-helper, #6B6876)',
+                  color: 'var(--ai-ds-helper, #6B6876)',
                 }}>
                   Updating options…
                 </div>
@@ -641,8 +641,8 @@ export function AISuggestionCompare(props: AISuggestionCompareProps) {
             {(showFooterLinks || showFooterApproval || reviewer) && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                 {reviewer && (
-                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
-                    Reviewer: <span style={{ color: 'var(--ai-zds-text, #2F2C3C)', fontWeight: 600 }}>{reviewer}</span>
+                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
+                    Reviewer: <span style={{ color: 'var(--ai-ds-text, #2F2C3C)', fontWeight: 600 }}>{reviewer}</span>
                   </span>
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginLeft: 'auto' }}>

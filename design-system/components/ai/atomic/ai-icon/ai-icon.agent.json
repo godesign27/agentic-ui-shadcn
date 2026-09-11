@@ -5,7 +5,7 @@
   "repoModule": "aiIcon",
   "tier": "atomic",
   "status": "draft",
-  "description": "AIIcon is the canonical way to render any icon on a ZAIDYN AI surface. The icon set itself is the Zaidyn Icon Library \u2014 the same `ui-icon-{name}` inventory documented in Foundations \u2192 Iconography, whe",
+  "description": "AIIcon is the canonical way to render any icon on a Guild AI surface. The icon set itself is the Guild Icon Library \u2014 the same `ui-icon-{name}` inventory documented in Foundations \u2192 Iconography, whe",
   "intent": "Not a new icon set \u2014 a behavior and color layer applied to standard icons. Every AI icon choice must justify its treatment against the 60-30-10 color rule: 60% neutral, 30% product/semantic, 10% AI identity.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-icon/ai-icon.md",

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiAgentDrawer`  
 **Component type:** React organism  
@@ -12,9 +12,9 @@
 
 ## Purpose
 
-The canonical AI assistant panel content. Bring ZAIDYN Agent into any surface — the header, conversation thread, quick suggestion chips, and input are all in one composable group.
+The canonical AI assistant panel content. Bring Guild Agent into any surface — the header, conversation thread, quick suggestion chips, and input are all in one composable group.
 
-AIAgentDrawer is the composable interior content for the ZAIDYN Agent side panel. It renders the full ZAIDYN Agent experience — branded header, welcome message bubble, conversation thread, contextual quick suggestion chips, and the shared AIInputCard — without imposing any positioning, sizing, or drawer shell constraints. This makes it independently usable in any container: a docked drawer, a floating panel, a modal, or an embedded section. The ai-assisted-side-drawer page pattern uses this component for its interior content. A `variant="focused-dialog"` swap replaces the bottom AIInputCard toolbar with the AIDialogSlim pill (+ · Message · Mic) for tighter drawer surfaces where the full toolbar is overkill. A `variant="hanging-panel"` lifts the drawer off the edge into a draggable floating panel — header carries a grab handle (drag to move) and a dock icon that snaps the panel back to the docked side position. Orthogonal to variant, `headerTone="dark"` repaints only the header bar to an inverse brand-ink surface (white title + icons) while the chat body stays light.
+AIAgentDrawer is the composable interior content for the Guild Agent side panel. It renders the full Guild Agent experience — branded header, welcome message bubble, conversation thread, contextual quick suggestion chips, and the shared AIInputCard — without imposing any positioning, sizing, or drawer shell constraints. This makes it independently usable in any container: a docked drawer, a floating panel, a modal, or an embedded section. The ai-assisted-side-drawer page pattern uses this component for its interior content. A `variant="focused-dialog"` swap replaces the bottom AIInputCard toolbar with the AIDialogSlim pill (+ · Message · Mic) for tighter drawer surfaces where the full toolbar is overkill. A `variant="hanging-panel"` lifts the drawer off the edge into a draggable floating panel — header carries a grab handle (drag to move) and a dock icon that snaps the panel back to the docked side position. Orthogonal to variant, `headerTone="dark"` repaints only the header bar to an inverse brand-ink surface (white title + icons) while the chat body stays light.
 
 **Export:** `AIAgentDrawer` (co-located TSX — no package required)
 
@@ -41,7 +41,7 @@ AIAgentDrawer is the composable interior content for the ZAIDYN Agent side panel
 
 - Inside the ai-assisted-side-drawer as the standard panel content
 - Inside a floating panel overlay when the full drawer shell is not needed
-- Any surface embedding the ZAIDYN Agent conversation experience
+- Any surface embedding the Guild Agent conversation experience
 
 ## When not to use
 
@@ -70,7 +70,7 @@ AIAgentDrawer is the composable interior content for the ZAIDYN Agent side panel
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `title` | `string` | `"ZAIDYN Agent"` | Agent name shown in the header. |
+| `title` | `string` | `"Guild Agent"` | Agent name shown in the header. |
 | `greeting` | `string` | `built-in` | Welcome message text inside the first message bubble. |
 | `quickSuggestions` | `string[] \| {icon,label}[]` | `4 defaults` | Chip labels shown when no conversation exists yet. |
 | `width` | `number` | `380` | Informational width hint; layout is controlled by the parent container. |
@@ -132,7 +132,7 @@ import { AIAgentDrawer } from './AIAgentDrawer';
 
 <div style={{ width: 380, height: '100%', borderLeft: '1px solid #E5E3E6' }}>
   <AIAgentDrawer
-    title="ZAIDYN Agent"
+    title="Guild Agent"
     greeting="Hi Theo! I can help with your reports — summarize results, identify alignment trends, or suggest next actions."
     quickSuggestions={['Summarize my reports', 'Identify Q1 trends', 'Compare alignments', 'Suggest improvements']}
     onClose={() => setPanelOpen(false)}
@@ -140,7 +140,7 @@ import { AIAgentDrawer } from './AIAgentDrawer';
 </div>
 
 <AIAgentDrawer
-  title="ZAIDYN Agent"
+  title="Guild Agent"
   headerTone="dark"
   onHistory={() => openRecentChats()}
   onClose={() => setPanelOpen(false)}
@@ -154,7 +154,7 @@ import { AIAgentDrawer } from './AIAgentDrawer';
 3. Do not invent dependency atomics — fetch from sibling folders under `components/ai/`.
 4. Prefer token references (`AI.color.*`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 5. Always load `components/ai/tokens/css/ai-surface.css` so organism surface vars resolve.
-6. Do **not** require `@zaidyn/ai-ui` — this tree is self-contained for agents.
+6. Do **not** require `an external AI UI package` — this tree is self-contained for agents.
 
 Full agent contract: `components/ai/organisms/ai-agent-drawer/ai-agent-drawer.agent.json`.
 

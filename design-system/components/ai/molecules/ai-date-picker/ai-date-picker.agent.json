@@ -5,8 +5,8 @@
   "repoModule": "aiDatePicker",
   "tier": "molecules",
   "status": "experimental",
-  "description": "The AI Date Picker mirrors the ZDS Date Picker (src/datePicker/) 1:1 in structure and behavior \u2014 an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link \u2014 but is restyled onto the ZAIDYN AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the ZSAI indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from ZDS; the anatomy, states, and keyboard model are identical.",
-  "intent": "The ZDS Date Picker on the AI surface \u2014 AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.",
+  "description": "The AI Date Picker mirrors the DS Date Picker (src/datePicker/) 1:1 in structure and behavior \u2014 an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link \u2014 but is restyled onto the Guild AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the AI_RAMP indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.",
+  "intent": "The DS Date Picker on the AI surface \u2014 AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-date-picker/ai-date-picker.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -106,7 +106,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -128,7 +128,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

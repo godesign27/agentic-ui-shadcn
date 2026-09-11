@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export type FeedbackSentiment = 'positive' | 'negative' | 'neutral';
@@ -26,13 +26,13 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '6px 14px', borderRadius: AI.radius.sm,
   border: '1px solid transparent', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
 };
 
 const SENTIMENT_CONFIG: Record<FeedbackSentiment, { icon: string; label: string; color: string; bg: string }> = {
   positive: { icon: '👍', label: 'Positive feedback received', color: '#27AE60', bg: 'var(--ai-feedback-active-helpful)' },
   negative: { icon: '👎', label: 'Negative feedback received', color: '#E74C3C', bg: 'var(--ai-feedback-active-not)' },
-  neutral:  { icon: '➡️',  label: 'Neutral feedback received', color: 'var(--ai-zds-helper)', bg: 'var(--ai-confidence-track)' },
+  neutral:  { icon: '➡️',  label: 'Neutral feedback received', color: 'var(--ai-ds-helper)', bg: 'var(--ai-confidence-track)' },
 };
 
 export function AICardLearningFeedback({
@@ -58,7 +58,7 @@ export function AICardLearningFeedback({
       border: `1px solid ${undone ? AI.color.border.default : cfg.color + '44'}`,
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 300,
       opacity: undone ? 0.6 : 1,
       transition: 'opacity 0.3s, border-color 0.3s',
@@ -72,10 +72,10 @@ export function AICardLearningFeedback({
       }}>
         <span style={{ fontSize: 22 }}>{cfg.icon}</span>
         <div style={{ flex: 1 }}>
-          <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: undone ? 'var(--ai-btn-disabled-text)' : cfg.color }}>
+          <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: undone ? 'var(--ai-btn-disabled-text)' : cfg.color }}>
             {undone ? 'Feedback undone' : cfg.label}
           </div>
-          <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)', marginTop: 2 }}>{timestamp}</div>
+          <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)', marginTop: 2 }}>{timestamp}</div>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ export function AICardLearningFeedback({
         <>
           {/* Inferred preference */}
           <div style={{ padding: '14px 18px', borderBottom: '1px solid var(--ai-card-border)' }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-2'], color: 'var(--ai-zds-helper)', marginBottom: 6 }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-caption-2'], color: 'var(--ai-ds-helper)', marginBottom: 6 }}>
               INFERRED PREFERENCE
             </div>
             <div style={{
@@ -102,17 +102,17 @@ export function AICardLearningFeedback({
 
           {/* Applied areas */}
           <div style={{ padding: '14px 18px' }}>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-2'], color: 'var(--ai-zds-helper)', marginBottom: 8 }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-caption-2'], color: 'var(--ai-ds-helper)', marginBottom: 8 }}>
               APPLIED TO
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {appliedAreas.map((area, i) => (
                 <span key={i} style={{
-                  ...AI_TYPOGRAPHY['@zsai-meta-label'],
+                  ...AI_TYPOGRAPHY['@ai-meta-label'],
                   padding: '3px 9px', borderRadius: 4,
                   background: 'var(--ai-card-bg-raised)',
                   border: '1px solid var(--ai-card-border)',
-                  color: 'var(--ai-zds-text)',
+                  color: 'var(--ai-ds-text)',
                 }}>
                   {area}
                 </span>
@@ -130,11 +130,11 @@ export function AICardLearningFeedback({
         background: 'var(--ai-card-bg-raised)',
       }}>
         {!undone && (
-          <button onClick={handleUndo} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-zds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
+          <button onClick={handleUndo} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-ds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
             ↩ Undo
           </button>
         )}
-        <button onClick={onViewHistory} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-zds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
+        <button onClick={onViewHistory} style={{ ...BTN_BASE, background: 'transparent', color: 'var(--ai-ds-helper)', border: '1px solid var(--ai-btn-outline-border)' }}>
           View RiHistoryLine
         </button>
         <button onClick={onEditPreferences} style={{ ...BTN_BASE, background: 'transparent', color: AI.color.brand, border: 'none' }}>

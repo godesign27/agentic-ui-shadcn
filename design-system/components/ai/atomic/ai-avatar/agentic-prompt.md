@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Avatar
 
-You are implementing the **AI Avatar** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Avatar** atom from the Guild AI Design System mirror.
 
 Fetch specs and implementation guidance from the GitHub repository below.
 
@@ -51,7 +51,7 @@ Integrate **AI Avatar** using **`AIAvatar`** and **`BotAvatar`** as documented i
 |------|------|---------|
 | `size` | `number?` | `34` (`AIAvatar`) / `18` (`BotAvatar`) |
 
-**Accessibility:** `AIAvatar` → `aria-label="ZAIDYN Agent"` · `BotAvatar` → `aria-hidden="true"` when text attributes speaker
+**Accessibility:** `AIAvatar` → `aria-label="Guild Agent"` · `BotAvatar` → `aria-hidden="true"` when text attributes speaker
 
 ---
 

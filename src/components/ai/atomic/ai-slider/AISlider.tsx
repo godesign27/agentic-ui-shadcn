@@ -1,11 +1,11 @@
 /**
- * AI Slider — the standard ZDS Slider, re-surfaced in the AI theme.
+ * AI Slider — the standard DS Slider, re-surfaced in the AI theme.
  *
- * This is a mirror of `src/app/components/zds/zds-slider.tsx`, not a new
+ * This is a mirror of `src/app/components/ds/ds-slider.tsx`, not a new
  * component. Geometry, state machine, keyboard model, ARIA and part structure
  * are identical; only the *surface* moves. The standard slider's accent ladder
  * is teal → dark-teal → navy (inactive → hover → active/pressed), and the AI
- * ladder is the same three rungs read off the ZSAI ramp:
+ * ladder is the same three rungs read off the AI_RAMP:
  *
  *   #2F6F7B  teal        inactive track   → AI.color.brand        #4D60E6
  *   #2D535F  dark teal   hover handle     → AI.color.brandStrong  #3544A4
@@ -20,17 +20,17 @@
  * Three deliberate divergences from the standard:
  *
  *   - **Error is the AI status red, not the standard's.** The standard uses
- *     #B21111 / #5C1A0B / #3F211B; AI surfaces already carry `ZS_RED` for
+ *     #B21111 / #5C1A0B / #3F211B; AI surfaces already carry `SIGNAL_RED` for
  *     destructive state, and mixing two reds on one screen is worse than the
  *     mirror being imperfect. The three-hue structure is kept: separate values
  *     for inactive, active and pressed, because error is a *mode* here too, not
  *     a tint on one element.
- *   - **Disabled and neutrals stay ZDS.** A disabled control has no brand — it
+ *   - **Disabled and neutrals stay DS.** A disabled control has no brand — it
  *     has no state to express. Swapping its grey for a brand-tinted grey would
  *     make "off" look like a quiet "on".
  *   - **Typography reads `AI_TYPOGRAPHY`, not raw pixels.** The Figma rule label
- *     is Open Sans Bold 12 and the tooltip Bold 16, which map onto `@zsai-h6`
- *     and `@zsai-h4` exactly — so the AI mirror uses the tokens and inherits
+ *     is Open Sans Bold 12 and the tooltip Bold 16, which map onto `@ai-h6`
+ *     and `@ai-h4` exactly — so the AI mirror uses the tokens and inherits
  *     any future change to the AI type scale.
  *
  * Everything else the standard file argues for holds here verbatim and is not
@@ -40,7 +40,7 @@
  */
 
 import React from 'react';
-import { AI, ZS_RED, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_RED, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Tier 3 component tokens — ai-slider.* ────────────────────────────────────
@@ -52,8 +52,8 @@ import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 //   ai-slider.handle.border      → var(--zs-border-strong, #5b5864)
 //   ai-slider.focus.ring         → AI.color.border.focus
 //   ai-slider.tooltip.surface    → AI.color.brandInk     (#1F2A66)
-//   ai-slider.track.error        → ZS_RED[60] / [80] / [100]
-//   ai-slider.*.disabled         → the ZDS neutrals, unswapped
+//   ai-slider.track.error        → SIGNAL_RED[60] / [80] / [100]
+//   ai-slider.*.disabled         → the DS neutrals, unswapped
 
 const TOKEN = {
   /** The inactive rule. Standard's teal; here the brand accent itself. */
@@ -73,12 +73,12 @@ const TOKEN = {
   surface:     'var(--zs-background-default, #ffffff)',
 
   /** Error mode — the AI status red, three rungs deep like the standard's. */
-  error:       `var(--zs-ai-slider-track-error, ${ZS_RED[60]})`,
-  errorDeep:   `var(--zs-ai-slider-track-error-active, ${ZS_RED[80]})`,
-  errorInk:    `var(--zs-ai-slider-handle-error-pressed, ${ZS_RED[100]})`,
+  error:       `var(--zs-ai-slider-track-error, ${SIGNAL_RED[60]})`,
+  errorDeep:   `var(--zs-ai-slider-track-error-active, ${SIGNAL_RED[80]})`,
+  errorInk:    `var(--zs-ai-slider-handle-error-pressed, ${SIGNAL_RED[100]})`,
 
   /**
-   * The focus ring stays the ZDS focus blue rather than moving to
+   * The focus ring stays the DS focus blue rather than moving to
    * `AI.color.border.focus` — which is `AI.color.brand` itself, and would put a
    * brand-blue ring around a handle sitting on a brand-blue track. A focus ring
    * has to be legible against whatever it lands on, so it stays outside both
@@ -87,7 +87,7 @@ const TOKEN = {
   focus:       'var(--zs-border-focus, #2f9bff)',
   tooltip:     `var(--zs-ai-slider-tooltip-surface, ${AI.color.brandInk})`,
 
-  /** Validation gradient — the AI semantic triad rather than the raw ZDS hexes. */
+  /** Validation gradient — the AI semantic triad rather than the raw DS hexes. */
   validation0: `var(--zs-ai-slider-validation-low, ${AI.color.status.error})`,
   validation1: `var(--zs-ai-slider-validation-mid, ${AI.color.status.warning})`,
   validation2: `var(--zs-ai-slider-validation-high, ${AI.color.status.success})`,
@@ -285,14 +285,14 @@ export interface AISliderRuleLabelProps {
   style?: React.CSSProperties;
 }
 
-/** `@zsai-h6` — 12/700/1.4, the AI token that matches the Figma rule label. */
+/** `@ai-h6` — 12/700/1.4, the AI token that matches the Figma rule label. */
 export function AISliderRuleLabel({ children = '10', disabled = false, style }: AISliderRuleLabelProps) {
   return (
     <span
       data-name="ai-slider-rule-label"
       style={{
         fontFamily: F,
-        ...AI_TYPOGRAPHY['@zsai-h6'],
+        ...AI_TYPOGRAPHY['@ai-h6'],
         letterSpacing: '-0.15px',
         color: disabled ? TOKEN.textOff : TOKEN.text,
         whiteSpace: 'nowrap',
@@ -311,7 +311,7 @@ export interface AISliderTooltipProps {
   style?: React.CSSProperties;
 }
 
-/** `@zsai-h4` on brand ink, with the 12×6 arrow beneath. */
+/** `@ai-h4` on brand ink, with the 12×6 arrow beneath. */
 export function AISliderTooltip({ children = '50', style }: AISliderTooltipProps) {
   return (
     <span
@@ -329,7 +329,7 @@ export function AISliderTooltip({ children = '50', style }: AISliderTooltipProps
           borderRadius: AI.radius.xs,
           background: TOKEN.tooltip,
           fontFamily: F,
-          ...AI_TYPOGRAPHY['@zsai-h4'],
+          ...AI_TYPOGRAPHY['@ai-h4'],
           color: TOKEN.inverse,
         }}
       >

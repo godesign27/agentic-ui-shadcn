@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Suggestion Compare
 
-You are implementing the **AI Suggestion Compare** (`ai-suggestion-compare`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Suggestion Compare** (`ai-suggestion-compare`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -28,7 +28,7 @@ Implement `AISuggestionCompare` exactly as specified in the mirror. Match props,
 - `density` (`"simple" \) default `"rich" \` — "robust"`
 - `title` (`string`) default ``—`` — Comparison title (H3).
 - `summary` (`string`) default ``—`` — 1-line summary under the title.
-- `generatedBy` (`string`) default ``—`` — Rich+. Uppercase brand-color attribution label ("ZAIDYN AI").
+- `generatedBy` (`string`) default ``—`` — Rich+. Uppercase brand-color attribution label ("Guild AI").
 - `timestamp` (`string`) default ``—`` — Rich+. Freshness or "Generated" timestamp.
 - `suggestions` (`AISuggestionItem[]`) default ``required`` — 2–4 option objects. See suggestion shape below.
 - `layout` (`"sideBySide" \) default `"stacked" \` — "grid" \

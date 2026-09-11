@@ -6,7 +6,7 @@
   "tier": "atomic",
   "status": "active",
   "description": "Preferred AI Assisted entry point \u2014 near-black pill (avatar + Chat) or avatar-only control opening the side drawer / floating panel.",
-  "intent": "Invite users to open ZAIDYN Agent without dominating the product surface; label is always Chat for avatar-chat variant.",
+  "intent": "Invite users to open Guild Agent without dominating the product surface; label is always Chat for avatar-chat variant.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-launcher/ai-launcher.md",
     "contract": "components/ai/atomic/ai-launcher/ai-launcher.agent.json",
@@ -134,7 +134,7 @@
       "values": [
         "string"
       ],
-      "default": "Open ZAIDYN Agent",
+      "default": "Open Guild Agent",
       "hint": "Tooltip text"
     },
     {
@@ -142,7 +142,7 @@
       "values": [
         "string"
       ],
-      "default": "Open ZAIDYN Agent chat",
+      "default": "Open Guild Agent chat",
       "hint": "Accessible button name"
     },
     {

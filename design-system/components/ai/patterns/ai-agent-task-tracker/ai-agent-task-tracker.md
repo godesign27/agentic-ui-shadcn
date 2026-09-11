@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiAgentTaskTracker`  
 **Component type:** React page  
@@ -14,13 +14,13 @@
 
 Persistent task supervision · Needs Input resolution · Bidirectional UI + natural-language mutation
 
-AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (ZSAI tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere — AI emphasis uses ZSAI blue (#4D60E6); ZS orange is reserved for Needs Input / blocked / warning / pending approval; ZSAI tan stays on the supervisor agent surface only.
+AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (AI_RAMP tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere — AI emphasis uses AI_RAMP blue (#4D60E6); Guild orange is reserved for Needs Input / blocked / warning / pending approval; AI_RAMP tan stays on the supervisor agent surface only.
 
 **Export:** `AIAgentTaskTracker`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -59,7 +59,7 @@ AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic wor
 
 ## Anatomy
 
-1. **Page header** _(Unique)_ — Smart Assist supervisor agent companion strip (ZSAI tan) + page title + global actions (New task, Review Needs Input, View process trace, Export, Settings).
+1. **Page header** _(Unique)_ — Smart Assist supervisor agent companion strip (AI_RAMP tan) + page title + global actions (New task, Review Needs Input, View process trace, Export, Settings).
 2. **Summary metric row** _(Shared)_ — 4 AICardMetric tiles (Active, Needs Input, Scheduled, Health risks). Robust adds Recurring, Completed today, Blocked, Pending approval — 8 total.
 3. **Proactive Agentic Insights** _(Shared)_ — AIInsightList composing AIAnalysisInsight rows on a brand-tinted surface. Each insight ends in an action link.
 4. **Filter + control bar** _(Unique)_ — Pill filter chips with live counts (Needs Input chip is always orange when > 0) + Search + Sort + List/Board toggle.
@@ -70,7 +70,7 @@ AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic wor
 
 ## State variations
 
-- **Basic** _(density="basic" + supervisorTone="dark")_ — Header + summary row + dense list (Basic cards). MVP scope — pairs the basic density with the dark zsai-100 supervisor bar.
+- **Basic** _(density="basic" + supervisorTone="dark")_ — Header + summary row + dense list (Basic cards). MVP scope — pairs the basic density with the dark ai-ramp-100 supervisor bar.
 - **Simple** _(density="simple")_ — Adds NL command bar + simple task cards.
 - **Rich (default)** _(density="rich")_ — Adds Agentic Insights + Rich cards + detail drawer.
 - **Robust** _(density="robust")_ — Full governance: Robust cards + bidirectional mutation + review/approval + audit trail.
@@ -99,9 +99,9 @@ AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic wor
 | Token | Value | Usage |
 | --- | --- | --- |
 | `page.bg` | `#F7F8FC` | Neutral enterprise canvas (no AI gradient on root) |
-| `supervisor.surface` | `ZSAI_TAN[‘00’]` | Smart Assist companion strip background |
-| `supervisor.border` | `ZSAI_TAN[30]` | Companion strip border |
-| `supervisor.ink` | `ZSAI_TAN[100]` | Companion strip text |
+| `supervisor.surface` | `COMPANION_TAN[‘00’]` | Smart Assist companion strip background |
+| `supervisor.border` | `COMPANION_TAN[30]` | Companion strip border |
+| `supervisor.ink` | `COMPANION_TAN[100]` | Companion strip text |
 
 ### AI emphasis
 | Token | Value | Usage |
@@ -111,13 +111,13 @@ AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic wor
 | `avatar.gradient` | `AI.gradient.action.full` | Supervisor + NL bar avatar |
 | `filter.active.bg` | `var(--ai-brand-surface)` | Active filter chip background |
 
-### Needs Input (ZS orange — 10% accent rule)
+### Needs Input (Guild orange — 10% accent rule)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `needsinput.chip.bg` | `ZS_ORANGE[10]` | Active Needs-Input filter chip when count > 0 |
-| `needsinput.chip.border` | `ZS_ORANGE[40]` | Active Needs-Input filter chip border |
-| `needsinput.chip.text` | `ZS_ORANGE[80]` | Active Needs-Input filter chip text |
-| `task.ribbon` | `ZS_ORANGE[60]` | Left ribbon on Needs Input / escalated / pending-approval task cards |
+| `needsinput.chip.bg` | `SIGNAL_ORANGE[10]` | Active Needs-Input filter chip when count > 0 |
+| `needsinput.chip.border` | `SIGNAL_ORANGE[40]` | Active Needs-Input filter chip border |
+| `needsinput.chip.text` | `SIGNAL_ORANGE[80]` | Active Needs-Input filter chip text |
+| `task.ribbon` | `SIGNAL_ORANGE[60]` | Left ribbon on Needs Input / escalated / pending-approval task cards |
 
 ## Flows
 
@@ -195,9 +195,9 @@ import { AIAgentTaskTrackerMobile } from '@/components/ai/pages/ai-agent-task-tr
 ## Agent rules
 
 1. Read this mirror spec and `ai-agent-task-tracker.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/ai-agent-task-tracker/ai-agent-task-tracker.agent.json`.
 

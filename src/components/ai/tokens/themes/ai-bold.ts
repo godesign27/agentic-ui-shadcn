@@ -1,15 +1,15 @@
 import type { SurfaceThemeDefinition } from './palette-types';
 
 /**
- * Dark brand surface — inverts the ZSAI ramp so lightest steps become surfaces
+ * Dark brand surface — inverts the AI_RAMP so lightest steps become surfaces
  * and text flips to ghost tints for contrast on deep navy.
  */
 export const aiBoldTheme: SurfaceThemeDefinition = {
   id: 'ai-bold',
-  label: 'ZSAI Bold',
+  label: 'AI_RAMP Bold',
   description: 'Dark brand surface — deep navy panels with lighter action accents.',
   palette: {
-    ZSAI: {
+    AI_RAMP: {
       100: '#D6DEFD',
       90:  '#9BAEF7',
       80:  '#7F95F2',
@@ -25,7 +25,7 @@ export const aiBoldTheme: SurfaceThemeDefinition = {
   },
   cssOverrides: {
     '--ai-border-default': 'rgba(255, 255, 255, 0.12)',
-    '--ai-zds-text': '#F5F6FF',
-    '--ai-zds-text-helper': '#9BAEF7',
+    '--ai-ds-text': '#F5F6FF',
+    '--ai-ds-text-helper': '#9BAEF7',
   },
 };

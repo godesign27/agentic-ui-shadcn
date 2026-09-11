@@ -1,27 +1,27 @@
 /**
- * ZAIDYN AI Design Tokens
+ * Guild AI Design Tokens
  *
  * Three-tier structure:
- *   Tier 1 — Global Palette   ZSAI ramp  (raw values, no semantic meaning)
+ *   Tier 1 — Global Palette   AI_RAMP  (raw values, no semantic meaning)
  *   Tier 2 — Semantic Aliases AI.*       (maps palette → intent)
  *   Tier 3 — Component Tokens ai-*       (maps semantic → component slots)
  *                                         (defined per-component in component files)
  *
  * Rules:
- *  - Component code must only reference AI.* (Tier 2). Never ZSAI[n] directly.
+ *  - Component code must only reference AI.* (Tier 2). Never AI_RAMP[n] directly.
  *  - Token names encode INTENT, not appearance.
  *  - No color words (purple, iris, violet, blue, teal) in Tier 2 or 3 names.
  *  - ai. prefix = Tier 2  |  ai- prefix = Tier 3 component
- *  - Standard ZAIDYN tokens remain under the zs. / ZDS namespace — never mixed.
+ *  - Standard neutral tokens remain under the DS namespace — never mixed.
  */
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TIER 1 — Global Palette
-// Naming: zsai-{step}  (scale prefix + numeric step, 00–100)
+// Naming: ai-ramp-{step}  (scale prefix + numeric step, 00–100)
 // These are the ONLY tokens that hold raw hex values.
 // They must never appear in component code.
 // ─────────────────────────────────────────────────────────────────────────────
-export const ZSAI = {
+export const AI_RAMP = {
   100: '#1F2A66',
   90:  '#3544A4',
   80:  '#4D60E6',
@@ -35,8 +35,8 @@ export const ZSAI = {
   '00': '#F5F6FF',
 } as const;
 
-// ZS Orange — signal / attention / escalation (10% accent role)
-export const ZS_ORANGE = {
+// Signal Orange — signal / attention / escalation (10% accent role)
+export const SIGNAL_ORANGE = {
   100: '#481A00',
   90:  '#663000',
   80:  '#A54F00',
@@ -50,8 +50,8 @@ export const ZS_ORANGE = {
   '00': '#FEFBF4',
 } as const;
 
-// ZSAI Tan — companion surface / warm neutral (10% accent role)
-export const ZSAI_TAN = {
+// AI_RAMP Tan — companion surface / warm neutral (10% accent role)
+export const COMPANION_TAN = {
   100: '#3C2A1D',
   90:  '#5A3E2C',
   80:  '#7A5944',
@@ -65,8 +65,8 @@ export const ZSAI_TAN = {
   '00': '#F6F2EB',
 } as const;
 
-// ZS Red — error / destructive status
-export const ZS_RED = {
+// Error Red — error / destructive status
+export const SIGNAL_RED = {
   100: '#4A0E08',
   90:  '#6E1710',
   80:  '#9A241A',
@@ -80,20 +80,20 @@ export const ZS_RED = {
   '00': '#FEF4F3',
 } as const;
 
-// ZS Green — success / positive status
-export const ZS_GREEN = {
+// Success Green — success / positive status
+export const SIGNAL_GREEN = {
   80: '#0A6E5E',
   60: '#27AE60',
 } as const;
 
-// ZS Amber — warning / caution status
-export const ZS_AMBER = {
+// Warning Amber — warning / caution status
+export const SIGNAL_AMBER = {
   80: '#8A640C',
   60: '#E67E22',
 } as const;
 
-// ZS Dataviz — chart / series palette (not for UI chrome)
-export const ZS_DATAVIZ = {
+// Dataviz — chart / series palette (not for UI chrome)
+export const DATAVIZ = {
   1:  '#DB6C03',
   2:  '#3287C4',
   3:  '#8D38FC',
@@ -122,71 +122,71 @@ export const AI = {
     // ai.color.action.primary.hover
     // ai.color.action.primary.active
     action: {
-      primary:       ZSAI[80],    // #4D60E6
-      primaryHover:  ZSAI[90],    // #3544A4
-      primaryActive: ZSAI[100],   // #1F2A66
+      primary:       AI_RAMP[80],    // #4D60E6
+      primaryHover:  AI_RAMP[90],    // #3544A4
+      primaryActive: AI_RAMP[100],   // #1F2A66
     },
 
     // ai.color.surface.*               — background fills (non-interactive)
     surface: {
-      default:  ZSAI['00'],        // #F5F6FF  — lightest tint, panel bg
-      subtle:   ZSAI[20],          // #D2DBFF  — card bg, insight fill
-      emphasis: ZSAI[30],          // #BECAFE  — badge fill, table header
+      default:  AI_RAMP['00'],        // #F5F6FF  — lightest tint, panel bg
+      subtle:   AI_RAMP[20],          // #D2DBFF  — card bg, insight fill
+      emphasis: AI_RAMP[30],          // #BECAFE  — badge fill, table header
     },
 
     // ai.color.border.*                — stroke / outline
     border: {
-      default: ZSAI[80],           // #4D60E6  — default card/insight border
-      strong:  ZSAI[90],           // #3544A4  — panel border, chip hover
-      focus:   ZSAI[80],           // #4D60E6  — input focus ring accent
-      subtle:  ZSAI[60],           // #7F95F2  — soft / secondary border
+      default: AI_RAMP[80],           // #4D60E6  — default card/insight border
+      strong:  AI_RAMP[90],           // #3544A4  — panel border, chip hover
+      focus:   AI_RAMP[80],           // #4D60E6  — input focus ring accent
+      subtle:  AI_RAMP[60],           // #7F95F2  — soft / secondary border
     },
 
     // ai.color.text.*                  — typographic colors on AI surfaces
     text: {
-      primary:   ZSAI[100],        // #1F2A66  — heading / label on light surface
-      secondary: ZSAI[90],         // #3544A4  — sub-label, badge label
+      primary:   AI_RAMP[100],        // #1F2A66  — heading / label on light surface
+      secondary: AI_RAMP[90],         // #3544A4  — sub-label, badge label
       onAction:  '#FFFFFF',        // on filled AI button or gradient surface
     },
 
-    // ai.color.brand.*                 — ZSAI brand identity references
-    brand:        ZSAI[80],        // #4D60E6 — primary brand accent
-    brandSubtle:  ZSAI[20],        // #D2DBFF — tinted bg for brand-accented elements
-    brandSurface: ZSAI['00'],      // #F5F6FF — lightest brand tint (panel/card bg)
-    brandBorder:  ZSAI[30],        // #BECAFE — brand-tinted border
-    brandStrong:  ZSAI[90],        // #3544A4 — deep brand for emphasis / dark text
-    brandInk:     ZSAI[100],       // #1F2A66 — darkest brand ink
+    // ai.color.brand.*                 — AI_RAMP brand identity references
+    brand:        AI_RAMP[80],        // #4D60E6 — primary brand accent
+    brandSubtle:  AI_RAMP[20],        // #D2DBFF — tinted bg for brand-accented elements
+    brandSurface: AI_RAMP['00'],      // #F5F6FF — lightest brand tint (panel/card bg)
+    brandBorder:  AI_RAMP[30],        // #BECAFE — brand-tinted border
+    brandStrong:  AI_RAMP[90],        // #3544A4 — deep brand for emphasis / dark text
+    brandInk:     AI_RAMP[100],       // #1F2A66 — darkest brand ink
 
     // ai.color.decorative.*            — non-interactive wash accents
     decorative: {
-      wash:       ZSAI[40],        // #A6B4FC
-      washStrong: ZSAI[60],        // #7F95F2
+      wash:       AI_RAMP[40],        // #A6B4FC
+      washStrong: AI_RAMP[60],        // #7F95F2
     },
 
-    // ai.color.signal.*               — ZS Orange: attention, escalation, CTA (10% rule)
+    // ai.color.signal.*               — Signal Orange: attention, escalation, CTA (10% rule)
     signal: {
-      default:  ZS_ORANGE[80],     // #A54F00 — primary signal color
-      hover:    ZS_ORANGE[90],     // #663000 — signal hover state
-      strong:   ZS_ORANGE[100],    // #481A00 — signal emphasis / high-stakes
-      subtle:   ZS_ORANGE[10],     // #FFF1D6 — signal tinted bg
-      surface:  ZS_ORANGE['00'],   // #FEFBF4 — lightest signal tint
+      default:  SIGNAL_ORANGE[80],     // #A54F00 — primary signal color
+      hover:    SIGNAL_ORANGE[90],     // #663000 — signal hover state
+      strong:   SIGNAL_ORANGE[100],    // #481A00 — signal emphasis / high-stakes
+      subtle:   SIGNAL_ORANGE[10],     // #FFF1D6 — signal tinted bg
+      surface:  SIGNAL_ORANGE['00'],   // #FEFBF4 — lightest signal tint
     },
 
-    // ai.color.companion.*            — ZSAI Tan: warm neutral companion surface (10% rule)
+    // ai.color.companion.*            — AI_RAMP Tan: warm neutral companion surface (10% rule)
     companion: {
-      paper:     ZSAI_TAN['00'],   // #F6F2EB — warmest paper surface
-      surface:   ZSAI_TAN[10],     // #ECE6DD — companion card bg
-      highlight: ZSAI_TAN[20],     // #F1E4D0 — companion highlight / selection
-      border:    ZSAI_TAN[30],     // #E8D6BF — companion border
-      ink:       ZSAI_TAN[100],    // #3C2A1D — companion text / dark ink
+      paper:     COMPANION_TAN['00'],   // #F6F2EB — warmest paper surface
+      surface:   COMPANION_TAN[10],     // #ECE6DD — companion card bg
+      highlight: COMPANION_TAN[20],     // #F1E4D0 — companion highlight / selection
+      border:    COMPANION_TAN[30],     // #E8D6BF — companion border
+      ink:       COMPANION_TAN[100],    // #3C2A1D — companion text / dark ink
     },
 
     // ai.color.status.*               — semantic status fills (success / warning / error)
     status: {
-      success:    ZS_GREEN[80],    // #0A6E5E — success / positive status fill
-      warning:    ZS_AMBER[80],    // #8A640C — warning / caution status fill
-      error:      ZS_RED[60],      // #C0392B — error / destructive action fill
-      errorHover: ZS_RED[70],      // #A5322A — error fill hover
+      success:    SIGNAL_GREEN[80],    // #0A6E5E — success / positive status fill
+      warning:    SIGNAL_AMBER[80],    // #8A640C — warning / caution status fill
+      error:      SIGNAL_RED[60],      // #C0392B — error / destructive action fill
+      errorHover: SIGNAL_RED[70],      // #A5322A — error fill hover
     },
   },
 
@@ -197,9 +197,9 @@ export const AI = {
     action: {
       full:      'linear-gradient(135deg, #657CEC 0%, #4D60E6 100%)',
       secondary: 'linear-gradient(135deg, #7F95F2 0%, #657CEC 50%, #4D60E6 100%)',
-      start:     ZSAI[70],    // #657CEC
-      mid:       ZSAI[80],    // #4D60E6
-      end:       ZSAI[80],    // #4D60E6
+      start:     AI_RAMP[70],    // #657CEC
+      mid:       AI_RAMP[80],    // #4D60E6
+      end:       AI_RAMP[80],    // #4D60E6
     },
 
     // ai.gradient.surface.*            — page-level background gradients
@@ -275,9 +275,9 @@ export const AI = {
 export const F = '"Open Sans", sans-serif';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ZDS — Standard ZAIDYN neutral tokens (separate namespace, never mix with AI.*)
+// DS — Standard Guild neutral tokens (separate namespace, never mix with AI.*)
 // ─────────────────────────────────────────────────────────────────────────────
-export const ZDS = {
+export const DS = {
   font:          F,
   textDefault:   '#2f2c3c',
   textHelper:    '#5b5864',
@@ -297,7 +297,7 @@ export const ZDS = {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Theme variant overrides
-// The 'aqua' variant uses different surface gradients (ZDS teal-influenced).
+// The 'aqua' variant uses different surface gradients (DS teal-influenced).
 // These are theme overrides of ai.gradient.surface.idle / active.
 // ─────────────────────────────────────────────────────────────────────────────
 export const AI_THEME = {
@@ -306,9 +306,9 @@ export const AI_THEME = {
     'gradient.surface.active': AI.gradient.surface.active,
   },
   aqua: {
-    // Override: idle state has more pronounced ZDS-teal ambient tint
+    // Override: idle state has more pronounced DS-teal ambient tint
     'gradient.surface.idle':   'linear-gradient(to bottom, #F3FCFE 0%, #F8FAFB 35%, #F4F3F3 70%, #FAFAFA 100%)',
-    // Override: active state blends ZDS teal into the AI brand palette
+    // Override: active state blends DS teal into the AI brand palette
     'gradient.surface.active': 'linear-gradient(to bottom, #FFFFFF 0%, #F4F3F3 40%, #EDF8FA 100%)',
     // Override: neutral ambient becomes teal-tinted (command-center aqua variant)
     'gradient.surface.neutral': 'linear-gradient(135deg, #E6F6F6 0%, #D0EFEF 100%)',

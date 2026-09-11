@@ -58,13 +58,13 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atoms from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
   "figma": [
     {
-      "url": "https://www.figma.com/design/soPDiNgUZ0J2M3pnfqQ5pD/ZDS-AI-Design-System-v2?node-id=1-229",
+      "url": "https://www.figma.com/design/soPDiNgUZ0J2M3pnfqQ5pD/DS-AI-Design-System-v2?node-id=1-229",
       "nodeId": "1:229",
       "page": "Atoms",
       "fileKey": "soPDiNgUZ0J2M3pnfqQ5pD"
@@ -87,7 +87,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atoms \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

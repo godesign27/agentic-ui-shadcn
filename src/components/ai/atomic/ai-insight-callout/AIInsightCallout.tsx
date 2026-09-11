@@ -10,12 +10,12 @@ export interface AIInsightCalloutProps {
 
 // All tone surfaces use CSS vars so dark mode can swap them without
 // re-rendering. Light values are medium-saturation; dark values are
-// translucent tinted surfaces so white body text (--ai-zds-text) reads.
+// translucent tinted surfaces so white body text (--ai-ds-text) reads.
 const TONE: Record<NonNullable<AIInsightCalloutProps['tone']>, { bg: string; border: string; eyebrow: string; body: string }> = {
-  brand:    { bg: 'var(--ai-insight-brand-bg)',    border: 'var(--ai-insight-brand-border)',    eyebrow: 'var(--ai-insight-brand-eyebrow)',    body: 'var(--ai-insight-brand-body, var(--ai-zds-text, #2F2C3C))'    },
-  warning:  { bg: 'var(--ai-insight-warning-bg)',  border: 'var(--ai-insight-warning-border)',  eyebrow: 'var(--ai-insight-warning-eyebrow)',  body: 'var(--ai-insight-warning-body, var(--ai-zds-text, #2F2C3C))'  },
-  critical: { bg: 'var(--ai-insight-critical-bg)', border: 'var(--ai-insight-critical-border)', eyebrow: 'var(--ai-insight-critical-eyebrow)', body: 'var(--ai-insight-critical-body, var(--ai-zds-text, #2F2C3C))' },
-  success:  { bg: 'var(--ai-insight-success-bg)',  border: 'var(--ai-insight-success-border)',  eyebrow: 'var(--ai-insight-success-eyebrow)',  body: 'var(--ai-insight-success-body, var(--ai-zds-text, #2F2C3C))'  },
+  brand:    { bg: 'var(--ai-insight-brand-bg)',    border: 'var(--ai-insight-brand-border)',    eyebrow: 'var(--ai-insight-brand-eyebrow)',    body: 'var(--ai-insight-brand-body, var(--ai-ds-text, #2F2C3C))'    },
+  warning:  { bg: 'var(--ai-insight-warning-bg)',  border: 'var(--ai-insight-warning-border)',  eyebrow: 'var(--ai-insight-warning-eyebrow)',  body: 'var(--ai-insight-warning-body, var(--ai-ds-text, #2F2C3C))'  },
+  critical: { bg: 'var(--ai-insight-critical-bg)', border: 'var(--ai-insight-critical-border)', eyebrow: 'var(--ai-insight-critical-eyebrow)', body: 'var(--ai-insight-critical-body, var(--ai-ds-text, #2F2C3C))' },
+  success:  { bg: 'var(--ai-insight-success-bg)',  border: 'var(--ai-insight-success-border)',  eyebrow: 'var(--ai-insight-success-eyebrow)',  body: 'var(--ai-insight-success-body, var(--ai-ds-text, #2F2C3C))'  },
 };
 
 function SparkleGlyph({ color }: { color: string }) {
@@ -45,7 +45,7 @@ export function AIInsightCallout({ body, eyebrow = 'AI INSIGHT', tone = 'brand' 
         <SparkleGlyph color={cfg.eyebrow} />
         <span
           style={{
-            ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+            ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
             fontWeight: 700,
             fontFamily: F,
             color: cfg.eyebrow,

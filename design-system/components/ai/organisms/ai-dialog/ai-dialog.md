@@ -22,7 +22,7 @@ Both variants share the same border state machine: neutral → focus-blue → fi
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
@@ -180,7 +180,7 @@ The card border transitions through three states as the user interacts:
 
 ## Accessibility Requirements
 
-- Textarea must have an accessible label or `aria-label` (e.g. “Message ZAIDYN”)
+- Textarea must have an accessible label or `aria-label` (e.g. “Message Guild”)
 - Send button disabled visually and functionally when input is empty
 - Mic and Add controls require accessible names
 - Mode dropdown must expose selected mode to assistive tech
@@ -302,7 +302,7 @@ export function AIInputCard({ onSend, chatMode = false }: AIInputCardProps) {
         onChange={(e) => setValue(e.target.value)}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        placeholder="Message ZAIDYN Agent…"
+        placeholder="Message Guild Agent…"
         rows={1}
         style={{
           width: '100%', resize: 'none', border: 'none', outline: 'none',

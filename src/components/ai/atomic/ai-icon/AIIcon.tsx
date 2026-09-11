@@ -1,91 +1,91 @@
 import React from 'react';
-import { AI, ZDS, ZS_ORANGE, ZSAI_TAN, F } from '../../tokens/ai-tokens';
+import { AI, DS, SIGNAL_ORANGE, COMPANION_TAN, F } from '../../tokens/ai-tokens';
 
-// ── ZDS Icon Path Registry ────────────────────────────────────────────────────
-// Source: zsainc/9904PD0068_zds-ai-mirror · src/core/SVGs/
+// ── DS Icon Path Registry ────────────────────────────────────────────────────
+// Source: upstream AI component source · src/core/SVGs/
 // All icons use 24×24 viewBox. fill="currentColor" applied at render time.
 //
 // FALLBACK PRIORITY:
-//   1. [ZDS]   — path data confirmed from ZDS SVG source files (always prefer)
-//   2. [Remix] — Remix Icons fallback when no ZDS equivalent exists.
-//                Paths normalized to 24×24. Replace with ZDS when a match ships.
+//   1. [DS]   — path data confirmed from DS SVG source files (always prefer)
+//   2. [Remix] — Remix Icons fallback when no DS equivalent exists.
+//                Paths normalized to 24×24. Replace with DS when a match ships.
 //                React: import from '@remixicon/react'. Angular: use ri-* CSS classes.
 //
 // Naming: use the short name (strip the "zs-icon-" prefix)
 
-export type ZDSIconSource = 'zds' | 'remix-fallback';
+export type AIIconSource = 'ds' | 'remix-fallback';
 
 interface IconEntry {
   d:        string;
   /** Opacity applied to the primary <path> (used for ring tracks etc). */
   opacity?: number;
   extra?:   { d: string; opacity?: number }[];  // additional <path> elements (multi-path icons)
-  src:      ZDSIconSource;
+  src:      AIIconSource;
   /** When true, render as an open stroked path instead of a filled shape. */
   stroke?:      boolean;
   strokeWidth?: number;  // defaults to 2 when stroke=true
 }
 
-export const ZDS_ICON_PATHS: Record<string, IconEntry> = {
+export const AI_ICON_PATHS: Record<string, IconEntry> = {
 
-  // ── 13_AI (ZDS) ────────────────────────────────────────────────────────────
+  // ── 13_AI (DS) ────────────────────────────────────────────────────────────
   // AI sparkle / assistant identity icon (outline)
   'ai-assist': {
-    src: 'zds',
+    src: 'ds',
     d: 'M10.6144 6.2254C10.277 5.4528 9.20776 5.4528 8.8704 6.2254L7.99275 8.23559C7.21171 10.0244 5.80589 11.4484 4.0523 12.2268L1.63658 13.2991C0.868536 13.64 0.868537 14.7573 1.63658 15.0982L3.97685 16.1371C5.77553 16.9355 7.20657 18.4122 7.97427 20.2621L8.8633 22.4043C9.19319 23.1992 10.2916 23.1992 10.6215 22.4043L11.5105 20.2621C12.2782 18.4122 13.7092 16.9355 15.5079 16.1371L17.8482 15.0982C18.6162 14.7573 18.6162 13.64 17.8482 13.2991L15.4325 12.2268C13.6789 11.4484 12.2731 10.0244 11.492 8.23559L10.6144 6.2254ZM4.53956 14.1987C6.8254 13.184 8.68402 11.5162 9.74238 9.2214C10.8008 11.5162 12.6594 13.184 14.9452 14.1987C12.6321 15.2254 10.7676 16.9745 9.74239 19.3101C8.71719 16.9745 6.85267 15.2254 4.53956 14.1987ZM19.4014 1.3311L19.6482 1.8968C20.0882 2.9054 20.8807 3.7085 21.8695 4.1478L22.6299 4.4857C23.0412 4.6684 23.0412 5.2661 22.6299 5.4488L21.9121 5.7678C20.8978 6.2184 20.0911 7.0512 19.6586 8.0941L19.4052 8.70539C19.2285 9.13139 18.6395 9.13139 18.4628 8.70539L18.2094 8.0941C17.777 7.0512 16.9703 6.2184 15.956 5.7678L15.2381 5.4488C14.8269 5.2661 14.8269 4.6684 15.2381 4.4857L15.9985 4.1478C16.9874 3.7085 17.7798 2.9054 18.2198 1.8968L18.4667 1.3311C18.6473 0.916997 19.2207 0.916997 19.4014 1.3311Z',
   },
   // AI sparkle / assistant identity icon (filled)
   'ai-assist-fill': {
-    src: 'zds',
+    src: 'ds',
     d: 'M10.6144 6.2254L11.492 8.23559C12.2731 10.0244 13.6789 11.4484 15.4325 12.2268L17.8482 13.2991C18.6162 13.64 18.6162 14.7573 17.8482 15.0982L15.5079 16.1371C13.7092 16.9355 12.2782 18.4122 11.5105 20.2621L10.3985 22.4043C10.0686 23.1992 9.32989 23.1992 9 22.4043L7.97427 20.2621C7.20657 18.4122 5.77553 16.9355 3.97685 16.1371L1.63658 15.0982C0.868537 14.7573 0.868536 13.64 1.63658 13.2991L4.0523 12.2268C5.80589 11.4484 7.21171 10.0244 7.99275 8.23559L8.8704 6.2254C9.20776 5.4528 10.277 5.4528 10.6144 6.2254ZM19.4014 1.3311L19.6482 1.8968C20.0882 2.9054 20.8807 3.7085 21.8695 4.1478L22.6299 4.4857C23.0412 4.6684 23.0412 5.2661 22.6299 5.4488L21.9121 5.7678C20.8978 6.2184 20.0911 7.0512 19.6586 8.0941L19.4052 8.70539C19.2285 9.13139 18.6395 9.13139 18.4628 8.70539L18.2094 8.0941C17.777 7.0512 16.9703 6.2184 15.956 5.7678L15.2381 5.4488C14.8269 5.2661 14.8269 4.6684 15.2381 4.4857L15.9985 4.1478C16.9874 3.7085 17.7798 2.9054 18.2198 1.8968L18.4667 1.3311C18.6473 0.916996 19.2207 0.916996 19.4014 1.3311Z',
   },
   // AI prefilled — AI-generated content with document grid context
   'ai-prefilled': {
-    src: 'zds',
+    src: 'ds',
     d: 'M20.4668 8.69379L20.7134 8.12811C21.1529 7.11947 21.9445 6.31641 22.9323 5.87708L23.6919 5.53922C24.1027 5.35653 24.1027 4.75881 23.6919 4.57612L22.9748 4.25714C21.9616 3.80651 21.1558 2.97373 20.7238 1.93083L20.4706 1.31953C20.2942 0.89349 19.7058 0.89349 19.5293 1.31953L19.2761 1.93083C18.8442 2.97373 18.0384 3.80651 17.0252 4.25714L16.308 4.57612C15.8973 4.75881 15.8973 5.35653 16.308 5.53922L17.0677 5.87708C18.0555 6.31641 18.8471 7.11947 19.2866 8.12811L19.5331 8.69379C19.7136 9.10792 20.2864 9.10792 20.4668 8.69379ZM5.79993 16H7.95399L8.55399 14.5H11.4459L12.0459 16H14.1999L10.9999 8H8.99993L5.79993 16ZM9.99993 10.8852L10.6459 12.5H9.35399L9.99993 10.8852ZM15 16V8H17V16H15ZM3 3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V11H20V19H4V5H14V3H3Z',
   },
   // AI warning — warning triangle with sparkle (outline)
   'ai-warning': {
-    src: 'zds',
+    src: 'ds',
     d: 'M12.026 3.18067C12.2015 3.18067 12.3739 3.22687 12.526 3.31463C12.678 3.40239 12.8042 3.52862 12.892 3.68063L22.418 20.1807C22.5057 20.3327 22.5519 20.5051 22.5519 20.6807C22.5519 20.8562 22.5057 21.0286 22.418 21.1806C22.3302 21.3327 22.204 21.4589 22.052 21.5467C21.8999 21.6344 21.7275 21.6807 21.552 21.6807H2.49997L2.36914 21.6719C2.23952 21.6548 2.11395 21.6125 1.99998 21.5467C1.84797 21.4589 1.72173 21.3327 1.63397 21.1806C1.5462 21.0286 1.5 20.8562 1.5 20.6807C1.5 20.5051 1.54621 20.3327 1.63397 20.1807L11.16 3.68063C11.2477 3.52862 11.374 3.40239 11.526 3.31463C11.678 3.22687 11.8504 3.18067 12.026 3.18067ZM4.23197 19.6807H19.82L12.026 6.18063L4.23197 19.6807ZM13.026 18.6807H11.026V16.6807H13.026V18.6807ZM13.026 14.6807H11.026V9.68063H13.026V14.6807ZM18.5293 1.5C18.7058 1.07423 19.2941 1.07423 19.4706 1.5L19.7238 2.11096C20.2577 3.25552 21.0251 4.01376 21.9748 4.43599L22.6919 4.75482C23.1027 4.93742 23.1027 5.53479 22.6919 5.71739L21.9323 6.0551C20.8468 6.59521 20.1254 7.36008 19.7134 8.30487L19.4669 8.87026C19.2864 9.28414 18.7136 9.28414 18.5332 8.87026L18.2865 8.30487C17.847 7.29683 17.0555 6.49416 16.0676 6.0551L15.3081 5.71739C14.8973 5.53479 14.8973 4.93742 15.3081 4.75482L16.0252 4.43599C16.9749 4.01375 17.7423 3.25554 18.1904 2.30371L18.5293 1.5Z',
   },
   // AI warning — filled version (multi-path)
   'ai-warning-fill': {
-    src: 'zds',
+    src: 'ds',
     d: 'M12.892 3.49996L22.418 20C22.5057 20.152 22.5519 20.3244 22.5519 20.5C22.5519 20.6755 22.5057 20.8479 22.418 20.9999C22.3302 21.152 22.204 21.2782 22.052 21.366C21.9 21.4537 21.7275 21.5 21.552 21.5H2.49997C2.32444 21.5 2.152 21.4537 1.99998 21.366C1.84797 21.2782 1.72173 21.152 1.63397 20.9999C1.5462 20.8479 1.5 20.6755 1.5 20.5C1.5 20.3244 1.54621 20.152 1.63397 20L11.16 3.49996C11.2477 3.34795 11.374 3.22172 11.526 3.13396C11.678 3.0462 11.8504 3 12.026 3C12.2015 3 12.3739 3.0462 12.526 3.13396C12.678 3.22172 12.8042 3.34795 12.892 3.49996ZM11.026 16.5V18.5H13.026V16.5H11.026ZM11.026 9.49996V14.5H13.026V9.49996H11.026Z',
     extra: [{ d: 'M19.4669 8.68959L19.7134 8.1242C20.1529 7.11616 20.9446 6.31349 21.9323 5.87443L22.6919 5.53672C23.1027 5.35412 23.1027 4.75675 22.6919 4.57415L21.9748 4.25532C20.9616 3.80497 20.1558 2.97262 19.7238 1.93029L19.4707 1.31933C19.2941 0.893557 18.7058 0.893557 18.5293 1.31933L18.2761 1.93029C17.8442 2.97262 17.0384 3.80497 16.0252 4.25532L15.3081 4.57415C14.8973 4.75675 14.8973 5.35412 15.3081 5.53672L16.0676 5.87443C17.0555 6.31349 17.847 7.11616 18.2865 8.1242L18.5332 8.68959C18.7136 9.10347 19.2864 9.10347 19.4669 8.68959Z' }],
   },
 
-  // ── 01_Action (ZDS) ────────────────────────────────────────────────────────
+  // ── 01_Action (DS) ────────────────────────────────────────────────────────
   'search': {
-    src: 'zds',
+    src: 'ds',
     d: 'M18.031 16.617L22.314 20.899L20.899 22.314L16.617 18.031C15.0237 19.3082 13.042 20.0029 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20.0029 13.042 19.3082 15.0237 18.031 16.617ZM16.025 15.875C17.2941 14.5699 18.0029 12.8204 18 11C18 7.132 14.867 4 11 4C7.132 4 4 7.132 4 11C4 14.867 7.132 18 11 18C12.8204 18.0029 14.5699 17.2941 15.875 16.025L16.025 15.875Z',
   },
   'bookmark': {
-    src: 'zds',
+    src: 'ds',
     d: 'M5 2H19C19.2652 2 19.5196 2.10536 19.7071 2.29289C19.8946 2.48043 20 2.73478 20 3V22.143C20.0001 22.2324 19.9763 22.3202 19.9309 22.3973C19.8855 22.4743 19.8204 22.5378 19.7421 22.5811C19.6639 22.6244 19.5755 22.6459 19.4861 22.6434C19.3968 22.641 19.3097 22.6146 19.234 22.567L12 18.03L4.766 22.566C4.69037 22.6135 4.60339 22.6399 4.5141 22.6424C4.42482 22.6449 4.33649 22.6235 4.2583 22.5803C4.1801 22.5371 4.11491 22.4738 4.06948 22.3969C4.02406 22.32 4.00007 22.2323 4 22.143V3C4 2.73478 4.10536 2.48043 4.29289 2.29289C4.48043 2.10536 4.73478 2 5 2ZM18 4H6V19.432L12 15.671L18 19.432V4Z',
   },
   'close': {
-    src: 'zds',
+    src: 'ds',
     d: 'M12 10.586L16.95 5.63599L18.364 7.04999L13.414 12L18.364 16.95L16.95 18.364L12 13.414L7.04999 18.364L5.63599 16.95L10.586 12L5.63599 7.04999L7.04999 5.63599L12 10.586Z',
   },
   'check': {
-    src: 'zds',
+    src: 'ds',
     d: 'M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z',
   },
 
-  // ── 02_Alerts (ZDS) ────────────────────────────────────────────────────────
+  // ── 02_Alerts (DS) ────────────────────────────────────────────────────────
   'error-circle': {
-    src: 'zds',
+    src: 'ds',
     d: 'M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C14.1217 20 16.1566 19.1571 17.6569 17.6569C19.1571 16.1566 20 14.1217 20 12C20 9.87827 19.1571 7.84344 17.6569 6.34315C16.1566 4.84285 14.1217 4 12 4C9.87827 4 7.84344 4.84285 6.34315 6.34315C4.84285 7.84344 4 9.87827 4 12C4 14.1217 4.84285 16.1566 6.34315 17.6569C7.84344 19.1571 9.87827 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z',
   },
   'error-triangle': {
-    src: 'zds',
+    src: 'ds',
     d: 'M12.866 2.99999L22.392 19.5C22.4797 19.652 22.5259 19.8244 22.5259 20C22.5259 20.1755 22.4797 20.348 22.392 20.5C22.3042 20.652 22.178 20.7782 22.026 20.866C21.8739 20.9538 21.7015 21 21.526 21H2.47397C2.29844 21 2.126 20.9538 1.97398 20.866C1.82197 20.7782 1.69573 20.652 1.60797 20.5C1.5202 20.348 1.474 20.1755 1.474 20C1.474 19.8244 1.52021 19.652 1.60797 19.5L11.134 2.99999C11.2217 2.84798 11.348 2.72175 11.5 2.63399C11.652 2.54623 11.8244 2.50003 12 2.50003C12.1755 2.50003 12.3479 2.54623 12.5 2.63399C12.652 2.72175 12.7782 2.84798 12.866 2.99999ZM4.20597 19H19.794L12 5.49999L4.20597 19ZM11 16H13V18H11V16ZM11 8.99999H13V14H11V8.99999Z',
   },
 
   // ── Lucide fallbacks — normalized to 24×24 viewBox, documented, replacement-ready ───
-  // [Remix]info-circle — no direct ZDS equivalent confirmed in 02_Alerts
+  // [Remix]info-circle — no direct DS equivalent confirmed in 02_Alerts
   'info': {
     src: 'remix-fallback',
     d: 'M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C16.418 20 20 16.418 20 12C20 7.582 16.418 4 12 4C7.582 4 4 7.582 4 12C4 16.418 7.582 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z',
@@ -251,7 +251,7 @@ export interface AIIconProps {
 }
 
 // ── Size map (px) ─────────────────────────────────────────────────────────────
-// Aligned with ZDS: normal=16 (sm), large=20 (md), x-large=24 (lg)
+// Aligned with DS: normal=16 (sm), large=20 (md), x-large=24 (lg)
 const SIZE_PX: Record<AIIconSize, number> = {
   xs: 12,
   sm: 16,
@@ -275,23 +275,23 @@ const SEMANTIC_TONE_COLORS: Record<AIIconTone, string> = {
   subtle:    AI.color.text.secondary,
   strong:    AI.color.brandStrong,
   inverse:   '#ffffff',
-  success:   '#0A6E5E',  // ZDS success default
-  warning:   '#8A640C',  // ZDS warning default
-  error:     '#B21111',  // ZDS error default
+  success:   '#0A6E5E',  // DS success default
+  warning:   '#8A640C',  // DS warning default
+  error:     '#B21111',  // DS error default
   urgent:    '#C0392B',
   blocked:   '#7D3C98',
   approval:  '#1A5276',
-  escalated: ZS_ORANGE[70],
+  escalated: SIGNAL_ORANGE[70],
 };
 
 function resolveColor(treatment: AIIconTreatment, tone: AIIconTone, categoryTone: AIIconCategoryTone): string {
   switch (treatment) {
-    case 'neutral':       return ZDS.textHelper;
+    case 'neutral':       return DS.textHelper;
     case 'ai':            return AI.color.brand;
     case 'ai-contained':  return AI.color.brand;
     case 'semantic':      return SEMANTIC_TONE_COLORS[tone];
-    case 'orange-signal': return ZS_ORANGE[60];
-    case 'tan-container': return ZSAI_TAN[100];
+    case 'orange-signal': return SIGNAL_ORANGE[60];
+    case 'tan-container': return COMPANION_TAN[100];
     case 'category':      return CATEGORY_TONE_PAIRS[categoryTone].fg;
   }
 }
@@ -299,9 +299,9 @@ function resolveColor(treatment: AIIconTreatment, tone: AIIconTone, categoryTone
 function resolveContainerBg(treatment: AIIconTreatment, tone: AIIconTone, categoryTone: AIIconCategoryTone): string {
   switch (treatment) {
     case 'ai-contained':  return AI.color.brandSubtle; // #D2DBFF — brand container tint
-    case 'tan-container': return ZSAI_TAN['00'];
+    case 'tan-container': return COMPANION_TAN['00'];
     case 'semantic':      return SEMANTIC_TONE_COLORS[tone] + '14'; // ~8% tint
-    case 'orange-signal': return ZS_ORANGE['00'];
+    case 'orange-signal': return SIGNAL_ORANGE['00'];
     case 'category':      return CATEGORY_TONE_PAIRS[categoryTone].bg;
     default:              return 'rgba(0,0,0,0.05)';
   }
@@ -378,7 +378,7 @@ export function AIIcon({
   motionLoop = false,
   style,
 }: AIIconProps) {
-  const icon    = ZDS_ICON_PATHS[name];
+  const icon    = AI_ICON_PATHS[name];
   const px      = SIZE_PX[size];
   const color   = resolveColor(treatment, tone, categoryTone);
   const motCfg  = MOTION_CONFIG[motion];

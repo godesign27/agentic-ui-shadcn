@@ -3,16 +3,16 @@ import React from 'react';
 /**
  * AI Toolbar
  * ==========
- * The AI-styled sibling of the standard ZDS Toolbar (see zds/zds-toolbar.tsx),
+ * The AI-styled sibling of the standard DS Toolbar (see ds/ds-toolbar.tsx),
  * which is its starting point. Same anatomy — a horizontal or vertical strip of
  * icon-link actions with optional labels (icon-only items get a hover tooltip)
- * — but wearing the ZAIDYN
+ * — but wearing the Guild
  * AI surface:
  *
- *   - The AI brand color (--aiu-brand = ZSAI[80]) replaces the standard teal
+ *   - The AI brand color (--aiu-brand = AI_RAMP[80]) replaces the standard teal
  *     ramp (teal[80]) everywhere hover / selected / pressed fills appear.
- *   - AI corner radius (--aiu-radius-*) instead of the ZDS --radius.
- *   - AI elevation (--aiu-shadow-md) instead of the flat ZDS shadow.
+ *   - AI corner radius (--aiu-radius-*) instead of the DS --radius.
+ *   - AI elevation (--aiu-shadow-md) instead of the flat DS shadow.
  *   - AI focus ring (--aiu-focus).
  *
  * Everything is driven by the --aiu-* CSS custom properties defined in
@@ -26,7 +26,7 @@ import React from 'react';
 
 const F = '"Open Sans", system-ui, sans-serif';
 
-// Canonical ZDS icon glyphs (24×24), shared with the standard toolbar. Fill is
+// Canonical DS icon glyphs (24×24), shared with the standard toolbar. Fill is
 // supplied at render time via currentColor so the glyph inherits the AI token.
 const ICON_PATHS: Record<string, string> = {
   home:
@@ -257,7 +257,7 @@ export interface AIToolbarProps {
   /**
    * Surface treatment:
    *   - 'tinted' (default) — the AI blue-tinted surface (--aiu-surface).
-   *   - 'white'            — a plain white surface (like the standard ZDS light
+   *   - 'white'            — a plain white surface (like the standard DS light
    *                          toolbar), keeping the AI brand accents / radius.
    */
   surface?: 'tinted' | 'white';

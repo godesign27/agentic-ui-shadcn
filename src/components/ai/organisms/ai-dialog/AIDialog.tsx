@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { RiAddLine, RiMicLine, RiArrowRightLine, RiArrowUpLine, RiArrowRightSLine as ChevronRightIcon } from '@remixicon/react';
 import { RiAttachmentLine, RiFolderAddLine, RiFlashlightLine } from '@remixicon/react';
-import { F, ZDS, AI } from '../../tokens/ai-tokens';
+import { F, DS, AI } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { SkillMenu, type Skill } from '../../_support/SkillMenu';
 import { AIButton } from '../../atomic/ai-button/AIButton';
@@ -24,7 +24,7 @@ import { AIButton } from '../../atomic/ai-button/AIButton';
 function RiArrowRightSLine({ hovered }: { hovered: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <path d="M6 3.5l4.5 4.5L6 12.5" stroke={hovered ? ZDS.iconHover : ZDS.iconDefault}
+      <path d="M6 3.5l4.5 4.5L6 12.5" stroke={hovered ? DS.iconHover : DS.iconDefault}
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -46,12 +46,12 @@ function AddMenuItem({ icon: Icon, label, hasArrow }: { icon: React.ElementType;
       style={{
         display: 'flex', alignItems: 'center', gap: '10px',
         width: '100%', padding: '10px 16px',
-        background: hov ? ZDS.menuHoverBg : 'transparent',
+        background: hov ? DS.menuHoverBg : 'transparent',
         border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s ease',
       }}>
-      <Icon size={16} color={hov ? ZDS.iconHover : ZDS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, color: 'var(--ai-zds-text)' }}>{label}</span>
+      <Icon size={16} color={hov ? DS.iconHover : DS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, color: 'var(--ai-ds-text)' }}>{label}</span>
       {hasArrow && <RiArrowRightSLine hovered={hov} />}
     </button>
   );
@@ -144,11 +144,11 @@ function ModeOption({ mode, isActive, onSelect }: { mode: AIMode; isActive: bool
       style={{
         display: 'flex', alignItems: 'center', gap: '10px',
         width: '100%', padding: '9px 14px',
-        background: hov ? ZDS.menuHoverBg : 'transparent',
+        background: hov ? DS.menuHoverBg : 'transparent',
         border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s ease',
       }}>
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: 'var(--ai-zds-text)' }}>{mode}</span>
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: 'var(--ai-ds-text)' }}>{mode}</span>
       {isActive && (
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
           <path d="M2 6.5l3.5 3.5 6-6" stroke={AI.color.action.primary} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -189,11 +189,11 @@ function SlimPlusMenuItem({ icon: Icon, label, hasArrow, onClick }: {
   return (
     <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '9px 14px',
-        background: hov ? ZDS.menuHoverBg : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
+        background: hov ? DS.menuHoverBg : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s' }}>
-      <Icon size={15} color={hov ? ZDS.iconHover : ZDS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, color: 'var(--ai-zds-text)' }}>{label}</span>
-      {hasArrow && <ChevronRightIcon size={13} color={ZDS.iconDefault} />}
+      <Icon size={15} color={hov ? DS.iconHover : DS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, color: 'var(--ai-ds-text)' }}>{label}</span>
+      {hasArrow && <ChevronRightIcon size={13} color={DS.iconDefault} />}
     </button>
   );
 }
@@ -203,9 +203,9 @@ function SlimModeItem({ label, isActive, onSelect }: { label: string; isActive: 
   return (
     <button onClick={onSelect} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
       style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '9px 14px',
-        background: hov ? ZDS.menuHoverBg : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
+        background: hov ? DS.menuHoverBg : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s' }}>
-      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@zsai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: 'var(--ai-zds-text)' }}>{label}</span>
+      <span style={{ flex: 1, ...AI_TYPOGRAPHY['@ai-menu-item'], fontFamily: F, fontWeight: isActive ? 600 : 400, color: 'var(--ai-ds-text)' }}>{label}</span>
       {isActive && (
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
           <path d="M2 6.5l3.5 3.5 6-6" stroke={AI.color.action.primary} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -229,13 +229,13 @@ function SlimPlusMenu({ mode, onModeChange, onClose }: { mode: SlimMode; onModeC
       boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.12)',
       border: '1px solid var(--ai-card-border)', overflow: 'hidden', zIndex: 100 }}>
       <div style={{ padding: '6px 0 2px', borderBottom: '1px solid var(--ai-card-border)' }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '10px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>ADD CONTENT</div>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '10px', color: DS.textHelper, letterSpacing: '0.05em' }}>ADD CONTENT</div>
         {SLIM_ADD_ITEMS.map(({ icon, label, hasArrow }) => (
           <SlimPlusMenuItem key={label} icon={icon} label={label} hasArrow={hasArrow} onClick={onClose} />
         ))}
       </div>
       <div style={{ padding: '6px 0' }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '10px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>MODE</div>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '10px', color: DS.textHelper, letterSpacing: '0.05em' }}>MODE</div>
         {SLIM_MODE_ITEMS.map(m => (
           <SlimModeItem key={m} label={m} isActive={mode === m} onSelect={() => { onModeChange(m); onClose(); }} />
         ))}
@@ -293,7 +293,7 @@ export function AIDialogSlim({
             background: plusOpen ? 'rgba(77, 96, 230,0.10)' : 'rgba(0,0,0,0.05)',
             border: plusOpen ? `1.5px solid ${AI.color.action.primary}` : '1.5px solid transparent',
             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: plusOpen ? AI.color.action.primary : ZDS.iconDefault, transition: 'all 0.15s ease' }}>
+            color: plusOpen ? AI.color.action.primary : DS.iconDefault, transition: 'all 0.15s ease' }}>
           <RiAddLine size={17} strokeWidth={2} />
         </button>
         {plusOpen && <SlimPlusMenu mode={mode} onModeChange={setMode} onClose={() => setPlusOpen(false)} />}
@@ -314,10 +314,10 @@ export function AIDialogSlim({
         onKeyDown={handleKeyDown}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        placeholder="Message ZAIDYN Agent…"
-        aria-label="Message ZAIDYN"
+        placeholder="Message Guild Agent…"
+        aria-label="Message Guild"
         style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent',
-          ...AI_TYPOGRAPHY['@zsai-input-text'], fontFamily: F, color: 'var(--ai-zds-text)', minWidth: 0 }}
+          ...AI_TYPOGRAPHY['@ai-input-text'], fontFamily: F, color: 'var(--ai-ds-text)', minWidth: 0 }}
       />
 
       {/* RiMicLine → RiSendPlaneLine toggle */}
@@ -327,7 +327,7 @@ export function AIDialogSlim({
           background: filled ? AI.gradient.action.full : 'rgba(0,0,0,0.06)',
           border: 'none', cursor: filled ? 'pointer' : 'default',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: filled ? AI.color.text.onAction : ZDS.iconDefault, flexShrink: 0,
+          color: filled ? AI.color.text.onAction : DS.iconDefault, flexShrink: 0,
           transition: 'background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease',
           boxShadow: filled ? `0 4px 14px ${AI.shadow.action.emphasis}` : 'none' }}>
         {filled ? <RiArrowUpLine size={17} strokeWidth={2.5} /> : <RiMicLine size={17} strokeWidth={2} />}
@@ -386,12 +386,12 @@ export function AIInputCard({ inputValue, onInputChange, onSend, hasMessages }: 
         onKeyDown={handleKeyDown}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        placeholder="Message ZAIDYN Agent…"
+        placeholder="Message Guild Agent…"
         rows={hasMessages ? 1 : 2}
         style={{
           width: '100%', border: 'none', outline: 'none', resize: 'none',
           padding: hasMessages ? '12px 20px 0' : '16px 20px 0 20px',
-          ...AI_TYPOGRAPHY['@zsai-input-text'], fontFamily: F, color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-input-text'], fontFamily: F, color: 'var(--ai-ds-text)',
           background: 'transparent', boxSizing: 'border-box',
         }}
       />
@@ -453,7 +453,7 @@ export function AIInputCard({ inputValue, onInputChange, onSend, hasMessages }: 
             display:      'flex',
             alignItems:   'center',
             justifyContent: 'center',
-            color:        filled ? AI.color.text.onAction : ZDS.textDisabled,
+            color:        filled ? AI.color.text.onAction : DS.textDisabled,
             flexShrink:   0,
             transition:   'all 0.18s ease',
             boxShadow:    filled ? `0 4px 14px ${AI.shadow.action.emphasis}` : 'none',

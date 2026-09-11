@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiAnalysisMessage`  
 **Component type:** React organism  
@@ -22,7 +22,7 @@ Do not use AIAnalysisMessage for urgent alerts or system events — use AINotifi
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -41,7 +41,7 @@ Do not use AIAnalysisMessage for urgent alerts or system events — use AINotifi
 
 ## When to use
 
-- When ZAIDYN AI summarizes report data or presents multiple analytical findings
+- When Guild AI summarizes report data or presents multiple analytical findings
 - When the response needs structured insight cards with type labels and confidence ratings
 - When users need data sources and feedback controls — AI Assisted Side Panel, Command Center, or response thread
 - When the AI compares performance, surfaces observations, or explains patterns with source context
@@ -120,9 +120,9 @@ Do not use AIAnalysisMessage for urgent alerts or system events — use AINotifi
 ### Insight — Recommendation / Watchout
 | Token | Value | Usage |
 | --- | --- | --- |
-| `border` | `ZS_ORANGE[60] (#EC7200)` | Left border for Recommendation and Watchout cards |
-| `bg` | `ZS_ORANGE["00"] (#FEFBF4)` | Background for Recommendation and Watchout cards |
-| `label` | `ZS_ORANGE[70] (#CB6100)` | Label text for Recommendation and Watchout cards |
+| `border` | `SIGNAL_ORANGE[60] (#EC7200)` | Left border for Recommendation and Watchout cards |
+| `bg` | `SIGNAL_ORANGE["00"] (#FEFBF4)` | Background for Recommendation and Watchout cards |
+| `label` | `SIGNAL_ORANGE[70] (#CB6100)` | Label text for Recommendation and Watchout cards |
 
 ## Flows
 
@@ -169,7 +169,7 @@ import { AIAnalysisMessage } from '@/components/ai/organisms/ai-analysis-message
     },
   ]}
   sources={[
-    { label: 'ZAIDYN Analytics' },
+    { label: 'Guild Analytics' },
     { label: 'Territory DB' },
     { label: '+ 2 more' },
   ]}
@@ -179,9 +179,9 @@ import { AIAnalysisMessage } from '@/components/ai/organisms/ai-analysis-message
 ## Agent rules
 
 1. Read this mirror spec and `ai-analysis-message.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-analysis-message/ai-analysis-message.agent.json`.
 

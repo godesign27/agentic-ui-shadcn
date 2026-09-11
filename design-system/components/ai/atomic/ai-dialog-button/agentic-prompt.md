@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Dialog Button
 
-You are implementing the **AI Dialog Button** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Dialog Button** atom from the Guild AI Design System mirror.
 
 Fetch specs and implementation guidance from the GitHub repository below.
 

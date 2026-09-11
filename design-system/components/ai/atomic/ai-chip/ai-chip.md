@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiChip`  
 **Component type:** React atomic  
@@ -20,7 +20,7 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -50,7 +50,7 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 - **Status** _(kind=status)_ — Outcome status pill. tone: success | warning | critical | neutral | info. Supports onDark.
 - **Memory** _(kind=memory)_ — Memory-context pill. variant: using-memory | previous-context | memory-available | memory-ignored | memory-removed.
 - **Handoff** _(kind=handoff)_ — Directional ownership pill. direction: agent-to-agent | agent-to-human | human-to-agent | system-to-agent | failed.
-- **Tag — Semantic states** _(kind=tag)_ — AI-branded ZDS Tag. Neutral is re-skinned on the AI brand ramp; info/error/success/warning keep the ZDS semantic hues so meaning is consistent across systems.
+- **Tag — Semantic states** _(kind=tag)_ — AI-branded DS Tag. Neutral is re-skinned on the AI brand ramp; info/error/success/warning keep the DS semantic hues so meaning is consistent across systems.
 - **Tag — Sizes** _(tagSize)_ — Normal 40/16, Small 32/14, X-Small 24/12 (height/font). Icon box scales 16 / 14 / 12.
 - **Tag — Interaction states** _(interaction)_ — Default, Hover, Focus, Active, Active Hover, Active Focus. Active = filled fill, inverse label, close suppressed.
 - **Tag — Active (filled)** _(interaction=active)_ — Selected/active treatment across every semantic state — filled fill, inverse label, dismiss suppressed.
@@ -63,7 +63,7 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 - **Tag — Rounded — sizes** _(rounded+size)_ — Full-pill radius across Normal / Small / X-Small.
 - **Tag — Rounded — active & dismissible** _(rounded+state)_ — Rounded pills covering non-dismissable, dismissible, and active/selected treatments.
 - **Tag — Rounded — with icons** _(pill + icons)_ — Rounded pills with the leading globe and dismiss close, across sizes and states.
-- **Tag — Custom data color** _(dataColor)_ — Custom data-viz colour (parity with the ZDS data-color tag). Tinted fill, coloured border/label, filled-circle dismiss. Overrides the semantic state palette.
+- **Tag — Custom data color** _(dataColor)_ — Custom data-viz colour (parity with the DS data-color tag). Tinted fill, coloured border/label, filled-circle dismiss. Overrides the semantic state palette.
 
 ## Props API
 
@@ -84,7 +84,7 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 | `direction` | `HandoffDirection` | `—` | kind="handoff" — agent-to-agent \| agent-to-human \| human-to-agent \| system-to-agent \| failed. |
 | `fromLabel` | `string` | `—` | kind="handoff" — name of the source party. |
 | `toLabel` | `string` | `—` | kind="handoff" — name of the target party. |
-| `state` | `TagChipState` | `"neutral"` | kind="tag" — neutral \| info \| error \| success \| warning \| disabled. Neutral uses the AI brand ramp; semantics match the ZDS Tag. |
+| `state` | `TagChipState` | `"neutral"` | kind="tag" — neutral \| info \| error \| success \| warning \| disabled. Neutral uses the AI brand ramp; semantics match the DS Tag. |
 | `tagSize` | `"normal" \| "small" \| "x-small"` | `"normal"` | kind="tag" — 40/16, 32/14, 24/12 (height/font). Icon box scales 16/14/12. |
 | `interaction` | `TagChipInteraction` | `"default"` | kind="tag" — default \| hover \| focus \| active \| active-hover \| active-focus. Active = filled, inverse label, close suppressed. |
 | `dismissible` | `boolean` | `true` | kind="tag" — shows the trailing zs-icon-close dismiss button (suppressed when active/disabled). |
@@ -123,16 +123,16 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 | `AI.color.action.primaryActive` | `#1F2A66` | Neutral active-hover fill |
 | `AI.color.text.primary` | `#1F2A66` | Neutral label ink |
 
-### Tag — Semantic (ZDS-consistent)
+### Tag — Semantic (DS-consistent)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `zs.tag.info` | `#1B24AA` | Info border / active fill |
-| `zs.tag.error` | `#B21111` | Error border / active fill |
-| `zs.tag.success` | `#0A6E5E` | Success border / active fill |
-| `zs.tag.warning` | `#8A640C` | Warning border / active fill |
-| `zs.tag.disabled.border` | `#DEDCDE` | Disabled border |
-| `zs.tag.disabled.bg` | `#F4F3F3` | Disabled fill |
-| `zs.tag.disabled.text` | `#716E79` | Disabled label + icon |
+| `DS.tag.info` | `#1B24AA` | Info border / active fill |
+| `DS.tag.error` | `#B21111` | Error border / active fill |
+| `DS.tag.success` | `#0A6E5E` | Success border / active fill |
+| `DS.tag.warning` | `#8A640C` | Warning border / active fill |
+| `DS.tag.disabled.border` | `#DEDCDE` | Disabled border |
+| `DS.tag.disabled.bg` | `#F4F3F3` | Disabled fill |
+| `DS.tag.disabled.text` | `#716E79` | Disabled label + icon |
 
 ### Tag — Structure
 | Token | Value | Usage |
@@ -147,11 +147,11 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 ### Tag — Data color (example series)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ZS_DATAVIZ.7` | `#686EFF` | Iris — border / label / dismiss fill |
-| `ZS_DATAVIZ.5` | `#ED39DB` | Magenta — border / label / dismiss fill |
-| `ZS_DATAVIZ.4` | `#2DA40C` | Green — border / label / dismiss fill |
-| `ZS_DATAVIZ.1` | `#DB6C03` | Amber — border / label / dismiss fill |
-| `ZS_DATAVIZ.2` | `#3287C4` | Blue — border / label / dismiss fill |
+| `DATAVIZ.7` | `#686EFF` | Iris — border / label / dismiss fill |
+| `DATAVIZ.5` | `#ED39DB` | Magenta — border / label / dismiss fill |
+| `DATAVIZ.4` | `#2DA40C` | Green — border / label / dismiss fill |
+| `DATAVIZ.1` | `#DB6C03` | Amber — border / label / dismiss fill |
+| `DATAVIZ.2` | `#3287C4` | Blue — border / label / dismiss fill |
 | `dataTint` | `color @ ~10%` | Tinted pill background (per data colour) |
 
 ## Flows
@@ -185,7 +185,7 @@ import { AIChip } from '@/components/ai/atomic/chip/AIChip';
 <AIChip kind="handoff" direction="agent-to-human" fromLabel="Research Agent" toLabel="Sarah K." />
 <AIChip kind="handoff" direction="failed"         fromLabel="Planner Agent" toLabel="Executor Agent" />
 
-{/* kind="tag" — AI-branded ZDS Tag (state / tagSize / interaction / dismissible / leftIcon / shape) */}
+{/* kind="tag" — AI-branded DS Tag (state / tagSize / interaction / dismissible / leftIcon / shape) */}
 <AIChip kind="tag" label="Neutral" state="neutral" dismissible={false} />
 <AIChip kind="tag" label="Info" state="info" leftIcon />
 <AIChip kind="tag" label="Selected" state="success" interaction="active" />
@@ -196,9 +196,9 @@ import { AIChip } from '@/components/ai/atomic/chip/AIChip';
 ## Agent rules
 
 1. Read this mirror spec and `ai-chip.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-chip/ai-chip.agent.json`.
 

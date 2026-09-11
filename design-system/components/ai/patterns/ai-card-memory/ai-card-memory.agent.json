@@ -5,7 +5,7 @@
   "repoModule": "aiCardMemory",
   "tier": "organisms",
   "status": "experimental",
-  "description": "The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The ZSAI Tan companion palette grounds memory entries in a warm, archive-like aesthetic.",
+  "description": "The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The AI_RAMP Tan companion palette grounds memory entries in a warm, archive-like aesthetic.",
   "intent": "Recalled memory entry with provenance, date, and content. Lets users decide whether to reuse, ignore, or permanently remove a recalled context.",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-card-memory/ai-card-memory.md",
@@ -90,7 +90,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -112,7 +112,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

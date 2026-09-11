@@ -2,7 +2,7 @@
 
 Self-contained helpers used by organisms (chat patterns, skill menu, hooks).
 
-Agents: import from here with relative paths — do **not** require `@zaidyn/ai-ui`.
+Agents: import from here with relative paths — do **not** require `an external AI UI package`.
 
 | File | Role |
 |------|------|

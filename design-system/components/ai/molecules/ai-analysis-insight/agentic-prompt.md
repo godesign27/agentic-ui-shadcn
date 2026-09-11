@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Analysis Insight
 
-You are implementing the **AI Analysis Insight** (`ai-analysis-insight`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Analysis Insight** (`ai-analysis-insight`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

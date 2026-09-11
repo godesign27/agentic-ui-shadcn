@@ -20,7 +20,7 @@ AISoftSurface is a non-content background canvas used to signal that the surface
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

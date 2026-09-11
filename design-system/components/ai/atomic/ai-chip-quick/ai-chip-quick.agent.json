@@ -16,7 +16,7 @@
     "primaryJavascript": "ai/atomic/chip-quick/AIChipQuick.tsx",
     "preview": "components/ai/atomic/ai-chip-quick/ai-chip-quick.preview.html",
     "agentMarkdown": [],
-    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+    "note": "Canonical TSX lives in Guild AI Design System (external)."
   },
   "platforms": [
     "web",

@@ -1,11 +1,11 @@
 /**
- * AISupervisorBar — ZAIDYN Agentic AI Atom
+ * AISupervisorBar — Guild Agentic AI Atom
  *
  * Page-level supervisor agent identity strip. Sits flush against the top
  * edge of an AI Led page (no border-radius, no left/right margin). Three
  * tone variants:
  *
- *   tan   — ZSAI tan companion surface (default; warmest, calmest)
+ *   tan   — AI_RAMP tan companion surface (default; warmest, calmest)
  *   dark  — Inverted brand-ink surface (high-emphasis / hero)
  *   light — Neutral white surface with subtle border-bottom (low chrome)
  *
@@ -17,7 +17,7 @@
  */
 
 import React, { useRef, useState, useEffect } from 'react';
-import { AI, ZSAI_TAN, F } from '../../tokens/ai-tokens';
+import { AI, COMPANION_TAN, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar } from '../ai-avatar/AIAvatar';
 
@@ -74,11 +74,11 @@ interface ToneCfg {
 
 const TONE_CFG: Record<AISupervisorBarTone, ToneCfg> = {
   tan: {
-    bg:           ZSAI_TAN['00'],
-    borderBottom: ZSAI_TAN[30],
-    nameColor:    ZSAI_TAN[100],
-    roleColor:    ZSAI_TAN[80],
-    statColor:    ZSAI_TAN[80],
+    bg:           COMPANION_TAN['00'],
+    borderBottom: COMPANION_TAN[30],
+    nameColor:    COMPANION_TAN[100],
+    roleColor:    COMPANION_TAN[80],
+    statColor:    COMPANION_TAN[80],
   },
   dark: {
     bg:           AI.color.brandInk,
@@ -90,9 +90,9 @@ const TONE_CFG: Record<AISupervisorBarTone, ToneCfg> = {
   light: {
     bg:           '#FFFFFF',
     borderBottom: 'var(--ai-card-border)',
-    nameColor:    'var(--ai-zds-text)',
-    roleColor:    'var(--ai-zds-helper)',
-    statColor:    'var(--ai-zds-helper)',
+    nameColor:    'var(--ai-ds-text)',
+    roleColor:    'var(--ai-ds-helper)',
+    statColor:    'var(--ai-ds-helper)',
   },
 };
 
@@ -170,7 +170,7 @@ export function AISupervisorBar({
           <span style={{
             flex: 1,
             minWidth: 0,
-            ...AI_TYPOGRAPHY['@zsai-card-title'],
+            ...AI_TYPOGRAPHY['@ai-card-title'],
             color: cfg.nameColor,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -189,7 +189,7 @@ export function AISupervisorBar({
         {secondaryLine && (
           <div style={{
             paddingLeft: indent,
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
             color: cfg.statColor,
           }}>
             {secondaryLine}
@@ -226,12 +226,12 @@ export function AISupervisorBar({
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 2 }}>
         {/* Name + role marker */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0, flexWrap: 'wrap' }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: cfg.nameColor }}>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: cfg.nameColor }}>
             {name}
           </span>
           {typeof role === 'string'
             ? (role && (
-                <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: cfg.roleColor }}>
+                <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: cfg.roleColor }}>
                   {role}
                 </span>
               ))
@@ -239,7 +239,7 @@ export function AISupervisorBar({
         </div>
         {/* Stat line */}
         {(stat || meta) && (
-          <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: cfg.statColor }}>
+          <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: cfg.statColor }}>
             {[stat, meta].filter(Boolean).join(' · ')}
           </div>
         )}

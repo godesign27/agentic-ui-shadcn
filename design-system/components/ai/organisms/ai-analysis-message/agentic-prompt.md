@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Analysis Message
 
-You are implementing the **AI Analysis Message** (`ai-analysis-message`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Analysis Message** (`ai-analysis-message`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

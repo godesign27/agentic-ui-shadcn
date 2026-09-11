@@ -20,7 +20,7 @@ standard typography is the foundation atom used by every text-bearing AI compone
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

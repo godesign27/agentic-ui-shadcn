@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Workstream
 
-You are implementing the **AI Card Workstream** (`ai-card-workstream`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Workstream** (`ai-card-workstream`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -14,11 +14,11 @@
 
 The default AI entry point on standard SaaS surfaces — recognizable, confident, never instructional.
 
-**Intent:** Open ZAIDYN Agent from product chrome via a near-black pill (avatar + **“Chat”**) or compact avatar-only control. Opens the **AI Assisted Side Drawer** or **Floating Hanging Panel** — never the full AI Command Center unless the page is explicitly AI Led.
+**Intent:** Open Guild Agent from product chrome via a near-black pill (avatar + **“Chat”**) or compact avatar-only control. Opens the **AI Assisted Side Drawer** or **Floating Hanging Panel** — never the full AI Command Center unless the page is explicitly AI Led.
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
@@ -44,7 +44,7 @@ The default AI entry point on standard SaaS surfaces — recognizable, confident
 
 ## When not to use
 
-- Long labels like “Ask AI” or “Ask ZAIDYN AI”
+- Long labels like “Ask AI” or “Ask Guild AI”
 - Competing visually with primary product actions
 - Orange as the launcher surface color
 - `avatar-only` without tooltip and accessible label
@@ -56,7 +56,7 @@ The default AI entry point on standard SaaS surfaces — recognizable, confident
 | Part | Shared | Notes |
 |------|--------|-------|
 | Pill container | Unique | Near-black `#1A1628`, 36px tall, pill radius. Not brand-orange. |
-| ZAIDYN Agent avatar | Shared | `AIAvatar` at 28px; becomes loading ring while opening |
+| Guild Agent avatar | Shared | `AIAvatar` at 28px; becomes loading ring while opening |
 | Label | Unique | White **“Chat”** only — omitted in `avatar-only` |
 | Unread badge | Unique | Optional brand-blue dot or numeric pill |
 | Focus ring | Shared | 2px `#5A6DFF` outline, 2px offset |
@@ -133,8 +133,8 @@ The default AI entry point on standard SaaS surfaces — recognizable, confident
 
 ## Accessibility Requirements
 
-- Native `<button>` (or equivalent) with `ariaLabel` default **`Open ZAIDYN Agent chat`**
-- `tooltipLabel` default **`Open ZAIDYN Agent`**
+- Native `<button>` (or equivalent) with `ariaLabel` default **`Open Guild Agent chat`**
+- `tooltipLabel` default **`Open Guild Agent`**
 - **`avatar-only`** requires tooltip + accessible name — never icon-only without label
 - Focus ring visible on `:focus-visible`
 - Honor `prefers-reduced-motion`
@@ -151,8 +151,8 @@ The default AI entry point on standard SaaS surfaces — recognizable, confident
 | `disabled` | `boolean` | `false` | AI unavailable |
 | `disabledReason` | `string` | — | Tooltip when disabled |
 | `highContrast` | `boolean` | `false` | Force near-black surface |
-| `tooltipLabel` | `string` | `'Open ZAIDYN Agent'` | Tooltip text |
-| `ariaLabel` | `string` | `'Open ZAIDYN Agent chat'` | Accessible name |
+| `tooltipLabel` | `string` | `'Open Guild Agent'` | Tooltip text |
+| `ariaLabel` | `string` | `'Open Guild Agent chat'` | Accessible name |
 | `onClick` | `() => void` | — | Open/close assistant surface |
 
 ## JavaScript / React API

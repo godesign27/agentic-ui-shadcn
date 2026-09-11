@@ -5,7 +5,7 @@
   "repoModule": "aiTokens",
   "tier": "tokens",
   "status": "active",
-  "description": "Master index for the ZAIDYN AI Design System token layer (2026-07-06 bundle sync). Three-tier structure: Tier 1 palettes, Tier 2 semantic aliases (AI.*), Tier 3 component tokens (ai-* CSS vars).",
+  "description": "Master index for the Guild AI Design System token layer (2026-07-06 bundle sync). Three-tier structure: Tier 1 palettes, Tier 2 semantic aliases (AI.*), Tier 3 component tokens (ai-* CSS vars).",
   "intent": "Single entry point for AI agents building components. Read this index first, then the category-specific .md, .json, and .agent.json files.",
   "authority": {
     "mirrorSpec": "components/ai/tokens/color.md",
@@ -15,7 +15,7 @@
     "agentIndexPath": "design-system/generated/agent-index.json",
     "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
     "note": "Category manifests and JSON mirrors live alongside this file",
-    "zdsAgentMarkdown": [
+    "dsAgentMarkdown": [
       "components/ai/tokens/typography-variants.md",
       "components/ai/tokens/color-palette-reference.md",
       "components/ai/tokens/agentic-prompt.md"
@@ -30,18 +30,18 @@
   "javascriptApi": {
     "exports": [
       "AI",
-      "ZSAI",
-      "ZS_ORANGE",
-      "ZSAI_TAN",
-      "ZDS",
+      "AI_RAMP",
+      "SIGNAL_ORANGE",
+      "COMPANION_TAN",
+      "DS",
       "AI_THEME",
       "F",
       "AI_TYPOGRAPHY"
     ],
-    "import": "import { AI, ZDS, F } from './ai-tokens'; import { AI_TYPOGRAPHY } from './ai-typography'",
+    "import": "import { AI, DS, F } from './ai-tokens'; import { AI_TYPOGRAPHY } from './ai-typography'",
     "notes": [
       "ai-tokens.ts — color, gradient, shadow, radius, motion",
-      "ai-typography.ts — @zsai-* typography scale",
+      "ai-typography.ts — @ai-* typography scale",
       "Category JSON mirrors for agent-parseable flat lookup"
     ]
   },
@@ -54,7 +54,7 @@
       "exports": [
         "AI.color.*",
         "AI.gradient.*",
-        "ZDS.*"
+        "DS.*"
       ]
     },
     {
@@ -106,8 +106,8 @@
     "cssVars": [
       "--ai-card-bg",
       "--ai-brand-surface",
-      "--ai-zds-text",
-      "--ai-zds-text-helper"
+      "--ai-ds-text",
+      "--ai-ds-text-helper"
     ]
   },
   "accessibility": {
@@ -120,7 +120,7 @@
     "forbiddenChildren": [],
     "forbiddenUsage": [
       "Do not hardcode hex, pixel, duration, or font-size values",
-      "Do not reference Tier 1 palette steps (ZSAI[n]) in component code",
+      "Do not reference Tier 1 palette steps (AI_RAMP[n]) in component code",
       "Do not invent new token names outside the documented namespaces"
     ],
     "agentRules": [

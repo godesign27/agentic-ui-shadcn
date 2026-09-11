@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { AI, F, ZSAI } from '../../tokens/ai-tokens';
+import { AI, F, AI_RAMP } from '../../tokens/ai-tokens';
 
 /**
  * AI Input Field
  * =====================
- * The AI-surface counterpart to the ZDS Field atom (src/field/). Mirrors ZDS
+ * The AI-surface counterpart to the DS Field atom (src/field/). Mirrors DS
  * Field's scope — a label + text input + helper/validation slot — but restyled
- * onto the ZAIDYN AI brand surface: a fully-rounded outline (ai.radius.md),
+ * onto the Guild AI brand surface: a fully-rounded outline (ai.radius.md),
  * brand-blue border (ai.color.border.default), and the tokenized form-field
  * rings (ai.shadow.field.default / .focus / .error) for its state treatment.
  *
- * Unlike the ZDS documentation primitive (whose value is a static span), this
+ * Unlike the DS documentation primitive (whose value is a static span), this
  * atom wraps a REAL <input>, so it is usable directly inside an app.
  */
 
@@ -72,9 +72,9 @@ export function AIInputField({
     : mode === 'warning' ? STATUS.warning
     : disabled ? AI.color.brand /* dimmed via opacity below */
     // Default rest border steps one shade down from the shared border token
-    // (ZSAI[80] #4D60E6 → ZSAI[70] #657CEC) for a softer input outline. Scoped
+    // (AI_RAMP[80] #4D60E6 → AI_RAMP[70] #657CEC) for a softer input outline. Scoped
     // to this atom only; the shared AI.color.border.default stays at [80] for AA.
-    : ZSAI[70];
+    : AI_RAMP[70];
 
   const helperColor =
     mode === 'error' ? STATUS.error

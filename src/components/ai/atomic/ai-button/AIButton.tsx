@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { RiSparklingLine, RiBarChart2Line, RiGroupLine, RiPulseLine, RiCalendarLine, RiArrowRightUpLine, RiUserFollowLine, RiLightbulbLine } from '@remixicon/react';
-import { F, AI, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { F, AI, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
-import { ZdsAiSpinner } from '../../molecules/zds-ai-spinner/AISpinner';
+import { AISpinner } from '../../molecules/ai-spinner/AISpinner';
 
 // ── Tier 3 component tokens — ai-button.* ────────────────────────────────────
 //   ai-button.primary.bg            → AI.gradient.action.full
 //   ai-button.primary.bg.active     → AI.color.action.primaryActive
 //   ai-button.primary.color         → AI.color.text.onAction (#fff)
 //   ai-button.secondary.border      → var(--ai-chip-border)
-//   ai-button.tertiary.color        → ZDS.textHelper
+//   ai-button.tertiary.color        → DS.textHelper
 //
 // This atom is the single home for the AI button family. In addition to the
 // primary/primary-solid/tertiary CTAs it absorbs the former AIChipQuick atom:
@@ -26,7 +26,7 @@ export type AIButtonRadius  = 'xs' | 'sm' | 'md' | 'lg' | 'full';
 
 // `icon` and `trailingIcon` accept either:
 //   • a React node  (e.g. `<RiAddLine />` from @remixicon/react) — sized via `size` prop
-//   • a string      (e.g. `"zs-icon-add"`)              — rendered as a ZAIDYN
+//   • a string      (e.g. `"zs-icon-add"`)              — rendered as a Guild
 //                                                          font glyph wrapped
 //                                                          in `.zs-master-style`
 export type AIButtonIcon = React.ReactNode | string;
@@ -47,7 +47,7 @@ export interface AIButtonProps {
   /**
    * Docs/preview only — forces a visual interaction state so the AI Library can
    * show hover / pressed / focused without real pointer or keyboard input.
-   * Mirrors the standard ZDS Button's `state` prop, restyled on the AI brand
+   * Mirrors the standard DS Button's `state` prop, restyled on the AI brand
    * ramp: hover → action.primaryHover, pressed → action.primaryActive,
    * focused → resting fill + 2px white / 4px border.focus ring.
    */
@@ -63,7 +63,7 @@ export interface AIButtonProps {
 // Tier ladder aligned to shadcn/ui Button cadence (sm=h-8, md=h-9, lg=h-10)
 // with 14-px label as the default. `xl` is the structural page-level CTA per
 // typography.md Table A (16 / Regular / 1.5). `iconPx` is the rendered size
-// for both ZAIDYN font glyphs and Lucide SVGs inside the button.
+// for both Guild font glyphs and Lucide SVGs inside the button.
 //
 // `padTertiary` is intentionally tighter than `pad` so the tertiary variant
 // reads as a link-like control (less horizontal weight than secondary).
@@ -75,9 +75,9 @@ const SIZE_MAP: Record<AIButtonSize, { height: string; pad: string; padIconOnly:
 };
 
 // ── Icon slot wrapper ────────────────────────────────────────────────────────
-// Normalizes icon rendering across ZAIDYN font glyphs and Lucide SVG nodes.
+// Normalizes icon rendering across Guild font glyphs and Lucide SVG nodes.
 //
-//   • String input  → treat as a `zs-icon-*` class name. Render as a ZAIDYN
+//   • String input  → treat as a `zs-icon-*` class name. Render as a Guild
 //                     font glyph wrapped in `.zs-master-style` (required by
 //                     the icons.css cascade) at `fontSize: px`.
 //   • Node input    → assume it's an SVG-based icon (Lucide etc.). Clone with
@@ -85,7 +85,7 @@ const SIZE_MAP: Record<AIButtonSize, { height: string; pad: string; padIconOnly:
 //                     each icon by hand.
 function ButtonIconSlot({ icon, px }: { icon: AIButtonIcon; px: number }) {
   if (typeof icon === 'string') {
-    // ZAIDYN font glyph — must live inside `.zs-master-style` for the icon
+    // Guild font glyph — must live inside `.zs-master-style` for the icon
     // font + ::before content rules in icons.css to take effect. Force the
     // wrapper to inherit the button's text color, since `.zs-master-style`
     // otherwise sets `color: var(--zs-text-color, #2F2C3C)` and would mask
@@ -158,7 +158,7 @@ export function AIButton({
 }: AIButtonProps) {
   const [hov, setHov] = useState(false);
 
-  // Forced (docs-only) interaction states — parallel to the ZDS Button `state`
+  // Forced (docs-only) interaction states — parallel to the DS Button `state`
   // prop. `hovEff` collapses hover + forced-hover so both drive the same visual.
   const forcedHover   = previewState === 'hover';
   const forcedPressed = previewState === 'pressed';
@@ -175,7 +175,7 @@ export function AIButton({
   const isError    = status === 'error';
   const isDisabled = disabled;
   const spinSize   = size === 'lg' ? 14 : 12;
-  // ZdsAiSpinner size token matching `spinSize` (used for the loading state on
+  // AISpinner size token matching `spinSize` (used for the loading state on
   // filled variants). `inverse` renders the white-on-brand arc for filled surfaces.
   const spinToken  = (size === 'lg' ? '14px' : '12px') as '14px' | '12px';
 
@@ -223,7 +223,7 @@ export function AIButton({
           minWidth: minWForVariant, whiteSpace: 'nowrap',
         }}
       >
-        {isLoading  && <ZdsAiSpinner size={spinToken} inverse />}
+        {isLoading  && <AISpinner size={spinToken} inverse />}
         {isComplete && <CheckIcon size={spinSize} />}
         {!isLoading && !isComplete && icon && <ButtonIconSlot icon={icon} px={sz.iconPx} />}
         {label}
@@ -257,7 +257,7 @@ export function AIButton({
     } else {
       bg = sHov ? 'var(--ai-chip-bg-hover)' : 'var(--ai-chip-bg)';
       borderColor = forcedPressed ? AI.color.action.primaryActive : sHov ? AI.color.border.strong : 'var(--ai-chip-border)';
-      textColor = sHov ? AI.color.action.primary : 'var(--ai-zds-text)';
+      textColor = sHov ? AI.color.action.primary : 'var(--ai-ds-text)';
       boxShadow = undefined;
     }
     if (forcedFocus && !isDisabled) boxShadow = focusRing;
@@ -293,7 +293,7 @@ export function AIButton({
   }
 
   if (variant === 'link') {
-    // Link — text-link treatment matching the standard ZDS Button `type="link"`,
+    // Link — text-link treatment matching the standard DS Button `type="link"`,
     // restyled on the AI brand ramp and mirroring the AITextLink atom:
     // transparent bg/border, brand-blue label, underline on hover, deepened
     // brand color on press. Supports a leading `icon` and/or `trailingIcon`.
@@ -352,7 +352,7 @@ export function AIButton({
         background: forcedPressed ? (onDark ? 'rgba(255,255,255,0.10)' : 'var(--ai-chip-bg-hover)') : 'none',
         color: isDisabled ? 'var(--ai-btn-disabled-text)'
           : onDark ? ((hovEff || forcedPressed) ? '#FFFFFF' : 'rgba(255,255,255,0.85)')
-          : (hovEff || forcedPressed) ? 'var(--ai-zds-text)' : 'var(--ai-zds-helper)',
+          : (hovEff || forcedPressed) ? 'var(--ai-ds-text)' : 'var(--ai-ds-helper)',
         border: 'none',
         borderRadius: AI.radius.sm,
         boxShadow: forcedFocus && !isDisabled ? focusRing : undefined,
@@ -402,9 +402,9 @@ const ACTION_GAP: Record<AIActionSize, string> = { sm: '6px', md: '8px', lg: '10
 function ReviewIcon() {
   return (
     <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="10" cy="10" r="9" stroke={ZS_ORANGE[60]} strokeWidth="1.5" />
-      <path d="M10 6v5" stroke={ZS_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="10" cy="14" r="1" fill={ZS_ORANGE[60]} />
+      <circle cx="10" cy="10" r="9" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" />
+      <path d="M10 6v5" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="10" cy="14" r="1" fill={SIGNAL_ORANGE[60]} />
     </svg>
   );
 }
@@ -451,7 +451,7 @@ export function AIAction({
           alignSelf: layout === 'stacked' ? 'flex-start' : 'center',
         }}>
           <ReviewIcon />
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-action-link'], fontFamily: F, color: ZS_ORANGE[70] }}>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-action-link'], fontFamily: F, color: SIGNAL_ORANGE[70] }}>
             Requires review
           </span>
         </div>

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiAnalysisInsight`  
 **Component type:** React molecule  
@@ -22,7 +22,7 @@ Do not use AIAnalysisInsight for system notifications or generic alerts — use 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -147,8 +147,8 @@ Do not use AIAnalysisInsight for system notifications or generic alerts — use 
 ### Recommendation / Watchout
 | Token | Value | Usage |
 | --- | --- | --- |
-| `border` | `ZS_ORANGE[60] (#EC7200)` | Left accent bar |
-| `bg` | `ZS_ORANGE["00"] (#FEFBF4)` | Card background for Recommendation and Watchout |
+| `border` | `SIGNAL_ORANGE[60] (#EC7200)` | Left accent bar |
+| `bg` | `SIGNAL_ORANGE["00"] (#FEFBF4)` | Card background for Recommendation and Watchout |
 
 ## Flows
 
@@ -193,9 +193,9 @@ import { AIAnalysisInsight } from '@/components/ai/molecules/ai-analysis-insight
 ## Agent rules
 
 1. Read this mirror spec and `ai-analysis-insight.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-analysis-insight/ai-analysis-insight.agent.json`.
 

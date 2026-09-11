@@ -1,6 +1,6 @@
 # Agentic Prompt — AI List
 
-You are implementing the **AI List** (`ai-list`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI List** (`ai-list`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

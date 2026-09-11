@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Notification
 
-You are implementing the **AI Notification** (`ai-notification`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Notification** (`ai-notification`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

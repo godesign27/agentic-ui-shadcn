@@ -1,5 +1,5 @@
 import React from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIControlBar, ControlBarState } from '../../atomic/ai-control-bar/AIControlBar';
 
@@ -42,8 +42,8 @@ const BTN_SM: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 4,
   padding: '4px 10px', borderRadius: AI.radius.sm,
   border: '1px solid var(--ai-btn-outline-border)', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-meta-label'],
-  background: 'transparent', color: 'var(--ai-zds-helper)',
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-meta-label'],
+  background: 'transparent', color: 'var(--ai-ds-helper)',
 };
 
 export function AIWorkstreamControlPanel({
@@ -68,7 +68,7 @@ export function AIWorkstreamControlPanel({
       border: '1px solid var(--ai-card-border)',
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 340,
     }}>
       {/* Header */}
@@ -78,8 +78,8 @@ export function AIWorkstreamControlPanel({
         background: 'var(--ai-card-bg-raised)',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: 'var(--ai-zds-text)' }}>Workstream Control</span>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)' }}>{pct}% complete</span>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: 'var(--ai-ds-text)' }}>Workstream Control</span>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)' }}>{pct}% complete</span>
       </div>
 
       {/* Progress bar */}
@@ -121,7 +121,7 @@ export function AIWorkstreamControlPanel({
                   </div>
                   {/* Label */}
                   <span style={{
-                    fontSize: 12, color: isFuture ? 'var(--ai-btn-disabled-text)' : 'var(--ai-zds-text)',
+                    fontSize: 12, color: isFuture ? 'var(--ai-btn-disabled-text)' : 'var(--ai-ds-text)',
                     maxWidth: 60, textAlign: 'center', lineHeight: 1.3,
                     fontWeight: isCurrent ? 600 : 400,
                   }}>
@@ -151,7 +151,7 @@ export function AIWorkstreamControlPanel({
           background: 'var(--ai-card-bg-raised)',
           border: '1px solid var(--ai-card-border)',
           borderRadius: AI.radius.xs,
-          ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-text)',
           display: 'flex', alignItems: 'flex-start', gap: 6,
         }}>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ marginTop: 1, flexShrink: 0 }}>

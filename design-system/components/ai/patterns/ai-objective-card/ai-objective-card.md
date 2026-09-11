@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiObjectiveCard`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ AIObjectiveCard is a compact, reusable card for surfacing a single goal, constra
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -61,7 +61,7 @@ undefined. **undefined** _(undefined)_ — undefined
 
 - **undefined** _(undefined)_ — Default AI brand treatment — icon + bold title + chip + bulleted goals.
 - **undefined** _(undefined)_ — Neutral surface for non-warning categories like constraints + knowledge inputs.
-- **undefined** _(undefined)_ — Warning treatment — ZS orange border + orange icon + orange chip + orange bullet dots.
+- **undefined** _(undefined)_ — Warning treatment — Guild orange border + orange icon + orange chip + orange bullet dots.
 
 ## Props API
 
@@ -136,9 +136,9 @@ import { AIObjectiveCard } from '@/components/ai/organisms/ai-objective-card/AIO
 ## Agent rules
 
 1. Read this mirror spec and `ai-objective-card.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-objective-card/ai-objective-card.agent.json`.
 

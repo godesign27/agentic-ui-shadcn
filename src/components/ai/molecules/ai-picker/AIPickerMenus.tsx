@@ -10,8 +10,8 @@ import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
  * (composed "menu open" preview states).
  *
  * Chrome principles (senior-UX craft bar):
- *   • No teal anywhere — menus use neutral ZDS chrome + restrained AI accents.
- *   • Selected states fill with ZDS dark gray (#1A1628) + white text.
+ *   • No teal anywhere — menus use neutral DS chrome + restrained AI accents.
+ *   • Selected states fill with DS dark gray (#1A1628) + white text.
  *   • Selected DAY cells are circles (radius.full); month/time labels stay soft
  *     rounded rectangles (they are labels, not dates).
  *   • Today is marked with a brand ring, never a fill (fill is reserved for the
@@ -23,15 +23,15 @@ const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'S
 const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const DAYS_ABBR = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
-// Selected-state fill (ZDS dark gray) — confirmed with design.
+// Selected-state fill (DS dark gray) — confirmed with design.
 const SELECTED_BG = 'var(--zs-dark-background-color, #1A1628)';
 const SELECTED_FG = '#FFFFFF';
-// Menu ink is pinned to the picker-menu tokens (not the global --ai-zds-* tokens)
+// Menu ink is pinned to the picker-menu tokens (not the global --ai-ds-* tokens)
 // so it stays dark on the always-light menu surface — white in light mode, warm
 // tan in dark mode. Prevents light-on-tan invisibility when the theme flips.
 const NEUTRAL_TEXT = 'var(--ai-picker-menu-text, #2f2c3c)';
 const NEUTRAL_HELPER = 'var(--ai-picker-menu-helper, #5b5864)';
-const NEUTRAL_BORDER = 'var(--ai-zds-border, #B2B0B6)';
+const NEUTRAL_BORDER = 'var(--ai-ds-border, #B2B0B6)';
 
 // ── Inline popover chrome ────────────────────────────────────────────────────
 export function PopoverShell({ children, width }: { children: React.ReactNode; width?: number }) {
@@ -59,7 +59,7 @@ export function YearHeader({ year, onPrev, onNext }: { year: number; onPrev: () 
       <button type="button" onClick={onPrev} aria-label="Previous year" style={btn}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
-      <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>{year}</span>
+      <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>{year}</span>
       <button type="button" onClick={onNext} aria-label="Next year" style={btn}>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
@@ -83,7 +83,7 @@ export function MonthCell({ label, selected, inRange, onClick }: { label: string
         borderRadius: 8,
         cursor: 'pointer',
         fontFamily: F,
-        ...AI_TYPOGRAPHY['@zsai-body-small'],
+        ...AI_TYPOGRAPHY['@ai-body-small'],
       }}
     >
       {label}
@@ -111,11 +111,11 @@ function buildCells(viewYear: number, viewMonth: number): CalCell[] {
 }
 
 /**
- * DatePanel — neutral-chrome day calendar (replaces the teal ZdsDatePickerInline
+ * DatePanel — neutral-chrome day calendar (replaces the teal DSDatePickerInline
  * for the AI Picker). Circular day cells; selected day is a dark-gray filled
  * circle; today is a brand ring.
  *
- * Props mirror ZdsDatePickerInline so the group's renderPopover swaps cleanly.
+ * Props mirror DSDatePickerInline so the group's renderPopover swaps cleanly.
  */
 export function DatePanel({ value, onSelect, onCancel }: { value: string; onSelect: (v: string) => void; onCancel: () => void }) {
   const today = React.useMemo(() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; }, []);
@@ -154,7 +154,7 @@ export function DatePanel({ value, onSelect, onCancel }: { value: string; onSele
         <button type="button" onClick={prevMonth} aria-label="Previous month" style={navBtn}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
-        <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>
+        <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>
           {MONTHS_LONG[viewMonth]} {viewYear}
         </span>
         <button type="button" onClick={nextMonth} aria-label="Next month" style={navBtn}>
@@ -220,14 +220,14 @@ export function DatePanel({ value, onSelect, onCancel }: { value: string; onSele
         <button
           type="button"
           onClick={() => { setViewYear(today.getFullYear()); setViewMonth(today.getMonth()); onSelect(today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })); }}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px 0', color: AI.color.text.secondary, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700 }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px 0', color: AI.color.text.secondary, fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700 }}
         >
           Today
         </button>
         <button
           type="button"
           onClick={onCancel}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px 0', color: NEUTRAL_HELPER, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'] }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '2px 0', color: NEUTRAL_HELPER, fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'] }}
         >
           Cancel
         </button>
@@ -332,7 +332,7 @@ export function TimePanel({ value, onSelect, onCancel }: { value: string; onSele
         <button type="button" onClick={onUp} aria-label="Increment" style={arrow}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 15l6-6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </button>
-        <div style={{ width: 48, textAlign: 'center', padding: '6px 0', border: `1px solid ${AI.color.brandBorder}`, borderRadius: 8, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>
+        <div style={{ width: 48, textAlign: 'center', padding: '6px 0', border: `1px solid ${AI.color.brandBorder}`, borderRadius: 8, fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700, color: NEUTRAL_TEXT }}>
           {val}
         </div>
         <button type="button" onClick={onDown} aria-label="Decrement" style={arrow}>
@@ -354,7 +354,7 @@ export function TimePanel({ value, onSelect, onCancel }: { value: string; onSele
         color: mer === m ? SELECTED_FG : NEUTRAL_TEXT,
         fontFamily: F,
         cursor: 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-button-label'],
+        ...AI_TYPOGRAPHY['@ai-button-label'],
       }}
     >
       {m}
@@ -379,7 +379,7 @@ export function TimePanel({ value, onSelect, onCancel }: { value: string; onSele
           <button
             type="button"
             onClick={onCancel}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: NEUTRAL_HELPER, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'] }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px 6px', color: NEUTRAL_HELPER, fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'] }}
           >
             Cancel
           </button>
@@ -387,7 +387,7 @@ export function TimePanel({ value, onSelect, onCancel }: { value: string; onSele
         <button
           type="button"
           onClick={apply}
-          style={{ padding: '6px 16px', borderRadius: AI.radius.sm, background: AI.color.action.primary, border: 'none', color: AI.color.text.onAction, cursor: 'pointer', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'] }}
+          style={{ padding: '6px 16px', borderRadius: AI.radius.sm, background: AI.color.action.primary, border: 'none', color: AI.color.text.onAction, cursor: 'pointer', fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'] }}
         >
           Apply
         </button>

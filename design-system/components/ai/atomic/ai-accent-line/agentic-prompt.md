@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Accent Line
 
-You are implementing the **AI Accent Line** (`ai-accent-line`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Accent Line** (`ai-accent-line`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

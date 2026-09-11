@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiPickerTrigger`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 The styled field that signals an AI-enhanced date/time picker — brand-tinted border, 12px radius, and an AI badge at higher densities.
 
-The AI Picker Trigger is the visual shell used in place of the standard ZDS picker trigger when AI is present. It renders the label, the current value (or placeholder), a trailing type icon, and — at rich/robust density — an AI badge on the label row. It holds no suggestion logic, calendar, or popover; those belong to the ai-picker group that composes this atom. Colors use the library ZSAI indigo ramp (AI.color.*), mapping the spec's blue tokens to brand.
+The AI Picker Trigger is the visual shell used in place of the standard DS picker trigger when AI is present. It renders the label, the current value (or placeholder), a trailing type icon, and — at rich/robust density — an AI badge on the label row. It holds no suggestion logic, calendar, or popover; those belong to the ai-picker group that composes this atom. Colors use the library AI_RAMP indigo ramp (AI.color.*), mapping the spec's blue tokens to brand.
 
 **Export:** `AIPickerTrigger`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -90,9 +90,9 @@ import { AIPickerTrigger } from '@/components/ai/atomic/ai-picker-trigger/AIPick
 ## Agent rules
 
 1. Read this mirror spec and `ai-picker-trigger.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-picker-trigger/ai-picker-trigger.agent.json`.
 

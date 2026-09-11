@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiInputField`  
 **Component type:** React atomic  
@@ -12,15 +12,15 @@
 
 ## Purpose
 
-The text-entry atom for AI surfaces. Mirrors ZDS Field’s scope (label · input · helper) but restyled onto the ZAIDYN brand surface — rounded outline, brand-blue border, and a soft blue-halo focus.
+The text-entry atom for AI surfaces. Mirrors DS Field’s scope (label · input · helper) but restyled onto the Guild brand surface — rounded outline, brand-blue border, and a soft blue-halo focus.
 
-AIInputField is the AI-surface counterpart to the standard ZDS Field atom (src/field/). It keeps the same scope — a label, a single-line input, and a helper/validation slot with default/warning/error modes — but swaps ZDS Field’s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the ZDS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.
+AIInputField is the AI-surface counterpart to the standard DS Field atom (src/field/). It keeps the same scope — a label, a single-line input, and a helper/validation slot with default/warning/error modes — but swaps DS Field’s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the DS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.
 
 **Export:** `AIInputField`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -110,9 +110,9 @@ import { AIInputField } from '@/components/ai/atomic/input-field/AIInputField';
 ## Agent rules
 
 1. Read this mirror spec and `ai-input-field.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-input-field/ai-input-field.agent.json`.
 

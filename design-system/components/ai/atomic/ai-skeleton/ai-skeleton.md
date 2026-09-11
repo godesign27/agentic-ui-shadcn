@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiSkeleton`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 Four atoms → three patterns. Brand-blue fill, brand sweep, AI radius. Motion on by default.
 
-AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is identical — 48/40 profile, 56×24 controls, 120×24 header, exactly two 16px body lines 16px apart, 280×160 card, 56px table rows, 400×900 panel — so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text — column names, the panel title — stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged — the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.
+AI Skeleton is the AI-library mirror of DS Skeleton. Every measurement is identical — 48/40 profile, 56×24 controls, 120×24 header, exactly two 16px body lines 16px apart, 280×160 card, 56px table rows, 400×900 panel — so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text — column names, the panel title — stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged — the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.
 
 **Export:** `AISkeleton`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -97,7 +97,7 @@ AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is ident
 - **Overlay** _(refresh)_ — Refresh, not initial load. Real content stays mounted and readable underneath; only pointer events are blocked.
 - **Metric tile** _(coverage)_ — ai-metric-value · ai-metric-tile · ai-trend-indicator · ai-card-metric · ai-generated-dashboard. The value bar is taller and shorter than the label, because a number is the largest, briefest thing on a tile.
 - **Chart** _(coverage)_ — ai-card-analysis · ai-analysis-insight · ai-generated-dashboard. Bar, line and donut. The bar heights are a fixed decorative pattern — a chart skeleton that looked like a plausible reading would be a claim about data nobody has yet.
-- **Timeline** _(coverage)_ — ai-reasoning-trace · ai-handoff-timeline · ai-agent-task-tracker · zds-ai-stepper. The connectors are drawn for real: the shape of a process is known before its contents are.
+- **Timeline** _(coverage)_ — ai-reasoning-trace · ai-handoff-timeline · ai-agent-task-tracker · ai-stepper. The connectors are drawn for real: the shape of a process is known before its contents are.
 - **Field** _(coverage)_ — ai-input-field · ai-picker · ai-date-picker · ai-time-picker · ai-search · forms inside ai-dialog. Keeps the real field height and AI.radius.md.
 - **Chips** _(coverage)_ — ai-chip · ai-badge · ai-confidence-risk-badge · ai-source-tile · ai-file-attachment. Widths are uneven and fixed, so the row neither reshuffles nor reads as a toolbar.
 
@@ -117,7 +117,7 @@ AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is ident
 | `helper` | `boolean` | `false` | AISkeletonField — helper line under the control. |
 | `size` | `'normal' \| 'small' \| 'xsmall'` | `'normal'` | AISkeletonField — 50 / 44 / 38px, matching the real AI field heights. |
 | `count` | `number` | `4` | AISkeletonChips — how many pills. Widths cycle a fixed uneven set. |
-| `shimmer` | `boolean` | `true` | All exports. Brand sweep — ON by default, the inverse of ZDS Skeleton. |
+| `shimmer` | `boolean` | `true` | All exports. Brand sweep — ON by default, the inverse of DS Skeleton. |
 | `Block · width / height` | `number \| string` | `'100%' / 16` | The primitive rectangle. |
 | `Block · radius` | `string` | `AI.radius.xs` | Pass AI.radius.full for pill strips. |
 | `Block · delay` | `number` | `0` | Offsets the sweep, in ms. Set via a custom property — inline styles cannot reach a ::after. |
@@ -171,7 +171,7 @@ AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is ident
 | `AI.color.brand @ 30%` | `rgba(77,96,230,0.30)` | Sweep highlight over the brandSubtle base |
 | `AI.color.brandBorder` | `#BECAFE` | Card and table border |
 | `AI.color.brand` | `#4D60E6` | Table header checkbox |
-| `AI.color.brandInk` | `#1F2A66` | Panel header (was ZDS #1a1628) |
+| `AI.color.brandInk` | `#1F2A66` | Panel header (was DS #1a1628) |
 | `AI.shadow.card.default` | `0 1px 4px rgba(77,96,230,0.10)` | Card elevation |
 | `AI.shadow.card.raised` | `0 4px 16px rgba(77,96,230,0.14)` | Panel elevation |
 
@@ -280,9 +280,9 @@ import {
 ## Agent rules
 
 1. Read this mirror spec and `ai-skeleton.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-skeleton/ai-skeleton.agent.json`.
 

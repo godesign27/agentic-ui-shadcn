@@ -2,7 +2,7 @@
 
 **Version:** 1.1  
 **Last Updated:** 2026-07-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)
 **Repo module:** `aiStatusPill`  
 **Component type:** React atom  
@@ -21,7 +21,7 @@ Tone-driven pill with a leading icon (check for success, alert triangle for warn
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -65,7 +65,7 @@ Tone-driven pill with a leading icon (check for success, alert triangle for warn
 ```tsx
 // AI Status Pill (ai-status-pill)
 // Source: ai/atomic/status-pill/AIStatusPill.tsx
-// Exported from the ZAIDYN AI Design System on 2026-07-02
+// Exported from the Guild AI Design System on 2026-07-02
 
 import { AIStatusPill } from 'ai/atomic/status-pill/AIStatusPill';
 
@@ -78,7 +78,7 @@ import { AIStatusPill } from 'ai/atomic/status-pill/AIStatusPill';
 ## Agent rules
 
 1. Read this mirror spec and `ai-status-pill.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atoms — fetch canonical implementations from mirror specs.
 4. Copy canonical implementation from the external package when synced; use the block above as reference.
 

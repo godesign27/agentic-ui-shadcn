@@ -1,5 +1,5 @@
 /**
- * AIReasoningQuote — ZAIDYN Agentic AI Atom
+ * AIReasoningQuote — Guild Agentic AI Atom
  *
  * Surfaces the agent's first-person reasoning as a short italicized blockquote
  * with a tinted left rule and an uppercase eyebrow label. Used in drawers,
@@ -7,8 +7,8 @@
  * rationale without breaking the surrounding chrome.
  *
  * Variants:
- *   tone="ai"      — default. Brand-blue left rule, ZSAI eyebrow tint.
- *   tone="warning" — ZS orange left rule for risk/guardrail rationales.
+ *   tone="ai"      — default. Brand-blue left rule, AI_RAMP eyebrow tint.
+ *   tone="warning" — Guild orange left rule for risk/guardrail rationales.
  *   tone="neutral" — neutral helper-grey left rule for muted contexts.
  *
  * Composition:
@@ -23,7 +23,7 @@
  */
 
 import React from 'react';
-import { AI, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export type AIReasoningQuoteTone = 'ai' | 'warning' | 'neutral';
@@ -33,7 +33,7 @@ export interface AIReasoningQuoteProps {
   quote:        React.ReactNode;
   /** Defaults to "REASONING SUMMARY". Pass null/"" to hide. */
   eyebrow?:     string | null;
-  /** ZAIDYN icon class for the eyebrow. Defaults to brand AI glyph. */
+  /** Guild icon class for the eyebrow. Defaults to brand AI glyph. */
   eyebrowIcon?: string;
   tone?:        AIReasoningQuoteTone;
   size?:        AIReasoningQuoteSize;
@@ -52,8 +52,8 @@ interface ToneCfg {
 
 const TONE_CFG: Record<AIReasoningQuoteTone, ToneCfg> = {
   'ai':      { rule: AI.color.border.subtle,  eyebrow: AI.color.text.secondary },
-  'warning': { rule: ZS_ORANGE[40] ?? '#F4B583', eyebrow: ZS_ORANGE[80] ?? '#A14A00' },
-  'neutral': { rule: 'var(--ai-card-border)', eyebrow: 'var(--ai-zds-helper)' },
+  'warning': { rule: SIGNAL_ORANGE[40] ?? '#F4B583', eyebrow: SIGNAL_ORANGE[80] ?? '#A14A00' },
+  'neutral': { rule: 'var(--ai-card-border)', eyebrow: 'var(--ai-ds-helper)' },
 };
 
 function Glyph({ name, size = 14, color }: { name: string; size?: number; color?: string }) {
@@ -99,7 +99,7 @@ export function AIReasoningQuote({
         >
           <Glyph name={eyebrowIcon} size={14} color={cfg.eyebrow} />
           <span style={{
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
             color: cfg.eyebrow,
             fontWeight: 700,
             letterSpacing: '0.10em',
@@ -119,7 +119,7 @@ export function AIReasoningQuote({
           fontStyle: 'italic',
           fontSize: quoteSize,
           lineHeight: 1.55,
-          color: 'var(--ai-zds-text)',
+          color: 'var(--ai-ds-text)',
           textAlign: 'left' as const,
         }}
       >
@@ -128,8 +128,8 @@ export function AIReasoningQuote({
           <footer style={{
             marginTop: 6,
             fontStyle: 'normal',
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
             letterSpacing: '0.06em',
           }}>
             {attribution}

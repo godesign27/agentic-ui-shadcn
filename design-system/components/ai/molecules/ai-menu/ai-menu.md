@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiMenu`  
 **Component type:** React molecule  
@@ -12,15 +12,15 @@
 
 ## Purpose
 
-A vertical AI-action list — 12px radius, --ai-card-bg surface, brand border, @zsai-menu-item type, AI active/selected accents.
+A vertical AI-action list — 12px radius, --ai-card-bg surface, brand border, @ai-menu-item type, AI active/selected accents.
 
-AIMenu is the AI skin of the standard ZDS Menu. It keeps the same behavior and prop surface (role="menu", role="menuitem" / role="menuitemcheckbox", submenu cascade, group-title, separator, three sizes) but wears the AI dialog chrome instead of the neutral ZDS one: --ai-card-bg surface, AI.color.brandBorder, 12px (AI.radius.sm) corners, the layered soft-blue elevation shadow, @zsai-menu-item item typography, and AI active/selected accents (AI.color.action.primary fill with white text; AI.color.brand checkmark). Chrome is composed from the AICommandCenterDialog PlusMenu and AIPicker PopoverShell rather than forked, so an AIMenu reads as part of the same AI system as the dialog.
+AIMenu is the AI skin of the standard DS Menu. It keeps the same behavior and prop surface (role="menu", role="menuitem" / role="menuitemcheckbox", submenu cascade, group-title, separator, three sizes) but wears the AI dialog chrome instead of the neutral DS one: --ai-card-bg surface, AI.color.brandBorder, 12px (AI.radius.sm) corners, the layered soft-blue elevation shadow, @ai-menu-item item typography, and AI active/selected accents (AI.color.action.primary fill with white text; AI.color.brand checkmark). Chrome is composed from the AICommandCenterDialog PlusMenu and AIPicker PopoverShell rather than forked, so an AIMenu reads as part of the same AI system as the dialog.
 
 **Export:** `AIMenu`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -45,16 +45,16 @@ AIMenu is the AI skin of the standard ZDS Menu. It keeps the same behavior and p
 
 ## When not to use
 
-- You need the neutral standard styling — use `zds-menu`
+- You need the neutral standard styling — use `ds-menu`
 - It should be hidden behind a trigger — use `ai-popup-menu`
-- It is a form select control — use `zds-dropdown`
+- It is a form select control — use `ds-dropdown`
 
 ## Anatomy
 
 1. **Menu container** _(Unique)_ — role="menu" surface — --ai-card-bg, brand border, 12px radius, soft-blue shadow.
-2. **Menu item** _(Shared)_ — role="menuitem" row — leading icon slot, @zsai-menu-item label, optional trailing caret.
-3. **Group title** _(Shared)_ — Uppercase section label in zds.textHelper — pointer-events:none.
-4. **Separator** _(Shared)_ — 1px zds.border rule between groups.
+2. **Menu item** _(Shared)_ — role="menuitem" row — leading icon slot, @ai-menu-item label, optional trailing caret.
+3. **Group title** _(Shared)_ — Uppercase section label in DS.textHelper — pointer-events:none.
+4. **Separator** _(Shared)_ — 1px DS.border rule between groups.
 5. **Submenu caret** _(Shared)_ — RiArrowRightSLine — opens a nested AIMenu panel on hover / ArrowRight.
 6. **Checkmark** _(Shared)_ — Leading RiCheckLine in multi-select — AI.color.brand when selected.
 
@@ -95,11 +95,11 @@ AIMenu is the AI skin of the standard ZDS Menu. It keeps the same behavior and p
 ### Text & icons
 | Token | Value | Usage |
 | --- | --- | --- |
-| `zds.textDefault` | `#2f2c3c` | Item text |
-| `zds.textHelper` | `#5b5864` | Group title |
-| `zds.textDisabled` | `#716e79` | Disabled item text |
+| `DS.textDefault` | `#2f2c3c` | Item text |
+| `DS.textHelper` | `#5b5864` | Group title |
+| `DS.textDisabled` | `#716e79` | Disabled item text |
 | `ai.color.brand` | `#4D60E6` | Leading icon / checkmark |
-| `@zsai-menu-item` | `14 / 400 / 1.4` | Item typography |
+| `@ai-menu-item` | `14 / 400 / 1.4` | Item typography |
 
 ### Selection & active
 | Token | Value | Usage |
@@ -107,7 +107,7 @@ AIMenu is the AI skin of the standard ZDS Menu. It keeps the same behavior and p
 | `ai.color.action.primary` | `#4D60E6` | Active item fill |
 | `ai.color.text.onAction` | `#FFFFFF` | Active item text |
 | `ai.color.surface.default` | `#F5F6FF` | Multi-select selected bg |
-| `zds.menuHoverBg` | `rgba(178,176,182,0.4)` | Hover background |
+| `DS.menuHoverBg` | `rgba(178,176,182,0.4)` | Hover background |
 
 ## Flows
 
@@ -151,9 +151,9 @@ const items: AIMenuItem[] = [
 ## Agent rules
 
 1. Read this mirror spec and `ai-menu.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-menu/ai-menu.agent.json`.
 

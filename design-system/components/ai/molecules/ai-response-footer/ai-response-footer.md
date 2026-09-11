@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiResponseFooter`  
 **Component type:** React molecule  
@@ -20,7 +20,7 @@ AIResponseFooter is the optional group component used beneath AI-generated respo
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -79,7 +79,7 @@ AIResponseFooter is the optional group component used beneath AI-generated respo
 | --- | --- | --- | --- |
 | `sources` | `AISource[]` | `[]` | Data source chip objects — label, freshness, type, href |
 | `maxVisibleSources` | `number` | `3` | Max chips shown before "+N more" overflow |
-| `attribution` | `string` | `undefined` | Attribution text e.g. "ZAIDYN Analytics" |
+| `attribution` | `string` | `undefined` | Attribution text e.g. "Guild Analytics" |
 | `updatedAt` | `string` | `undefined` | Freshness label e.g. "just now" or "12 min ago" |
 | `freshnessLabel` | `string` | `undefined` | Overrides computed freshness text entirely |
 | `showDivider` | `boolean` | `true` | Top divider rule between AI output and footer |
@@ -106,10 +106,10 @@ AIResponseFooter is the optional group component used beneath AI-generated respo
 ### Stale / Warning
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ZS_ORANGE['00']` | `#FEFBF4` | Stale chip background |
-| `ZS_ORANGE[20]` | `#FFD68F` | Stale chip border |
-| `ZS_ORANGE[60]` | `#EC7200` | Warning icon color |
-| `ZS_ORANGE[70]` | `#CB6100` | Warning text color |
+| `SIGNAL_ORANGE['00']` | `#FEFBF4` | Stale chip background |
+| `SIGNAL_ORANGE[20]` | `#FFD68F` | Stale chip border |
+| `SIGNAL_ORANGE[60]` | `#EC7200` | Warning icon color |
+| `SIGNAL_ORANGE[70]` | `#CB6100` | Warning text color |
 
 ## Flows
 
@@ -136,7 +136,7 @@ import { AIResponseFooter } from '@/components/ai/molecules/ai-response-footer/A
 
 // Standard — attribution + feedback
 <AIResponseFooter
-  attribution="ZAIDYN Analytics"
+  attribution="Guild Analytics"
   updatedAt="just now"
   showFeedback
 />
@@ -144,7 +144,7 @@ import { AIResponseFooter } from '@/components/ai/molecules/ai-response-footer/A
 // Full footer with sources
 <AIResponseFooter
   sources={[
-    { label: 'ZAIDYN Analytics', freshness: 'fresh' },
+    { label: 'Guild Analytics', freshness: 'fresh' },
     { label: 'Territory DB' },
     { label: 'Forecast' },
     { label: 'RiPulseLine' },
@@ -167,9 +167,9 @@ import { AIResponseFooter } from '@/components/ai/molecules/ai-response-footer/A
 
 // Compact panel layout
 <AIResponseFooter
-  sources={[{ label: 'ZAIDYN Analytics' }, { label: 'Forecast' }, { label: 'RiPulseLine' }]}
+  sources={[{ label: 'Guild Analytics' }, { label: 'Forecast' }, { label: 'RiPulseLine' }]}
   maxVisibleSources={1}
-  attribution="ZAIDYN Analytics"
+  attribution="Guild Analytics"
   updatedAt="just now"
   compact
   showFeedback
@@ -179,9 +179,9 @@ import { AIResponseFooter } from '@/components/ai/molecules/ai-response-footer/A
 ## Agent rules
 
 1. Read this mirror spec and `ai-response-footer.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-response-footer/ai-response-footer.agent.json`.
 

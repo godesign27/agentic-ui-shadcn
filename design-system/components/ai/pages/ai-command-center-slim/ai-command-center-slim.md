@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiCommandCenterSlim`  
 **Component type:** React page  
@@ -20,7 +20,7 @@ AICommandCenterSlim is a minimal single-row variant of the AI Command Center. Th
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -99,7 +99,7 @@ The right action button reacts to input state in real time.
 ## Canonical implementation
 
 ```tsx
-import { AICommandCenterSlim } from '@zs/ai/pages/ai-command-center-slim/AICommandCenterSlim';
+import { AICommandCenterSlim } from '@/components/ai/pages/ai-command-center-slim/AICommandCenterSlim';
 
 // Idle — mic visible
 <AICommandCenterSlim />
@@ -111,9 +111,9 @@ import { AICommandCenterSlim } from '@zs/ai/pages/ai-command-center-slim/AIComma
 ## Agent rules
 
 1. Read this mirror spec and `ai-command-center-slim.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/ai-command-center-slim/ai-command-center-slim.agent.json`.
 

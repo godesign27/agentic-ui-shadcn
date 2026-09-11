@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Insight Callout
 
-You are implementing the **AI Insight Callout** (`ai-insight-callout`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Insight Callout** (`ai-insight-callout`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

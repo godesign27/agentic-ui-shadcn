@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Task Tracker
 
-You are implementing the **AI Agent Task Tracker** (`ai-agent-task-tracker`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Task Tracker** (`ai-agent-task-tracker`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

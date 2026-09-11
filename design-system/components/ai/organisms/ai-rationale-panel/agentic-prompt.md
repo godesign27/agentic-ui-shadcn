@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Rationale
 
-You are implementing the **AI Rationale** (`ai-rationale-panel`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Rationale** (`ai-rationale-panel`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

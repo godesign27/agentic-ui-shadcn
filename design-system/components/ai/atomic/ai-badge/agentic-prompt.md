@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Badge
 
-You are implementing the **AI Badge** (`ai-badge`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Badge** (`ai-badge`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Badge** (`ai-badge`) from the ZAIDYN AI Design Sys
 | **Category** | AI atomic |
 | **Source** | Make export 2026-08-06 |
 
-> The compact label atom for AI status and metrics. Extends the ZDS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. "+23% engagement") stay on-system.
+> The compact label atom for AI status and metrics. Extends the DS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. "+23% engagement") stay on-system.
 
 ## Mandatory read order (before writing code)
 

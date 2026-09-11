@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { F, ZDS, AI } from '../../tokens/ai-tokens';
+import { F, DS, AI } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── CSS injected once ─────────────────────────────────────────────────────────
@@ -187,7 +187,7 @@ export function AIAgentWorkNote({
             aria-controls={hasContent ? 'awn-body' : undefined}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '5px',
-              fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'],
+              fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'],
               color: hoverTrigger && hasContent ? AI.color.brandStrong : AI.color.brand,
               background: hoverTrigger && hasContent
                 ? 'var(--ai-brand-surface)'
@@ -224,7 +224,7 @@ export function AIAgentWorkNote({
               aria-label="Hide working note"
               style={{
                 fontFamily: F, fontSize: '12px',
-                color: hoverHide ? 'var(--ai-zds-text)' : 'var(--ai-zds-helper)',
+                color: hoverHide ? 'var(--ai-ds-text)' : 'var(--ai-ds-helper)',
                 background: 'transparent', border: 'none', cursor: 'pointer', padding: '2px 4px',
                 transition: 'color 0.15s ease',
               }}
@@ -247,7 +247,7 @@ export function AIAgentWorkNote({
             {content && (
               <p style={{
                 fontFamily: F, fontSize: '13px', lineHeight: 1.55,
-                color: 'var(--ai-zds-text)', margin: '0 0 6px',
+                color: 'var(--ai-ds-text)', margin: '0 0 6px',
               }}>
                 {content}
               </p>
@@ -258,7 +258,7 @@ export function AIAgentWorkNote({
                 {items.map((item, i) => (
                   <li key={i} style={{
                     fontFamily: F, fontSize: '13px', lineHeight: 1.55,
-                    color: 'var(--ai-zds-text)',
+                    color: 'var(--ai-ds-text)',
                   }}>
                     {item}
                   </li>

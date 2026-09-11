@@ -5,7 +5,7 @@
   "repoModule": "aiColorTokens",
   "tier": "tokens",
   "status": "active",
-  "description": "Three-tier color system for AI-native UI — ZSAI brand palette, ZS Orange signal, ZSAI Tan companion, and AI.color.* semantic aliases.",
+  "description": "Three-tier color system for AI-native UI — AI_RAMP brand palette, Signal Orange signal, AI_RAMP Tan companion, and AI.color.* semantic aliases.",
   "intent": "Components consume Tier 2 (AI.color.*) and Tier 3 (ai-* CSS vars) only. Never hardcode hex. Follow 60-30-10 surface distribution.",
   "authority": {
     "mirrorSpec": "components/ai/tokens/color.md",
@@ -19,20 +19,20 @@
   "variants": [],
   "states": [],
   "javascriptApi": {
-    "exports": ["AI", "ZSAI", "ZS_ORANGE", "ZSAI_TAN", "ZDS", "AI_THEME", "F"],
-    "import": "import { AI, ZDS } from './ai-tokens'",
+    "exports": ["AI", "AI_RAMP", "SIGNAL_ORANGE", "COMPANION_TAN", "DS", "AI_THEME", "F"],
+    "import": "import { AI, DS } from './ai-tokens'",
     "notes": [
-      "Tier 1 palettes (ZSAI, ZS_ORANGE, ZSAI_TAN) for token authors only",
-      "Components use AI.color.*, AI.gradient.*, ZDS.*",
-      "CSS vars: --ai-card-bg, --ai-brand-surface, --ai-zds-text"
+      "Tier 1 palettes (AI_RAMP, SIGNAL_ORANGE, COMPANION_TAN) for token authors only",
+      "Components use AI.color.*, AI.gradient.*, DS.*",
+      "CSS vars: --ai-card-bg, --ai-brand-surface, --ai-ds-text"
     ]
   },
   "tokens": {
     "cssVars": [
       "--ai-card-bg",
       "--ai-brand-surface",
-      "--ai-zds-text",
-      "--ai-zds-text-helper",
+      "--ai-ds-text",
+      "--ai-ds-text-helper",
       "AI.color.action.primary",
       "AI.color.surface.subtle",
       "AI.color.border.default",
@@ -55,15 +55,15 @@
     "forbiddenChildren": [],
     "forbiddenUsage": [
       "Do not hardcode brand hex in component code",
-      "Do not reference ZSAI[n] directly in components",
-      "Do not use ZS Orange as a dominant fill",
+      "Do not reference AI_RAMP[n] directly in components",
+      "Do not use Signal Orange as a dominant fill",
       "Do not invent --ai-* hex values outside ai-tokens.ts",
       "Do not use dataviz palette colors for chat bubbles"
     ],
     "agentRules": [
       "Read color.json for flat token lookup",
       "Import from ai-tokens.ts for runtime values",
-      "Apply 60-30-10 rule: ZSAI 60%, Tan 30%, Orange 10%"
+      "Apply 60-30-10 rule: AI_RAMP 60%, Tan 30%, Orange 10%"
     ]
   },
   "relatedModules": [

@@ -20,7 +20,7 @@ Suggested action chips surfaced by the AI agent. Provides quick-access prompts r
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { RiArrowRightSLine, RiPulseLine, RiFileTextLine, RiSparklingLine, RiBarChart2Line, RiErrorWarningLine } from '@remixicon/react';
-import { F, AI, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { F, AI, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -51,14 +51,14 @@ export interface AIListItemProps {
 // ── Visual maps ──────────────────────────────────────────────────────────────
 
 const STATUS_META: Record<AIListItemStatus, { label: string; color: string; bg: string; border: string }> = {
-  needsReview:  { label: 'Needs Review', color: ZS_ORANGE[70],                          bg: ZS_ORANGE['00'],                          border: ZS_ORANGE[40] },
+  needsReview:  { label: 'Needs Review', color: SIGNAL_ORANGE[70],                          bg: SIGNAL_ORANGE['00'],                          border: SIGNAL_ORANGE[40] },
   balanced:     { label: 'Balanced',     color: 'var(--ai-status-success-text)',        bg: 'var(--ai-status-success-bg)',            border: 'var(--ai-status-success-border)' },
   recommended:  { label: 'Recommended',  color: 'var(--ai-status-info-text)',           bg: 'var(--ai-status-info-bg)',               border: 'var(--ai-status-info-border)' },
   ready:        { label: 'Ready',        color: 'var(--ai-status-success-text)',        bg: 'var(--ai-status-success-bg)',            border: 'var(--ai-status-success-border)' },
-  optional:     { label: 'Optional',     color: 'var(--ai-zds-helper)',                 bg: 'var(--ai-card-bg-raised)',               border: 'var(--ai-card-border)' },
+  optional:     { label: 'Optional',     color: 'var(--ai-ds-helper)',                 bg: 'var(--ai-card-bg-raised)',               border: 'var(--ai-card-border)' },
   active:       { label: 'Active',       color: 'var(--ai-status-info-text)',           bg: 'var(--ai-status-info-bg)',               border: 'var(--ai-status-info-border)' },
   critical:     { label: 'Critical',     color: 'var(--ai-status-error-text)',          bg: 'var(--ai-status-error-bg)',              border: 'var(--ai-status-error-border)' },
-  dataStale:    { label: 'Data Stale',   color: ZS_ORANGE[70],                          bg: ZS_ORANGE['00'],                          border: ZS_ORANGE[40] },
+  dataStale:    { label: 'Data Stale',   color: SIGNAL_ORANGE[70],                          bg: SIGNAL_ORANGE['00'],                          border: SIGNAL_ORANGE[40] },
 };
 
 const VARIANT_ICON: Record<AIListItemVariant, React.ReactNode> = {
@@ -162,22 +162,22 @@ export function AIListItem({
           }}>
             {type && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+                ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
                 textTransform: 'uppercase' as const,
-                color: 'var(--ai-zds-helper)',
+                color: 'var(--ai-ds-helper)',
               }}>{type}</span>
             )}
             {label && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-meta-label'],
-                color: 'var(--ai-zds-helper)',
+                ...AI_TYPOGRAPHY['@ai-meta-label'],
+                color: 'var(--ai-ds-helper)',
               }}>{label}</span>
             )}
             {statusMeta && (
               <span
                 aria-label={statusMeta.label}
                 style={{
-                  ...AI_TYPOGRAPHY['@zsai-action-link'],
+                  ...AI_TYPOGRAPHY['@ai-action-link'],
                   color: statusMeta.color,
                   background: statusMeta.bg,
                   border: `1px solid ${statusMeta.border}`,
@@ -197,8 +197,8 @@ export function AIListItem({
 
         {/* Title */}
         <div style={{
-          ...AI_TYPOGRAPHY['@zsai-h5'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-h5'],
+          color: 'var(--ai-ds-text)',
           marginBottom: body ? 4 : 0,
         }}>
           {title}
@@ -208,8 +208,8 @@ export function AIListItem({
         {body && (
           <p style={{
             margin: 0,
-            ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+            color: 'var(--ai-ds-helper)',
           }}>
             {body}
           </p>
@@ -224,7 +224,7 @@ export function AIListItem({
           }}>
             {metric && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-table-cell'],
+                ...AI_TYPOGRAPHY['@ai-table-cell'],
                 padding: '3px 8px', borderRadius: AI.radius.xs,
                 background: `${AI.color.action.primary}14`,
                 color: AI.color.action.primaryActive,
@@ -232,19 +232,19 @@ export function AIListItem({
             )}
             {source && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-meta-label'],
-                color: 'var(--ai-zds-helper)',
+                ...AI_TYPOGRAPHY['@ai-meta-label'],
+                color: 'var(--ai-ds-helper)',
               }}>Source: {source}</span>
             )}
             {freshness && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-meta-label'],
-                color: 'var(--ai-zds-helper)',
+                ...AI_TYPOGRAPHY['@ai-meta-label'],
+                color: 'var(--ai-ds-helper)',
               }}>{freshness}</span>
             )}
             {confidence && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-action-link'],
+                ...AI_TYPOGRAPHY['@ai-action-link'],
                 color: confidence === 'high' ? 'var(--ai-status-info-text)' :
                        confidence === 'low'  ? 'var(--ai-status-error-text)' :
                                                'var(--ai-status-warning-text)',
@@ -263,7 +263,7 @@ export function AIListItem({
 
         {actionLabel && isInteractive && (
           <div style={{
-            ...AI_TYPOGRAPHY['@zsai-button-label'],
+            ...AI_TYPOGRAPHY['@ai-button-label'],
             color: AI.color.action.primary,
             marginTop: 8,
             display: 'inline-flex', alignItems: 'center', gap: 4,
@@ -278,7 +278,7 @@ export function AIListItem({
         <div style={{
           flexShrink: 0,
           alignSelf: 'center',
-          color: hov ? AI.color.action.primary : 'var(--ai-zds-helper)',
+          color: hov ? AI.color.action.primary : 'var(--ai-ds-helper)',
           transition: 'color 0.12s, transform 0.15s',
           transform: hov ? 'translateX(2px)' : 'translateX(0)',
         }}>

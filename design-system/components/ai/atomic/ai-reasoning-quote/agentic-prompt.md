@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Reasoning Quote
 
-You are implementing the **AI Reasoning Quote** (`ai-reasoning-quote`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Reasoning Quote** (`ai-reasoning-quote`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -27,7 +27,7 @@ Implement `AIReasoningQuote` exactly as specified in the mirror. Match props, to
 
 - `quote` (`ReactNode`) default ``—`` — The italicized body content.
 - `eyebrow` (`string \) default `null`` — `"REASONING SUMMARY"`
-- `eyebrowIcon` (`string`) default ``"zs-icon-ai-assist"`` — ZAIDYN icon class for the eyebrow glyph.
+- `eyebrowIcon` (`string`) default ``"zs-icon-ai-assist"`` — Guild icon class for the eyebrow glyph.
 - `tone` (`"ai" \) default `"warning" \` — "neutral"`
 - `size` (`"sm" \) default `"md"`` — `"md"`
 - `attribution` (`ReactNode`) default ``—`` — Optional caption under the quote.

@@ -24,7 +24,7 @@
     "notes": [
       "Action tokens are color-only rgba — wrap with offset spread",
       "Input tokens are full box-shadow composites — apply as-is",
-      "Overlays/drawers use ZDS blur tokens, not AI.shadow"
+      "Overlays/drawers use DS blur tokens, not AI.shadow"
     ]
   },
   "tokens": {

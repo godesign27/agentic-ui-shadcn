@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, DS, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIFeedbackBar } from '../../atomic/ai-feedback-bar/AIFeedbackBar';
 
@@ -43,9 +43,9 @@ export interface AIResponseFooterProps {
 function WarnIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-      <circle cx="10" cy="10" r="8.5" stroke={ZS_ORANGE[60]} strokeWidth="1.5" />
-      <path d="M10 6v5" stroke={ZS_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="10" cy="14" r="1" fill={ZS_ORANGE[60]} />
+      <circle cx="10" cy="10" r="8.5" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" />
+      <path d="M10 6v5" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="10" cy="14" r="1" fill={SIGNAL_ORANGE[60]} />
     </svg>
   );
 }
@@ -57,7 +57,7 @@ function SourceChip({ source, compact }: { source: AISource; compact?: boolean }
 
   const bg     = isMissing ? 'var(--ai-missing-bg)'     : isStale ? 'var(--ai-signal-surface)' : 'var(--ai-source-bg)';
   const border = isMissing ? 'var(--ai-missing-border)' : isStale ? 'var(--ai-signal-border)'  : 'var(--ai-source-border)';
-  const color  = isMissing ? 'var(--ai-missing-text)'   : isStale ? ZS_ORANGE[70]               : 'var(--ai-source-text)';
+  const color  = isMissing ? 'var(--ai-missing-text)'   : isStale ? SIGNAL_ORANGE[70]               : 'var(--ai-source-text)';
 
   return (
     <span style={{
@@ -66,8 +66,8 @@ function SourceChip({ source, compact }: { source: AISource; compact?: boolean }
       background: bg,
       border: `1px solid ${border}`,  /* already CSS-var-resolved above */
       borderRadius: '20px',
-      // Default = @zsai-caption-2 (10/400/1.5). Compact = 9px micro-text (below scale floor).
-      ...(compact ? { fontSize: 9, fontWeight: 400 as const, lineHeight: 1.5 } : AI_TYPOGRAPHY['@zsai-caption-2']),
+      // Default = @ai-caption-2 (10/400/1.5). Compact = 9px micro-text (below scale floor).
+      ...(compact ? { fontSize: 9, fontWeight: 400 as const, lineHeight: 1.5 } : AI_TYPOGRAPHY['@ai-caption-2']),
       fontFamily: F,
       color,
       whiteSpace: 'nowrap',
@@ -89,9 +89,9 @@ function OverflowChip({ count, compact }: { count: number; compact?: boolean }) 
       background: 'transparent',
       border: '1px solid var(--ai-card-border)',
       borderRadius: '20px',
-      ...(compact ? { fontSize: 9, fontWeight: 400 as const, lineHeight: 1.5 } : AI_TYPOGRAPHY['@zsai-caption-2']),
+      ...(compact ? { fontSize: 9, fontWeight: 400 as const, lineHeight: 1.5 } : AI_TYPOGRAPHY['@ai-caption-2']),
       fontFamily: F,
-      color: 'var(--ai-zds-helper)',
+      color: 'var(--ai-ds-helper)',
       whiteSpace: 'nowrap',
       cursor: 'default',
     }}>
@@ -180,7 +180,7 @@ export function AIResponseFooter({
           <WarnIcon />
           <span style={{
             fontSize: '10px', fontFamily: F, fontWeight: 500,
-            color: ZS_ORANGE[70],
+            color: SIGNAL_ORANGE[70],
           }}>
             {isStale
               ? `Data may be stale · Last refreshed ${updatedAt ?? '2 hours ago'}`
@@ -199,7 +199,7 @@ export function AIResponseFooter({
         }}>
           <span style={{
             fontSize: '9px', fontFamily: F, fontWeight: 700,
-            color: 'var(--ai-zds-helper)', letterSpacing: '0.6px',
+            color: 'var(--ai-ds-helper)', letterSpacing: '0.6px',
             textTransform: 'uppercase', whiteSpace: 'nowrap', marginRight: '2px',
           }}>
             Data Sources
@@ -218,7 +218,7 @@ export function AIResponseFooter({
           display: 'flex', alignItems: 'center', gap: '4px',
         }}>
           {attribution && (
-            <span style={{ fontSize: '10px', fontFamily: F, color: 'var(--ai-zds-helper)' }}>
+            <span style={{ fontSize: '10px', fontFamily: F, color: 'var(--ai-ds-helper)' }}>
               {attribution}
             </span>
           )}
@@ -226,7 +226,7 @@ export function AIResponseFooter({
             <span style={{ fontSize: '10px', color: 'var(--ai-divider)', fontFamily: F }}>·</span>
           )}
           {freshnessText && (
-            <span style={{ fontSize: '10px', fontFamily: F, color: 'var(--ai-zds-helper)' }}>
+            <span style={{ fontSize: '10px', fontFamily: F, color: 'var(--ai-ds-helper)' }}>
               {freshnessText}
             </span>
           )}

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Response
 
-You are implementing the **AI Agent Response** (`ai-agent-response`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Response** (`ai-agent-response`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

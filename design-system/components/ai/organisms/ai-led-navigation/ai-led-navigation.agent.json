@@ -6,7 +6,7 @@
   "tier": "organisms",
   "status": "experimental",
   "description": "AILedNavigation is the left-rail navigation system for AI Led experiences. It organizes the things an AI workbench needs to surface \u2014 new chat, search, library, agents, apps, projects, pinned items, recents and account \u2014 under a single composable group. Five companion variants (default \u00b7 collapsed \u00b7 workspace-focused \u00b7 agent-focused \u00b7 minimal) and five state machines (default \u00b7 nested-open \u00b7 loading-recents \u00b7 empty-recents \u00b7 permission-restricted) cover the full life-cycle. The header reuses the canonical AIAvatar brand mark from the AI Assisted Side Drawer pattern so AI Led products share one identity across the shell.",
-  "intent": "The navigation rail for AI Led product shells \u2014 inspired by modern AI tools, tuned to ZAIDYN enterprise visual language.",
+  "intent": "The navigation rail for AI Led product shells \u2014 inspired by modern AI tools, tuned to Guild enterprise visual language.",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-led-navigation/ai-led-navigation.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -30,7 +30,7 @@
       "values": [
         "`string`"
       ],
-      "default": "`\"ZAIDYN AI\"`",
+      "default": "`\"Guild AI\"`",
       "hint": "Product / system label shown next to the AIAvatar mark."
     },
     {
@@ -39,7 +39,7 @@
         "`ReactNode`"
       ],
       "default": "`<AIAvatar />`",
-      "hint": "Header brand mark. Defaults to the canonical ZAIDYN AI Avatar."
+      "hint": "Header brand mark. Defaults to the canonical Guild AI Avatar."
     },
     {
       "name": "currentWorkspace",
@@ -162,7 +162,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -184,7 +184,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

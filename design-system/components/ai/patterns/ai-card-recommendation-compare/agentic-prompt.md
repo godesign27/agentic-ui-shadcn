@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Recommendation Compare
 
-You are implementing the **AI Card Recommendation Compare** (`ai-card-recommendation-compare`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Recommendation Compare** (`ai-card-recommendation-compare`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { F, ZDS, AI, AI_THEME } from '../../tokens/ai-tokens';
+import { F, DS, AI, AI_THEME } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar, AIAvatar3D } from '../../atomic/ai-avatar/AIAvatar';
 import { AIUserBubble } from '../../molecules/ai-user-bubble/AIUserBubble';
@@ -86,11 +86,11 @@ export function AICommandCenter({ variant = 'gray', showBackground = true }: { v
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '10px' }}>
             {variant === 'aqua' ? <AIAvatar3D /> : <AIAvatar />}
-            <h1 style={{ ...AI_TYPOGRAPHY['@zsai-h1'], color: ZDS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
+            <h1 style={{ ...AI_TYPOGRAPHY['@ai-h1'], color: DS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
               {greeting}, Theo!
             </h1>
           </div>
-          <p style={{ ...AI_TYPOGRAPHY['@zsai-subtitle-2'], color: ZDS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
+          <p style={{ ...AI_TYPOGRAPHY['@ai-subtitle-2'], color: DS.textHelper, fontFamily: F, marginBottom: '28px', textAlign: 'center' }}>
             Ask me anything or choose a quick action below
           </p>
 

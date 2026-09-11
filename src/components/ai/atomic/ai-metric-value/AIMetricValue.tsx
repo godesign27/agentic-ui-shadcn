@@ -13,7 +13,7 @@ export interface AIMetricValueProps {
   value:  string | number;
   unit?:  string;
   size?:  AIMetricValueSize;
-  color?: string;          // optional override; defaults to ZDS text default
+  color?: string;          // optional override; defaults to DS text default
   ariaLabel?: string;
 }
 
@@ -25,8 +25,8 @@ export interface AIMetricValueProps {
 // token-compliance). sm keeps its local step (no dedicated token). Note: the
 // tokens normalize weight to 700 and set md=26 / lg=34 — an intentional
 // alignment to source (previously 28/32 @ 800).
-const MD = AI_TYPOGRAPHY['@zsai-metric-value-md'];
-const LG = AI_TYPOGRAPHY['@zsai-metric-value-lg'];
+const MD = AI_TYPOGRAPHY['@ai-metric-value-md'];
+const LG = AI_TYPOGRAPHY['@ai-metric-value-lg'];
 const SIZE: Record<AIMetricValueSize, { fontSize: number; weight: number; lineHeight: number }> = {
   sm: { fontSize: 22,                    weight: 800,                       lineHeight: 1.1 },
   md: { fontSize: MD.fontSize as number, weight: MD.fontWeight as number,   lineHeight: MD.lineHeight as number },
@@ -46,7 +46,7 @@ export function AIMetricValue({ value, unit, size = 'md', color, ariaLabel }: AI
         fontSize:   sz.fontSize,
         fontWeight: sz.weight,
         lineHeight: sz.lineHeight,
-        color:      color ?? 'var(--ai-zds-text)',
+        color:      color ?? 'var(--ai-ds-text)',
         letterSpacing: '-0.02em',
         fontVariantNumeric: 'tabular-nums',
         whiteSpace: 'nowrap' as const,

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiBadge`  
 **Component type:** React atomic  
@@ -12,15 +12,15 @@
 
 ## Purpose
 
-The compact label atom for AI status and metrics. Extends the ZDS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. "+23% engagement") stay on-system.
+The compact label atom for AI status and metrics. Extends the DS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. "+23% engagement") stay on-system.
 
-AIBadge is a presentational label — not a button, not a chip. It mirrors the standard ZDS Badge (src/badge/): the same semantic variant set (neutral · info · success · warning · error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the ZDS categorical chart palette (@zs-data-color-1…12). If the label needs to be clickable, use AIChip instead.
+AIBadge is a presentational label — not a button, not a chip. It mirrors the standard DS Badge (src/badge/): the same semantic variant set (neutral · info · success · warning · error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the DS categorical chart palette (@zs-data-color-1…12). If the label needs to be clickable, use AIChip instead.
 
 **Export:** `AIBadge`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -40,7 +40,7 @@ AIBadge is a presentational label — not a button, not a chip. It mirrors the s
 ## Anatomy
 
 1. **variant** _(Unique)_ — Semantic role: neutral | info | success | warning | error | dataviz. Selects the base color.
-2. **emphasis** _(Unique)_ — bold = solid fill + inverse text (canonical ZDS); soft = translucent tint + colored text.
+2. **emphasis** _(Unique)_ — bold = solid fill + inverse text (canonical DS); soft = translucent tint + colored text.
 3. **series** _(Unique)_ — Data-viz series index 1–12 (used only when variant="dataviz"), mapped to @zs-data-color-*.
 4. **Pill shell** _(Shared)_ — Pill-radius container + bold caption typography shared across all variants and sizes.
 
@@ -51,7 +51,7 @@ AIBadge is a presentational label — not a button, not a chip. It mirrors the s
 - **Success** _(variant=success)_ — Positive / complete status.
 - **Warning** _(variant=warning)_ — Caution status.
 - **Error** _(variant=error)_ — Failure / blocking status.
-- **Data-viz** _(variant=dataviz)_ — Metric-delta indicator colored from the ZDS chart palette (soft emphasis).
+- **Data-viz** _(variant=dataviz)_ — Metric-delta indicator colored from the DS chart palette (soft emphasis).
 - **Counter — default** _(appearance=counter)_ — Circular numeric count pill for notifications / tab counts (neutral).
 - **Counter — success** _(appearance=counter variant=success)_ — Numeric counter tinted with the success color.
 - **Counter — error** _(appearance=counter variant=error)_ — Numeric counter tinted with the error color. Caps at maxCount ("99+").
@@ -70,7 +70,7 @@ AIBadge is a presentational label — not a button, not a chip. It mirrors the s
 | --- | --- | --- | --- |
 | `children` | `React.ReactNode` | `—` | Badge label — a short status word or a metric like "+23%". |
 | `variant` | `'neutral' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'dataviz'` | `'neutral'` | Semantic color role. Use "dataviz" with `series`. |
-| `emphasis` | `'bold' \| 'soft'` | `'bold'` | bold = solid fill + inverse text (ZDS canonical); soft = translucent tint + colored text. |
+| `emphasis` | `'bold' \| 'soft'` | `'bold'` | bold = solid fill + inverse text (DS canonical); soft = translucent tint + colored text. |
 | `size` | `'default' \| 'small'` | `'default'` | default = 20px / 12px-bold / r10; small = 16px / 10px-bold / r8. |
 | `series` | `1–12` | `1` | Data-viz series index (only used when variant="dataviz"), mapped to @zs-data-color-*. |
 | `appearance` | `'text' \| 'counter' \| 'dot' \| 'inline'` | `'text'` | Render mode. text = pill label; counter = circular numeric count; dot = indicator marker (no number); inline = colored count text in-flow (no pill). |
@@ -93,11 +93,11 @@ AIBadge is a presentational label — not a button, not a chip. It mirrors the s
 ### Data-viz palette (@zs-data-color-*)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ZS_DATAVIZ[1]` | `#DB6C03` | Series 1 |
-| `ZS_DATAVIZ[2]` | `#3287C4` | Series 2 |
-| `ZS_DATAVIZ[4]` | `#2DA40C` | Series 4 (positive delta) |
-| `ZS_DATAVIZ[10]` | `#299C91` | Series 10 |
-| `ZS_DATAVIZ[11]` | `#FD595F` | Series 11 (negative delta) |
+| `DATAVIZ[1]` | `#DB6C03` | Series 1 |
+| `DATAVIZ[2]` | `#3287C4` | Series 2 |
+| `DATAVIZ[4]` | `#2DA40C` | Series 4 (positive delta) |
+| `DATAVIZ[10]` | `#299C91` | Series 10 |
+| `DATAVIZ[11]` | `#FD595F` | Series 11 (negative delta) |
 
 ### Appearance (appearance=…)
 | Token | Value | Usage |
@@ -115,14 +115,14 @@ AIBadge is a presentational label — not a button, not a chip. It mirrors the s
 | `rgba(231,76,60,0.08)` | `tint` | Blocked bg |
 | `var(--ai-signal-surface)` | `surface` | Needs-approval bg |
 | `var(--ai-status-success-bg)` | `bg` | Complete bg |
-| `@zsai-numeric-badge` | `type` | Count pill typography |
+| `@ai-numeric-badge` | `type` | Count pill typography |
 
 ## Canonical implementation
 
 ```tsx
 import { AIBadge } from '@/components/ai/atomic/badge/AIBadge';
 
-{/* Semantic variants — canonical ZDS bold fill */}
+{/* Semantic variants — canonical DS bold fill */}
 <AIBadge variant="success">Complete</AIBadge>
 <AIBadge variant="warning">Needs review</AIBadge>
 <AIBadge variant="error" size="small">Failed</AIBadge>
@@ -130,7 +130,7 @@ import { AIBadge } from '@/components/ai/atomic/badge/AIBadge';
 {/* Soft emphasis — translucent tint + colored text */}
 <AIBadge variant="info" emphasis="soft">In review</AIBadge>
 
-{/* Data-viz — metric-delta indicator from the ZDS chart palette */}
+{/* Data-viz — metric-delta indicator from the DS chart palette */}
 <AIBadge variant="dataviz" series={4} emphasis="soft">+23% engagement</AIBadge>
 
 {/* Numeric counter — circular pill, caps at maxCount ("99+") */}
@@ -160,9 +160,9 @@ import { AIBadge } from '@/components/ai/atomic/badge/AIBadge';
 ## Agent rules
 
 1. Read this mirror spec and `ai-badge.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-badge/ai-badge.agent.json`.
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Node Connector
 
-You are implementing the **AI Node Connector** (`ai-node-connector`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Node Connector** (`ai-node-connector`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

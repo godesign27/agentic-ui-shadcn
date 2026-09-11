@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Response Group
 
-You are implementing the **AI Agent Response Group** (`ai-agent-response-group`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Response Group** (`ai-agent-response-group`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

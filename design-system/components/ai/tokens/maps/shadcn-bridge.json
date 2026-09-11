@@ -4,7 +4,7 @@
   "scope": "[data-theme^=\"ai-\"]",
   "mappings": [
     { "shadcn": "--background", "ai": "--ai-surface-default" },
-    { "shadcn": "--foreground", "ai": "--ai-zds-text" },
+    { "shadcn": "--foreground", "ai": "--ai-ds-text" },
     { "shadcn": "--card", "ai": "--ai-surface-subtle" },
     { "shadcn": "--card-foreground", "ai": "--ai-text-primary" },
     { "shadcn": "--popover", "ai": "--ai-surface-subtle" },
@@ -14,7 +14,7 @@
     { "shadcn": "--secondary", "ai": "--ai-surface-emphasis" },
     { "shadcn": "--secondary-foreground", "ai": "--ai-text-primary" },
     { "shadcn": "--muted", "ai": "--ai-surface-subtle" },
-    { "shadcn": "--muted-foreground", "ai": "--ai-zds-text-helper" },
+    { "shadcn": "--muted-foreground", "ai": "--ai-ds-text-helper" },
     { "shadcn": "--accent", "ai": "--ai-brand-subtle" },
     { "shadcn": "--accent-foreground", "ai": "--ai-text-primary" },
     { "shadcn": "--destructive", "ai": "--ai-signal-strong" },

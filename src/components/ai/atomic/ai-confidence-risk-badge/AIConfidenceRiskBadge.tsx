@@ -54,10 +54,10 @@ export function AIConfidenceRiskBadge({
         gap: compact ? 5 : 7,
         fontFamily: '"Open Sans", sans-serif',
         // Compact = 12px floor + Medium weight per typography.md. Default =
-        // @zsai-caption-1 (12/400/1.5).
+        // @ai-caption-1 (12/400/1.5).
         ...(compact
           ? { fontSize: 12, fontWeight: 500, lineHeight: 1.5 }
-          : AI_TYPOGRAPHY['@zsai-caption-1']),
+          : AI_TYPOGRAPHY['@ai-caption-1']),
       }}
     >
       {/* Confidence bar */}
@@ -95,7 +95,7 @@ export function AIConfidenceRiskBadge({
             }}
           />
         </span>
-        <span style={{ color: 'var(--ai-zds-text)' }}>{conf.label}</span>
+        <span style={{ color: 'var(--ai-ds-text)' }}>{conf.label}</span>
       </span>
 
       {/* Risk badge */}

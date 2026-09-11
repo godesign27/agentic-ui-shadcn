@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardMemory`  
 **Component type:** React organism  
@@ -14,13 +14,13 @@
 
 Recalled memory entry with provenance, date, and content. Lets users decide whether to reuse, ignore, or permanently remove a recalled context.
 
-The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The ZSAI Tan companion palette grounds memory entries in a warm, archive-like aesthetic.
+The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The AI_RAMP Tan companion palette grounds memory entries in a warm, archive-like aesthetic.
 
 **Export:** `AICardMemory`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -100,9 +100,9 @@ import { AICardMemory } from '@/components/ai/organisms/ai-card-memory/AICardMem
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-memory.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-memory/ai-card-memory.agent.json`.
 

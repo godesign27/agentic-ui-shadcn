@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiSearch`  
 **Component type:** React atomic  
@@ -14,7 +14,7 @@
 
 The standard Search, themed. Teal becomes AI brand, square corners become rounded, and the field gains a focus ring.
 
-AI Search is a one-for-one port of the standard ZDS Search onto the AI surface. Both libraries describe the same two component sets — Search (Size x Condensed) and Dropdown Filter (Orientation x Size) — and both build them over a single shared field whose left icon and caret are independent toggles. That shared box is the whole reason the two sets cannot drift apart.
+AI Search is a one-for-one port of the standard DS Search onto the AI surface. Both libraries describe the same two component sets — Search (Size x Condensed) and Dropdown Filter (Orientation x Size) — and both build them over a single shared field whose left icon and caret are independent toggles. That shared box is the whole reason the two sets cannot drift apart.
 
 **Export:** `AISearch`
 
@@ -28,7 +28,7 @@ One thing is AI-only. `busy` hangs an indeterminate hairline under the field whi
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -62,7 +62,7 @@ One thing is AI-only. `busy` hangs an indeterminate hairline under the field whi
 ## Anatomy
 
 1. **Root** _(Shared)_ — form[role="search"], horizontal, 8px gap. The condensed variant short-circuits to a single square button and renders no form.
-2. **Search field** _(Shared)_ — AISearchField — the one box both component sets instance. White fill, 1px ZSAI[70] border, AI.shadow.field ring, height and padding from the size table.
+2. **Search field** _(Shared)_ — AISearchField — the one box both component sets instance. White fill, 1px AI_RAMP[70] border, AI.shadow.field ring, height and padding from the size table.
 3. **Left icon** _(Unique)_ — Filled magnifier vector, same path as the standard, filled with AI.color.brand instead of neutral grey. On the dropdown select field this is off.
 4. **Right caret** _(Unique)_ — Filled triangle, kept at --zs-icon-neutral-default — it is chrome, not identity. On the search field this is off.
 5. **Placeholder** _(Shared)_ — Always italic at the size’s font size in --zs-text-helper; flips to upright --zs-text-default when a value exists.
@@ -110,7 +110,7 @@ One thing is AI-only. `busy` hangs an indeterminate hairline under the field whi
 | Token | Value | Usage |
 | --- | --- | --- |
 | `--zs-background-default` | `#FFFFFF` | Field fill. Shared with the standard — unchanged in the port. |
-| `ZSAI[70]` | `#657CEC` | Rest border. One step softer than AI.color.border.default, matching AIInputField. |
+| `AI_RAMP[70]` | `#657CEC` | Rest border. One step softer than AI.color.border.default, matching AIInputField. |
 | `AI.color.border.focus` | `#4D60E6` | Border on focus. |
 | `AI.shadow.field.default` | `0 0 0 1px #BECAFE` | Resting ring. AI-only — the standard bar has none. |
 | `AI.shadow.field.focus` | `0 0 0 2px #3544A4` | Focus ring. |
@@ -202,9 +202,9 @@ const [q, setQ] = useState('');
 ## Agent rules
 
 1. Read this mirror spec and `ai-search.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-search/ai-search.agent.json`.
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Brief
 
-You are implementing the **AI Card Brief** (`ai-card-brief`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Brief** (`ai-card-brief`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

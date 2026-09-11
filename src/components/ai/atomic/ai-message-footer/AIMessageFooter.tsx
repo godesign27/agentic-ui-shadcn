@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { F, AI, ZDS } from '../../tokens/ai-tokens';
+import { F, AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export type FooterActionVariant = 'primary' | 'secondary' | 'ghost';
@@ -20,9 +20,9 @@ export interface AIMessageFooterProps {
 // ai-message-footer.primary.background  → AI.gradient.action.full / AI.color.action.primaryActive (hover)
 // ai-message-footer.primary.color       → AI.color.text.onAction
 // ai-message-footer.primary.shadow      → AI.shadow.action.default
-// ai-message-footer.secondary.border    → ZDS.border
-// ai-message-footer.secondary.color     → ZDS.textDefault
-// ai-message-footer.ghost.color         → ZDS.textDisabled
+// ai-message-footer.secondary.border    → DS.border
+// ai-message-footer.secondary.color     → DS.textDefault
+// ai-message-footer.ghost.color         → DS.textDisabled
 
 function PrimaryButton({ action }: { action: FooterAction }) {
   const [hov, setHov] = useState(false);
@@ -40,7 +40,7 @@ function PrimaryButton({ action }: { action: FooterAction }) {
         border: 'none',
         borderRadius: AI.radius.md,
         cursor: action.disabled ? 'not-allowed' : 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-agent-name'],  // 11/600/1.0 — primary keeps weight 600 (exact match)
+        ...AI_TYPOGRAPHY['@ai-agent-name'],  // 11/600/1.0 — primary keeps weight 600 (exact match)
         fontFamily: F,
         transition: 'background 0.15s',
         boxShadow: hov ? 'none' : `0 2px 8px ${AI.shadow.action.default}`,
@@ -60,11 +60,11 @@ function SecondaryButton({ action }: { action: FooterAction }) {
       style={{
         padding: '8px 14px',
         background: 'transparent',
-        color: 'var(--ai-zds-text)',
+        color: 'var(--ai-ds-text)',
         border: '1px solid var(--ai-btn-outline-border)',
         borderRadius: AI.radius.md,
         cursor: action.disabled ? 'not-allowed' : 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-agent-name'], fontWeight: 500,  // 11/500/1.0 — secondary overrides weight only
+        ...AI_TYPOGRAPHY['@ai-agent-name'], fontWeight: 500,  // 11/500/1.0 — secondary overrides weight only
         fontFamily: F,
         opacity: action.disabled ? 0.5 : 1,
       }}
@@ -82,10 +82,10 @@ function GhostButton({ action }: { action: FooterAction }) {
       style={{
         padding: '8px 6px',
         background: 'none',
-        color: ZDS.textDisabled,
+        color: DS.textDisabled,
         border: 'none',
         cursor: action.disabled ? 'not-allowed' : 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-agent-name'], fontWeight: 400,  // 11/400/1.0 — ghost overrides weight only
+        ...AI_TYPOGRAPHY['@ai-agent-name'], fontWeight: 400,  // 11/400/1.0 — ghost overrides weight only
         fontFamily: F,
         opacity: action.disabled ? 0.4 : 1,
       }}

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiCommandCenter`  
 **Component type:** React page  
@@ -20,7 +20,7 @@ AICommandCenter is the full-page AI workspace. In the idle state it shows the av
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -81,8 +81,8 @@ AICommandCenter is the full-page AI workspace. In the idle state it shows the av
 ### Idle Hero Typography
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ai-cc.idle.heading.color` | `ZDS.textDefault #2f2c3c` | Welcome heading color |
-| `ai-cc.idle.sub.color` | `ZDS.textHelper #5b5864` | Sub-heading color |
+| `ai-cc.idle.heading.color` | `DS.textDefault #2f2c3c` | Welcome heading color |
+| `ai-cc.idle.sub.color` | `DS.textHelper #5b5864` | Sub-heading color |
 
 ### Pinned Input Gradient
 | Token | Value | Usage |
@@ -143,9 +143,9 @@ import { AIFeedbackBar }         from '../../atomic/feedback-bar/AIFeedbackBar';
 ## Agent rules
 
 1. Read this mirror spec and `ai-command-center.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/ai-command-center/ai-command-center.agent.json`.
 

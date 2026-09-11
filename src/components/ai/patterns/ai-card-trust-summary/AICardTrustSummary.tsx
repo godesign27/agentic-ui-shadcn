@@ -1,5 +1,5 @@
 import React from 'react';
-import { AI, ZDS, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { AI, DS, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { RiskLevel } from '../../atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge';
 import { AIWhyThisLink } from '../../molecules/ai-why-this-link/AIWhyThisLink';
@@ -17,7 +17,7 @@ export interface AICardTrustSummaryProps {
   /**
    * Header background tone.
    * - 'gray' = default raised card surface (var(--ai-card-bg-raised))
-   * - 'tan'  = ZSAI_TAN['00'] (#F6F2EB) — companion / warm panel context
+   * - 'tan'  = COMPANION_TAN['00'] (#F6F2EB) — companion / warm panel context
    */
   headerTone?:    TrustHeaderTone;
   onRequestReview?: () => void;
@@ -45,7 +45,7 @@ function dataQualityLabel(value: number | string): { label: string; color: strin
     const c = value.toLowerCase().startsWith('comp')    ? '#0A6E5E'
             : value.toLowerCase().startsWith('part')    ? '#8A640C'
             : value.toLowerCase().startsWith('insuff')  ? '#B21111'
-            : 'var(--ai-zds-text)';
+            : 'var(--ai-ds-text)';
     return { label: value, color: c };
   }
   if (value >= 80) return { label: 'Complete',     color: '#0A6E5E' };
@@ -107,8 +107,8 @@ function SourceChip({ label }: { label: string }) {
       padding: '3px 10px', borderRadius: 999,
       background: 'transparent',
       border: '1px solid var(--ai-card-border)',
-      ...AI_TYPOGRAPHY['@zsai-meta-label'],
-      color: 'var(--ai-zds-text)',
+      ...AI_TYPOGRAPHY['@ai-meta-label'],
+      color: 'var(--ai-ds-text)',
       whiteSpace: 'nowrap' as const,
     }}>{label}</span>
   );
@@ -131,7 +131,7 @@ export function AICardTrustSummary({
   const rk    = riskTone(risk);
   const dq    = dataQualityLabel(dataQuality);
   const srcs  = sources ?? (sourceCount !== undefined ? [`${sourceCount} sources`] : []);
-  const headerBg = headerTone === 'tan' ? (ZSAI_TAN['00'] as string) : 'var(--ai-card-bg-raised)';
+  const headerBg = headerTone === 'tan' ? (COMPANION_TAN['00'] as string) : 'var(--ai-card-bg-raised)';
 
   return (
     <div style={{
@@ -139,7 +139,7 @@ export function AICardTrustSummary({
       border: '1px solid var(--ai-card-border)',
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       width: '100%',
     }}>
       {/* Header — title + risk badge */}
@@ -149,9 +149,9 @@ export function AICardTrustSummary({
         background: headerBg,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
       }}>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: 'var(--ai-zds-text)' }}>Trust Summary</span>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: 'var(--ai-ds-text)' }}>Trust Summary</span>
         <span style={{
-          ...AI_TYPOGRAPHY['@zsai-meta-label'], fontWeight: 600,
+          ...AI_TYPOGRAPHY['@ai-meta-label'], fontWeight: 600,
           // Inverted on the tan header — dark fill + white label reads stronger against the warm bg.
           color:      headerTone === 'tan' ? '#FFFFFF' : rk.color,
           background: headerTone === 'tan' ? rk.color : rk.bg,
@@ -168,8 +168,8 @@ export function AICardTrustSummary({
         {/* Confidence bar */}
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)' }}>Confidence</span>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-h6'], color: conf.color }}>{Math.round(confidence)}%</span>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)' }}>Confidence</span>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-h6'], color: conf.color }}>{Math.round(confidence)}%</span>
           </div>
           <ConfidenceBar pct={confidence} />
         </div>
@@ -179,20 +179,20 @@ export function AICardTrustSummary({
 
         {/* Risk Level row */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)' }}>
-            <ShieldIcon color="var(--ai-zds-helper)" />
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)' }}>
+            <ShieldIcon color="var(--ai-ds-helper)" />
             Risk Level
           </span>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], fontWeight: 600, color: rk.color }}>{rk.label.replace(' Risk', '')}</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], fontWeight: 600, color: rk.color }}>{rk.label.replace(' Risk', '')}</span>
         </div>
 
         {/* Data Quality row */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)' }}>
-            <DatabaseIcon color="var(--ai-zds-helper)" />
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)' }}>
+            <DatabaseIcon color="var(--ai-ds-helper)" />
             Data Quality
           </span>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], fontWeight: 600, color: dq.color }}>{dq.label}</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], fontWeight: 600, color: dq.color }}>{dq.label}</span>
         </div>
 
         {/* Bottom trust-footnote row — sources/view-sources on the left,
@@ -210,7 +210,7 @@ export function AICardTrustSummary({
           }}>
             {srcs.length > 0 && (
               <>
-                <span style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)' }}>Sources</span>
+                <span style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)' }}>Sources</span>
                 {srcs.map((s, i) => <SourceChip key={`${s}-${i}`} label={s} />)}
               </>
             )}
@@ -219,12 +219,12 @@ export function AICardTrustSummary({
             )}
             {lastUpdated && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-caption-1'],
-                color: 'var(--ai-zds-helper)',
+                ...AI_TYPOGRAPHY['@ai-caption-1'],
+                color: 'var(--ai-ds-helper)',
                 marginLeft: 'auto',
                 display: 'inline-flex', alignItems: 'center', gap: 6,
               }}>
-                <CalendarIcon color="var(--ai-zds-helper)" />
+                <CalendarIcon color="var(--ai-ds-helper)" />
                 {lastUpdated}
               </span>
             )}
@@ -245,7 +245,7 @@ export function AICardTrustSummary({
               display: 'inline-flex', alignItems: 'center', gap: 5,
               padding: '6px 14px', borderRadius: AI.radius.sm,
               border: `1px solid ${AI.color.signal.default}`, cursor: 'pointer',
-              fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+              fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
               background: AI.color.signal.subtle, color: AI.color.signal.strong,
             }}
           >

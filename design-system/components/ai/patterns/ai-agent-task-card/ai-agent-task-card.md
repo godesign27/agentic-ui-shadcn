@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiAgentTaskCard`  
 **Component type:** React organism  
@@ -14,13 +14,13 @@
 
 Delegated task record · 4 densities · Needs Input + Health surfaced
 
-AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented — in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label — never color alone. Needs Input rows use ZS orange only; AI emphasis uses ZSAI blue (AI.color.brand). No teal anywhere.
+AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented — in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label — never color alone. Needs Input rows use Guild orange only; AI emphasis uses AI_RAMP blue (AI.color.brand). No teal anywhere.
 
 **Export:** `AIAgentTaskCard`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -52,7 +52,7 @@ AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page patte
 
 ## Anatomy
 
-1. **Card surface** _(Shared)_ — var(--ai-card-bg) + var(--ai-card-border). Left ribbon turns ZS orange for needs-input / escalated / pending-approval, red for blocked / failed.
+1. **Card surface** _(Shared)_ — var(--ai-card-bg) + var(--ai-card-border). Left ribbon turns Guild orange for needs-input / escalated / pending-approval, red for blocked / failed.
 2. **Status pill** _(Shared)_ — AIStatusPill — top-right; glyph + label.
 3. **Health badge** _(Shared)_ — Glyph + label badge; success / warning / critical / info tones.
 4. **Task ID + type** _(Unique)_ — Durable task identifier (T-XXXX) + task type icon (immediate / scheduled / recurring).
@@ -113,7 +113,7 @@ AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page patte
 ### Status ribbons (left edge, 4px)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ribbon.needs-input` | `ZS_ORANGE[60]` | needs-input / escalated / pending-approval |
+| `ribbon.needs-input` | `SIGNAL_ORANGE[60]` | needs-input / escalated / pending-approval |
 | `ribbon.blocked` | `error` | blocked / failed / rejected |
 | `ribbon.success` | `#1F6B40` | completed / approved |
 | `ribbon.default` | `card.border` | all other statuses |
@@ -128,9 +128,9 @@ AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page patte
 ### Needs Input panel
 | Token | Value | Usage |
 | --- | --- | --- |
-| `needsinput.bg` | `ZS_ORANGE[‘00’]` | Panel surface |
-| `needsinput.border` | `ZS_ORANGE[20]` | Panel border |
-| `needsinput.rule` | `ZS_ORANGE[60]` | 4px left rule |
+| `needsinput.bg` | `SIGNAL_ORANGE[‘00’]` | Panel surface |
+| `needsinput.border` | `SIGNAL_ORANGE[20]` | Panel border |
+| `needsinput.rule` | `SIGNAL_ORANGE[60]` | 4px left rule |
 
 ## Flows
 
@@ -184,9 +184,9 @@ import { AIAgentTaskCard } from '@/components/ai/organisms/ai-agent-task-card/AI
 ## Agent rules
 
 1. Read this mirror spec and `ai-agent-task-card.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-agent-task-card/ai-agent-task-card.agent.json`.
 

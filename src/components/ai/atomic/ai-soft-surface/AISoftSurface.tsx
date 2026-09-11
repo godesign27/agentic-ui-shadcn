@@ -1,5 +1,5 @@
 import React from 'react';
-import { AI, ZSAI_TAN, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { AI, COMPANION_TAN, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 
 /**
  * AISoftSurface — visual surface primitive for AI companion contexts.
@@ -40,9 +40,9 @@ const SURFACE: Record<
     expressive: `radial-gradient(ellipse 80% 60% at 20% 0%, ${AI.color.decorative.wash} 0%, transparent 60%), linear-gradient(160deg, ${AI.color.surface.subtle} 0%, ${AI.color.surface.emphasis} 100%)`,
   },
   tan: {
-    subtle: `linear-gradient(160deg, ${ZSAI_TAN['00']} 0%, ${ZS_ORANGE['00']} 55%, ${ZSAI_TAN[10]} 100%)`,
-    medium: `linear-gradient(160deg, ${ZSAI_TAN['00']} 0%, ${ZS_ORANGE[10]} 50%, ${ZSAI_TAN[20]} 100%)`,
-    expressive: `radial-gradient(ellipse 70% 55% at 80% 0%, ${ZS_ORANGE[20]} 0%, transparent 60%), linear-gradient(160deg, ${ZSAI_TAN['00']} 0%, ${ZS_ORANGE[10]} 55%, ${ZSAI_TAN[20]} 100%)`,
+    subtle: `linear-gradient(160deg, ${COMPANION_TAN['00']} 0%, ${SIGNAL_ORANGE['00']} 55%, ${COMPANION_TAN[10]} 100%)`,
+    medium: `linear-gradient(160deg, ${COMPANION_TAN['00']} 0%, ${SIGNAL_ORANGE[10]} 50%, ${COMPANION_TAN[20]} 100%)`,
+    expressive: `radial-gradient(ellipse 70% 55% at 80% 0%, ${SIGNAL_ORANGE[20]} 0%, transparent 60%), linear-gradient(160deg, ${COMPANION_TAN['00']} 0%, ${SIGNAL_ORANGE[10]} 55%, ${COMPANION_TAN[20]} 100%)`,
   },
   neutral: {
     subtle: 'linear-gradient(160deg, #FBFBFD 0%, #F4F4F6 100%)',
@@ -50,9 +50,9 @@ const SURFACE: Record<
     expressive: 'linear-gradient(160deg, #F4F4F6 0%, #E5E5EA 100%)',
   },
   mixed: {
-    subtle: `linear-gradient(135deg, ${AI.color.surface.emphasis} 0%, #DDD6FE 50%, ${ZSAI_TAN[20]} 100%)`,
-    medium: `linear-gradient(135deg, ${AI.color.decorative.wash} 0%, #C4B5FD 50%, ${ZSAI_TAN[30]} 100%)`,
-    expressive: `radial-gradient(ellipse 60% 50% at 0% 0%, ${AI.color.decorative.washStrong} 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 100% 100%, ${ZSAI_TAN[40]} 0%, transparent 60%), linear-gradient(135deg, ${AI.color.decorative.wash} 0%, #C4B5FD 50%, ${ZSAI_TAN[30]} 100%)`,
+    subtle: `linear-gradient(135deg, ${AI.color.surface.emphasis} 0%, #DDD6FE 50%, ${COMPANION_TAN[20]} 100%)`,
+    medium: `linear-gradient(135deg, ${AI.color.decorative.wash} 0%, #C4B5FD 50%, ${COMPANION_TAN[30]} 100%)`,
+    expressive: `radial-gradient(ellipse 60% 50% at 0% 0%, ${AI.color.decorative.washStrong} 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 100% 100%, ${COMPANION_TAN[40]} 0%, transparent 60%), linear-gradient(135deg, ${AI.color.decorative.wash} 0%, #C4B5FD 50%, ${COMPANION_TAN[30]} 100%)`,
   },
   'flat-ai': {
     subtle: AI.color.surface.subtle,
@@ -65,9 +65,9 @@ const SURFACE: Record<
     expressive: '#F4F3F3',
   },
   'flat-tan': {
-    subtle: ZSAI_TAN[10],
-    medium: ZSAI_TAN[10],
-    expressive: ZSAI_TAN[10],
+    subtle: COMPANION_TAN[10],
+    medium: COMPANION_TAN[10],
+    expressive: COMPANION_TAN[10],
   },
 };
 

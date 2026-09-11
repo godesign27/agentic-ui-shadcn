@@ -1,7 +1,7 @@
 /**
  * AI Assisted Side Drawer — Page Pattern
  *
- * Two variants sharing the same ZAIDYN Agent interior content model:
+ * Two variants sharing the same Guild Agent interior content model:
  *   Standard  — persistent right-side drawer, resizable by grabbing the left edge
  *   Floating  — draggable floating panel that can be docked into the Standard drawer
  *
@@ -32,7 +32,7 @@ const T = {
   gradBtn:      'linear-gradient(135deg, #4D60E6 0%, #3544A4 100%)',
   shadow:       { sm: '0 2px 8px rgba(26,22,40,0.10)', md: '0 8px 32px rgba(26,22,40,0.14)' },
   radius:       { full: '100px', lg: '20px', md: '12px', sm: '8px' },
-  text:         { primary: 'var(--ai-zds-text)', secondary: 'var(--ai-zds-helper)' },
+  text:         { primary: 'var(--ai-ds-text)', secondary: 'var(--ai-ds-helper)' },
   border:       'var(--ai-card-border)',
 };
 const F = '"Open Sans", sans-serif';
@@ -188,7 +188,7 @@ function UserBubble({ text }: { text: string }) {
         maxWidth: '80%', background: T.brandSurface,
         border: `1px solid ${T.brandBorder}`,
         borderRadius: '16px 16px 4px 16px',
-        padding: '9px 13px', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+        padding: '9px 13px', fontFamily: F, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
         color: T.text.primary,
       }}>
         {text}
@@ -199,14 +199,14 @@ function UserBubble({ text }: { text: string }) {
 
 function BotMessage({ text }: { text: string }) {
   // Agent identity already lives in the drawer header — bubbles no longer
-  // carry their own avatar or "ZAIDYN Agent" label.
+  // carry their own avatar or "Guild Agent" label.
   return (
     <div style={{ marginBottom: 10 }}>
       <div style={{
         background: 'var(--ai-card-bg)',
         border: `1px solid ${T.border}`,
         borderRadius: 16,
-        padding: '9px 13px', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+        padding: '9px 13px', fontFamily: F, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
         color: T.text.primary,
       }}>
         {text}
@@ -289,7 +289,7 @@ function QuickChip({ label, onClick }: { label: string; onClick: () => void }) {
 }
 
 // Shared slim input used by both variants
-function SlimInput({ value, onChange, onSend, placeholder = 'Message ZAIDYN Agent…' }: {
+function SlimInput({ value, onChange, onSend, placeholder = 'Message Guild Agent…' }: {
   value:        string;
   onChange:     (v: string) => void;
   onSend:       () => void;
@@ -312,10 +312,10 @@ function SlimInput({ value, onChange, onSend, placeholder = 'Message ZAIDYN Agen
         onChange={e => onChange(e.target.value)}
         onKeyDown={onKey}
         placeholder={placeholder}
-        aria-label="Message ZAIDYN Agent"
+        aria-label="Message Guild Agent"
         style={{
           flex: 1, border: 'none', outline: 'none', resize: 'none',
-          fontFamily: F, ...AI_TYPOGRAPHY['@zsai-caption-1'], color: T.text.primary,
+          fontFamily: F, ...AI_TYPOGRAPHY['@ai-caption-1'], color: T.text.primary,
           background: 'transparent',
         }}
       />
@@ -371,7 +371,7 @@ function ResizeHandle({
     <div
       role="slider"
       tabIndex={0}
-      aria-label="Resize ZAIDYN Agent panel"
+      aria-label="Resize Guild Agent panel"
       aria-valuenow={currentWidth}
       aria-valuemin={MIN_WIDTH}
       aria-valuemax={maxW}
@@ -499,7 +499,7 @@ export function StandardDrawer({
   return (
     <div
       role="complementary"
-      aria-label="ZAIDYN Agent side drawer"
+      aria-label="Guild Agent side drawer"
       style={{
         position:   'relative',
         width,
@@ -538,8 +538,8 @@ export function StandardDrawer({
         flexShrink: 0,
       }}>
         <AIAvatar size={22} />
-        <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'], color: T.text.primary }}>
-          ZAIDYN Agent
+        <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'], color: T.text.primary }}>
+          Guild Agent
         </span>
         {onUndock && (
           <AITooltip label="Open as floating panel" position="below">
@@ -640,7 +640,7 @@ export function FloatingPanel({
   return (
     <div
       role="complementary"
-      aria-label="ZAIDYN Agent floating panel"
+      aria-label="Guild Agent floating panel"
       style={{
         position:      'fixed',
         left:          pos.x,
@@ -662,7 +662,7 @@ export function FloatingPanel({
         onMouseDown={startDrag}
         role="button"
         tabIndex={0}
-        aria-label="RiDragMoveLine ZAIDYN Agent panel"
+        aria-label="RiDragMoveLine Guild Agent panel"
         title="RiDragMoveLine panel"
         onKeyDown={e => {
           // Keyboard drag not fully supported; avoid focus trap
@@ -694,7 +694,7 @@ export function FloatingPanel({
       }}>
         <AIAvatar size={18} />
         <span style={{ flex: 1, fontFamily: F, fontSize: 12, fontWeight: 600, color: T.text.primary }}>
-          ZAIDYN Agent
+          Guild Agent
         </span>
 
         {/* Dock icon — primary focus of this spec */}

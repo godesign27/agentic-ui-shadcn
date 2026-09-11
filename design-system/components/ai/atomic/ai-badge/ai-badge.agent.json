@@ -5,8 +5,8 @@
   "repoModule": "aiBadge",
   "tier": "atomic",
   "status": "active",
-  "description": "AIBadge is a presentational label \u2014 not a button, not a chip. It mirrors the standard ZDS Badge (src/badge/): the same semantic variant set (neutral \u00b7 info \u00b7 success \u00b7 warning \u00b7 error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the ZDS categorical chart palette (@zs-data-color-1\u202612). If the label needs to be clickable, use AIChip instead.",
-  "intent": "The compact label atom for AI status and metrics. Extends the ZDS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. \"+23% engagement\") stay on-system.",
+  "description": "AIBadge is a presentational label \u2014 not a button, not a chip. It mirrors the standard DS Badge (src/badge/): the same semantic variant set (neutral \u00b7 info \u00b7 success \u00b7 warning \u00b7 error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the DS categorical chart palette (@zs-data-color-1\u202612). If the label needs to be clickable, use AIChip instead.",
+  "intent": "The compact label atom for AI status and metrics. Extends the DS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. \"+23% engagement\") stay on-system.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-badge/ai-badge.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -106,7 +106,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -128,7 +128,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

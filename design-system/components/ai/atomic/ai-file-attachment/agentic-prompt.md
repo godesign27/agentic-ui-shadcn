@@ -1,6 +1,6 @@
 # Agentic Prompt — AI File Attachment
 
-You are implementing the **AI File Attachment** (`ai-file-attachment`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI File Attachment** (`ai-file-attachment`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -1,5 +1,5 @@
 /**
- * AITextLink — ZAIDYN AI Atomic Component
+ * AITextLink — Guild AI Atomic Component
  *
  * Lightweight explainability link for AI-generated outputs.
  * Used for rationale, sources, assumptions, audit trail, and
@@ -10,7 +10,7 @@
  */
 
 import React, { useState } from 'react';
-import { AI, ZDS, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, DS, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -24,10 +24,10 @@ export type AITextLinkVariant =
   | 'attention';    // orange-toned attention link
 
 export type AITextLinkTone =
-  | 'ai'         // ZSAI brand blue — default for AI explainability
+  | 'ai'         // AI_RAMP brand blue — default for AI explainability
   | 'neutral'    // textHelper — low-emphasis secondary
-  | 'attention'  // ZS Orange — escalation, warning, approval, stale data
-  | 'warning'    // ZS Orange dark — stale/warning context
+  | 'attention'  // Signal Orange — escalation, warning, approval, stale data
+  | 'warning'    // Signal Orange dark — stale/warning context
   | 'error';     // semantic red — unavailable, error state
 
 export type AITextLinkSize = 'sm' | 'md';
@@ -35,7 +35,7 @@ export type AITextLinkSize = 'sm' | 'md';
 export interface AITextLinkProps {
   label:             string;
   href?:             string;
-  icon?:             string;           // leading icon name from ZDS_ICON_PATHS
+  icon?:             string;           // leading icon name from AI_ICON_PATHS
   leadingIcon?:      React.ReactNode;  // custom leading icon node (overrides `icon` name lookup)
   trailingIcon?:     string;           // trailing icon name (non-chevron)
   showChevron?:      boolean;
@@ -67,9 +67,9 @@ interface ToneColors { default: string; hover: string; active: string }
 
 const TONE_COLORS: Record<AITextLinkTone, ToneColors> = {
   ai:        { default: AI.color.brand,              hover: AI.color.action.primaryHover, active: AI.color.brandStrong },
-  neutral:   { default: ZDS.textHelper,              hover: ZDS.textDefault,              active: 'var(--ai-zds-text)' },
-  attention: { default: ZS_ORANGE[60],               hover: ZS_ORANGE[70],                active: ZS_ORANGE[80] },
-  warning:   { default: ZS_ORANGE[70],               hover: ZS_ORANGE[80],                active: ZS_ORANGE[100] },
+  neutral:   { default: DS.textHelper,              hover: DS.textDefault,              active: 'var(--ai-ds-text)' },
+  attention: { default: SIGNAL_ORANGE[60],               hover: SIGNAL_ORANGE[70],                active: SIGNAL_ORANGE[80] },
+  warning:   { default: SIGNAL_ORANGE[70],               hover: SIGNAL_ORANGE[80],                active: SIGNAL_ORANGE[100] },
   error:     { default: '#B21111',                   hover: '#8A0A0A',                    active: 'var(--ai-status-error-text)' },
 };
 
@@ -127,7 +127,7 @@ function LoadingSpinner({ size, color }: { size: number; color: string }) {
   );
 }
 
-// Minimal inline icon renderer for leading/trailing icons using ZDS_ICON_PATHS
+// Minimal inline icon renderer for leading/trailing icons using AI_ICON_PATHS
 // We lazy-import path data here to avoid a large static dependency on the full registry.
 const INLINE_ICON_PATHS: Record<string, string> = {
   'info':         'M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C16.418 20 20 16.418 20 12C20 7.582 16.418 4 12 4C7.582 4 4 7.582 4 12C4 16.418 7.582 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z',
@@ -201,9 +201,9 @@ export function AITextLink({
   const iconSize = SIZE_ICON[size];
   const gap      = SIZE_GAP[size];
 
-  // sm normalizes to @zsai-caption-1 (12/400/1.5). md keeps its 13/500/1.0 inline.
+  // sm normalizes to @ai-caption-1 (12/400/1.5). md keeps its 13/500/1.0 inline.
   const typeStyle = size === 'sm'
-    ? AI_TYPOGRAPHY['@zsai-caption-1']
+    ? AI_TYPOGRAPHY['@ai-caption-1']
     : { fontSize: fontSize as number, fontWeight: 500, lineHeight: 1 as number };
 
   const [hovered, setHovered] = useState(false);

@@ -1,5 +1,5 @@
 /**
- * AIToggle — ZAIDYN Agentic AI Atom
+ * AIToggle — Guild Agentic AI Atom
  *
  * Binary on/off switch (role="switch") used to toggle surfaces, modes, and
  * inline preferences inside AI cards and drawers — explainability, audit
@@ -7,10 +7,10 @@
  *
  * Contrast notes (WCAG 1.4.11 — Non-text contrast ≥ 3:1)
  *   - ON track:      AI brand blue (#4D60E6) → white thumb        ≈ 3.5 : 1 ✓
- *   - OFF track:     slate #8D8A93 (darker than ZDS border)       → white thumb ≈ 3.2 : 1 ✓
+ *   - OFF track:     slate #8D8A93 (darker than DS border)       → white thumb ≈ 3.2 : 1 ✓
  *   - ON border:     matches track tint (no additional border)
  *   - OFF border:    one step darker than track (#6F6C77)         ≥ 3 : 1 against page ✓
- *   - Label text:    var(--ai-zds-text)                            ≥ 4.5 : 1 (passes AA body text)
+ *   - Label text:    var(--ai-ds-text)                            ≥ 4.5 : 1 (passes AA body text)
  *
  * Accessibility
  *   - role="switch" + aria-checked
@@ -151,10 +151,10 @@ export function AIToggle({
         gap: 10,
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.55 : 1,
-        ...AI_TYPOGRAPHY['@zsai-body-small'],
+        ...AI_TYPOGRAPHY['@ai-body-small'],
         fontFamily: F,
         fontSize: sz.fontSize,
-        color: 'var(--ai-zds-text)',
+        color: 'var(--ai-ds-text)',
         fontWeight: 600,
       }}
     >

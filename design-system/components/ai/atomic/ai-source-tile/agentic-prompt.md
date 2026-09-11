@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Source Tile
 
-You are implementing the **AI Source Tile** (`ai-source-tile`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Source Tile** (`ai-source-tile`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -27,7 +27,7 @@ Implement `AISourceTile` exactly as specified in the mirror. Match props, tokens
 
 - `title` (`ReactNode`) default ``—`` — Source name (bold).
 - `source` (`string`) default ``—`` — Uppercase caption shown beneath the title.
-- `iconName` (`string`) default ``"zs-icon-layers"`` — ZAIDYN icon class for the leading tile.
+- `iconName` (`string`) default ``"zs-icon-layers"`` — Guild icon class for the leading tile.
 - `tone` (`"ai" \) default `"warning" \` — "error" \
 - `trailing` (`ReactNode`) default ``—`` — Optional small right-aligned meta.
 - `chevron` (`boolean`) default ``false`` — Show a right-facing chevron affordance. Auto-true when onClick is provided. Suppressed when rank is set.

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Generated Dashboard
 
-You are implementing the **AI Generated Dashboard** (`ai-generated-dashboard`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Generated Dashboard** (`ai-generated-dashboard`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

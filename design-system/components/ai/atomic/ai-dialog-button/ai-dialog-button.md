@@ -20,7 +20,7 @@ Ghost toolbar button for the AI Dialog composer — icon-only, icon + label, and
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

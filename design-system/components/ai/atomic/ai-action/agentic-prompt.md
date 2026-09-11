@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Action
 
-You are implementing the **AI Action** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Action** atom from the Guild AI Design System mirror.
 
 ---
 

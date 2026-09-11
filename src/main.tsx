@@ -5,7 +5,7 @@ import './index.css'
 import './components/ai/tokens/css/ai-surface.css'
 import './components/ai/tokens/css/ai-component-tokens.css'
 import './components/ai/tokens/css/ai-typography.css'
-import './components/ai/tokens/css/zds-bridge.css'
+import './components/ai/tokens/css/ds-bridge.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

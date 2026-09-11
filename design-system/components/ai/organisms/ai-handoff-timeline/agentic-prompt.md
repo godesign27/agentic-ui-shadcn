@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Handoff Timeline
 
-You are implementing the **AI Handoff Timeline** (`ai-handoff-timeline`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Handoff Timeline** (`ai-handoff-timeline`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

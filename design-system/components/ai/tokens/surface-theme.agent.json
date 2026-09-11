@@ -5,8 +5,8 @@
   "repoModule": "aiSurfaceTheme",
   "tier": "tokens",
   "status": "active",
-  "description": "CSS-scoped ZSAI surface themes via data-theme. Redefines --ai-* variables per variant; includes ZDS and shadcn bridge layers.",
-  "intent": "Wrap any container in data-theme to theme AI, ZDS, and shadcn components without code changes. Theme files override Tier 1 palette only.",
+  "description": "CSS-scoped AI_RAMP surface themes via data-theme. Redefines --ai-* variables per variant; includes DS and shadcn bridge layers.",
+  "intent": "Wrap any container in data-theme to theme AI, DS, and shadcn components without code changes. Theme files override Tier 1 palette only.",
   "authority": {
     "mirrorSpec": "components/ai/tokens/surface-theme.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -24,7 +24,7 @@
     "notes": [
       "Set data-theme on container or use SurfaceThemeProvider",
       "Load css/ai-surface.css then css/ai-component-tokens.css then bridge CSS",
-      "ZDS: also require zs-master-style on ancestor + zds-bridge.css",
+      "DS: also require zs-master-style on ancestor + ds-bridge.css",
       "shadcn: load shadcn-bridge.css after ai-surface.css"
     ]
   },
@@ -55,11 +55,11 @@
       "Do not hardcode hex in components inside a themed surface",
       "Do not load bridge CSS before ai-surface.css",
       "Do not use data-theme without importing the CSS files",
-      "Do not replace zs-master-style with data-theme for ZDS hosts"
+      "Do not replace zs-master-style with data-theme for DS hosts"
     ],
     "agentRules": [
       "Read surface-theme.json for theme IDs and CSS load order",
-      "Use maps/zds-bridge.json when theming standard ZDS components",
+      "Use maps/ds-bridge.json when theming standard DS components",
       "Use maps/shadcn-bridge.json when theming shadcn/ui components",
       "Use maps/component-tokens.json for Tier 3 component slot resolution"
     ]

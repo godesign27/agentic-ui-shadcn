@@ -16,7 +16,7 @@
     "primaryJavascript": "ai/atomic/chip-handoff/AIChipHandoff.tsx",
     "preview": "components/ai/atomic/ai-chip-handoff/ai-chip-handoff.preview.html",
     "agentMarkdown": [],
-    "note": "Canonical TSX lives in ZAIDYN AI Design System (external). AIHandoffChip is backward-compat alias."
+    "note": "Canonical TSX lives in Guild AI Design System (external). AIHandoffChip is backward-compat alias."
   },
   "platforms": [
     "web",

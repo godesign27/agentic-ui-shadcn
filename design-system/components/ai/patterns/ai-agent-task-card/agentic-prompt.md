@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Task Card
 
-You are implementing the **AI Agent Task Card** (`ai-agent-task-card`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Task Card** (`ai-agent-task-card`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

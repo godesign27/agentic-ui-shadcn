@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Objective Card
 
-You are implementing the **AI Objective Card** (`ai-objective-card`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Objective Card** (`ai-objective-card`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Confidence & Risk Badge
 
-You are implementing the **AI Confidence & Risk Badge** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Confidence & Risk Badge** atom from the Guild AI Design System mirror.
 
 ---
 

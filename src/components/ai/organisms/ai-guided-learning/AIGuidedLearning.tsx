@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ZSAI_TAN, ZS_ORANGE, AI } from '../../tokens/ai-tokens';
+import { COMPANION_TAN, SIGNAL_ORANGE, AI } from '../../tokens/ai-tokens';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -87,17 +87,17 @@ const GL_CSS = `
   pointer-events: none;
 }
 
-/* Dark mode (both global and scoped preview) — flip to warm ZS-tan inverse surface */
+/* Dark mode (both global and scoped preview) — flip to warm Guild-tan inverse surface */
 ${DARK} .ai-gl-surface {
   background:
     radial-gradient(ellipse 60% 50% at 90% 0%, rgba(184,149,128,0.22) 0%, transparent 55%),
-    linear-gradient(135deg, ${ZSAI_TAN['00']} 0%, ${ZSAI_TAN[10]} 55%, ${ZSAI_TAN[20]} 100%);
-  color: ${ZSAI_TAN[100]};
-  border: 1px solid ${ZSAI_TAN[30]};
+    linear-gradient(135deg, ${COMPANION_TAN['00']} 0%, ${COMPANION_TAN[10]} 55%, ${COMPANION_TAN[20]} 100%);
+  color: ${COMPANION_TAN[100]};
+  border: 1px solid ${COMPANION_TAN[30]};
   box-shadow: 0 4px 24px rgba(184,149,128,0.20), 0 8px 40px rgba(0,0,0,0.22), 0 2px 12px rgba(0,0,0,0.14);
 }
 
-/* Accent line in dark mode — ZSAI blue on tan reads clearly */
+/* Accent line in dark mode — AI_RAMP blue on tan reads clearly */
 ${DARK} .ai-gl-surface::before {
   background: linear-gradient(90deg, ${AI.color.brand} 0%, ${AI.color.decorative.washStrong} 60%, transparent 100%);
 }
@@ -105,7 +105,7 @@ ${DARK} .ai-gl-surface::before {
 .ai-gl-text-muted   { color: rgba(240,238,248,0.65); }
 .ai-gl-text-accent  { color: ${AI.color.brand}; }
 
-${DARK} .ai-gl-text-muted  { color: ${ZSAI_TAN[80]}; }
+${DARK} .ai-gl-text-muted  { color: ${COMPANION_TAN[80]}; }
 ${DARK} .ai-gl-text-accent { color: ${AI.color.brand}; }
 
 /* Buttons */
@@ -151,8 +151,8 @@ ${DARK} .ai-gl-btn-primary:hover {
 }
 .ai-gl-btn-ghost:hover { color: #F0EEF8; border-color: rgba(255,255,255,0.18); }
 .ai-gl-btn-ghost:focus-visible { outline: 2px solid ${AI.color.border.focus}; outline-offset: 2px; }
-${DARK} .ai-gl-btn-ghost  { color: ${ZSAI_TAN[80]}; }
-${DARK} .ai-gl-btn-ghost:hover { color: ${ZSAI_TAN[100]}; border-color: ${ZSAI_TAN[40]}; }
+${DARK} .ai-gl-btn-ghost  { color: ${COMPANION_TAN[80]}; }
+${DARK} .ai-gl-btn-ghost:hover { color: ${COMPANION_TAN[100]}; border-color: ${COMPANION_TAN[40]}; }
 
 .ai-gl-btn-close {
   display: inline-flex; align-items: center; justify-content: center;
@@ -168,8 +168,8 @@ ${DARK} .ai-gl-btn-ghost:hover { color: ${ZSAI_TAN[100]}; border-color: ${ZSAI_T
 }
 .ai-gl-btn-close:hover { background: rgba(255,255,255,0.10); color: #F0EEF8; }
 .ai-gl-btn-close:focus-visible { outline: 2px solid ${AI.color.border.focus}; outline-offset: 2px; }
-${DARK} .ai-gl-btn-close  { color: ${ZSAI_TAN[60]}; }
-${DARK} .ai-gl-btn-close:hover { background: ${ZSAI_TAN[20]}; color: ${ZSAI_TAN[100]}; }
+${DARK} .ai-gl-btn-close  { color: ${COMPANION_TAN[60]}; }
+${DARK} .ai-gl-btn-close:hover { background: ${COMPANION_TAN[20]}; color: ${COMPANION_TAN[100]}; }
 
 /* Step dots */
 .ai-gl-dot {
@@ -179,14 +179,14 @@ ${DARK} .ai-gl-btn-close:hover { background: ${ZSAI_TAN[20]}; color: ${ZSAI_TAN[
   transition: background 0.2s;
 }
 .ai-gl-dot-active { background: #F0EEF8; }
-${DARK} .ai-gl-dot        { background: ${ZSAI_TAN[30]}; }
-${DARK} .ai-gl-dot-active { background: ${ZSAI_TAN[100]}; }
+${DARK} .ai-gl-dot        { background: ${COMPANION_TAN[30]}; }
+${DARK} .ai-gl-dot-active { background: ${COMPANION_TAN[100]}; }
 
-/* Badge — ZS-orange signal color */
+/* Badge — Guild-orange signal color */
 .ai-gl-badge {
   display: inline-flex; align-items: center; gap: 5px;
   padding: 2px 8px;
-  background: ${ZS_ORANGE[60]};
+  background: ${SIGNAL_ORANGE[60]};
   border-radius: 100px;
   color: #FFFFFF;
   font-size: 11px; font-weight: 700;
@@ -194,7 +194,7 @@ ${DARK} .ai-gl-dot-active { background: ${ZSAI_TAN[100]}; }
   text-transform: uppercase;
 }
 ${DARK} .ai-gl-badge {
-  background: ${ZS_ORANGE[50]};
+  background: ${SIGNAL_ORANGE[50]};
 }
 
 /* Media region */
@@ -206,8 +206,8 @@ ${DARK} .ai-gl-badge {
   display: flex; align-items: center; justify-content: center;
 }
 ${DARK} .ai-gl-media {
-  background: ${ZSAI_TAN[20]};
-  border-color: ${ZSAI_TAN[30]};
+  background: ${COMPANION_TAN[20]};
+  border-color: ${COMPANION_TAN[30]};
 }
 
 /* Completion checkmark */
@@ -219,8 +219,8 @@ ${DARK} .ai-gl-media {
   flex-shrink: 0;
 }
 ${DARK} .ai-gl-check {
-  background: ${ZSAI_TAN[20]};
-  border-color: ${ZSAI_TAN[40]};
+  background: ${COMPANION_TAN[20]};
+  border-color: ${COMPANION_TAN[40]};
 }
 
 /* SVG caret — positioned as a sibling of .ai-gl-surface in the outer wrapper */
@@ -231,8 +231,8 @@ ${DARK} .ai-gl-check {
 }
 .ai-gl-caret-fill { fill: #22203A; }
 .ai-gl-caret-border { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 1; }
-${DARK} .ai-gl-caret-fill  { fill: ${ZSAI_TAN['00']}; }
-${DARK} .ai-gl-caret-border { stroke: ${ZSAI_TAN[30]}; }
+${DARK} .ai-gl-caret-fill  { fill: ${COMPANION_TAN['00']}; }
+${DARK} .ai-gl-caret-border { stroke: ${COMPANION_TAN[30]}; }
 
 /* Divider */
 .ai-gl-divider {
@@ -240,7 +240,7 @@ ${DARK} .ai-gl-caret-border { stroke: ${ZSAI_TAN[30]}; }
   background: rgba(255,255,255,0.10);
   border: none; margin: 0;
 }
-${DARK} .ai-gl-divider { background: ${ZSAI_TAN[30]}; }
+${DARK} .ai-gl-divider { background: ${COMPANION_TAN[30]}; }
 
 /* Do not show again checkbox row */
 .ai-gl-dns {
@@ -249,7 +249,7 @@ ${DARK} .ai-gl-divider { background: ${ZSAI_TAN[30]}; }
   color: rgba(240,238,248,0.55);
   cursor: pointer;
 }
-${DARK} .ai-gl-dns { color: ${ZSAI_TAN[70]}; }
+${DARK} .ai-gl-dns { color: ${COMPANION_TAN[70]}; }
 
 @media (prefers-reduced-motion: reduce) {
   .ai-gl-surface, .ai-gl-btn-primary, .ai-gl-btn-ghost, .ai-gl-btn-close {

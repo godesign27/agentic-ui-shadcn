@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiSourceTile`  
 **Component type:** React atomic  
@@ -20,7 +20,7 @@ AISourceTile surfaces a single knowledge input, data source, citation, attached 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -47,7 +47,7 @@ AISourceTile surfaces a single knowledge input, data source, citation, attached 
 ## State variations
 
 - **AI tone (default)** _(tone="ai")_ — Brand-blue icon tile. Used for system / external knowledge sources.
-- **Warning tone** _(tone="warning")_ — ZS orange icon tile. Reserved for risk / guardrail sources.
+- **Warning tone** _(tone="warning")_ — Guild orange icon tile. Reserved for risk / guardrail sources.
 - **Interactive** _(onClick)_ — Whole tile becomes a button — drills into the source detail drawer.
 
 ## Props API
@@ -56,7 +56,7 @@ AISourceTile surfaces a single knowledge input, data source, citation, attached 
 | --- | --- | --- | --- |
 | `title` | `ReactNode` | `—` | Source name (bold). |
 | `source` | `string` | `—` | Uppercase caption shown beneath the title. |
-| `iconName` | `string` | `"zs-icon-layers"` | ZAIDYN icon class for the leading tile. |
+| `iconName` | `string` | `"zs-icon-layers"` | Guild icon class for the leading tile. |
 | `tone` | `"ai" \| "warning" \| "error" \| "success" \| "neutral"` | `"ai"` | Drives the icon tile tint, card hover border, and shadow halo. |
 | `trailing` | `ReactNode` | `—` | Optional small right-aligned meta. |
 | `chevron` | `boolean` | `false` | Show a right-facing chevron affordance. Auto-true when onClick is provided. Suppressed when rank is set. |
@@ -87,9 +87,9 @@ import { AISourceTile } from '@/components/ai/atomic/source-tile/AISourceTile';
 ## Agent rules
 
 1. Read this mirror spec and `ai-source-tile.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-source-tile/ai-source-tile.agent.json`.
 

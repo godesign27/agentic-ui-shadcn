@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { F, AI, ZDS, ZS_ORANGE, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { F, AI, DS, SIGNAL_ORANGE, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAccentLine, AccentLineStyle } from '../../atomic/ai-accent-line/AIAccentLine';
 import { AIBadge } from '../../atomic/ai-badge/AIBadge';
@@ -123,21 +123,21 @@ const INSIGHT_META: Record<InsightType, {
   },
   recommendation: {
     label: 'Recommendation',
-    border: ZS_ORANGE[60],
+    border: SIGNAL_ORANGE[60],
     bg: AI.color.signal.surface,
-    labelColor: ZS_ORANGE[70],
+    labelColor: SIGNAL_ORANGE[70],
   },
   watchout: {
     label: 'Watchout',
-    border: ZS_ORANGE[40],
-    bg: ZS_ORANGE['00'],
-    labelColor: ZS_ORANGE[70],
+    border: SIGNAL_ORANGE[40],
+    bg: SIGNAL_ORANGE['00'],
+    labelColor: SIGNAL_ORANGE[70],
   },
   evidence: {
     label: 'Evidence',
     border: 'var(--ai-card-border)',
     bg: 'var(--ai-card-bg-raised)',
-    labelColor: 'var(--ai-zds-helper)',
+    labelColor: 'var(--ai-ds-helper)',
   },
   warning: {
     label: 'Warning',
@@ -147,9 +147,9 @@ const INSIGHT_META: Record<InsightType, {
   },
   context: {
     label: 'Context',
-    border: ZSAI_TAN[60],
-    bg: ZSAI_TAN['00'],
-    labelColor: ZSAI_TAN[80],
+    border: COMPANION_TAN[60],
+    bg: COMPANION_TAN['00'],
+    labelColor: COMPANION_TAN[80],
   },
   benchmark: {
     label: 'Benchmark',
@@ -188,15 +188,15 @@ const CONFIDENCE_META: Record<ConfidenceVariant, { label: string; color: string;
   },
   reviewSuggested: {
     label: 'Review Suggested',
-    color: ZS_ORANGE[70],
-    border: ZS_ORANGE[40],
-    bg: ZS_ORANGE['00'],
+    color: SIGNAL_ORANGE[70],
+    border: SIGNAL_ORANGE[40],
+    bg: SIGNAL_ORANGE['00'],
   },
   dataStale: {
     label: 'Data Stale',
-    color: ZS_ORANGE[70],
-    border: ZS_ORANGE[40],
-    bg: ZS_ORANGE['00'],
+    color: SIGNAL_ORANGE[70],
+    border: SIGNAL_ORANGE[40],
+    bg: SIGNAL_ORANGE['00'],
   },
   sourceLimited: {
     label: 'Source Limited',
@@ -270,7 +270,7 @@ const RISK_META: Record<RiskVariant, { label: string; color: string; border: str
 };
 
 const REVIEW_META: Record<ReviewIndicator, { label: string; color: string; border: string; bg: string }> = {
-  reviewSuggested: { label: 'Review suggested', color: ZS_ORANGE[70], border: ZS_ORANGE[40], bg: ZS_ORANGE['00'] },
+  reviewSuggested: { label: 'Review suggested', color: SIGNAL_ORANGE[70], border: SIGNAL_ORANGE[40], bg: SIGNAL_ORANGE['00'] },
   humanReviewed:   { label: 'Human reviewed',   color: '#1F6B40',     border: '#CDE3D5',     bg: '#EAF4EE'        },
   escalated:       { label: 'Escalated',         color: 'var(--ai-status-error-text)', border: 'var(--ai-status-error-border)', bg: 'var(--ai-status-error-bg)' },
 };
@@ -374,7 +374,7 @@ export function AIAnalysisInsight({
       }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
           <span style={{
-            ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+            ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
             textTransform: 'uppercase' as const,
             color: meta.labelColor,
             fontFamily: F,
@@ -393,7 +393,7 @@ export function AIAnalysisInsight({
             <span
               aria-label={badge.label}
               style={{
-                ...AI_TYPOGRAPHY['@zsai-action-link'],
+                ...AI_TYPOGRAPHY['@ai-action-link'],
                 fontFamily: F, whiteSpace: 'nowrap',
                 color: badge.color, background: badge.bg,
                 border: `1px solid ${badge.border}`,
@@ -411,9 +411,9 @@ export function AIAnalysisInsight({
       {title && (
         <p style={{
           margin: '0 0 6px',
-          ...AI_TYPOGRAPHY['@zsai-insight-title'],
+          ...AI_TYPOGRAPHY['@ai-insight-title'],
           fontFamily: F,
-          color: 'var(--ai-zds-text)',
+          color: 'var(--ai-ds-text)',
         }}>
           {title}
         </p>
@@ -422,9 +422,9 @@ export function AIAnalysisInsight({
       {/* ── Body ─────────────────────────────────────────────────────────── */}
       <p style={{
         margin: 0,
-        ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+        ...AI_TYPOGRAPHY['@ai-section-subtitle'],
         fontFamily: F,
-        color: 'var(--ai-zds-text)',
+        color: 'var(--ai-ds-text)',
       }}>
         {body}
       </p>
@@ -452,9 +452,9 @@ export function AIAnalysisInsight({
         <div style={{
           marginTop: '6px',
           fontSize: '10px', fontFamily: F,
-          color: 'var(--ai-zds-helper)',
+          color: 'var(--ai-ds-helper)',
         }}>
-          Owner: <span style={{ color: 'var(--ai-zds-text)', fontWeight: 600 }}>{owner}</span>
+          Owner: <span style={{ color: 'var(--ai-ds-text)', fontWeight: 600 }}>{owner}</span>
         </div>
       )}
 
@@ -471,13 +471,13 @@ export function AIAnalysisInsight({
             <GhostLink label="Why this?" onClick={onViewRationale} />
           )}
           {showRationale && onViewRationale && showSources && onViewSources && (
-            <span style={{ fontSize: '10px', color: 'var(--ai-zds-helper)', fontFamily: F }}>·</span>
+            <span style={{ fontSize: '10px', color: 'var(--ai-ds-helper)', fontFamily: F }}>·</span>
           )}
           {showSources && onViewSources && allowSources && (
             <GhostLink label="View sources" onClick={onViewSources} />
           )}
           {((showRationale && onViewRationale) || (showSources && onViewSources)) && showAssumptions && onViewAssumptions && allowAssumptions && (
-            <span style={{ fontSize: '10px', color: 'var(--ai-zds-helper)', fontFamily: F }}>·</span>
+            <span style={{ fontSize: '10px', color: 'var(--ai-ds-helper)', fontFamily: F }}>·</span>
           )}
           {showAssumptions && onViewAssumptions && allowAssumptions && (
             <GhostLink label="View assumptions" onClick={onViewAssumptions} />
@@ -513,9 +513,9 @@ export function AIAnalysisInsight({
           {showSources && allowSources && sources && sources.length > 0 && (
             <>
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-overline'],
+                ...AI_TYPOGRAPHY['@ai-overline'],
                 fontFamily: F,
-                color: 'var(--ai-zds-helper)',
+                color: 'var(--ai-ds-helper)',
               }}>
                 Sources
               </span>
@@ -523,7 +523,7 @@ export function AIAnalysisInsight({
                 <span key={s} style={{
                   fontSize: '10px',
                   fontFamily: F,
-                  color: 'var(--ai-zds-helper)',
+                  color: 'var(--ai-ds-helper)',
                   background: 'var(--ai-track-bg)',
                   border: '1px solid var(--ai-card-border)',
                   borderRadius: AI.radius.full,
@@ -537,7 +537,7 @@ export function AIAnalysisInsight({
           {freshness && allowFreshness && (
             <span style={{
               fontSize: '10px', fontFamily: F,
-              color: 'var(--ai-zds-helper)',
+              color: 'var(--ai-ds-helper)',
               marginLeft: 'auto',
             }}>
               {freshness}

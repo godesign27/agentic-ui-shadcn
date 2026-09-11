@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Feedback Bar
 
-You are implementing the **AI Feedback Bar** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Feedback Bar** atom from the Guild AI Design System mirror.
 
 ---
 

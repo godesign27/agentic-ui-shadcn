@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiAssistedSideDrawer`  
 **Component type:** React page  
@@ -20,7 +20,7 @@ A page-level pattern that layers an AI assistant onto any content workspace. The
 
 **Default** — Persistent right-side column visible on load with the full AIInputCard toolbar at the bottom. Best when AI guidance is central to the workflow.
 
-**Focused dialog** — Same persistent drawer shell, but the bottom input row collapses to the AIDialogSlim pill (+ · Message ZAIDYN Agent… · RiMicLine). Best when the full toolbar is overkill — narrower drawers, secondary surfaces.
+**Focused dialog** — Same persistent drawer shell, but the bottom input row collapses to the AIDialogSlim pill (+ · Message Guild Agent… · RiMicLine). Best when the full toolbar is overkill — narrower drawers, secondary surfaces.
 
 **Hanging panel** — Drawer detaches from the edge into a floating, draggable card. Header carries a grab handle for repositioning and a dock icon that snaps the panel back to the docked side position. Best when AI is supplementary and page space is at a premium.
 
@@ -28,7 +28,7 @@ All three variants share the same AIAgentDrawer interior, the same conversation 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -114,7 +114,7 @@ All three variants share the same AIAgentDrawer interior, the same conversation 
 | `AI.color.brand` | `#4D60E6` | Send button gradient, focus ring, active chip border |
 | `AI.color.brandSurface` | `#F5F6FF` | User bubble background, hover state background |
 | `AI.color.brandBorder` | `#BECAFE` | Chip borders, input border, dividers |
-| `ZS_ORANGE[60]` | `#EC7200` | Minimum width accent bar — only for locked/at-min state |
+| `SIGNAL_ORANGE[60]` | `#EC7200` | Minimum width accent bar — only for locked/at-min state |
 
 ## Flows
 
@@ -176,9 +176,9 @@ export function PageWithStandardPanel() {
 ## Agent rules
 
 1. Read this mirror spec and `ai-assisted-side-drawer.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.agent.json`.
 

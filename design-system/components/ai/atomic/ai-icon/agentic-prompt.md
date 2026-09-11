@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Icon
 
-You are implementing the **AI Icon** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Icon** atom from the Guild AI Design System mirror.
 
 ---
 
