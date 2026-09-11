@@ -66,6 +66,8 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `actions` | `FooterAction[]` | **required** | Required. Declared in the component source. |
+| `visible` | `boolean` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

@@ -68,17 +68,10 @@
 </tbody></table></div>
 <ul class="rule-list" style="margin-top:14px">
 <li>A Card is a div. It carries no semantics of its own — that is correct and deliberate.</li>
-<li>CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.</li>
+<li>CardTitle renders &lt;h3&gt; by default, which is right inside an &lt;h2&gt; section and wrong directly under the page &lt;h1&gt;. Set <code>as</code> to match the real outline — screen-reader users navigate by heading, so a page of cards at the wrong level is a broken outline.</li>
 <li>For a card grid, wrap in a ul and each card in an li so the count is announced.</li>
 <li>A whole-card click target needs a real button or link inside — do not attach onClick to the Card div.</li>
 </ul>
-</section>
-<section>
-<h2>Gaps</h2>
-<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
-<div class="note"><ul class="rule-list" style="margin:0">
-<li>CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it.</li>
-</ul></div>
 </section>
 <section>
 <h2>Spec files</h2>

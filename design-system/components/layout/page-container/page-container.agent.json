@@ -1,0 +1,131 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "layout:page-container",
+  "name": "PageContainer",
+  "namespace": "layout",
+  "tier": "layout",
+  "status": "stable",
+  "category": "Layout",
+  "description": "The layout root named by agents/page-generation.json. Renders <main> by default, so a generated page gets its main landmark without anyone remembering to add one.",
+  "intent": "One max-width, one gutter, one place to change either.",
+  "authority": {
+    "source": "src/components/layout/page-container.tsx",
+    "mirrorSpec": "design-system/components/layout/page-container/page-container.md",
+    "contract": "design-system/components/layout/page-container/page-container.agent.json",
+    "prompt": "design-system/components/layout/page-container/agentic-prompt.md",
+    "preview": "design-system/components/layout/page-container/page-container.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "class-variance-authority"
+    ]
+  },
+  "exports": [
+    "PageContainer",
+    "pageContainerVariants"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Full bleed",
+    "Flush"
+  ],
+  "props": [
+    {
+      "name": "width",
+      "type": "\"prose\" | \"narrow\" | \"default\" | \"wide\" | \"full\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the width values declared in pageContainerVariants."
+    },
+    {
+      "name": "gutter",
+      "type": "\"none\" | \"default\" | \"loose\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the gutter values declared in pageContainerVariants."
+    },
+    {
+      "name": "spacing",
+      "type": "\"none\" | \"tight\" | \"default\" | \"loose\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the spacing values declared in pageContainerVariants."
+    },
+    {
+      "name": "as",
+      "type": "\"main\" | \"div\" | \"section\" | \"article\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "requiredProps": [],
+  "javascriptApi": {
+    "import": "import { PageContainer, pageContainerVariants } from \"@/components/layout/page-container\"",
+    "exports": [
+      "PageContainer",
+      "pageContainerVariants"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "main",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "handledByRadix": false,
+    "notes": [
+      "Renders <main>, which supplies the main landmark. Exactly one per page — set as=\"div\" for any additional container.",
+      "The gutter never collapses below px-4, so content keeps a 16px side margin at every width, including gutter=\"none\".",
+      "Vertical rhythm uses py-*, never a padding shorthand, so the side gutter cannot be zeroed by accident."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Nested containers",
+      "Multiple <main> landmarks",
+      "Removing the side gutter",
+      "Use inside a dialog or sheet"
+    ],
+    "agentRules": [
+      "One <main> per page. Additional containers use as=\"div\".",
+      "Do not nest containers.",
+      "Pick width from the content: prose for reading, wide for data.",
+      "Never remove the side gutter."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:card",
+      "note": "Grouping inside the container"
+    },
+    {
+      "id": "ui:sidebar",
+      "note": "SidebarInset owns the main region instead"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "curated": true
+}

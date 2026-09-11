@@ -2,12 +2,12 @@
   "$schema": "../../agent-manifest.schema.json",
   "schemaVersion": 1,
   "id": "ui:sonner",
-  "name": "Toaster",
+  "name": "SonnerToaster",
   "namespace": "ui",
   "tier": "templates",
   "status": "stable",
   "category": "Feedback",
-  "description": "A Sonner wrapper themed to shadcn tokens. Exports Toaster, which collides by name with ui:toaster — they are different components and you must choose one.",
+  "description": "A Sonner wrapper themed to shadcn tokens. Exports SonnerToaster — deliberately not Toaster, so it cannot collide with ui:toaster at an import site. Reads the theme from the dark class this app actually toggles.",
   "intent": "The same job as ui:toaster, through a different library with a simpler imperative API.",
   "authority": {
     "source": "src/components/ui/sonner.tsx",
@@ -26,12 +26,11 @@
     "internal": [],
     "external": [
       "lucide-react",
-      "next-themes",
       "sonner"
     ]
   },
   "exports": [
-    "Toaster"
+    "SonnerToaster"
   ],
   "variants": [],
   "sizes": [],
@@ -47,10 +46,11 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
-    "import": "import { Toaster } from \"@/components/ui/sonner\"",
+    "import": "import { SonnerToaster } from \"@/components/ui/sonner\"",
     "exports": [
-      "Toaster"
+      "SonnerToaster"
     ],
     "forwardsRef": false,
     "asChild": false,
@@ -82,8 +82,8 @@
     "requiredAttributes": [],
     "handledByRadix": false,
     "notes": [
-      "Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast.",
-      "Reads the active theme from next-themes. This is a Vite app with Tailwind darkMode: [\"class\"], so next-themes is not what toggles the class here — confirm the theme it reports matches the class actually on the html element."
+      "Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast, which requires altText on every action.",
+      "Theme is read from the dark class on <html> via a MutationObserver, matching tailwind darkMode: [\"class\"]. The upstream shadcn snippet reads next-themes, which no provider here mounts — it would report \"system\" regardless and render light toasts on a dark page."
     ]
   },
   "rules": {
@@ -91,12 +91,12 @@
     "forbiddenChildren": [],
     "forbiddenUsage": [
       "Running alongside ui:toaster",
-      "Ambiguous Toaster imports"
+      "Re-aliasing SonnerToaster back to Toaster"
     ],
     "agentRules": [
-      "Choose Sonner or ui:toaster. Never both.",
-      "Both export a component named Toaster — import deliberately and alias if needed.",
-      "Verify the theme reported by next-themes matches the dark class this app actually sets, or Sonner will render in the wrong theme."
+      "Choose Sonner or ui:toaster. Never both — two systems means every toast appears twice.",
+      "The export is SonnerToaster, not Toaster. That is deliberate.",
+      "Sonner actions carry no altText requirement. If you need that accessibility contract, use ui:toast."
     ]
   },
   "relatedComponents": [
@@ -110,9 +110,8 @@
     }
   ],
   "gaps": [
-    "Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.",
-    "Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted."
+    "Only one toast system may be mounted. Nothing enforces that at build time — it is a review concern."
   ],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

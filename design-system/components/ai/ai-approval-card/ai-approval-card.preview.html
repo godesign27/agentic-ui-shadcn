@@ -1,0 +1,102 @@
+<title>AIApprovalCard — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIApprovalCard</h1>
+<p class="lede">A consequential proposal, and the human decision about it, in an order that cannot be got wrong.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-approval-card</span>
+<span class="pill beta">beta</span>
+<span class="pill">groups</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-approval-card.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Confirm · Apply · Approve</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Rationale disclosure · Confidence signalling · Approval · Audit trail · Reversibility</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>conditional</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Proposed</strong></td><td><code>status=&quot;default&quot;</code></td><td>Awaiting the human</td></tr>
+<tr><td><strong>Requires review</strong></td><td><code>requiresReview</code></td><td>Mixed surface tone and the review signal above the actions</td></tr>
+<tr><td><strong>Applying</strong></td><td><code>status=&quot;loading&quot;</code></td><td>Primary spins; alternatives disable</td></tr>
+<tr><td><strong>Applied</strong></td><td><code>status=&quot;complete&quot;</code></td><td>Primary shows a check</td></tr>
+<tr><td><strong>Blocked</strong></td><td><code>status=&quot;disabled&quot;</code></td><td>Required information not yet present</td></tr>
+<tr><td><strong>Failed</strong></td><td><code>status=&quot;error&quot;</code></td><td>Destructive primary plus an announced errorMessage</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Surface</strong></td><td>ai:ai-soft-surface, tone mixed when review is required</td></tr>
+<tr><td><strong>Header</strong></td><td>ai:ai-message-header — who proposes this</td></tr>
+<tr><td><strong>Proposal</strong></td><td>What the agent wants to do, stated plainly</td></tr>
+<tr><td><strong>Confidence</strong></td><td>ai:ai-confidence-risk-badge. Omit entirely when unknown.</td></tr>
+<tr><td><strong>Rationale</strong></td><td>ai:ai-why-this-link. Omit when there is nothing behind it.</td></tr>
+<tr><td><strong>Actions</strong></td><td>ai:ai-action. Last in reading order, deliberately.</td></tr>
+<tr><td><strong>Error</strong></td><td>role=&quot;alert&quot; message beneath, when status is error</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-approval-card.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Any AI proposal a human must approve</li>
+<li>Agent-initiated changes to shared or outward-facing state</li>
+<li>Anywhere an agent needs authority it does not have</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Informational responses — use ai:ai-response</li>
+<li>Trivial reversible actions, where the ceremony is friction for nothing</li>
+<li>Destructive operations on their own; pair with ui:alert-dialog for the final confirmation</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>region</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab reaches rationale, then the actions</td></tr>
+<tr><th scope="row">Required</th><td>agentLabel<br />proposal<br />primaryLabel</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The order is the accessibility property. A user who tabs straight to the primary button has still passed the confidence badge and the rationale link in reading order.</li>
+<li>The region is labelled &quot;Approval requested by {agentLabel}&quot;.</li>
+<li>There is no autoApply prop, and adding one would violate AI_RULE_NO_SILENT_APPLY. Nothing fires without a human gesture.</li>
+<li>Omitting confidence is correct when the model produced none. The component renders no badge rather than a default.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-approval-card.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-approval-card.agent.json"><code>ai-approval-card.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-approval-card.md"><code>ai-approval-card.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

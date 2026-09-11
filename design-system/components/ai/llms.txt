@@ -44,6 +44,7 @@ These change state. Every one requires a human gesture and owes an audit trail.
 | Component | Status | Intent | Accountability |
 |---|---|---|---|
 | [`ai:ai-action`](ai-action/ai-action.md) | beta | The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. | Attribution, Approval, Audit trail, Rationale disclosure |
+| [`ai:ai-approval-card`](ai-approval-card/ai-approval-card.md) | beta | A consequential proposal, and the human decision about it, in an order that cannot be got wrong. | Attribution, Rationale disclosure, Confidence signalling, Approval, Audit trail, Reversibility |
 | [`ai:ai-button`](ai-button/ai-button.md) | stable | Commit to something a machine proposed. | Attribution, Approval |
 | [`ai:ai-control-bar`](ai-control-bar/ai-control-bar.md) | stable | The human can always stop the machine. | Attribution, Approval, Audit trail, Reversibility |
 | [`ai:ai-message-footer`](ai-message-footer/ai-message-footer.md) | stable | Where the user says yes to what the response offered. | Attribution, Approval |
@@ -62,6 +63,7 @@ These change nothing. They inform, attribute, or disclose.
 | [`ai:ai-chip-memory`](ai-chip-memory/ai-chip-memory.md) | stable | Tell the user when the system is drawing on something it learned earlier. | Attribution, Rationale disclosure, Audit trail |
 | [`ai:ai-chip-quick`](ai-chip-quick/ai-chip-quick.md) | stable | Offer a starting point so the user does not face an empty box. | Attribution |
 | [`ai:ai-confidence-risk-badge`](ai-confidence-risk-badge/ai-confidence-risk-badge.md) | stable | State how sure the model is and how much is at stake, before the human decides. | Attribution, Confidence signalling, Rationale disclosure |
+| [`ai:ai-dialog`](ai-dialog/ai-dialog.md) | stable | Where the human writes to the machine. | Attribution |
 | [`ai:ai-dialog-button`](ai-dialog-button/ai-dialog-button.md) | stable | A quiet control in the composer toolbar that does not compete with the message. | Attribution |
 | [`ai:ai-feedback-bar`](ai-feedback-bar/ai-feedback-bar.md) | stable | Let the human correct the record. | Attribution |
 | [`ai:ai-icon`](ai-icon/ai-icon.md) | beta | A treatment layer over standard icons — not a new icon set. | Attribution |
@@ -71,6 +73,7 @@ These change nothing. They inform, attribute, or disclose.
 | [`ai:ai-message-header`](ai-message-header/ai-message-header.md) | stable | Establish who is speaking before the user reads a word. | Attribution |
 | [`ai:ai-progress`](ai-progress/ai-progress.md) | draft | Progress for work that can be blocked or escalated, not merely slow. | Attribution, Audit trail |
 | [`ai:ai-queue-badge`](ai-queue-badge/ai-queue-badge.md) | stable | The state of one item in an agent queue, readable at a glance. | Attribution, Audit trail |
+| [`ai:ai-response`](ai-response/ai-response.md) | stable | One AI turn, assembled so attribution, progress and recourse are present by construction. | Attribution, Rationale disclosure |
 | [`ai:ai-soft-surface`](ai-soft-surface/ai-soft-surface.md) | beta | The wash that says everything inside this boundary was machine-generated. | Attribution |
 | [`ai:ai-text-link`](ai-text-link/ai-text-link.md) | beta | An inline link inside AI prose whose label stands on its own. | Attribution, Rationale disclosure |
 | [`ai:ai-why-this-link`](ai-why-this-link/ai-why-this-link.md) | stable | Make the reasoning reachable in one interaction. | Rationale disclosure, Attribution |

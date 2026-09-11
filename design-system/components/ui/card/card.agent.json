@@ -47,7 +47,7 @@
         "name": "CardTitle",
         "parent": "CardHeader",
         "required": false,
-        "note": "Renders a div, not a heading. Pass asChild or add role=\"heading\" aria-level if it is a real heading."
+        "note": "Renders <h3> by default. Set `as` to match the surrounding outline — h2 under a page h1, or \"div\" when it is not a heading at all."
       },
       {
         "name": "CardDescription",
@@ -82,6 +82,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Card, CardContent, CardDescription, … } from \"@/components/ui/card\"",
     "exports": [
@@ -114,7 +115,7 @@
     "handledByRadix": false,
     "notes": [
       "A Card is a div. It carries no semantics of its own — that is correct and deliberate.",
-      "CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.",
+      "CardTitle renders <h3> by default, which is right inside an <h2> section and wrong directly under the page <h1>. Set `as` to match the real outline — screen-reader users navigate by heading, so a page of cards at the wrong level is a broken outline.",
       "For a card grid, wrap in a ul and each card in an li so the count is announced.",
       "A whole-card click target needs a real button or link inside — do not attach onClick to the Card div."
     ]
@@ -135,7 +136,7 @@
     ],
     "agentRules": [
       "Do not nest cards.",
-      "CardTitle is not a heading element. Make it one when the page structure needs it.",
+      "Set `as` on CardTitle to match the surrounding heading level. The h3 default is a guess about context it cannot see.",
       "CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.",
       "Clickable cards need a real interactive element inside."
     ]
@@ -154,9 +155,7 @@
       "note": "Loading placeholder"
     }
   ],
-  "gaps": [
-    "CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it."
-  ],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "gaps": [],
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

@@ -81,6 +81,10 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `direction` | `HandoffDirection` | **required** | Required. Declared in the component source. |
+| `fromLabel` | `string` | **required** | Required. Declared in the component source. |
+| `toLabel` | `string` | **required** | Required. Declared in the component source. |
+| `size` | `"sm" \| "md"` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

@@ -114,6 +114,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Dialog, DialogClose, DialogContent, … } from \"@/components/ui/dialog\"",
     "exports": [
@@ -210,6 +211,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

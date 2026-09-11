@@ -38,11 +38,32 @@
   ],
   "props": [
     {
+      "name": "agentLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false,
+      "hint": "Attribution. Renders before the body, never after. This is the component that satisfies the \"Attribution\" obligation for a conversational surface. An AI response without it is unattributed output. / export interface AIMessageHeaderProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string /** Pass undefined to hide. Use a machine-readable dateTime on the caller side where possible."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
+  ],
+  "requiredProps": [
+    "agentLabel"
   ],
   "javascriptApi": {
     "import": "import { AIMessageHeader } from \"@/components/ai/ai-message-header\"",
@@ -115,6 +136,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

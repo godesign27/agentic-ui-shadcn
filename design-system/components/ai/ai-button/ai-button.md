@@ -90,6 +90,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | `variant` | `"primary"` \| `"secondary"` \| `"tertiary"` | `"primary"` | Declared in `aiButtonVariants` |
 | `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` | Declared in `aiButtonVariants` |
 | `status` | `"default"` \| `"loading"` \| `"complete"` \| `"error"` | `"default"` | Declared in `aiButtonVariants` |
+| `label` | `string` | **required** | Required. Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

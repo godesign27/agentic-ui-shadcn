@@ -1,0 +1,191 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-response",
+  "name": "AIResponse",
+  "namespace": "ai",
+  "tier": "groups",
+  "status": "stable",
+  "category": "AI",
+  "description": "patterns/ai-response.json as a component. Renders the required parts in the required order — header, optional work note, body or loading indicator, actions, feedback — so the pattern cannot be composed wrongly.",
+  "intent": "One AI turn, assembled so attribution, progress and recourse are present by construction.",
+  "authority": {
+    "source": "src/components/ai/ai-response.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-response/ai-response.md",
+    "contract": "design-system/components/ai/ai-response/ai-response.agent.json",
+    "prompt": "design-system/components/ai/ai-response/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-response/ai-response.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ai:ai-soft-surface",
+      "ai:ai-message-header",
+      "ai:ai-message-body",
+      "ai:ai-message-footer",
+      "ai:ai-feedback-bar",
+      "ai:ai-loading-indicators",
+      "ai:ai-agent-work-note"
+    ],
+    "external": []
+  },
+  "exports": [
+    "AIResponse"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Loading",
+    "Streaming",
+    "Complete",
+    "Bare"
+  ],
+  "props": [
+    {
+      "name": "agentLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely."
+    },
+    {
+      "name": "loadingVariant",
+      "type": "\"thinking\" | \"working\" | \"retrieving\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "streaming",
+      "type": "boolean",
+      "required": false,
+      "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely. */ loading?: boolean loadingVariant?: \"thinking\" | \"working\" | \"retrieving\" /** While true, the body is a polite live region so arriving text is announced."
+    },
+    {
+      "name": "actions",
+      "type": "FooterAction[]",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "showFeedback",
+      "type": "boolean",
+      "required": false,
+      "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely. */ loading?: boolean loadingVariant?: \"thinking\" | \"working\" | \"retrieving\" /** While true, the body is a polite live region so arriving text is announced. */ streaming?: boolean /** Optional disclosure of what the agent did to produce this. */ workNote?: { content?: string; items?: string[] } actions?: FooterAction[] /** Set false only where feedback genuinely has nowhere to go."
+    },
+    {
+      "name": "onSentiment",
+      "type": "(value: \"up\" | \"down\") => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCopy",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "bare",
+      "type": "boolean",
+      "required": false,
+      "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely. */ loading?: boolean loadingVariant?: \"thinking\" | \"working\" | \"retrieving\" /** While true, the body is a polite live region so arriving text is announced. */ streaming?: boolean /** Optional disclosure of what the agent did to produce this. */ workNote?: { content?: string; items?: string[] } actions?: FooterAction[] /** Set false only where feedback genuinely has nowhere to go. */ showFeedback?: boolean onSentiment?: (value: \"up\" | \"down\") => void onCopy?: () => void /** Renders without the AI surface wash — for a thread that is already marked."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "requiredProps": [
+    "agentLabel"
+  ],
+  "javascriptApi": {
+    "import": "import { AIResponse } from \"@/components/ai/ai-response\"",
+    "exports": [
+      "AIResponse"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "region",
+    "keyboard": [
+      "Tab through actions and feedback controls"
+    ],
+    "requiredAttributes": [
+      "agentLabel"
+    ],
+    "liveRegion": "Loading announces politely; the body becomes a live region while streaming",
+    "handledByRadix": false,
+    "notes": [
+      "The region is labelled \"Response from {agentLabel}\", so a screen-reader user can identify and skip it.",
+      "Actions and feedback are withheld while loading — offering them before there is output invites acting on nothing.",
+      "The part order is fixed. Attribution before content is the property this component exists to guarantee."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Human messages",
+      "Reordering the parts",
+      "Consequential approvals"
+    ],
+    "agentRules": [
+      "Prefer this over hand-assembling the parts — the order is the safety property.",
+      "Set streaming only while text is arriving.",
+      "Use bare only where the containing thread already marks AI authorship.",
+      "Set showFeedback false only when feedback genuinely has nowhere to go."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution",
+      "Rationale disclosure"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-approval-card",
+      "note": "Consequential decisions"
+    },
+    {
+      "id": "ai:ai-message-header",
+      "note": "The parts, used directly"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "curated": true
+}

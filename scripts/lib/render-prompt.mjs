@@ -8,7 +8,7 @@
 
 export function renderPrompt(facts, meta) {
   const title = facts.exports[0]
-  const specDir = `design-system/components/${facts.namespace}/${facts.name}`
+  const specDir = `design-system/components/${facts.dirName}/${facts.name}`
   const L = []
 
   L.push(`# Agentic Prompt — ${title}`)
@@ -24,7 +24,7 @@ export function renderPrompt(facts, meta) {
   L.push(`| **Id** | \`${facts.id}\` |`)
   L.push(`| **Status** | ${meta.status[0].toUpperCase() + meta.status.slice(1)} |`)
   L.push(`| **Tier / Category** | ${meta.tier} · ${meta.category} |`)
-  L.push(`| **Import** | \`@/components/${facts.namespace}/${facts.name}\` |`)
+  L.push(`| **Import** | \`@/components/${facts.dirName}/${facts.name}\` |`)
   L.push(`| **Exports** | ${facts.exports.map(e => `\`${e}\``).join(', ')} |`)
   if (facts.radixPrimitive) L.push(`| **Primitive** | \`${facts.radixPrimitive}\` |`)
   L.push('')

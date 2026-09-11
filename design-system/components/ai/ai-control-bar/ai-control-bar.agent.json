@@ -41,11 +41,56 @@
   ],
   "props": [
     {
+      "name": "state",
+      "type": "ControlBarState",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onPause",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onResume",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCancel",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onRedirect",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCancelConfirm",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
+  ],
+  "requiredProps": [
+    "state"
   ],
   "javascriptApi": {
     "import": "import { AIControlBar } from \"@/components/ai/ai-control-bar\"",
@@ -128,6 +173,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

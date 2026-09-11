@@ -1,0 +1,192 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-dialog",
+  "name": "AIDialogSlim",
+  "namespace": "ai",
+  "tier": "groups",
+  "status": "stable",
+  "category": "AI",
+  "description": "The composer. AIInputCard is the full card with a toolbar slot; AIDialogSlim is a single-line pill. Enter submits, Shift+Enter inserts a newline.",
+  "intent": "Where the human writes to the machine.",
+  "authority": {
+    "source": "src/components/ai/ai-dialog.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-dialog/ai-dialog.md",
+    "contract": "design-system/components/ai/ai-dialog/ai-dialog.agent.json",
+    "prompt": "design-system/components/ai/ai-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-dialog/ai-dialog.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "AIDialogSlim",
+    "AIInputCard"
+  ],
+  "compound": {
+    "root": "AIInputCard",
+    "parts": [
+      {
+        "name": "AIInputCard",
+        "parent": null,
+        "required": false,
+        "note": "Full card. Accepts toolbar and suggestions slots."
+      },
+      {
+        "name": "AIDialogSlim",
+        "parent": null,
+        "required": false,
+        "note": "Single-line pill. No toolbar."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Empty",
+    "Composing",
+    "Busy",
+    "Disabled",
+    "Focused"
+  ],
+  "props": [
+    {
+      "name": "toolbar",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each."
+    },
+    {
+      "name": "suggestions",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each. */ toolbar?: React.ReactNode /** Suggested prompts shown above the field. Use ai:ai-chip-quick."
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "requiredProps": [],
+  "javascriptApi": {
+    "import": "import { AIDialogSlim, AIInputCard } from \"@/components/ai/ai-dialog\"",
+    "exports": [
+      "AIDialogSlim",
+      "AIInputCard"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-muted",
+      "ai-surface",
+      "card",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-card",
+      "border-ai-surface",
+      "from-ai-accent",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-muted",
+      "text-foreground",
+      "to-ai-accent"
+    ]
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [
+      "Enter — submit",
+      "Shift+Enter — newline",
+      "Tab — reach the toolbar and submit"
+    ],
+    "requiredAttributes": [
+      "An accessible label — supplied as sr-only from the label prop",
+      "aria-label on the submit button"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Enter submits and Shift+Enter inserts a newline. Reversing this traps users mid-sentence, so it is not configurable.",
+      "The field carries an sr-only label rather than relying on the placeholder, which disappears on input.",
+      "Focus styling sits on the container via focus-within, so the whole composer reads as one control.",
+      "The submit button is disabled, never hidden — a control that vanishes is harder to find than one that is greyed.",
+      "Both forms are uncontrolled until you pass value; pass value and onValueChange together or neither."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AIInputCard",
+      "AIDialogSlim"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Multiple composers on one surface",
+      "Hiding the submit control",
+      "Inverting the Enter convention",
+      "Use as a general text input"
+    ],
+    "agentRules": [
+      "One composer per surface.",
+      "Never invert Enter and Shift+Enter.",
+      "Disable submit while busy; do not hide it.",
+      "Put ai:ai-dialog-button controls in the toolbar slot and ai:ai-chip-quick in suggestions.",
+      "Composing is not sending — the human still presses submit."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution"
+    ],
+    "humanGestureRequired": true,
+    "reversible": "always"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-dialog-button",
+      "note": "Built for the toolbar slot"
+    },
+    {
+      "id": "ai:ai-chip-quick",
+      "note": "Built for the suggestions slot"
+    },
+    {
+      "id": "ui:textarea",
+      "note": "Non-AI multi-line input"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "curated": true
+}

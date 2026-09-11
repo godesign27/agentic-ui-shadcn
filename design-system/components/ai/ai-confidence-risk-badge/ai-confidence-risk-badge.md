@@ -73,6 +73,11 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `confidence` | `ConfidenceLevel` | **required** | Required. Declared in the component source. |
+| `risk` | `RiskLevel` | — | Declared in the component source. |
+| `staleData` | `boolean` | — | Declared in the component source. |
+| `missingSource` | `boolean` | — | Declared in the component source. |
+| `compact` | `boolean` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

@@ -76,6 +76,11 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
 | `size` | `"thin"` | `"md"` | Declared in `trackVariants` |
+| `value` | `number` | — | Progress for agentic work — which can be blocked or escalated, not just slow. The status vocabulary is the point. A generic progress bar cannot say "this stopped and needs a human"; this one can, and must when that is true. / type AIProgressStatus = | "idle" | "running" | "indeterminate" | "paused" | "complete" | "blocked" | "error" | "escalated" const STATUS: Record<AIProgressStatus, { bar: string; label: string }> = { idle: { bar: "bg-muted-foreground/40", label: "Not started" }, running: { bar: "bg-ai-accent", label: "Running" }, indeterminate: { bar: "bg-ai-accent", label: "Working" }, paused: { bar: "bg-muted-foreground", label: "Paused" }, complete: { bar: "bg-ai-confidence-high", label: "Complete" }, blocked: { bar: "bg-ai-signal", label: "Blocked" }, error: { bar: "bg-destructive", label: "Failed" }, escalated: { bar: "bg-ai-signal", label: "Escalated to a person" }, } const trackVariants = cva("w-full overflow-hidden rounded-full bg-muted", { variants: { size: { thin: "h-0.5", sm: "h-1", md: "h-1.5", lg: "h-2.5" }, }, defaultVariants: { size: "md" }, }) export interface AIProgressProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof trackVariants> { /** 0–100. Omit for an indeterminate bar — never invent a number to fill the slot. |
+| `status` | `AIProgressStatus` | — | Declared in the component source. |
+| `label` | `string` | — | Declared in the component source. |
+| `currentStep` | `string` | — | Declared in the component source. |
+| `percentLabel` | `boolean` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

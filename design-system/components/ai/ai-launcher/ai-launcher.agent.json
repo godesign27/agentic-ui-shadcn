@@ -43,12 +43,55 @@
   ],
   "props": [
     {
+      "name": "variant",
+      "type": "\"avatar-chat\" | \"avatar-only\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "unread",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "unreadCount",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { AILauncher } from \"@/components/ai/ai-launcher\"",
     "exports": [
@@ -132,6 +175,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

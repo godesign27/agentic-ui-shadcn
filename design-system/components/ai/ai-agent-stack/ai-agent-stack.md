@@ -72,6 +72,9 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `agents` | `Agent[]` | **required** | Required. Declared in the component source. |
+| `maxVisible` | `number` | — | Declared in the component source. |
+| `size` | `number` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

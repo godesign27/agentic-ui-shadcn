@@ -439,7 +439,7 @@ export const navigation = {
       requiredAttributes: [],
       notes: ['Mount it at the root so toasts survive route changes.', 'Two Toasters means every toast appears twice.'],
     },
-    agentRules: ['Mount exactly once, at the root.', 'Do not conditionally render it.', 'Pick either this or ui:sonner — not both.'],
+    agentRules: ['Mount exactly once, at the root.', 'Do not conditionally render it.', 'Pick either this or ui:sonner — not both. This is the default: it matches the rest of the library and enforces altText on toast actions.'],
     forbiddenUsage: ['Multiple Toaster instances', 'Conditional mounting', 'Running alongside ui:sonner'],
     related: [{ id: 'ui:toast', note: 'The primitives it renders' }, { id: 'ui:sonner', note: 'The alternative — choose one' }],
     examples: [{ title: 'Root mount', code: '// src/App.tsx\n<>\n  <Routes>{/* … */}</Routes>\n  <Toaster />\n</>' }],
@@ -448,7 +448,7 @@ export const navigation = {
   sonner: {
     tier: 'templates', category: 'Feedback', status: 'stable',
     intent: 'The same job as ui:toaster, through a different library with a simpler imperative API.',
-    description: 'A Sonner wrapper themed to shadcn tokens. Exports Toaster, which collides by name with ui:toaster — they are different components and you must choose one.',
+    description: 'A Sonner wrapper themed to shadcn tokens. Exports SonnerToaster — deliberately not Toaster, so it cannot collide with ui:toaster at an import site. Reads the theme from the dark class this app actually toggles.',
     whenToUse: ['When you prefer Sonner\'s imperative toast() API and stacking behaviour', 'Promise-based toasts that resolve to success or failure'],
     whenNotToUse: [
       'Alongside ui:toaster — running both produces two toast systems and two viewports',
@@ -464,21 +464,20 @@ export const navigation = {
       keyboard: ['Sonner supplies its own focus and dismissal handling'],
       requiredAttributes: [],
       notes: [
-        'Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast.',
-        'Reads the active theme from next-themes. This is a Vite app with Tailwind darkMode: ["class"], so next-themes is not what toggles the class here — confirm the theme it reports matches the class actually on the html element.',
+        'Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast, which requires altText on every action.',
+        'Theme is read from the dark class on <html> via a MutationObserver, matching tailwind darkMode: ["class"]. The upstream shadcn snippet reads next-themes, which no provider here mounts — it would report "system" regardless and render light toasts on a dark page.',
       ],
     },
     agentRules: [
-      'Choose Sonner or ui:toaster. Never both.',
-      'Both export a component named Toaster — import deliberately and alias if needed.',
-      'Verify the theme reported by next-themes matches the dark class this app actually sets, or Sonner will render in the wrong theme.',
+      'Choose Sonner or ui:toaster. Never both — two systems means every toast appears twice.',
+      'The export is SonnerToaster, not Toaster. That is deliberate.',
+      'Sonner actions carry no altText requirement. If you need that accessibility contract, use ui:toast.',
     ],
-    forbiddenUsage: ['Running alongside ui:toaster', 'Ambiguous Toaster imports'],
+    forbiddenUsage: ['Running alongside ui:toaster', 'Re-aliasing SonnerToaster back to Toaster'],
     related: [{ id: 'ui:toaster', note: 'The Radix-based alternative' }, { id: 'ui:toast', note: 'The Radix primitives' }],
-    examples: [{ title: 'Imperative toast', code: 'import { toast } from "sonner"\n\ntoast.success("Project archived", {\n  action: { label: "Undo", onClick: undo },\n})' }],
+    examples: [{ title: 'Mount once, then call imperatively', code: '// src/App.tsx — one system only\n<SonnerToaster />\n\n// anywhere\nimport { toast } from "sonner"\ntoast.success("Project archived", {\n  action: { label: "Undo", onClick: undo },\n})' }],
     gaps: [
-      'Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.',
-      'Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted.',
+      'Only one toast system may be mounted. Nothing enforces that at build time — it is a review concern.',
     ],
   },
 }

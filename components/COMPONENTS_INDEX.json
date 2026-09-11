@@ -4,8 +4,8 @@
   "source": "shadcn/ui + Agentic UI AI namespace",
   "enforcement": "closed-world",
   "rule": "Only ids listed here may be used. Anything absent must be rejected, not improvised. Each entry points at a spec folder containing the full contract.",
-  "generatedAt": "2026-09-11T04:20:52.939Z",
-  "count": 69,
+  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "count": 74,
   "components": [
     {
       "id": "ai:ai-action",
@@ -133,6 +133,54 @@
         ],
         "humanGestureRequired": false,
         "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-approval-card",
+      "name": "AIApprovalCard",
+      "importPath": "@/components/ai/ai-approval-card",
+      "files": [
+        "src/components/ai/ai-approval-card.tsx"
+      ],
+      "category": "AI",
+      "tier": "groups",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AIApprovalCard"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A consequential proposal, and the human decision about it, in an order that cannot be got wrong.",
+      "spec": "design-system/components/ai/ai-approval-card/",
+      "forbiddenUsage": [
+        "Auto-applying on mount",
+        "Invented confidence values",
+        "A rationale link with nothing behind it",
+        "An error state with no explanation",
+        "Use for informational responses"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Confidence signalling",
+          "Approval",
+          "Audit trail",
+          "Reversibility"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
       },
       "gaps": []
     },
@@ -468,6 +516,46 @@
           "Approval",
           "Audit trail",
           "Reversibility"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-dialog",
+      "name": "AIDialogSlim",
+      "importPath": "@/components/ai/ai-dialog",
+      "files": [
+        "src/components/ai/ai-dialog.tsx"
+      ],
+      "category": "AI",
+      "tier": "groups",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIDialogSlim",
+        "AIInputCard"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Where the human writes to the machine.",
+      "spec": "design-system/components/ai/ai-dialog/",
+      "forbiddenUsage": [
+        "Multiple composers on one surface",
+        "Hiding the submit control",
+        "Inverting the Enter convention",
+        "Use as a general text input"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
         ],
         "humanGestureRequired": true,
         "reversible": "always"
@@ -886,6 +974,47 @@
       "gaps": []
     },
     {
+      "id": "ai:ai-response",
+      "name": "AIResponse",
+      "importPath": "@/components/ai/ai-response",
+      "files": [
+        "src/components/ai/ai-response.tsx"
+      ],
+      "category": "AI",
+      "tier": "groups",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIResponse"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "One AI turn, assembled so attribution, progress and recourse are present by construction.",
+      "spec": "design-system/components/ai/ai-response/",
+      "forbiddenUsage": [
+        "Human messages",
+        "Reordering the parts",
+        "Consequential approvals"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
       "id": "ai:ai-soft-surface",
       "name": "AISoftSurface",
       "importPath": "@/components/ai/ai-soft-surface",
@@ -1007,6 +1136,59 @@
         "humanGestureRequired": false,
         "reversible": "not-applicable"
       },
+      "gaps": []
+    },
+    {
+      "id": "layout:page-container",
+      "name": "PageContainer",
+      "importPath": "@/components/layout/page-container",
+      "files": [
+        "src/components/layout/page-container.tsx"
+      ],
+      "category": "Layout",
+      "tier": "layout",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "PageContainer",
+        "pageContainerVariants"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "One max-width, one gutter, one place to change either.",
+      "spec": "design-system/components/layout/page-container/",
+      "forbiddenUsage": [
+        "Nested containers",
+        "Multiple <main> landmarks",
+        "Removing the side gutter",
+        "Use inside a dialog or sheet"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "pattern:form-field",
+      "name": "FormField",
+      "importPath": "@/components/patterns/form-field",
+      "files": [
+        "src/components/patterns/form-field.tsx"
+      ],
+      "category": "Forms",
+      "tier": "groups",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "FormField"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A labelled control with its description and error, wired together correctly.",
+      "spec": "design-system/components/patterns/form-field/",
+      "forbiddenUsage": [
+        "Multiple children",
+        "Omitting the label",
+        "Asterisk as the only required indicator",
+        "Use for non-form controls"
+      ],
       "gaps": []
     },
     {
@@ -1310,9 +1492,7 @@
         "onClick on the Card div with no focusable child",
         "Using Card for tabular data"
       ],
-      "gaps": [
-        "CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it."
-      ]
+      "gaps": []
     },
     {
       "id": "ui:carousel",
@@ -2098,7 +2278,7 @@
     },
     {
       "id": "ui:sonner",
-      "name": "Toaster",
+      "name": "SonnerToaster",
       "importPath": "@/components/ui/sonner",
       "files": [
         "src/components/ui/sonner.tsx"
@@ -2108,7 +2288,7 @@
       "status": "allowed",
       "lifecycle": "stable",
       "exports": [
-        "Toaster"
+        "SonnerToaster"
       ],
       "variants": [],
       "sizes": [],
@@ -2116,11 +2296,10 @@
       "spec": "design-system/components/ui/sonner/",
       "forbiddenUsage": [
         "Running alongside ui:toaster",
-        "Ambiguous Toaster imports"
+        "Re-aliasing SonnerToaster back to Toaster"
       ],
       "gaps": [
-        "Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.",
-        "Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted."
+        "Only one toast system may be mounted. Nothing enforces that at build time — it is a review concern."
       ]
     },
     {
@@ -2344,8 +2523,15 @@
         "ToggleGroup",
         "ToggleGroupItem"
       ],
-      "variants": [],
-      "sizes": [],
+      "variants": [
+        "default",
+        "outline"
+      ],
+      "sizes": [
+        "default",
+        "sm",
+        "lg"
+      ],
       "intent": "A set of related toggles that share a value and a visual group.",
       "spec": "design-system/components/ui/toggle-group/",
       "forbiddenUsage": [

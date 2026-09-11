@@ -46,7 +46,7 @@ Six composable parts. No variants — a card is a container, and its meaning com
 | Part | Parent | Required | Notes |
 | --- | --- | --- | --- |
 | `CardHeader` | `Card` | No | Title and description region |
-| `CardTitle` | `CardHeader` | No | Renders a div, not a heading. Pass asChild or add role="heading" aria-level if it is a real heading. |
+| `CardTitle` | `CardHeader` | No | Renders <h3> by default. Set `as` to match the surrounding outline — h2 under a page h1, or "div" when it is not a heading at all. |
 | `CardDescription` | `CardHeader` | No | text-muted-foreground |
 | `CardContent` | `Card` | No | The body. Note its pt-0 — it assumes a CardHeader above. |
 | `CardFooter` | `Card` | No | Action row |
@@ -84,7 +84,7 @@ Consumed from the semantic contract in [`design-system/tokens/semantic.json`](..
 **Notes**
 
 - A Card is a div. It carries no semantics of its own — that is correct and deliberate.
-- CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.
+- CardTitle renders <h3> by default, which is right inside an <h2> section and wrong directly under the page <h1>. Set `as` to match the real outline — screen-reader users navigate by heading, so a page of cards at the wrong level is a broken outline.
 - For a card grid, wrap in a ul and each card in an li so the count is announced.
 - A whole-card click target needs a real button or link inside — do not attach onClick to the Card div.
 
@@ -95,7 +95,7 @@ Consumed from the semantic contract in [`design-system/tokens/semantic.json`](..
 ```tsx
 <Card>
   <CardHeader>
-    <CardTitle>Deployments</CardTitle>
+    <CardTitle as="h2">Deployments</CardTitle>
     <CardDescription>Last 30 days</CardDescription>
   </CardHeader>
   <CardContent>
@@ -110,7 +110,7 @@ Consumed from the semantic contract in [`design-system/tokens/semantic.json`](..
 ## Agent rules
 
 1. Do not nest cards.
-2. CardTitle is not a heading element. Make it one when the page structure needs it.
+2. Set `as` on CardTitle to match the surrounding heading level. The h3 default is a guess about context it cannot see.
 3. CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.
 4. Clickable cards need a real interactive element inside.
 
@@ -121,12 +121,6 @@ Each of these is a hard failure. Reject the request rather than degrade.
 - Nested cards
 - onClick on the Card div with no focusable child
 - Using Card for tabular data
-
-## Gaps
-
-Known limitations. Honor them — do not assume the gap has since been filled.
-
-- CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it.
 
 ## Related components
 

@@ -45,6 +45,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Toaster } from \"@/components/ui/toaster\"",
     "exports": [
@@ -81,7 +82,7 @@
     "agentRules": [
       "Mount exactly once, at the root.",
       "Do not conditionally render it.",
-      "Pick either this or ui:sonner — not both."
+      "Pick either this or ui:sonner — not both. This is the default: it matches the rest of the library and enforces altText on toast actions."
     ]
   },
   "relatedComponents": [
@@ -95,6 +96,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

@@ -1,0 +1,58 @@
+name: Design system
+
+# The enforcement story only counts if it runs without anyone remembering to
+# type it. These four checks are the contract:
+#
+#   lint         the code is clean
+#   typecheck    every component compiles — an indexed component that does not
+#                is an inventory that lies
+#   ds:check     the specs still match the source they describe
+#   ds:validate  the contract is internally consistent: every component has its
+#                four files, every AI component declares the accountability its
+#                autonomy requires, and no rule names a component that does not
+#                exist
+#
+# A failure here means an agent reading this repository would be misled.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Specs match source
+        # Fails when a component changed but its spec did not. The fix is
+        # always `npm run ds:build`, which the failure message says.
+        run: npm run ds:check
+
+      - name: Contract is consistent
+        run: npm run ds:validate
+
+      - name: Build
+        run: npm run build

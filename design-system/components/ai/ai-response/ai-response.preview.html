@@ -1,0 +1,91 @@
+<title>AIResponse — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIResponse</h1>
+<p class="lede">One AI turn, assembled so attribution, progress and recourse are present by construction.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-response</span>
+<span class="pill stable">stable</span>
+<span class="pill">groups</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-response.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Rationale disclosure</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Loading</strong></td><td><code>loading</code></td><td>Announcing loading indicator replaces the body; actions and feedback withheld until there is something to act on</td></tr>
+<tr><td><strong>Streaming</strong></td><td><code>streaming</code></td><td>Body becomes a polite live region</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>Neither</code></td><td>Body, actions and feedback all present</td></tr>
+<tr><td><strong>Bare</strong></td><td><code>bare</code></td><td>No surface wash — for a thread already marked as AI</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Surface</strong></td><td>ai:ai-soft-surface as a labelled region. Skipped when bare.</td></tr>
+<tr><td><strong>Header</strong></td><td>ai:ai-message-header. Always first.</td></tr>
+<tr><td><strong>Work note</strong></td><td>Optional ai:ai-agent-work-note, collapsed</td></tr>
+<tr><td><strong>Body or loader</strong></td><td>ai:ai-message-body, or ai:ai-loading-indicators while loading</td></tr>
+<tr><td><strong>Footer</strong></td><td>Optional ai:ai-message-footer actions</td></tr>
+<tr><td><strong>Feedback</strong></td><td>ai:ai-feedback-bar unless suppressed</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-response.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Any AI response in a thread or panel</li>
+<li>Whenever you would otherwise hand-assemble header, body and feedback</li>
+<li>Streaming responses, via the streaming prop</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Human messages</li>
+<li>A consequential approval — use ai:ai-approval-card, which carries the confidence and rationale slots</li>
+<li>When you need a different part order; that order is the point</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>region</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab through actions and feedback controls</td></tr>
+<tr><th scope="row">Required</th><td>agentLabel</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The region is labelled &quot;Response from {agentLabel}&quot;, so a screen-reader user can identify and skip it.</li>
+<li>Actions and feedback are withheld while loading — offering them before there is output invites acting on nothing.</li>
+<li>The part order is fixed. Attribution before content is the property this component exists to guarantee.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-response.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-response.agent.json"><code>ai-response.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-response.md"><code>ai-response.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

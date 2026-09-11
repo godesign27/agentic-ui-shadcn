@@ -97,6 +97,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Table, TableBody, TableCaption, … } from \"@/components/ui/table\"",
     "exports": [
@@ -181,6 +182,6 @@
   "gaps": [
     "No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead."
   ],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

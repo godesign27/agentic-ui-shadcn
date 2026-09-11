@@ -69,6 +69,10 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `icon` | `React.ReactNode` | — | Declared in the component source. |
+| `label` | `string` | — | Declared in the component source. |
+| `trailingIcon` | `React.ReactNode` | — | Declared in the component source. |
+| `isOpen` | `boolean` | — | The ghost toolbar control inside the AI composer. Icon-only, icon + label, or label + trailing icon. Icon-only collapses to a 34px circle and therefore REQUIRES an accessible name — the shape carries no meaning on its own. / export interface AIDialogButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { icon?: React.ReactNode label?: string trailingIcon?: React.ReactNode /** Active when the control owns an open popover or menu. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

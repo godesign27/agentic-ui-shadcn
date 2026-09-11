@@ -1,0 +1,99 @@
+<title>AIDialogSlim — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIDialogSlim</h1>
+<p class="lede">Where the human writes to the machine.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-dialog</span>
+<span class="pill stable">stable</span>
+<span class="pill">groups</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-dialog.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>always</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Empty</strong></td><td><code>No value</code></td><td>Submit disabled — nothing to send</td></tr>
+<tr><td><strong>Composing</strong></td><td><code>Value present</code></td><td>Submit enabled</td></tr>
+<tr><td><strong>Busy</strong></td><td><code>busy</code></td><td>Submit suppressed while a response generates. The control stays visible.</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled</code></td><td>Field and submit both inert</td></tr>
+<tr><td><strong>Focused</strong></td><td><code>Focus within</code></td><td>ring-2 ring-ai-accent on the container, not the field</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">AIInputCard</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-muted))"></div><div class="name">--ai-muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-surface))"></div><div class="name">--ai-surface</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--card))"></div><div class="name">--card</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-dialog.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>The message entry point of any AI surface</li>
+<li>Full card for a dedicated chat or console view</li>
+<li>Slim pill where vertical space is constrained</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>As a general text input — use ui:input or ui:textarea</li>
+<li>More than one per surface</li>
+<li>Without a submit control; the button is never hidden, only disabled</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter — submit<br />Shift+Enter — newline<br />Tab — reach the toolbar and submit</td></tr>
+<tr><th scope="row">Required</th><td>An accessible label — supplied as sr-only from the label prop<br />aria-label on the submit button</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Enter submits and Shift+Enter inserts a newline. Reversing this traps users mid-sentence, so it is not configurable.</li>
+<li>The field carries an sr-only label rather than relying on the placeholder, which disappears on input.</li>
+<li>Focus styling sits on the container via focus-within, so the whole composer reads as one control.</li>
+<li>The submit button is disabled, never hidden — a control that vanishes is harder to find than one that is greyed.</li>
+<li>Both forms are uncontrolled until you pass value; pass value and onValueChange together or neither.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-dialog.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-dialog.agent.json"><code>ai-dialog.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-dialog.md"><code>ai-dialog.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>
