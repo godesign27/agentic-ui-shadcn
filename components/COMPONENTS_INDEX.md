@@ -4,7 +4,7 @@ The **closed-world inventory**. Only components listed here may be used.
 
 > Generated from source by `npm run ds:build`. Do not hand-edit — edit `scripts/metadata/` instead.
 
-**74 components** · ui 45 · ai 27
+**93 components** · ui 45 · ai 46
 
 ## The rule
 
@@ -26,11 +26,16 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 
 | Id | Component | Import | Tier | Status | Intent |
 |---|---|---|---|---|---|
+| [`ai:ai-accent-line`](../design-system/components/ai/atomic/ai-accent-line/ai-accent-line.md) | AIAccentLine | `@/components/ai/atomic/ai-accent-line/AIAccentLine` | atoms | draft | Seven pluggable accent treatments for insight cards — switchable at the AIAnalysisMessage level. |
 | [`ai:ai-action`](../design-system/components/ai/ai-action/ai-action.md) | AIAction | `@/components/ai/ai-action` | atoms | beta | The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. |
+| [`ai:ai-agent-drawer`](../design-system/components/ai/organisms/ai-agent-drawer/ai-agent-drawer.md) | AIAgentDrawer | `@/components/ai/organisms/ai-agent-drawer/AIAgentDrawer` | organisms | beta | Canonical AI assistant panel content for any container. |
 | [`ai:ai-agent-stack`](../design-system/components/ai/ai-agent-stack/ai-agent-stack.md) | AIAgentStack | `@/components/ai/ai-agent-stack` | molecules | stable | Several agents working at once, and what each of them is doing. |
 | [`ai:ai-agent-work-note`](../design-system/components/ai/ai-agent-work-note/ai-agent-work-note.md) | AIAgentWorkNote | `@/components/ai/ai-agent-work-note` | atoms | draft | Show what the agent is doing without exposing raw reasoning. |
+| [`ai:ai-analysis-insight`](../design-system/components/ai/molecules/ai-analysis-insight/ai-analysis-insight.md) | AIAnalysisInsight | `@/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight` | molecules | draft | The individual finding unit inside an AI analysis message. Each insight is labeled by type and confidence-rated. |
+| [`ai:ai-analysis-message`](../design-system/components/ai/organisms/ai-analysis-message/ai-analysis-message.md) | AIAnalysisMessage | `@/components/ai/organisms/ai-analysis-message/AIAnalysisMessage` | organisms | draft | The primary output surface for AI-generated analysis. Structured insights are labeled, sourced, and confidence-rated. |
 | [`ai:ai-approval-card`](../design-system/components/ai/ai-approval-card/ai-approval-card.md) | AIApprovalCard | `@/components/ai/ai-approval-card` | groups | beta | A consequential proposal, and the human decision about it, in an order that cannot be got wrong. |
 | [`ai:ai-avatar`](../design-system/components/ai/ai-avatar/ai-avatar.md) | AIAvatar | `@/components/ai/ai-avatar` | atoms | stable | The mark that tells a user a machine is speaking. |
+| [`ai:ai-badge`](../design-system/components/ai/atomic/ai-badge/ai-badge.md) | AIBadge | `@/components/ai/atomic/ai-badge/AIBadge` | atoms | stable | The compact label atom for AI status and metrics. Not a button and not a chip. |
 | [`ai:ai-button`](../design-system/components/ai/ai-button/ai-button.md) | AIButton | `@/components/ai/ai-button` | atoms | stable | Commit to something a machine proposed. |
 | [`ai:ai-chip-brief`](../design-system/components/ai/ai-chip-brief/ai-chip-brief.md) | AIChipBrief | `@/components/ai/ai-chip-brief` | atoms | stable | Whether an agent task brief is ready to run — and whether a human still has to say yes. |
 | [`ai:ai-chip-handoff`](../design-system/components/ai/ai-chip-handoff/ai-chip-handoff.md) | AIChipHandoff | `@/components/ai/ai-chip-handoff` | atoms | stable | Show the moment accountability changed hands. |
@@ -50,9 +55,23 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 | [`ai:ai-progress`](../design-system/components/ai/ai-progress/ai-progress.md) | AIProgress | `@/components/ai/ai-progress` | atoms | draft | Progress for work that can be blocked or escalated, not merely slow. |
 | [`ai:ai-queue-badge`](../design-system/components/ai/ai-queue-badge/ai-queue-badge.md) | AIQueueBadge | `@/components/ai/ai-queue-badge` | atoms | stable | The state of one item in an agent queue, readable at a glance. |
 | [`ai:ai-response`](../design-system/components/ai/ai-response/ai-response.md) | AIResponse | `@/components/ai/ai-response` | groups | stable | One AI turn, assembled so attribution, progress and recourse are present by construction. |
+| [`ai:ai-response-footer`](../design-system/components/ai/molecules/ai-response-footer/ai-response-footer.md) | AIResponseFooter | `@/components/ai/molecules/ai-response-footer/AIResponseFooter` | molecules | draft | Closes the loop after every AI output. Sources ground the claim; feedback improves the model. |
+| [`ai:ai-response-patterns`](../design-system/components/ai/_support/README.md) | AIResponsePatterns | `@/components/ai/_support/AIResponsePatterns` | molecules | stable | Analytical, Q&A, and actionable response patterns composed into the agent drawer transcript. |
 | [`ai:ai-soft-surface`](../design-system/components/ai/ai-soft-surface/ai-soft-surface.md) | AISoftSurface | `@/components/ai/ai-soft-surface` | atoms | beta | The wash that says everything inside this boundary was machine-generated. |
+| [`ai:ai-spinner`](../design-system/components/ai/molecules/ai-spinner/ai-spinner.md) | AISpinner | `@/components/ai/molecules/ai-spinner/AISpinner` | molecules | draft | The standard DS spinner, wearing the AI brand. Same engineering — indigo arc on a soft light-indigo ring. |
 | [`ai:ai-text-link`](../design-system/components/ai/ai-text-link/ai-text-link.md) | AITextLink | `@/components/ai/ai-text-link` | atoms | beta | An inline link inside AI prose whose label stands on its own. |
+| [`ai:ai-user-bubble`](../design-system/components/ai/molecules/ai-user-bubble/ai-user-bubble.md) | AIUserBubble | `@/components/ai/molecules/ai-user-bubble/AIUserBubble` | molecules | stable | Message container for the human user's input in a conversational AI interface. |
 | [`ai:ai-why-this-link`](../design-system/components/ai/ai-why-this-link/ai-why-this-link.md) | AIWhyThisLink | `@/components/ai/ai-why-this-link` | atoms | stable | Make the reasoning reachable in one interaction. |
+| [`ai:atomic-ai-avatar`](../design-system/components/ai/atomic/ai-avatar/ai-avatar.md) | AIAvatar | `@/components/ai/atomic/ai-avatar/AIAvatar` | atoms | stable | Presentational fixed-color SVG. Same structure for both exports; only size, optional drop-shadow, and a11y differ. |
+| [`ai:atomic-ai-button`](../design-system/components/ai/atomic/ai-button/ai-button.md) | AIButton | `@/components/ai/atomic/ai-button/AIButton` | atoms | stable | Confirm/cancel pairs, Apply/Edit/Dismiss rows, status-aware CTAs. |
+| [`ai:atomic-ai-feedback-bar`](../design-system/components/ai/atomic/ai-feedback-bar/ai-feedback-bar.md) | AIFeedbackBar | `@/components/ai/atomic/ai-feedback-bar/AIFeedbackBar` | atoms | stable | Inline feedback controls surfaced after every AI response. |
+| [`ai:atomic-ai-loading-indicators`](../design-system/components/ai/atomic/ai-loading-indicators/ai-loading-indicators.md) | AILoadingIndicators | `@/components/ai/atomic/ai-loading-indicators/AILoadingIndicators` | atoms | stable | A family of loading states that communicate AI thinking, processing, and progress. |
+| [`ai:atomic-ai-message-body`](../design-system/components/ai/atomic/ai-message-body/ai-message-body.md) | AIMessageBody | `@/components/ai/atomic/ai-message-body/AIMessageBody` | atoms | stable | The voice of the AI. Plain, direct, readable — the atomic text body for unstructured replies. |
+| [`ai:atomic-ai-message-footer`](../design-system/components/ai/atomic/ai-message-footer/ai-message-footer.md) | AIMessageFooter | `@/components/ai/atomic/ai-message-footer/AIMessageFooter` | atoms | stable | The decision point at the end of every actionable AI response. |
+| [`ai:atomic-ai-message-header`](../design-system/components/ai/atomic/ai-message-header/ai-message-header.md) | AIMessageHeader | `@/components/ai/atomic/ai-message-header/AIMessageHeader` | atoms | stable | Establishes authorship, agent identity, and recency before the response body. |
+| [`ai:ds-spinner`](../design-system/components/ai/molecules/ai-spinner/ai-spinner.md) | DSSpinner | `@/components/ai/molecules/ai-spinner/ds-spinner` | molecules | stable | Canonical animated loading spinner. AISpinner wraps this; do not fork the SVG. |
+| [`ai:organisms-ai-dialog`](../design-system/components/ai/organisms/ai-dialog/ai-dialog.md) | AIDialog | `@/components/ai/organisms/ai-dialog/AIDialog` | organisms | stable | Message composer for AI Command Center and chat surfaces. Not a search field — preserves AI-specific affordances (skills, mode, mic). |
+| [`ai:skill-menu`](../design-system/components/ai/_support/README.md) | SkillMenu | `@/components/ai/_support/SkillMenu` | molecules | stable | / Skills picker for the AI prompt toolbar. |
 
 ## Data Display
 

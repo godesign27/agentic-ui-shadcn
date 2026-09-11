@@ -35,6 +35,7 @@ import { renderPrompt } from './lib/render-prompt.mjs'
 import { renderPreview } from './lib/render-preview.mjs'
 import { metadata } from './metadata/index.mjs'
 import { specimens } from './metadata/specimens.mjs'
+import { aiArchitectureInventory, aiArchitectureManifests, aiArchitectureIds } from './metadata/ai-architecture.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..')
 const args = process.argv.slice(2)
@@ -172,6 +173,12 @@ for (const { ns, dirName, components } of allByNamespace) {
   }
 }
 
+// Nested Pattern Library modules (atomic/molecules/organisms/_support) are
+// not discovered by extractAll, which only reads top-level *.tsx. Append
+// them so ingest can deliver the AI Agent Drawer and its dependencies.
+for (const entry of aiArchitectureInventory) inventory.push(entry)
+for (const entry of aiArchitectureManifests) manifestIndex.push(entry)
+
 manifestIndex.sort((a, b) => a.id.localeCompare(b.id))
 inventory.sort((a, b) => a.id.localeCompare(b.id))
 
@@ -240,8 +247,10 @@ for (const cat of Object.keys(mdByCat).sort()) {
   mdIndex.push('| Id | Component | Import | Tier | Status | Intent |')
   mdIndex.push('|---|---|---|---|---|---|')
   for (const c of mdByCat[cat]) {
-    const dir = c.spec
-    mdIndex.push(`| [\`${c.id}\`](../${dir}${c.id.split(':')[1]}.md) | ${c.name} | \`${c.importPath}\` | ${c.tier} | ${c.lifecycle} | ${c.intent} |`)
+    const folder = c.spec.replace(/\/$/, '')
+    const specBase = folder.split('/').pop()
+    const specDoc = specBase === '_support' ? 'README.md' : `${specBase}.md`
+    mdIndex.push(`| [\`${c.id}\`](../${c.spec}${specDoc}) | ${c.name} | \`${c.importPath}\` | ${c.tier} | ${c.lifecycle} | ${c.intent} |`)
   }
   mdIndex.push('')
 }
@@ -257,7 +266,9 @@ if (withGaps.length) {
 await emit(join(repoRoot, 'components/COMPONENTS_INDEX.md'), mdIndex.join('\n'))
 
 // ai/llms.txt — the scoped index for AI-native work.
-const aiComponents = manifestIndex.filter(m => m.namespace === 'ai')
+// Architecture-folder modules keep their own nested contracts; this file
+// stays the governed top-level ai:* kit.
+const aiComponents = manifestIndex.filter(m => m.namespace === 'ai' && !aiArchitectureIds.has(m.id))
 if (aiComponents.length) {
   const aiMeta = id => metadata[id.split(':')[1]]
   const llms = [
@@ -338,15 +349,17 @@ if (aiComponents.length) {
   await emit(join(repoRoot, 'design-system/components/ai/llms.txt'), llms.join('\n'))
 }
 
-// Preview hub
+// Preview hub — governed four-file contracts only. Nested architecture
+// previews live next to their Pattern Library specs.
+const governedManifests = manifestIndex.filter(m => !aiArchitectureIds.has(m.id))
 const byCategory = {}
-for (const m of manifestIndex) (byCategory[m.category] ||= []).push(m)
+for (const m of governedManifests) (byCategory[m.category] ||= []).push(m)
 const hub = [
   '<title>Component Previews — Agentic UI</title>',
   '<link rel="stylesheet" href="preview-shared.css" />',
   '<div class="page">',
   '<h1>Component previews</h1>',
-  `<p class="lede">Every governed component in this design system, with its documented states, anatomy, tokens and rules. ${manifestIndex.length} components across the <code>ui</code> and <code>ai</code> namespaces.</p>`,
+  `<p class="lede">Every governed component in this design system, with its documented states, anatomy, tokens and rules. ${governedManifests.length} components across the <code>ui</code> and <code>ai</code> namespaces.</p>`,
   '<div class="note" style="margin-bottom:36px">Previews are <strong>illustrative, never normative</strong>. The component source in <code>src/components/</code> is the truth; where a behaviour cannot be shown honestly in static HTML, the page says so rather than mocking it up.</div>',
 ]
 for (const cat of Object.keys(byCategory).sort()) {
