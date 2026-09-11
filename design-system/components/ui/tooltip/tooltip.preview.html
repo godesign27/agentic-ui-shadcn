@@ -1,0 +1,83 @@
+<title>Tooltip — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Tooltip</h1>
+<p class="lede">Name a control whose purpose is not obvious from its appearance.</p>
+<div class="meta">
+<span class="pill mono">ui:tooltip</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-tooltip</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/tooltip.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Hidden</strong></td><td><code>Rest</code></td><td>Nothing rendered</td></tr>
+<tr><td><strong>Visible</strong></td><td><code>Hover or focus after the delay</code></td><td>Fades and zooms in from the computed side</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">TooltipProvider
+  Tooltip
+    TooltipTrigger
+    TooltipContent</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>tooltip.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Naming an icon-only button</li>
+<li>Showing a full value that is truncated</li>
+<li>A keyboard shortcut hint</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Any information the user needs to complete the task — tooltips are invisible on touch and easy to miss</li>
+<li>Interactive content — a tooltip cannot be focused or clicked into</li>
+<li>Long text — use ui:popover or ui:hover-card</li>
+<li>As a replacement for a visible label</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-tooltip</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>tooltip</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab to the trigger — opens<br />Escape — closes</td></tr>
+<tr><th scope="row">Required</th><td>The trigger must be focusable — a div will not do</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Opens on keyboard focus as well as hover. Radix handles this; do not reimplement it on mouse events.</li>
+<li>Touch devices have no hover. Anything tooltip-only is invisible to those users — this is the reason for the critical-information rule.</li>
+<li>A tooltip on an icon button supplies the visible hint; the button still needs aria-label for its accessible name.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/tooltip.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="tooltip.agent.json"><code>tooltip.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="tooltip.md"><code>tooltip.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

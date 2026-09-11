@@ -1,0 +1,88 @@
+<title>AIMessageBody — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIMessageBody</h1>
+<p class="lede">AI prose, kept plain so the interface does not lend it authority the model has not earned.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-message-body</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-message-body.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Static</strong></td><td><code>streaming={false}</code></td><td>No live region</td></tr>
+<tr><td><strong>Streaming</strong></td><td><code>streaming={true}</code></td><td>aria-live=&quot;polite&quot; and aria-busy, so the update is announced without interrupting</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The prose container. Paragraph spacing is handled; other formatting is not.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-message-body.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Any AI-generated prose</li>
+<li>Streaming responses, with streaming set while text is arriving</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Human-authored content</li>
+<li>Structured output like tables — use ui:table inside the region instead</li>
+<li>Without a preceding ai:ai-message-header</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Set streaming only while text is genuinely arriving. Leaving it on makes every later change announce.</li>
+<li>Announce completion too — a live region that stops updating tells the user nothing.</li>
+<li>Headings and bold inside a response make the model sound more certain than it is. Keep emphasis in the surrounding UI.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-message-body.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-message-body.agent.json"><code>ai-message-body.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-message-body.md"><code>ai-message-body.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

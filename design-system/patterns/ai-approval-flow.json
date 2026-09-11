@@ -1,0 +1,36 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "ai-approval-flow",
+  "intent": "Let an agent propose a consequential action and let a human accept, amend or refuse it — with the reasoning visible and the outcome auditable.",
+  "sourceDocs": ["/design-system/rules/ai-interaction.json", "/ACCESSIBILITY.md"],
+  "experienceMode": ["AI Assisted", "AI Led"],
+  "aiBehavior": ["Confirm", "Apply", "Approve"],
+  "requiredComponents": ["ai:ai-action"],
+  "shouldInclude": ["ai:ai-confidence-risk-badge", "ai:ai-why-this-link", "ai:ai-message-header"],
+  "optionalComponents": ["ai:ai-soft-surface", "ai:ai-agent-work-note", "ui:toast"],
+  "sequence": [
+    "The proposal renders inside ai:ai-soft-surface so its machine authorship is unmistakable",
+    "ai:ai-message-header attributes the output to a named agent",
+    "ai:ai-confidence-risk-badge states confidence and risk as labelled values",
+    "ai:ai-why-this-link exposes the rationale without requiring the user to ask",
+    "ai:ai-action presents at most three choices: primary confirms, secondary amends, tertiary dismisses",
+    "When requiresReview is true, the review signal renders above the action row before the primary is actionable",
+    "On primary, status moves to loading, then complete or error — never silently",
+    "The outcome is written to an audit trail and surfaced via ui:toast with an undo path when reversible"
+  ],
+  "requiredRules": [
+    "A human gesture is required before any state change",
+    "Confidence shown must be confidence the model produced",
+    "The rationale must be reachable in one interaction",
+    "Failure states must say what failed and what to do next",
+    "An applied change is either reversible or plainly labelled as not"
+  ],
+  "forbiddenRules": [
+    "No auto-apply on render",
+    "No more than three visible actions",
+    "No approval flow whose primary action is pre-focused or pre-selected",
+    "No confidence value invented to fill the slot",
+    "No progress animation that does not track real work"
+  ],
+  "accountabilitySatisfied": ["Attribution", "Rationale disclosure", "Confidence signalling", "Approval", "Audit trail", "Reversibility"]
+}

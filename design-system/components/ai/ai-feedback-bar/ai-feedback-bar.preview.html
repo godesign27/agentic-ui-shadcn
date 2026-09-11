@@ -1,0 +1,99 @@
+<title>AIFeedbackBar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIFeedbackBar</h1>
+<p class="lede">Let the human correct the record.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-feedback-bar</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-feedback-bar.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Neutral</strong></td><td><code>sentiment={null}</code></td><td>Both thumbs muted</td></tr>
+<tr><td><strong>Positive</strong></td><td><code>sentiment=&quot;up&quot;</code></td><td>Thumbs up in the AI accent, aria-pressed</td></tr>
+<tr><td><strong>Negative</strong></td><td><code>sentiment=&quot;down&quot;</code></td><td>Thumbs down in destructive, aria-pressed</td></tr>
+<tr><td><strong>Copied</strong></td><td><code>After copy</code></td><td>Check icon and a status announcement for 1.5s</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Thumbs up</strong></td><td>aria-pressed reflects the current sentiment</td></tr>
+<tr><td><strong>Thumbs down</strong></td><td>aria-pressed reflects the current sentiment</td></tr>
+<tr><td><strong>Copy</strong></td><td>Swaps to a check for 1.5s and announces via a status region</td></tr>
+<tr><td><strong>Share</strong></td><td>Rendered only when onShare is supplied</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-muted))"></div><div class="name">--ai-muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-feedback-bar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>After every substantive AI response</li>
+<li>Wherever sentiment would improve future output</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>When the feedback goes nowhere — a bar that discards input is a lie about listening</li>
+<li>On trivial responses</li>
+<li>More than once per response</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab between controls<br />Enter or Space to activate</td></tr>
+<tr><th scope="row">Required</th><td>aria-label on every control — supplied by the component</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Thumbs use aria-pressed so the current sentiment is announced, not just shown.</li>
+<li>The copy confirmation goes through a role=&quot;status&quot; region — the icon swap alone is invisible to screen readers.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-feedback-bar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-feedback-bar.agent.json"><code>ai-feedback-bar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-feedback-bar.md"><code>ai-feedback-bar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,209 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:command",
+  "name": "Command",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "A cmdk-based command palette with fuzzy filtering, grouping and keyboard navigation. CommandDialog wraps it in ui:dialog for the familiar Cmd+K overlay.",
+  "intent": "Find and run anything by typing, without knowing where it lives in the interface.",
+  "authority": {
+    "source": "src/components/ui/command.tsx",
+    "mirrorSpec": "design-system/components/ui/command/command.md",
+    "contract": "design-system/components/ui/command/command.agent.json",
+    "prompt": "design-system/components/ui/command/agentic-prompt.md",
+    "preview": "design-system/components/ui/command/command.preview.html",
+    "upstream": "shadcn/ui registry: command",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:dialog"
+    ],
+    "external": [
+      "@radix-ui/react-dialog",
+      "cmdk",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-dialog"
+  },
+  "exports": [
+    "Command",
+    "CommandDialog",
+    "CommandEmpty",
+    "CommandGroup",
+    "CommandInput",
+    "CommandItem",
+    "CommandList",
+    "CommandSeparator",
+    "CommandShortcut"
+  ],
+  "compound": {
+    "root": "Command",
+    "parts": [
+      {
+        "name": "CommandDialog",
+        "parent": null,
+        "required": false,
+        "note": "Command wrapped in ui:dialog. The usual Cmd+K form."
+      },
+      {
+        "name": "CommandInput",
+        "parent": "Command",
+        "required": true,
+        "note": "The filter field. Autofocused inside CommandDialog."
+      },
+      {
+        "name": "CommandList",
+        "parent": "Command",
+        "required": true,
+        "note": "The scrollable results region"
+      },
+      {
+        "name": "CommandEmpty",
+        "parent": "CommandList",
+        "required": true,
+        "note": "Shown when nothing matches. Never omit it."
+      },
+      {
+        "name": "CommandGroup",
+        "parent": "CommandList",
+        "required": false,
+        "note": "Headed section; hides itself when all children are filtered out"
+      },
+      {
+        "name": "CommandItem",
+        "parent": "CommandGroup",
+        "required": false
+      },
+      {
+        "name": "CommandSeparator",
+        "parent": "CommandList",
+        "required": false
+      },
+      {
+        "name": "CommandShortcut",
+        "parent": "CommandItem",
+        "required": false,
+        "note": "Presentational only"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Empty query",
+    "Filtering",
+    "No results",
+    "Item selected"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Command, CommandDialog, CommandEmpty, … } from \"@/components/ui/command\"",
+    "exports": [
+      "Command",
+      "CommandDialog",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandInput",
+      "CommandItem",
+      "CommandList",
+      "CommandSeparator",
+      "CommandShortcut"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "border",
+      "foreground",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-foreground",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "combobox with listbox",
+    "keyboard": [
+      "Arrow keys — move through results",
+      "Enter — run the selected item",
+      "Escape — close",
+      "Cmd/Ctrl+K — the conventional open shortcut, which you must bind yourself"
+    ],
+    "requiredAttributes": [
+      "A placeholder on CommandInput describing what can be searched"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "cmdk supplies combobox and listbox semantics and active-descendant management.",
+      "Always render CommandEmpty. Without it a failed search shows a blank box.",
+      "The Cmd+K binding is yours to add — see src/components/prompt-library/usePromptHotkeys.ts for the pattern already used in this repo."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "CommandDialog",
+      "CommandInput",
+      "CommandList",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandItem",
+      "CommandSeparator",
+      "CommandShortcut"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Omitting CommandEmpty",
+      "Sole route to a feature",
+      "Items outside CommandList"
+    ],
+    "agentRules": [
+      "CommandEmpty is mandatory.",
+      "Group once past about ten items.",
+      "Bind the open shortcut yourself; CommandShortcut only renders the hint.",
+      "Never the sole route to a feature.",
+      "Under fifty options with no search need means ui:select."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:dialog",
+      "note": "CommandDialog composes it"
+    },
+    {
+      "id": "ui:select",
+      "note": "Small known sets"
+    },
+    {
+      "id": "ui:popover",
+      "note": "Inline combobox shell"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

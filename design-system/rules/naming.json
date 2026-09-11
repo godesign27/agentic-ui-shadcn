@@ -1,0 +1,40 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "componentIds": {
+    "pattern": "{namespace}:{kebab-name}",
+    "namespaces": ["ui", "ai", "pattern", "layout"],
+    "examples": ["ui:button", "ui:alert-dialog", "ai:ai-action", "pattern:form-field", "layout:page-container"],
+    "rule": "The id segment after the colon must exactly match the source filename without extension."
+  },
+  "files": {
+    "source": "kebab-case.tsx in src/components/{ui,ai}/",
+    "specFolder": "design-system/components/{namespace}/{kebab-name}/",
+    "specFiles": [
+      "{kebab-name}.md",
+      "{kebab-name}.agent.json",
+      "agentic-prompt.md",
+      "{kebab-name}.preview.html"
+    ],
+    "rule": "All four files are required. A folder missing any of them is incomplete and the component is not fully governed."
+  },
+  "exports": {
+    "pattern": "PascalCase named exports; no default exports",
+    "examples": ["Button", "AlertDialogTrigger", "AIAction", "AIConfidenceRiskBadge"],
+    "variantHelper": "{camelName}Variants for cva helpers, e.g. buttonVariants, badgeVariants, aiActionVariants"
+  },
+  "tokens": {
+    "pattern": "--{role} as an HSL triplet, consumed through a Tailwind semantic utility",
+    "examples": ["--background", "--foreground", "--primary", "--muted-foreground", "--ring", "--ai-accent"],
+    "rule": "CSS variables hold bare HSL channel values (e.g. 222.2 47.4% 11.2%), never a full color function. Tailwind wraps them with hsl(var(--token)).",
+    "aiPrefix": "AI-namespace tokens are prefixed --ai-* and defined alongside the base scale in src/index.css"
+  },
+  "brand": {
+    "canonicalNames": ["brand", "brand-2", "brand-3", "brand-4", "brand-text-on"],
+    "source": "/BRAND_THEMING.md"
+  },
+  "forbidden": [
+    "Inventing token names not present in src/index.css",
+    "Inventing prop or variant names not present in the component's .agent.json",
+    "Renaming a shadcn export to a project-specific alias"
+  ]
+}

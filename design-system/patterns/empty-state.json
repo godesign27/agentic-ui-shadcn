@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "empty-state",
+  "intent": "Explain why a region is empty and offer the way out.",
+  "sourceDocs": ["/DESIGN_PRINCIPLES.md"],
+  "requiredComponents": ["ui:card"],
+  "optionalComponents": ["ui:button", "ui:skeleton"],
+  "sequence": [
+    "Distinguish the three cases: never-had-data, filtered-to-nothing, and failed-to-load",
+    "State which case this is in plain language",
+    "Offer the corresponding action — create, clear filters, or retry",
+    "While loading, show ui:skeleton rather than an empty state"
+  ],
+  "requiredRules": [
+    "Say why it is empty",
+    "Offer at least one action",
+    "Never show an empty state during loading"
+  ],
+  "forbiddenRules": [
+    "No dead-end state with no explanation",
+    "No illustration-only empty state with no text",
+    "No generic 'No data' for a case the system can distinguish"
+  ]
+}

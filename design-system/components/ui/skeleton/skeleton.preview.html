@@ -1,0 +1,87 @@
+<title>Skeleton — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Skeleton</h1>
+<p class="lede">Show the shape of what is coming, so the wait feels shorter and the layout does not jump.</p>
+<div class="meta">
+<span class="pill mono">ui:skeleton</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Feedback</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">avatar + lines</span><div style="display:flex;gap:16px;align-items:center"><div class="skel" style="width:48px;height:48px;border-radius:999px"></div><div style="display:flex;flex-direction:column;gap:8px"><div class="skel" style="width:220px;height:16px"></div><div class="skel" style="width:170px;height:16px"></div></div></div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Pulsing</strong></td><td><code>Always</code></td><td>animate-pulse on bg-muted. Respects prefers-reduced-motion via Tailwind defaults.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>One placeholder block. Compose several to mirror the real layout.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>skeleton.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Loading content whose shape is known</li>
+<li>Initial page load</li>
+<li>Anywhere a spinner would leave a blank region</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Waits under about 300ms — the flash is worse than nothing</li>
+<li>Unknown-shape content — a skeleton that misleads is worse than a spinner</li>
+<li>Indeterminate background work — use ui:progress</li>
+<li>After an error — show the error, not a permanent skeleton</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>status</code></td></tr>
+<tr><th scope="row">Required</th><td>aria-busy=&quot;true&quot; on the container, or a role=&quot;status&quot; region announcing loading</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>A Skeleton has no semantics of its own. On its own, a screen-reader user hears nothing at all while waiting.</li>
+<li>Wrap the loading region with role=&quot;status&quot; aria-live=&quot;polite&quot; and an sr-only &quot;Loading&quot; — otherwise the wait is silent.</li>
+<li>Announce completion too, or the user does not know the content arrived.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>Provides no live-region semantics of its own. The announcement is yours to add every time.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/skeleton.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="skeleton.agent.json"><code>skeleton.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="skeleton.md"><code>skeleton.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

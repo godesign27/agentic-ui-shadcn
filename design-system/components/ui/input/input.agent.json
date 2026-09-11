@@ -1,0 +1,120 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:input",
+  "name": "Input",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "A styled native input. All native props and types pass through; type=\"file\" receives specific styling.",
+  "intent": "A single line of user-supplied text, with the focus and disabled behavior already correct.",
+  "authority": {
+    "source": "src/components/ui/input.tsx",
+    "mirrorSpec": "design-system/components/ui/input/input.md",
+    "contract": "design-system/components/ui/input/input.agent.json",
+    "prompt": "design-system/components/ui/input/agentic-prompt.md",
+    "preview": "design-system/components/ui/input/input.preview.html",
+    "upstream": "shadcn/ui registry: input",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "Input"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Placeholder",
+    "Focus-visible",
+    "Disabled",
+    "Invalid"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Input } from \"@/components/ui/input\"",
+    "exports": [
+      "Input"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "input",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "border-input",
+      "ring-ring",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "textbox",
+    "keyboard": [
+      "Standard text editing keys"
+    ],
+    "requiredAttributes": [
+      "An associated label via ui:label htmlFor, or aria-label",
+      "aria-describedby pointing at any helper or error text",
+      "aria-invalid when validation fails"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "A placeholder is not a label. It disappears on input and is invisible to some assistive technology.",
+      "type=\"number\" is hostile to screen readers and to users who paste formatted values. Prefer type=\"text\" with inputMode=\"numeric\".",
+      "This component does not render error state. Use ui:form, which wires aria-invalid and aria-describedby for you."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Placeholder as the only label",
+      "Error communicated by border colour alone",
+      "Removing the focus ring"
+    ],
+    "agentRules": [
+      "Never render an Input without an associated Label.",
+      "Set autoComplete on anything a browser can fill.",
+      "Use ui:form for validation rather than hand-wiring aria-describedby."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:textarea",
+      "note": "Multi-line"
+    },
+    {
+      "id": "ui:label",
+      "note": "Required companion"
+    },
+    {
+      "id": "ui:form",
+      "note": "Validation and error wiring"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

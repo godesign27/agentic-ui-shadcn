@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "description": "Rules specific to AI-native surfaces. These extend, never replace, the standard rules.",
+  "source": "/design-system/components/ai/llms.txt",
+  "experienceModes": {
+    "AI Assisted": "The human drives. AI offers suggestions the human accepts or ignores. Default for most product surfaces.",
+    "Adaptive": "The interface reshapes itself from context or prior behavior. The human retains an explicit override.",
+    "AI Led": "The agent proposes and executes multi-step work. Requires the strongest accountability affordances."
+  },
+  "aiBehaviors": {
+    "Suggest": "Proposes an option. No state changes. No confirmation needed.",
+    "Confirm": "Asks the human to validate before proceeding. Blocking.",
+    "Apply": "Executes a change. Requires a visible undo or audit entry.",
+    "Approve": "Requests authority to act on the human's behalf. Requires explicit, non-default consent."
+  },
+  "accountabilityObligations": {
+    "Attribution": "The surface visibly marks the content as machine-generated.",
+    "Rationale disclosure": "The human can reach an explanation of why this output was produced (ai:ai-why-this-link).",
+    "Confidence signalling": "Uncertainty is shown as a labelled value, never implied by tone (ai:ai-confidence-risk-badge).",
+    "Approval": "A destructive or outward-facing action requires an explicit confirmation step (ai:ai-action with requiresReview).",
+    "Audit trail": "The action is recorded and retrievable after the fact.",
+    "Reversibility": "An applied change can be undone, or the interface states plainly that it cannot."
+  },
+  "rules": [
+    {
+      "id": "AI_RULE_ATTRIBUTION",
+      "rule": "Never render AI output that a reasonable user would mistake for human-authored or system-authoritative content.",
+      "severity": "critical"
+    },
+    {
+      "id": "AI_RULE_NO_SILENT_APPLY",
+      "rule": "An aiBehavior of Apply or Approve must never fire without a human gesture. Auto-apply on render is forbidden.",
+      "severity": "critical"
+    },
+    {
+      "id": "AI_RULE_CONFIDENCE_HONESTY",
+      "rule": "Do not render a confidence value the model did not produce. Absence of confidence is shown as absent, not as high.",
+      "severity": "critical"
+    },
+    {
+      "id": "AI_RULE_REVIEW_GATE",
+      "rule": "When requiresReview is true the primary action must be reachable only after the review signal has been displayed.",
+      "severity": "high"
+    },
+    {
+      "id": "AI_RULE_MAX_THREE_ACTIONS",
+      "rule": "No more than three visible actions in one ai:ai-action row. A fourth belongs in an overflow menu.",
+      "severity": "medium"
+    },
+    {
+      "id": "AI_RULE_LOADING_HONESTY",
+      "rule": "A thinking or working indicator must reflect real in-flight work. Never animate to simulate effort.",
+      "severity": "high"
+    },
+    {
+      "id": "AI_RULE_NAMESPACE_ISOLATION",
+      "rule": "AI tokens (--ai-*) and ai:* components do not appear on standard product surfaces.",
+      "severity": "high"
+    },
+    {
+      "id": "AI_RULE_ERROR_DISCLOSURE",
+      "rule": "When an AI action fails, say what failed and what the human can do. Never fail silently or retry invisibly.",
+      "severity": "high"
+    }
+  ],
+  "contentVoice": {
+    "source": "/DESIGN_PRINCIPLES.md",
+    "rules": [
+      "Say what the AI did, not what it is",
+      "Use plain verbs in labels: Apply, Review, Dismiss, Regenerate",
+      "Never anthropomorphise beyond a name and an avatar",
+      "State uncertainty in the copy, not only in a badge"
+    ]
+  }
+}

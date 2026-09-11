@@ -15,11 +15,20 @@ Agents must read documentation in the following order before generating any code
    - TOKENS_REFERENCE.md
    - BRAND_THEMING.md
 
-2. Implementation repository documentation:
+2. Machine-readable governance (`/design-system/`):
+   - `design-system/agents/context-loading.json` (what to load, in order)
+   - `design-system/rules/*.json` (forbidden, composition, accessibility, naming, generation, ai-interaction)
+   - `design-system/tokens/semantic.json` (the token contract)
+   - `design-system/components/agent-instructions.md` (how specs work, and what wins on conflict)
+
+3. Implementation repository documentation:
    - `components/COMPONENTS_INDEX.json` (machine-readable inventory)
-   - Component source files in `src/components/ui/*`
-   - Pattern documentation in `src/components/patterns/*`
-   - Layout documentation in `src/components/layout/*`
+   - `design-system/components/agent-manifest.index.json` (component id → spec files)
+   - For each component used, its four-file spec folder, in this order:
+     `agentic-prompt.md` → `{name}.agent.json` → `{name}.md` → the source file
+   - `design-system/components/ai/llms.txt` — **required** when the task is AI-native UI
+
+Component source is authoritative. If a spec disagrees with `src/`, implement from the source and report the drift.
 
 Agents must not generate code until all required documentation has been read and understood.
 
@@ -34,6 +43,7 @@ Before generating any code, agents must:
 1. **Verify component availability**: Check `components/COMPONENTS_INDEX.json` for the requested component ID (e.g., `ui:button`, `pattern:form-field`, `layout:page-container`)
 2. **Verify import paths**: Only import from approved paths:
    - `@/components/ui/*` (shadcn/ui base components)
+   - `@/components/ai/*` (AI-native components — AI surfaces only, never standard product UI)
    - `@/components/patterns/*` (indexed patterns)
    - `@/components/layout/*` (indexed layouts)
 3. **Reject unknown components**: If a component is not in the index, the agent MUST reject the request

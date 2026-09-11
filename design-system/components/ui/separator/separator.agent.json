@@ -1,0 +1,99 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:separator",
+  "name": "Separator",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Layout",
+  "description": "Radix Separator. Decorative by default, which keeps it out of the accessibility tree.",
+  "intent": "A visible break between groups, without implying they are different kinds of thing.",
+  "authority": {
+    "source": "src/components/ui/separator.tsx",
+    "mirrorSpec": "design-system/components/ui/separator/separator.md",
+    "contract": "design-system/components/ui/separator/separator.agent.json",
+    "prompt": "design-system/components/ui/separator/agentic-prompt.md",
+    "preview": "design-system/components/ui/separator/separator.preview.html",
+    "upstream": "shadcn/ui registry: separator",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-separator"
+    ],
+    "radixPrimitive": "@radix-ui/react-separator"
+  },
+  "exports": [
+    "Separator"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Horizontal",
+    "Vertical"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Separator } from \"@/components/ui/separator\"",
+    "exports": [
+      "Separator"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "bg-border"
+    ]
+  },
+  "accessibility": {
+    "role": "separator or none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "handledByRadix": true,
+    "notes": [
+      "decorative defaults to true, which sets role=\"none\" and keeps it out of the accessibility tree. That is right for visual grouping.",
+      "Set decorative={false} only when the separation carries meaning a screen-reader user would otherwise miss.",
+      "A vertical separator needs a parent with a resolved height, or it collapses to nothing."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Separator as a general border",
+      "Vertical separator in a parent with no height"
+    ],
+    "agentRules": [
+      "Leave decorative true unless the break is semantically meaningful.",
+      "Vertical separators need a parent height.",
+      "Prefer spacing over rules when either would work."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:card",
+      "note": "Sectioning inside a card"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

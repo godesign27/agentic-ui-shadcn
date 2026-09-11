@@ -1,0 +1,100 @@
+<title>AITextLink — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AITextLink</h1>
+<p class="lede">An inline link inside AI prose whose label stands on its own.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-text-link</span>
+<span class="pill beta">beta</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-text-link.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Rationale disclosure</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Tone colour, underline on hover</td></tr>
+<tr><td><strong>Expanded</strong></td><td><code>expanded</code></td><td>Chevron rotated; aria-expanded set</td></tr>
+<tr><td><strong>Loading</strong></td><td><code>loading</code></td><td>Spinner replaces the leading icon</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled</code></td><td>Muted and inert. disabledReason becomes the title and accessible name.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Leading icon</strong></td><td>Optional, aria-hidden. Replaced by a spinner while loading.</td></tr>
+<tr><td><strong>Label</strong></td><td>Must make the purpose clear without the icon</td></tr>
+<tr><td><strong>Chevron</strong></td><td>For disclosure variants; rotates when expanded</td></tr>
+<tr><td><strong>External mark</strong></td><td>With an sr-only &quot;opens in a new tab&quot;</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-text-link.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Citations and source links inside AI prose</li>
+<li>Inline disclosure triggers</li>
+<li>Opening an audit record in a new tab</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>The standard rationale entry — use ai:ai-why-this-link, which has the right defaults</li>
+<li>General product links — use a plain anchor</li>
+<li>Disabled without a reason</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>link or button</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter — activate<br />Space — activate when rendered as a button</td></tr>
+<tr><th scope="row">Required</th><td>label<br />disabledReason when disabled</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>No href means it renders a button, because a disclosure action is not navigation. This is what makes Space work and keeps it out of the link list.</li>
+<li>External links carry rel=&quot;noreferrer noopener&quot; and an sr-only &quot;opens in a new tab&quot;.</li>
+<li>Disabling without disabledReason logs a development warning — removing an affordance without explaining why is a dead end.</li>
+<li>The attention tone is reserved for escalation, approval and staleness. Do not use it for emphasis.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-text-link.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-text-link.agent.json"><code>ai-text-link.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-text-link.md"><code>ai-text-link.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

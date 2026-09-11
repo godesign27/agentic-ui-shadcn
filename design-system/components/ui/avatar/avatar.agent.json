@@ -1,0 +1,131 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:avatar",
+  "name": "Avatar",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Data Display",
+  "description": "Radix Avatar with automatic fallback. AvatarFallback renders only after the image fails or while it loads.",
+  "intent": "Identify a person or entity at a glance, and degrade gracefully when the image is missing.",
+  "authority": {
+    "source": "src/components/ui/avatar.tsx",
+    "mirrorSpec": "design-system/components/ui/avatar/avatar.md",
+    "contract": "design-system/components/ui/avatar/avatar.agent.json",
+    "prompt": "design-system/components/ui/avatar/agentic-prompt.md",
+    "preview": "design-system/components/ui/avatar/avatar.preview.html",
+    "upstream": "shadcn/ui registry: avatar",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-avatar"
+    ],
+    "radixPrimitive": "@radix-ui/react-avatar"
+  },
+  "exports": [
+    "Avatar",
+    "AvatarFallback",
+    "AvatarImage"
+  ],
+  "compound": {
+    "root": "Avatar",
+    "parts": [
+      {
+        "name": "AvatarImage",
+        "parent": "Avatar",
+        "required": false,
+        "note": "Requires alt. Radix hides it until it loads successfully."
+      },
+      {
+        "name": "AvatarFallback",
+        "parent": "Avatar",
+        "required": true,
+        "note": "Initials or an icon. Not optional in practice — without it a failed image leaves an empty circle."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Loading",
+    "Loaded",
+    "Error"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Avatar, AvatarFallback, AvatarImage } from \"@/components/ui/avatar\"",
+    "exports": [
+      "Avatar",
+      "AvatarFallback",
+      "AvatarImage"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "muted"
+    ],
+    "utilities": [
+      "bg-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "img",
+    "keyboard": [],
+    "requiredAttributes": [
+      "alt on AvatarImage"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Always give AvatarImage an alt — the person's name, not \"avatar\" or \"profile picture\".",
+      "When the name is already visible next to the avatar, set alt=\"\" so it is not announced twice.",
+      "Initials in a fallback are announced letter by letter by some screen readers. With alt set correctly on the image this rarely matters."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AvatarImage",
+      "AvatarFallback"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Avatar without a fallback",
+      "alt=\"avatar\"",
+      "Decorative use"
+    ],
+    "agentRules": [
+      "Always include AvatarFallback.",
+      "alt is the person's name, or empty if the name is already adjacent.",
+      "Do not use Avatar for logos or detailed imagery."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:skeleton",
+      "note": "Loading placeholder before data arrives"
+    },
+    {
+      "id": "ai:ai-avatar",
+      "note": "Agent identity, with a deliberately fixed palette"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

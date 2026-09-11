@@ -1,0 +1,135 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-stack",
+  "name": "AIAgentStack",
+  "namespace": "ai",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "AI",
+  "description": "Overlapping agent marks with status rings and an overflow count. Each mark carries its agent name and status as its accessible name.",
+  "intent": "Several agents working at once, and what each of them is doing.",
+  "authority": {
+    "source": "src/components/ai/ai-agent-stack.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-agent-stack/ai-agent-stack.md",
+    "contract": "design-system/components/ai/ai-agent-stack/ai-agent-stack.agent.json",
+    "prompt": "design-system/components/ai/ai-agent-stack/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-agent-stack/ai-agent-stack.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ai:ai-avatar"
+    ],
+    "external": []
+  },
+  "exports": [
+    "AIAgentStack"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Running",
+    "Waiting",
+    "Blocked",
+    "Complete",
+    "Idle"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIAgentStack } from \"@/components/ai/ai-agent-stack\"",
+    "exports": [
+      "AIAgentStack"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-confidence-high",
+      "ai-signal",
+      "background",
+      "border",
+      "destructive",
+      "muted"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-muted",
+      "border-border",
+      "ring-ai-accent",
+      "ring-ai-confidence-high",
+      "ring-ai-signal",
+      "ring-border",
+      "ring-destructive",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [],
+    "requiredAttributes": [
+      "A label per agent — generated from label and status"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Each mark is labelled \"Name — status\", so ring colour is never the only signal.",
+      "The group announces the total count, including agents hidden behind the overflow badge.",
+      "The overflow badge is visual only. Provide a full list elsewhere when the detail matters."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Human users",
+      "Status conveyed only by ring colour",
+      "More than about six agents"
+    ],
+    "agentRules": [
+      "Every agent needs a real label and a real status.",
+      "Keep maxVisible at three or four.",
+      "Provide a full list somewhere when there is overflow."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution",
+      "Audit trail"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-avatar",
+      "note": "A single agent"
+    },
+    {
+      "id": "ai:ai-queue-badge",
+      "note": "Per-item detail"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

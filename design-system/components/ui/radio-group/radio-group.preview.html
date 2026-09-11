@@ -1,0 +1,83 @@
+<title>RadioGroup — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>RadioGroup</h1>
+<p class="lede">Exactly one choice from a small set, with every option visible.</p>
+<div class="meta">
+<span class="pill mono">ui:radio-group</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-radio-group</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/radio-group.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Unselected</strong></td><td><code>Not the group value</code></td><td>border-primary, empty</td></tr>
+<tr><td><strong>Selected</strong></td><td><code>Matches the group value</code></td><td>Filled circle indicator</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Arrow key or Tab</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled on group or item</code></td><td>opacity-50, removed from arrow navigation</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>RadioGroup</strong></td><td>Owns value, onValueChange, and roving focus</td></tr>
+<tr><td><strong>RadioGroupItem</strong></td><td>One option. Requires a value and an associated label.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>radio-group.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Two to five mutually exclusive options where seeing them all aids the decision</li>
+<li>Choices with enough weight to deserve the space</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>More than about five options — use ui:select</li>
+<li>Non-exclusive choices — use ui:checkbox</li>
+<li>A binary on/off setting — use ui:switch</li>
+<li>When no selection is valid — a radio group cannot be unset once set</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-radio-group</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>radiogroup</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — move between and select options<br />Tab — enter and leave the group as one stop<br />Space — select the focused option</td></tr>
+<tr><th scope="row">Required</th><td>A label for the group itself, via aria-label or aria-labelledby<br />A label per item</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The whole group is one tab stop. Arrow keys move within it. This is correct and expected — do not add tabIndex to items.</li>
+<li>Arrow-key navigation selects as it moves. If that is wrong for your case, the control should be a ui:select.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/radio-group.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="radio-group.agent.json"><code>radio-group.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="radio-group.md"><code>radio-group.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

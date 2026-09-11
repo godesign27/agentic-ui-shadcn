@@ -1,0 +1,186 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:table",
+  "name": "Table",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Data Display",
+  "description": "Semantic HTML table elements with shadcn styling. No sorting, filtering, pagination or virtualisation — those are yours to add.",
+  "intent": "Data with real rows and columns, where comparing across both matters.",
+  "authority": {
+    "source": "src/components/ui/table.tsx",
+    "mirrorSpec": "design-system/components/ui/table/table.md",
+    "contract": "design-system/components/ui/table/table.agent.json",
+    "prompt": "design-system/components/ui/table/agentic-prompt.md",
+    "preview": "design-system/components/ui/table/table.preview.html",
+    "upstream": "shadcn/ui registry: table",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "Table",
+    "TableBody",
+    "TableCaption",
+    "TableCell",
+    "TableFooter",
+    "TableHead",
+    "TableHeader",
+    "TableRow"
+  ],
+  "compound": {
+    "root": "Table",
+    "parts": [
+      {
+        "name": "TableCaption",
+        "parent": "Table",
+        "required": false,
+        "note": "Describes the table for screen readers. Renders visually at the bottom."
+      },
+      {
+        "name": "TableHeader",
+        "parent": "Table",
+        "required": true,
+        "note": "thead"
+      },
+      {
+        "name": "TableBody",
+        "parent": "Table",
+        "required": true,
+        "note": "tbody"
+      },
+      {
+        "name": "TableFooter",
+        "parent": "Table",
+        "required": false,
+        "note": "tfoot — totals"
+      },
+      {
+        "name": "TableRow",
+        "parent": "TableHeader | TableBody | TableFooter",
+        "required": true
+      },
+      {
+        "name": "TableHead",
+        "parent": "TableRow",
+        "required": false,
+        "note": "th. Add scope=\"col\"."
+      },
+      {
+        "name": "TableCell",
+        "parent": "TableRow",
+        "required": false,
+        "note": "td"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Row hover",
+    "Row selected"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Table, TableBody, TableCaption, … } from \"@/components/ui/table\"",
+    "exports": [
+      "Table",
+      "TableBody",
+      "TableCaption",
+      "TableCell",
+      "TableFooter",
+      "TableHead",
+      "TableHeader",
+      "TableRow"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "muted"
+    ],
+    "utilities": [
+      "bg-muted",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "table",
+    "keyboard": [
+      "Standard reading-mode navigation"
+    ],
+    "requiredAttributes": [
+      "scope=\"col\" on column headers",
+      "A TableCaption or aria-label naming the table"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "TableHead does not set scope automatically. Add scope=\"col\" yourself — without it, screen readers cannot associate cells with headers, which is the entire benefit of a table.",
+      "TableCaption is the accessible name. Use sr-only if it should not be visible.",
+      "The wrapper div already has overflow-auto for horizontal scroll on narrow screens.",
+      "Sortable headers need a button inside the th plus aria-sort on the th."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "TableCaption",
+      "TableHeader",
+      "TableBody",
+      "TableFooter",
+      "TableRow",
+      "TableHead",
+      "TableCell"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Layout tables",
+      "Headers with no scope",
+      "Unnamed tables",
+      "Unbounded row counts"
+    ],
+    "agentRules": [
+      "Add scope=\"col\" to every TableHead.",
+      "Every table needs a caption or aria-label.",
+      "Never use a table for layout.",
+      "Sorting, filtering and pagination are not included — build them and wire aria-sort yourself.",
+      "Past a few hundred rows, paginate or virtualise."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:pagination",
+      "note": "Paging through rows"
+    },
+    {
+      "id": "ui:scroll-area",
+      "note": "Bounded scroll regions"
+    },
+    {
+      "id": "ui:skeleton",
+      "note": "Loading rows"
+    }
+  ],
+  "gaps": [
+    "No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead."
+  ],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

@@ -1,0 +1,89 @@
+# Agentic UI — AI Components Index
+
+> Scoped index for AI-native UI only. Load this when the task is an AI-generated or agent-driven surface.
+>
+> **Rules:** [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json) · **Tokens:** [/design-system/tokens/semantic.json](../../tokens/semantic.json) · **Parent:** [agent-instructions.md](../agent-instructions.md)
+
+---
+
+## Before anything else
+
+The `ai:*` namespace is not a style. These components carry signals — the AI accent, the soft surface, the attribution header — that tell a user **a machine produced this**.
+
+- Using them on human-authored UI falsely attributes it to a machine.
+- Using `ui:*` for AI output hides authorship.
+
+Both are violations. See [`FORBID_AI_IN_STANDARD_UI`](../../rules/forbidden.json).
+
+## Load order
+
+1. [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json) — experience modes, behaviors, accountability obligations
+2. [/design-system/tokens/semantic.json](../../tokens/semantic.json) — the `--ai-*` scale
+3. The component folders below — prompt, then contract, then spec
+4. [/design-system/patterns/ai-approval-flow.json](../../patterns/ai-approval-flow.json) and [ai-response.json](../../patterns/ai-response.json) — composition sequences
+
+## Experience metadata
+
+Every component below declares how much autonomy it grants the machine and what it owes the human in return. **Match the component to the actual autonomy being granted.** Do not reach for an Approve-level component when the interaction is a suggestion, or the reverse.
+
+| Behavior | What the machine may do | What it then owes |
+|---|---|---|
+| Suggest | Propose. No state changes. | Attribution |
+| Confirm | Ask before proceeding. Blocking. | Attribution, Approval |
+| Apply | Execute a change. | Approval, Audit trail, Reversibility |
+| Approve | Act on the human's behalf. | All of the above, explicitly consented |
+
+---
+
+## Components
+
+### Approve / Apply
+
+These change state. Every one requires a human gesture and owes an audit trail.
+
+| Component | Status | Intent | Accountability |
+|---|---|---|---|
+| [`ai:ai-action`](ai-action/ai-action.md) | beta | The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. | Attribution, Approval, Audit trail, Rationale disclosure |
+| [`ai:ai-button`](ai-button/ai-button.md) | stable | Commit to something a machine proposed. | Attribution, Approval |
+| [`ai:ai-control-bar`](ai-control-bar/ai-control-bar.md) | stable | The human can always stop the machine. | Attribution, Approval, Audit trail, Reversibility |
+| [`ai:ai-message-footer`](ai-message-footer/ai-message-footer.md) | stable | Where the user says yes to what the response offered. | Attribution, Approval |
+
+### Suggest
+
+These change nothing. They inform, attribute, or disclose.
+
+| Component | Status | Intent | Accountability |
+|---|---|---|---|
+| [`ai:ai-agent-stack`](ai-agent-stack/ai-agent-stack.md) | stable | Several agents working at once, and what each of them is doing. | Attribution, Audit trail |
+| [`ai:ai-agent-work-note`](ai-agent-work-note/ai-agent-work-note.md) | draft | Show what the agent is doing without exposing raw reasoning. | Attribution, Rationale disclosure, Audit trail |
+| [`ai:ai-avatar`](ai-avatar/ai-avatar.md) | stable | The mark that tells a user a machine is speaking. | Attribution |
+| [`ai:ai-chip-brief`](ai-chip-brief/ai-chip-brief.md) | stable | Whether an agent task brief is ready to run — and whether a human still has to say yes. | Attribution, Approval |
+| [`ai:ai-chip-handoff`](ai-chip-handoff/ai-chip-handoff.md) | stable | Show the moment accountability changed hands. | Attribution, Audit trail |
+| [`ai:ai-chip-memory`](ai-chip-memory/ai-chip-memory.md) | stable | Tell the user when the system is drawing on something it learned earlier. | Attribution, Rationale disclosure, Audit trail |
+| [`ai:ai-chip-quick`](ai-chip-quick/ai-chip-quick.md) | stable | Offer a starting point so the user does not face an empty box. | Attribution |
+| [`ai:ai-confidence-risk-badge`](ai-confidence-risk-badge/ai-confidence-risk-badge.md) | stable | State how sure the model is and how much is at stake, before the human decides. | Attribution, Confidence signalling, Rationale disclosure |
+| [`ai:ai-dialog-button`](ai-dialog-button/ai-dialog-button.md) | stable | A quiet control in the composer toolbar that does not compete with the message. | Attribution |
+| [`ai:ai-feedback-bar`](ai-feedback-bar/ai-feedback-bar.md) | stable | Let the human correct the record. | Attribution |
+| [`ai:ai-icon`](ai-icon/ai-icon.md) | beta | A treatment layer over standard icons — not a new icon set. | Attribution |
+| [`ai:ai-launcher`](ai-launcher/ai-launcher.md) | stable | The way in. Recognisable, confident, never instructional. | Attribution |
+| [`ai:ai-loading-indicators`](ai-loading-indicators/ai-loading-indicators.md) | stable | Say that the machine is working, truthfully. | Attribution |
+| [`ai:ai-message-body`](ai-message-body/ai-message-body.md) | stable | AI prose, kept plain so the interface does not lend it authority the model has not earned. | Attribution |
+| [`ai:ai-message-header`](ai-message-header/ai-message-header.md) | stable | Establish who is speaking before the user reads a word. | Attribution |
+| [`ai:ai-progress`](ai-progress/ai-progress.md) | draft | Progress for work that can be blocked or escalated, not merely slow. | Attribution, Audit trail |
+| [`ai:ai-queue-badge`](ai-queue-badge/ai-queue-badge.md) | stable | The state of one item in an agent queue, readable at a glance. | Attribution, Audit trail |
+| [`ai:ai-soft-surface`](ai-soft-surface/ai-soft-surface.md) | beta | The wash that says everything inside this boundary was machine-generated. | Attribution |
+| [`ai:ai-text-link`](ai-text-link/ai-text-link.md) | beta | An inline link inside AI prose whose label stands on its own. | Attribution, Rationale disclosure |
+| [`ai:ai-why-this-link`](ai-why-this-link/ai-why-this-link.md) | stable | Make the reasoning reachable in one interaction. | Rationale disclosure, Attribution |
+
+---
+
+## Non-negotiable
+
+- **Never auto-apply on render.** A human gesture is required for every Apply and Approve behavior.
+- **Never render a confidence value the model did not produce.** Absent means absent, not high.
+- **Never animate to simulate effort.** Loading indicators must track real in-flight work.
+- **Never exceed three visible actions** in one decision row.
+- **Never mix `--ai-*` tokens into standard product UI.**
+- **Attribution comes before the body**, never after.
+
+Full set: [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json)

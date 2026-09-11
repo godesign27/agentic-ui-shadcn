@@ -1,0 +1,18 @@
+{
+  "$schema": "../schemas/changelog.schema.json",
+  "entries": [
+    {
+      "date": "2026-09-11",
+      "version": "2.0.0",
+      "summary": "Adopted the agentic design system contract from godesign27/agentic-ui-design-system. Added design-system/ machine-readable layer (meta, tokens, rules, agents, patterns, graph), agent-manifest schema and index, and the 4-file spec contract for every component. Added the AI-native component namespace (src/components/ai/) with experience metadata.",
+      "breaking": [
+        "COMPONENTS_INDEX.md previously documented 6 of 46 components while the closed-world rule required rejection of anything unlisted. All 46 are now indexed; agents that relied on the short list will see a wider allowed set."
+      ]
+    },
+    {
+      "date": "2025-12-25",
+      "version": "1.0.0",
+      "summary": "Initial shadcn/ui implementation of the Agentic AI UI Control System: 46 base components, governance prose, prompt library."
+    }
+  ]
+}

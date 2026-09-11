@@ -1,0 +1,117 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:switch",
+  "name": "Switch",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Switch styled as a sliding track and thumb. Semantically a checkbox; visually a commitment that the change is immediate.",
+  "intent": "A setting that takes effect the moment it is flipped.",
+  "authority": {
+    "source": "src/components/ui/switch.tsx",
+    "mirrorSpec": "design-system/components/ui/switch/switch.md",
+    "contract": "design-system/components/ui/switch/switch.agent.json",
+    "prompt": "design-system/components/ui/switch/agentic-prompt.md",
+    "preview": "design-system/components/ui/switch/switch.preview.html",
+    "upstream": "shadcn/ui registry: switch",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-switch"
+    ],
+    "radixPrimitive": "@radix-ui/react-switch"
+  },
+  "exports": [
+    "Switch"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Off",
+    "On",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Switch } from \"@/components/ui/switch\"",
+    "exports": [
+      "Switch"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "input",
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-input",
+      "bg-primary",
+      "ring-ring"
+    ]
+  },
+  "accessibility": {
+    "role": "switch",
+    "keyboard": [
+      "Space — toggle",
+      "Enter — toggle"
+    ],
+    "requiredAttributes": [
+      "An associated label"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix gives role=\"switch\" and aria-checked. Screen readers announce on and off rather than checked and unchecked.",
+      "The label must name the setting, not the state. \"Email notifications\", never \"On\".",
+      "Position change alone does not meet the non-colour requirement for all users — keep the label adjacent and visible."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "A switch inside a form with a submit button",
+      "A label that reads \"On\" or \"Off\"",
+      "Switch with no label"
+    ],
+    "agentRules": [
+      "Label the setting, not the state.",
+      "If a save button exists, use ui:checkbox instead.",
+      "Reflect failure by reverting the switch and reporting it — never leave it optimistically on."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:checkbox",
+      "note": "Deferred, form-submitted state"
+    },
+    {
+      "id": "ui:toggle",
+      "note": "Toolbar pressed state"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

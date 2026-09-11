@@ -1,0 +1,26 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "form-submit",
+  "intent": "Collect and validate input with accessible error reporting.",
+  "sourceDocs": ["/ACCESSIBILITY.md", "/DESIGN_PRINCIPLES.md"],
+  "requiredComponents": ["ui:form", "ui:label", "ui:button"],
+  "optionalComponents": ["ui:input", "ui:textarea", "ui:select", "ui:checkbox", "ui:radio-group", "ui:switch", "ui:toast"],
+  "sequence": [
+    "FormField wires each control to its Label, description and message via react-hook-form context",
+    "Validation runs on blur and again on submit",
+    "FormMessage renders the error, wired through aria-describedby by FormField",
+    "On submit the primary button enters a disabled, busy state with accessible text",
+    "Success is announced by Toast; failure returns focus to the first invalid field"
+  ],
+  "requiredRules": [
+    "Every control has a programmatically associated Label",
+    "Errors are text, never color alone",
+    "Focus moves to the first invalid field on failed submit",
+    "One primary button per form"
+  ],
+  "forbiddenRules": [
+    "No placeholder used as the only label",
+    "No validation message shown only on hover",
+    "No submit button that silently no-ops while invalid"
+  ]
+}

@@ -1,0 +1,91 @@
+<title>Calendar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Calendar</h1>
+<p class="lede">Pick a date when the surrounding days matter to the choice.</p>
+<div class="meta">
+<span class="pill mono">ui:calendar</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Forms</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/calendar.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Current month rendered</td></tr>
+<tr><td><strong>Selected</strong></td><td><code>Matches selected</code></td><td>bg-primary text-primary-foreground</td></tr>
+<tr><td><strong>Today</strong></td><td><code>Current date</code></td><td>bg-accent</td></tr>
+<tr><td><strong>Outside month</strong></td><td><code>Leading or trailing days</code></td><td>text-muted-foreground, opacity reduced</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>Matched by the disabled matcher</code></td><td>opacity-50, not selectable</td></tr>
+<tr><td><strong>Range middle</strong></td><td><code>Between range ends</code></td><td>bg-accent with no rounding</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The month grid with navigation</td></tr>
+<tr><td><strong>CalendarDayButton</strong></td><td>One day cell. Exported so you can decorate days.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>calendar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Date selection where day of week or adjacency matters</li>
+<li>Date ranges</li>
+<li>Inside ui:popover as a date-picker field</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A known specific date the user can type faster — offer a text input too</li>
+<li>Dates far in the past, like a birth date — a year and month select is far quicker</li>
+<li>Where a relative choice would do — Today, Tomorrow, Next week</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>grid</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — move by day<br />PageUp/PageDown — move by month<br />Home/End — start or end of week<br />Enter or Space — select</td></tr>
+<tr><th scope="row">Required</th><td>An accessible label on the calendar<br />aria-live announcement of the selected date</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>react-day-picker supplies grid semantics and keyboard navigation.</li>
+<li>Always offer a typed alternative. Keyboard-only users navigating months by arrow key is punishing for distant dates.</li>
+<li>Announce the selection in a live region — the visual highlight alone is not enough.</li>
+<li>Set the disabled matcher rather than allowing an invalid pick and rejecting it afterwards.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/calendar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="calendar.agent.json"><code>calendar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="calendar.md"><code>calendar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

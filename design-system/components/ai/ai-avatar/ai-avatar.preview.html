@@ -1,0 +1,88 @@
+<title>AIAvatar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIAvatar</h1>
+<p class="lede">The mark that tells a user a machine is speaking.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-avatar</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-avatar.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Hero</strong></td><td><code>AIAvatar</code></td><td>34px with drop-shadow(0 4px 14px rgba(90,109,255,0.45))</td></tr>
+<tr><td><strong>Inline</strong></td><td><code>BotAvatar</code></td><td>18px, no shadow. Same circles.</td></tr>
+<tr><td><strong>Labelled</strong></td><td><code>label prop set</code></td><td>role=&quot;img&quot; with an accessible name</td></tr>
+<tr><td><strong>Decorative</strong></td><td><code>no label</code></td><td>aria-hidden — correct when an adjacent text label names the agent</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Outer ring</strong></td><td>#B4BDFF — the lightest circle, r=17</td></tr>
+<tr><td><strong>Middle ring</strong></td><td>#5A6DFF — the BRAND blue, r=13</td></tr>
+<tr><td><strong>Inner disc</strong></td><td>#1F2A66 — the dark core, r=9</td></tr>
+<tr><td><strong>Monogram</strong></td><td>White, 9px, semibold. One character.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-avatar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Agent identity at the top of an AI surface</li>
+<li>Inline attribution in ai:ai-message-header</li>
+<li>Inside ai:ai-launcher and ai:ai-agent-stack</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>As a human user avatar — use ui:avatar, and keep the two visually distinct</li>
+<li>Decoratively, anywhere that is not AI-generated</li>
+<li>Recoloured to match a surface — the fixed palette is what makes it recognisable</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>img</code></td></tr>
+<tr><th scope="row">Required</th><td>label, unless an adjacent visible text label already names the agent</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Without a label the SVG is aria-hidden, which is right when it sits beside the agent name in ai:ai-message-header.</li>
+<li>Standing alone — in ai:ai-agent-stack, say — it must carry a label naming the agent and its status.</li>
+<li>The fixed fills are chosen for contrast against both light and dark chrome. Do not recolour them to &quot;fix&quot; dark mode.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-avatar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-avatar.agent.json"><code>ai-avatar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-avatar.md"><code>ai-avatar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

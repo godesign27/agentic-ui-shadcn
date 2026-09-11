@@ -1,0 +1,95 @@
+<title>Select — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Select</h1>
+<p class="lede">One choice from a list too long to show all at once.</p>
+<div class="meta">
+<span class="pill mono">ui:select</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-select</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/select.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>Rest</code></td><td>Trigger shows SelectValue or placeholder</td></tr>
+<tr><td><strong>Open</strong></td><td><code>Click or Enter</code></td><td>Content animates in; focus moves into the list</td></tr>
+<tr><td><strong>Item selected</strong></td><td><code>Current value</code></td><td>Check indicator on the right</td></tr>
+<tr><td><strong>Item focused</strong></td><td><code>Arrow keys or hover</code></td><td>bg-accent text-accent-foreground</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled on trigger or item</code></td><td>opacity-50, skipped in keyboard navigation</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Select
+  SelectTrigger
+    SelectValue
+  SelectContent
+    SelectGroup   <span class="opt">(optional)</span>
+      SelectLabel   <span class="opt">(optional)</span>
+    SelectItem
+    SelectSeparator   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>select.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Roughly five to fifty options</li>
+<li>A known, finite set the user picks from</li>
+<li>Grouped options, via SelectGroup and SelectLabel</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Under five options where seeing them aids choice — use ui:radio-group</li>
+<li>Over about fifty, or anything needing search — use ui:command</li>
+<li>Multiple selection — Radix Select is single-select; compose ui:popover with ui:checkbox instead</li>
+<li>Actions rather than values — use ui:dropdown-menu</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-select</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>combobox</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — open<br />Arrow keys — move between items<br />Type a letter — jump to matching item<br />Enter — select<br />Escape — close and return focus to trigger</td></tr>
+<tr><th scope="row">Required</th><td>A label on the trigger, via ui:label htmlFor or aria-label</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix supplies combobox semantics, focus return and typeahead.</li>
+<li>Content is portalled to the body — inside an overflow-hidden container it still renders correctly.</li>
+<li>SelectItem with value=&quot;&quot; throws. Use a sentinel value for &quot;none&quot;.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/select.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="select.agent.json"><code>select.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="select.md"><code>select.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,122 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:scroll-area",
+  "name": "ScrollArea",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Layout",
+  "description": "Radix ScrollArea with a custom-styled scrollbar. The root must have a bounded height or nothing scrolls.",
+  "intent": "A scrollable region with a scrollbar that looks the same on every platform.",
+  "authority": {
+    "source": "src/components/ui/scroll-area.tsx",
+    "mirrorSpec": "design-system/components/ui/scroll-area/scroll-area.md",
+    "contract": "design-system/components/ui/scroll-area/scroll-area.agent.json",
+    "prompt": "design-system/components/ui/scroll-area/agentic-prompt.md",
+    "preview": "design-system/components/ui/scroll-area/scroll-area.preview.html",
+    "upstream": "shadcn/ui registry: scroll-area",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-scroll-area"
+    ],
+    "radixPrimitive": "@radix-ui/react-scroll-area"
+  },
+  "exports": [
+    "ScrollArea",
+    "ScrollBar"
+  ],
+  "compound": {
+    "root": "ScrollArea",
+    "parts": [
+      {
+        "name": "ScrollBar",
+        "parent": "ScrollArea",
+        "required": false,
+        "note": "Rendered automatically for the vertical axis. Add explicitly with orientation=\"horizontal\" for horizontal scrolling."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Not scrollable",
+    "Scrollable"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { ScrollArea, ScrollBar } from \"@/components/ui/scroll-area\"",
+    "exports": [
+      "ScrollArea",
+      "ScrollBar"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "bg-border"
+    ]
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [
+      "Arrow keys — scroll when the viewport has focus",
+      "Page Up/Down",
+      "Home/End"
+    ],
+    "requiredAttributes": [],
+    "handledByRadix": true,
+    "notes": [
+      "The viewport is keyboard scrollable. Radix handles the focus behaviour.",
+      "The scrollbar fades unless hovered. Some users rely on a persistent scrollbar as an affordance — consider whether that matters on your surface.",
+      "Set an explicit height on the root. Without one, the content simply grows and nothing scrolls."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "ScrollBar"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "ScrollArea with no bounded height",
+      "Wrapping the document scroll"
+    ],
+    "agentRules": [
+      "Always set an explicit height or max-height on the root.",
+      "Add ScrollBar orientation=\"horizontal\" explicitly for horizontal scroll.",
+      "Do not wrap the whole page in a ScrollArea."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:sheet",
+      "note": "Common host for long content"
+    },
+    {
+      "id": "ui:table",
+      "note": "Wrap wide tables for horizontal scroll"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

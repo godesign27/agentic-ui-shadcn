@@ -1,0 +1,26 @@
+{
+  "$schema": "../schemas/graph.schema.json",
+  "_purpose": "What breaks when you change a component. Generated from import analysis of src/components/, hand-annotated.",
+  "entries": [
+    { "component": "ui:form", "dependsOn": ["ui:label"], "external": ["react-hook-form", "@radix-ui/react-slot"], "notes": "FormField provides context consumed by FormLabel, FormControl, FormDescription and FormMessage. Those five are inseparable." },
+    { "component": "ui:alert-dialog", "dependsOn": ["ui:button"], "external": ["@radix-ui/react-alert-dialog"], "notes": "Uses buttonVariants for AlertDialogAction and AlertDialogCancel styling." },
+    { "component": "ui:pagination", "dependsOn": ["ui:button"], "notes": "PaginationLink composes buttonVariants directly." },
+    { "component": "ui:calendar", "dependsOn": ["ui:button"], "external": ["react-day-picker"], "notes": "Nav buttons use buttonVariants({ variant: 'outline' })." },
+    { "component": "ui:sheet", "dependsOn": [], "external": ["@radix-ui/react-dialog"], "notes": "Sheet is Radix Dialog with edge-anchored positioning. Shares all a11y behavior with ui:dialog." },
+    { "component": "ui:sidebar", "dependsOn": ["ui:sheet", "ui:button", "ui:input", "ui:separator", "ui:skeleton", "ui:tooltip"], "notes": "The heaviest composite in the inventory. Changing any dependency affects sidebar rendering on mobile and desktop." },
+    { "component": "ui:command", "dependsOn": ["ui:dialog"], "external": ["cmdk"], "notes": "CommandDialog wraps Command in ui:dialog." },
+    { "component": "ui:carousel", "dependsOn": ["ui:button"], "external": ["embla-carousel-react"], "notes": "Previous and next controls use buttonVariants." },
+    { "component": "ui:toaster", "dependsOn": ["ui:toast"], "notes": "Toaster is the render host; useToast in src/hooks/use-toast.ts is the queue." },
+    { "component": "ui:resizable", "dependsOn": [], "external": ["react-resizable-panels"], "notes": "Handle styling depends on border and ring tokens." },
+    { "component": "ai:ai-action", "dependsOn": ["ai:ai-button"], "notes": "Composes the AI button visual language and adds review, loading, complete and error states." },
+    { "component": "ai:ai-message-header", "dependsOn": ["ai:ai-avatar"], "notes": "Attribution requires the avatar or an explicit agent name." },
+    { "component": "ai:ai-launcher", "dependsOn": ["ai:ai-avatar"], "notes": "Pill variant embeds the 18px BotAvatar." },
+    { "component": "ai:ai-agent-stack", "dependsOn": ["ai:ai-avatar"], "notes": "Overlapping avatars with status rings." },
+    { "component": "ai:ai-feedback-bar", "dependsOn": ["ai:ai-icon", "ui:tooltip"], "notes": "Icon-only controls require tooltips for accessible names." }
+  ],
+  "highBlastRadius": [
+    { "component": "ui:button", "reason": "buttonVariants is imported by alert-dialog, calendar, carousel and pagination. A variant rename breaks four components silently." },
+    { "component": "ui:dialog", "reason": "command composes it; sheet shares its Radix primitive and a11y expectations." },
+    { "component": "ai:ai-avatar", "reason": "Attribution affordance for the whole AI namespace. Its fixed palette is deliberate — see the spec." }
+  ]
+}

@@ -1,0 +1,74 @@
+<title>ToggleGroup — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>ToggleGroup</h1>
+<p class="lede">A set of related toggles that share a value and a visual group.</p>
+<div class="meta">
+<span class="pill mono">ui:toggle-group</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-toggle-group</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/toggle-group.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Unselected</strong></td><td><code>Not in value</code></td><td>Transparent</td></tr>
+<tr><td><strong>Selected</strong></td><td><code>In value</code></td><td>bg-accent text-accent-foreground</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Arrow keys</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled on group or item</code></td><td>opacity-50</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">ToggleGroup
+  ToggleGroupItem</pre></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>toggle-group.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Text alignment — left, centre, right</li>
+<li>A compact exclusive choice in a toolbar, with type=&quot;single&quot;</li>
+<li>Multiple filters applied together, with type=&quot;multiple&quot;</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A form field choice that needs a label and validation — use ui:radio-group</li>
+<li>More than about five options</li>
+<li>Navigation between views — use ui:tabs</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-toggle-group</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>group</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — move between items<br />Tab — enter and leave as one stop<br />Space or Enter — toggle</td></tr>
+<tr><th scope="row">Required</th><td>aria-label on the group<br />aria-label per icon-only item</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Roving focus: the group is one tab stop.</li>
+<li>type=&quot;single&quot; allows deselection unless you handle the empty value — decide whether empty is valid.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/toggle-group.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="toggle-group.agent.json"><code>toggle-group.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="toggle-group.md"><code>toggle-group.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

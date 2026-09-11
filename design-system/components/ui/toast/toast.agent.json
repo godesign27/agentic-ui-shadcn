@@ -1,0 +1,212 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toast",
+  "name": "Toast",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "Radix Toast primitives with swipe-to-dismiss and a default and destructive variant. The render host is ui:toaster; the queue is useToast.",
+  "intent": "Confirm that something happened, without taking the user away from what they are doing.",
+  "authority": {
+    "source": "src/components/ui/toast.tsx",
+    "mirrorSpec": "design-system/components/ui/toast/toast.md",
+    "contract": "design-system/components/ui/toast/toast.agent.json",
+    "prompt": "design-system/components/ui/toast/agentic-prompt.md",
+    "preview": "design-system/components/ui/toast/toast.preview.html",
+    "upstream": "shadcn/ui registry: toast",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-toast",
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-toast"
+  },
+  "exports": [
+    "Toast",
+    "ToastAction",
+    "ToastActionElement",
+    "ToastClose",
+    "ToastDescription",
+    "ToastProps",
+    "ToastProvider",
+    "ToastTitle",
+    "ToastViewport"
+  ],
+  "compound": {
+    "root": "ToastProvider",
+    "parts": [
+      {
+        "name": "ToastProvider",
+        "parent": null,
+        "required": true,
+        "note": "Supplied by ui:toaster"
+      },
+      {
+        "name": "ToastViewport",
+        "parent": "ToastProvider",
+        "required": true,
+        "note": "Where toasts render. Supplied by ui:toaster."
+      },
+      {
+        "name": "Toast",
+        "parent": "ToastProvider",
+        "required": true
+      },
+      {
+        "name": "ToastTitle",
+        "parent": "Toast",
+        "required": false
+      },
+      {
+        "name": "ToastDescription",
+        "parent": "Toast",
+        "required": false
+      },
+      {
+        "name": "ToastAction",
+        "parent": "Toast",
+        "required": false,
+        "note": "A single action, typically Undo. altText is required."
+      },
+      {
+        "name": "ToastClose",
+        "parent": "Toast",
+        "required": false
+      }
+    ]
+  },
+  "variants": [
+    "default",
+    "destructive"
+  ],
+  "sizes": [],
+  "states": [
+    "Entering",
+    "Visible",
+    "Swiping",
+    "Dismissed"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Toast, ToastAction, ToastActionElement, … } from \"@/components/ui/toast\"",
+    "exports": [
+      "Toast",
+      "ToastAction",
+      "ToastActionElement",
+      "ToastClose",
+      "ToastDescription",
+      "ToastProps",
+      "ToastProvider",
+      "ToastTitle",
+      "ToastViewport"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "destructive",
+      "foreground",
+      "muted",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-destructive",
+      "bg-secondary",
+      "border-destructive",
+      "border-muted",
+      "ring-destructive",
+      "ring-ring",
+      "text-destructive",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "status",
+    "keyboard": [
+      "F8 — focus the toast viewport",
+      "Tab — reach actions once focused",
+      "Escape — dismiss"
+    ],
+    "requiredAttributes": [
+      "altText on ToastAction"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix announces toasts politely and pauses the timer on hover and focus.",
+      "ToastAction requires altText — it is what screen-reader users hear as the alternative to the action.",
+      "The default duration may be too short to read a long message. Keep toasts to one line.",
+      "A dismissed toast is gone. Never put the only copy of important information in one."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "ToastProvider",
+      "ToastViewport",
+      "Toast",
+      "ToastTitle",
+      "ToastDescription",
+      "ToastAction",
+      "ToastClose"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Critical information in a toast",
+      "Multiple actions in one toast",
+      "ToastAction with no altText",
+      "Long multi-paragraph toasts"
+    ],
+    "agentRules": [
+      "One line. Keep it short enough to read before it goes.",
+      "ToastAction requires altText.",
+      "At most one action per toast.",
+      "Persistent errors belong in ui:alert.",
+      "Never put unrecoverable information in a toast."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toaster",
+      "note": "The render host — required"
+    },
+    {
+      "id": "ui:alert",
+      "note": "Persistent messages"
+    },
+    {
+      "id": "ui:sonner",
+      "note": "The alternative toast system — pick one"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

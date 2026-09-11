@@ -1,0 +1,79 @@
+<title>ScrollArea — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>ScrollArea</h1>
+<p class="lede">A scrollable region with a scrollbar that looks the same on every platform.</p>
+<div class="meta">
+<span class="pill mono">ui:scroll-area</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Layout</span>
+<span class="pill mono">@radix-ui/react-scroll-area</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/scroll-area.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Not scrollable</strong></td><td><code>Content fits</code></td><td>No scrollbar rendered</td></tr>
+<tr><td><strong>Scrollable</strong></td><td><code>Content overflows</code></td><td>Scrollbar appears on hover and during scroll</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">ScrollArea
+  ScrollBar   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>scroll-area.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A long list inside a fixed-height panel</li>
+<li>Sheet or dialog content that exceeds the viewport</li>
+<li>Anywhere the native scrollbar is visually disruptive</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>The main page scroll — let the browser do it</li>
+<li>Short content that fits</li>
+<li>Where a native scrollbar is genuinely fine, since this adds DOM weight</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-scroll-area</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — scroll when the viewport has focus<br />Page Up/Down<br />Home/End</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The viewport is keyboard scrollable. Radix handles the focus behaviour.</li>
+<li>The scrollbar fades unless hovered. Some users rely on a persistent scrollbar as an affordance — consider whether that matters on your surface.</li>
+<li>Set an explicit height on the root. Without one, the content simply grows and nothing scrolls.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/scroll-area.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="scroll-area.agent.json"><code>scroll-area.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="scroll-area.md"><code>scroll-area.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

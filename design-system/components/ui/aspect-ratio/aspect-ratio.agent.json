@@ -1,0 +1,92 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:aspect-ratio",
+  "name": "AspectRatio",
+  "namespace": "ui",
+  "tier": "layout",
+  "status": "stable",
+  "category": "Layout",
+  "description": "Radix AspectRatio. A six-line wrapper that holds a proportional box.",
+  "intent": "Reserve the right shape before the content arrives, so nothing jumps.",
+  "authority": {
+    "source": "src/components/ui/aspect-ratio.tsx",
+    "mirrorSpec": "design-system/components/ui/aspect-ratio/aspect-ratio.md",
+    "contract": "design-system/components/ui/aspect-ratio/aspect-ratio.agent.json",
+    "prompt": "design-system/components/ui/aspect-ratio/agentic-prompt.md",
+    "preview": "design-system/components/ui/aspect-ratio/aspect-ratio.preview.html",
+    "upstream": "shadcn/ui registry: aspect-ratio",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-aspect-ratio"
+    ],
+    "radixPrimitive": "@radix-ui/react-aspect-ratio"
+  },
+  "exports": [
+    "AspectRatio"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AspectRatio } from \"@/components/ui/aspect-ratio\"",
+    "exports": [
+      "AspectRatio"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [
+      "alt on any image inside"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Purely presentational. Accessibility lives with the content you place inside."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Constraining text content"
+    ],
+    "agentRules": [
+      "Children need object-cover or object-contain and full width and height.",
+      "Use for media, not text."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:skeleton",
+      "note": "Pair for a loading placeholder of the same shape"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

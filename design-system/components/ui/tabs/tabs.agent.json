@@ -1,0 +1,154 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:tabs",
+  "name": "Tabs",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Navigation",
+  "description": "Radix Tabs with roving focus and automatic activation. Content is unmounted when inactive by default.",
+  "intent": "Switch between peer views of the same subject, where only one is relevant at a time.",
+  "authority": {
+    "source": "src/components/ui/tabs.tsx",
+    "mirrorSpec": "design-system/components/ui/tabs/tabs.md",
+    "contract": "design-system/components/ui/tabs/tabs.agent.json",
+    "prompt": "design-system/components/ui/tabs/agentic-prompt.md",
+    "preview": "design-system/components/ui/tabs/tabs.preview.html",
+    "upstream": "shadcn/ui registry: tabs",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-tabs"
+    ],
+    "radixPrimitive": "@radix-ui/react-tabs"
+  },
+  "exports": [
+    "Tabs",
+    "TabsContent",
+    "TabsList",
+    "TabsTrigger"
+  ],
+  "compound": {
+    "root": "Tabs",
+    "parts": [
+      {
+        "name": "TabsList",
+        "parent": "Tabs",
+        "required": true,
+        "note": "The tablist container"
+      },
+      {
+        "name": "TabsTrigger",
+        "parent": "TabsList",
+        "required": true,
+        "note": "value must match a TabsContent"
+      },
+      {
+        "name": "TabsContent",
+        "parent": "Tabs",
+        "required": true,
+        "note": "Unmounted when inactive unless forceMount is set"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Inactive",
+    "Active",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Tabs, TabsContent, TabsList, … } from \"@/components/ui/tabs\"",
+    "exports": [
+      "Tabs",
+      "TabsContent",
+      "TabsList",
+      "TabsTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "foreground",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-muted",
+      "ring-ring",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "tablist",
+    "keyboard": [
+      "Arrow keys — move between and activate tabs",
+      "Tab — move into the panel",
+      "Home/End — first or last tab"
+    ],
+    "requiredAttributes": [
+      "aria-label on TabsList when there is no visible heading"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix wires tablist, tab and tabpanel roles plus aria-selected and aria-controls.",
+      "Activation is automatic: arrowing to a tab selects it. For expensive content use activationMode=\"manual\" so arrow keys only move focus.",
+      "Inactive content is unmounted, so form state inside a tab is lost on switch. Use forceMount if that matters."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "TabsList",
+      "TabsTrigger",
+      "TabsContent"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Tabs as a wizard",
+      "Trigger with no matching content",
+      "More than six tabs"
+    ],
+    "agentRules": [
+      "Label the TabsList when no visible heading names it.",
+      "Every trigger value must match a content value.",
+      "Use activationMode=\"manual\" when panels are expensive to render.",
+      "Tabs are not steps. A wizard needs routes or a stepper.",
+      "Sync to the URL if a tab should be shareable."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:accordion",
+      "note": "Vertical disclosure, several open at once"
+    },
+    {
+      "id": "ui:toggle-group",
+      "note": "Compact filter switching"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

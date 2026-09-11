@@ -1,0 +1,135 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-text-link",
+  "name": "AITextLink",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "beta",
+  "category": "AI",
+  "description": "An explainability link with six variants and three tones. Renders an anchor when href is given and a button otherwise, so disclosure actions are announced correctly.",
+  "intent": "An inline link inside AI prose whose label stands on its own.",
+  "authority": {
+    "source": "src/components/ai/ai-text-link.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-text-link/ai-text-link.md",
+    "contract": "design-system/components/ai/ai-text-link/ai-text-link.agent.json",
+    "prompt": "design-system/components/ai/ai-text-link/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-text-link/ai-text-link.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "AITextLink"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Expanded",
+    "Loading",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AITextLink } from \"@/components/ai/ai-text-link\"",
+    "exports": [
+      "AITextLink"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "foreground",
+      "muted"
+    ],
+    "utilities": [
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-signal",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "link or button",
+    "keyboard": [
+      "Enter — activate",
+      "Space — activate when rendered as a button"
+    ],
+    "requiredAttributes": [
+      "label",
+      "disabledReason when disabled"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "No href means it renders a button, because a disclosure action is not navigation. This is what makes Space work and keeps it out of the link list.",
+      "External links carry rel=\"noreferrer noopener\" and an sr-only \"opens in a new tab\".",
+      "Disabling without disabledReason logs a development warning — removing an affordance without explaining why is a dead end.",
+      "The attention tone is reserved for escalation, approval and staleness. Do not use it for emphasis."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Icon-only meaning",
+      "Disabled with no reason",
+      "Attention tone for emphasis"
+    ],
+    "agentRules": [
+      "The label must stand alone — an icon is never the only signal of purpose.",
+      "Always pair disabled with disabledReason.",
+      "Reserve the attention tone for escalation, approval and staleness.",
+      "Use ai:ai-why-this-link for the standard rationale entry."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution",
+      "Rationale disclosure"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-why-this-link",
+      "note": "The standard rationale entry"
+    },
+    {
+      "id": "ui:button",
+      "note": "variant=\"link\" for standard links"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

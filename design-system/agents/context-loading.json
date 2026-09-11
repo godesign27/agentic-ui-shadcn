@@ -1,0 +1,27 @@
+{
+  "$schema": "../schemas/agents.schema.json",
+  "description": "What an agent must load before it is permitted to emit UI. Run this first, every session.",
+  "steps": [
+    { "order": 1,  "path": "/README.md", "purpose": "Confirm this is the shadcn implementation layer, not core governance" },
+    { "order": 2,  "path": "/SYSTEM_ARCHITECTURE.md", "purpose": "Understand the three-layer stack and where this repo sits" },
+    { "order": 3,  "path": "/AGENT_RULES.md", "purpose": "Mandatory behavioral constraints and hard failure states" },
+    { "order": 4,  "path": "/design-system/meta/system.json", "purpose": "System identity, namespaces, validation mode" },
+    { "order": 5,  "path": "/design-system/tokens/semantic.json", "purpose": "The token contract you are allowed to reference" },
+    { "order": 6,  "path": "/design-system/rules/*.json", "purpose": "Forbidden, composition, naming, accessibility, generation, ai-interaction" },
+    { "order": 7,  "path": "/design-system/components/agent-instructions.md", "purpose": "How to read a component spec and what wins on conflict" },
+    { "order": 8,  "path": "/design-system/components/agent-manifest.index.json", "purpose": "Module lookup: id to spec path" },
+    { "order": 9,  "path": "/components/COMPONENTS_INDEX.json", "purpose": "The closed-world inventory" },
+    { "order": 10, "path": "/design-system/patterns/*.json", "purpose": "Composition sequences for common flows" },
+    { "order": 11, "path": "/design-system/graph/*.json", "purpose": "Dependencies and token usage, for impact reasoning" },
+    { "order": 12, "path": "/design-system/components/ai/llms.txt", "purpose": "Load ONLY when the task is AI-native UI" }
+  ],
+  "perComponentReadOrder": [
+    "design-system/components/{ns}/{name}/agentic-prompt.md — orientation and critical facts",
+    "design-system/components/{ns}/{name}/{name}.agent.json — props, variants, forbidden usage",
+    "design-system/components/{ns}/{name}/{name}.md — anatomy, tokens, examples, agent rules",
+    "src/components/{ns}/{name}.tsx — canonical source, authoritative on conflict"
+  ],
+  "successMessage": "Context loaded. Namespaces, token contract, rules and inventory understood. No UI generated.",
+  "failureMessage": "Context incomplete. UI generation is blocked until COMPONENTS_INDEX.json and the token contract are readable.",
+  "terminalInstruction": "Do not generate UI yet. Wait for the build request."
+}

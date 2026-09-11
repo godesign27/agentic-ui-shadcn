@@ -1,0 +1,81 @@
+<title>Separator — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Separator</h1>
+<p class="lede">A visible break between groups, without implying they are different kinds of thing.</p>
+<div class="meta">
+<span class="pill mono">ui:separator</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Layout</span>
+<span class="pill mono">@radix-ui/react-separator</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">horizontal</span><div class="sep sep--h"></div></div>
+<div class="specimen"><span class="specimen-label">vertical</span><div style="display:flex;align-items:center;gap:16px;font-size:13px">Edit<span class="sep sep--v"></span>View<span class="sep sep--v"></span>Share</div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Horizontal</strong></td><td><code>Default</code></td><td>h-px w-full</td></tr>
+<tr><td><strong>Vertical</strong></td><td><code>orientation=&quot;vertical&quot;</code></td><td>h-full w-px — requires the parent to have a height</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>A 1px line, horizontal or vertical</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>separator.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Between sections inside a card or panel</li>
+<li>Between groups in a menu or list</li>
+<li>As a vertical divider in a toolbar, with orientation=&quot;vertical&quot;</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Where spacing alone would do — a rule is heavier than a gap</li>
+<li>Between every item in a list</li>
+<li>To create a border — use border utilities</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-separator</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>separator or none</code></td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>decorative defaults to true, which sets role=&quot;none&quot; and keeps it out of the accessibility tree. That is right for visual grouping.</li>
+<li>Set decorative={false} only when the separation carries meaning a screen-reader user would otherwise miss.</li>
+<li>A vertical separator needs a parent with a resolved height, or it collapses to nothing.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/separator.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="separator.agent.json"><code>separator.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="separator.md"><code>separator.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

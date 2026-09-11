@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/agents.schema.json",
+  "description": "Post-generation checks. Run every check; report all violations, not just the first.",
+  "checks": [
+    { "id": "VALIDATE_READ_ORDER", "description": "Mandatory documentation read order was followed", "source": "/AGENT_RULES.md", "severity": "medium" },
+    { "id": "VALIDATE_COMPONENT_INDEX", "description": "Every component used resolves to an entry in COMPONENTS_INDEX.json", "source": "/AGENT_RULES.md", "severity": "critical" },
+    { "id": "VALIDATE_IMPORT_PATHS", "description": "Every import resolves to an approved path prefix", "source": "/design-system/rules/forbidden.json#FORBID_UNAPPROVED_IMPORT", "severity": "critical" },
+    { "id": "VALIDATE_PROPS", "description": "Every prop, variant and size exists in the component's .agent.json", "source": "/design-system/components/{ns}/{name}/{name}.agent.json", "severity": "high" },
+    { "id": "VALIDATE_TOKENS", "description": "No raw color or undocumented token name where a semantic token exists", "source": "/TOKENS_REFERENCE.md", "severity": "high" },
+    { "id": "VALIDATE_COMPOSITION", "description": "Compound parts nested correctly; structural constraints satisfied", "source": "/design-system/rules/composition.json", "severity": "high" },
+    { "id": "VALIDATE_FORBIDDEN", "description": "No rule in forbidden.json is triggered", "source": "/design-system/rules/forbidden.json", "severity": "critical" },
+    { "id": "VALIDATE_ACCESSIBILITY", "description": "WCAG 2.1 AA baseline: labels, focus order, keyboard, contrast, live regions, reduced motion", "source": "/ACCESSIBILITY.md", "severity": "critical" },
+    { "id": "VALIDATE_DEPENDENCIES", "description": "No new packages, no package.json or build config edits", "source": "/AGENT_RULES.md", "severity": "critical" },
+    { "id": "VALIDATE_NAMESPACE", "description": "ai:* components appear only on AI-native surfaces; ui:* carries everything else", "source": "/design-system/rules/forbidden.json#FORBID_AI_IN_STANDARD_UI", "severity": "high" },
+    { "id": "VALIDATE_AI_ACCOUNTABILITY", "description": "Each ai:* component's declared accountability obligations are satisfied in the rendered output", "source": "/design-system/rules/ai-interaction.json", "severity": "critical" }
+  ],
+  "resultShape": {
+    "status": "pass|fail|warning",
+    "checksRun": "integer",
+    "violations": [
+      {
+        "ruleId": "string",
+        "severity": "low|medium|high|critical",
+        "message": "string",
+        "location": "file:line or component id",
+        "suggestedFix": "string"
+      }
+    ]
+  },
+  "gate": {
+    "rule": "Any critical violation fails the generation. High violations fail unless the user has explicitly accepted them. Medium and low are reported as warnings.",
+    "onFail": "Return the violation list and the corrected output. Do not return failing code as final."
+  }
+}

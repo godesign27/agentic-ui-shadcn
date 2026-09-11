@@ -1,0 +1,94 @@
+<title>Toast — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Toast</h1>
+<p class="lede">Confirm that something happened, without taking the user away from what they are doing.</p>
+<div class="meta">
+<span class="pill mono">ui:toast</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Feedback</span>
+<span class="pill mono">@radix-ui/react-toast</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/toast.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Entering</strong></td><td><code>Added to the queue</code></td><td>Slides in from the top on mobile, bottom-right on desktop</td></tr>
+<tr><td><strong>Visible</strong></td><td><code>During its duration</code></td><td>Timer paused on hover and focus</td></tr>
+<tr><td><strong>Swiping</strong></td><td><code>Drag right</code></td><td>Follows the pointer</td></tr>
+<tr><td><strong>Dismissed</strong></td><td><code>Timeout, swipe or close</code></td><td>Animates out</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">ToastProvider
+  ToastViewport
+  Toast
+    ToastTitle   <span class="opt">(optional)</span>
+    ToastDescription   <span class="opt">(optional)</span>
+    ToastAction   <span class="opt">(optional)</span>
+    ToastClose   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--secondary))"></div><div class="name">--secondary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>toast.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Confirming a completed action</li>
+<li>Non-blocking errors the user can act on later</li>
+<li>Undo affordances after a reversible change</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Anything the user must read — toasts disappear and many users will miss them</li>
+<li>Errors that block progress — use ui:alert, which stays</li>
+<li>Anything needing a decision — use ui:alert-dialog</li>
+<li>Long messages, or several at once</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-toast</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>status</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>F8 — focus the toast viewport<br />Tab — reach actions once focused<br />Escape — dismiss</td></tr>
+<tr><th scope="row">Required</th><td>altText on ToastAction</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix announces toasts politely and pauses the timer on hover and focus.</li>
+<li>ToastAction requires altText — it is what screen-reader users hear as the alternative to the action.</li>
+<li>The default duration may be too short to read a long message. Keep toasts to one line.</li>
+<li>A dismissed toast is gone. Never put the only copy of important information in one.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/toast.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="toast.agent.json"><code>toast.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="toast.md"><code>toast.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

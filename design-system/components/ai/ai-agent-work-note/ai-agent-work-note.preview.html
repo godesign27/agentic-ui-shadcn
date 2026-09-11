@@ -1,0 +1,95 @@
+<title>AIAgentWorkNote — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIAgentWorkNote</h1>
+<p class="lede">Show what the agent is doing without exposing raw reasoning.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-agent-work-note</span>
+<span class="pill draft">draft</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-agent-work-note.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Rationale disclosure · Audit trail</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Collapsed</strong></td><td><code>Default</code></td><td>Label only. The default on purpose.</td></tr>
+<tr><td><strong>Expanded</strong></td><td><code>Click or Enter</code></td><td>Body revealed, chevron rotated</td></tr>
+<tr><td><strong>No body</strong></td><td><code>No content or items</code></td><td>Trigger is disabled and the chevron is hidden — nothing to open</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Trigger</strong></td><td>The status label plus a chevron. Disabled when there is no body.</td></tr>
+<tr><td><strong>Body</strong></td><td>Prose and/or a numbered list, revealed on expand</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-muted))"></div><div class="name">--ai-muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-surface))"></div><div class="name">--ai-surface</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-agent-work-note.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Disclosing intermediate agent steps</li>
+<li>Building trust during a long-running operation</li>
+<li>When a user would reasonably ask &quot;what is it doing?&quot;</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>To dump raw chain-of-thought — this is disclosure, not a transcript</li>
+<li>Expanded by default; the user opts in</li>
+<li>To fill silence during a wait — use ai:ai-loading-indicators</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button with aria-expanded</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — toggle</td></tr>
+<tr><th scope="row">Required</th><td>aria-controls, wired automatically to the body id</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>When there is no body the trigger is genuinely disabled, so a keyboard user is not sent to a control that does nothing.</li>
+<li>Status labels are plain language: &quot;Checking context&quot;, not &quot;checkingContext&quot;.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-agent-work-note.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-agent-work-note.agent.json"><code>ai-agent-work-note.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-agent-work-note.md"><code>ai-agent-work-note.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

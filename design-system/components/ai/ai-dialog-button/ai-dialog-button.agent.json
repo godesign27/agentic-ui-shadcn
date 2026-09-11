@@ -1,0 +1,128 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-dialog-button",
+  "name": "AIDialogButton",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "AI",
+  "description": "A ghost toolbar button in three shapes: icon-only (a 34px circle), icon plus label, or label plus a trailing chevron for dropdowns.",
+  "intent": "A quiet control in the composer toolbar that does not compete with the message.",
+  "authority": {
+    "source": "src/components/ai/ai-dialog-button.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-dialog-button/ai-dialog-button.md",
+    "contract": "design-system/components/ai/ai-dialog-button/ai-dialog-button.agent.json",
+    "prompt": "design-system/components/ai/ai-dialog-button/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-dialog-button/ai-dialog-button.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "AIDialogButton"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Hover",
+    "Open",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIDialogButton } from \"@/components/ai/ai-dialog-button\"",
+    "exports": [
+      "AIDialogButton"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "ai-accent",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-accent",
+      "ring-ai-accent",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — activate"
+    ],
+    "requiredAttributes": [
+      "aria-label when icon-only"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Icon-only with no aria-label logs a development warning — it has no accessible name at all.",
+      "aria-expanded is set only when a trailing icon is present, since that is what signals a dropdown.",
+      "At 34px it is under the 44px touch guideline. Give the toolbar padding on touch surfaces."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Icon-only with no accessible name",
+      "Primary actions",
+      "Use outside a composer"
+    ],
+    "agentRules": [
+      "Icon-only requires aria-label.",
+      "Set isOpen when it owns an open menu.",
+      "Use ai:ai-button for anything primary.",
+      "Pair icon-only controls with ui:tooltip."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution"
+    ],
+    "humanGestureRequired": true,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-button",
+      "note": "Primary AI actions"
+    },
+    {
+      "id": "ui:tooltip",
+      "note": "Naming icon-only controls"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "note": "What a trailing chevron opens"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "../schemas/tokens.schema.json",
+  "_source": "TOKENS_REFERENCE.md mapping + BRAND_THEMING.md canonical names.",
+  "_purpose": "Cross-framework translation. Lets a spec written against core governance resolve to this implementation's real token names.",
+  "coreToShadcn": {
+    "color.bg.page": "background",
+    "color.bg.surface": "card",
+    "color.bg.floating": "popover",
+    "color.bg.recessed": "muted",
+    "color.text.primary": "foreground",
+    "color.text.secondary": "muted-foreground",
+    "color.border.default": "border",
+    "color.border.field": "input",
+    "color.accent.primary": "primary",
+    "color.accent.focusRing": "ring",
+    "color.status.danger": "destructive",
+    "radius.interactive": "rounded-md",
+    "radius.container": "rounded-lg",
+    "elevation.card": "border border-border (shadcn uses borders, not shadows, for card elevation)"
+  },
+  "brandCanonical": {
+    "brand": { "mapsTo": "--primary", "note": "Set by BRAND_THEMING.md detection; falls back to the shadcn default near-black." },
+    "brand-2": { "mapsTo": "--secondary" },
+    "brand-3": { "mapsTo": "--accent" },
+    "brand-4": { "mapsTo": "--muted" },
+    "brand-text-on": { "mapsTo": "--primary-foreground" }
+  },
+  "aiCoreToShadcn": {
+    "AI.gradient.action.full": "bg-gradient-to-br from-ai-accent to-ai-accent-strong",
+    "AI.color.action.primaryActive": "ai-accent-active",
+    "AI.color.text.onAction": "ai-accent-foreground",
+    "AI.color.signal.surface": "ai-signal-surface",
+    "AI.color.signal.subtle": "ai-signal-border",
+    "SIGNAL[70]": "ai-signal",
+    "AI.color.surface.soft": "ai-surface",
+    "AI.radius.pill": "rounded-full",
+    "AI.radius.action": "rounded-2xl"
+  },
+  "implementationHints": {
+    "bootstrap": "Sibling implementation maps the same canonical names to --bs-* variables.",
+    "material": "Sibling implementation maps to Material color roles.",
+    "_note": "A spec written against core governance should resolve through coreToShadcn before emitting any class name."
+  }
+}

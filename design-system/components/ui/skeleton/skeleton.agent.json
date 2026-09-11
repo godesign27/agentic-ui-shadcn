@@ -1,0 +1,105 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:skeleton",
+  "name": "Skeleton",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "A pulsing placeholder block. Sixteen lines: a div with animate-pulse, bg-muted and rounded-md.",
+  "intent": "Show the shape of what is coming, so the wait feels shorter and the layout does not jump.",
+  "authority": {
+    "source": "src/components/ui/skeleton.tsx",
+    "mirrorSpec": "design-system/components/ui/skeleton/skeleton.md",
+    "contract": "design-system/components/ui/skeleton/skeleton.agent.json",
+    "prompt": "design-system/components/ui/skeleton/agentic-prompt.md",
+    "preview": "design-system/components/ui/skeleton/skeleton.preview.html",
+    "upstream": "shadcn/ui registry: skeleton",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "Skeleton"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Pulsing"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Skeleton } from \"@/components/ui/skeleton\"",
+    "exports": [
+      "Skeleton"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "muted"
+    ],
+    "utilities": [
+      "bg-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-busy=\"true\" on the container, or a role=\"status\" region announcing loading"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "A Skeleton has no semantics of its own. On its own, a screen-reader user hears nothing at all while waiting.",
+      "Wrap the loading region with role=\"status\" aria-live=\"polite\" and an sr-only \"Loading\" — otherwise the wait is silent.",
+      "Announce completion too, or the user does not know the content arrived."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Skeleton with no announced loading state",
+      "Skeleton persisting through an error",
+      "Shapes that do not match the eventual content"
+    ],
+    "agentRules": [
+      "Mirror the real layout — matching sizes and counts.",
+      "Always pair with an announced loading state; the visual pulse is invisible to screen readers.",
+      "Do not leave a skeleton up after an error.",
+      "Skip it for waits under 300ms."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:progress",
+      "note": "Determinate progress"
+    },
+    {
+      "id": "ui:card",
+      "note": "Common host"
+    }
+  ],
+  "gaps": [
+    "Provides no live-region semantics of its own. The announcement is yours to add every time."
+  ],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

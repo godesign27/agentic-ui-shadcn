@@ -32,6 +32,23 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* AI namespace. Used only by src/components/ai/*.
+       These mark machine authorship — never use them on human-authored UI.
+       See design-system/rules/forbidden.json#FORBID_AI_IN_STANDARD_UI */
+    --ai-accent: 233 100% 68%;
+    --ai-accent-strong: 253 73% 63%;
+    --ai-accent-active: 233 75% 60%;
+    --ai-accent-foreground: 0 0% 100%;
+    --ai-surface: 231 100% 98%;
+    --ai-surface-border: 231 60% 92%;
+    --ai-signal: 29 100% 40%;
+    --ai-signal-surface: 42 83% 98%;
+    --ai-signal-border: 38 100% 78%;
+    --ai-confidence-high: 142 71% 45%;
+    --ai-confidence-medium: 38 92% 50%;
+    --ai-confidence-low: 0 72% 51%;
+    --ai-muted: 231 20% 55%;
   }
 
   .dark {
@@ -62,6 +79,21 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* AI namespace — dark */
+    --ai-accent: 233 100% 72%;
+    --ai-accent-strong: 253 73% 70%;
+    --ai-accent-active: 233 80% 66%;
+    --ai-accent-foreground: 222 47% 11%;
+    --ai-surface: 233 30% 14%;
+    --ai-surface-border: 233 25% 24%;
+    --ai-signal: 38 95% 62%;
+    --ai-signal-surface: 29 40% 15%;
+    --ai-signal-border: 29 50% 32%;
+    --ai-confidence-high: 142 60% 55%;
+    --ai-confidence-medium: 38 90% 60%;
+    --ai-confidence-low: 0 70% 62%;
+    --ai-muted: 231 15% 65%;
   }
 }
 

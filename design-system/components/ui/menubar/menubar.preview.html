@@ -1,0 +1,87 @@
+<title>Menubar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Menubar</h1>
+<p class="lede">A persistent application menu bar, in the desktop-software sense.</p>
+<div class="meta">
+<span class="pill mono">ui:menubar</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Navigation</span>
+<span class="pill mono">@radix-ui/react-menubar</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/menubar.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>Rest</code></td><td>Triggers visible, no menu open</td></tr>
+<tr><td><strong>Open</strong></td><td><code>Click or Enter on a trigger</code></td><td>That menu opens; hovering siblings then switches without clicking</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Menubar
+  MenubarMenu
+    MenubarTrigger
+    MenubarContent
+      MenubarItem   <span class="opt">(optional)</span>
+      MenubarCheckboxItem   <span class="opt">(optional)</span>
+      MenubarRadioGroup   <span class="opt">(optional)</span>
+      MenubarSub   <span class="opt">(optional)</span>
+      MenubarSeparator   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>menubar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Desktop-class applications — editors, IDEs, design tools</li>
+<li>When users expect File, Edit, View</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A website — use ui:navigation-menu</li>
+<li>A typical web application — a toolbar with ui:dropdown-menu is lighter and more familiar</li>
+<li>Mobile or narrow layouts</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-menubar</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>menubar</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>ArrowLeft/ArrowRight — move between top-level menus<br />ArrowDown — open the focused menu<br />Arrow keys — move within a menu<br />Escape — close</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The whole bar is one tab stop with roving focus.</li>
+<li>This pattern is unfamiliar on the web. Only use it where the desktop metaphor is genuinely expected.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/menubar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="menubar.agent.json"><code>menubar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="menubar.md"><code>menubar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

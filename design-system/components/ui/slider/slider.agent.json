@@ -1,0 +1,121 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:slider",
+  "name": "Slider",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Slider with a track, range fill and thumb. Supports multiple thumbs for range selection.",
+  "intent": "An approximate value along a continuous range, where the relative position matters more than the exact number.",
+  "authority": {
+    "source": "src/components/ui/slider.tsx",
+    "mirrorSpec": "design-system/components/ui/slider/slider.md",
+    "contract": "design-system/components/ui/slider/slider.agent.json",
+    "prompt": "design-system/components/ui/slider/agentic-prompt.md",
+    "preview": "design-system/components/ui/slider/slider.preview.html",
+    "upstream": "shadcn/ui registry: slider",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-slider"
+    ],
+    "radixPrimitive": "@radix-ui/react-slider"
+  },
+  "exports": [
+    "Slider"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Focus-visible",
+    "Dragging",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Slider } from \"@/components/ui/slider\"",
+    "exports": [
+      "Slider"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "primary",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-primary",
+      "bg-secondary",
+      "border-primary",
+      "ring-ring"
+    ]
+  },
+  "accessibility": {
+    "role": "slider",
+    "keyboard": [
+      "Arrow keys — step by one",
+      "Page Up/Down — step by a larger increment",
+      "Home/End — jump to min or max"
+    ],
+    "requiredAttributes": [
+      "aria-label or aria-labelledby on the root",
+      "aria-valuetext when the raw number is not meaningful on its own"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix sets aria-valuemin, aria-valuemax and aria-valuenow.",
+      "Set aria-valuetext when the number needs units or context — \"40 percent\" rather than \"40\".",
+      "The thumb is 20px. Its hit area is below the 44px guideline; add vertical padding to the container on touch surfaces."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "A slider as the only way to enter a precise value",
+      "Unlabelled slider",
+      "A slider with fewer than ten meaningful steps"
+    ],
+    "agentRules": [
+      "Label the slider.",
+      "Display the current value in text beside it — the thumb position is not readable enough alone.",
+      "Set aria-valuetext when units matter.",
+      "For exact entry, pair with ui:input."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:input",
+      "note": "Exact numeric entry"
+    },
+    {
+      "id": "ui:progress",
+      "note": "Read-only progress, not input"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

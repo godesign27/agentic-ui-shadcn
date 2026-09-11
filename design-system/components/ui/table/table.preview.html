@@ -1,0 +1,95 @@
+<title>Table — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Table</h1>
+<p class="lede">Data with real rows and columns, where comparing across both matters.</p>
+<div class="meta">
+<span class="pill mono">ui:table</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Data Display</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><div class="table-wrap" style="max-width:440px"><table><thead><tr><th scope="col">Service</th><th scope="col">Status</th><th scope="col">Duration</th></tr></thead><tbody><tr><td style="font-weight:500">api</td><td><span class="bdg bdg--secondary">Succeeded</span></td><td>2m 14s</td></tr><tr><td style="font-weight:500">worker</td><td><span class="bdg bdg--destructive">Failed</span></td><td>0m 08s</td></tr></tbody></table></div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Rows separated by border-b</td></tr>
+<tr><td><strong>Row hover</strong></td><td><code>Pointer over</code></td><td>hover:bg-muted/50</td></tr>
+<tr><td><strong>Row selected</strong></td><td><code>data-state=&quot;selected&quot;</code></td><td>bg-muted</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Table
+  TableCaption   <span class="opt">(optional)</span>
+  TableHeader
+  TableBody
+  TableFooter   <span class="opt">(optional)</span>
+  TableRow   <span class="opt">(inside TableHeader | TableBody | TableFooter)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>table.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Genuinely tabular data</li>
+<li>Comparison across rows and columns</li>
+<li>Data with a stable column structure</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Layout — this has been wrong since 2005</li>
+<li>A list of items with one attribute each — use a list or ui:card</li>
+<li>Hundreds of rows with no virtualisation</li>
+<li>Narrow screens without a responsive strategy</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>table</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Standard reading-mode navigation</td></tr>
+<tr><th scope="row">Required</th><td>scope=&quot;col&quot; on column headers<br />A TableCaption or aria-label naming the table</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>TableHead does not set scope automatically. Add scope=&quot;col&quot; yourself — without it, screen readers cannot associate cells with headers, which is the entire benefit of a table.</li>
+<li>TableCaption is the accessible name. Use sr-only if it should not be visible.</li>
+<li>The wrapper div already has overflow-auto for horizontal scroll on narrow screens.</li>
+<li>Sortable headers need a button inside the th plus aria-sort on the th.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/table.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="table.agent.json"><code>table.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="table.md"><code>table.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

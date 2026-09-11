@@ -1,0 +1,93 @@
+<title>Form — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Form</h1>
+<p class="lede">Wires a control to its label, description and error message so the accessibility relationships are correct by construction.</p>
+<div class="meta">
+<span class="pill mono">ui:form</span>
+<span class="pill stable">stable</span>
+<span class="pill">groups</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-label</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/form.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Pristine</strong></td><td><code>Untouched</code></td><td>No message rendered</td></tr>
+<tr><td><strong>Invalid</strong></td><td><code>Validation failed</code></td><td>FormLabel and FormMessage turn destructive; aria-invalid set on the control</td></tr>
+<tr><td><strong>Submitting</strong></td><td><code>formState.isSubmitting</code></td><td>Disable the submit button and give it accessible busy text</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Form
+  FormField
+    FormItem
+      FormLabel
+      FormControl
+      FormDescription   <span class="opt">(optional)</span>
+      FormMessage   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>form.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Any form with validation</li>
+<li>Any form of more than two fields</li>
+<li>Whenever error messages must be announced</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A single search box with no validation</li>
+<li>A settings surface where each control applies immediately</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>form</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab through fields<br />Enter submits from a single-line input</td></tr>
+<tr><th scope="row">Required</th><td>Generated automatically: id, aria-describedby, aria-invalid</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>This is the reason to use ui:form at all — the ARIA wiring is generated, not hand-written, so it cannot drift.</li>
+<li>FormControl must wrap exactly one element. Two children breaks the Slot.</li>
+<li>On failed submit, move focus to the first invalid field. react-hook-form does not do this for you.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>Does not move focus to the first invalid field on submit — implement that in your onInvalid handler.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/form.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="form.agent.json"><code>form.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="form.md"><code>form.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

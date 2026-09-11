@@ -1,0 +1,96 @@
+<title>AIDialogButton — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIDialogButton</h1>
+<p class="lede">A quiet control in the composer toolbar that does not compete with the message.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-dialog-button</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-dialog-button.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Transparent</td></tr>
+<tr><td><strong>Hover</strong></td><td><code>Pointer over</code></td><td>bg-accent</td></tr>
+<tr><td><strong>Open</strong></td><td><code>isOpen</code></td><td>bg-accent held; aria-expanded true when a trailing icon is present</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled</code></td><td>opacity 0.42</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Icon</strong></td><td>Leading glyph. Sole content makes it a 34px circle.</td></tr>
+<tr><td><strong>Label</strong></td><td>13px medium</td></tr>
+<tr><td><strong>Trailing icon</strong></td><td>Usually a chevron. Its presence adds aria-expanded.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-dialog-button.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Composer toolbar controls — attach, skills, agent mode, microphone</li>
+<li>Any low-emphasis control beside an input</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Primary actions — use ai:ai-button</li>
+<li>Outside a composer context</li>
+<li>Icon-only without an accessible name</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — activate</td></tr>
+<tr><th scope="row">Required</th><td>aria-label when icon-only</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Icon-only with no aria-label logs a development warning — it has no accessible name at all.</li>
+<li>aria-expanded is set only when a trailing icon is present, since that is what signals a dropdown.</li>
+<li>At 34px it is under the 44px touch guideline. Give the toolbar padding on touch surfaces.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-dialog-button.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-dialog-button.agent.json"><code>ai-dialog-button.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-dialog-button.md"><code>ai-dialog-button.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

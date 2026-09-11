@@ -1,0 +1,15 @@
+{
+  "$schema": "../schemas/graph.schema.json",
+  "_purpose": "Where components are actually used in this repository. Keeps the inventory honest about what is proven versus merely available.",
+  "pages": [
+    { "route": "/", "file": "src/pages/StartPage.tsx", "uses": ["ui:button", "ui:card"], "notes": "Landing page with Prompt Library entry." },
+    { "route": "/ui-kit", "file": "src/pages/UIKitPage.tsx", "uses": ["ui:card", "ui:button", "ui:separator"], "notes": "Component browse surface." },
+    { "route": "/brand-preview", "file": "src/pages/BrandPreviewPage.tsx", "uses": ["ui:card", "ui:separator"], "notes": "Color scale visualization." },
+    { "component": "PromptDrawer", "file": "src/components/prompt-library/PromptDrawer.tsx", "uses": ["ui:sheet", "ui:input", "ui:scroll-area", "ui:separator", "ui:button", "ui:card"], "notes": "The most complete composition in the repo. Use it as the reference for overlay + search + list." }
+  ],
+  "coverage": {
+    "componentsInInventory": 46,
+    "componentsUsedInApp": 6,
+    "note": "40 components are indexed and specified but not yet exercised by a page in this repository. They are available to agents; they are not demonstrated here. Each component's .preview.html is the substitute proof surface."
+  }
+}

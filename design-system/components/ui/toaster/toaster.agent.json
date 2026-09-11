@@ -1,0 +1,100 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toaster",
+  "name": "Toaster",
+  "namespace": "ui",
+  "tier": "templates",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "The render host for ui:toast. Subscribes to the useToast queue and maps it to Toast elements. Mount once at the app root.",
+  "intent": "The one place toasts actually render.",
+  "authority": {
+    "source": "src/components/ui/toaster.tsx",
+    "mirrorSpec": "design-system/components/ui/toaster/toaster.md",
+    "contract": "design-system/components/ui/toaster/toaster.agent.json",
+    "prompt": "design-system/components/ui/toaster/agentic-prompt.md",
+    "preview": "design-system/components/ui/toaster/toaster.preview.html",
+    "upstream": "shadcn/ui registry: toaster",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:toast"
+    ],
+    "external": []
+  },
+  "exports": [
+    "Toaster"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Empty",
+    "Populated"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Toaster } from \"@/components/ui/toaster\"",
+    "exports": [
+      "Toaster"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "region",
+    "keyboard": [
+      "F8 — focus the viewport"
+    ],
+    "requiredAttributes": [],
+    "handledByRadix": true,
+    "notes": [
+      "Mount it at the root so toasts survive route changes.",
+      "Two Toasters means every toast appears twice."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Multiple Toaster instances",
+      "Conditional mounting",
+      "Running alongside ui:sonner"
+    ],
+    "agentRules": [
+      "Mount exactly once, at the root.",
+      "Do not conditionally render it.",
+      "Pick either this or ui:sonner — not both."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toast",
+      "note": "The primitives it renders"
+    },
+    {
+      "id": "ui:sonner",
+      "note": "The alternative — choose one"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

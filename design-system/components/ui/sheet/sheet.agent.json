@@ -1,0 +1,204 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sheet",
+  "name": "Sheet",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix Dialog repositioned to an edge. Four sides via the side variant. Shares every accessibility behaviour with ui:dialog.",
+  "intent": "A modal panel anchored to a screen edge, for content that needs more room than a dialog affords.",
+  "authority": {
+    "source": "src/components/ui/sheet.tsx",
+    "mirrorSpec": "design-system/components/ui/sheet/sheet.md",
+    "contract": "design-system/components/ui/sheet/sheet.agent.json",
+    "prompt": "design-system/components/ui/sheet/agentic-prompt.md",
+    "preview": "design-system/components/ui/sheet/sheet.preview.html",
+    "upstream": "shadcn/ui registry: sheet",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-dialog",
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-dialog"
+  },
+  "exports": [
+    "Sheet",
+    "SheetClose",
+    "SheetContent",
+    "SheetDescription",
+    "SheetFooter",
+    "SheetHeader",
+    "SheetOverlay",
+    "SheetPortal",
+    "SheetTitle",
+    "SheetTrigger"
+  ],
+  "compound": {
+    "root": "Sheet",
+    "parts": [
+      {
+        "name": "SheetTrigger",
+        "parent": "Sheet",
+        "required": false
+      },
+      {
+        "name": "SheetContent",
+        "parent": "Sheet",
+        "required": true,
+        "note": "Carries the side variant. Includes its own close button."
+      },
+      {
+        "name": "SheetHeader",
+        "parent": "SheetContent",
+        "required": false
+      },
+      {
+        "name": "SheetTitle",
+        "parent": "SheetHeader",
+        "required": true,
+        "note": "Mandatory, as in ui:dialog"
+      },
+      {
+        "name": "SheetDescription",
+        "parent": "SheetHeader",
+        "required": false
+      },
+      {
+        "name": "SheetFooter",
+        "parent": "SheetContent",
+        "required": false
+      },
+      {
+        "name": "SheetClose",
+        "parent": "SheetContent",
+        "required": false
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+  ],
+  "states": [
+    "Closed",
+    "Open"
+  ],
+  "props": [
+    {
+      "name": "side",
+      "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+      "default": "\"right\"",
+      "required": false,
+      "hint": "One of the side values declared in sheetVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Sheet, SheetClose, SheetContent, … } from \"@/components/ui/sheet\"",
+    "exports": [
+      "Sheet",
+      "SheetClose",
+      "SheetContent",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetHeader",
+      "SheetOverlay",
+      "SheetPortal",
+      "SheetTitle",
+      "SheetTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "foreground",
+      "muted",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-secondary",
+      "ring-ring",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "dialog",
+    "keyboard": [
+      "Escape — close",
+      "Tab — cycle within the trap"
+    ],
+    "requiredAttributes": [
+      "SheetTitle is mandatory"
+    ],
+    "focusManagement": "Identical to ui:dialog — trap on open, return on close.",
+    "handledByRadix": true,
+    "notes": [
+      "Sheet is modal. The page behind it is inert and scroll is locked.",
+      "On narrow screens side=\"right\" and side=\"left\" occupy three-quarters of the width by default."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "SheetTrigger",
+      "SheetContent",
+      "SheetHeader",
+      "SheetTitle",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetClose"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "SheetContent without SheetTitle",
+      "Nested overlays",
+      "Using a sheet for content that must stay visible while working"
+    ],
+    "agentRules": [
+      "SheetTitle is mandatory.",
+      "Choose the side from the content, not from habit: left for nav, bottom for touch actions, right for detail.",
+      "Long content needs an inner ui:scroll-area.",
+      "Do not nest sheets or place a dialog inside one."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:dialog",
+      "note": "Centred modal"
+    },
+    {
+      "id": "ui:sidebar",
+      "note": "Persistent navigation"
+    },
+    {
+      "id": "ui:scroll-area",
+      "note": "For long sheet content"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

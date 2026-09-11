@@ -1,0 +1,181 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:breadcrumb",
+  "name": "Breadcrumb",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Navigation",
+  "description": "Semantic breadcrumb markup: nav, ordered list, links, and a current page marked with aria-current.",
+  "intent": "Show where this page sits in the hierarchy, and offer a way back up.",
+  "authority": {
+    "source": "src/components/ui/breadcrumb.tsx",
+    "mirrorSpec": "design-system/components/ui/breadcrumb/breadcrumb.md",
+    "contract": "design-system/components/ui/breadcrumb/breadcrumb.agent.json",
+    "prompt": "design-system/components/ui/breadcrumb/agentic-prompt.md",
+    "preview": "design-system/components/ui/breadcrumb/breadcrumb.preview.html",
+    "upstream": "shadcn/ui registry: breadcrumb",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-slot",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-slot"
+  },
+  "exports": [
+    "Breadcrumb",
+    "BreadcrumbEllipsis",
+    "BreadcrumbItem",
+    "BreadcrumbLink",
+    "BreadcrumbList",
+    "BreadcrumbPage",
+    "BreadcrumbSeparator"
+  ],
+  "compound": {
+    "root": "Breadcrumb",
+    "parts": [
+      {
+        "name": "BreadcrumbList",
+        "parent": "Breadcrumb",
+        "required": true,
+        "note": "An ol"
+      },
+      {
+        "name": "BreadcrumbItem",
+        "parent": "BreadcrumbList",
+        "required": true,
+        "note": "An li"
+      },
+      {
+        "name": "BreadcrumbLink",
+        "parent": "BreadcrumbItem",
+        "required": false,
+        "note": "Use asChild with your router link"
+      },
+      {
+        "name": "BreadcrumbPage",
+        "parent": "BreadcrumbItem",
+        "required": false,
+        "note": "The current page. Carries aria-current=\"page\" and is not a link."
+      },
+      {
+        "name": "BreadcrumbSeparator",
+        "parent": "BreadcrumbList",
+        "required": false,
+        "note": "aria-hidden — decorative"
+      },
+      {
+        "name": "BreadcrumbEllipsis",
+        "parent": "BreadcrumbItem",
+        "required": false,
+        "note": "Collapsed middle segments"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Link",
+    "Current page",
+    "Collapsed"
+  ],
+  "props": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "default": "false",
+      "required": false,
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, … } from \"@/components/ui/breadcrumb\"",
+    "exports": [
+      "Breadcrumb",
+      "BreadcrumbEllipsis",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbList",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator"
+    ],
+    "forwardsRef": true,
+    "asChild": true,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "foreground",
+      "muted"
+    ],
+    "utilities": [
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab through the links"
+    ],
+    "requiredAttributes": [
+      "aria-label=\"Breadcrumb\" on the nav — set by the component",
+      "aria-current=\"page\" on the last item — set by BreadcrumbPage"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "The final item must be BreadcrumbPage, not BreadcrumbLink. Linking to the current page is a common and pointless error.",
+      "Separators are aria-hidden so they are not read as content.",
+      "BreadcrumbEllipsis is decorative. If the hidden levels matter, put them in a ui:dropdown-menu behind it."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "BreadcrumbList",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator",
+      "BreadcrumbEllipsis"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Linking the current page",
+      "Breadcrumbs as a step indicator",
+      "Flat hierarchies"
+    ],
+    "agentRules": [
+      "The last item is always BreadcrumbPage.",
+      "Use asChild to integrate your router.",
+      "Put collapsed levels behind a real menu, not a bare ellipsis.",
+      "Not a wizard stepper."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:navigation-menu",
+      "note": "Primary site navigation"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "note": "Revealing collapsed levels"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

@@ -1,0 +1,144 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:popover",
+  "name": "Popover",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix Popover. Non-modal by default: the page stays interactive and scrollable. Positioned automatically with collision detection.",
+  "intent": "Contextual content anchored to a trigger, without blocking the page.",
+  "authority": {
+    "source": "src/components/ui/popover.tsx",
+    "mirrorSpec": "design-system/components/ui/popover/popover.md",
+    "contract": "design-system/components/ui/popover/popover.agent.json",
+    "prompt": "design-system/components/ui/popover/agentic-prompt.md",
+    "preview": "design-system/components/ui/popover/popover.preview.html",
+    "upstream": "shadcn/ui registry: popover",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-popover"
+    ],
+    "radixPrimitive": "@radix-ui/react-popover"
+  },
+  "exports": [
+    "Popover",
+    "PopoverContent",
+    "PopoverTrigger"
+  ],
+  "compound": {
+    "root": "Popover",
+    "parts": [
+      {
+        "name": "PopoverTrigger",
+        "parent": "Popover",
+        "required": true,
+        "note": "Use asChild to wrap your own control"
+      },
+      {
+        "name": "PopoverContent",
+        "parent": "Popover",
+        "required": true,
+        "note": "Accepts align and sideOffset"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\"",
+    "exports": [
+      "Popover",
+      "PopoverContent",
+      "PopoverTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "popover"
+    ],
+    "utilities": [
+      "bg-popover",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "dialog",
+    "keyboard": [
+      "Enter or Space — open",
+      "Escape — close and return focus to trigger",
+      "Tab — move through content"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the trigger"
+    ],
+    "focusManagement": "Focus moves into the content on open and returns to the trigger on close.",
+    "handledByRadix": true,
+    "notes": [
+      "Non-modal: the rest of the page stays interactive. That is the difference from ui:dialog.",
+      "Content is portalled, so overflow-hidden ancestors do not clip it."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "PopoverTrigger",
+      "PopoverContent"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Critical-only information",
+      "Action menus",
+      "Nesting a modal dialog inside a popover"
+    ],
+    "agentRules": [
+      "Never hide critical information in a popover.",
+      "Use ui:dropdown-menu for action lists, not this.",
+      "Use ui:tooltip for plain hints.",
+      "Trigger needs an accessible name."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:tooltip",
+      "note": "Text hints"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "note": "Actions"
+    },
+    {
+      "id": "ui:hover-card",
+      "note": "Hover-triggered preview"
+    },
+    {
+      "id": "ui:dialog",
+      "note": "Focused tasks"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

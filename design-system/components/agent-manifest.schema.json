@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agentic UI Component Agent Manifest (shadcn/ui implementation)",
+  "description": "The structured contract an agent reads before writing markup. Narrative implementation detail lives in the paired {name}.md mirror spec. On conflict with src/, src/ wins.",
+  "type": "object",
+  "required": ["schemaVersion", "id", "name", "namespace", "tier", "status", "authority", "platforms", "javascriptApi", "accessibility", "rules"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "id": { "type": "string", "pattern": "^(ui|ai|pattern|layout):[a-z0-9-]+$", "description": "Closed-world identifier. Must match the COMPONENTS_INDEX.json entry." },
+    "name": { "type": "string", "description": "Primary PascalCase export." },
+    "namespace": { "type": "string", "enum": ["ui", "ai", "pattern", "layout"] },
+    "tier": { "type": "string", "enum": ["atoms", "molecules", "organisms", "layout", "templates", "groups", "reference", "tokens"], "description": "Atomic-design classification carried over from core governance. Informational — it does not affect the import path." },
+    "status": { "type": "string", "enum": ["stable", "beta", "draft", "experimental", "deprecated"] },
+    "category": { "type": "string", "description": "Functional grouping shown in the UI Kit: Forms, Layout, Overlay, Navigation, Feedback, Data Display, Disclosure, Media, AI." },
+    "description": { "type": "string" },
+    "intent": { "type": "string", "description": "One sentence on the decision this component exists to serve. Written for a human." },
+    "authority": {
+      "type": "object",
+      "required": ["source", "mirrorSpec", "contract"],
+      "properties": {
+        "source": { "type": "string", "description": "Canonical implementation path. Authoritative on any conflict." },
+        "mirrorSpec": { "type": "string" },
+        "contract": { "type": "string" },
+        "prompt": { "type": "string" },
+        "preview": { "type": "string" },
+        "upstream": { "type": "string", "description": "External origin, e.g. a shadcn/ui registry entry or another design system package." },
+        "note": { "type": "string" }
+      }
+    },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "dependencies": {
+      "type": "object",
+      "properties": {
+        "internal": { "type": "array", "items": { "type": "string" }, "description": "Other component ids this one imports." },
+        "external": { "type": "array", "items": { "type": "string" }, "description": "npm packages. Present for information; agents may not add new ones." },
+        "radixPrimitive": { "type": "string" }
+      }
+    },
+    "exports": { "type": "array", "items": { "type": "string" }, "description": "Every named export, including compound parts and cva helpers." },
+    "compound": {
+      "type": "object",
+      "description": "For components whose parts must be nested in a specific shape.",
+      "properties": {
+        "root": { "type": "string" },
+        "parts": { "type": "array", "items": { "type": "object", "properties": { "name": { "type": "string" }, "parent": { "type": "string" }, "required": { "type": "boolean" }, "note": { "type": "string" } } } }
+      }
+    },
+    "variants": { "type": "array", "items": { "type": "string" } },
+    "sizes": { "type": "array", "items": { "type": "string" } },
+    "states": { "type": "array", "items": { "type": "string" } },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "description": "The TypeScript type as written in source." },
+          "default": { "type": "string" },
+          "required": { "type": "boolean" },
+          "hint": { "type": "string" },
+          "appliesTo": { "type": "string", "description": "Which export, for compound components." }
+        }
+      }
+    },
+    "javascriptApi": {
+      "type": "object",
+      "properties": {
+        "import": { "type": "string" },
+        "exports": { "type": "array", "items": { "type": "string" } },
+        "forwardsRef": { "type": "boolean" },
+        "asChild": { "type": "boolean", "description": "Whether the root accepts Radix asChild polymorphism." },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "semantic": { "type": "array", "items": { "type": "string" }, "description": "Semantic token roles this component consumes." },
+        "utilities": { "type": "array", "items": { "type": "string" }, "description": "Tailwind utilities that carry those tokens." }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "keyboard": { "type": "array", "items": { "type": "string" } },
+        "requiredAttributes": { "type": "array", "items": { "type": "string" } },
+        "focusManagement": { "type": "string" },
+        "liveRegion": { "type": "string" },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "handledByRadix": { "type": "boolean", "description": "True when the primitive supplies roles and focus management. Do not re-implement." }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "allowedChildren": { "type": "array", "items": { "type": "string" } },
+        "forbiddenChildren": { "type": "array", "items": { "type": "string" } },
+        "forbiddenUsage": { "type": "array", "items": { "type": "string" } },
+        "agentRules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "experienceMetadata": {
+      "type": "object",
+      "description": "REQUIRED for namespace=ai. Declares how much autonomy this component grants the machine and what accountability it therefore owes the human. Absent on ui:* components by design.",
+      "required": ["experienceMode", "aiBehavior", "accountability"],
+      "properties": {
+        "experienceMode": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["AI Assisted", "Adaptive", "AI Led"] },
+          "description": "Who is driving. See /design-system/rules/ai-interaction.json."
+        },
+        "aiBehavior": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Suggest", "Confirm", "Apply", "Approve"] },
+          "description": "What the machine is permitted to do. Suggest changes nothing; Approve acts on the human's behalf."
+        },
+        "accountability": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Attribution", "Rationale disclosure", "Confidence signalling", "Approval", "Audit trail", "Reversibility"] },
+          "description": "Obligations this component must satisfy when rendered. Checked by VALIDATE_AI_ACCOUNTABILITY."
+        },
+        "humanGestureRequired": { "type": "boolean", "description": "True when no state may change without an explicit user action." },
+        "reversible": { "type": "string", "enum": ["always", "conditional", "never", "not-applicable"] }
+      }
+    },
+    "relatedComponents": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "id": { "type": "string" }, "note": { "type": "string" } } }
+    },
+    "gaps": { "type": "array", "items": { "type": "string" }, "description": "Known incompleteness. An agent must honor these rather than assume the gap is filled." },
+    "generatedAt": { "type": "string" },
+    "curated": { "type": "boolean", "description": "True means a human wrote this. The generator must never overwrite it." }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "namespace": { "const": "ai" } } },
+      "then": { "required": ["experienceMetadata"] }
+    }
+  ],
+  "additionalProperties": true
+}

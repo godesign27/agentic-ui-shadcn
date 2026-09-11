@@ -1,0 +1,101 @@
+<title>AIButton — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIButton</h1>
+<p class="lede">Commit to something a machine proposed.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-button</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-button.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Confirm · Apply</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Approval</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>conditional</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>status=&quot;default&quot;</code></td><td>Gradient from --ai-accent to --ai-accent-strong</td></tr>
+<tr><td><strong>Loading</strong></td><td><code>status=&quot;loading&quot;</code></td><td>Spinner, aria-busy, and the button is disabled so a double-click cannot fire twice</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>status=&quot;complete&quot;</code></td><td>Check icon on the active fill</td></tr>
+<tr><td><strong>Error</strong></td><td><code>status=&quot;error&quot;</code></td><td>Destructive fill with an alert icon. Say what failed nearby.</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled</code></td><td>opacity-45, pointer-events-none</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The button. Disabled automatically while status is loading.</td></tr>
+<tr><td><strong>Status icon</strong></td><td>Spinner, check or alert, swapped by status</td></tr>
+<tr><td><strong>Label</strong></td><td>A verb naming the outcome</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-muted))"></div><div class="name">--ai-muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-button.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Accepting, applying or regenerating AI output</li>
+<li>Inside ai:ai-action and ai:ai-message-footer</li>
+<li>Any button whose action originates from a machine suggestion</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Standard product actions — use ui:button</li>
+<li>As a decorative gradient button; the gradient means &quot;AI proposed this&quot;</li>
+<li>Where three or more would appear in one row — see AI_RULE_MAX_THREE_ACTIONS</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter — activate<br />Space — activate</td></tr>
+<tr><th scope="row">Required</th><td>label is required — there is no icon-only form</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>status=&quot;loading&quot; sets aria-busy and disables the button, so the action cannot be double-fired.</li>
+<li>The status icon is aria-hidden; the label must change to carry the meaning (&quot;Applying…&quot;, &quot;Applied&quot;).</li>
+<li>The error state colours the button but does not explain the failure. Render the reason adjacent.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-button.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-button.agent.json"><code>ai-button.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-button.md"><code>ai-button.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

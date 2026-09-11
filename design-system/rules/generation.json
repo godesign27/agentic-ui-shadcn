@@ -1,0 +1,40 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "generationMode": "governance-constrained",
+  "instructions": [
+    "Complete the mandatory read flow in /AGENT_RULES.md before generating any UI",
+    "Resolve every requested component against design-system/components/agent-manifest.index.json",
+    "Read {component}.agent.json before writing markup; read {component}.md before styling",
+    "Use only props, variants and sizes declared in the component's .agent.json",
+    "Use semantic Tailwind tokens only; never a raw color value where a token exists",
+    "Apply the composition rules in /design-system/rules/composition.json",
+    "Reject any request that triggers /design-system/rules/forbidden.json",
+    "Choose the ui:* namespace unless the surface is explicitly AI-generated or agent-driven",
+    "For ai:* components, honor the experienceMetadata accountability obligations in the manifest",
+    "Do not add dependencies or build tooling"
+  ],
+  "outputsExpected": [
+    "React + TypeScript that compiles against the existing tsconfig paths",
+    "A component list naming every id used",
+    "A token compliance note for any styling decision",
+    "An explicit gap note when a requested component is absent from the index"
+  ],
+  "onMissingComponent": {
+    "action": "reject-and-propose",
+    "steps": [
+      "State that the component is not in the closed inventory",
+      "Name the closest indexed alternatives with their ids",
+      "Offer to compose the need from indexed parts",
+      "Never silently substitute or hand-roll the missing component"
+    ]
+  },
+  "onAmbiguousRequest": {
+    "action": "resolve-by-principle",
+    "steps": [
+      "Consult /DESIGN_PRINCIPLES.md before asking the user",
+      "Prefer a full page over a modal when the workflow is multi-step",
+      "Prefer the more accessible of two equivalent options",
+      "State the assumption in the output rather than blocking"
+    ]
+  }
+}

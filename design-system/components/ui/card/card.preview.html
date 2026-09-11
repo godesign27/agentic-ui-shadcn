@@ -1,0 +1,93 @@
+<title>Card — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Card</h1>
+<p class="lede">Group related content into a unit the eye reads as one thing.</p>
+<div class="meta">
+<span class="pill mono">ui:card</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Layout</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><div class="mini-card"><div class="mini-card__head"><div class="mini-card__title">Deployments</div><div class="mini-card__desc">Last 30 days</div></div><div class="mini-card__body" style="font-size:26px;font-weight:600">1,284</div><div class="mini-card__foot"><button class="btn btn--outline btn--sm">View all</button></div></div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>bg-card, border-border, rounded-lg, shadow-sm</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Card
+  CardHeader   <span class="opt">(optional)</span>
+    CardTitle   <span class="opt">(optional)</span>
+    CardDescription   <span class="opt">(optional)</span>
+  CardContent   <span class="opt">(optional)</span>
+  CardFooter   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--card))"></div><div class="name">--card</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>card.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Grouping related information with a clear boundary</li>
+<li>Repeating items in a grid or list</li>
+<li>Sectioning a settings or dashboard page</li>
+<li>Empty states</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Wrapping every element on the page — nesting cards in cards destroys the hierarchy they exist to create</li>
+<li>A single paragraph with no grouping need</li>
+<li>Tabular data — use ui:table</li>
+<li>As a clickable button — put the interactive element inside, or the whole card in a link</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>A Card is a div. It carries no semantics of its own — that is correct and deliberate.</li>
+<li>CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.</li>
+<li>For a card grid, wrap in a ul and each card in an li so the count is announced.</li>
+<li>A whole-card click target needs a real button or link inside — do not attach onClick to the Card div.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/card.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="card.agent.json"><code>card.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="card.md"><code>card.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,29 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "destructive-action",
+  "intent": "Protect users from irreversible actions.",
+  "sourceDocs": ["/ACCESSIBILITY.md", "/DESIGN_PRINCIPLES.md"],
+  "requiredComponents": ["ui:alert-dialog", "ui:button"],
+  "optionalComponents": ["ui:toast"],
+  "sequence": [
+    "User initiates the destructive action from a button with variant=destructive",
+    "AlertDialog opens, focus trapped, naming the specific object and the specific consequence",
+    "AlertDialogAction carries the destructive variant and a verb-specific label — Delete project, not OK",
+    "AlertDialogCancel is present, is the default focus target, and Escape dismisses",
+    "On confirm, a Toast reports the outcome and offers undo when the operation is reversible"
+  ],
+  "requiredRules": [
+    "Name the object being destroyed in the dialog body",
+    "State what cannot be recovered",
+    "Label the confirm button with the verb, never OK or Yes",
+    "Cancel receives initial focus",
+    "Support full keyboard operation and Escape dismissal"
+  ],
+  "forbiddenRules": [
+    "No single-click irreversible deletion",
+    "No tooltip or popover as the only warning surface",
+    "No destructive variant on a non-destructive action",
+    "No AI agent triggering this flow without an explicit human gesture"
+  ],
+  "codeSketch": "<AlertDialog>\n  <AlertDialogTrigger asChild><Button variant=\"destructive\">Delete project</Button></AlertDialogTrigger>\n  <AlertDialogContent>\n    <AlertDialogHeader>\n      <AlertDialogTitle>Delete “Apollo”?</AlertDialogTitle>\n      <AlertDialogDescription>This removes the project and its 42 runs. This cannot be undone.</AlertDialogDescription>\n    </AlertDialogHeader>\n    <AlertDialogFooter>\n      <AlertDialogCancel>Cancel</AlertDialogCancel>\n      <AlertDialogAction className=\"bg-destructive text-destructive-foreground\">Delete project</AlertDialogAction>\n    </AlertDialogFooter>\n  </AlertDialogContent>\n</AlertDialog>"
+}

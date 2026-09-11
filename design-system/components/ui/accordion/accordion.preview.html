@@ -1,0 +1,79 @@
+<title>Accordion — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Accordion</h1>
+<p class="lede">Let a long page stay scannable by collapsing detail the user can open on demand.</p>
+<div class="meta">
+<span class="pill mono">ui:accordion</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Disclosure</span>
+<span class="pill mono">@radix-ui/react-accordion</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/accordion.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Collapsed</strong></td><td><code>Not in value</code></td><td>Content hidden; chevron pointing down</td></tr>
+<tr><td><strong>Expanded</strong></td><td><code>In value</code></td><td>Content animates open; chevron rotates 180°</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus on a trigger</code></td><td>Focus ring on the trigger</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled on an item</code></td><td>opacity-50, not togglable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Accordion
+  AccordionItem
+    AccordionTrigger
+    AccordionContent</pre></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>accordion.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>FAQs</li>
+<li>Long forms broken into optional sections</li>
+<li>Settings groups most users will not open</li>
+<li>Progressive disclosure of secondary detail</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Content most users need — hiding it costs more than the vertical space saves</li>
+<li>Fewer than three sections</li>
+<li>Peer views of one object — use ui:tabs</li>
+<li>Content that must be searchable in-page, since collapsed text is not findable by Ctrl+F</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-accordion</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>region</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — toggle<br />Tab — move between triggers<br />Arrow keys — move between triggers</td></tr>
+<tr><th scope="row">Required</th><td>type is required: &quot;single&quot; or &quot;multiple&quot;</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix wraps each trigger in an h3 with a button inside, and wires aria-expanded and aria-controls.</li>
+<li>Collapsed content is removed from the DOM, so browser find-in-page will not reach it.</li>
+<li>type=&quot;single&quot; with collapsible={false} means one section is always open — decide which.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/accordion.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="accordion.agent.json"><code>accordion.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="accordion.md"><code>accordion.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

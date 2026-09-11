@@ -1,0 +1,95 @@
+<title>Dialog — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Dialog</h1>
+<p class="lede">Interrupt the user for a self-contained task that must finish before anything else continues.</p>
+<div class="meta">
+<span class="pill mono">ui:dialog</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-dialog</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/dialog.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>open={false}</code></td><td>Nothing rendered</td></tr>
+<tr><td><strong>Open</strong></td><td><code>open={true}</code></td><td>Overlay fades in, content zooms in, focus moves inside and is trapped</td></tr>
+<tr><td><strong>Closing</strong></td><td><code>Escape, overlay click, or close button</code></td><td>Animates out; focus returns to the trigger</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Dialog
+  DialogTrigger   <span class="opt">(optional)</span>
+  DialogPortal   <span class="opt">(optional)</span>
+    DialogOverlay   <span class="opt">(optional)</span>
+  DialogContent
+    DialogHeader   <span class="opt">(optional)</span>
+      DialogTitle
+      DialogDescription   <span class="opt">(optional)</span>
+    DialogFooter   <span class="opt">(optional)</span>
+    DialogClose   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>dialog.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A short focused task — rename, invite, quick edit</li>
+<li>Content that genuinely requires the rest of the page to wait</li>
+<li>A form of one to four fields</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A multi-step workflow — that belongs on a page route. This is the most frequent misuse.</li>
+<li>A destructive confirmation — use ui:alert-dialog, which has the right semantics and focus default</li>
+<li>Contextual detail beside a trigger — use ui:popover or ui:hover-card</li>
+<li>An edge panel with room for a lot of content — use ui:sheet</li>
+<li>Anything the user might want to reach by URL</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-dialog</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>dialog</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Escape — close<br />Tab — cycle within the trap<br />Shift+Tab — reverse</td></tr>
+<tr><th scope="row">Required</th><td>DialogTitle is mandatory — it supplies the accessible name</td></tr>
+<tr><th scope="row">Focus</th><td>Focus moves into the content on open and returns to the trigger on close. Radix handles both.</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>DialogTitle is not optional. If the design has no visible title, render one inside a VisuallyHidden wrapper.</li>
+<li>Do not nest a Dialog inside a Dialog. Replace the content instead.</li>
+<li>Page scroll is locked while open. Long content needs its own scroll container.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/dialog.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="dialog.agent.json"><code>dialog.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="dialog.md"><code>dialog.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

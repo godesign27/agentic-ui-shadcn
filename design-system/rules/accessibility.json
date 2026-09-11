@@ -1,0 +1,33 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "standard": "WCAG 2.1 Level AA minimum",
+  "source": "/ACCESSIBILITY.md",
+  "requirements": [
+    "Meet WCAG 2.1 AA perceivable, operable, understandable and robust criteria",
+    "Prefer semantic HTML and Radix primitives over div-only controls",
+    "Maintain logical focus order and a visible focus-visible ring (the shadcn default is ring-2 ring-ring ring-offset-2)",
+    "Associate a label with every form control; group related fields with fieldset/legend",
+    "Dialogs, sheets and drawers must trap focus, close on Escape, and return focus to the trigger",
+    "Announce dynamic updates with an appropriate aria-live politeness level",
+    "Use table semantics with caption, th and scope for data tables",
+    "Provide a skip link when navigation is repetitive",
+    "Respect prefers-reduced-motion for every transition and animation"
+  ],
+  "contrastMinimums": {
+    "bodyText": "4.5:1",
+    "largeText": "3:1",
+    "uiComponentBoundary": "3:1",
+    "focusIndicator": "3:1 against both the component and the adjacent background"
+  },
+  "radixNote": "Radix primitives supply roles, ARIA wiring and focus management. Do not re-implement them by hand or override role attributes on a Radix part.",
+  "aiSurfaces": {
+    "source": "/design-system/rules/ai-interaction.json",
+    "requirements": [
+      "AI-generated regions must be programmatically identifiable, not styled-only",
+      "Streaming or in-progress output must announce start and completion via aria-live=polite",
+      "A loading or thinking indicator must expose accessible status text, never animation alone",
+      "Confidence and risk signals must carry a text label, not color or iconography alone"
+    ]
+  },
+  "agentChecklistRef": "/ACCESSIBILITY.md pre-flight checklist"
+}

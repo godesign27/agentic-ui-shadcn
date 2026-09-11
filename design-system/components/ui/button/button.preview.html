@@ -1,0 +1,102 @@
+<title>Button — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Button</h1>
+<p class="lede">The single most important decision available in a region, and every lesser one alongside it.</p>
+<div class="meta">
+<span class="pill mono">ui:button</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-slot</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><button class="btn btn--default">Save changes</button></div>
+<div class="specimen"><span class="specimen-label">destructive</span><button class="btn btn--destructive">Delete</button></div>
+<div class="specimen"><span class="specimen-label">outline</span><button class="btn btn--outline">Cancel</button></div>
+<div class="specimen"><span class="specimen-label">secondary</span><button class="btn btn--secondary">Export</button></div>
+<div class="specimen"><span class="specimen-label">ghost</span><button class="btn btn--ghost">Dismiss</button></div>
+<div class="specimen"><span class="specimen-label">link</span><button class="btn btn--link">Read the docs</button></div>
+<div class="specimen"><span class="specimen-label">sm</span><button class="btn btn--default btn--sm">Small</button></div>
+<div class="specimen"><span class="specimen-label">lg</span><button class="btn btn--default btn--lg">Large</button></div>
+<div class="specimen"><span class="specimen-label">icon</span><button class="btn btn--outline btn--icon" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+<div class="specimen"><span class="specimen-label">disabled</span><button class="btn btn--default" disabled>Save changes</button></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Full opacity, variant background</td></tr>
+<tr><td><strong>Hover</strong></td><td><code>Pointer over</code></td><td>Background shifts to /90 or /80 opacity depending on variant</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus</code></td><td>ring-2 ring-ring ring-offset-2. Never remove.</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>opacity-50 and pointer-events-none. Still reachable by screen readers, which is correct.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The button element, or any element when asChild is set</td></tr>
+<tr><td><strong>Icon</strong></td><td>Optional leading or trailing SVG. Sized automatically to 16px and made non-interactive by the base class</td></tr>
+<tr><td><strong>Label</strong></td><td>The action text. A verb phrase, not a noun</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--secondary))"></div><div class="name">--secondary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>button.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Any action the user takes — submit, save, open, confirm, cancel</li>
+<li>As a link that must look like a button, via asChild with an anchor inside</li>
+<li>Icon-only actions, using size=&quot;icon&quot; plus an accessible name</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Navigation between pages that should read as a link — use a plain anchor or variant=&quot;link&quot;</li>
+<li>Toggling a binary setting — use ui:switch or ui:toggle so the state is announced</li>
+<li>One choice among several — use ui:radio-group or ui:tabs</li>
+<li>A destructive action on its own — pair variant=&quot;destructive&quot; with ui:alert-dialog</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter — activate<br />Space — activate</td></tr>
+<tr><th scope="row">Required</th><td>aria-label or visible text content<br />aria-label required when size=&quot;icon&quot;</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Native button element gives keyboard and screen-reader behavior for free.</li>
+<li>disabled removes the element from the tab order. If the user needs to know why it is disabled, use aria-disabled and handle the click instead.</li>
+<li>When asChild renders an anchor, the element becomes a link: Space no longer activates it and it gains link semantics. That is usually what you want for navigation, and wrong for actions.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/button.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="button.agent.json"><code>button.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="button.md"><code>button.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,84 @@
+<title>Avatar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Avatar</h1>
+<p class="lede">Identify a person or entity at a glance, and degrade gracefully when the image is missing.</p>
+<div class="meta">
+<span class="pill mono">ui:avatar</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Data Display</span>
+<span class="pill mono">@radix-ui/react-avatar</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">fallback</span><span class="avt">AL</span></div>
+<div class="specimen"><span class="specimen-label">group</span><span style="display:inline-flex"><span class="avt" style="border:2px solid hsl(var(--background))">AL</span><span class="avt" style="border:2px solid hsl(var(--background));margin-left:-12px">GH</span><span class="avt" style="border:2px solid hsl(var(--background));margin-left:-12px">+3</span></span></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Loading</strong></td><td><code>Image in flight</code></td><td>Fallback shown</td></tr>
+<tr><td><strong>Loaded</strong></td><td><code>Image resolved</code></td><td>Image replaces the fallback</td></tr>
+<tr><td><strong>Error</strong></td><td><code>Image failed</code></td><td>Fallback stays</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Avatar
+  AvatarImage   <span class="opt">(optional)</span>
+  AvatarFallback</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>avatar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>User identity in a header, comment or list</li>
+<li>Attribution on content</li>
+<li>Stacked group membership</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Decorative imagery — use a plain img</li>
+<li>Logos that must not be cropped to a circle</li>
+<li>Any image where detail matters — this is 40px and circular</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-avatar</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>img</code></td></tr>
+<tr><th scope="row">Required</th><td>alt on AvatarImage</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Always give AvatarImage an alt — the person's name, not &quot;avatar&quot; or &quot;profile picture&quot;.</li>
+<li>When the name is already visible next to the avatar, set alt=&quot;&quot; so it is not announced twice.</li>
+<li>Initials in a fallback are announced letter by letter by some screen readers. With alt set correctly on the image this rarely matters.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/avatar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="avatar.agent.json"><code>avatar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="avatar.md"><code>avatar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

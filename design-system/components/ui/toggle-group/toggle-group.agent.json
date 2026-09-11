@@ -1,0 +1,131 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toggle-group",
+  "name": "ToggleGroup",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix ToggleGroup in single or multiple mode. Items inherit variant and size from the group through context.",
+  "intent": "A set of related toggles that share a value and a visual group.",
+  "authority": {
+    "source": "src/components/ui/toggle-group.tsx",
+    "mirrorSpec": "design-system/components/ui/toggle-group/toggle-group.md",
+    "contract": "design-system/components/ui/toggle-group/toggle-group.agent.json",
+    "prompt": "design-system/components/ui/toggle-group/agentic-prompt.md",
+    "preview": "design-system/components/ui/toggle-group/toggle-group.preview.html",
+    "upstream": "shadcn/ui registry: toggle-group",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:toggle"
+    ],
+    "external": [
+      "@radix-ui/react-toggle-group",
+      "class-variance-authority"
+    ],
+    "radixPrimitive": "@radix-ui/react-toggle-group"
+  },
+  "exports": [
+    "ToggleGroup",
+    "ToggleGroupItem"
+  ],
+  "compound": {
+    "root": "ToggleGroup",
+    "parts": [
+      {
+        "name": "ToggleGroupItem",
+        "parent": "ToggleGroup",
+        "required": true,
+        "note": "Inherits variant and size from the group. Setting them per item is ignored unless the group omits them."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Unselected",
+    "Selected",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\"",
+    "exports": [
+      "ToggleGroup",
+      "ToggleGroupItem"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Arrow keys — move between items",
+      "Tab — enter and leave as one stop",
+      "Space or Enter — toggle"
+    ],
+    "requiredAttributes": [
+      "aria-label on the group",
+      "aria-label per icon-only item"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Roving focus: the group is one tab stop.",
+      "type=\"single\" allows deselection unless you handle the empty value — decide whether empty is valid."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "ToggleGroupItem"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Unlabelled group",
+      "Icon-only items with no accessible name",
+      "Using ToggleGroup for page navigation"
+    ],
+    "agentRules": [
+      "Label the group.",
+      "Set variant and size on the group, not per item.",
+      "Icon-only items need aria-label.",
+      "Decide whether type=\"single\" may be emptied."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toggle",
+      "note": "A single independent toggle"
+    },
+    {
+      "id": "ui:radio-group",
+      "note": "Form-field exclusive choice"
+    },
+    {
+      "id": "ui:tabs",
+      "note": "View switching"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

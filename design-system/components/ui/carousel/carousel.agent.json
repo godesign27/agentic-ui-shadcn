@@ -1,0 +1,156 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:carousel",
+  "name": "Carousel",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Data Display",
+  "description": "An Embla wrapper with previous and next controls and keyboard arrow support.",
+  "intent": "Move horizontally through a set of items when vertical space genuinely will not stretch.",
+  "authority": {
+    "source": "src/components/ui/carousel.tsx",
+    "mirrorSpec": "design-system/components/ui/carousel/carousel.md",
+    "contract": "design-system/components/ui/carousel/carousel.agent.json",
+    "prompt": "design-system/components/ui/carousel/agentic-prompt.md",
+    "preview": "design-system/components/ui/carousel/carousel.preview.html",
+    "upstream": "shadcn/ui registry: carousel",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:button"
+    ],
+    "external": [
+      "embla-carousel-react",
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "Carousel",
+    "CarouselApi",
+    "CarouselContent",
+    "CarouselItem",
+    "CarouselNext",
+    "CarouselPrevious"
+  ],
+  "compound": {
+    "root": "Carousel",
+    "parts": [
+      {
+        "name": "CarouselContent",
+        "parent": "Carousel",
+        "required": true,
+        "note": "The track"
+      },
+      {
+        "name": "CarouselItem",
+        "parent": "CarouselContent",
+        "required": true,
+        "note": "One slide. Set basis-* to show several at once."
+      },
+      {
+        "name": "CarouselPrevious",
+        "parent": "Carousel",
+        "required": false,
+        "note": "Auto-disables at the start unless looping"
+      },
+      {
+        "name": "CarouselNext",
+        "parent": "Carousel",
+        "required": false,
+        "note": "Auto-disables at the end unless looping"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "At start",
+    "Mid-scroll",
+    "At end"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Carousel, CarouselApi, CarouselContent, … } from \"@/components/ui/carousel\"",
+    "exports": [
+      "Carousel",
+      "CarouselApi",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselNext",
+      "CarouselPrevious"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "region with roledescription=\"carousel\"",
+    "keyboard": [
+      "ArrowLeft — previous",
+      "ArrowRight — next",
+      "Tab — reach the controls"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the region",
+      "aria-roledescription=\"slide\" on each item"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "The component sets role=\"region\" and aria-roledescription=\"carousel\" on the root and \"slide\" on items.",
+      "Arrow keys work when the carousel region has focus.",
+      "Content outside the current view is still in the DOM and reachable by screen readers — which is good, and means visual position is not the whole story.",
+      "Never autoplay without a pause control. This component does not autoplay by default; keep it that way."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselPrevious",
+      "CarouselNext"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Unjustified carousel where a grid would work",
+      "Autoplay with no pause",
+      "Primary CTAs on later slides"
+    ],
+    "agentRules": [
+      "DESIGN_PRINCIPLES.md requires a justification for using a carousel. A grid is usually better.",
+      "Never put a primary call to action past the first slide.",
+      "No autoplay without a visible pause control.",
+      "Keep the controls visible — hover-revealed arrows are undiscoverable."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:scroll-area",
+      "note": "A simpler horizontal scroll region"
+    },
+    {
+      "id": "ui:tabs",
+      "note": "When the sections are named"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

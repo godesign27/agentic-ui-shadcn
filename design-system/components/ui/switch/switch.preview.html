@@ -1,0 +1,90 @@
+<title>Switch — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Switch</h1>
+<p class="lede">A setting that takes effect the moment it is flipped.</p>
+<div class="meta">
+<span class="pill mono">ui:switch</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-switch</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">off</span><span class="sw"></span></div>
+<div class="specimen"><span class="specimen-label">on</span><span class="sw on"></span></div>
+<div class="specimen"><span class="specimen-label">disabled</span><span class="sw" style="opacity:.5"></span></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Off</strong></td><td><code>checked={false}</code></td><td>bg-input, thumb at rest</td></tr>
+<tr><td><strong>On</strong></td><td><code>checked={true}</code></td><td>bg-primary, thumb translated</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>opacity-50, cursor-not-allowed</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The track</td></tr>
+<tr><td><strong>Thumb</strong></td><td>The sliding knob, translated on state change</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>switch.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Settings that apply instantly with no save step</li>
+<li>Enabling or disabling a feature</li>
+<li>Anything a user would describe as &quot;turning on&quot;</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Inside a form that requires submission — use ui:checkbox, because a switch promises immediacy it cannot keep</li>
+<li>Choosing between two named alternatives — use ui:toggle-group or ui:radio-group</li>
+<li>Accepting terms — that is a ui:checkbox</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-switch</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>switch</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Space — toggle<br />Enter — toggle</td></tr>
+<tr><th scope="row">Required</th><td>An associated label</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix gives role=&quot;switch&quot; and aria-checked. Screen readers announce on and off rather than checked and unchecked.</li>
+<li>The label must name the setting, not the state. &quot;Email notifications&quot;, never &quot;On&quot;.</li>
+<li>Position change alone does not meet the non-colour requirement for all users — keep the label adjacent and visible.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/switch.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="switch.agent.json"><code>switch.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="switch.md"><code>switch.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

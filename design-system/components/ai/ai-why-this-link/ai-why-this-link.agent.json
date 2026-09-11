@@ -1,0 +1,123 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-why-this-link",
+  "name": "AIWhyThisLink",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "AI",
+  "description": "The rationale disclosure entry point. Five variants — why this, view rationale, view sources, view assumptions, explain risk — each with its own icon and default label.",
+  "intent": "Make the reasoning reachable in one interaction.",
+  "authority": {
+    "source": "src/components/ai/ai-why-this-link.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-why-this-link/ai-why-this-link.md",
+    "contract": "design-system/components/ai/ai-why-this-link/ai-why-this-link.agent.json",
+    "prompt": "design-system/components/ai/ai-why-this-link/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-why-this-link/ai-why-this-link.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "AIWhyThisLink"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Focus-visible"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIWhyThisLink } from \"@/components/ai/ai-why-this-link\"",
+    "exports": [
+      "AIWhyThisLink"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent"
+    ],
+    "utilities": [
+      "ring-ai-accent",
+      "text-ai-accent"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — activate"
+    ],
+    "requiredAttributes": [
+      "A label — the default is used when none is given"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Renders a button, not a link: it discloses in place rather than navigating.",
+      "If it opens a panel, that panel must receive focus — otherwise a keyboard user activates it and nothing appears to happen."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Rendering with no rationale behind it",
+      "Opening a panel without moving focus",
+      "Use as a general help link"
+    ],
+    "agentRules": [
+      "Only render it when real rationale exists behind onClick.",
+      "Move focus into whatever it opens.",
+      "Its presence is what satisfies the Rationale disclosure obligation — do not claim that obligation without it.",
+      "Place it before the decision, not after."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Rationale disclosure",
+      "Attribution"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-confidence-risk-badge",
+      "note": "The number it explains"
+    },
+    {
+      "id": "ai:ai-text-link",
+      "note": "General inline AI links"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

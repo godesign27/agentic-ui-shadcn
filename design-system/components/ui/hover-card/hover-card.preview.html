@@ -1,0 +1,81 @@
+<title>HoverCard — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>HoverCard</h1>
+<p class="lede">A rich preview of what a link points to, without making the user go there.</p>
+<div class="meta">
+<span class="pill mono">ui:hover-card</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-hover-card</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/hover-card.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Hidden</strong></td><td><code>Rest</code></td><td>Nothing rendered</td></tr>
+<tr><td><strong>Visible</strong></td><td><code>Hover after openDelay</code></td><td>Fades in; stays while the pointer is over trigger or content</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">HoverCard
+  HoverCardTrigger
+  HoverCardContent</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>hover-card.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>User or entity previews on a mention</li>
+<li>Link previews with a thumbnail and summary</li>
+<li>Supplementary context that is genuinely optional</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Anything required to complete the task — touch users will never see it</li>
+<li>Short text — use ui:tooltip</li>
+<li>Content the user must interact with — use ui:popover</li>
+<li>On a primarily mobile surface</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-hover-card</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>dialog</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Focus on the trigger opens it<br />Escape closes</td></tr>
+<tr><th scope="row">Required</th><td>A meaningful accessible name on the trigger</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Hover-only by design. Always duplicate anything important somewhere reachable.</li>
+<li>Do not place primary actions inside — they are unreachable on touch.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/hover-card.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="hover-card.agent.json"><code>hover-card.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="hover-card.md"><code>hover-card.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

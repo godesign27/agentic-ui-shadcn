@@ -1,0 +1,88 @@
+<title>Checkbox — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Checkbox</h1>
+<p class="lede">An independent yes-or-no choice, or one of several non-exclusive options.</p>
+<div class="meta">
+<span class="pill mono">ui:checkbox</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-checkbox</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">unchecked</span><span class="cbx"></span></div>
+<div class="specimen"><span class="specimen-label">checked</span><span class="cbx on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+<div class="specimen"><span class="specimen-label">indeterminate</span><span class="cbx on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg></span></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Unchecked</strong></td><td><code>checked={false}</code></td><td>border-primary, transparent fill</td></tr>
+<tr><td><strong>Checked</strong></td><td><code>checked={true}</code></td><td>bg-primary with the check glyph</td></tr>
+<tr><td><strong>Indeterminate</strong></td><td><code>checked=&quot;indeterminate&quot;</code></td><td>For a parent whose children are partly selected. Announced as mixed.</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>cursor-not-allowed, opacity-50</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The interactive box</td></tr>
+<tr><td><strong>Indicator</strong></td><td>The check or dash glyph, rendered only when checked or indeterminate</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>checkbox.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Opting in or out of one thing</li>
+<li>Selecting several items from a list</li>
+<li>A parent checkbox summarising children, via the indeterminate state</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Exactly one choice from several — use ui:radio-group</li>
+<li>A setting that applies immediately — use ui:switch, which reads as a state rather than a selection</li>
+<li>Selecting from many options — use ui:select or ui:command</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-checkbox</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>checkbox</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Space — toggle<br />Tab — move focus</td></tr>
+<tr><th scope="row">Required</th><td>An associated label, or aria-label</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix supplies role, aria-checked and the mixed state. Do not add them by hand.</li>
+<li>Group related checkboxes in a fieldset with a legend.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/checkbox.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="checkbox.agent.json"><code>checkbox.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="checkbox.md"><code>checkbox.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>
