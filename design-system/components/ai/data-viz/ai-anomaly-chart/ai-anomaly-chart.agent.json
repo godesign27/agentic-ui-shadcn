@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAnomalyChart",
+  "repoModule": "aIAnomalyChart",
+  "tier": "data-viz",
+  "status": "experimental",
+  "description": "AI Anomaly Chart — stub pending Make sync (Draft).",
+  "intent": "Placeholder for AI Anomaly Chart. Fill from Figma Make ZSD-AI-Design-System-V1.2.",
+  "authority": {
+    "mirrorSpec": "components/ai/data-viz/ai-anomaly-chart/ai-anomaly-chart.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "aIAnomalyChart",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "note": "Stub created by scripts/reorganize-ai-library.mjs — replace with full spec."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [
+    "default"
+  ],
+  "slots": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "AIAnomalyChart"
+    ]
+  },
+  "accessibility": {
+    "notes": []
+  },
+  "rules": [
+    "Do not invent API — sync from Make registry before shipping.",
+    "Use AI tokens only; no bare semantic hex."
+  ]
+}

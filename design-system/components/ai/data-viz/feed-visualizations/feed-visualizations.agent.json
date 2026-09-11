@@ -1,0 +1,13 @@
+{
+  "id": "feed-visualizations",
+  "name": "Feed Visualizations",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Feed Visualizations — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "FeedVisualizations"
+    ]
+  }
+}

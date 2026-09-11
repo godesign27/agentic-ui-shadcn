@@ -1,0 +1,130 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMetricTile",
+  "repoModule": "aiMetricTile",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIMetricTile is the canonical surface for surfacing a single metric reading \u2014 confidence, trend, threshold, target \u2014 inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow (\"CONFIDENCE\", \"TREND\", \"HALT THRESHOLD\") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone (\"High\" in brand blue, \"Medium\" in ZS orange, \"Low\" in ZS orange deep, neutral in helper grey).",
+  "intent": "Compact raised tile for a single metric reading \u2014 eyebrow + value + optional qualifier.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-metric-tile/ai-metric-tile.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiMetricTile",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-metric-tile/AIMetricTile.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-metric-tile/AIMetricTile.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Uppercase eyebrow label."
+    },
+    {
+      "name": "value",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Metric value body."
+    },
+    {
+      "name": "qualifier",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Small trailing chip text."
+    },
+    {
+      "name": "qualifierTone",
+      "values": [
+        "`\"positive\" \\"
+      ],
+      "default": "\"attention\" \\",
+      "hint": "\"critical\" \\"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    },
+    {
+      "name": "accent",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Adds a 3px right border in the qualifier tone."
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Override the auto-derived aria-label."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMetricTile"
+    ],
+    "import": "import { AIMetricTile } from './AIMetricTile'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Quantify \u00b7 Evaluate \u00b7 Summarize",
+    "accountability": "Accountability \u00b7 Trust \u00b7 Transparency"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

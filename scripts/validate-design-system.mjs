@@ -32,6 +32,13 @@ const NAMESPACES = [
   { ns: 'layout', dirName: 'layout' },
 ]
 
+// Imported zds-ai architecture folders live beside the governed kit folders.
+// They are not four-file shadcn contracts; skip them when walking the AI namespace.
+const AI_ARCHITECTURE_DIRS = new Set([
+  'foundations', 'atomic', 'molecules', 'organisms', 'patterns',
+  'pages', 'data-viz', 'tokens', '_support', 'preview',
+])
+
 const violations = []
 const fail = (ruleId, location, message, suggestedFix, severity = 'high') =>
   violations.push({ ruleId, severity, message, location, suggestedFix })
@@ -43,9 +50,11 @@ for (const { ns, dirName } of NAMESPACES) {
   if (!(await exists(nsDir))) continue
 
   // Only directories are component folders. Files like llms.txt live alongside them.
+  // AI architecture tiers are libraries, not governed kit folders.
   const entries = (await readdir(nsDir, { withFileTypes: true }))
     .filter(d => d.isDirectory())
     .map(d => d.name)
+    .filter(name => !(ns === 'ai' && AI_ARCHITECTURE_DIRS.has(name)))
     .sort()
 
   for (const name of entries) {

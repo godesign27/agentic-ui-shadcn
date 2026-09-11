@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAssistedSideDrawer",
+  "repoModule": "aiAssistedSideDrawer",
+  "tier": "pages",
+  "status": "active",
+  "description": "A page-level pattern that layers an AI assistant onto any content workspace. The interior content is always the AIAgentDrawer group (header, conversation thread, quick suggestion chips, input), and the pattern ships three companion variants that govern how that drawer is surfaced.",
+  "intent": "Contextual AI assistant panel that augments the primary workspace without replacing it. Surfaces suggestions, summaries, and explanations inline.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAssistedSideDrawer",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-assisted-side-drawer/AIAssistedSideDrawer.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/pages/ai-assisted-side-drawer/AIAssistedSideDrawer.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"focused-dialog\" \\",
+      "hint": "\"hanging-panel\"`"
+    },
+    {
+      "name": "chat",
+      "values": [
+        "`ChatState`"
+      ],
+      "default": "`required`",
+      "hint": "Lifted chat state shared across variants \u2014 switching variants preserves the conversation."
+    },
+    {
+      "name": "initialWidth",
+      "values": [
+        "`number`"
+      ],
+      "default": "`380`",
+      "hint": "Default drawer width in px. Honored by \"default\" and \"focused-dialog\" (docked shell only)."
+    },
+    {
+      "name": "onDock",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "\"hanging-panel\" only: called when the dock icon is clicked \u2014 caller flips variant to \"default\"."
+    },
+    {
+      "name": "onUndock",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Docked variants: called when the user lifts the drawer off the edge \u2014 caller flips variant to \"hanging-panel\"."
+    },
+    {
+      "name": "onClose",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Hides the panel without clearing conversation state. Closing the hanging panel resets it to the floating layout so the next open is always hanging."
+    },
+    {
+      "name": "aria-label (dock btn)",
+      "values": [
+        "`\"Dock as side drawer\"`"
+      ],
+      "default": "`required`",
+      "hint": "Accessible label on the RiSideBarLine dock icon button (hanging-panel variant)."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAssistedSideDrawer"
+    ],
+    "import": "import { AIAssistedSideDrawer } from './AIAssistedSideDrawer'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": "Suggest \u00b7 Explain \u00b7 Guide \u00b7 Summarize \u00b7 Ask \u00b7 Recommend",
+    "accountability": "Sources \u00b7 Rationale \u00b7 Assumptions \u00b7 Feedback \u00b7 User control \u00b7 Docking state \u00b7 Context awareness"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

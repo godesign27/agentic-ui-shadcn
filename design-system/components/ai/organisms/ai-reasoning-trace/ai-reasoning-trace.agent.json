@@ -1,0 +1,234 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIReasoningTrace",
+  "repoModule": "aiReasoningTrace",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AI Process Trace is the step-level execution transparency component for the ZAIDYN AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output \u2014 not why the output makes sense (that is AI Rationale).",
+  "intent": "Governed process telemetry, not private reasoning. Shows what the AI system did \u2014 step by step \u2014 so users, admins, and governance reviewers can inspect execution without seeing internal deliberation.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiReasoningTrace",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-reasoning-trace/AIReasoningTrace.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-reasoning-trace/AIReasoningTrace.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI Process Trace\"`",
+      "hint": "Display title in the header row"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`TraceOverallStatus`"
+      ],
+      "default": "`required`",
+      "hint": "running \\"
+    },
+    {
+      "name": "steps",
+      "values": [
+        "`TraceStep[]`"
+      ],
+      "default": "`required`",
+      "hint": "Ordered array of trace step objects"
+    },
+    {
+      "name": "defaultExpanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Start with the trace body visible"
+    },
+    {
+      "name": "expandedStepIds",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`[]`",
+      "hint": "IDs of steps that start pre-expanded"
+    },
+    {
+      "name": "allowExpandAll",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show Expand all / Collapse all controls"
+    },
+    {
+      "name": "allowCopy",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show Copy trace action in footer"
+    },
+    {
+      "name": "showDurations",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show per-step timing strings"
+    },
+    {
+      "name": "showAuditLink",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show View audit trail link in footer"
+    },
+    {
+      "name": "showRationaleLink",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show View rationale link in footer"
+    },
+    {
+      "name": "showSourcesLink",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show View sources link in footer"
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`TraceMode`"
+      ],
+      "default": "`\"technical\"`",
+      "hint": "business \\"
+    },
+    {
+      "name": "compact",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Reduce row height and padding \u2014 for embedded contexts"
+    },
+    {
+      "name": "onToggle",
+      "values": [
+        "`(expanded: boolean) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the trace header is toggled"
+    },
+    {
+      "name": "onToggleStep",
+      "values": [
+        "`(id, expanded) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when a step row is expanded or collapsed"
+    },
+    {
+      "name": "onCopyTrace",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called after clipboard copy"
+    },
+    {
+      "name": "onViewAuditTrail",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when View audit trail is clicked"
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when View rationale is clicked"
+    },
+    {
+      "name": "onRetryStep",
+      "values": [
+        "`(id: string) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Retry is clicked on a failed step"
+    },
+    {
+      "name": "onEscalateStep",
+      "values": [
+        "`(id: string) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Escalate is clicked on a blocked step"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIReasoningTrace"
+    ],
+    "import": "import { AIReasoningTrace } from './AIReasoningTrace'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Plan \u00b7 Route \u00b7 Retrieve \u00b7 Validate \u00b7 Execute \u00b7 Monitor \u00b7 Handoff \u00b7 Finalize \u00b7 Escalate",
+    "accountability": "Status \u00b7 Agent role \u00b7 Tool or service used \u00b7 Source retrieval summary \u00b7 Permissions validation \u00b7 Timing or latency \u00b7 Owner \u00b7 Audit trail \u00b7 Error or blocked reason \u00b7 Completion state"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

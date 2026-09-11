@@ -1,0 +1,39 @@
+{
+  "category": "motion",
+  "version": "2.0",
+  "lastUpdated": "2026-06-22",
+  "source": "components/ai/tokens/ai-tokens.ts",
+  "mirrorSpec": "components/ai/tokens/motion.md",
+  "hardRules": [
+    "Use AI.motion.icon.* constants — never hand-tune duration or easing",
+    "Gate all animations behind @media (prefers-reduced-motion: no-preference)",
+    "Default is no motion — only fire for loading, handoff, completion, alert",
+    "Respect prefers-reduced-motion: reduce with animation: none"
+  ],
+  "iconMotion": {
+    "AI.motion.icon.pulse": { "duration": "1200ms", "easing": "ease-in-out", "when": "Waiting / thinking emphasis" },
+    "AI.motion.icon.spin": { "duration": "900ms", "easing": "linear", "when": "Loading spinner" },
+    "AI.motion.icon.shimmer": { "duration": "1400ms", "easing": "ease-in-out", "when": "Shimmer highlight on active surfaces" },
+    "AI.motion.icon.nudge": { "duration": "220ms", "easing": "ease-out", "when": "Micro nudge on hover / focus" },
+    "AI.motion.icon.handoff": { "duration": "600ms", "easing": "ease-in-out", "when": "Agent handoff transition" },
+    "AI.motion.icon.completion": { "duration": "280ms", "easing": "ease-out", "when": "Task complete settle" },
+    "AI.motion.icon.alertRing": { "duration": "1000ms", "easing": "ease-out", "when": "Alert ring expand" }
+  },
+  "keyframes": {
+    "ai-spin": { "duration": "0.9s", "easing": "linear", "alignsWith": "AI.motion.icon.spin" },
+    "ai-in": { "duration": "0.2s", "easing": "ease", "usage": "Message entry" },
+    "ai-shimmer": { "duration": "1400ms", "easing": "ease-in-out", "alignsWith": "AI.motion.icon.shimmer" },
+    "ai-indeterminate": { "duration": "1500ms", "easing": "ease-in-out", "usage": "Progress bar sliding fill" },
+    "ai-progress-settle": { "duration": "280ms", "easing": "ease-out", "alignsWith": "AI.motion.icon.completion" },
+    "ai-queue-spin": { "duration": "0.9s", "easing": "linear", "alignsWith": "AI.motion.icon.spin" }
+  },
+  "transitions": {
+    "backgroundCrossfade": { "property": "opacity", "duration": "0.7s", "easing": "ease" },
+    "inputCardShadow": { "property": "box-shadow", "duration": "0.25s", "easing": "ease" },
+    "inputCardBorder": { "property": "border-color", "duration": "0.25s", "easing": "ease" },
+    "chipHover": { "property": "all", "duration": "0.18s", "easing": "ease" },
+    "sendButton": { "property": "all", "duration": "0.18s", "easing": "ease" },
+    "segmentedControlTab": { "property": "all", "duration": "0.15s", "easing": "ease" }
+  },
+  "import": "import { AI } from './ai-tokens'"
+}

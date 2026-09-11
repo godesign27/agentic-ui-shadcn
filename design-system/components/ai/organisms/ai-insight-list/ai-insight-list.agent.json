@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIInsightList",
+  "repoModule": "aiInsightList",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIInsightList is the canonical way to present multiple AI-generated findings together inside a larger surface \u2014 an analysis card, a response bubble, a side drawer, or a generated dashboard. Each insight carries a severity (positive / neutral / warning / critical / info / needsReview) and renders with a tone-colored status glyph that has an accessible label so colour isn't the sole signal. Optional metadata per item: source chip, freshness, confidence pill, action link.",
+  "intent": "A semantic list of AI findings \u2014 positive / risk / warning / observation / review-needed \u2014 with optional source, freshness, confidence, and per-item action.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-insight-list/ai-insight-list.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiInsightList",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-insight-list/AIInsightList.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-insight-list/AIInsightList.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional uppercase eyebrow above the list."
+    },
+    {
+      "name": "items",
+      "values": [
+        "`AIInsightItem[]`"
+      ],
+      "default": "`required`",
+      "hint": "Array of insight items \u2014 each with text, severity, optional source/freshness/confidence/action."
+    },
+    {
+      "name": "density",
+      "values": [
+        "`\"compact\" \\"
+      ],
+      "default": "\"comfortable\" \\",
+      "hint": "\"spacious\"`"
+    },
+    {
+      "name": "maxVisible",
+      "values": [
+        "`number`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Cap visible items; show \"N more\" button to reveal the rest."
+    },
+    {
+      "name": "showSources",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render `source` + `freshness` chips per item when provided."
+    },
+    {
+      "name": "showActions",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render `action` link per item when provided."
+    },
+    {
+      "name": "onItemAction",
+      "values": [
+        "`(item: AIInsightItem) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Callback fired when any item's action is clicked."
+    },
+    {
+      "name": "onShowMore",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Callback fired when \"Show more\" is clicked."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIInsightList"
+    ],
+    "import": "import { AIInsightList } from './AIInsightList'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Analyze \u00b7 Summarize \u00b7 Detect \u00b7 Explain",
+    "accountability": "Sources \u00b7 Confidence \u00b7 Risk \u00b7 Data freshness \u00b7 Human review"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

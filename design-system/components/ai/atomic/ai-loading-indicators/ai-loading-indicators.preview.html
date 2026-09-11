@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Loading Indicators — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes ai-spin { to { transform: rotate(360deg); } }
+    @keyframes ai-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes ai-pulse-text { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-ai-loader] { animation: none !important; }
+    }
+
+    :root {
+      --ai-loading-pill-bg: rgba(245, 246, 255, 0.5);
+      --ai-loading-card-bg: rgba(230, 233, 255, 0.5);
+      --ai-card-border: #DEDCDE;
+      --ai-neutral-icon: #5b5864;
+      --ai-neutral-text: #1A1628;
+      --ai-neutral-helper: #6B6575;
+      --ai-btn-disabled-text: #87848D;
+      --ai-confidence-track: #F4F3F3;
+      --ai-track-bg: #DEDCDE;
+      --ai-brand: #5A6DFF;
+      --ai-indicator-track: #DEDCDE;
+      --ai-radius-sm: 12px;
+      --ai-radius-md: 16px;
+    }
+
+    /* Surface theme tokens — pill bg, card bg, border */
+    /* BRAND Tan: border = COMPANION[70] #9A7560 */
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .demo-stack { display: flex; flex-direction: column; gap: 28px; max-width: 520px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 10px; display: block;
+    }
+    .tan-surface {
+      background: #F6F2EB; border-radius: 8px; padding: 20px;
+    }
+    .chat-thread { max-width: 520px; display: flex; flex-direction: column; gap: 16px; }
+    .chat-user {
+      align-self: flex-end; max-width: 85%; padding: 12px 14px; border-radius: 12px;
+      background: var(--neutral-surface-muted); font-size: 14px; line-height: 1.5;
+    }
+    .chat-agent { align-self: flex-start; max-width: 100%; width: 100%; }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    [role="button"]:focus { outline: none; }
+    [role="button"]:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--ai-brand); outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Loading Indicators</h1>
+    <p class="subtitle">
+      Three loading patterns for AI response stages — working pill, thinking steps, and getting-info fetch.
+      Ported from canonical <code>AILoadingIndicators.tsx</code>.
+    </p>
+
+    <section>
+      <h2>Response lifecycle</h2>
+      <p class="section-desc">Indicators appear sequentially in a chat thread. Steps advance automatically in this demo.</p>
+      <div class="demo-surface">
+        <div class="chat-thread">
+          <div class="chat-user">What drove the Q1 territory misalignment in the Northeast?</div>
+          <div class="chat-agent" id="lifecycle-demo"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>All variants</h2>
+      <p class="section-desc">Default (brand tint), tan (companion surface), gray, and white surface variants.</p>
+      <div class="demo-surface">
+        <div class="demo-stack" id="variant-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Working</strong> — Compact pill with pulsing label and orbit spinner for quick requests</li>
+        <li><strong>Thinking</strong> — Collapsible card with reasoning steps (done / active / pending)</li>
+        <li><strong>Getting info</strong> — Three-step card for data fetch + analysis + synthesis</li>
+        <li><strong>Collapsed</strong> — Click header to collapse expanded cards to compact pill</li>
+        <li><strong>Tan theme</strong> — Warm companion surface with dark tan border (BRAND Tan 70)</li>
+        <li><strong>Gray theme</strong> — Neutral gray pill and border for subdued contexts</li>
+        <li><strong>White theme</strong> — White pill on light surfaces</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import {
+  AIWorkingIndicator,
+  AIThinkingIndicator,
+  AIGettingInfoIndicator,
+} from '@/components/ai/atomic/loading-indicator/AILoadingIndicators';
+
+// Message sent — show working pill immediately
+&lt;AIWorkingIndicator /&gt;
+
+// Model emits reasoning — swap to thinking indicator
+&lt;AIThinkingIndicator /&gt;
+
+// Tool call in progress — show getting-info indicator
+&lt;AIGettingInfoIndicator theme="tan" /&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+    const T = {
+      indicatorColor: '#5A6DFF',
+      indicatorColorTrack: '#DEDCDE',
+      radiusPill: '12px',
+      radiusMd: '16px',
+    };
+
+    /** Per-theme surface tokens — maps to LoaderTheme in AILoadingIndicators.tsx */
+    const THEMES = {
+      default: { pillBg: 'rgba(245, 246, 255, 0.5)', cardBg: 'rgba(230, 233, 255, 0.5)', border: '#DEDCDE' },
+      tan:     { pillBg: 'rgba(246, 242, 235, 0.85)', cardBg: 'rgba(236, 230, 221, 0.85)', border: '#9A7560' },
+      gray:    { pillBg: '#F4F3F3', cardBg: '#F4F3F3', border: '#B2B0B6' },
+      white:   { pillBg: '#FFFFFF', cardBg: '#FFFFFF', border: '#DEDCDE' },
+    };
+
+    function themeStyles(theme) {
+      return THEMES[theme] || THEMES.default;
+    }
+
+    function chevronRight() {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '10');
+      svg.setAttribute('height', '10');
+      svg.setAttribute('viewBox', '0 0 10 10');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.flexShrink = '0';
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M3.5 2l3 3-3 3');
+      path.setAttribute('stroke', 'var(--ai-neutral-icon)');
+      path.setAttribute('stroke-width', '1.3');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function chevronDown() {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '12');
+      svg.setAttribute('height', '12');
+      svg.setAttribute('viewBox', '0 0 12 12');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = 'flex-shrink:0;transition:transform 0.18s ease;';
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M2 4.5l4 4 4-4');
+      path.setAttribute('stroke', '#96A4FF');
+      path.setAttribute('stroke-width', '1.4');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function orbitSpinner(size) {
+      const el = document.createElement('div');
+      el.setAttribute('data-ai-loader', '');
+      el.style.cssText = [
+        `width:${size}px`, `height:${size}px`, 'border-radius:50%',
+        `border:1.5px solid ${T.indicatorColorTrack}`,
+        `border-top-color:${T.indicatorColor}`,
+        `border-right-color:${T.indicatorColor}`,
+        'animation:ai-spin 0.9s linear infinite', 'flex-shrink:0',
+      ].join(';');
+      return el;
+    }
+
+    function mountThinkStep(label, state, details) {
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;gap:12px;align-items:flex-start;';
+
+      const dotCol = document.createElement('div');
+      dotCol.style.cssText = 'padding-top:3px;flex-shrink:0;width:12px;display:flex;justify-content:center;';
+
+      const isDone = state === 'done';
+      const isActive = state === 'active';
+      const dot = document.createElement('div');
+      if (isDone) {
+        dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:var(--ai-neutral-icon);margin-top:2px;';
+      } else if (isActive) {
+        dot.style.cssText = `width:12px;height:12px;border-radius:50%;background:${T.indicatorColor};`;
+      } else {
+        dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:var(--ai-track-bg);margin-top:2px;';
+      }
+      dotCol.appendChild(dot);
+
+      const body = document.createElement('div');
+      body.style.cssText = 'flex:1;min-width:0;';
+
+      const lbl = document.createElement('span');
+      lbl.style.cssText = [
+        'font-size:13px', `font-family:${F}`, 'line-height:1.45', 'display:block',
+        `color:${isDone ? 'var(--ai-neutral-helper)' : isActive ? 'var(--ai-neutral-text)' : 'var(--ai-btn-disabled-text)'}`,
+        `font-weight:${isActive ? 600 : 400}`,
+      ].join(';');
+      lbl.textContent = label;
+
+      let open = false;
+      const detailBtn = document.createElement('button');
+      detailBtn.type = 'button';
+      detailBtn.style.cssText = 'display:inline-flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:1px 0;margin-top:1px;';
+
+      const detailChevron = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      detailChevron.setAttribute('width', '10');
+      detailChevron.setAttribute('height', '10');
+      detailChevron.setAttribute('viewBox', '0 0 10 10');
+      detailChevron.setAttribute('fill', 'none');
+      detailChevron.setAttribute('aria-hidden', 'true');
+      detailChevron.style.transition = 'transform 0.15s ease';
+      const detailPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      detailPath.setAttribute('d', 'M3.5 2l3 3-3 3');
+      detailPath.setAttribute('stroke', 'var(--ai-neutral-icon)');
+      detailPath.setAttribute('stroke-width', '1.3');
+      detailPath.setAttribute('stroke-linecap', 'round');
+      detailPath.setAttribute('stroke-linejoin', 'round');
+      detailChevron.appendChild(detailPath);
+
+      const detailLbl = document.createElement('span');
+      detailLbl.style.cssText = `font-size:11.5px;font-family:${F};color:var(--ai-btn-disabled-text);line-height:1;`;
+      detailLbl.textContent = 'View details';
+
+      const detailPanel = document.createElement('div');
+      detailPanel.style.cssText = `display:none;margin-top:6px;padding:8px 10px;background:var(--ai-confidence-track);border-radius:6px;font-size:11.5px;font-family:${F};color:var(--ai-neutral-helper);line-height:1.55;`;
+      detailPanel.textContent = details;
+
+      detailBtn.append(detailChevron, detailLbl);
+      detailBtn.onclick = () => {
+        open = !open;
+        detailChevron.style.transform = open ? 'rotate(90deg)' : 'none';
+        detailPanel.style.display = open ? 'block' : 'none';
+      };
+
+      body.append(lbl, detailBtn, detailPanel);
+      wrap.append(dotCol, body);
+      return { el: wrap, update: (newState) => {
+        const d = newState === 'done', a = newState === 'active';
+        dot.style.cssText = d
+          ? 'width:8px;height:8px;border-radius:50%;background:var(--ai-neutral-icon);margin-top:2px;'
+          : a
+            ? `width:12px;height:12px;border-radius:50%;background:${T.indicatorColor};`
+            : 'width:8px;height:8px;border-radius:50%;background:var(--ai-track-bg);margin-top:2px;';
+        lbl.style.color = d ? 'var(--ai-neutral-helper)' : a ? 'var(--ai-neutral-text)' : 'var(--ai-btn-disabled-text)';
+        lbl.style.fontWeight = a ? '600' : '400';
+      }};
+    }
+
+    function mountCollapsedPill(label, pillBg, borderColor, onToggle) {
+      const pill = document.createElement('div');
+      pill.setAttribute('role', 'button');
+      pill.setAttribute('tabindex', '0');
+      pill.setAttribute('aria-label', `Expand ${label}`);
+      pill.style.cssText = [
+        'display:flex', 'align-items:center', 'gap:10px',
+        'padding:9px 14px 9px 12px', `background:${pillBg}`,
+        `border:1px solid ${borderColor}`, `border-radius:${T.radiusPill}`,
+        'width:100%', 'box-sizing:border-box', 'cursor:pointer',
+      ].join(';');
+
+      pill.appendChild(chevronRight());
+
+      const lbl = document.createElement('span');
+      lbl.setAttribute('data-ai-loader', '');
+      lbl.style.cssText = `font-size:12px;font-family:${F};color:var(--ai-neutral-helper);line-height:1;flex:1;animation:ai-pulse-text 1.6s ease-in-out infinite;`;
+      lbl.textContent = label;
+
+      pill.append(lbl, orbitSpinner(14));
+      pill.onclick = onToggle;
+      pill.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(); } };
+      return pill;
+    }
+
+    function mountExpandedHeader(label, onToggle) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.cssText = 'width:100%;display:flex;align-items:center;gap:6px;padding:10px 14px;background:none;border:none;cursor:pointer;text-align:left;';
+      btn.appendChild(chevronDown());
+
+      const lbl = document.createElement('span');
+      lbl.setAttribute('data-ai-loader', '');
+      lbl.style.cssText = `font-size:13px;font-family:${F};color:var(--ai-btn-disabled-text);line-height:1;flex:1;animation:ai-pulse-text 1.6s ease-in-out infinite;`;
+      lbl.textContent = label;
+
+      btn.append(lbl, orbitSpinner(12));
+      btn.onclick = onToggle;
+      return btn;
+    }
+
+    /** Vanilla port of AIWorkingIndicator */
+    function mountAIWorkingIndicator(container, { theme = 'default' } = {}) {
+      const { pillBg, border } = themeStyles(theme);
+      const root = document.createElement('div');
+      root.setAttribute('data-ai-loader', '');
+      root.style.cssText = 'animation:ai-in 0.2s ease both;width:100%;';
+
+      const pill = document.createElement('div');
+      pill.style.cssText = [
+        'display:flex', 'align-items:center', 'gap:10px',
+        'padding:9px 14px 9px 12px', `background:${pillBg}`,
+        `border:1px solid ${border}`, `border-radius:${T.radiusPill}`,
+        'width:100%', 'box-sizing:border-box',
+      ].join(';');
+
+      pill.appendChild(chevronRight());
+
+      const lbl = document.createElement('span');
+      lbl.setAttribute('data-ai-loader', '');
+      lbl.style.cssText = `font-size:12px;font-family:${F};color:var(--ai-neutral-helper);line-height:1;flex:1;animation:ai-pulse-text 1.6s ease-in-out infinite;`;
+      lbl.textContent = 'Working...';
+
+      pill.append(lbl, orbitSpinner(14));
+      root.appendChild(pill);
+      container.appendChild(root);
+    }
+
+    /** Vanilla port of AIThinkingIndicator / AIGettingInfoIndicator */
+    function mountStepIndicator(container, {
+      label, steps, stepDelays = [900], theme = 'default',
+    }) {
+      let step = 0;
+      let collapsed = false;
+      const { pillBg, cardBg, border } = themeStyles(theme);
+      const stepEls = [];
+
+      const root = document.createElement('div');
+      root.style.width = '100%';
+      container.appendChild(root);
+
+      function render() {
+        root.innerHTML = '';
+        const outer = document.createElement('div');
+        outer.setAttribute('data-ai-loader', '');
+        outer.style.cssText = 'animation:ai-in 0.2s ease both;width:100%;';
+
+        if (collapsed) {
+          outer.appendChild(mountCollapsedPill(label, pillBg, border, () => { collapsed = false; render(); }));
+        } else {
+          const card = document.createElement('div');
+          card.style.cssText = `background:${cardBg};border:1px solid ${border};border-radius:${T.radiusMd};overflow:hidden;width:100%;box-sizing:border-box;`;
+          card.appendChild(mountExpandedHeader(label, () => { collapsed = true; render(); }));
+
+          const body = document.createElement('div');
+          body.style.cssText = 'padding:2px 14px 14px;display:flex;flex-direction:column;gap:12px;';
+
+          steps.forEach((s, i) => {
+            const state = i < step ? 'done' : i === step ? 'active' : 'pending';
+            const row = mountThinkStep(s.label, state, s.details);
+            stepEls[i] = row;
+            body.appendChild(row.el);
+          });
+
+          card.appendChild(body);
+          outer.appendChild(card);
+        }
+        root.appendChild(outer);
+      }
+
+      render();
+
+      const timers = stepDelays.map((delay, idx) =>
+        setTimeout(() => { step = idx + 1; render(); }, delay)
+      );
+
+      return {
+        destroy: () => timers.forEach(clearTimeout),
+        setStep: (n) => { step = n; render(); },
+      };
+    }
+
+    function labeledDemo(labelText, mountFn) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = labelText;
+      const host = document.createElement('div');
+      host.style.width = '100%';
+      mountFn(host);
+      wrap.append(lbl, host);
+      return wrap;
+    }
+
+    // Lifecycle demo — cycles through all three indicators
+    const lifecycleHost = document.getElementById('lifecycle-demo');
+    let lifecycleCtrl = null;
+
+    function showLifecycleStage(stage) {
+      lifecycleHost.innerHTML = '';
+      if (lifecycleCtrl?.destroy) lifecycleCtrl.destroy();
+
+      if (stage === 'working') {
+        mountAIWorkingIndicator(lifecycleHost);
+      } else if (stage === 'thinking') {
+        lifecycleCtrl = mountStepIndicator(lifecycleHost, {
+          label: 'Thinking...',
+          steps: [
+            { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, Q1 alignment dataset, and territory records. Found 14 relevant data points across 3 sources.' },
+            { label: 'Thinking', details: 'Analyzing retrieved data for patterns, outliers, and actionable insights relevant to your query.' },
+          ],
+          stepDelays: [900],
+        });
+      } else if (stage === 'getting-info') {
+        lifecycleCtrl = mountStepIndicator(lifecycleHost, {
+          label: 'Getting information...',
+          steps: [
+            { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
+            { label: 'Analyzing retrieved data', details: 'Cross-referencing Q1 performance metrics with territory assignments and quota attainment data.' },
+            { label: 'Thinking', details: 'Synthesizing patterns from the analysis to generate a response tailored to your question.' },
+          ],
+          stepDelays: [700, 1500],
+        });
+      }
+    }
+
+    showLifecycleStage('working');
+    setTimeout(() => showLifecycleStage('thinking'), 2200);
+    setTimeout(() => showLifecycleStage('getting-info'), 5500);
+
+    // Variant gallery
+    const gallery = document.getElementById('variant-gallery');
+
+    gallery.appendChild(labeledDemo('AIWorkingIndicator — default', h => {
+      mountAIWorkingIndicator(h);
+    }));
+
+    gallery.appendChild(labeledDemo('AIThinkingIndicator — default', h => {
+      mountStepIndicator(h, {
+        label: 'Thinking...',
+        steps: [
+          { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, Q1 alignment dataset, and territory records. Found 14 relevant data points across 3 sources.' },
+          { label: 'Thinking', details: 'Analyzing retrieved data for patterns, outliers, and actionable insights relevant to your query.' },
+        ],
+        stepDelays: [900],
+      });
+    }));
+
+    gallery.appendChild(labeledDemo('AIGettingInfoIndicator — default', h => {
+      mountStepIndicator(h, {
+        label: 'Getting information...',
+        steps: [
+          { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
+          { label: 'Analyzing retrieved data', details: 'Cross-referencing Q1 performance metrics with territory assignments and quota attainment data.' },
+          { label: 'Thinking', details: 'Synthesizing patterns from the analysis to generate a response tailored to your question.' },
+        ],
+        stepDelays: [700, 1500],
+      });
+    }));
+
+    const tanWrap = document.createElement('div');
+    tanWrap.className = 'tan-surface';
+    tanWrap.appendChild(labeledDemo('Tan theme — dark tan border', h => {
+      mountStepIndicator(h, {
+        label: 'Getting information...',
+        theme: 'tan',
+        steps: [
+          { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
+          { label: 'Analyzing retrieved data', details: 'Cross-referencing Q1 performance metrics with territory assignments and quota attainment data.' },
+          { label: 'Thinking', details: 'Synthesizing patterns from the analysis to generate a response tailored to your question.' },
+        ],
+        stepDelays: [700, 1500],
+      });
+    }));
+    gallery.appendChild(tanWrap);
+
+    gallery.appendChild(labeledDemo('Gray theme — gray background and border', h => {
+      mountAIWorkingIndicator(h, { theme: 'gray' });
+    }));
+
+    gallery.appendChild(labeledDemo('White theme — white background', h => {
+      mountStepIndicator(h, {
+        label: 'Thinking...',
+        theme: 'white',
+        steps: [
+          { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, Q1 alignment dataset, and territory records. Found 14 relevant data points across 3 sources.' },
+          { label: 'Thinking', details: 'Analyzing retrieved data for patterns, outliers, and actionable insights relevant to your query.' },
+        ],
+        stepDelays: [900],
+      });
+    }));
+  </script>
+</body>
+</html>

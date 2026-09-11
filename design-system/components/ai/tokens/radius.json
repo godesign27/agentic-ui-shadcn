@@ -1,0 +1,28 @@
+{
+  "category": "radius",
+  "version": "2.0",
+  "lastUpdated": "2026-06-22",
+  "source": "components/ai/tokens/ai-tokens.ts",
+  "mirrorSpec": "components/ai/tokens/radius.md",
+  "hardRules": [
+    "Use AI.radius.* scale names — never raw borderRadius pixel values",
+    "AI.radius.full for pill chips only — avatars use 50%",
+    "Input card empty state: AI.radius.lg; chat state: AI.radius.md"
+  ],
+  "tokens": {
+    "AI.radius.xs": { "value": "6px", "useCase": "Insight card accents, table corners" },
+    "AI.radius.sm": { "value": "12px", "useCase": "Badges, loader pills, queue badges" },
+    "AI.radius.md": { "value": "16px", "useCase": "Buttons, chips, input card in chat state" },
+    "AI.radius.lg": { "value": "20px", "useCase": "Input card in empty state, panels" },
+    "AI.radius.full": { "value": "100px", "useCase": "Pill chips, handoff chips, All Prompts chip" }
+  },
+  "quickReference": {
+    "inputCardEmpty": "AI.radius.lg",
+    "inputCardChat": "AI.radius.md",
+    "buttons": "AI.radius.md",
+    "chips": "AI.radius.full",
+    "insightCards": "AI.radius.sm or AI.radius.xs",
+    "avatars": "50%"
+  },
+  "import": "import { AI } from './ai-tokens'"
+}

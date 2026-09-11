@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIRadio",
+  "repoModule": "zdsAiRadio",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AIRadio is the AI-styled control for mutually-exclusive choices on AI cards, drawers, and settings rows \u2014 pick one of several agent modes, risk postures, or output formats. It does NOT reimplement the control \u2014 it wraps the standard `ZdsRadio` (mirror `src/radio/`) and re-anchors the ZDS selection / focus / text CSS variables to their AI equivalents inside a scoped wrapper. The checked border and center dot become AI brand indigo (#4D60E6) instead of ZDS teal, the focus ring uses `AI.color.border.focus`, and the label uses `--ai-zds-text` \u2014 while every accessibility guarantee, error mode, sizing, disabled state, and native `name`/`value` grouping are inherited from ZDS unchanged.",
+  "intent": "The ZDS Radio in AI clothing \u2014 same accessible exclusive-choice control, AI brand indigo selection, focus ring, and label styling for AI surfaces.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/zds-ai-radio/zds-ai-radio.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiRadio",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/zds-ai-radio/AIRadio.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/zds-ai-radio/AIRadio.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "checked",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Controlled selected state."
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(e: ChangeEvent<HTMLInputElement>) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires on select (inherited from ZdsRadio)."
+    },
+    {
+      "name": "name",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Native group name \u2014 radios sharing a name are mutually exclusive."
+    },
+    {
+      "name": "value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Native value for the option."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional label; clicking it selects the option."
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"error\"`",
+      "hint": "`\"default\"`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"14px\" \\"
+      ],
+      "default": "\"16px\" \\",
+      "hint": "\"18px\" \\"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Non-interactive, dimmed."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIRadio"
+    ],
+    "import": "import { AIRadio } from './AIRadio'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

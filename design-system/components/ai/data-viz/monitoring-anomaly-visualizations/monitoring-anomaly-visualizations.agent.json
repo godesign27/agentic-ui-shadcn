@@ -1,0 +1,13 @@
+{
+  "id": "monitoring-anomaly-visualizations",
+  "name": "Monitoring & Anomaly",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Monitoring & Anomaly — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "MonitoringAnomaly"
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardTrustSummary",
+  "repoModule": "aiCardTrustSummary",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The Trust Summary Card is the primary governance surface for AI-generated outputs. It visualises a confidence arc (0\u2013100%), risk level, data quality stars, data freshness, source count, and whether human review is required \u2014 all in a compact card pattern for embedding alongside AI outputs in dashboards and reports.",
+  "intent": "Governance surface for AI-generated outputs. Visualises confidence level, risk, data quality, and freshness \u2014 and flags when human review is required.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-trust-summary/ai-card-trust-summary.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardTrustSummary",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-trust-summary/AICardTrustSummary.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-trust-summary/AICardTrustSummary.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "confidence",
+      "values": [
+        "`number`"
+      ],
+      "default": "`required`",
+      "hint": "Confidence score 0\u2013100. Tone (green/amber/red) is derived from this value."
+    },
+    {
+      "name": "risk",
+      "values": [
+        "`RiskLevel`"
+      ],
+      "default": "`required`",
+      "hint": "none \\"
+    },
+    {
+      "name": "dataQuality",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`required`"
+    },
+    {
+      "name": "lastUpdated",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Human-readable last updated value (e.g. \"2 hours ago\", \"Jun 6, 2026\")."
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Source chip labels rendered as bordered pills. Falls back to \"N sources\" if absent."
+    },
+    {
+      "name": "sourceCount",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "Number of data sources \u2014 used when `sources` is not provided."
+    },
+    {
+      "name": "requiresReview",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`required`",
+      "hint": "Toggles the Request Review footer button."
+    },
+    {
+      "name": "headerTone",
+      "values": [
+        "`\"gray\" \\"
+      ],
+      "default": "\"tan\"`",
+      "hint": "`\"gray\"`"
+    },
+    {
+      "name": "onRequestReview",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the Request Review button is clicked."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when \"View sources\" link is clicked."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardTrustSummary"
+    ],
+    "import": "import { AICardTrustSummary } from './AICardTrustSummary'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Evaluate \u00b7 Confirm",
+    "accountability": "Confidence \u00b7 Data quality \u00b7 Data freshness \u00b7 Sources"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

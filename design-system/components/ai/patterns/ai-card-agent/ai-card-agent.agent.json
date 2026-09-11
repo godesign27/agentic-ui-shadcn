@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardAgent",
+  "repoModule": "aiCardAgent",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICardAgent is the canonical introduction surface for a named agent in a product. Idle state shows the agent identity (icon + role chip + name + first-person description) and a short capabilities list. Two affordances live at the bottom: Talk (full-width, primary) flips the card to a voice-briefing overlay with a pulsing waveform and a typewriter-streamed message; Chat (square, secondary) opens the AI Assisted Side Panel with a brief inline toast.",
+  "intent": "Named agent entry-point \u2014 voice-first introduction with chat fallback.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-agent/ai-card-agent.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardAgent",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-agent/AICardAgent.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-agent/AICardAgent.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "config",
+      "values": [
+        "`AgentCardConfig`"
+      ],
+      "default": "`required`",
+      "hint": "Agent identity + content. See AGENT_CONFIGS for canonical presets."
+    },
+    {
+      "name": "forceState",
+      "values": [
+        "`\"idle\" \\"
+      ],
+      "default": "\"talking\"`",
+      "hint": "`undefined`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardAgent"
+    ],
+    "import": "import { AICardAgent } from './AICardAgent'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "AI Assisted"
+    ],
+    "aiBehavior": "Introduce \u00b7 Engage \u00b7 Hand off",
+    "accountability": "Personality \u00b7 Voice \u00b7 Trust"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

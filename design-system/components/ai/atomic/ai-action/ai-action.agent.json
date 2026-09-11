@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAction",
+  "repoModule": "aiAction",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "AIAction is the compact action atom used at the end of AI-generated recommendations, assignments, approvals, and next-best-action outputs. It gives the user a clear way to accept, apply, edit, reject,",
+  "intent": "The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses \u2014 all in one clear, accountable row.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-action/ai-action.md",
+    "contract": "components/ai/atomic/ai-action/ai-action.agent.json",
+    "agentIndexModule": "aiAction",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/action/AIAction.tsx",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "primaryLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Label for the primary action button"
+    },
+    {
+      "name": "secondaryLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Label for optional secondary (outlined) button"
+    },
+    {
+      "name": "tertiaryLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Label for optional tertiary (text) button"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\" \\",
+      "hint": "\"lg\"`"
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`\"inline\" \\"
+      ],
+      "default": "\"stacked\"`",
+      "hint": "`\"inline\"`"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"loading\" \\",
+      "hint": "\"complete\" \\"
+    },
+    {
+      "name": "requiresReview",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Shows orange review pill above action row"
+    },
+    {
+      "name": "requiresConfirmation",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Reserved for future confirmation dialog pattern"
+    },
+    {
+      "name": "onPrimary",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Primary button click handler"
+    },
+    {
+      "name": "onSecondary",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Secondary button click handler"
+    },
+    {
+      "name": "onTertiary",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Tertiary button click handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAction"
+    ],
+    "import": "import { AIAction } from '@ai/atomic/ai-action/AIAction'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use for standard product actions that are not AI-generated",
+      "Do not use as a generic button replacement",
+      "Do not place more than three visible actions in one group",
+      "Do not use when no decision or action is being requested"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest",
+      "Confirm",
+      "Apply",
+      "Approve"
+    ],
+    "accountability": "Approval \u00b7 Audit trail \u00b7 Rationale disclosure"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

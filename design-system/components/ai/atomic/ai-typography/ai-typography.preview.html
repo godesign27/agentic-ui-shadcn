@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Typography — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 880px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 32px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 12px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 28px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .demo-area { min-height: 64px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    pre { background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Typography</h1>
+    <p class="subtitle">AI surfaces inherit the Open Sans type system. Same scale, same tokens, same `.ui-master-style` scope as the standard library — never invent fonts or hex sizes in AI components.<br/>Preview from <code>components/ai/atomic/ai-typography/ai-typography.md</code></p>
+    <section><h2>Demo</h2><div class="demo-surface"><div class="demo-area" id="demo"></div></div></section>
+    <section><h2>Documented states</h2><ul class="state-list"><li>**Type scale** _(16px root)_ — Full Open Sans scale from .ui-super-hero (64px) through .ui-caption-2 (10px). Sizes are em-relative to @brand-font-size; override with .ui-size-* utilities for an entire subtree.</li><li>**Weights** _(300 / 400 / 600 / 700)_ — Light · Normal · Semi-bold · Bold. Utility classes .ui-font-weight-semi-bold and .ui-font-weight-bold. Body defaults to 400.</li><li>**Links** _(a + status text)_ — Default / hover (underline) / visited / focus-visible (ring) / active / disabled. Status text utilities: .ui-success-text, .ui-error-text, .ui-warning-text, .ui-info-text.</li><li>**Header block** _(.ui-header-block)_ — Overline (uppercase eyebrow) + h1/h2 + subtitle-1/2. The canonical composition for page and section titles.</li><li>**Lists** _(.ui-list)_ — Standard ordered/unordered lists with standard spacing; .ui-bullet-list swaps disc bullets for the icon-font glyph; nested lists use the new .ui-padding-0.ui-list-style-type-none wrapper.</li><li>**AI extensions** _(4 AI-only sizes)_ — Four recurring AI patterns that don't map to a standard scale row: status pill label (12/400/1), micro eyebrow (11/600/0.02em), numeric badge (10/400/lh-16), help micro (11.5/400/1.55). Every other AI atom passes through the standard scale or sits within 1–2px of it.</li></ul></section>
+    <section><h2>Code example</h2><pre>// Typography is global scoped CSS — apply .ui-master-style at page root, then
+// use semantic HTML or utility classes inside. No factory, no JS API.
+
+// Scoped page
+&lt;body className="ui-master-style"&gt;
+  {/* ... */}
+&lt;/body&gt;
+
+// Header block (H1 pattern)
+&lt;section className="ui-header-block"&gt;
+  &lt;p className="ui-overline"&gt;Section label&lt;/p&gt;
+  &lt;h1&gt;Page title&lt;/h1&gt;
+  &lt;p className="ui-subtitle-1"&gt;Supporting subtitle&lt;/p&gt;
+&lt;/section&gt;
+
+// Body with emphasis
+&lt;p className="ui-body"&gt;Regular body copy.&lt;/p&gt;
+&lt;p className="ui-body ui-font-weight-semi-bold"&gt;Semibold emphasis.&lt;/p&gt;
+&lt;p className="ui-body-small"&gt;Secondary detail text.&lt;/p&gt;
+
+// Standard link
+&lt;a href="/learn-more"&gt;Learn more&lt;/a&gt;
+
+// Disabled link
+&lt;a href="#" className="ui-disabled" aria-disabled="true"&gt;Unavailable&lt;/a&gt;</pre></section>
+  </div>
+  <script>const el = document.createElement('div');
+el.style.cssText = 'padding:12px 16px;background:var(--neutral-surface-muted);border:1px solid var(--neutral-border-subtle);border-radius:8px;font-size:13px;color:var(--neutral-text)';
+el.textContent = 'AITypography — interactive demo placeholder. See mirror spec for full implementation.';
+document.getElementById('demo').appendChild(el);</script>
+</body>
+</html>

@@ -1,0 +1,860 @@
+{
+  "version": "1.2",
+  "updated": "2026-08-10",
+  "source": "AI Pattern Library left navigation (docs-site component registry)",
+  "libOrder": [
+    "foundations",
+    "atomic",
+    "molecules",
+    "organisms",
+    "patterns",
+    "pages",
+    "data-viz",
+    "tokens"
+  ],
+  "tierFolders": {
+    "foundations": "foundations",
+    "atomic": "atomic",
+    "molecules": "molecules",
+    "organisms": "organisms",
+    "patterns": "patterns",
+    "pages": "pages",
+    "data-viz": "data-viz",
+    "tokens": "tokens"
+  },
+  "notes": [
+    "AI Action Field id is ai-input-field",
+    "AI Text Response id is ai-message-body",
+    "AI Top Bar id is ai-supervisor-bar",
+    "AI Rationale id is ai-rationale-panel",
+    "AI Process Trace id is ai-reasoning-trace",
+    "ai-capability-card, ai-objective-card, ai-source-accordion defaulted to Beta (were unspecified)",
+    "conversational-ai-output-showcase status normalized to Stable",
+    "Atomic specs refreshed from ai-atoms.bundle.md (2026-08-06); added ai-skeleton.",
+    "molecules specs refreshed from combined Make bundle (2026-08-06).",
+    "organisms specs refreshed from combined Make bundle (2026-08-06).",
+    "pages specs refreshed from combined Make bundle (2026-08-06).",
+    "Aligned to docs-site left nav (2026-08-10): section order + within-section registry order.",
+    "Aligned to docs-site left nav (2026-08-25): card patterns in `patterns/`; full pages in `pages/`.",
+    "Extras not in docs-site nav live under `unlisted` (kept on disk for implementation continuity)."
+  ],
+  "tiers": {
+    "foundations": [
+      {
+        "id": "ai-autocomplete",
+        "name": "AI Autocomplete",
+        "status": "Draft"
+      }
+    ],
+    "atomic": [
+      {
+        "id": "ai-avatar",
+        "name": "AI Avatar",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-dialog-button",
+        "name": "AI Dialog Button",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-button",
+        "name": "AI Button",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-chip-quick",
+        "name": "AI Quick Chips",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-loading-indicators",
+        "name": "AI Loading Indicators",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-feedback-bar",
+        "name": "AI Feedback Bar",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-icon",
+        "name": "AI Icon",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-typography",
+        "name": "AI Typography",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-chip",
+        "name": "AI Chip",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-chip-handoff",
+        "name": "AI Handoff Chip",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-agent-stack",
+        "name": "AI Agent Stack",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-chip-memory",
+        "name": "AI Memory Chip",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-control-bar",
+        "name": "AI Control Bar",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-confidence-risk-badge",
+        "name": "AI Confidence & Risk Badge",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-badge",
+        "name": "AI Badge",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-input-field",
+        "name": "AI Action Field",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-metric-value",
+        "name": "AI Metric Value",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-trend-indicator",
+        "name": "AI Trend Indicator",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-status-pill",
+        "name": "AI Status Pill",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-insight-callout",
+        "name": "AI Insight Callout",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-agent-work-note",
+        "name": "AI Agent Work Note",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-reasoning-quote",
+        "name": "AI Reasoning Quote",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-toggle",
+        "name": "AI Toggle",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-metric-tile",
+        "name": "AI Metric Tile",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-source-tile",
+        "name": "AI Source Tile",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-progress",
+        "name": "AI Progress",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-accent-line",
+        "name": "AI Accent Line",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-agent-response",
+        "name": "AI Agent Response",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-picker-trigger",
+        "name": "AI Picker Trigger",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-search",
+        "name": "AI Search",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-skeleton",
+        "name": "AI Skeleton",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-slider",
+        "name": "AI Slider",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-message-header",
+        "name": "AI Message Header",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-message-body",
+        "name": "AI Text Response",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-message-footer",
+        "name": "AI Message Footer",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-launcher",
+        "name": "AI Launcher",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-soft-surface",
+        "name": "AI Soft Surface",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-file-attachment",
+        "name": "AI File Attachment",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-supervisor-bar",
+        "name": "AI Top Bar",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-checkbox",
+        "name": "ZDS AI Checkbox",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-radio",
+        "name": "ZDS AI Radio",
+        "status": "Beta"
+      }
+    ],
+    "molecules": [
+      {
+        "id": "ai-user-bubble",
+        "name": "AI User Bubble",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-text-link",
+        "name": "AI Text Link",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-accordion",
+        "name": "ZDS AI Accordion",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-spinner",
+        "name": "ZDS AI Spinner",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-toolbar",
+        "name": "AI Toolbar",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-tooltip",
+        "name": "ZDS AI Tooltip",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-why-this-link",
+        "name": "AI Why This Link",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-date-picker",
+        "name": "AI Date Picker",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-time-picker",
+        "name": "AI Time Picker",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-picker",
+        "name": "AI Picker",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-notification",
+        "name": "AI Notification",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-analysis-insight",
+        "name": "AI Analysis Insight",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-response-footer",
+        "name": "AI Response Footer",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-list-item",
+        "name": "AI List Item",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-to-do",
+        "name": "AI To-Do",
+        "status": "Beta"
+      }
+    ],
+    "organisms": [
+      {
+        "id": "ai-dialog",
+        "name": "AI Dialog",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-handoff-timeline",
+        "name": "AI Handoff Timeline",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-workstream-control-panel",
+        "name": "AI Workstream Control Panel",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-rationale-panel",
+        "name": "AI Rationale",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-command-center-dialog",
+        "name": "AI Command Center Dialog",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-agent-drawer",
+        "name": "AI Agent Drawer",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-analysis-message",
+        "name": "AI Analysis Message",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-reasoning-trace",
+        "name": "AI Process Trace",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-list",
+        "name": "AI List",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-led-navigation",
+        "name": "AI Led Navigation",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-source-accordion",
+        "name": "AI Source Accordion",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-agent-response-group",
+        "name": "AI Agent Response Group",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-guided-learning",
+        "name": "AI Guided Learning",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-suggestion-compare",
+        "name": "AI Suggestion Compare",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-breadcrumbs",
+        "name": "ZDS AI Breadcrumbs",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-card",
+        "name": "ZDS AI Card",
+        "status": "Stable"
+      },
+      {
+        "id": "zds-ai-dialog",
+        "name": "ZDS AI Dialog",
+        "status": "Stable"
+      },
+      {
+        "id": "zds-ai-file-upload",
+        "name": "ZDS AI File Upload",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-segmented-control",
+        "name": "ZDS AI Segmented Control",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-stepper",
+        "name": "ZDS AI Stepper",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-tab",
+        "name": "ZDS AI Tab",
+        "status": "Beta"
+      },
+      {
+        "id": "zds-ai-table",
+        "name": "ZDS AI Table",
+        "status": "Beta"
+      }
+    ],
+    "patterns": [
+      {
+        "id": "ai-agent-task-card",
+        "name": "AI Agent Task Card",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-capability-card",
+        "name": "AI Capability Card",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-agent",
+        "name": "AI Card Agent",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-agent-reasoning",
+        "name": "AI Card Agent Reasoning",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-analysis",
+        "name": "AI Card Analysis",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-brief",
+        "name": "AI Card Brief",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-data-table",
+        "name": "AI Card Data Table",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-learning-feedback",
+        "name": "AI Card Learning Feedback",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-memory",
+        "name": "AI Card Memory",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-metric",
+        "name": "AI Card Metric",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-multi-agent-collaboration",
+        "name": "AI Card Multi-Agent Collaboration",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-queue",
+        "name": "AI Card Queue",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-recommendation-compare",
+        "name": "AI Card Recommendation Compare",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-trust-summary",
+        "name": "AI Card Trust Summary",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-card-workstream",
+        "name": "AI Card Workstream",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-objective-card",
+        "name": "AI Objective Card",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-profile-card",
+        "name": "AI Profile Card",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-agent-task-tracker",
+        "name": "AI Agent Task Tracker",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-generated-dashboard",
+        "name": "AI Generated Dashboard",
+        "status": "Draft"
+      },
+      {
+        "id": "ai-list-landing",
+        "name": "AI List Landing",
+        "status": "Beta"
+      }
+    ],
+    "pages": [
+      {
+        "id": "ai-command-center",
+        "name": "AI Command Center",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-command-center-slim",
+        "name": "AI Command Center — Slim",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-command-center-split-view",
+        "name": "AI Command Center — Split View",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-assisted-side-drawer",
+        "name": "AI Assisted Side Drawer",
+        "status": "Stable"
+      },
+      {
+        "id": "conversational-ai-output-showcase",
+        "name": "Conversational AI Output Showcase",
+        "status": "Stable"
+      }
+    ]
+  },
+  "data-viz": [
+    {
+      "id": "ai-inline-visualization",
+      "name": "Inline Visualization",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-visualization-card",
+      "name": "Visualization Card",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-visualization-panel",
+      "name": "Visualization Panel",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-visualization-module",
+      "name": "Visualization Module",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-comparison-visualization",
+      "name": "Comparison Visualization",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-monitoring-visualization",
+      "name": "Monitoring Visualization",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-governed-visualization",
+      "name": "Governed Visualization",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-chart-shell",
+      "name": "AI Chart Shell",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-mini-chart",
+      "name": "AI Mini Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-chart",
+      "name": "AI Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-chart-card",
+      "name": "AI Chart Card",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-explainable-chart",
+      "name": "AI Explainable Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-scenario-chart",
+      "name": "AI Scenario Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-anomaly-chart",
+      "name": "AI Anomaly Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "ai-dashboard-visualization-module",
+      "name": "AI Dashboard Visualization Module",
+      "status": "Draft"
+    },
+    {
+      "id": "line-chart",
+      "name": "Line Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "bar-chart",
+      "name": "Bar Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "column-chart",
+      "name": "Column Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "stacked-bar-chart",
+      "name": "Stacked Bar Chart",
+      "status": "Draft"
+    },
+    {
+      "id": "sparkline",
+      "name": "Sparkline",
+      "status": "Draft"
+    },
+    {
+      "id": "heat-map",
+      "name": "Heat Map",
+      "status": "Draft"
+    },
+    {
+      "id": "map-territory",
+      "name": "Map / Territory",
+      "status": "Draft"
+    },
+    {
+      "id": "scenario-comparison",
+      "name": "Scenario Comparison",
+      "status": "Draft"
+    },
+    {
+      "id": "anomaly-threshold",
+      "name": "Anomaly / Threshold",
+      "status": "Draft"
+    },
+    {
+      "id": "table-chart-hybrid",
+      "name": "Table + Chart Hybrid",
+      "status": "Draft"
+    },
+    {
+      "id": "feed-visualizations",
+      "name": "Feed Visualizations",
+      "status": "Draft"
+    },
+    {
+      "id": "card-visualizations",
+      "name": "Card Visualizations",
+      "status": "Draft"
+    },
+    {
+      "id": "conversational-visualizations",
+      "name": "Conversational Visualizations",
+      "status": "Draft"
+    },
+    {
+      "id": "dashboard-visualizations",
+      "name": "Dashboard Visualizations",
+      "status": "Draft"
+    },
+    {
+      "id": "scenario-comparison-visualizations",
+      "name": "Scenario & Comparison",
+      "status": "Draft"
+    },
+    {
+      "id": "monitoring-anomaly-visualizations",
+      "name": "Monitoring & Anomaly",
+      "status": "Draft"
+    },
+    {
+      "id": "governed-review-visualizations",
+      "name": "Governed / Review",
+      "status": "Draft"
+    },
+    {
+      "id": "standard-chart-guidance",
+      "name": "Standard Chart Guidance",
+      "status": "Draft"
+    },
+    {
+      "id": "highcharts-guidance",
+      "name": "Highcharts Guidance",
+      "status": "Draft"
+    }
+  ],
+  "tokens": [
+    {
+      "id": "color",
+      "name": "Color",
+      "status": "Stable",
+      "file": "tokens/color.md"
+    },
+    {
+      "id": "typography",
+      "name": "Typography",
+      "status": "Stable",
+      "file": "tokens/typography.md"
+    },
+    {
+      "id": "radius",
+      "name": "Radius",
+      "status": "Stable",
+      "file": "tokens/radius.md"
+    },
+    {
+      "id": "shadow",
+      "name": "Shadow",
+      "status": "Stable",
+      "file": "tokens/shadow.md"
+    },
+    {
+      "id": "spacing",
+      "name": "Spacing",
+      "status": "Stable",
+      "file": "tokens/spacing.md"
+    },
+    {
+      "id": "motion",
+      "name": "Motion",
+      "status": "Beta",
+      "file": "tokens/motion.md"
+    },
+    {
+      "id": "sound",
+      "name": "Sound",
+      "status": "Coming soon",
+      "file": "tokens/sound.md"
+    },
+    {
+      "id": "zsai-global-palette",
+      "name": "ZSAI Global Palette",
+      "status": "Stable",
+      "file": "tokens/color-palette-reference.md"
+    },
+    {
+      "id": "ai-semantic-aliases",
+      "name": "AI.* Semantic Aliases",
+      "status": "Stable",
+      "file": "tokens/ai-semantic-aliases.md"
+    },
+    {
+      "id": "component-tokens",
+      "name": "Component Tokens",
+      "status": "Stable",
+      "file": "tokens/component-tokens.md"
+    }
+  ],
+  "unlisted": {
+    "atomic": [
+      {
+        "id": "ai-action",
+        "name": "AI Action",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-chip-brief",
+        "name": "AI Brief Chip",
+        "status": "Stable"
+      },
+      {
+        "id": "ai-queue-badge",
+        "name": "AI Queue Badge",
+        "status": "Stable"
+      }
+    ],
+    "molecules": [
+      {
+        "id": "ai-menu",
+        "name": "AI Menu",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-node-connector",
+        "name": "AI Node Connector",
+        "status": "Beta"
+      },
+      {
+        "id": "ai-popup-menu",
+        "name": "AI Popup Menu",
+        "status": "Beta"
+      }
+    ],
+    "organisms": [
+      {
+        "id": "ai-insight-list",
+        "name": "AI Insight List",
+        "status": "Beta"
+      }
+    ],
+    "pages": [
+      {
+        "id": "ai-assisted-side-panel",
+        "name": "AI Assisted Side Panel",
+        "status": "Beta"
+      }
+    ],
+    "patterns": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "standard-chart-guidance",
+  "name": "Standard Chart Guidance",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Standard Chart Guidance — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "StandardChartGuidance"
+    ]
+  }
+}

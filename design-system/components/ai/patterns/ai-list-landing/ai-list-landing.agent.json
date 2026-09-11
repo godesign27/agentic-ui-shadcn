@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIListLanding",
+  "repoModule": "aiListLanding",
+  "tier": "pages",
+  "status": "experimental",
+  "description": "AIListLanding is the AI-led briefing surface for a product home. Instead of a static dashboard, it tells the user what changed, what matters, and what next action deserves attention \u2014 in four conditional sections: Territory Health Overview, Recent Impact, Suggested Next Assessments, and What Changed Since You Last Looked. Background defaults to AISoftSurface tone=\"ambient\" \u2014 the animated blue/purple/pink orb canvas \u2014 so the home immediately reads as AI-led. All sections are AIList groups composed of AIListItem rows; everything is data-driven so the surface can re-shape per product, role, or signal state.",
+  "intent": "Turn a product home page into an AI-led morning briefing.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-list-landing/ai-list-landing.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiListLanding",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-list-landing/AIListLanding.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-list-landing/AIListLanding.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "eyebrow",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI Briefing\"`",
+      "hint": "Uppercase eyebrow over the heading."
+    },
+    {
+      "name": "heading",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Good morning, Sarah.\"`",
+      "hint": "Page-level greeting (h2)."
+    },
+    {
+      "name": "intro",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Here's what's changed\u2026\"`",
+      "hint": "One-line briefing intro."
+    },
+    {
+      "name": "lastUpdated",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Updated 2m ago\"`",
+      "hint": "Freshness pill in the header."
+    },
+    {
+      "name": "backgroundTone",
+      "values": [
+        "`AISoftSurfaceTone`"
+      ],
+      "default": "`\"ambient\"`",
+      "hint": "AISoftSurface tone for the page canvas. Defaults to the animated ambient orb canvas."
+    },
+    {
+      "name": "sections",
+      "values": [
+        "`AIListLandingSection[]`"
+      ],
+      "default": "`DEFAULT_SECTIONS`",
+      "hint": "Section definitions. Each is an AIList props object with id."
+    },
+    {
+      "name": "generating",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "When true, every section shows the loading placeholder."
+    },
+    {
+      "name": "onItemOpen",
+      "values": [
+        "`(item, sectionId, index) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when an item is opened."
+    },
+    {
+      "name": "onSectionToggle",
+      "values": [
+        "`(sectionId, collapsed) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when a collapsible section is toggled."
+    },
+    {
+      "name": "onAssessmentStart",
+      "values": [
+        "`(item) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when a Suggested Next Assessment item is opened \u2014 typical hand-off into AICommandCenterSplitView."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIListLanding"
+    ],
+    "import": "import { AIListLanding } from './AIListLanding'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Monitor \u00b7 Summarize \u00b7 Prioritize \u00b7 Recommend \u00b7 Detect \u00b7 Compare \u00b7 Guide \u00b7 Assess",
+    "accountability": "Status \u00b7 Sources \u00b7 Confidence \u00b7 Data freshness \u00b7 Rationale \u00b7 Human review \u00b7 Change history"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

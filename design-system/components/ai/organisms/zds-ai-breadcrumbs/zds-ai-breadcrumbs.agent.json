@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIBreadcrumbs",
+  "repoModule": "zdsAiBreadcrumbs",
+  "tier": "organisms",
+  "status": "active",
+  "description": "The AI-themed variant of the standard ZDS Breadcrumbs. The single ZdsBreadcrumbs component (zds/zds-breadcrumbs.tsx) accepts theme=\"standard\" (ZDS primary teal links) or theme=\"ai\". In the AI theme the link CSS variables are re-anchored \u2014 scoped via CSS-variable overrides \u2014 to the AI brand blue: links use var(--color-ai-brand), hover uses var(--color-ai-brand-strong), and the current page uses var(--color-ai-brand-ink). Everything else \u2014 sizes (Normal 16px / Small 14px / X-Small 12px), Default/Inverse styles, Default/Back types, the swappable zs-icon-home page icon with independent icon/text toggles, zs-icon-arrow-right separators, disabled/focus states, the 2px focus ring, and the \"\u2026\" overflow collapse menu \u2014 is shared with the standard breadcrumbs. All colors, radii, and spacing read design-system CSS variables from globals.css; all text uses the \"Open Sans\" face.",
+  "intent": "ZDS Breadcrumbs, AI surface theme \u2014 brand-blue links, brand-ink current page.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-breadcrumbs/zds-ai-breadcrumbs.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiBreadcrumbs",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-breadcrumbs/AIBreadcrumbs.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-breadcrumbs/AIBreadcrumbs.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "theme",
+      "values": [
+        "`'standard' \\"
+      ],
+      "default": "'ai'`",
+      "hint": "`'standard'`"
+    },
+    {
+      "name": "items",
+      "values": [
+        "`BreadcrumbItem[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Trail data; last item is the current page (never a link)."
+    },
+    {
+      "name": "maxVisible",
+      "values": [
+        "`number (0 = show all)`"
+      ],
+      "default": "`0`",
+      "hint": "Collapse middle items into a \"\u2026\" overflow menu past this depth."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small' \\",
+      "hint": "'x-small'`"
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'inverse'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "type",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'back'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "backLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Back to page'`",
+      "hint": "Label for the type=back link."
+    },
+    {
+      "name": "onBack",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Click handler for the back link."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIBreadcrumbs"
+    ],
+    "import": "import { AIBreadcrumbs } from './AIBreadcrumbs'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIBadge",
+  "repoModule": "aiBadge",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIBadge is a presentational label \u2014 not a button, not a chip. It mirrors the standard ZDS Badge (src/badge/): the same semantic variant set (neutral \u00b7 info \u00b7 success \u00b7 warning \u00b7 error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the ZDS categorical chart palette (@zs-data-color-1\u202612). If the label needs to be clickable, use AIChip instead.",
+  "intent": "The compact label atom for AI status and metrics. Extends the ZDS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. \"+23% engagement\") stay on-system.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-badge/ai-badge.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiBadge",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-badge/AIBadge.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-badge/AIBadge.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "children",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Badge label \u2014 a short status word or a metric like \"+23%\"."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`'neutral' \\"
+      ],
+      "default": "'info' \\",
+      "hint": "'success' \\"
+    },
+    {
+      "name": "emphasis",
+      "values": [
+        "`'bold' \\"
+      ],
+      "default": "'soft'`",
+      "hint": "`'bold'`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'small'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "series",
+      "values": [
+        "`1\u201312`"
+      ],
+      "default": "`1`",
+      "hint": "Data-viz series index (only used when variant=\"dataviz\"), mapped to @zs-data-color-*."
+    },
+    {
+      "name": "appearance",
+      "values": [
+        "`'text' \\"
+      ],
+      "default": "'counter' \\",
+      "hint": "'dot' \\"
+    },
+    {
+      "name": "maxCount",
+      "values": [
+        "`number`"
+      ],
+      "default": "`99`",
+      "hint": "Cap for numeric counter / inline appearances \u2014 values above render as \"{maxCount}+\" (e.g. 99+)."
+    },
+    {
+      "name": "queue",
+      "values": [
+        "`'queued' \\"
+      ],
+      "default": "'running' \\",
+      "hint": "'blocked' \\"
+    },
+    {
+      "name": "count",
+      "values": [
+        "`number`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional count pill shown next to a queue badge (e.g. number of running / pending tasks)."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIBadge"
+    ],
+    "import": "import { AIBadge } from './AIBadge'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor",
+    "accountability": "Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

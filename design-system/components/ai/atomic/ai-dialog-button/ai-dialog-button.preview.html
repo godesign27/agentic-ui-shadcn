@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Dialog Button — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      background: #F4F3F3;
+      color: var(--neutral-text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+
+    section { margin-bottom: 48px; }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--neutral-text-helper);
+      margin: 0 0 20px;
+    }
+
+    .demo-surface {
+      background: #fff;
+      border: 1px solid var(--neutral-border-subtle);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .state-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .state-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--neutral-text-helper);
+    }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .token-table th,
+    .token-table td {
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid #DEDCDE;
+    }
+
+    .token-table th {
+      font-weight: 600;
+      color: var(--neutral-text-helper);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      vertical-align: middle;
+      margin-right: 6px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1A1628;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .toast.visible { opacity: 1; transform: translateY(0); }
+
+    .nav-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #5A6DFF;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-link:hover { text-decoration: underline; }
+
+    .toolbar-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(90,109,255,0.35);
+      border-radius: 16px;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+
+    <h1>AI Dialog Button</h1>
+    <p class="subtitle">Preview from <code>components/ai/atomic/ai-dialog-button/ai-dialog-button.md</code> — Ghost surface · 3 shapes · 4 states</p>
+
+    <section>
+      <h2>Toolbar row (as used in AI Dialog)</h2>
+      <p class="section-desc">The three Ghost shapes side by side — click Agent to toggle open state.</p>
+      <div class="demo-surface">
+        <div class="toolbar-demo" id="toolbar-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Shapes — Interactive</h2>
+      <p class="section-desc">Hover each button to see Ghost hover treatment. Click for feedback toast.</p>
+      <div class="demo-surface">
+        <div class="row" id="shapes-interactive"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>States (static)</h2>
+      <p class="section-desc">Forced visual states on the icon + label (<code>/ Skills</code>) shape.</p>
+      <div class="state-grid" id="state-gallery"></div>
+    </section>
+
+    <section>
+      <h2>Disabled</h2>
+      <p class="section-desc">All three shapes at 0.42 opacity — interaction suppressed.</p>
+      <div class="demo-surface">
+        <div class="row" id="disabled-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Ghost tokens</h2>
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>State</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ai-dialog-button.border.color.default</td><td><span class="swatch" style="background:rgba(26,22,40,0.14)"></span>rgba(26,22,40,0.14)</td><td>Default</td></tr>
+          <tr><td>ai-dialog-button.border.color.hover</td><td><span class="swatch" style="background:#DEDCDE"></span>#DEDCDE</td><td>Hover</td></tr>
+          <tr><td>ai-dialog-button.border.color.open</td><td><span class="swatch" style="background:#96A4FF"></span>#96A4FF</td><td>Open</td></tr>
+          <tr><td>ai-dialog-button.surface.hover</td><td><span class="swatch" style="background:var(--neutral-surface-muted)"></span>#FAFAFA</td><td>Hover fill</td></tr>
+          <tr><td>ai-dialog-button.surface.open</td><td><span class="swatch" style="background:#EEEDEC"></span>#EEEDEC</td><td>Open fill</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const BTN = {
+      height: '34px',
+      radius: '100px',
+      border: { default: 'rgba(26,22,40,0.14)', hover: '#DEDCDE', open: '#96A4FF' },
+      surface: { default: 'transparent', hover: 'var(--neutral-surface-hover)', open: 'var(--ai-companion-highlight)' },
+      label: { color: '#2f2c3c', size: '13px', weight: '500' },
+      icon: { color: '#5b5864' },
+      disabledOpacity: 0.42,
+    };
+
+    const icons = {
+      plus: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5v14"/></svg>',
+      mic: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg>',
+      chevron: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>',
+      slash: '<span style="font-family:monospace;font-weight:700;font-size:13px;line-height:1">/</span>',
+    };
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => el.classList.remove('visible'), 2000);
+    }
+
+    function createAIDialogButton({
+      icon, label, trailingIcon,
+      isOpen = false, disabled = false,
+      forceHover = false, forceOpen = false,
+      ariaLabel, onClick, readOnly = false,
+    } = {}) {
+      const btn = document.createElement('button');
+      const iconOnly = Boolean(icon && !label && !trailingIcon);
+      const state = {
+        isOpen: forceOpen || isOpen,
+        hover: forceHover,
+        disabled,
+      };
+
+      function render() {
+        const open = state.isOpen;
+        const hover = state.hover && !state.disabled;
+        const borderColor = open ? BTN.border.open : hover ? BTN.border.hover : BTN.border.default;
+        const background = open ? BTN.surface.open : hover ? BTN.surface.hover : BTN.surface.default;
+
+        btn.style.cssText = `
+          display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+          height: ${BTN.height}; width: ${iconOnly ? BTN.height : 'auto'};
+          padding: ${iconOnly ? '0' : '0 12px'};
+          border-radius: ${BTN.radius};
+          border: 1px solid ${borderColor};
+          background: ${background};
+          color: ${BTN.icon.color};
+          font-family: "Open Sans", sans-serif;
+          font-size: ${BTN.label.size};
+          font-weight: ${BTN.label.weight};
+          letter-spacing: -0.1px;
+          cursor: ${state.disabled ? 'not-allowed' : readOnly && !forceHover ? 'default' : 'pointer'};
+          opacity: ${state.disabled ? BTN.disabledOpacity : 1};
+          transition: border-color 0.14s ease, background 0.14s ease;
+          flex-shrink: 0;
+        `;
+
+        if (trailingIcon) {
+          const trail = btn.querySelector('.ai-dialog-btn-trail');
+          if (trail) trail.style.transform = open ? 'rotate(180deg)' : 'none';
+        }
+      }
+
+      btn.type = 'button';
+      if (ariaLabel) btn.setAttribute('aria-label', ariaLabel);
+      btn.disabled = disabled;
+
+      if (icon) {
+        const span = document.createElement('span');
+        span.style.cssText = 'display:flex;align-items:center;color:' + BTN.icon.color;
+        span.innerHTML = icon;
+        btn.appendChild(span);
+      }
+      if (label) {
+        const span = document.createElement('span');
+        span.style.color = BTN.label.color;
+        span.textContent = label;
+        btn.appendChild(span);
+      }
+      if (trailingIcon) {
+        const span = document.createElement('span');
+        span.className = 'ai-dialog-btn-trail';
+        span.style.cssText = 'display:flex;align-items:center;color:' + BTN.icon.color + ';transition:transform 0.15s';
+        span.innerHTML = trailingIcon;
+        btn.appendChild(span);
+      }
+
+      if (!readOnly && !disabled && onClick) btn.addEventListener('click', onClick);
+      if (!readOnly && !disabled && !forceHover && !forceOpen) {
+        btn.addEventListener('mouseenter', () => { state.hover = true; render(); });
+        btn.addEventListener('mouseleave', () => { state.hover = false; render(); });
+      }
+
+      render();
+      btn._setOpen = (v) => { state.isOpen = v; render(); };
+      return btn;
+    }
+
+    // Toolbar demo
+    const toolbar = document.getElementById('toolbar-demo');
+    let agentOpen = false;
+    const agentBtn = createAIDialogButton({
+      label: 'Agent',
+      trailingIcon: icons.chevron,
+      onClick: () => {
+        agentOpen = !agentOpen;
+        agentBtn._setOpen(agentOpen);
+        showToast(agentOpen ? 'Agent menu open' : 'Agent menu closed');
+      },
+    });
+    toolbar.append(
+      createAIDialogButton({ icon: icons.plus, ariaLabel: 'Add content', onClick: () => showToast('Add') }),
+      createAIDialogButton({ icon: icons.slash, label: 'Skills', onClick: () => showToast('Skills') }),
+      agentBtn,
+    );
+
+    // Interactive shapes
+    const shapes = document.getElementById('shapes-interactive');
+    let skillsOpen = false;
+    const skillsBtn = createAIDialogButton({
+      icon: icons.slash,
+      label: 'Skills',
+      onClick: () => {
+        skillsOpen = !skillsOpen;
+        skillsBtn._setOpen(skillsOpen);
+        showToast(skillsOpen ? 'Skills open' : 'Skills closed');
+      },
+    });
+    shapes.append(
+      createAIDialogButton({ icon: icons.plus, ariaLabel: 'Add content', onClick: () => showToast('Icon-only') }),
+      skillsBtn,
+      createAIDialogButton({
+        label: 'Agent',
+        trailingIcon: icons.chevron,
+        onClick: () => showToast('Label + chevron'),
+      }),
+      createAIDialogButton({ icon: icons.mic, ariaLabel: 'Voice input', onClick: () => showToast('Mic') }),
+    );
+
+    // Static states on / Skills shape
+    const states = [
+      { label: 'Default', forceHover: false, forceOpen: false },
+      { label: 'Hover', forceHover: true, forceOpen: false },
+      { label: 'Open', forceHover: false, forceOpen: true },
+    ];
+
+    const gallery = document.getElementById('state-gallery');
+    states.forEach((s) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'state-card';
+      const lbl = document.createElement('div');
+      lbl.className = 'state-label';
+      lbl.textContent = s.label;
+      wrap.appendChild(lbl);
+      wrap.appendChild(createAIDialogButton({
+        icon: icons.slash,
+        label: 'Skills',
+        forceHover: s.forceHover,
+        forceOpen: s.forceOpen,
+        readOnly: true,
+      }));
+      gallery.appendChild(wrap);
+    });
+
+    // Disabled row
+    const disabledRow = document.getElementById('disabled-row');
+    disabledRow.append(
+      createAIDialogButton({ icon: icons.plus, ariaLabel: 'Add content', disabled: true, readOnly: true }),
+      createAIDialogButton({ icon: icons.slash, label: 'Skills', disabled: true, readOnly: true }),
+      createAIDialogButton({ label: 'Agent', trailingIcon: icons.chevron, disabled: true, readOnly: true }),
+      createAIDialogButton({ icon: icons.mic, ariaLabel: 'Voice input', disabled: true, readOnly: true }),
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "ConversationalAIOutputShowcase",
+  "repoModule": "aiConversationalAiOutputShowcase",
+  "tier": "pages",
+  "status": "active",
+  "description": "The Conversational AI Output Showcase is the primary educational reference for the Wave 1 AI component library. It presents all 18 components \u2014 8 atoms and 10 groups \u2014 in a single scrollable page that explains the three-tier experience model, maps components to their primary surfaces, provides a live pattern gallery with scaled previews, and walks through a complete end-to-end AI Led workflow. The page is designed to be shared with product designers, engineers, and AI product managers as an on-boarding and decision-support resource.",
+  "intent": "The definitive reference for Wave 1 conversational AI output patterns. Maps every atom and group component to its experience tier, surface, behaviour verbs, and accountability tokens \u2014 with live interactive examples.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiConversationalAiOutputShowcase",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/conversational-ai-output-showcase/ConversationalAIOutputShowcase.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/pages/conversational-ai-output-showcase/ConversationalAIOutputShowcase.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "ConversationalAIOutputShowcase"
+    ],
+    "import": "import { ConversationalAIOutputShowcase } from './ConversationalAIOutputShowcase'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Guide \u00b7 Explain \u00b7 Execute",
+    "accountability": "Audit trail \u00b7 Rationale \u00b7 Confidence"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIFeedbackBar",
+  "repoModule": "aiFeedbackBar",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIFeedbackBar renders a horizontal row of icon-only action buttons below each AI response. Tooltips are portal-rendered above the anchored button to escape overflow:hidden parent containers. Like/disl",
+  "intent": "Inline feedback controls surfaced after every AI response. Captures user sentiment to improve future outputs and close the learning loop.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-feedback-bar/ai-feedback-bar.md",
+    "contract": "components/ai/atomic/ai-feedback-bar/ai-feedback-bar.agent.json",
+    "agentIndexModule": "aiFeedbackBar",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/feedback-bar/AIFeedbackBar.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-feedback-bar/AIFeedbackBar.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "responseText",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"\"`",
+      "hint": "The full response text \u2014 passed to navigator.clipboard by the copy action."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIFeedbackBar"
+    ],
+    "import": "import { AIFeedbackBar } from '@ai/atomic/ai-feedback-bar/AIFeedbackBar'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use inside a read-only or print view where interactions are disabled",
+      "Do not show on mid-stream responses \u2014 wait until the response is complete"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Guide",
+      "Evaluate",
+      "Learn"
+    ],
+    "accountability": "User feedback \u00b7 Rationale"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

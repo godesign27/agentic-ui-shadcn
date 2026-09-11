@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Launcher — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .row { display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:24px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; height:36px; padding:6px 14px 6px 6px; background:var(--neutral-ink); border:none; border-radius:100px; color:#fff; font-size:13px; font-weight:600; cursor:pointer; box-shadow:var(--token-shadow-blur-1); }
+    .circle { width:36px; height:36px; padding:0; justify-content:center; border-radius:50%; }
+    .av { width:28px; height:28px; border-radius:50%; background:var(--ai-gradient-action); flex-shrink:0; }
+  </style>
+</head>
+<body class="page">
+  <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+  <h1>AI Launcher</h1>
+  <p class="subtitle">Near-black pill with avatar + “Chat” label.</p>
+  <div class="row">
+    <button class="pill" type="button"><span class="av"></span>Chat</button>
+    <button class="pill circle" type="button" aria-label="Open ZAIDYN Agent chat"><span class="av"></span></button>
+    <button class="pill" type="button" style="background:var(--ai-brand)"><span class="av"></span>Chat</button>
+  </div>
+  <p style="font-size:12px;color:var(--neutral-text-helper);margin-top:16px">Default · Avatar-only · Brand surface</p>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITab",
+  "repoModule": "zdsAiTab",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AITab is the AI-surface sibling of the standard ZDS Tab (src/tab/). It preserves the tab contract \u2014 role=\"tablist\"/\"tab\"/\"tabpanel\", one active tab, roving tabindex (only the active tab is tabbable), Arrow/Home/End keys on the correct axis \u2014 while replacing the ZDS neutral/teal token layer with the AI system. Active tabs read in AI brand #4D60E6 SemiBold; Solid marks them with a 3px brand-gradient bottom bar, Outline fills the tab with --ai-card-bg and joins it to a rounded content container, and Vertical uses a 3px gradient left stroke over a brand-subtle fill. (The AI-native fully-rounded segmented treatment now lives in ZDS AI Segmented Control.) Icons render through the zsIcons font catalog, tinted to the AI brand. Disabled tabs are muted and skipped by keyboard navigation. Controlled (`value`/`onChange`) or uncontrolled (`defaultValue`).",
+  "intent": "ZDS Tab, AI surface theme \u2014 brand-gradient active bar, rounded AI surfaces.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-tab/zds-ai-tab.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiTab",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-tab/AITab.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-tab/AITab.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "items",
+      "values": [
+        "`AITabItem[]`"
+      ],
+      "default": "`required`",
+      "hint": "Tabs \u2014 { label, leftIcon?, rightIcon?, content?, disabled? }."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`'solid' \\"
+      ],
+      "default": "'outline' \\",
+      "hint": "'vertical'`"
+    },
+    {
+      "name": "withPanel",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show the joined content panel (Solid). Outline always shows it."
+    },
+    {
+      "name": "value",
+      "values": [
+        "`number`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Controlled active index."
+    },
+    {
+      "name": "defaultValue",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0`",
+      "hint": "Uncontrolled initial active index."
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(index: number) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires when the active tab changes."
+    },
+    {
+      "name": "radius",
+      "values": [
+        "`keyof typeof AI.radius`"
+      ],
+      "default": "`'md'`",
+      "hint": "Corner radius token for Outline / panel surfaces."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AITab"
+    ],
+    "import": "import { AITab } from './AITab'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

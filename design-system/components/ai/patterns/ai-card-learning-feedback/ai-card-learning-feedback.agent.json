@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardLearningFeedback",
+  "repoModule": "aiCardLearningFeedback",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The AI Card Learning Feedback closes the feedback loop between user signals and AI adaptation. It surfaces what feedback was received, the preference inferred from it, and where that preference has been applied \u2014 giving users visibility and control over how the AI learns from them.",
+  "intent": "Closes the feedback loop between user signals and AI adaptation. Shows what was learned, the preference inferred, and where it has been applied \u2014 with undo.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-learning-feedback/ai-card-learning-feedback.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardLearningFeedback",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-learning-feedback/AICardLearningFeedback.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-learning-feedback/AICardLearningFeedback.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "feedback",
+      "values": [
+        "`FeedbackSentiment`"
+      ],
+      "default": "`required`",
+      "hint": "positive \\"
+    },
+    {
+      "name": "preference",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Inferred preference label"
+    },
+    {
+      "name": "appliedAreas",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`required`",
+      "hint": "Areas where preference is applied"
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "When feedback was received"
+    },
+    {
+      "name": "onUndo",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Undo feedback handler"
+    },
+    {
+      "name": "onViewHistory",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "View feedback history handler"
+    },
+    {
+      "name": "onEditPreferences",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Edit preferences handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardLearningFeedback"
+    ],
+    "import": "import { AICardLearningFeedback } from './AICardLearningFeedback'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Learn \u00b7 Evaluate",
+    "accountability": "User feedback \u00b7 Memory control"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

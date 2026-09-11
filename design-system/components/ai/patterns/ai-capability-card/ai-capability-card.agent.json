@@ -1,0 +1,174 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICapabilityCard",
+  "repoModule": "aiCapabilityCard",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICapabilityCard is a compact, reusable card for representing a single AI capability, model skill, or agent behavior. Each card pairs an origin chip (System Defined / Client Extended / User Configured / Experimental) with a bold title, a short description, and a layers footnote. Clicking the card opens a detail drawer with the capability's reasoning summary, confidence + trend metrics, autonomy boundaries, and knowledge inputs \u2014 making the agent's skills inventoryable and reviewable. A \"View Full Details\" footer link deep-links to a standalone capability page when configured.",
+  "intent": "Compact card that surfaces a specific AI capability or model skill, with origin chip + Inspect affordance.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-capability-card/ai-capability-card.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCapabilityCard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-capability-card/AICapabilityCard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-capability-card/AICapabilityCard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Capability name. Rendered bold at 18px."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Short clarification of what the capability does."
+    },
+    {
+      "name": "",
+      "values": [
+        "`'system-defined' \\"
+      ],
+      "default": "'client-extended' \\",
+      "hint": "'user-configured' \\"
+    },
+    {
+      "name": "",
+      "values": [
+        "`'active' \\"
+      ],
+      "default": "'disabled' \\",
+      "hint": "'needs-review'`"
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "ZAIDYN icon class for the drawer header tile."
+    },
+    {
+      "name": "",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "``",
+      "hint": "Dashed-rule footnote with a layers glyph."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Override the right-side action label (defaults from status)."
+    },
+    {
+      "name": "",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "``",
+      "hint": "Override default drawer behavior. When set, the drawer does not open automatically."
+    },
+    {
+      "name": "",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "``",
+      "hint": "When set, the drawer renders a \"View Full Details\" footer CTA."
+    },
+    {
+      "name": "",
+      "values": [
+        "`AICapabilityDetail`"
+      ],
+      "default": "``",
+      "hint": "Drawer content \u2014 reasoningSummary, confidence, trend, autonomy[], knowledgeInputs[]."
+    },
+    {
+      "name": "",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "``",
+      "hint": "Controlled drawer state. Omit to use internal state."
+    },
+    {
+      "name": "",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "``",
+      "hint": "Notify parent that the drawer wants to close (controlled mode)."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "When set, forces disabled styling + tooltip."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICapabilityCard"
+    ],
+    "import": "import { AICapabilityCard } from './AICapabilityCard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -34,6 +34,31 @@ module.exports = {
       },
     },
     {
+      // Imported zds-ai architecture uses inline-style token modules, remixicon,
+      // and a looser TS style than the governed shadcn kit. Lint it as a library
+      // snapshot rather than rewriting hundreds of files on import.
+      files: [
+        'src/components/ai/foundations/**/*.{ts,tsx}',
+        'src/components/ai/atomic/**/*.{ts,tsx}',
+        'src/components/ai/molecules/**/*.{ts,tsx}',
+        'src/components/ai/organisms/**/*.{ts,tsx}',
+        'src/components/ai/patterns/**/*.{ts,tsx}',
+        'src/components/ai/pages/**/*.{ts,tsx}',
+        'src/components/ai/data-viz/**/*.{ts,tsx}',
+        'src/components/ai/tokens/**/*.{ts,tsx}',
+        'src/components/ai/_support/**/*.{ts,tsx}',
+      ],
+      rules: {
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'react-hooks/exhaustive-deps': 'off',
+        'react-hooks/rules-of-hooks': 'off',
+        'no-empty': 'off',
+        'prefer-const': 'off',
+      },
+    },
+    {
       // Type re-exports and context hooks legitimately live beside components.
       files: ['src/hooks/**/*.{ts,tsx}', 'src/lib/**/*.{ts,tsx}'],
       rules: {

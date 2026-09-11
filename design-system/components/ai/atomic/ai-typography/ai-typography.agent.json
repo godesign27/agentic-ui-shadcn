@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITypography",
+  "repoModule": "aiTypography",
+  "tier": "atomic",
+  "status": "active",
+  "description": "standard typography is the foundation atom used by every text-bearing AI component. Open Sans at 16px root, semantic HTML first (`h1`\u2013`h6`, `p`, `a`) or utility classes (`.ui-body`, `.ui-overline`, etc.), ",
+  "intent": "AI surfaces inherit the Open Sans type system. Same scale, same tokens, same `.ui-master-style` scope as the standard library \u2014 never invent fonts or hex sizes in AI components.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-typography/ai-typography.md",
+    "contract": "components/ai/atomic/ai-typography/ai-typography.agent.json",
+    "agentIndexModule": "aiTypography",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "styles/core.css",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "AITypography"
+    ],
+    "import": "import { AITypography } from '@ai/atomic/ai-typography/AITypography'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Hardcode Open Sans or pixel font sizes in AI component LESS/CSS",
+      "Skip heading levels purely for sizing \u2014 use the type-scale classes on the correct element instead",
+      "Static-class hover, visited, or focus link variants \u2014 link states are CSS-only in production",
+      "Use deprecated nested list pattern (nested ul without the list-style-none wrapper)",
+      "Rely on uppercase overline as the only signal of meaning \u2014 pair with semantic structure",
+      "Use \"click here\" or other non-descriptive link text"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Style",
+      "Token-driven"
+    ],
+    "accountability": "Semantic HTML first \u00b7 No hardcoded fonts"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

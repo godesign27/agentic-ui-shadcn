@@ -1,0 +1,258 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardAnalysis",
+  "repoModule": "aiCardAnalysis",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICardAnalysis gives users a structured, scannable summary of an AI analysis without requiring a full dashboard or long-form response. It composes existing atoms \u2014 `AICardMetric` for the metric grid, `AIInsightList` for the findings, `AIChipBrief` for source / freshness, `AIWhyThisLink` for rationale / sources / assumptions, `AIButton` for actions \u2014 into one reusable block.",
+  "intent": "Compact analysis summary \u2014 metrics + insights + trust + actions in one card. Three densities cover chat, drawer, and dashboard surfaces.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-analysis/ai-card-analysis.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardAnalysis",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-analysis/AICardAnalysis.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-analysis/AICardAnalysis.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`\"simple\" \\"
+      ],
+      "default": "\"rich\" \\",
+      "hint": "\"robust\"`"
+    },
+    {
+      "name": "intro",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "1-line lead-in sentence above the title."
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Analysis title (H3)."
+    },
+    {
+      "name": "analysisType",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Uppercase brand-color type label at top (\"Territory analysis\")."
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Freshness or \"generated at\" timestamp."
+    },
+    {
+      "name": "collapsible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Adds a chevron toggle in the header."
+    },
+    {
+      "name": "defaultExpanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Initial expanded state when `collapsible` is on."
+    },
+    {
+      "name": "metrics",
+      "values": [
+        "`AIAnalysisMetric[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Array of metric card props. Density auto-inherits from the parent unless overridden per metric."
+    },
+    {
+      "name": "metricsColumns",
+      "values": [
+        "`number`"
+      ],
+      "default": "`2`",
+      "hint": "Column count for the metric grid."
+    },
+    {
+      "name": "insights",
+      "values": [
+        "`AIInsightItem[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Insight list items."
+    },
+    {
+      "name": "insightsTitle",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Key insights\"`",
+      "hint": "Eyebrow above the insight list."
+    },
+    {
+      "name": "maxInsights",
+      "values": [
+        "`number`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Cap visible insights; passed to `AIInsightList.maxVisible`."
+    },
+    {
+      "name": "source",
+      "values": [
+        "`{ label, icon? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Source chip below the insights."
+    },
+    {
+      "name": "freshness",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Freshness chip."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`number (0\u2013100)`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Confidence pill. Tone derived from value (green \u226580, amber 60\u201379, red <60)."
+    },
+    {
+      "name": "risk",
+      "values": [
+        "`\"low\" \\"
+      ],
+      "default": "\"medium\" \\",
+      "hint": "\"high\"`"
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Renders the View rationale link."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Renders the View sources link."
+    },
+    {
+      "name": "onViewAssumptions",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View assumptions link."
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "`{ label, onClick? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Primary action button in the footer."
+    },
+    {
+      "name": "secondaryAction",
+      "values": [
+        "`{ label, onClick? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Secondary action button."
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Skeleton state \u2014 metric grid + insight rows shimmer."
+    },
+    {
+      "name": "loadingLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Analyzing\u2026\"`",
+      "hint": "Calm copy shown above the skeleton."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardAnalysis"
+    ],
+    "import": "import { AICardAnalysis } from './AICardAnalysis'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Analyze \u00b7 Summarize \u00b7 Compare \u00b7 Detect \u00b7 Explain \u00b7 Recommend \u00b7 Review",
+    "accountability": "Sources \u00b7 Rationale \u00b7 Confidence \u00b7 Risk \u00b7 Data freshness \u00b7 Human review \u00b7 Assumptions"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

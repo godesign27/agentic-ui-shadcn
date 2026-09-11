@@ -1,0 +1,13 @@
+{
+  "id": "card-visualizations",
+  "name": "Card Visualizations",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Card Visualizations — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "CardVisualizations"
+    ]
+  }
+}

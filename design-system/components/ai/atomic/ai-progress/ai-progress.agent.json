@@ -1,0 +1,253 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIProgress",
+  "repoModule": "aiProgress",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "Canonical progress atom for AI work surfaces \u2014 brand gradient fill, semantic status states, indeterminate shimmer, and segmented multi-phase variant.",
+  "intent": "Communicate AI work progress with measurable percent, agentic states (paused, blocked, escalated), and accessible motion fallbacks.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-progress/ai-progress.md",
+    "contract": "components/ai/atomic/ai-progress/ai-progress.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiProgress",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/progress/AIProgress.tsx",
+    "preview": "components/ai/atomic/ai-progress/ai-progress.preview.html",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-progress/AIProgress.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "linear",
+    "thin",
+    "header",
+    "segmented"
+  ],
+  "states": [
+    "idle",
+    "running",
+    "indeterminate",
+    "paused",
+    "resuming",
+    "complete",
+    "blocked",
+    "error",
+    "escalated",
+    "disabled"
+  ],
+  "props": [
+    {
+      "name": "value",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "Progress value 0\u2013100. Omit for indeterminate."
+    },
+    {
+      "name": "min",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0`",
+      "hint": "Minimum value."
+    },
+    {
+      "name": "max",
+      "values": [
+        "`number`"
+      ],
+      "default": "`100`",
+      "hint": "Maximum value."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`idle`",
+        "`running`",
+        "`indeterminate`",
+        "`paused`",
+        "`resuming`",
+        "`complete`",
+        "`blocked`",
+        "`error`",
+        "`escalated`",
+        "`disabled`"
+      ],
+      "default": "`\"running\"`",
+      "hint": "Agentic progress status."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`linear`",
+        "`thin`",
+        "`header`",
+        "`segmented`"
+      ],
+      "default": "`\"linear\"`",
+      "hint": "Bar layout variant."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`thin`",
+        "`sm`",
+        "`md`",
+        "`lg`"
+      ],
+      "default": "`\"md\"`",
+      "hint": "Bar height: thin 2px, sm 4px, md 6px, lg 10px."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Primary label above the bar."
+    },
+    {
+      "name": "currentStep",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Step name or action description."
+    },
+    {
+      "name": "percentLabel",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show numeric percent alongside the bar."
+    },
+    {
+      "name": "estimatedTimeRemaining",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "ETA sub-label below the bar."
+    },
+    {
+      "name": "showLabel",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Toggle label rows; false for thin/header bars."
+    },
+    {
+      "name": "segments",
+      "values": [
+        "`AIProgressSegment[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Segments for segmented variant."
+    },
+    {
+      "name": "indeterminate",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Force indeterminate shimmer regardless of value."
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Accessible label for progressbar role."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIProgress",
+      "AIProgressStatus",
+      "AIProgressVariant",
+      "AIProgressSize",
+      "AIProgressSegment"
+    ],
+    "import": "import { AIProgress } from '@/components/ai/atomic/progress/AIProgress'",
+    "notes": [
+      "Use indeterminate when percent is unknown.",
+      "Orange fill reserved for blocked/escalated \u2014 not default running.",
+      "Respect prefers-reduced-motion for shimmer and indeterminate animations."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--success-color",
+      "--error-color",
+      "--ai-track-bg"
+    ],
+    "semantic": [
+      "AI.color.brand",
+      "AI.color.action.primaryHover",
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "SIGNAL[60]",
+      "SIGNAL[70]",
+      "NEUTRAL.border",
+      "AI_TYPOGRAPHY['@brand-micro-eyebrow']"
+    ]
+  },
+  "accessibility": {
+    "role": "progressbar",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-valuemin",
+      "aria-valuemax",
+      "aria-valuenow (omit when indeterminate)",
+      "aria-label"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use for simple button loading states \u2014 use AIButton loading instead",
+      "Do not use when ai-loading-indicators is enough for a brief wait",
+      "Do not show fake precision when progress is unknown \u2014 use indeterminate",
+      "Do not use orange as the default fill \u2014 orange is for blocked/escalated only",
+      "Do not use motion without a reduced-motion fallback"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Processing",
+      "Generating",
+      "Retrieving",
+      "Validating",
+      "Executing",
+      "Monitoring",
+      "Pausing",
+      "Completing",
+      "Blocking",
+      "Escalating"
+    ],
+    "accountability": "Status \u00b7 Current step \u00b7 Percent complete \u00b7 Saved progress \u00b7 Pause/cancel availability \u00b7 Escalation pathway \u00b7 Audit trail"
+  },
+  "relatedModules": [
+    "aiLoadingIndicators",
+    "aiQueueBadge"
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,290 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIGuidedLearning",
+  "repoModule": "aiGuidedLearning",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AI Guided Learning is a contextual learning component that introduces new AI features, teaches workflows, and guides users through product changes step by step. It uses an inverse/reverse color treatment to visually stand apart from the surrounding UI \u2014 dark on light, light on dark. The component supports five variants (announcement, guided-step, guided-step-media, coach-mark, completion) and four density levels (Basic, Simple, Rich, Robust).",
+  "intent": "Inverse-surface guided learning \u2014 feature announcements, product tours, coach marks, and step-by-step workflows.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-guided-learning/ai-guided-learning.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiGuidedLearning",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-guided-learning/AIGuidedLearning.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-guided-learning/AIGuidedLearning.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`'announcement' \\"
+      ],
+      "default": "'guided-step' \\",
+      "hint": "'guided-step-media' \\"
+    },
+    {
+      "name": "density",
+      "values": [
+        "`'Basic' \\"
+      ],
+      "default": "'Simple' \\",
+      "hint": "'Rich' \\"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Required heading \u2014 one clear idea, no marketing language"
+    },
+    {
+      "name": "body",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Short body copy \u2014 1\u20132 sentences max"
+    },
+    {
+      "name": "step",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "Current step index (1-based)"
+    },
+    {
+      "name": "totalSteps",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "Total steps in the guided flow"
+    },
+    {
+      "name": "primaryActionLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Got it'`",
+      "hint": "Label for the primary action button"
+    },
+    {
+      "name": "secondaryActionLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Label for the secondary ghost button"
+    },
+    {
+      "name": "showClose",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show the close/dismiss button"
+    },
+    {
+      "name": "showSkip",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show the Skip ghost button"
+    },
+    {
+      "name": "showCaret",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render the pointer/caret arrow"
+    },
+    {
+      "name": "caretSide",
+      "values": [
+        "`'top' \\"
+      ],
+      "default": "'right' \\",
+      "hint": "'bottom' \\"
+    },
+    {
+      "name": "caretAlign",
+      "values": [
+        "`'start' \\"
+      ],
+      "default": "'center' \\",
+      "hint": "'end'`"
+    },
+    {
+      "name": "caretOffset",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0`",
+      "hint": "Pixel offset from the start or end alignment anchor"
+    },
+    {
+      "name": "mediaType",
+      "values": [
+        "`'image' \\"
+      ],
+      "default": "'video' \\",
+      "hint": "'none'`"
+    },
+    {
+      "name": "mediaSrc",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "URL of the image or video source"
+    },
+    {
+      "name": "mediaAlt",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Alt text or accessible description for the media"
+    },
+    {
+      "name": "mediaCaption",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional visible caption below the media region"
+    },
+    {
+      "name": "showDoNotShow",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show \"Don't show this again\" checkbox (Robust only)"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'completed' \\",
+      "hint": "'loading-media' \\"
+    },
+    {
+      "name": "maxWidth",
+      "values": [
+        "`number`"
+      ],
+      "default": "`360`",
+      "hint": "Max width of the container in pixels"
+    },
+    {
+      "name": "onClose",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the close button is clicked"
+    },
+    {
+      "name": "onSkip",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Skip is clicked"
+    },
+    {
+      "name": "onNext",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Next is clicked in guided-step flow"
+    },
+    {
+      "name": "onBack",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Back is clicked in guided-step flow"
+    },
+    {
+      "name": "onPrimaryAction",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the primary action button is clicked"
+    },
+    {
+      "name": "onSecondaryAction",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the secondary action button is clicked"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIGuidedLearning"
+    ],
+    "import": "import { AIGuidedLearning } from './AIGuidedLearning'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Learn \u00b7 Discover \u00b7 Guide",
+    "accountability": "Onboarding \u00b7 Feature adoption \u00b7 Tour"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISoftSurface",
+  "repoModule": "aiSoftSurface",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "AISoftSurface is a non-content background canvas used to signal that the surface is AI-led or in companion mode. Six tones \u2014 dialog (the canonical AI Command Center dialog wash \u2014 soft aqua top, teal-b",
+  "intent": "Visual surface primitive that signals \"AI companion context\" \u2014 never a content component.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-soft-surface/ai-soft-surface.md",
+    "contract": "components/ai/atomic/ai-soft-surface/ai-soft-surface.agent.json",
+    "agentIndexModule": "aiSoftSurface",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/soft-surface/AISoftSurface.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-soft-surface/AISoftSurface.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "tone",
+      "values": [
+        "`\"ai\" \\"
+      ],
+      "default": "\"tan\" \\",
+      "hint": "\"neutral\" \\"
+    },
+    {
+      "name": "intensity",
+      "values": [
+        "`\"subtle\" \\"
+      ],
+      "default": "\"medium\" \\",
+      "hint": "\"expressive\"`"
+    },
+    {
+      "name": "radius",
+      "values": [
+        "`CSS borderRadius`"
+      ],
+      "default": "`AI.radius.lg`",
+      "hint": "Container corner radius."
+    },
+    {
+      "name": "elevation",
+      "values": [
+        "`\"flat\" \\"
+      ],
+      "default": "\"soft\"`",
+      "hint": "`\"flat\"`"
+    },
+    {
+      "name": "style",
+      "values": [
+        "`React.CSSProperties`"
+      ],
+      "default": "`undefined`",
+      "hint": "Inline overrides \u2014 use for padding, min-height, etc."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISoftSurface"
+    ],
+    "import": "import { AISoftSurface } from '@ai/atomic/ai-soft-surface/AISoftSurface'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Set context"
+    ],
+    "accountability": "Calm presence"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

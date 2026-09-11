@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardAgentReasoning",
+  "repoModule": "aiCardAgentReasoning",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICardAgentReasoning is the canonical \"what the agent is thinking\" card for AI-led surfaces. The header carries the agent identity (avatar, name, AGENT chip, REASONING & ANALYSIS eyebrow) and a live-status pill. A white AI Summary panel renders a brief headline + a quoted longer analysis under a divider. In Simple density an Optimization Drivers panel appears below, listing each driver with its percentage contribution and a qualitative intensity chip (only High gets a tinted chip; Medium / Low render as plain labels). A footer pairs an Explainability toggle with a primary \"Deepen Analysis\" action. Use this card whenever you need to surface an agent's reasoning + decision drivers in a governable, scannable way \u2014 e.g. inside an Agent Drawer, on a generated dashboard, or above a workspace.",
+  "intent": "Surface an agent's reasoning + optional optimization drivers behind an Explainability toggle.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-agent-reasoning/ai-card-agent-reasoning.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardAgentReasoning",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-agent-reasoning/AICardAgentReasoning.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-agent-reasoning/AICardAgentReasoning.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`'basic' \\"
+      ],
+      "default": "'simple'`",
+      "hint": "`\u2014`"
+    },
+    {
+      "name": "agentName",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Zaidyn'`",
+      "hint": "Bold display name in the header."
+    },
+    {
+      "name": "agentRole",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'AGENT'`",
+      "hint": "Small tier chip next to the name."
+    },
+    {
+      "name": "agentEyebrow",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'REASONING & ANALYSIS'`",
+      "hint": "Uppercase subtitle eyebrow under the name."
+    },
+    {
+      "name": "live",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show the green \"\u25cf LIVE\" pill in the top right."
+    },
+    {
+      "name": "summary",
+      "values": [
+        "`{ headline; detail }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Required. Brief headline + longer quoted analysis."
+    },
+    {
+      "name": "drivers",
+      "values": [
+        "`{ label; weight; intensity }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Simple-density only. Each row renders the label + percentage + intensity (High gets a tinted chip)."
+    },
+    {
+      "name": "explainability",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Controls the toggle. When `onExplainabilityChange` is not wired, the card manages local state."
+    },
+    {
+      "name": "onExplainabilityChange",
+      "values": [
+        "`(next: boolean) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "External handler for the Explainability toggle."
+    },
+    {
+      "name": "onDeepenAnalysis",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Click handler for the primary \"Deepen Analysis\" CTA."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardAgentReasoning"
+    ],
+    "import": "import { AICardAgentReasoning } from './AICardAgentReasoning'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "AI Assisted"
+    ],
+    "aiBehavior": "Explain \u00b7 Summarize \u00b7 Prioritize \u00b7 Recommend",
+    "accountability": "Rationale \u00b7 Assumptions \u00b7 Confidence \u00b7 Sources \u00b7 Owner"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

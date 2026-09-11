@@ -1,0 +1,75 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIColorTokens",
+  "repoModule": "aiColorTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Three-tier color system for AI-native UI — ZSAI brand palette, ZS Orange signal, ZSAI Tan companion, and AI.color.* semantic aliases.",
+  "intent": "Components consume Tier 2 (AI.color.*) and Tier 3 (ai-* CSS vars) only. Never hardcode hex. Follow 60-30-10 surface distribution.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/color.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "aiColorTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
+    "note": "Structured mirror at components/ai/tokens/color.json"
+  },
+  "platforms": ["web", "react"],
+  "variants": [],
+  "states": [],
+  "javascriptApi": {
+    "exports": ["AI", "ZSAI", "ZS_ORANGE", "ZSAI_TAN", "ZDS", "AI_THEME", "F"],
+    "import": "import { AI, ZDS } from './ai-tokens'",
+    "notes": [
+      "Tier 1 palettes (ZSAI, ZS_ORANGE, ZSAI_TAN) for token authors only",
+      "Components use AI.color.*, AI.gradient.*, ZDS.*",
+      "CSS vars: --ai-card-bg, --ai-brand-surface, --ai-zds-text"
+    ]
+  },
+  "tokens": {
+    "cssVars": [
+      "--ai-card-bg",
+      "--ai-brand-surface",
+      "--ai-zds-text",
+      "--ai-zds-text-helper",
+      "AI.color.action.primary",
+      "AI.color.surface.subtle",
+      "AI.color.border.default",
+      "AI.color.text.primary",
+      "AI.color.brand",
+      "AI.color.signal.default",
+      "AI.color.companion.paper",
+      "AI.gradient.action.full",
+      "AI.gradient.surface.idle"
+    ]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": ["Signal orange reserved for escalation — one primary signal affordance per view"]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not hardcode brand hex in component code",
+      "Do not reference ZSAI[n] directly in components",
+      "Do not use ZS Orange as a dominant fill",
+      "Do not invent --ai-* hex values outside ai-tokens.ts",
+      "Do not use dataviz palette colors for chat bubbles"
+    ],
+    "agentRules": [
+      "Read color.json for flat token lookup",
+      "Import from ai-tokens.ts for runtime values",
+      "Apply 60-30-10 rule: ZSAI 60%, Tan 30%, Orange 10%"
+    ]
+  },
+  "relatedModules": [
+    { "name": "AITypographyTokens", "mirrorSpec": "components/ai/tokens/typography.md" },
+    { "name": "AIShadowTokens", "mirrorSpec": "components/ai/tokens/shadow.md" }
+  ],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

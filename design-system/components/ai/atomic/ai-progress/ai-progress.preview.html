@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Progress — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes ai-shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes ai-indeterminate {
+      0%   { left: -40%; width: 40%; }
+      50%  { left: 30%;  width: 50%; }
+      100% { left: 110%; width: 40%; }
+    }
+    @keyframes ai-progress-settle {
+      0%   { opacity: 0.7; transform: scaleX(1.01); }
+      100% { opacity: 1;   transform: scaleX(1);    }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-progress-shimmer,
+      .ai-progress-indeterminate { animation: none !important; }
+    }
+
+    :root {
+      --ai-brand: #5A6DFF;
+      --ai-brand-hover: #4D60E6;
+      --ai-brand-surface: var(--brand-00);
+      --ai-brand-border: var(--brand-20);
+      --ai-brand-subtle: var(--brand-10);
+      --ai-neutral-text: #2f2c3c;
+      --ai-neutral-helper: #5b5864;
+      --ai-neutral-border: #B2B0B6;
+      --ai-track-bg: #F4F3F3;
+      --success-color: #0A6E5E;
+      --error-color: #B21111;
+      --signal-60: #EC7200;
+      --signal-70: #CB6100;
+      --signal-00: #FEFBF4;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .demo-stack { display: flex; flex-direction: column; gap: 28px; max-width: 560px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 10px; display: block;
+    }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .card-with-header {
+      border: 1px solid var(--neutral-border-subtle); border-radius: 8px; overflow: hidden; max-width: 560px;
+    }
+    .card-body { padding: 16px; font-size: 14px; color: var(--ai-neutral-text); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Progress</h1>
+    <p class="subtitle">
+      Progress that communicates AI work — five variants, eleven states, brand gradient fill, and semantic
+      status colors. Ported from canonical <code>AIProgress.tsx</code>.
+    </p>
+
+    <section>
+      <h2>Determinate running</h2>
+      <p class="section-desc">Primary use case — label, percent, ETA, and brand gradient fill at known percent.</p>
+      <div class="demo-surface">
+        <div id="hero-demo" style="max-width:560px"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Status states</h2>
+      <p class="section-desc">Semantic fill colors for agentic outcomes — paused, complete, blocked, error, escalated.</p>
+      <div class="demo-surface">
+        <div class="demo-stack" id="status-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Indeterminate</h2>
+      <p class="section-desc">Shimmer animation when percent is unknown. Respects <code>prefers-reduced-motion</code>.</p>
+      <div class="demo-surface">
+        <div id="indeterminate-demo" style="max-width:560px"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Segmented multi-phase</h2>
+      <p class="section-desc">Workstream stages where phase matters more than exact percent.</p>
+      <div class="demo-surface">
+        <div id="segmented-demo" style="max-width:560px"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Thin &amp; header variants</h2>
+      <p class="section-desc">Embedded bars — 2px thin inside cards, 4px header spanning card top edge.</p>
+      <div class="demo-surface">
+        <div class="demo-stack" id="embedded-demos"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Live progress demo</h2>
+      <p class="section-desc">Simulates retrieval → analysis → complete lifecycle.</p>
+      <div class="demo-surface">
+        <div id="live-demo" style="max-width:560px"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Running</strong> — Brand gradient fill at known percent; smooth width transition</li>
+        <li><strong>Indeterminate</strong> — Sliding shimmer when percent unknown</li>
+        <li><strong>Paused</strong> — Neutral gray fill; saved progress</li>
+        <li><strong>Complete</strong> — Success green with settle animation</li>
+        <li><strong>Blocked</strong> — Signal orange fill + Blocked label</li>
+        <li><strong>Error</strong> — Error red fill + Failed label</li>
+        <li><strong>Escalated</strong> — Deep orange gradient — handed to human review</li>
+        <li><strong>Segmented</strong> — Multi-phase bar with per-segment status</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIProgress } from '@/components/ai/atomic/progress/AIProgress';
+
+&lt;AIProgress
+  status="running"
+  value={62}
+  label="Analyzing territory coverage"
+  percentLabel
+  estimatedTimeRemaining="~1 min remaining"
+  size="md"
+/&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    /* ── Token constants (from ai-tokens.ts) ── */
+    const TOKENS = {
+      brand: '#5A6DFF',
+      brandHover: '#4D60E6',
+      brandSurface: '#F5F6FF',
+      brandBorder: '#DEDCDE',
+      brandSubtle: '#E6E9FF',
+      textHelper: '#5b5864',
+      border: '#B2B0B6',
+      signal60: '#EC7200',
+      signal70: '#CB6100',
+      signal00: '#FEFBF4',
+      success: '#0A6E5E',
+      error: '#B21111',
+    };
+
+    const HEIGHT = { thin: '2px', sm: '4px', md: '6px', lg: '10px' };
+
+    const FILL_COLOR = {
+      idle: TOKENS.brandSubtle,
+      running: TOKENS.brand,
+      indeterminate: TOKENS.brand,
+      paused: TOKENS.border,
+      resuming: TOKENS.brand,
+      complete: 'var(--success-color)',
+      blocked: TOKENS.signal60,
+      error: 'var(--error-color)',
+      escalated: TOKENS.signal70,
+      disabled: TOKENS.border,
+    };
+
+    const FILL_GRADIENT = {
+      running: `linear-gradient(90deg, ${TOKENS.brand} 0%, ${TOKENS.brandHover} 100%)`,
+      resuming: `linear-gradient(90deg, ${TOKENS.brand} 0%, ${TOKENS.brand} 100%)`,
+      escalated: `linear-gradient(90deg, ${TOKENS.signal60} 0%, ${TOKENS.signal70} 100%)`,
+    };
+
+    const STATUS_LABEL = {
+      paused: 'Paused',
+      blocked: 'Blocked',
+      error: 'Failed',
+      escalated: 'Escalated',
+      complete: 'Complete',
+    };
+
+    const STATUS_DOT = {
+      complete: 'var(--success-color)',
+      blocked: TOKENS.signal60,
+      error: 'var(--error-color)',
+      escalated: TOKENS.signal70,
+      paused: TOKENS.border,
+    };
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function clampPct(value, min = 0, max = 100) {
+      return Math.min(100, Math.max(0, ((value - min) / (max - min)) * 100));
+    }
+
+    function statusPill(status, label, color) {
+      const bgMap = {
+        complete: '#F0FFF4',
+        error: '#FFEDE9',
+        blocked: TOKENS.signal00,
+        escalated: TOKENS.signal00,
+        paused: 'var(--ai-track-bg)',
+      };
+      const pill = document.createElement('span');
+      pill.style.cssText = `
+        display:inline-flex;align-items:center;gap:4px;padding:1px 7px;border-radius:100px;
+        background:${bgMap[status] || TOKENS.brandSurface};border:1px solid ${color}22;
+        font-size:10px;font-weight:600;color:${color};white-space:nowrap;
+      `;
+      pill.textContent = label;
+      return pill;
+    }
+
+    function statusDot(color, animated) {
+      const dot = document.createElement('span');
+      dot.setAttribute('aria-hidden', 'true');
+      dot.style.cssText = `
+        display:inline-block;width:6px;height:6px;border-radius:100px;background:${color};flex-shrink:0;
+        ${animated && !reducedMotion ? 'animation:ai-shimmer 1200ms ease-in-out infinite;opacity:0.9;' : ''}
+      `;
+      return dot;
+    }
+
+    function createTrack({ height, pct, fill, isIndeterminate, status, ariaLabel, min = 0, max = 100 }) {
+      const track = document.createElement('div');
+      track.setAttribute('role', 'progressbar');
+      track.setAttribute('aria-valuemin', String(min));
+      track.setAttribute('aria-valuemax', String(max));
+      if (!isIndeterminate) track.setAttribute('aria-valuenow', String(Math.round(pct)));
+      track.setAttribute('aria-label', ariaLabel);
+      track.style.cssText = `
+        width:100%;background:${TOKENS.brandSurface};border:1px solid ${TOKENS.brandBorder};
+        border-radius:100px;height:${height};overflow:hidden;position:relative;
+        opacity:${status === 'disabled' ? 0.45 : 1};
+      `;
+
+      const fillEl = document.createElement('div');
+      if (isIndeterminate) {
+        fillEl.className = reducedMotion ? '' : 'ai-progress-indeterminate';
+        fillEl.style.cssText = `
+          position:absolute;height:100%;background:${fill};border-radius:100px;
+          ${reducedMotion
+            ? 'width:45%;left:25%;'
+            : 'animation:ai-indeterminate 1500ms ease-in-out infinite;'}
+        `;
+      } else {
+        fillEl.style.cssText = `
+          width:${pct}%;height:100%;background:${fill};border-radius:100px;
+          transition:${reducedMotion ? 'none' : 'width 350ms ease-out'};
+          ${status === 'complete' && !reducedMotion ? 'animation:ai-progress-settle 280ms ease-out;' : ''}
+        `;
+      }
+      track.appendChild(fillEl);
+      return track;
+    }
+
+    /* ── Main AIProgress factory (linear / thin / header / segmented) ── */
+    function createAIProgress(opts) {
+      const {
+        value, min = 0, max = 100,
+        status = 'running',
+        variant = 'linear',
+        size = 'md',
+        label, currentStep,
+        percentLabel = false,
+        estimatedTimeRemaining,
+        showLabel = true,
+        segments,
+        indeterminate = false,
+        ariaLabel,
+      } = opts;
+
+      const pct = value !== undefined ? clampPct(value, min, max) : 0;
+      const isIndeterminate = indeterminate || status === 'indeterminate' || (status === 'running' && value === undefined);
+      const fill = FILL_GRADIENT[status] || FILL_COLOR[status];
+      const resolvedStatusLabel = STATUS_LABEL[status] || '';
+      const dotColor = STATUS_DOT[status];
+
+      /* thin / header */
+      if (variant === 'thin' || variant === 'header') {
+        const h = variant === 'thin' ? HEIGHT.thin : HEIGHT.sm;
+        const wrap = document.createElement('div');
+        wrap.style.width = '100%';
+        wrap.appendChild(createTrack({
+          height: h, pct, fill, isIndeterminate, status,
+          ariaLabel: ariaLabel || label || 'AI progress', min, max,
+        }));
+        return wrap;
+      }
+
+      /* segmented */
+      if (variant === 'segmented' && segments?.length) {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'width:100%;font-family:"Open Sans",sans-serif';
+
+        if (showLabel && (label || currentStep)) {
+          const labelRow = document.createElement('div');
+          labelRow.style.cssText = 'display:flex;justify-content:space-between;margin-bottom:6px;';
+          const lbl = document.createElement('span');
+          lbl.style.cssText = 'font-size:11px;font-weight:600;letter-spacing:0.02em;color:#5b5864;';
+          lbl.textContent = label || currentStep;
+          labelRow.appendChild(lbl);
+          if (resolvedStatusLabel && dotColor) {
+            labelRow.appendChild(statusPill(status, resolvedStatusLabel, dotColor));
+          }
+          wrap.appendChild(labelRow);
+        }
+
+        const total = segments.reduce((s, seg) => s + seg.value, 0) || 100;
+        const segBar = document.createElement('div');
+        segBar.style.cssText = `display:flex;gap:2px;width:100%;height:${HEIGHT[size]}`;
+
+        segments.forEach((seg, i) => {
+          const segStatus = seg.status || 'running';
+          const segPct = (seg.value / total) * 100;
+          const segFill = FILL_GRADIENT[segStatus] || FILL_COLOR[segStatus];
+          const segIndet = segStatus === 'indeterminate' || segStatus === 'running';
+
+          const cell = document.createElement('div');
+          cell.title = seg.label || '';
+          cell.style.cssText = `
+            flex:0 0 ${segPct}%;height:100%;border-radius:100px;
+            background:${TOKENS.brandSurface};border:1px solid ${TOKENS.brandBorder};
+            overflow:hidden;position:relative;
+          `;
+          const inner = document.createElement('div');
+          inner.className = (!reducedMotion && segIndet && segStatus !== 'idle' && segStatus !== 'complete') ? 'ai-progress-shimmer' : '';
+          inner.style.cssText = `
+            position:absolute;inset:0;background:${segFill};border-radius:100px;
+            ${(!reducedMotion && segIndet && segStatus !== 'idle' && segStatus !== 'complete')
+              ? 'background-size:200% 100%;animation:ai-shimmer 1400ms ease-in-out infinite;'
+              : (segStatus === 'complete' ? 'width:100%' : segStatus === 'idle' ? 'width:0' : 'width:100%')}
+          `;
+          cell.appendChild(inner);
+          segBar.appendChild(cell);
+        });
+        wrap.appendChild(segBar);
+
+        if (estimatedTimeRemaining) {
+          const eta = document.createElement('div');
+          eta.style.cssText = 'margin-top:4px;font-size:10px;color:#5b5864;';
+          eta.textContent = estimatedTimeRemaining;
+          wrap.appendChild(eta);
+        }
+        return wrap;
+      }
+
+      /* linear (default) */
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'width:100%;font-family:"Open Sans",sans-serif';
+      if (status === 'complete' || status === 'error' || status === 'blocked') {
+        wrap.setAttribute('aria-live', 'polite');
+      }
+
+      const showLabelRow = showLabel && (label || currentStep || resolvedStatusLabel || (percentLabel && !isIndeterminate));
+      if (showLabelRow) {
+        const labelRow = document.createElement('div');
+        labelRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:8px;';
+
+        const left = document.createElement('div');
+        left.style.cssText = 'display:flex;align-items:center;gap:6px;min-width:0;';
+        if (dotColor) left.appendChild(statusDot(dotColor, status === 'running' || status === 'resuming'));
+
+        const lbl = document.createElement('span');
+        lbl.style.cssText = 'font-size:11px;font-weight:600;color:#5b5864;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+        lbl.textContent = resolvedStatusLabel
+          ? resolvedStatusLabel + (label ? ` · ${label}` : '')
+          : (currentStep || label || '');
+        left.appendChild(lbl);
+        labelRow.appendChild(left);
+
+        if (percentLabel && !isIndeterminate) {
+          const pctLbl = document.createElement('span');
+          pctLbl.style.cssText = 'font-size:11px;font-weight:500;color:#5b5864;flex-shrink:0;';
+          pctLbl.textContent = `${Math.round(pct)}%`;
+          labelRow.appendChild(pctLbl);
+        }
+        wrap.appendChild(labelRow);
+      }
+
+      wrap.appendChild(createTrack({
+        height: HEIGHT[size],
+        pct, fill, isIndeterminate, status,
+        ariaLabel: ariaLabel || label || currentStep || resolvedStatusLabel || 'AI progress',
+        min, max,
+      }));
+
+      if (estimatedTimeRemaining || (currentStep && resolvedStatusLabel)) {
+        const subRow = document.createElement('div');
+        subRow.style.cssText = 'display:flex;justify-content:space-between;margin-top:4px;';
+        if (currentStep && resolvedStatusLabel) {
+          const step = document.createElement('span');
+          step.style.cssText = 'font-size:10px;color:#5b5864;';
+          step.textContent = currentStep;
+          subRow.appendChild(step);
+        }
+        if (estimatedTimeRemaining) {
+          const eta = document.createElement('span');
+          eta.style.cssText = 'font-size:10px;color:#5b5864;margin-left:auto;';
+          eta.textContent = estimatedTimeRemaining;
+          subRow.appendChild(eta);
+        }
+        wrap.appendChild(subRow);
+      }
+
+      return wrap;
+    }
+
+    function labeledDemo(title, el) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = title;
+      wrap.append(lbl, el);
+      return wrap;
+    }
+
+    /* Hero — matches screenshot */
+    document.getElementById('hero-demo').appendChild(createAIProgress({
+      status: 'running',
+      value: 62,
+      label: 'Analyzing territory coverage',
+      percentLabel: true,
+      estimatedTimeRemaining: '~1 min remaining',
+      size: 'md',
+    }));
+
+    /* Status gallery */
+    const gallery = document.getElementById('status-gallery');
+    gallery.append(
+      labeledDemo('Running 55%', createAIProgress({ status: 'running', value: 55, label: 'Analyzing coverage gaps', percentLabel: true })),
+      labeledDemo('Paused 55%', createAIProgress({ status: 'paused', value: 55, label: 'Paused at Analysis phase' })),
+      labeledDemo('Complete', createAIProgress({ status: 'complete', value: 100, label: 'Territory analysis complete' })),
+      labeledDemo('Blocked 50%', createAIProgress({ status: 'blocked', value: 50, label: 'CRM activity data unavailable' })),
+      labeledDemo('Error 50%', createAIProgress({ status: 'error', value: 50, label: 'Analysis failed — retry' })),
+      labeledDemo('Escalated 70%', createAIProgress({ status: 'escalated', value: 70, label: 'Escalated to Territory Operations' }))
+    );
+
+    /* Indeterminate */
+    document.getElementById('indeterminate-demo').appendChild(createAIProgress({
+      status: 'indeterminate',
+      label: 'Retrieving ZAIDYN Analytics data…',
+      size: 'md',
+    }));
+
+    /* Segmented */
+    document.getElementById('segmented-demo').appendChild(createAIProgress({
+      variant: 'segmented',
+      label: 'Q2 Workstream',
+      size: 'md',
+      segments: [
+        { id: 'research', label: 'Research', status: 'complete', value: 25 },
+        { id: 'analyze',  label: 'Analyze',  status: 'running',  value: 25 },
+        { id: 'draft',    label: 'Draft',    status: 'idle',     value: 25 },
+        { id: 'review',   label: 'Review',   status: 'idle',     value: 25 },
+      ],
+    }));
+
+    /* Thin + header embedded */
+    const embedded = document.getElementById('embedded-demos');
+
+    const thinCard = document.createElement('div');
+    thinCard.className = 'card-with-header';
+    thinCard.innerHTML = '<div class="card-body" style="padding-top:12px">Card with 2px thin progress bar below title.</div>';
+    const thinInner = thinCard.querySelector('.card-body');
+    thinInner.insertBefore(createAIProgress({ variant: 'thin', status: 'running', value: 40, ariaLabel: 'Card loading' }), thinInner.firstChild);
+    embedded.appendChild(labeledDemo('Thin (2px)', thinCard));
+
+    const headerCard = document.createElement('div');
+    headerCard.className = 'card-with-header';
+    headerCard.appendChild(createAIProgress({ variant: 'header', status: 'running', value: 65, ariaLabel: 'Panel loading' }));
+    const headerBody = document.createElement('div');
+    headerBody.className = 'card-body';
+    headerBody.textContent = 'Card with 4px header progress spanning top edge.';
+    headerCard.appendChild(headerBody);
+    embedded.appendChild(labeledDemo('Header (4px)', headerCard));
+
+    /* Live lifecycle demo */
+    const liveEl = document.getElementById('live-demo');
+    let livePct = 0;
+    let livePhase = 0;
+    const phases = [
+      { status: 'indeterminate', label: 'Retrieving territory data', value: undefined },
+      { status: 'running', label: 'Analyzing coverage gaps', value: 0 },
+      { status: 'running', label: 'Analyzing coverage gaps', value: 40 },
+      { status: 'running', label: 'Analyzing coverage gaps', value: 72 },
+      { status: 'complete', label: 'Analysis complete', value: 100 },
+    ];
+
+    function renderLive() {
+      liveEl.replaceChildren();
+      const p = phases[livePhase];
+      liveEl.appendChild(createAIProgress({
+        status: p.status,
+        value: p.value,
+        label: p.label,
+        percentLabel: p.value !== undefined,
+        estimatedTimeRemaining: p.status === 'running' && p.value < 100 ? '~1 min remaining' : undefined,
+        size: 'md',
+      }));
+    }
+
+    renderLive();
+    const liveTimer = setInterval(() => {
+      if (livePhase === 0) { livePhase = 1; }
+      else if (livePhase < 4) {
+        livePhase++;
+      } else {
+        livePhase = 0;
+      }
+      renderLive();
+    }, 1800);
+  </script>
+</body>
+</html>

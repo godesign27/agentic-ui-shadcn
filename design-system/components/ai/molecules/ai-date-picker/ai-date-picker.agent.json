@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIDatePicker",
+  "repoModule": "aiDatePicker",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "The AI Date Picker mirrors the ZDS Date Picker (src/datePicker/) 1:1 in structure and behavior \u2014 an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link \u2014 but is restyled onto the ZAIDYN AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the ZSAI indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from ZDS; the anatomy, states, and keyboard model are identical.",
+  "intent": "The ZDS Date Picker on the AI surface \u2014 AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-date-picker/ai-date-picker.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiDatePicker",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-date-picker/AIDatePicker.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-date-picker/AIDatePicker.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Due date'`",
+      "hint": "Field label."
+    },
+    {
+      "name": "value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Selected date (formatted)."
+    },
+    {
+      "name": "placeholder",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'MM/DD/YYYY'`",
+      "hint": "Trigger placeholder when no value."
+    },
+    {
+      "name": "helper",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Helper / validation text below the field."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small'`",
+      "hint": "`'normal'`"
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'warning' \\",
+      "hint": "'error'`"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Disables the trigger and panel."
+    },
+    {
+      "name": "open",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Force the calendar open (docs/preview); omit for live toggle."
+    },
+    {
+      "name": "width",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`288`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIDatePicker"
+    ],
+    "import": "import { AIDatePicker } from './AIDatePicker'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Select \u00b7 Input",
+    "accountability": "Owner"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

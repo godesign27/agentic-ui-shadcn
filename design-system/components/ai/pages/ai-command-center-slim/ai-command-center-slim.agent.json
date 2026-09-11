@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICommandCenterSlim",
+  "repoModule": "aiCommandCenterSlim",
+  "tier": "pages",
+  "status": "experimental",
+  "description": "AICommandCenterSlim is a minimal single-row variant of the AI Command Center. The input lives in a pill-shaped bar \u2014 everything in one row. The right action button shows a microphone by default (talk-first); when the user types, the mic transitions to an ArrowUp send button with the AI gradient fill. No quick chips, no placeholder copy, no subtext. Intended for surfaces where the AI bar needs to coexist with other content rather than owning the full page.",
+  "intent": "Compact single-line AI prompt bar for lightweight contexts. Adapts between idle and active modes without a full command center footprint.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-command-center-slim/ai-command-center-slim.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCommandCenterSlim",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-command-center-slim/AICommandCenterSlim.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/pages/ai-command-center-slim/AICommandCenterSlim.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`\"gray\" \\"
+      ],
+      "default": "\"aqua\"?`",
+      "hint": "`\"gray\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICommandCenterSlim"
+    ],
+    "import": "import { AICommandCenterSlim } from './AICommandCenterSlim'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Suggest \u00b7 Generate",
+    "accountability": "Confidence"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

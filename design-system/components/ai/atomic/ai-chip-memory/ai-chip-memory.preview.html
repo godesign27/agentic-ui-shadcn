@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Memory Chip — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ai-card-bg-raised: #FAFAFA;
+      --ai-card-border: #B2B0B6;
+      --ai-neutral-text: #2f2c3c;
+      --ai-neutral-helper: #5b5864;
+      --ai-brand-surface: var(--brand-00);
+      --ai-brand-border: var(--brand-20);
+      --ai-brand-text: var(--ai-brand);
+      --ai-confidence-track: #F4F3F3;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .chip-list { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .state-label { font-size: 13px; font-weight: 400; color: var(--neutral-text-helper); min-width: 140px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Memory Chip</h1>
+    <p class="subtitle">Inline label for remembered context — companion tan vs brand blue vs muted/removed states. Ported from canonical <code>AIChipMemory.tsx</code>.</p>
+
+    <section>
+      <h2>State variations</h2>
+      <p class="section-desc">Five memory variants with custom memory-chip SVG icon (not emoji).</p>
+      <div class="demo-surface">
+        <div class="chip-list" id="state-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Size variants</h2>
+      <p class="section-desc"><code>sm</code> — 11px / 2×8px pad · <code>md</code> — @brand-caption-1 / 3×10px pad</p>
+      <div class="demo-surface">
+        <div class="chip-row" id="size-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>In conversation context</h2>
+      <p class="section-desc">Chips below an AI response indicating active memory sources.</p>
+      <div class="demo-surface">
+        <p style="margin:0 0 12px;font-size:14px;color:var(--ai-neutral-text)">Based on your Q3 strategy goals, I recommend reallocating two territories in the Northeast region.</p>
+        <div class="chip-row" id="context-chips"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>using-memory</strong> — Active retrieval (raised card surface)</li>
+        <li><strong>previous-context</strong> — Prior conversation reference</li>
+        <li><strong>memory-available</strong> — Companion tan — exists but not applied</li>
+        <li><strong>memory-ignored</strong> — Muted helper text, 0.7 opacity</li>
+        <li><strong>memory-removed</strong> — Red strikethrough, 0.7 opacity</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIChipMemory } from '@/components/ai/atomic/chip-memory/AIChipMemory';
+
+&lt;AIChipMemory variant="using-memory" label="Q3 strategy brief" /&gt;
+&lt;AIChipMemory variant="memory-ignored" label="Old org chart" /&gt;
+&lt;AIChipMemory variant="memory-removed" label="Deprecated brief" /&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+    const AI_RADIUS_FULL = '100px';
+
+    /** @brand-caption-1 from ai-typography.ts */
+    const CAPTION_1 = { fontSize: 12, fontWeight: 400, lineHeight: 1.5 };
+
+    /** VARIANT_CONFIG from AIChipMemory.tsx */
+    const VARIANT_CONFIG = {
+      'using-memory':     { bg: 'var(--ai-card-bg-raised)',   border: 'var(--ai-card-border)',     text: 'var(--ai-neutral-text)',   strikethrough: false, opacity: 1   },
+      'previous-context': { bg: 'var(--ai-card-bg-raised)',   border: 'var(--ai-card-border)',     text: 'var(--ai-neutral-text)',   strikethrough: false, opacity: 1   },
+      'memory-available': { bg: 'var(--ai-companion-surface)', border: 'var(--ai-companion-border)', text: 'var(--ai-companion-ink)', strikethrough: false, opacity: 1   },
+      'memory-ignored':   { bg: 'var(--ai-confidence-track)', border: 'var(--ai-card-border)',    text: 'var(--ai-neutral-helper)', strikethrough: false, opacity: 0.7 },
+      'memory-removed':   { bg: 'rgba(231,76,60,0.08)',       border: 'rgba(231,76,60,0.25)',      text: '#E74C3C',            strikethrough: true,  opacity: 0.7 },
+    };
+
+    const VARIANT_LABELS = {
+      'using-memory': 'Using memory',
+      'previous-context': 'Previous context',
+      'memory-available': 'Memory available',
+      'memory-ignored': 'Memory ignored',
+      'memory-removed': 'Memory removed',
+    };
+
+    function memoryIconSvg(color) {
+      return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="3" width="10" height="7" rx="1.5" stroke="${color}" stroke-width="1.2"/><path d="M4 3V2a2 2 0 0 1 4 0v1" stroke="${color}" stroke-width="1.2" stroke-linecap="round"/><circle cx="4.5" cy="6.5" r="0.9" fill="${color}"/><circle cx="7.5" cy="6.5" r="0.9" fill="${color}"/></svg>`;
+    }
+
+    /** Vanilla port of AIChipMemory */
+    function createAIChipMemory({ variant, label, size = 'md' } = {}) {
+      const cfg = VARIANT_CONFIG[variant];
+      const sm = size === 'sm';
+      const el = document.createElement('span');
+
+      const typo = sm
+        ? { fontSize: 11, fontWeight: 400, lineHeight: 1.4 }
+        : CAPTION_1;
+
+      el.style.cssText = [
+        'display:inline-flex', 'align-items:center',
+        `gap:${sm ? 4 : 5}px`,
+        `padding:${sm ? '2px 8px' : '3px 10px'}`,
+        `border-radius:${AI_RADIUS_FULL}`,
+        `background:${cfg.bg}`,
+        `border:1px solid ${cfg.border}`,
+        `font-family:${F}`,
+        `font-size:${typo.fontSize}px`,
+        `font-weight:${typo.fontWeight}`,
+        `line-height:${typo.lineHeight}`,
+        `color:${cfg.text}`,
+        `opacity:${cfg.opacity}`,
+        'white-space:nowrap',
+      ].join(';');
+
+      el.innerHTML = memoryIconSvg(cfg.text)
+        + `<span style="text-decoration:${cfg.strikethrough ? 'line-through' : 'none'}">${label}</span>`;
+
+      return el;
+    }
+
+    /** Gallery rows matching design reference */
+    const GALLERY = [
+      { variant: 'using-memory',     label: 'Q3 strategy brief' },
+      { variant: 'using-memory',     label: 'Q3 strategy brief' },
+      { variant: 'previous-context', label: 'Prior conversation' },
+      { variant: 'memory-available', label: 'Org chart v2' },
+      { variant: 'memory-ignored',   label: 'Old org chart' },
+      { variant: 'memory-removed',   label: 'Deprecated brief' },
+    ];
+
+    const stateList = document.getElementById('state-list');
+    GALLERY.forEach(item => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:16px;flex-wrap:wrap';
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = VARIANT_LABELS[item.variant];
+      row.append(lbl, createAIChipMemory(item));
+      stateList.appendChild(row);
+    });
+
+    const sizeRow = document.getElementById('size-row');
+    sizeRow.append(
+      createAIChipMemory({ variant: 'using-memory', label: 'Q3 strategy brief', size: 'sm' }),
+      createAIChipMemory({ variant: 'using-memory', label: 'Q3 strategy brief', size: 'md' }),
+      createAIChipMemory({ variant: 'memory-available', label: 'Org chart v2', size: 'sm' }),
+      createAIChipMemory({ variant: 'memory-available', label: 'Org chart v2', size: 'md' }),
+    );
+
+    const ctx = document.getElementById('context-chips');
+    ctx.append(
+      createAIChipMemory({ variant: 'using-memory', label: 'Q3 strategy brief', size: 'sm' }),
+      createAIChipMemory({ variant: 'previous-context', label: 'Territory discussion', size: 'sm' }),
+      createAIChipMemory({ variant: 'memory-available', label: 'Quota targets', size: 'sm' }),
+    );
+  </script>
+</body>
+</html>

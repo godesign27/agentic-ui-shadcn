@@ -1,0 +1,13 @@
+{
+  "id": "table-chart-hybrid",
+  "name": "Table + Chart Hybrid",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Table + Chart Hybrid — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "TableChartHybrid"
+    ]
+  }
+}

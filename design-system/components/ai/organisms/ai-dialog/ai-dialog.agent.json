@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIDialog",
+  "repoModule": "aiDialog",
+  "tier": "organisms",
+  "status": "active",
+  "description": "Primary user-to-AI message entry \u2014 full card (AIInputCard) with Add, Skill, Mode, Mic, Send; slim pill (AIDialogSlim) for compact surfaces. Shared border state machine: neutral \u2192 focus-blue \u2192 filled-purple.",
+  "intent": "Message composer for AI Command Center and chat surfaces. Not a search field \u2014 preserves AI-specific affordances (skills, mode, mic).",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-dialog/ai-dialog.md",
+    "contract": "components/ai/organisms/ai-dialog/ai-dialog.agent.json",
+    "agentIndexModule": "aiDialog",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/components/ai/organisms/input-card/AIInputCard.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/organisms/ai-dialog/AIDialog.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "full",
+    "slim"
+  ],
+  "states": [
+    "empty",
+    "focused",
+    "filled",
+    "chat",
+    "slim-empty",
+    "slim-filled"
+  ],
+  "slots": [
+    {
+      "name": "textarea",
+      "required": true,
+      "allowedContent": [
+        "auto-growing message input"
+      ]
+    },
+    {
+      "name": "toolbar",
+      "required": true,
+      "allowedContent": [
+        "AIDialogButton ghost controls",
+        "gradient Send button"
+      ],
+      "note": "Full card: Add, Skills, Agent (AIDialogButton), Mic (AIDialogButton), Send (gradient). Slim uses combined Add/Mode."
+    }
+  ],
+  "props": [
+    {
+      "name": "onSend",
+      "values": [
+        "(text: string) => void"
+      ],
+      "hint": "Called with trimmed message text on submit"
+    },
+    {
+      "name": "chatMode",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Smaller border-radius (AI.radius.md) for pinned chat variant"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIInputCard",
+      "AIDialogSlim"
+    ],
+    "import": "import { AIInputCard } from '@ai/organisms/input-card/AIInputCard'",
+    "notes": [
+      "Full card: Ghost AIDialogButton toolbar (Add, Skills, Agent, Mic) + gradient Send",
+      "Slim pill: AIDialogSlim \u2014 56px height, combined Add/Mode menu, Mic/Send toggle",
+      "Peer deps: @ai-design-system, react, lucide-react",
+      "Border state machine: empty \u2192 focused \u2192 filled using ai-input.border.* tokens",
+      "Built-in menus: Add (files/project/skills), Skills picker, Mode (Agent/Plan/Ask)",
+      "Send button: ArrowRight icon in circular 32px control \u2014 not SendHorizontal"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "ai-input.border.color.default",
+      "ai-input.border.color.focus",
+      "ai-input.border.color.filled",
+      "ai-input.shadow.default",
+      "ai-input.shadow.focus",
+      "ai-send.surface.filled",
+      "ai-send.surface.empty",
+      "ai-input.border.radius.empty",
+      "ai-input.border.radius.chat"
+    ]
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Enter to send",
+      "Tab through toolbar controls"
+    ],
+    "requiredAttributes": [
+      "Accessible label on textarea",
+      "Send disabled when input empty",
+      "Accessible names on Mic, Add, and Mode controls"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use as a generic search input",
+      "Do not strip Add or Mode controls without design review",
+      "Do not substitute standard Field or Textarea",
+      "Do not hardcode border/shadow values \u2014 use ai-input.* and ai-send.* tokens",
+      "Do not skip border state machine transitions",
+      "Do not use plain icon buttons in toolbar \u2014 use AIDialogButton Ghost"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest",
+      "Execute"
+    ],
+    "accountability": "Confidence"
+  },
+  "relatedModules": [
+    {
+      "name": "AIDialogButton",
+      "mirrorSpec": "components/ai/atomic/ai-dialog-button/ai-dialog-button.md"
+    },
+    {
+      "name": "AIChatThreadGroup",
+      "mirrorSpec": "components/ai/organisms/ai-chat-thread-group.md"
+    },
+    {
+      "name": "AIPromptInput",
+      "mirrorSpec": "components/ai/atomic/ai-prompt-input.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

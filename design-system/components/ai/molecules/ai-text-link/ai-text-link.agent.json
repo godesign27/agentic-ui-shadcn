@@ -1,0 +1,211 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITextLink",
+  "repoModule": "aiTextLink",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "AITextLink is the canonical inline link for AI explainability surfaces. It supports six variants: text-only, icon-leading, accordion chevron, icon + chevron, external navigation, and attention (orange",
+  "intent": "Not a generic product link. The AI-specific text link treatment used when an AI output needs to expose its reasoning, sources, assumptions, or governance information.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-text-link/ai-text-link.md",
+    "contract": "components/ai/molecules/ai-text-link/ai-text-link.agent.json",
+    "agentIndexModule": "aiTextLink",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/text-link/AITextLink.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/molecules/ai-text-link/AITextLink.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Link text. Must make purpose clear without relying on icon alone."
+    },
+    {
+      "name": "href",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "URL for navigation links. Omit for in-page disclosure/callback actions."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Leading icon name from INLINE_ICON_PATHS (info, database, history, shield-check, flag, link, error-circle)"
+    },
+    {
+      "name": "trailingIcon",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Non-chevron trailing icon (used sparingly)"
+    },
+    {
+      "name": "showChevron",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show accordion chevron. Automatically set by variant=\"chevron\" or \"icon-chevron\"."
+    },
+    {
+      "name": "expanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`undefined`",
+      "hint": "Controlled expanded state for accordion links"
+    },
+    {
+      "name": "defaultExpanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Uncontrolled default expanded state"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Disable the link. Always pair with disabledReason."
+    },
+    {
+      "name": "disabledReason",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Explains why the link is unavailable. Shown as tooltip title + aria-label."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`AITextLinkVariant`"
+      ],
+      "default": "`\"text\"`",
+      "hint": "text \\"
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`AITextLinkTone`"
+      ],
+      "default": "`\"ai\"`",
+      "hint": "ai \\"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`AITextLinkSize`"
+      ],
+      "default": "`\"md\"`",
+      "hint": "sm=11px, md=13px"
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show spinner while source is resolving; replaces leading icon"
+    },
+    {
+      "name": "external",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Force external-link icon; equivalent to variant=\"external\""
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Explicit accessible label override"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Click callback for non-href action links"
+    },
+    {
+      "name": "onToggle",
+      "values": [
+        "`(expanded: boolean) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when accordion chevron toggles"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AITextLink",
+      "AITextLinkGroup"
+    ],
+    "import": "import { AITextLink, AITextLinkGroup } from '@/components/ai/atomic/text-link/AITextLink'",
+    "notes": [
+      "Attention/orange tone reserved for escalation, approval, stale data only.",
+      "Always pair disabled with disabledReason."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Explain",
+      "Cite",
+      "Reveal",
+      "Expand",
+      "Inspect",
+      "Verify",
+      "Disclose"
+    ],
+    "accountability": "Sources \u00b7 Rationale \u00b7 Assumptions \u00b7 Confidence \u00b7 Audit trail \u00b7 Data freshness"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

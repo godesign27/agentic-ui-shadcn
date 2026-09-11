@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICommandCenter",
+  "repoModule": "aiCommandCenter",
+  "tier": "pages",
+  "status": "active",
+  "description": "AICommandCenter is the full-page AI workspace. In the idle state it shows the avatar, a welcome heading, quick chips, and a centered input card. Once a message is sent, it transitions to a scroll-pinned chat thread with user bubbles, loading indicators, AI response patterns (analytical, Q&A, actionable, contextual, awaiting-approval), and a feedback bar per response. Background transitions via gradient surface tokens.",
+  "intent": "Full AI chat workspace with idle state, conversation thread, and response patterns. The complete AI Led command surface for agentic tasks and conversational flows.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-command-center/ai-command-center.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCommandCenter",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-command-center/AICommandCenter.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/pages/ai-command-center/AICommandCenter.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "theme",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"aqua\"?`",
+      "hint": "`\"default\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICommandCenter"
+    ],
+    "import": "import { AICommandCenter } from './AICommandCenter'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Generate \u00b7 Guide \u00b7 Execute",
+    "accountability": "Audit trail \u00b7 Confidence \u00b7 Rationale"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIToDo",
+  "repoModule": "aiToDo",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "AIToDo is the agent's scratch-pad checklist \u2014 the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between \"done\" and \"to do\" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on ZSAI_TAN[00]. When every item is completed, the list flips to a calm \"Complete\" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an \"All done\" badge appears, and the progress bar runs one shimmer sweep before settling.",
+  "intent": "Calm checklist the agent uses to narrate its plan and progress.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-to-do/ai-to-do.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiToDo",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-to-do/AIToDo.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-to-do/AIToDo.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"To-do list\"`",
+      "hint": "Section title in the header."
+    },
+    {
+      "name": "items",
+      "values": [
+        "`AIToDoItem[]`"
+      ],
+      "default": "`required`",
+      "hint": "Ordered list. Each item has { label, status, note?, id? }."
+    },
+    {
+      "name": "collapsible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Allow the user to collapse the list. Header becomes a button."
+    },
+    {
+      "name": "defaultCollapsed",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Initial collapsed state when collapsible."
+    },
+    {
+      "name": "forceComplete",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`auto`",
+      "hint": "Override the auto \"all complete\" celebration state. Auto-detects from items.every(status === \"completed\")."
+    },
+    {
+      "name": "onItemClick",
+      "values": [
+        "`(item, index) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional click handler \u2014 rows become buttons. Useful for jumping the user to the artifact the row represents."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIToDo"
+    ],
+    "import": "import { AIToDo } from './AIToDo'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Plan \u00b7 Monitor \u00b7 Communicate",
+    "accountability": "Status \u00b7 Audit trail \u00b7 Transparency"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

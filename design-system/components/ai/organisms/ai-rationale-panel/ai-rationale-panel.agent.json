@@ -1,0 +1,122 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIRationalePanel",
+  "repoModule": "aiRationalePanel",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AI Rationale is the primary explainability output for AI-generated decisions. It presents four nested disclosure sections \u2014 What I found, Why it matters, What I considered, and Assumptions + Sources \u2014 in a collapsible disclosure block that can be embedded in any AI output surface: chat responses in the Command Center, AI Assisted side-panel drawers, rationale drawers in notification cards, or inline below structured group outputs.",
+  "intent": "Collapsible explainability output revealing what the AI found, why it matters, what alternatives were considered, and what assumptions and sources informed the decision. Surfaces in chat, drawers, command center, or any AI output context.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-rationale-panel/ai-rationale-panel.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiRationalePanel",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-rationale-panel/AIRationalePanel.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-rationale-panel/AIRationalePanel.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "whatFound",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Key finding text"
+    },
+    {
+      "name": "whyMatters",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Business impact text"
+    },
+    {
+      "name": "considered",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`required`",
+      "hint": "List of alternatives considered"
+    },
+    {
+      "name": "assumptions",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`required`",
+      "hint": "List of assumptions"
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`RationaleSource[]`"
+      ],
+      "default": "`required`",
+      "hint": "Sources array with label and optional url"
+    },
+    {
+      "name": "defaultOpen",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Whether panel starts open"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIRationalePanel"
+    ],
+    "import": "import { AIRationalePanel } from './AIRationalePanel'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Explain \u00b7 Evaluate",
+    "accountability": "Rationale \u00b7 Assumptions \u00b7 Sources"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

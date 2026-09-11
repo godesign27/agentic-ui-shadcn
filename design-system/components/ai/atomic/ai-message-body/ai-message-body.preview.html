@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Text Response — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root { --ai-neutral-text: #2f2c3c; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 680px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .state-label {
+      font-size: 13px; font-weight: 400; color: var(--neutral-text-helper);
+      margin-bottom: 8px; display: block;
+    }
+    .gallery { display: flex; flex-direction: column; gap: 32px; max-width: 640px; }
+    .response-card {
+      max-width: 560px; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px;
+      padding: 14px 16px 16px;
+    }
+    .msg-header {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .msg-header span.label { font-size: 11px; font-weight: 600; color: #6B6876; flex: 1; }
+    .msg-header span.ts { font-size: 10px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    @keyframes stream-cursor {
+      0%, 100% { opacity: 1; } 50% { opacity: 0; }
+    }
+    .stream-cursor {
+      display: inline-block; width: 2px; height: 1em; background: #5A6DFF;
+      margin-left: 1px; vertical-align: text-bottom;
+      animation: stream-cursor 1s step-end infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .stream-cursor { animation: none; opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Text Response</h1>
+    <p class="subtitle">Plain AI prose — readable body text via <code>@brand-bubble-body</code>. No bold or headings inside the atom. Ported from canonical <code>AIMessageBody.tsx</code>.</p>
+
+    <section>
+      <h2>State variations</h2>
+      <p class="section-desc">Three documented content lengths — default <code>size="md"</code> (16px).</p>
+      <div class="demo-surface">
+        <div class="gallery" id="state-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Full message stack</h2>
+      <p class="section-desc">Header + body as composed in a chat response card.</p>
+      <div class="demo-surface">
+        <div class="response-card" id="stack-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Streaming demo</h2>
+      <p class="section-desc">Body text reveals character-by-character (simulated).</p>
+      <div class="demo-surface">
+        <div class="response-card" id="stream-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Size variants</h2>
+      <p class="section-desc"><code>sm</code> 14px · <code>md</code> 16px · <code>lg</code> 18px — all inherit <code>@brand-bubble-body</code> weight and line-height.</p>
+      <div class="demo-surface">
+        <div class="gallery" id="size-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Standard (md)</strong> — Default conversational prose at 16px / 1.55 line-height</li>
+        <li><strong>Short answer</strong> — Single-sentence compact response</li>
+        <li><strong>Multi-sentence analysis</strong> — Long-form analysis in one prose block</li>
+        <li><strong>Size sm / lg</strong> — 14px and 18px typography scale</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIMessageBody } from '@/components/ai/atomic/message-body/AIMessageBody';
+
+&lt;AIMessageBody&gt;
+  Based on Q2 territory data, coverage has improved by 8% since the last restructuring.
+&lt;/AIMessageBody&gt;
+
+&lt;AIMessageBody size="sm"&gt;Coverage is at 74%. Northeast is your biggest gap.&lt;/AIMessageBody&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    /** Mirrors AI_TYPOGRAPHY['@brand-bubble-body'] from ai-typography.ts */
+    const BUBBLE_BODY = {
+      fontWeight: 400,
+      lineHeight: 1.55,
+      letterSpacing: '-0.1px',
+    };
+
+    /** Vanilla port of AIMessageBody SIZE_STYLE */
+    const SIZE_STYLE = {
+      sm: { ...BUBBLE_BODY, fontSize: 14 },
+      md: { ...BUBBLE_BODY, fontSize: 16 },
+      lg: { ...BUBBLE_BODY, fontSize: 18 },
+    };
+
+    /** Vanilla port of AIMessageBody — single &lt;p&gt;, no bold/headings */
+    function mountAIMessageBody(container, { content, size = 'md', streaming = false } = {}) {
+      const style = SIZE_STYLE[size] || SIZE_STYLE.md;
+      const el = document.createElement('p');
+      el.style.cssText = [
+        'margin:0',
+        `font-family:${F}`,
+        `font-size:${style.fontSize}px`,
+        `font-weight:${style.fontWeight}`,
+        `line-height:${style.lineHeight}`,
+        `letter-spacing:${style.letterSpacing}`,
+        'color:var(--ai-neutral-text)',
+      ].join(';');
+
+      if (streaming) {
+        const cursor = document.createElement('span');
+        cursor.className = 'stream-cursor';
+        cursor.setAttribute('aria-hidden', 'true');
+        el.appendChild(cursor);
+        let i = 0;
+        const text = content;
+        const tick = setInterval(() => {
+          if (i < text.length) {
+            el.insertBefore(document.createTextNode(text[i]), cursor);
+            i++;
+          } else {
+            clearInterval(tick);
+            cursor.remove();
+          }
+        }, 18);
+      } else {
+        el.textContent = content;
+      }
+
+      container.appendChild(el);
+      return el;
+    }
+
+    function miniHeader(container, label, ts) {
+      const row = document.createElement('div');
+      row.className = 'msg-header';
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '16'); svg.setAttribute('height', '16');
+      svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('aria-hidden', 'true');
+      [['8.5','#B4BDFF'],['6','#5A6DFF'],['3.5','#1F2A66']].forEach(([r, fill]) => {
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', '9'); c.setAttribute('cy', '9'); c.setAttribute('r', r); c.setAttribute('fill', fill);
+        svg.appendChild(c);
+      });
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M9 6.5v5M6.5 9h5'); path.setAttribute('stroke', '#fff');
+      path.setAttribute('stroke-width', '1'); path.setAttribute('stroke-linecap', 'round');
+      svg.appendChild(path);
+      row.appendChild(svg);
+      const lbl = document.createElement('span');
+      lbl.className = 'label'; lbl.textContent = label;
+      row.appendChild(lbl);
+      const t = document.createElement('span');
+      t.className = 'ts'; t.textContent = ts;
+      row.appendChild(t);
+      container.appendChild(row);
+    }
+
+    function labeledDemo(label, fn) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      const host = document.createElement('div');
+      fn(host);
+      wrap.append(lbl, host);
+      return wrap;
+    }
+
+    const STANDARD = 'Based on Q2 territory data, coverage has improved by 8% since the last restructuring. Three reps are currently overloaded relative to their quota capacity. I recommend redistributing the Northeast accounts before Q3 planning finalizes.';
+    const SHORT = 'Coverage is at 74%. Northeast is your biggest gap.';
+    const MULTI = 'Q2 performance shows three overloaded reps in the Pacific region. Their accounts per rep ratio (1:47) exceeds the recommended threshold of 1:35. Before finalizing Q3 territory assignments, consider redistributing 12–15 accounts to the two recently onboarded reps in that region. This would bring coverage ratios into balance and reduce churn risk on the 6 highest-revenue accounts currently at risk.';
+
+    // State variations (matches bundle screenshot)
+    const stateGallery = document.getElementById('state-gallery');
+    stateGallery.appendChild(labeledDemo('Standard', h => {
+      mountAIMessageBody(h, { content: STANDARD });
+    }));
+    stateGallery.appendChild(labeledDemo('Short answer', h => {
+      mountAIMessageBody(h, { content: SHORT });
+    }));
+    stateGallery.appendChild(labeledDemo('Multi-sentence analysis', h => {
+      mountAIMessageBody(h, { content: MULTI });
+    }));
+
+    // Full stack
+    const stack = document.getElementById('stack-demo');
+    miniHeader(stack, 'AI Analysis', 'Just now');
+    mountAIMessageBody(stack, { content: STANDARD });
+
+    // Streaming
+    const stream = document.getElementById('stream-demo');
+    miniHeader(stream, 'AI Response', 'Just now');
+    mountAIMessageBody(stream, {
+      content: 'Analyzing Q3 pipeline velocity across Northeast territories…',
+      streaming: true,
+    });
+
+    // Size variants
+    const sizeGallery = document.getElementById('size-gallery');
+    sizeGallery.appendChild(labeledDemo('sm (14px)', h => {
+      mountAIMessageBody(h, { content: SHORT, size: 'sm' });
+    }));
+    sizeGallery.appendChild(labeledDemo('md (16px — default)', h => {
+      mountAIMessageBody(h, { content: STANDARD });
+    }));
+    sizeGallery.appendChild(labeledDemo('lg (18px)', h => {
+      mountAIMessageBody(h, { content: STANDARD, size: 'lg' });
+    }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITable",
+  "repoModule": "zdsAiTable",
+  "tier": "organisms",
+  "status": "active",
+  "description": "The AI-themed variant of the standard ZDS Table. The single ZdsTable component (zds/zds-table.tsx) accepts theme=\"standard\" (ZDS primary teal, square corners) or theme=\"ai\". In the AI theme the reused ZDS atoms (Checkbox, Button, focus ring) are re-anchored \u2014 scoped via CSS-variable overrides \u2014 to the AI brand blue (var(--color-ai-brand)), row selection paints the brand surface (var(--color-ai-brand-surface)), and the container radius moves to the AI radius scale (var(--radius-ai-md)). Everything else \u2014 19 cell content types, Normal/Small sizes, Default/Generous padding, sortable + filterable headers, indeterminate select-all, zebra, sticky header, skeleton loading, disabled rows, expandable nested rows, total footer, and the four AI cell modes \u2014 is shared with the standard table. All colors, radii, and spacing read design-system CSS variables from globals.css; all text uses the \"Open Sans\" face.",
+  "intent": "ZDS Table, AI surface theme \u2014 brand-blue accent, brand-surface selection, rounded corners.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-table/zds-ai-table.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiTable",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-table/AITable.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-table/AITable.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "theme",
+      "values": [
+        "`'standard' \\"
+      ],
+      "default": "'ai'`",
+      "hint": "`'standard'`"
+    },
+    {
+      "name": "columns",
+      "values": [
+        "`ZdsTableColumn[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Column defs (key, label, type, align, sortable, filterable, render\u2026)."
+    },
+    {
+      "name": "rows",
+      "values": [
+        "`Row[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Row data objects."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small'`",
+      "hint": "`'normal'`"
+    },
+    {
+      "name": "padding",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'generous'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "selection",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'single' \\",
+      "hint": "'multi'`"
+    },
+    {
+      "name": "sortable",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Enables per-column sort (columns opt in via sortable)."
+    },
+    {
+      "name": "zebra",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Alternating row fill (var(--surface-color-2))."
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Skeleton preloader; keeps table chrome + aria-busy."
+    },
+    {
+      "name": "rowMode",
+      "values": [
+        "`(row, i) => ZdsTableCellMode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Row-level AI mode: 'ai-assist' \\"
+    },
+    {
+      "name": "renderExpanded",
+      "values": [
+        "`(row) => ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Expandable nested content beneath a row."
+    },
+    {
+      "name": "footer",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Total / summary footer row."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AITable"
+    ],
+    "import": "import { AITable } from './AITable'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

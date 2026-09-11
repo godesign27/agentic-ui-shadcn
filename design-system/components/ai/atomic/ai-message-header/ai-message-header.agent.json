@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMessageHeader",
+  "repoModule": "aiMessageHeader",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Universal AI message attribution row \u2014 BotAvatar, agent label (@brand-agent-name), optional right-aligned timestamp.",
+  "intent": "Establishes authorship, agent identity, and recency before the response body.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-message-header/ai-message-header.md",
+    "contract": "components/ai/atomic/ai-message-header/ai-message-header.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiMessageHeader",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/message-header/AIMessageHeader.tsx",
+    "dependency": "src/app/components/ai/atomic/avatar/AIAvatar.tsx",
+    "preview": "components/ai/atomic/ai-message-header/ai-message-header.preview.html",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-message-header/AIMessageHeader.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "md",
+    "sm"
+  ],
+  "states": [],
+  "props": [
+    {
+      "name": "agentLabel",
+      "values": [
+        "string"
+      ],
+      "hint": "Required agent name next to BotAvatar"
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "string",
+        "undefined"
+      ],
+      "default": "Just now",
+      "hint": "Right-aligned recency label \u2014 undefined hides it"
+    },
+    {
+      "name": "size",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "md",
+      "hint": "md: 16px avatar / 11px label / 10px ts \u00b7 sm: 14px / 10px / 9px"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMessageHeader"
+    ],
+    "import": "import { AIMessageHeader } from '@/components/ai/atomic/message-header/AIMessageHeader'",
+    "notes": [
+      "BotAvatar viewBox 42\u00d742 \u2014 #B4BDFF / #5A6DFF / #1F2A66 + white cross-star",
+      "Gap 7px; timestamp marginLeft auto",
+      "Label + timestamp color: var(--ai-neutral-helper)"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-neutral-helper"
+    ],
+    "typography": [
+      "@brand-agent-name"
+    ]
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [],
+    "requiredAttributes": [
+      "BotAvatar aria-hidden"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent avatar \u2014 use BotAvatar from AIAvatar.tsx",
+      "No orange gradient ring on avatar",
+      "Skip for inline streaming completions inside text fields",
+      "Do not use for unattributed system notifications"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Attribute",
+      "Identify"
+    ],
+    "accountability": "Agent identity \u00b7 Timestamp \u00b7 Attribution"
+  },
+  "relatedModules": [
+    {
+      "name": "AIAvatar",
+      "mirrorSpec": "components/ai/atomic/ai-avatar/ai-avatar.md"
+    },
+    {
+      "name": "AIMessageBody",
+      "mirrorSpec": "components/ai/atomic/ai-message-body/ai-message-body.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

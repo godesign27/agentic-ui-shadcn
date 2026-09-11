@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "ZAIDYNAIDesignSystem\u2014AllAtoms",
+  "repoModule": "Exported 2026-06-16 \u00b7 25 components",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "ZAIDYN AI Design System \u2014 All Atoms",
+  "intent": "",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/Exported 2026-06-16 \u00b7 25 components/Exported 2026-06-16 \u00b7 25 components.md",
+    "contract": "components/ai/atomic/Exported 2026-06-16 \u00b7 25 components/Exported 2026-06-16 \u00b7 25 components.agent.json",
+    "agentIndexModule": "Exported 2026-06-16 \u00b7 25 components",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/components/ai/atomic/Exported 2026-06-16 \u00b7 25 components/ZAIDYNAIDesignSystem\u2014AllAtoms.tsx",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "ZAIDYNAIDesignSystem\u2014AllAtoms"
+    ],
+    "import": "import { ZAIDYNAIDesignSystem\u2014AllAtoms } from '@ai/atomic/Exported 2026-06-16 \u00b7 25 components/ZAIDYNAIDesignSystem\u2014AllAtoms'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": [],
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,84 @@
+{
+  "description": "Tier 3 component token resolution chain — element slot → AI semantic → CSS variable",
+  "source": "components/ai/tokens/css/ai-component-tokens.css",
+  "tokens": [
+    {
+      "componentToken": "ai-button.background.primary.default",
+      "semantic": "AI.color.action.primary",
+      "cssVar": "--ai-button-background-primary-default",
+      "resolvesTo": "--ai-action-primary"
+    },
+    {
+      "componentToken": "ai-button.background.primary.hover",
+      "semantic": "AI.color.action.primaryHover",
+      "cssVar": "--ai-button-background-primary-hover",
+      "resolvesTo": "--ai-action-primary-hover"
+    },
+    {
+      "componentToken": "ai-button.background.primary.active",
+      "semantic": "AI.color.action.primaryActive",
+      "cssVar": "--ai-button-background-primary-active",
+      "resolvesTo": "--ai-action-primary-active"
+    },
+    {
+      "componentToken": "ai-button.background.signal.default",
+      "semantic": "AI.color.signal.default",
+      "cssVar": "--ai-button-background-signal-default",
+      "resolvesTo": "--ai-signal"
+    },
+    {
+      "componentToken": "ai-button.text.primary.default",
+      "semantic": "AI.color.text.onAction",
+      "cssVar": "--ai-button-text-primary-default",
+      "resolvesTo": "--ai-text-on-action"
+    },
+    {
+      "componentToken": "ai-input.border.default",
+      "semantic": "AI.color.border.default",
+      "cssVar": "--ai-input-border-default",
+      "resolvesTo": "--ai-border-default"
+    },
+    {
+      "componentToken": "ai-input.border.focus",
+      "semantic": "AI.color.border.focus",
+      "cssVar": "--ai-input-border-focus",
+      "resolvesTo": "--ai-border-focus"
+    },
+    {
+      "componentToken": "ai-card.background.default",
+      "semantic": "AI.color.surface.default",
+      "cssVar": "--ai-card-background-default",
+      "resolvesTo": "--ai-surface-default"
+    },
+    {
+      "componentToken": "ai-card.background.companion",
+      "semantic": "AI.color.companion.paper",
+      "cssVar": "--ai-card-background-companion",
+      "resolvesTo": "--ai-companion-paper"
+    },
+    {
+      "componentToken": "ai-card.border.default",
+      "semantic": "AI.color.border.default",
+      "cssVar": "--ai-card-border-default",
+      "resolvesTo": "--ai-border-default"
+    },
+    {
+      "componentToken": "ai-badge.background.signal",
+      "semantic": "AI.color.signal.subtle",
+      "cssVar": "--ai-badge-background-signal",
+      "resolvesTo": "--ai-signal-subtle"
+    },
+    {
+      "componentToken": "ai-chip.border.default",
+      "semantic": "AI.color.border.default",
+      "cssVar": "--ai-chip-border-default",
+      "resolvesTo": "--ai-border-default"
+    },
+    {
+      "componentToken": "ai-chip.border.hover",
+      "semantic": "AI.color.border.strong",
+      "cssVar": "--ai-chip-border-hover",
+      "resolvesTo": "--ai-border-strong"
+    }
+  ]
+}

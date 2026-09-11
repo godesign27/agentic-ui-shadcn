@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICommandCenterSplitView",
+  "repoModule": "aiCommandCenterSplitView",
+  "tier": "pages",
+  "status": "experimental",
+  "description": "AICommandCenterSplitView extends the standard AI Command Center with a split-view work mode. It starts in the same centered dialog state \u2014 avatar, greeting, input card, and quick-action chips. When the user submits their first prompt, the UI transitions into a two-pane workspace: the left pane anchors the conversation thread and prompt input; the right pane surfaces conditional AI output (analysis, workflow, table, scenario, draft, or approval flow). The right pane is intentionally modular and placeholder-oriented \u2014 it defines the layout pattern without prescribing the final output type.",
+  "intent": "Chat drives the work. The right panel holds the generated output.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCommandCenterSplitView",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-command-center-split-view/AICommandCenterSplitView.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/pages/ai-command-center-split-view/AICommandCenterSplitView.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`\"gray\" \\"
+      ],
+      "default": "\"aqua\"`",
+      "hint": "`\"gray\"`"
+    },
+    {
+      "name": "showBackground",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Render the ambient gradient background in the start state."
+    },
+    {
+      "name": "suggestions",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Custom quick-action chip labels for the start state. Defaults to 5 ZAIDYN-specific examples."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICommandCenterSplitView"
+    ],
+    "import": "import { AICommandCenterSplitView } from './AICommandCenterSplitView'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Ask \u00b7 Generate \u00b7 Analyze \u00b7 Summarize \u00b7 Build \u00b7 Preview \u00b7 Refine \u00b7 Execute \u00b7 Monitor",
+    "accountability": "Sources \u00b7 Rationale \u00b7 Assumptions \u00b7 Confidence \u00b7 Audit trail \u00b7 Approval \u00b7 Output ownership"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

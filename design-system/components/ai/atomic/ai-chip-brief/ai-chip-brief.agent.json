@@ -1,0 +1,87 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIChipBrief",
+  "repoModule": "aiChipBrief",
+  "tier": "atomic",
+  "status": "active",
+  "description": "The AI Brief Chip surfaces the live status of an AI task brief inline \u2014 wherever a brief is referenced in the UI. It uses a colored dot and a label pill to communicate one of six states without requir",
+  "intent": "Status indicator for agent task briefs. Communicates execution readiness at a glance \u2014 from draft to awaiting approval to running.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-chip-brief/ai-chip-brief.md",
+    "contract": "components/ai/atomic/ai-chip-brief/ai-chip-brief.agent.json",
+    "agentIndexModule": "aiChipBrief",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/chip-brief/AIChipBrief.tsx",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "status",
+      "values": [
+        "`BriefChipStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "One of: default \\"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Text label for the brief"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIChipBrief"
+    ],
+    "import": "import { AIChipBrief } from '@ai/atomic/ai-chip-brief/AIChipBrief'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Confirm",
+      "Execute"
+    ],
+    "accountability": "Approval \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,256 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIChip",
+  "repoModule": "aiChip",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIChip consolidates four formerly separate chip atoms (memory, brief, status, handoff) into one component discriminated on a `kind` prop. Each kind preserves its own sub-taxonomy: memory `variant`, brief `status`, status `tone`, handoff `direction`. Output is pixel-identical to the former atoms \u2014 this is purely an API consolidation so the shared pill conventions live in one place.",
+  "intent": "The single pill atom for the AI system. `kind` selects memory context, task-brief status, outcome status, or an agent handoff \u2014 all sharing radius, sizing, and caption typography.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-chip/ai-chip.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiChip",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-chip/AIChip.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-chip/AIBriefChip.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "kind",
+      "values": [
+        "`\"memory\" \\"
+      ],
+      "default": "\"brief\" \\",
+      "hint": "\"status\" \\"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "memory / brief / status \u2014 the pill text. (handoff uses fromLabel + toLabel instead.)"
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`MemoryVariant`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"memory\" \u2014 using-memory \\"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`BriefChipStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "kind=\"brief\" \u2014 default \\"
+    },
+    {
+      "name": "noDot",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "kind=\"brief\" \u2014 hides the status dot (role/label chips)."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`string \\"
+      ],
+      "default": "ReactNode`",
+      "hint": "`\u2014`"
+    },
+    {
+      "name": "accentColor",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"brief\" \u2014 overrides the derived dot / text accent color."
+    },
+    {
+      "name": "accentBg",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"brief\" \u2014 overrides the derived chip background fill."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`AIStatusPillTone`"
+      ],
+      "default": "`\"neutral\"`",
+      "hint": "kind=\"status\" \u2014 success \\"
+    },
+    {
+      "name": "showIndicator",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "kind=\"status\" \u2014 toggles the leading glyph."
+    },
+    {
+      "name": "onDark",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "kind=\"status\" \u2014 switches to the dark-surface tone palette."
+    },
+    {
+      "name": "direction",
+      "values": [
+        "`HandoffDirection`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"handoff\" \u2014 agent-to-agent \\"
+    },
+    {
+      "name": "fromLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"handoff\" \u2014 name of the source party."
+    },
+    {
+      "name": "toLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"handoff\" \u2014 name of the target party."
+    },
+    {
+      "name": "state",
+      "values": [
+        "`TagChipState`"
+      ],
+      "default": "`\"neutral\"`",
+      "hint": "kind=\"tag\" \u2014 neutral \\"
+    },
+    {
+      "name": "tagSize",
+      "values": [
+        "`\"normal\" \\"
+      ],
+      "default": "\"small\" \\",
+      "hint": "\"x-small\"`"
+    },
+    {
+      "name": "interaction",
+      "values": [
+        "`TagChipInteraction`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "kind=\"tag\" \u2014 default \\"
+    },
+    {
+      "name": "dismissible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "kind=\"tag\" \u2014 shows the trailing zs-icon-close dismiss button (suppressed when active/disabled)."
+    },
+    {
+      "name": "leftIcon",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "kind=\"tag\" \u2014 leading zs-icon-globe-fill; icon colour tracks the state (white when active, muted when disabled)."
+    },
+    {
+      "name": "shape",
+      "values": [
+        "`\"flat\" \\"
+      ],
+      "default": "\"rounded\"`",
+      "hint": "`\"flat\"`"
+    },
+    {
+      "name": "dataColor",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "kind=\"tag\" \u2014 custom data-viz colour (border + label + filled-circle dismiss). Overrides the semantic state palette; renders as a rounded pill."
+    },
+    {
+      "name": "dataTint",
+      "values": [
+        "`string`"
+      ],
+      "default": "`dataColor @ 10%`",
+      "hint": "kind=\"tag\" \u2014 background tint paired with dataColor. Defaults to the data colour at ~10% alpha."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIChip"
+    ],
+    "import": "import { AIChip } from './AIChip'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Confirm \u00b7 Execute",
+    "accountability": "Approval \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

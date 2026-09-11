@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ai-default">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="zds-ai-component" content="zds-ai-radio" />
+  <meta name="zds-ai-export" content="AIRadio" />
+  <title>AI Radio — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root, [data-theme="ai-default"] {
+    --ai-brand: #4D60E6;
+    --ai-brand-hover: #3544A4;
+    --ai-brand-surface: #F5F6FF;
+    --ai-brand-border: #BECAFE;
+    --ai-text: #2F2C3C;
+    --ai-helper: #716E79;
+    --ai-border: #DEDCDE;
+    --ai-bg: #FFFFFF;
+    --ai-page-bg: #F4F3F3;
+    --ai-error: #B21111;
+    --ai-error-bg: #FFEDE9;
+    --ai-success: #0A6E5E;
+    --ai-radius-sm: 6px;
+    --ai-radius-md: 12px;
+    --ai-radius-lg: 16px;
+    --ai-card-radius: 16px;
+    --ai-focus: #4D60E6;
+  }
+  body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    background: var(--ai-page-bg);
+    color: var(--ai-text);
+    line-height: 1.5;
+  }
+  .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+  h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+  .subtitle { color: var(--ai-helper); font-size: 14px; margin: 0 0 8px; max-width: 760px; }
+  .agent-path { font-size: 12px; color: var(--ai-helper); margin: 0 0 32px; font-family: monospace; }
+  section { margin-bottom: 48px; }
+  h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+  .section-desc { font-size: 13px; color: var(--ai-helper); margin: 0 0 20px; }
+  .demo-surface {
+    background: var(--ai-bg);
+    border: 1px solid var(--ai-border);
+    border-radius: var(--ai-radius-sm);
+    padding: 28px 32px;
+  }
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .state-card { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .state-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: #87848D; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .btn-ai {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 8px 16px; border-radius: var(--ai-radius-sm); border: none;
+    background: var(--ai-brand); color: #fff; font-family: inherit;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .btn-ai:hover { background: var(--ai-brand-hover); }
+  .btn-ai.secondary {
+    background: transparent; color: var(--ai-brand);
+    border: 1px solid var(--ai-brand-border);
+  }
+  .btn-ai.secondary:hover { background: var(--ai-brand-surface); }
+  @keyframes ai-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .ai-spin { animation: none !important; } }
+
+      .ai-rd { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+      .ai-rd input { position: absolute; opacity: 0; width: 0; height: 0; }
+      .ai-rd-dot {
+        width: 16px; height: 16px; border: 1.5px solid #5b5864; border-radius: 50%;
+        background: #fff; display: flex; align-items: center; justify-content: center;
+      }
+      .ai-rd input:checked + .ai-rd-dot { border-color: var(--ai-brand); }
+      .ai-rd input:checked + .ai-rd-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ai-brand); }
+      .ai-rd input:focus-visible + .ai-rd-dot { outline: 2px solid var(--ai-focus); outline-offset: 2px; }
+      .ai-rd.disabled { opacity: 0.4; pointer-events: none; }
+      .ai-rd-label { font-size: 14px; }
+      .ai-rd-group { display: flex; flex-direction: column; gap: 12px; }
+    </style>
+</head>
+<body>
+  <div class="page">
+    <h1>AI Radio</h1>
+    <p class="subtitle">Standalone HTML preview for <strong>AIRadio</strong> — open this file directly or serve from the repo. Canonical React: <code>AIRadio.tsx</code> in this folder.</p>
+    <p class="agent-path">components/ai/atomic/zds-ai-radio/zds-ai-radio.preview.html</p>
+
+    <section>
+      <h2>Radio group</h2>
+      <p class="section-desc">Mutually exclusive choice with AI brand selected state.</p>
+      <div class="demo-surface">
+        <div class="ai-rd-group" role="radiogroup" aria-label="Model mode">
+          <label class="ai-rd"><input type="radio" name="mode" checked /><span class="ai-rd-dot"></span><span class="ai-rd-label">AI Assisted</span></label>
+          <label class="ai-rd"><input type="radio" name="mode" /><span class="ai-rd-dot"></span><span class="ai-rd-label">Adaptive</span></label>
+          <label class="ai-rd"><input type="radio" name="mode" /><span class="ai-rd-dot"></span><span class="ai-rd-label">AI Led</span></label>
+          <label class="ai-rd disabled"><input type="radio" name="mode" disabled /><span class="ai-rd-dot"></span><span class="ai-rd-label">Disabled option</span></label>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

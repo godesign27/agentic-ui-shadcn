@@ -1,0 +1,321 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardMetric",
+  "repoModule": "aiCardMetric",
+  "tier": "organisms",
+  "status": "beta",
+  "description": "AICardMetric renders a KPI summary at basic / simple / rich / robust densities. Simple is a fast-scan tile (label + value + trend). Rich adds business context (target, source, freshness, status, secondary metric, action link). Robust adds AI insight, confidence, view-sources / view-rationale, and primary + secondary actions. Higher-density-only props are ignored with a dev warning at lower densities.",
+  "intent": "Simple optimizes for scanning. Rich adds business context. Robust adds AI insight, trust metadata, and action \u2014 all from one density prop.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-metric/ai-card-metric.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardMetric",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-metric/AICardMetric.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-metric/AICardMetric.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    {
+      "name": "basic",
+      "hint": "title + icon + value only"
+    },
+    {
+      "name": "simple",
+      "hint": "label + value + trend + accent"
+    },
+    {
+      "name": "rich",
+      "hint": "adds status, target, source, freshness, secondary, action link"
+    },
+    {
+      "name": "robust",
+      "hint": "adds insight, confidence, sources, rationale, actions"
+    }
+  ],
+  "states": [
+    "positive-trend",
+    "negative-trend",
+    "neutral-trend",
+    "no-trend",
+    "loading",
+    "clickable",
+    "accent-bar"
+  ],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "basic",
+        "simple",
+        "rich",
+        "robust"
+      ],
+      "default": "simple",
+      "hint": "Controls which fields render. Higher-density-only fields are ignored (with dev warning) at lower densities."
+    },
+    {
+      "name": "label",
+      "values": [
+        "string"
+      ],
+      "default": "required",
+      "hint": "Eyebrow label (uppercase) for simple/rich/robust; sentence-case title at density=basic."
+    },
+    {
+      "name": "value",
+      "values": [
+        "string",
+        "number"
+      ],
+      "default": "required",
+      "hint": "Primary KPI value."
+    },
+    {
+      "name": "unit",
+      "values": [
+        "string"
+      ],
+      "default": "\u2014",
+      "hint": "Optional unit suffix rendered inline with the value."
+    },
+    {
+      "name": "valueSize",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "hint": "Type scale for the metric value."
+    },
+    {
+      "name": "accent",
+      "values": [
+        "teal",
+        "indigo",
+        "amber",
+        "red",
+        "green",
+        "gray"
+      ],
+      "default": "teal",
+      "hint": "Dot + bottom rail color. Ignored at density=basic."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "string",
+        "ReactNode"
+      ],
+      "default": "\u2014",
+      "hint": "basic only. ZAIDYN zs-icon-* preferred, or any React node."
+    },
+    {
+      "name": "trend",
+      "values": [
+        "{ delta, label?, tone? }"
+      ],
+      "default": "\u2014",
+      "hint": "tone is positive | negative | neutral. Ignored at density=basic."
+    },
+    {
+      "name": "status",
+      "values": [
+        "{ label, tone }"
+      ],
+      "default": "\u2014",
+      "hint": "Rich+. Top-right status pill."
+    },
+    {
+      "name": "target",
+      "values": [
+        "string"
+      ],
+      "default": "\u2014",
+      "hint": "Rich+. Comparison line (Target: 81%)."
+    },
+    {
+      "name": "source",
+      "values": [
+        "{ label, icon? }"
+      ],
+      "default": "\u2014",
+      "hint": "Rich+. Source chip; icon defaults to zs-icon-data-table."
+    },
+    {
+      "name": "freshness",
+      "values": [
+        "string"
+      ],
+      "default": "\u2014",
+      "hint": "Rich+. Freshness chip with clock glyph."
+    },
+    {
+      "name": "secondaryMetric",
+      "values": [
+        "{ label, value }"
+      ],
+      "default": "\u2014",
+      "hint": "Rich. Sub-row beneath the primary metric."
+    },
+    {
+      "name": "actionLink",
+      "values": [
+        "{ label, href?, onClick? }"
+      ],
+      "default": "\u2014",
+      "hint": "Rich. Bottom-row action link with right-chevron."
+    },
+    {
+      "name": "insight",
+      "values": [
+        "string"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. Body for the AI INSIGHT callout."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "number 0\u2013100"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. XX% confidence pill \u2014 green \u226580 / amber 60\u201379 / red <60."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "() => void"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. Renders the View sources link."
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "() => void"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. Renders View rationale in the action row."
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "{ label, onClick? }"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. Primary AIButton."
+    },
+    {
+      "name": "secondaryAction",
+      "values": [
+        "{ label, onClick? }"
+      ],
+      "default": "\u2014",
+      "hint": "Robust. Secondary AIButton."
+    },
+    {
+      "name": "loading",
+      "values": [
+        "boolean"
+      ],
+      "default": "false",
+      "hint": "Skeleton state \u2014 value swaps for a shimmer bar."
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "() => void"
+      ],
+      "default": "\u2014",
+      "hint": "Makes the entire card clickable."
+    },
+    {
+      "name": "accentBar",
+      "values": [
+        "boolean"
+      ],
+      "default": "false",
+      "hint": "Opt-in 2px bottom rail in the accent color."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardMetric",
+      "SAMPLE_CARD_METRIC_SIMPLE",
+      "SAMPLE_CARD_METRIC_RICH",
+      "SAMPLE_CARD_METRIC_ROBUST"
+    ],
+    "import": "import { AICardMetric } from './AICardMetric'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Accent amber/green use ZS_AMBER[60] / ZS_GREEN[60] per metric-card.accent tokens.",
+      "Compose from co-located atoms \u2014 do not invent lookalikes.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-card-bg",
+      "--ai-card-border",
+      "--ai-zds-text",
+      "--ai-zds-helper"
+    ],
+    "semantic": [
+      "metric-card.accent.teal",
+      "metric-card.accent.indigo",
+      "metric-card.accent.amber",
+      "metric-card.accent.red",
+      "metric-card.accent.green",
+      "metric-card.accent.gray"
+    ]
+  },
+  "accessibility": {
+    "role": "article | button (when onClick)",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order",
+      "Clickable cards expose aria-label from label + value"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX",
+      "Do not pass robust-only props at simple/rich density (dev warning)"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Evaluate \u00b7 Suggest \u00b7 Explain",
+    "accountability": "Confidence \u00b7 Data quality \u00b7 Data freshness \u00b7 Rationale"
+  },
+  "relatedModules": [
+    "aiMetricValue",
+    "aiTrendIndicator",
+    "aiChip",
+    "aiInsightCallout",
+    "aiWhyThisLink",
+    "aiButton",
+    "aiCardAnalysis"
+  ],
+  "generatedAt": "2026-08-11T00:00:00.000Z",
+  "curated": true
+}

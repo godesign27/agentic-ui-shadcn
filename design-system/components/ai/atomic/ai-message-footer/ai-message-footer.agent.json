@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMessageFooter",
+  "repoModule": "aiMessageFooter",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Conditional action bar for actionable AI messages \u2014 1\u20133 footer actions (primary, secondary, ghost). Renders null when hidden or empty.",
+  "intent": "The decision point at the end of every actionable AI response.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-message-footer/ai-message-footer.md",
+    "contract": "components/ai/atomic/ai-message-footer/ai-message-footer.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiMessageFooter",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/message-footer/AIMessageFooter.tsx",
+    "preview": "components/ai/atomic/ai-message-footer/ai-message-footer.preview.html",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-message-footer/AIMessageFooter.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "primary-only",
+    "primary-secondary",
+    "primary-secondary-ghost"
+  ],
+  "states": [
+    "visible",
+    "hidden"
+  ],
+  "props": [
+    {
+      "name": "actions",
+      "values": [
+        "FooterAction[]"
+      ],
+      "hint": "Array of { label, variant, onClick, disabled? }"
+    },
+    {
+      "name": "visible",
+      "values": [
+        "boolean"
+      ],
+      "default": "true",
+      "hint": "false or empty actions \u2192 render null"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMessageFooter",
+      "FooterAction"
+    ],
+    "import": "import { AIMessageFooter } from '@/components/ai/atomic/message-footer/AIMessageFooter'",
+    "notes": [
+      "Primary flex:1 minWidth 140px",
+      "Ghost variant name is ghost not tertiary",
+      "Typography @brand-agent-name with weight overrides per button type"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-neutral-text",
+      "--ai-btn-outline-border"
+    ],
+    "typography": [
+      "@brand-agent-name"
+    ]
+  },
+  "accessibility": {
+    "role": "toolbar",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "native button elements for each action"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Informational-only responses \u2014 omit footer",
+      "When AIFeedbackBar is the only follow-up",
+      "Do not use AIButton tertiary \u2014 use ghost variant here"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Act",
+      "Approve",
+      "Suggest"
+    ],
+    "accountability": "Call to action \u00b7 Approval \u00b7 Governance"
+  },
+  "relatedModules": [
+    {
+      "name": "AIFeedbackBar",
+      "mirrorSpec": "components/ai/atomic/ai-feedback-bar/ai-feedback-bar.md"
+    },
+    {
+      "name": "AIButton",
+      "mirrorSpec": "components/ai/atomic/ai-button/ai-button.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

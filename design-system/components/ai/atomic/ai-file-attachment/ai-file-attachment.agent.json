@@ -1,0 +1,186 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIFileAttachment",
+  "repoModule": "aiFileAttachment",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior \u2014 the parent composer owns those. File-type icons resolve in priority order: ZS/Zaidyn icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (ZS orange), error (semantic error). Border-radius is 0 across all states per the ZDS atom flat-corner rule.",
+  "intent": "Selected-file chip for AI composers \u2014 name, type, status, remove. Does NOT own the picker, upload API, or validation.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-file-attachment/ai-file-attachment.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiFileAttachment",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-file-attachment/AIFileAttachment.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-file-attachment/AIFileAttachment.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "fileName",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "REQUIRED. Visible name (include extension where possible). Surfaces as title + aria-label when truncated."
+    },
+    {
+      "name": "fileType",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Explicit type label (e.g. \"DOCX\"). Wins over extension inference."
+    },
+    {
+      "name": "fileCategory",
+      "values": [
+        "`AIFileCategory`"
+      ],
+      "default": "`inferred`",
+      "hint": "Explicit category override. Inferred from fileType/extension when omitted."
+    },
+    {
+      "name": "fileSize",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Pre-formatted size string. Atom does not format byte values."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`AIFileAttachmentStatus`"
+      ],
+      "default": "`'default'`",
+      "hint": "default \u00b7 uploading \u00b7 processing \u00b7 unsupported \u00b7 error \u00b7 disabled \u00b7 removing \u00b7 fileTooLarge \u00b7 permissionRestricted \u00b7 virusScanPending \u00b7 virusScanFailed."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'compact' \\"
+      ],
+      "default": "'standard'`",
+      "hint": "`'standard'`"
+    },
+    {
+      "name": "progress",
+      "values": [
+        "`number (0\u2013100)`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Renders a thin progress bar when status is uploading / processing / virus-scan-pending."
+    },
+    {
+      "name": "errorMessage",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Overrides the default status text when status=\"error\"."
+    },
+    {
+      "name": "helperText",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional helper line under status (e.g. supported formats in unsupported state)."
+    },
+    {
+      "name": "disabledReason",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Surfaces as the remove-button title attribute when status=\"disabled\"."
+    },
+    {
+      "name": "showFileType",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show the uppercase type badge."
+    },
+    {
+      "name": "showFileSize",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`auto`",
+      "hint": "Defaults to true when fileSize is provided."
+    },
+    {
+      "name": "onRemove",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Click handler for the remove control. Button only renders when provided."
+    },
+    {
+      "name": "onRetry",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Click handler for Retry. Button only renders when status=\"error\"."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIFileAttachment"
+    ],
+    "import": "import { AIFileAttachment } from './AIFileAttachment'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Retrieve \u00b7 Analyze \u00b7 Summarize \u00b7 Generate \u00b7 Explain \u00b7 Validate \u00b7 Compare",
+    "accountability": "Source \u00b7 Context \u00b7 Permission state \u00b7 File status \u00b7 Error state \u00b7 User control"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIWhyThisLink",
+  "repoModule": "aiWhyThisLink",
+  "tier": "atomic",
+  "status": "active",
+  "description": "The AI Why This Link provides a lightweight, non-disruptive entry point into AI transparency. It appears inline adjacent to AI-generated content and opens a rationale panel, source list, assumption di",
+  "intent": "Minimal inline entry point to AI transparency. Opens rationale panels, source lists, assumption disclosures, or risk explanations without disrupting the primary flow.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-why-this-link/ai-why-this-link.md",
+    "contract": "components/ai/molecules/ai-why-this-link/ai-why-this-link.agent.json",
+    "agentIndexModule": "aiWhyThisLink",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/why-this-link/AIWhyThisLink.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/molecules/ai-why-this-link/AIWhyThisLink.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`WhyThisVariant`"
+      ],
+      "default": "`\"why-this\"`",
+      "hint": "why-this \\"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Override the default label for this variant"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Click handler \u2014 typically opens a panel or modal"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIWhyThisLink"
+    ],
+    "import": "import { AIWhyThisLink } from '@/components/ai/atomic/why-this-link/AIWhyThisLink'",
+    "notes": [
+      "Ghost inline link \u2014 does not compete with primary content hierarchy.",
+      "For multi-link footers prefer AITextLinkGroup."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Explain",
+      "Evaluate"
+    ],
+    "accountability": "Rationale \u00b7 Sources \u00b7 Assumptions"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

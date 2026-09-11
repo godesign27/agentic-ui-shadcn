@@ -1,0 +1,113 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardRecommendationCompare",
+  "repoModule": "aiCardRecommendationCompare",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The Recommendation Compare Card presents 2\u20133 AI-generated options in a scannable column layout. Each option shows a confidence/risk badge, expandable tradeoffs, and key metrics. A \"Recommended\" badge highlights the highest-confidence option. Operators choose, merge, or send to another agent.",
+  "intent": "Side-by-side comparison of 2\u20133 AI-generated options with confidence scores, risk levels, expandable tradeoffs, and operator choice controls.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-recommendation-compare/ai-card-recommendation-compare.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardRecommendationCompare",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-recommendation-compare/AICardRecommendationCompare.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-recommendation-compare/AICardRecommendationCompare.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Compare Options\"`",
+      "hint": "Card title"
+    },
+    {
+      "name": "options",
+      "values": [
+        "`RecommendationOption[]`"
+      ],
+      "default": "`required`",
+      "hint": "2\u20133 options to compare"
+    },
+    {
+      "name": "onChoose",
+      "values": [
+        "`(index: number) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when user chooses an option"
+    },
+    {
+      "name": "onMerge",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Merge options handler"
+    },
+    {
+      "name": "onSendToAgent",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Send to agent handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardRecommendationCompare"
+    ],
+    "import": "import { AICardRecommendationCompare } from './AICardRecommendationCompare'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Compare \u00b7 Confirm \u00b7 Evaluate",
+    "accountability": "Confidence \u00b7 Rationale \u00b7 Assumptions"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

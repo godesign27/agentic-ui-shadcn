@@ -1,0 +1,112 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardMultiAgentCollaboration",
+  "repoModule": "aiCardMultiAgentCollaboration",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The Multi-Agent Collaboration Card provides a unified view of a coordinated agent swarm working toward a shared goal. It surfaces each agent's role, status, and contribution line, plus an expandable \"Shared Findings\" disclosure for emergent cross-agent synthesis.",
+  "intent": "Unified view of a coordinated agent swarm working toward a shared goal. Surfaces each agent's contribution and emergent cross-agent findings.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-multi-agent-collaboration/ai-card-multi-agent-collaboration.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardMultiAgentCollaboration",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-multi-agent-collaboration/AICardMultiAgentCollaboration.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-multi-agent-collaboration/AICardMultiAgentCollaboration.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "goal",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Shared goal statement"
+    },
+    {
+      "name": "agents",
+      "values": [
+        "`CollaboratingAgent[]`"
+      ],
+      "default": "`required`",
+      "hint": "Array of agents with status and contribution"
+    },
+    {
+      "name": "sharedFindings",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Cross-agent synthesis text (collapsible)"
+    },
+    {
+      "name": "onPauseAll",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Pause all agents handler"
+    },
+    {
+      "name": "onEscalate",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Escalate handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardMultiAgentCollaboration"
+    ],
+    "import": "import { AICardMultiAgentCollaboration } from './AICardMultiAgentCollaboration'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Execute \u00b7 Monitor",
+    "accountability": "Owner \u00b7 Audit trail \u00b7 Escalation"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

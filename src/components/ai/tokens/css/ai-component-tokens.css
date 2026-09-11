@@ -1,0 +1,54 @@
+/**
+ * ZSAI Surface Theme — Tier 3 component token slots
+ *
+ * Maps element.property.variant.state → --ai-* semantic variables.
+ * Components should read these --ai-{element}-* vars, not raw hex.
+ */
+
+[data-theme^="ai-"] {
+  /* button */
+  --ai-button-background-primary-default: var(--ai-action-primary);
+  --ai-button-background-primary-hover: var(--ai-action-primary-hover);
+  --ai-button-background-primary-active: var(--ai-action-primary-active);
+  --ai-button-background-navy-default: var(--ai-brand-ink);
+  --ai-button-background-signal-default: var(--ai-signal);
+  --ai-button-background-error-default: var(--ai-status-error);
+  --ai-button-text-primary-default: var(--ai-text-on-action);
+  --ai-button-shadow-default: var(--ai-shadow-action-default);
+  --ai-button-radius: var(--ai-radius-md);
+
+  /* input */
+  --ai-input-background-default: var(--ai-surface-default);
+  --ai-input-border-default: var(--ai-border-default);
+  --ai-input-border-focus: var(--ai-border-focus);
+  --ai-input-shadow-default: var(--ai-shadow-input-default);
+  --ai-input-shadow-focus: var(--ai-shadow-input-focus);
+  --ai-input-shadow-field-default: var(--ai-shadow-field-default);
+  --ai-input-shadow-field-focus: var(--ai-shadow-field-focus);
+  --ai-input-shadow-field-warning: var(--ai-shadow-field-warning);
+  --ai-input-shadow-field-error: var(--ai-shadow-field-error);
+  --ai-input-radius-empty: var(--ai-radius-lg);
+  --ai-input-radius-chat: var(--ai-radius-md);
+
+  /* card */
+  --ai-card-background-default: var(--ai-surface-default);
+  --ai-card-background-subtle: var(--ai-surface-subtle);
+  --ai-card-background-companion: var(--ai-companion-paper);
+  --ai-card-border-default: var(--ai-border-default);
+  --ai-card-bg: var(--ai-surface-subtle);
+  --ai-card-radius: var(--ai-radius-sm);
+  --ai-card-shadow-default: var(--ai-shadow-card-default);
+  --ai-card-shadow-raised: var(--ai-shadow-card-raised);
+
+  /* badge / chip */
+  --ai-badge-background-signal: var(--ai-signal-subtle);
+  --ai-badge-text-signal: var(--ai-signal-strong);
+  --ai-chip-border-default: var(--ai-border-default);
+  --ai-chip-border-hover: var(--ai-border-strong);
+  --ai-chip-radius: var(--ai-radius-full);
+
+  /* insight */
+  --ai-insight-background: var(--ai-gradient-surface-subtle);
+  --ai-insight-border: var(--ai-border-default);
+  --ai-insight-radius: var(--ai-radius-xs);
+}

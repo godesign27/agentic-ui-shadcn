@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "ZDSAIDialog",
+  "repoModule": "zdsAiDialog",
+  "tier": "organisms",
+  "status": "active",
+  "description": "Themed wrapper over the real ZdsDialog. ZdsDialog reads every color from `--zs-*` custom properties and merges a `style` prop last; ZdsAiDialog sets those variables in that merged style, so the AI values cascade into the header, footer button, close icon, dividers, focus ring, and the ZdsButton in the Modal-With-Button variant. Re-anchors: --zs-background-button-default \u2192 AI.color.action.primary (#4D60E6); --zs-background-extra-bold \u2192 ZSAI[100] navy for the Dark Header Modal; --zs-separator-default \u2192 #BECAFE; --zs-icon-neutral-default \u2192 #4D60E6; --zs-text-helper \u2192 #3544A4; --zs-border-focus \u2192 #4D60E6. Shape: borderRadius AI.radius.lg (20px) + overflow:hidden to clip the header to the rounded top, and an AI-tinted elevation. The backdrop is overridden via a scoped ::backdrop rule to a frosted indigo (light brand frost by default, deep navy for inverse) with a blur. Body copy stays on the neutral ink for AA legibility. All native <dialog> behavior \u2014 showModal()/close(), ESC \u2192 onClose, focus trap + return-focus \u2014 is inherited unchanged from the base.",
+  "intent": "ZDS Dialog, AI surface theme \u2014 AI-blue actions, navy header, rounded corners, frosted indigo backdrop.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-dialog/zds-ai-dialog.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiDialog",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-dialog/ZDSAIDialog.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-dialog/ZDSAIDialog.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "isOpen",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Modal state \u2014 showModal() when true, close() when false (inherited)."
+    },
+    {
+      "name": "header",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'dark'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'small' \\"
+      ],
+      "default": "'medium' \\",
+      "hint": "'large'`"
+    },
+    {
+      "name": "alignment",
+      "values": [
+        "`'left' \\"
+      ],
+      "default": "'center'`",
+      "hint": "`'left'`"
+    },
+    {
+      "name": "overlayColor",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'inverse'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "overlayOpacity",
+      "values": [
+        "`90 \\"
+      ],
+      "default": "60 \\",
+      "hint": "40 \\"
+    },
+    {
+      "name": "footerButtons",
+      "values": [
+        "`'one' \\"
+      ],
+      "default": "'two'`",
+      "hint": "`undefined`"
+    },
+    {
+      "name": "hasFooter",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Render the footer (default = text + external-link icon)."
+    },
+    {
+      "name": "hasHelperText",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Helper line under body."
+    },
+    {
+      "name": "radius",
+      "values": [
+        "`keyof AI.radius`"
+      ],
+      "default": "`'lg'`",
+      "hint": "AI corner radius scale (lg = 20px)."
+    },
+    {
+      "name": "actions",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`undefined`",
+      "hint": "Custom footer content; overrides default footer + footerButtons."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "ZDSAIDialog"
+    ],
+    "import": "import { ZDSAIDialog } from './ZDSAIDialog'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITrendIndicator",
+  "repoModule": "aiTrendIndicator",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "Renders a directional arrow + signed delta + a secondary \"vs Close\" label. Caller passes a pre-formatted delta string (`+8.4%`, `-3.1%`, `0.0%`, `+4`) so the atom stays unit-agnostic. Inline SVG arrow keeps the atom font-independent \u2014 works on surfaces that have not loaded the ZAIDYN icon font.",
+  "intent": "How is this metric trending? One row, three tones \u2014 green up, red down, gray flat. Pairs with `ai-metric-value` inside every metric card.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-trend-indicator/ai-trend-indicator.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiTrendIndicator",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-trend-indicator/AITrendIndicator.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-trend-indicator/AITrendIndicator.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "delta",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Pre-formatted signed value, e.g. `\"+8.4%\"`."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Secondary sub-label rendered after the delta."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"positive\" \\"
+      ],
+      "default": "\"negative\" \\",
+      "hint": "\"neutral\"`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AITrendIndicator"
+    ],
+    "import": "import { AITrendIndicator } from './AITrendIndicator'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Evaluate",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

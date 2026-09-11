@@ -1,0 +1,624 @@
+/*
+ * ZAIDYN AI Design System — Global Tokens
+ * Generated 2026-08-06T14:24:12.011Z
+ *
+ * Drop this file into your project and reference tokens via the CSS variables
+ * below. The published surface is defined by `tokens/token-manifest.ts` — the
+ * same list the Developer Handoff page shows, so what you see there is exactly
+ * what this file gives you.
+ * Every value maps 1:1 to `ai-tokens.ts` + `ai-typography.ts`. Regenerate
+ * from Downloads → Design Tokens (global.css) when tokens change.
+ *
+ * Structure:
+ *   :root {
+ *     ZSAI palette         --zsai-{step}
+ *     ZS Orange palette    --zs-orange-{step}
+ *     ZS Red palette       --zs-red-{step}
+ *     ZSAI Tan palette     --zsai-tan-{step}
+ *     Semantic AI aliases  --color-ai-*, --gradient-ai-*, --radius-ai-*,
+ *                          --elevation-ai-*
+ *     Typography           --ai-type-{token}-{prop}
+ *   }
+ *   .ai-type-{token} { ... }  utility class per typography role
+ */
+
+:root {
+  /* Font family */
+  --ai-font-family: "Open Sans", sans-serif;
+
+  /* ZSAI palette (Tier 1 — never reference in component code) */
+  --zsai-10: #E0E7FF;
+  --zsai-20: #D2DBFF;
+  --zsai-30: #BECAFE;
+  --zsai-40: #A6B4FC;
+  --zsai-50: #90A3F9;
+  --zsai-60: #7F95F2;
+  --zsai-70: #657CEC;
+  --zsai-80: #4D60E6;
+  --zsai-90: #3544A4;
+  --zsai-100: #1F2A66;
+  --zsai-00: #F5F6FF;
+
+  /* ZS Orange palette (Tier 1) */
+  --zs-orange-10: #FFF1D6;
+  --zs-orange-20: #FFD68F;
+  --zs-orange-30: #FFC657;
+  --zs-orange-40: #FFB234;
+  --zs-orange-50: #FF9900;
+  --zs-orange-60: #EC7200;
+  --zs-orange-70: #CB6100;
+  --zs-orange-80: #A54F00;
+  --zs-orange-90: #663000;
+  --zs-orange-100: #481A00;
+  --zs-orange-00: #FEFBF4;
+
+  /* ZS Red palette (Tier 1) */
+  --zs-red-10: #FBE4E1;
+  --zs-red-20: #F3C6C0;
+  --zs-red-30: #EBA097;
+  --zs-red-40: #E0776D;
+  --zs-red-50: #D65043;
+  --zs-red-60: #C0392B;
+  --zs-red-70: #A5322A;
+  --zs-red-80: #9A241A;
+  --zs-red-90: #6E1710;
+  --zs-red-100: #4A0E08;
+  --zs-red-00: #FEF4F3;
+
+  /* ZSAI Tan palette (Tier 1) */
+  --zsai-tan-10: #ECE6DD;
+  --zsai-tan-20: #F1E4D0;
+  --zsai-tan-30: #E8D6BF;
+  --zsai-tan-40: #DCC6B0;
+  --zsai-tan-50: #CDB39C;
+  --zsai-tan-60: #B89580;
+  --zsai-tan-70: #9A7560;
+  --zsai-tan-80: #7A5944;
+  --zsai-tan-90: #5A3E2C;
+  --zsai-tan-100: #3C2A1D;
+  --zsai-tan-00: #F6F2EB;
+
+  /* AI semantic aliases (Tier 2 — consume these in components) */
+  --zsai-10: #E0E7FF;
+  --zsai-20: #D2DBFF;
+  --zsai-30: #BECAFE;
+  --zsai-40: #A6B4FC;
+  --zsai-50: #90A3F9;
+  --zsai-60: #7F95F2;
+  --zsai-70: #657CEC;
+  --zsai-80: #4D60E6;
+  --zsai-90: #3544A4;
+  --zsai-100: #1F2A66;
+  --zsai-00: #F5F6FF;
+  --zs-orange-10: #FFF1D6;
+  --zs-orange-20: #FFD68F;
+  --zs-orange-30: #FFC657;
+  --zs-orange-40: #FFB234;
+  --zs-orange-50: #FF9900;
+  --zs-orange-60: #EC7200;
+  --zs-orange-70: #CB6100;
+  --zs-orange-80: #A54F00;
+  --zs-orange-90: #663000;
+  --zs-orange-100: #481A00;
+  --zs-orange-00: #FEFBF4;
+  --zs-red-10: #FBE4E1;
+  --zs-red-20: #F3C6C0;
+  --zs-red-30: #EBA097;
+  --zs-red-40: #E0776D;
+  --zs-red-50: #D65043;
+  --zs-red-60: #C0392B;
+  --zs-red-70: #A5322A;
+  --zs-red-80: #9A241A;
+  --zs-red-90: #6E1710;
+  --zs-red-100: #4A0E08;
+  --zs-red-00: #FEF4F3;
+  --zsai-tan-10: #ECE6DD;
+  --zsai-tan-20: #F1E4D0;
+  --zsai-tan-30: #E8D6BF;
+  --zsai-tan-40: #DCC6B0;
+  --zsai-tan-50: #CDB39C;
+  --zsai-tan-60: #B89580;
+  --zsai-tan-70: #9A7560;
+  --zsai-tan-80: #7A5944;
+  --zsai-tan-90: #5A3E2C;
+  --zsai-tan-100: #3C2A1D;
+  --zsai-tan-00: #F6F2EB;
+  --color-ai-action-primary: #4D60E6;
+  --color-ai-action-primary-hover: #3544A4;
+  --color-ai-action-primary-active: #1F2A66;
+  --color-ai-surface-default: #F5F6FF;
+  --color-ai-surface-subtle: #D2DBFF;
+  --color-ai-surface-emphasis: #BECAFE;
+  --color-ai-border-default: #4D60E6;
+  --color-ai-border-strong: #3544A4;
+  --color-ai-border-focus: #4D60E6;
+  --color-ai-border-subtle: #7F95F2;
+  --color-ai-text-primary: #1F2A66;
+  --color-ai-text-secondary: #3544A4;
+  --color-ai-text-on-action: #FFFFFF;
+  --color-ai-brand: #4D60E6;
+  --color-ai-brand-subtle: #D2DBFF;
+  --color-ai-brand-surface: #F5F6FF;
+  --color-ai-brand-border: #BECAFE;
+  --color-ai-brand-strong: #3544A4;
+  --color-ai-brand-ink: #1F2A66;
+  --color-ai-decorative-wash: #A6B4FC;
+  --color-ai-decorative-wash-strong: #7F95F2;
+  --color-ai-signal-default: #A54F00;
+  --color-ai-signal-hover: #663000;
+  --color-ai-signal-strong: #481A00;
+  --color-ai-signal-subtle: #FFF1D6;
+  --color-ai-signal-surface: #FEFBF4;
+  --color-ai-status-error: #C0392B;
+  --color-ai-status-error-hover: #A5322A;
+  --color-ai-status-success: #0A6E5E;
+  --color-ai-status-warning: #8A640C;
+  --color-ai-companion-paper: #F6F2EB;
+  --color-ai-companion-surface: #ECE6DD;
+  --color-ai-companion-highlight: #F1E4D0;
+  --color-ai-companion-border: #E8D6BF;
+  --color-ai-companion-ink: #3C2A1D;
+  --gradient-ai-action-full: linear-gradient(135deg, #657CEC 0%, #4D60E6 100%);
+  --gradient-ai-action-secondary: linear-gradient(135deg, #7F95F2 0%, #657CEC 50%, #4D60E6 100%);
+  --gradient-ai-surface-idle: linear-gradient(to bottom, #F3FCFE, #F9FAFB, #FFFFFF);
+  --gradient-ai-surface-active: linear-gradient(to bottom, #FFFFFF 0%, #F5FBFC 55%, #EDF8FA 100%);
+  --gradient-ai-surface-subtle: linear-gradient(135deg, #F5F6FF 0%, #D2DBFF 50%, #F5F6FF 100%);
+  --gradient-ai-surface-neutral: linear-gradient(135deg, #F4F3F3 0%, #E8E7EA 100%);
+  --gradient-ai-action-start: #657CEC;
+  --gradient-ai-action-mid: #4D60E6;
+  --gradient-ai-action-end: #4D60E6;
+  --elevation-ai-action-default: rgba(77, 96, 230, 0.18);
+  --elevation-ai-action-emphasis: rgba(77, 96, 230, 0.24);
+  --elevation-ai-input-default: 0 0 0 1.5px rgba(26,22,40,0.18), 0 8px 40px rgba(0,0,0,0.07), 0 2px 12px rgba(0,0,0,0.05);
+  --elevation-ai-input-focus: 0 0 0 2px rgba(77,96,230,0.35), 0 12px 48px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.08);
+  --elevation-ai-field-default: 0 0 0 1px #BECAFE;
+  --elevation-ai-field-focus: 0 0 0 2px #3544A4;
+  --elevation-ai-field-warning: 0 0 0 1px #8A640C;
+  --elevation-ai-field-error: 0 0 0 1px #C0392B;
+  --elevation-ai-card-default: 0 1px 4px 0 rgba(77, 96, 230, 0.10);
+  --elevation-ai-card-raised: 0 4px 16px 0 rgba(77, 96, 230, 0.14);
+  --radius-ai-xs: 6px;
+  --radius-ai-sm: 12px;
+  --radius-ai-md: 16px;
+  --radius-ai-lg: 20px;
+  --radius-ai-full: 100px;
+
+  /* ZDS neutrals */
+  --zds-font: "Open Sans", sans-serif;
+  --zds-text-default: #2f2c3c;
+  --zds-text-helper: #5b5864;
+  --zds-text-disabled: #716e79;
+  --zds-icon-default: #5b5864;
+  --zds-icon-hover: #2f2c3c;
+  --zds-menu-hover-bg: rgba(178,176,182,0.4);
+  --zds-border: #B2B0B6;
+  --zds-border-func: #5b5864;
+  --zds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
+  --zds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
+  --zds-surface: var(--zs-background-default, #ffffff);
+  --zds-text-inverse: var(--zs-text-inverse, #ffffff);
+  --zds-ink-bold: var(--zs-background-extra-bold, #1a1628);
+  --zds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
+
+  /* Typography — AI_TYPOGRAPHY tokens */
+  --ai-type-super-hero-size: 64px;
+  --ai-type-super-hero-weight: 400;
+  --ai-type-super-hero-line-height: 1.5;
+  --ai-type-hero-size: 48px;
+  --ai-type-hero-weight: 700;
+  --ai-type-hero-line-height: 1.5;
+  --ai-type-h1-size: 32px;
+  --ai-type-h1-weight: 700;
+  --ai-type-h1-line-height: 1.5;
+  --ai-type-h2-size: 24px;
+  --ai-type-h2-weight: 700;
+  --ai-type-h2-line-height: 1.5;
+  --ai-type-h3-size: 20px;
+  --ai-type-h3-weight: 700;
+  --ai-type-h3-line-height: 1.4;
+  --ai-type-h4-size: 16px;
+  --ai-type-h4-weight: 700;
+  --ai-type-h4-line-height: 1.5;
+  --ai-type-h5-size: 14px;
+  --ai-type-h5-weight: 700;
+  --ai-type-h5-line-height: 1.5;
+  --ai-type-h6-size: 12px;
+  --ai-type-h6-weight: 700;
+  --ai-type-h6-line-height: 1.4;
+  --ai-type-subtitle-1-size: 16px;
+  --ai-type-subtitle-1-weight: 400;
+  --ai-type-subtitle-1-line-height: 1.5;
+  --ai-type-subtitle-2-size: 14px;
+  --ai-type-subtitle-2-weight: 400;
+  --ai-type-subtitle-2-line-height: 1.44;
+  --ai-type-body-size: 16px;
+  --ai-type-body-weight: 400;
+  --ai-type-body-line-height: 1.5;
+  --ai-type-body-small-size: 14px;
+  --ai-type-body-small-weight: 400;
+  --ai-type-body-small-line-height: 1.4;
+  --ai-type-body-extra-small-size: 12px;
+  --ai-type-body-extra-small-weight: 400;
+  --ai-type-body-extra-small-line-height: 1.63;
+  --ai-type-caption-1-size: 12px;
+  --ai-type-caption-1-weight: 400;
+  --ai-type-caption-1-line-height: 1.5;
+  --ai-type-caption-2-size: 12px;
+  --ai-type-caption-2-weight: 500;
+  --ai-type-caption-2-line-height: 1.5;
+  --ai-type-overline-size: 12px;
+  --ai-type-overline-weight: 600;
+  --ai-type-overline-line-height: 1.5;
+  --ai-type-overline-letter-spacing: 0.2em;
+  --ai-type-overline-text-transform: uppercase;
+  --ai-type-label-size: 16px;
+  --ai-type-label-weight: 700;
+  --ai-type-label-line-height: 1.5;
+  --ai-type-label-letter-spacing: 2.5px;
+  --ai-type-input-label-size: 16px;
+  --ai-type-input-label-weight: 700;
+  --ai-type-input-label-line-height: 1.5;
+  --ai-type-input-label-letter-spacing: 0.15px;
+  --ai-type-button-label-size: 14px;
+  --ai-type-button-label-weight: 600;
+  --ai-type-button-label-line-height: 1;
+  --ai-type-agent-name-size: 12px;
+  --ai-type-agent-name-weight: 600;
+  --ai-type-agent-name-line-height: 1;
+  --ai-type-status-label-size: 12px;
+  --ai-type-status-label-weight: 500;
+  --ai-type-status-label-line-height: 1;
+  --ai-type-micro-eyebrow-size: 12px;
+  --ai-type-micro-eyebrow-weight: 600;
+  --ai-type-micro-eyebrow-line-height: 1;
+  --ai-type-micro-eyebrow-letter-spacing: 0.02em;
+  --ai-type-numeric-badge-size: 12px;
+  --ai-type-numeric-badge-weight: 500;
+  --ai-type-numeric-badge-line-height: 16px;
+  --ai-type-help-micro-size: 12px;
+  --ai-type-help-micro-weight: 500;
+  --ai-type-help-micro-line-height: 1.55;
+  --ai-type-bubble-body-size: 16px;
+  --ai-type-bubble-body-weight: 400;
+  --ai-type-bubble-body-line-height: 1.55;
+  --ai-type-bubble-body-letter-spacing: -0.1px;
+  --ai-type-input-text-size: 16px;
+  --ai-type-input-text-weight: 400;
+  --ai-type-input-text-line-height: 1.5;
+  --ai-type-trace-detail-size: 12px;
+  --ai-type-trace-detail-weight: 500;
+  --ai-type-trace-detail-line-height: 1.55;
+  --ai-type-notif-title-compact-size: 12px;
+  --ai-type-notif-title-compact-weight: 700;
+  --ai-type-notif-title-compact-line-height: 1.3;
+  --ai-type-menu-item-size: 14px;
+  --ai-type-menu-item-weight: 400;
+  --ai-type-menu-item-line-height: 1.4;
+  --ai-type-menu-item-letter-spacing: -0.1px;
+  --ai-type-action-link-size: 12px;
+  --ai-type-action-link-weight: 600;
+  --ai-type-action-link-line-height: 1;
+  --ai-type-impact-headline-size: 15px;
+  --ai-type-impact-headline-weight: 700;
+  --ai-type-impact-headline-line-height: 1.1;
+  --ai-type-section-subtitle-size: 14px;
+  --ai-type-section-subtitle-weight: 400;
+  --ai-type-section-subtitle-line-height: 1.55;
+  --ai-type-table-cell-size: 14px;
+  --ai-type-table-cell-weight: 400;
+  --ai-type-table-cell-line-height: 1.4;
+  --ai-type-panel-section-head-size: 12px;
+  --ai-type-panel-section-head-weight: 600;
+  --ai-type-panel-section-head-line-height: 1.5;
+  --ai-type-card-title-size: 16px;
+  --ai-type-card-title-weight: 700;
+  --ai-type-card-title-line-height: 1.4;
+  --ai-type-meta-label-size: 12px;
+  --ai-type-meta-label-weight: 500;
+  --ai-type-meta-label-line-height: 1.5;
+  --ai-type-insight-title-size: 14px;
+  --ai-type-insight-title-weight: 600;
+  --ai-type-insight-title-line-height: 1.4;
+  --ai-type-button-compact-size: 12px;
+  --ai-type-button-compact-weight: 600;
+  --ai-type-button-compact-line-height: 1;
+  --ai-type-metric-value-md-size: 26px;
+  --ai-type-metric-value-md-weight: 700;
+  --ai-type-metric-value-md-line-height: 1.1;
+  --ai-type-metric-value-lg-size: 34px;
+  --ai-type-metric-value-lg-weight: 700;
+  --ai-type-metric-value-lg-line-height: 1.1;
+}
+
+
+/* ──────────────────────────────────────────────────────────────────────── */
+/* Typography utility classes — apply an entire type role in one class.     */
+/* Example: <p class="ai-type-body">…</p>                                   */
+/* ──────────────────────────────────────────────────────────────────────── */
+
+.ai-type-super-hero {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-super-hero-size);
+  font-weight: var(--ai-type-super-hero-weight);
+  line-height: var(--ai-type-super-hero-line-height);
+}
+
+.ai-type-hero {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-hero-size);
+  font-weight: var(--ai-type-hero-weight);
+  line-height: var(--ai-type-hero-line-height);
+}
+
+.ai-type-h1 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h1-size);
+  font-weight: var(--ai-type-h1-weight);
+  line-height: var(--ai-type-h1-line-height);
+}
+
+.ai-type-h2 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h2-size);
+  font-weight: var(--ai-type-h2-weight);
+  line-height: var(--ai-type-h2-line-height);
+}
+
+.ai-type-h3 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h3-size);
+  font-weight: var(--ai-type-h3-weight);
+  line-height: var(--ai-type-h3-line-height);
+}
+
+.ai-type-h4 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h4-size);
+  font-weight: var(--ai-type-h4-weight);
+  line-height: var(--ai-type-h4-line-height);
+}
+
+.ai-type-h5 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h5-size);
+  font-weight: var(--ai-type-h5-weight);
+  line-height: var(--ai-type-h5-line-height);
+}
+
+.ai-type-h6 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-h6-size);
+  font-weight: var(--ai-type-h6-weight);
+  line-height: var(--ai-type-h6-line-height);
+}
+
+.ai-type-subtitle-1 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-subtitle-1-size);
+  font-weight: var(--ai-type-subtitle-1-weight);
+  line-height: var(--ai-type-subtitle-1-line-height);
+}
+
+.ai-type-subtitle-2 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-subtitle-2-size);
+  font-weight: var(--ai-type-subtitle-2-weight);
+  line-height: var(--ai-type-subtitle-2-line-height);
+}
+
+.ai-type-body {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-body-size);
+  font-weight: var(--ai-type-body-weight);
+  line-height: var(--ai-type-body-line-height);
+}
+
+.ai-type-body-small {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-body-small-size);
+  font-weight: var(--ai-type-body-small-weight);
+  line-height: var(--ai-type-body-small-line-height);
+}
+
+.ai-type-body-extra-small {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-body-extra-small-size);
+  font-weight: var(--ai-type-body-extra-small-weight);
+  line-height: var(--ai-type-body-extra-small-line-height);
+}
+
+.ai-type-caption-1 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-caption-1-size);
+  font-weight: var(--ai-type-caption-1-weight);
+  line-height: var(--ai-type-caption-1-line-height);
+}
+
+.ai-type-caption-2 {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-caption-2-size);
+  font-weight: var(--ai-type-caption-2-weight);
+  line-height: var(--ai-type-caption-2-line-height);
+}
+
+.ai-type-overline {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-overline-size);
+  font-weight: var(--ai-type-overline-weight);
+  line-height: var(--ai-type-overline-line-height);
+  letter-spacing: var(--ai-type-overline-letter-spacing);
+  text-transform: var(--ai-type-overline-text-transform);
+}
+
+.ai-type-label {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-label-size);
+  font-weight: var(--ai-type-label-weight);
+  line-height: var(--ai-type-label-line-height);
+  letter-spacing: var(--ai-type-label-letter-spacing);
+}
+
+.ai-type-input-label {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-input-label-size);
+  font-weight: var(--ai-type-input-label-weight);
+  line-height: var(--ai-type-input-label-line-height);
+  letter-spacing: var(--ai-type-input-label-letter-spacing);
+}
+
+.ai-type-button-label {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-button-label-size);
+  font-weight: var(--ai-type-button-label-weight);
+  line-height: var(--ai-type-button-label-line-height);
+}
+
+.ai-type-agent-name {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-agent-name-size);
+  font-weight: var(--ai-type-agent-name-weight);
+  line-height: var(--ai-type-agent-name-line-height);
+}
+
+.ai-type-status-label {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-status-label-size);
+  font-weight: var(--ai-type-status-label-weight);
+  line-height: var(--ai-type-status-label-line-height);
+}
+
+.ai-type-micro-eyebrow {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-micro-eyebrow-size);
+  font-weight: var(--ai-type-micro-eyebrow-weight);
+  line-height: var(--ai-type-micro-eyebrow-line-height);
+  letter-spacing: var(--ai-type-micro-eyebrow-letter-spacing);
+}
+
+.ai-type-numeric-badge {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-numeric-badge-size);
+  font-weight: var(--ai-type-numeric-badge-weight);
+  line-height: var(--ai-type-numeric-badge-line-height);
+}
+
+.ai-type-help-micro {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-help-micro-size);
+  font-weight: var(--ai-type-help-micro-weight);
+  line-height: var(--ai-type-help-micro-line-height);
+}
+
+.ai-type-bubble-body {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-bubble-body-size);
+  font-weight: var(--ai-type-bubble-body-weight);
+  line-height: var(--ai-type-bubble-body-line-height);
+  letter-spacing: var(--ai-type-bubble-body-letter-spacing);
+}
+
+.ai-type-input-text {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-input-text-size);
+  font-weight: var(--ai-type-input-text-weight);
+  line-height: var(--ai-type-input-text-line-height);
+}
+
+.ai-type-trace-detail {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-trace-detail-size);
+  font-weight: var(--ai-type-trace-detail-weight);
+  line-height: var(--ai-type-trace-detail-line-height);
+}
+
+.ai-type-notif-title-compact {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-notif-title-compact-size);
+  font-weight: var(--ai-type-notif-title-compact-weight);
+  line-height: var(--ai-type-notif-title-compact-line-height);
+}
+
+.ai-type-menu-item {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-menu-item-size);
+  font-weight: var(--ai-type-menu-item-weight);
+  line-height: var(--ai-type-menu-item-line-height);
+  letter-spacing: var(--ai-type-menu-item-letter-spacing);
+}
+
+.ai-type-action-link {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-action-link-size);
+  font-weight: var(--ai-type-action-link-weight);
+  line-height: var(--ai-type-action-link-line-height);
+}
+
+.ai-type-impact-headline {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-impact-headline-size);
+  font-weight: var(--ai-type-impact-headline-weight);
+  line-height: var(--ai-type-impact-headline-line-height);
+}
+
+.ai-type-section-subtitle {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-section-subtitle-size);
+  font-weight: var(--ai-type-section-subtitle-weight);
+  line-height: var(--ai-type-section-subtitle-line-height);
+}
+
+.ai-type-table-cell {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-table-cell-size);
+  font-weight: var(--ai-type-table-cell-weight);
+  line-height: var(--ai-type-table-cell-line-height);
+}
+
+.ai-type-panel-section-head {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-panel-section-head-size);
+  font-weight: var(--ai-type-panel-section-head-weight);
+  line-height: var(--ai-type-panel-section-head-line-height);
+}
+
+.ai-type-card-title {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-card-title-size);
+  font-weight: var(--ai-type-card-title-weight);
+  line-height: var(--ai-type-card-title-line-height);
+}
+
+.ai-type-meta-label {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-meta-label-size);
+  font-weight: var(--ai-type-meta-label-weight);
+  line-height: var(--ai-type-meta-label-line-height);
+}
+
+.ai-type-insight-title {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-insight-title-size);
+  font-weight: var(--ai-type-insight-title-weight);
+  line-height: var(--ai-type-insight-title-line-height);
+}
+
+.ai-type-button-compact {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-button-compact-size);
+  font-weight: var(--ai-type-button-compact-weight);
+  line-height: var(--ai-type-button-compact-line-height);
+}
+
+.ai-type-metric-value-md {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-metric-value-md-size);
+  font-weight: var(--ai-type-metric-value-md-weight);
+  line-height: var(--ai-type-metric-value-md-line-height);
+}
+
+.ai-type-metric-value-lg {
+  font-family: var(--ai-font-family);
+  font-size: var(--ai-type-metric-value-lg-size);
+  font-weight: var(--ai-type-metric-value-lg-weight);
+  line-height: var(--ai-type-metric-value-lg-line-height);
+}

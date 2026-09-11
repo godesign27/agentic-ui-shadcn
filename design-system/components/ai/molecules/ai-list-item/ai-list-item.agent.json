@@ -1,0 +1,209 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIListItem",
+  "repoModule": "aiListItem",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "AIListItem is the canonical row used inside AI-led lists. It supports six variants (signal, stable, impact, assessment, change, dataUpdate) plus the rare alert/recommendation. Each item composes a leading icon, an optional eyebrow row (type \u00b7 label \u00b7 status pill), a title, a body paragraph, and an optional footer row of chips (metric \u00b7 source \u00b7 freshness \u00b7 confidence). Interactive items show a trailing chevron and lift on hover; informational items render flat.",
+  "intent": "Card row that presents one AI-generated signal, recommendation, or update.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-list-item/ai-list-item.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiListItem",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-list-item/AIListItem.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-list-item/AIListItem.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`\"signal\" \\"
+      ],
+      "default": "\"stable\" \\",
+      "hint": "\"impact\" \\"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Row headline."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Secondary label in the eyebrow row."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`AIListItemStatus`"
+      ],
+      "default": "`undefined`",
+      "hint": "One of needsReview / balanced / recommended / ready / optional / active / critical / dataStale."
+    },
+    {
+      "name": "body",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "One-to-two-line narrative under the title."
+    },
+    {
+      "name": "type",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Uppercase type tag (e.g. \"Request\", \"Data Update\")."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`undefined`",
+      "hint": "Overrides the variant default icon."
+    },
+    {
+      "name": "metric",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional metric pill (e.g. \"+6% balance\")."
+    },
+    {
+      "name": "source",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional source label."
+    },
+    {
+      "name": "freshness",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional freshness/timestamp label."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`\"high\" \\"
+      ],
+      "default": "\"medium\" \\",
+      "hint": "\"low\"`"
+    },
+    {
+      "name": "actionLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Inline action affordance text (replaces trailing chevron)."
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Click handler. Implies interactive=true."
+    },
+    {
+      "name": "interactive",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`auto`",
+      "hint": "Force interactivity. Auto-detected from onClick."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"ai\" \\"
+      ],
+      "default": "\"tan\" \\",
+      "hint": "\"neutral\"`"
+    },
+    {
+      "name": "selected",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Highlighted/selected state."
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Dimmed loading state."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIListItem"
+    ],
+    "import": "import { AIListItem } from './AIListItem'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "AI Assisted"
+    ],
+    "aiBehavior": "Summarize \u00b7 Recommend \u00b7 Monitor",
+    "accountability": "Status \u00b7 Confidence \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIList",
+  "repoModule": "aiList",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIList groups related AIListItems under a section heading with optional leading icon, count badge, intro narrative paragraph, and a collapse/expand toggle. Items can render as a vertical stack (default), a 2-up grid (for change/grid layouts), or a compact stack (for side panels and drawers). The section can show loading, empty, error, updating, data-stale, or no-changes states so a single component spans the full briefing lifecycle.",
+  "intent": "Section wrapper for AI-led narrative lists.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-list/ai-list.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiList",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-list/AIList.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-list/AIList.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Section heading."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`undefined`",
+      "hint": "Leading icon in the heading row."
+    },
+    {
+      "name": "intro",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "AI briefing paragraph under the heading."
+    },
+    {
+      "name": "items",
+      "values": [
+        "`AIListItemProps[]`"
+      ],
+      "default": "`required`",
+      "hint": "List rows. Each entry is the props object of an AIListItem."
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`\"stack\" \\"
+      ],
+      "default": "\"grid\" \\",
+      "hint": "\"compact\"`"
+    },
+    {
+      "name": "collapsible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Enables the collapse toggle."
+    },
+    {
+      "name": "defaultCollapsed",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Initial collapsed state when collapsible."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`AIListStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "Section state \u2014 default / loading / empty / updating / dataStale / error / noChanges."
+    },
+    {
+      "name": "count",
+      "values": [
+        "`number`"
+      ],
+      "default": "`items.length`",
+      "hint": "Override the count pill value."
+    },
+    {
+      "name": "emptyMessage",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"No items to show.\"`",
+      "hint": "Custom message for empty state."
+    },
+    {
+      "name": "footerAction",
+      "values": [
+        "`{ label: string; onClick?: () => void }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Ghost link below the items."
+    },
+    {
+      "name": "onItemOpen",
+      "values": [
+        "`(item, index) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fallback handler when an item has no onClick of its own."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"ai\" \\"
+      ],
+      "default": "\"tan\" \\",
+      "hint": "\"neutral\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIList"
+    ],
+    "import": "import { AIList } from './AIList'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Summarize \u00b7 Prioritize \u00b7 Monitor",
+    "accountability": "Status \u00b7 Data freshness \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

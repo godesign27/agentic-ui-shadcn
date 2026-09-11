@@ -1,0 +1,13 @@
+{
+  "id": "column-chart",
+  "name": "Column Chart",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Column Chart — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "ColumnChart"
+    ]
+  }
+}

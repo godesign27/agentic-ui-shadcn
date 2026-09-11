@@ -1,0 +1,229 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AILauncher",
+  "repoModule": "aiLauncher",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Preferred AI Assisted entry point \u2014 near-black pill (avatar + Chat) or avatar-only control opening the side drawer / floating panel.",
+  "intent": "Invite users to open ZAIDYN Agent without dominating the product surface; label is always Chat for avatar-chat variant.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-launcher/ai-launcher.md",
+    "contract": "components/ai/atomic/ai-launcher/ai-launcher.agent.json",
+    "agentIndexModule": "aiLauncher",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/components/ai/atomic/launcher/AILauncher.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-launcher/AILauncher.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "avatar-chat",
+    "avatar-only"
+  ],
+  "states": [
+    "default",
+    "hover",
+    "focus",
+    "active",
+    "loading",
+    "unread",
+    "disabled",
+    "high-contrast",
+    "reduced-motion"
+  ],
+  "slots": [
+    {
+      "name": "avatar",
+      "required": true,
+      "allowedContent": [
+        "AIAvatar at 28px"
+      ]
+    },
+    {
+      "name": "label",
+      "required": false,
+      "allowedContent": [
+        "Chat"
+      ],
+      "note": "Required for avatar-chat variant; fixed copy Chat only"
+    },
+    {
+      "name": "badge",
+      "required": false,
+      "allowedContent": [
+        "unread dot or count"
+      ]
+    }
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "avatar-chat",
+        "avatar-only"
+      ],
+      "default": "avatar-chat",
+      "hint": "avatar-chat \u00b7 avatar-only"
+    },
+    {
+      "name": "active",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Assistant is open"
+    },
+    {
+      "name": "unread",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Show unread badge"
+    },
+    {
+      "name": "unreadCount",
+      "values": [
+        "number"
+      ],
+      "hint": "Optional numeric badge"
+    },
+    {
+      "name": "loading",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Spinner while drawer mounts"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "AI unavailable"
+    },
+    {
+      "name": "disabledReason",
+      "values": [
+        "string"
+      ],
+      "hint": "Tooltip when disabled"
+    },
+    {
+      "name": "highContrast",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Force near-black surface"
+    },
+    {
+      "name": "tooltipLabel",
+      "values": [
+        "string"
+      ],
+      "default": "Open ZAIDYN Agent",
+      "hint": "Tooltip text"
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "string"
+      ],
+      "default": "Open ZAIDYN Agent chat",
+      "hint": "Accessible button name"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "() => void"
+      ],
+      "hint": "Open side drawer or floating panel"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AILauncher"
+    ],
+    "import": "import { AILauncher } from '@ai/atomic/launcher/AILauncher'",
+    "notes": [
+      "Opens AI Assisted Side Drawer or Floating Hanging Panel \u2014 not Command Center on AI Assisted pages",
+      "Peer deps: @ai-design-system, react",
+      "Embeds AIAvatar from ai-avatar module"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "ai-launcher.surface",
+      "ai-launcher.surface.hover",
+      "ai-launcher.surface.pressed",
+      "ai-launcher.surface.disabled",
+      "ai-launcher.label.color",
+      "ai-launcher.label.color.disabled",
+      "ai-launcher.focus.ring",
+      "ai-launcher.badge",
+      "ai-launcher.radius",
+      "ai-launcher.height",
+      "ai-launcher.padding.chat",
+      "ai-launcher.shadow.rest",
+      "ai-launcher.shadow.hover"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "ariaLabel on control",
+      "tooltipLabel for avatar-only variant",
+      "focus-visible ring using ai-launcher.focus.ring"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AIAvatar"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use labels other than Chat for avatar-chat variant",
+      "Do not use orange launcher surface",
+      "Do not open Command Center from AI Assisted pages",
+      "Do not use avatar-only without tooltip and ariaLabel",
+      "Do not hardcode hex \u2014 use ai-launcher.* tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": "Invite",
+    "accountability": [
+      "User control",
+      "Discoverability"
+    ]
+  },
+  "relatedModules": [
+    {
+      "name": "AIAvatar",
+      "mirrorSpec": "components/ai/atomic/ai-avatar/ai-avatar.md"
+    }
+  ],
+  "generatedAt": "2026-06-11T00:00:00.000Z",
+  "curated": true
+}

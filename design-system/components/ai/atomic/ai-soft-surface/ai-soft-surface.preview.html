@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Soft Surface — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 880px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 32px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 12px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 28px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .demo-area { min-height: 64px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    pre { background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px; font-size: 12px; overflow-x: auto; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Soft Surface</h1>
+    <p class="subtitle">Visual surface primitive that signals "AI companion context" — never a content component.<br/>Preview from <code>components/ai/atomic/ai-soft-surface/ai-soft-surface.md</code></p>
+    <section><h2>Demo</h2><div class="demo-surface"><div class="demo-area" id="demo"></div></div></section>
+    <section><h2>Documented states</h2><ul class="state-list"><li>**Dialog (default)** _(tone="dialog")_ — Exact match for the AI Command Center Dialog idle wash — soft aqua top + grey companion blobs + teal bottom-right. Static.</li><li>**AI · subtle** _(tone="ai" intensity="subtle")_ — Soft brand-blue wash for AI-led canvases.</li><li>**Tan · medium** _(tone="tan" intensity="medium")_ — Warm companion backdrop with a hint of Signal orange.</li><li>**Mixed · medium** _(tone="mixed" intensity="medium")_ — BRAND blue → violet → tan diagonal.</li><li>**Neutral · subtle** _(tone="neutral" intensity="subtle")_ — Low-emphasis section background.</li><li>**Ambient · orbs** _(tone="ambient")_ — White base + three slow-animated blurred orbs (blue / purple / teal) over multiply blend. Dark mode shifts to deep navy / purple / deep teal over screen blend.</li></ul></section>
+    <section><h2>Code example</h2><pre>import { AISoftSurface } from '@/components/ai/atomic/soft-surface/AISoftSurface';
+
+&lt;AISoftSurface tone="mixed" intensity="medium" radius={24}&gt;
+  &lt;div style={{ padding: 32 }}&gt;
+    {/* page content */}
+  &lt;/div&gt;
+&lt;/AISoftSurface&gt;</pre></section>
+  </div>
+  <script>const el = document.createElement('div');
+el.style.cssText = 'padding:12px 16px;background:var(--neutral-surface-muted);border:1px solid var(--neutral-border-subtle);border-radius:8px;font-size:13px;color:var(--neutral-text)';
+el.textContent = 'AISoftSurface — interactive demo placeholder. See mirror spec for full implementation.';
+document.getElementById('demo').appendChild(el);</script>
+</body>
+</html>

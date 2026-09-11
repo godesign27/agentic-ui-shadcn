@@ -1,0 +1,202 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIResponseFooter",
+  "repoModule": "aiResponseFooter",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "AIResponseFooter is the optional group component used beneath AI-generated responses, recommendations, summaries, and agent outputs. It provides lightweight trust, attribution, source context, and post-response actions. Uses AIFeedbackBar as a sub-atom \u2014 does not duplicate it. Orange is used only for stale data, missing source, or escalation states, never as a default color.",
+  "intent": "Closes the loop after every AI output. Sources ground the claim, freshness signals trust, feedback improves the model \u2014 all without competing with the response itself.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-response-footer/ai-response-footer.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiResponseFooter",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-response-footer/AIResponseFooter.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-response-footer/AIResponseFooter.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "sources",
+      "values": [
+        "`AISource[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Data source chip objects \u2014 label, freshness, type, href"
+    },
+    {
+      "name": "maxVisibleSources",
+      "values": [
+        "`number`"
+      ],
+      "default": "`3`",
+      "hint": "Max chips shown before \"+N more\" overflow"
+    },
+    {
+      "name": "attribution",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Attribution text e.g. \"ZAIDYN Analytics\""
+    },
+    {
+      "name": "updatedAt",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Freshness label e.g. \"just now\" or \"12 min ago\""
+    },
+    {
+      "name": "freshnessLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Overrides computed freshness text entirely"
+    },
+    {
+      "name": "showDivider",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Top divider rule between AI output and footer"
+    },
+    {
+      "name": "showFeedback",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show AIFeedbackBar sub-atom"
+    },
+    {
+      "name": "showRationale",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show \"View rationale\" ghost link"
+    },
+    {
+      "name": "showAuditTrail",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show \"View audit trail\" ghost link"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"stale\" \\",
+      "hint": "\"missing-source\" \\"
+    },
+    {
+      "name": "compact",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Shorthand for layout=\"panel\" \u2014 collapses chip row"
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"compact\" \\",
+      "hint": "\"panel\" \\"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Disables all interactive link buttons"
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Handler for View rationale link"
+    },
+    {
+      "name": "onViewAuditTrail",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Handler for View audit trail link"
+    },
+    {
+      "name": "onReportIssue",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Handler for Report issue link \u2014 shows when provided"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIResponseFooter"
+    ],
+    "import": "import { AIResponseFooter } from './AIResponseFooter'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Cite \u00b7 Attribute \u00b7 Confirm \u00b7 Collect feedback",
+    "accountability": "Sources \u00b7 Data freshness \u00b7 Attribution \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

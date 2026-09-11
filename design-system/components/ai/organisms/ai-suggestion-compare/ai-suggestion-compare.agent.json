@@ -1,0 +1,210 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISuggestionCompare",
+  "repoModule": "aiSuggestionCompare",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AISuggestionCompare is the broader canonical pattern for AI-generated comparisons. It supersedes the v1 `ai-card-recommendation-compare` (kept in the registry for legacy surfaces) and is what new product surfaces should reach for when the AI presents multiple options, scenarios, or next-best actions.",
+  "intent": "Compare AI-generated options \u2014 benefit, tradeoff, confidence, risk \u2014 and choose, ask for another, or send for approval.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSuggestionCompare",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-suggestion-compare/AISuggestionCompare.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-suggestion-compare/AISuggestionCompare.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`\"simple\" \\"
+      ],
+      "default": "\"rich\" \\",
+      "hint": "\"robust\"`"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Comparison title (H3)."
+    },
+    {
+      "name": "summary",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "1-line summary under the title."
+    },
+    {
+      "name": "generatedBy",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Uppercase brand-color attribution label (\"ZAIDYN AI\")."
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Freshness or \"Generated\" timestamp."
+    },
+    {
+      "name": "suggestions",
+      "values": [
+        "`AISuggestionItem[]`"
+      ],
+      "default": "`required`",
+      "hint": "2\u20134 option objects. See suggestion shape below."
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`\"sideBySide\" \\"
+      ],
+      "default": "\"stacked\" \\",
+      "hint": "\"grid\" \\"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"loading\" \\",
+      "hint": "\"updating\" \\"
+    },
+    {
+      "name": "approvalRequired",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Robust. Surfaces the needs-approval treatment in the footer."
+    },
+    {
+      "name": "reviewer",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Reviewer name shown in the footer (\"Reviewer: Maya Chen\")."
+    },
+    {
+      "name": "onSelectSuggestion",
+      "values": [
+        "`(id: string) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires when the user clicks Choose on an option."
+    },
+    {
+      "name": "onAskForAnother",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer action: requests another option."
+    },
+    {
+      "name": "onSendForApproval",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer action: routes the comparison into the approval flow."
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Renders the View rationale link."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View sources link."
+    },
+    {
+      "name": "onViewAssumptions",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View assumptions link."
+    },
+    {
+      "name": "loadingLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Generating options\u2026\"`",
+      "hint": "Calm copy displayed above the skeleton during the loading state."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISuggestionCompare"
+    ],
+    "import": "import { AISuggestionCompare } from './AISuggestionCompare'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Recommend \u00b7 Compare \u00b7 Simulate \u00b7 Prioritize \u00b7 Explain \u00b7 Review \u00b7 Escalate \u00b7 Generate",
+    "accountability": "Confidence \u00b7 Risk \u00b7 Rationale \u00b7 Sources \u00b7 Assumptions \u00b7 Tradeoffs \u00b7 Human review \u00b7 Approval \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

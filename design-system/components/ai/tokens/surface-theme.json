@@ -1,0 +1,58 @@
+{
+  "category": "surface-theme",
+  "version": "1.0",
+  "lastUpdated": "2026-06-22",
+  "mirrorSpec": "components/ai/tokens/surface-theme.md",
+  "contract": "components/ai/tokens/ai-tokens.ts",
+  "description": "CSS-scoped surface themes via data-theme attribute. Redefines --ai-* vars per variant; bridges to ZDS and shadcn.",
+  "attribute": "data-theme",
+  "defaultTheme": "ai-default",
+  "themes": [
+    {
+      "id": "ai-default",
+      "label": "ZSAI Default",
+      "description": "Light brand surface",
+      "definition": "components/ai/tokens/themes/ai-default.ts"
+    },
+    {
+      "id": "ai-bold",
+      "label": "ZSAI Bold",
+      "description": "Dark brand surface",
+      "definition": "components/ai/tokens/themes/ai-bold.ts"
+    },
+    {
+      "id": "ai-companion",
+      "label": "ZSAI Companion",
+      "description": "Warm tan companion surface",
+      "definition": "components/ai/tokens/themes/ai-companion.ts"
+    },
+    {
+      "id": "ai-aqua",
+      "label": "ZSAI Aqua",
+      "description": "Teal-influenced page gradients",
+      "definition": "components/ai/tokens/themes/ai-aqua.ts"
+    }
+  ],
+  "cssLoadOrder": [
+    "components/ai/tokens/css/ai-surface.css",
+    "components/ai/tokens/css/ai-component-tokens.css",
+    "components/ai/tokens/css/zds-bridge.css",
+    "components/ai/tokens/css/shadcn-bridge.css"
+  ],
+  "hardRules": [
+    "Components read var(--ai-*) — never hardcode hex",
+    "Theme files override Tier 1 palette or explicit --ai-* vars only",
+    "Load ai-surface.css before bridge files",
+    "ZDS hosts require zs-master-style on an ancestor"
+  ],
+  "react": {
+    "provider": "components/ai/tokens/react/SurfaceThemeProvider.tsx",
+    "import": "import { SurfaceThemeProvider } from './react'"
+  },
+  "maps": {
+    "componentTokens": "components/ai/tokens/maps/component-tokens.json",
+    "zdsBridge": "components/ai/tokens/maps/zds-bridge.json",
+    "shadcnBridge": "components/ai/tokens/maps/shadcn-bridge.json",
+    "resolveVars": "components/ai/tokens/maps/ai-css-vars.ts"
+  }
+}

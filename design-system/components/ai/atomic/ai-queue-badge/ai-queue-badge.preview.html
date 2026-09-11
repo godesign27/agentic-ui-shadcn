@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Queue Badge — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes ai-queue-spin { to { transform: rotate(360deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-queue-badge__spinner { animation: none !important; }
+    }
+
+    :root {
+      --ai-confidence-track: #F4F3F3;
+      --ai-card-border: #B2B0B6;
+      --ai-neutral-helper: #5b5864;
+      --ai-brand-surface: var(--brand-00);
+      --ai-brand-border: var(--brand-20);
+      --ai-brand-text: var(--ai-brand);
+      --ai-brand: #5A6DFF;
+      --ai-signal-surface: #FEFBF4;
+      --ai-signal-border: #FFD68F;
+      --ai-signal-text: #A54F00;
+      --ai-status-success-bg: rgba(39, 174, 96, 0.08);
+      --ai-status-success-border: rgba(39, 174, 96, 0.25);
+      --ai-status-success-text: #27AE60;
+      --ai-radius-sm: 12px;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .badge-stack { display: flex; flex-direction: column; gap: 16px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 8px; display: block;
+    }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+
+    /* ── AIQueueBadge (ported from AIQueueBadge.tsx) ── */
+    .ai-queue-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: var(--ai-radius-sm);
+      border: 1px solid;
+      font-family: "Open Sans", sans-serif;
+      font-size: 12px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+    .ai-queue-badge__icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      color: inherit;
+    }
+    .ai-queue-badge__count {
+      margin-left: 2px;
+      border-radius: 10px;
+      padding: 0 5px;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+    .ai-queue-badge__spinner { animation: ai-queue-spin 0.9s linear infinite; }
+
+    .ai-queue-badge--queued {
+      background: var(--ai-confidence-track);
+      border-color: var(--ai-card-border);
+      color: var(--ai-neutral-helper);
+    }
+    .ai-queue-badge--running {
+      background: var(--neutral-surface-muted);
+      border-color: var(--ai-brand-border);
+      color: var(--ai-brand-text);
+    }
+    .ai-queue-badge--blocked {
+      background: rgba(231, 76, 60, 0.08);
+      border-color: rgba(231, 76, 60, 0.25);
+      color: #E74C3C;
+    }
+    .ai-queue-badge--needs-approval {
+      background: var(--ai-signal-surface);
+      border-color: var(--ai-signal-border);
+      color: var(--ai-signal-text);
+    }
+    .ai-queue-badge--complete {
+      background: var(--ai-status-success-bg);
+      border-color: var(--ai-status-success-border);
+      color: var(--ai-status-success-text);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Queue Badge</h1>
+    <p class="subtitle">
+      Compact status badge for items in an agent execution queue. Five states with icon + label coding
+      and optional count pill. Ported from canonical <code>AIQueueBadge.tsx</code>.
+    </p>
+
+    <section>
+      <h2>All states</h2>
+      <p class="section-desc">Queued, Running, Blocked, Needs Approval, and Complete — matching the design system spec.</p>
+      <div class="demo-surface">
+        <div class="badge-row" id="all-states"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>With count pill</h2>
+      <p class="section-desc">Optional <code>count</code> prop renders a numeric badge inside the shell.</p>
+      <div class="demo-surface">
+        <div class="badge-row" id="count-demos"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Custom label</h2>
+      <p class="section-desc">Override the default status string with the <code>label</code> prop.</p>
+      <div class="demo-surface">
+        <div class="badge-row" id="label-demos"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>In context — queue card row</h2>
+      <div class="demo-surface">
+        <div class="badge-stack" id="context-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Queued</strong> — Neutral gray shell; clock icon. Item waiting, not yet started.</li>
+        <li><strong>Running</strong> — Brand-tinted shell; spinner rotates at 0.9s linear (<code>ai-queue-spin</code>).</li>
+        <li><strong>Blocked</strong> — Red-tinted shell; prohibition icon. Execution halted.</li>
+        <li><strong>Needs Approval</strong> — Signal-tinted shell; info icon. Awaiting human authorization.</li>
+        <li><strong>Complete</strong> — Green-tinted shell; check icon. Item finished successfully.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIQueueBadge } from '@/components/ai/atomic/queue-badge/AIQueueBadge';
+
+&lt;AIQueueBadge status="running" /&gt;
+&lt;AIQueueBadge status="needs-approval" count={3} /&gt;
+&lt;AIQueueBadge status="complete" label="Done" /&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    /* ── SVG icons (verbatim from AIQueueBadge.tsx) ── */
+    function clockIcon() {
+      return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M6 3.5V6L7.5 7.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    function spinnerIcon() {
+      return `<svg class="ai-queue-badge__spinner" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+        <circle cx="6" cy="6" r="4.5" stroke="var(--ai-brand-border)" stroke-width="1.5" fill="none"/>
+        <path d="M6 1.5 A4.5 4.5 0 0 1 10.5 6" stroke="var(--ai-brand)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      </svg>`;
+    }
+
+    function blockIcon() {
+      return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="2.5" y1="9.5" x2="9.5" y2="2.5" stroke="currentColor" stroke-width="1.2"/>
+      </svg>`;
+    }
+
+    function approvalIcon() {
+      return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M6 3.5V6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="6" cy="8.5" r="0.7" fill="currentColor"/>
+      </svg>`;
+    }
+
+    function checkIcon() {
+      return `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M3.5 6L5 7.5L8.5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
+    }
+
+    const STATUS_CONFIG = {
+      queued:         { label: 'Queued',          icon: clockIcon,    countBg: 'var(--ai-neutral-helper)', countFg: 'var(--ai-confidence-track)' },
+      running:        { label: 'Running',         icon: spinnerIcon,  countBg: 'var(--ai-brand-text)', countFg: 'var(--ai-brand-surface)' },
+      blocked:        { label: 'Blocked',         icon: blockIcon,    countBg: '#E74C3C', countFg: 'rgba(231,76,60,0.08)' },
+      'needs-approval': { label: 'Needs Approval', icon: approvalIcon, countBg: 'var(--ai-signal-text)', countFg: 'var(--ai-signal-surface)' },
+      complete:       { label: 'Complete',        icon: checkIcon,    countBg: '#27AE60', countFg: 'var(--ai-status-success-bg)' },
+    };
+
+    function createQueueBadge(status, { count, label } = {}) {
+      const cfg = STATUS_CONFIG[status];
+      const badge = document.createElement('span');
+      badge.className = `ai-queue-badge ai-queue-badge--${status}`;
+      badge.setAttribute('role', 'status');
+      badge.setAttribute('aria-label', label || cfg.label);
+
+      const iconWrap = document.createElement('span');
+      iconWrap.className = 'ai-queue-badge__icon';
+      iconWrap.innerHTML = cfg.icon();
+
+      badge.appendChild(iconWrap);
+      badge.appendChild(document.createTextNode(label || cfg.label));
+
+      if (count !== undefined) {
+        const countEl = document.createElement('span');
+        countEl.className = 'ai-queue-badge__count';
+        countEl.style.background = cfg.countBg;
+        countEl.style.color = cfg.countFg;
+        countEl.textContent = String(count);
+        badge.appendChild(countEl);
+      }
+
+      return badge;
+    }
+
+    /* All five states */
+    const allStates = document.getElementById('all-states');
+    Object.keys(STATUS_CONFIG).forEach(status => {
+      allStates.appendChild(createQueueBadge(status));
+    });
+
+    /* Count variants */
+    const countDemos = document.getElementById('count-demos');
+    countDemos.append(
+      createQueueBadge('needs-approval', { count: 3 }),
+      createQueueBadge('queued', { count: 12 }),
+      createQueueBadge('running', { count: 1 })
+    );
+
+    /* Custom labels */
+    const labelDemos = document.getElementById('label-demos');
+    labelDemos.append(
+      createQueueBadge('complete', { label: 'Done' }),
+      createQueueBadge('running', { label: 'Processing…' }),
+      createQueueBadge('blocked', { label: 'Dependency failed' })
+    );
+
+    /* Context — queue card rows */
+    const context = document.getElementById('context-demo');
+    [
+      { title: 'Territory realignment analysis', status: 'running' },
+      { title: 'Q3 pipeline velocity report', status: 'needs-approval', count: 2 },
+      { title: 'Rep coverage map refresh', status: 'queued' },
+      { title: 'Forecast model sync', status: 'complete' },
+    ].forEach(item => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EBEBEB;font-size:14px;';
+      const title = document.createElement('span');
+      title.textContent = item.title;
+      row.append(title, createQueueBadge(item.status, { count: item.count }));
+      context.appendChild(row);
+    });
+  </script>
+</body>
+</html>

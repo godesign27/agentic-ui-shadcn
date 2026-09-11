@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIHandoffTimeline",
+  "repoModule": "aiHandoffTimeline",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The AI Handoff Timeline provides an auditable vertical timeline of every ownership transition in a multi-agent or human-in-loop workflow. Each node shows the owner, timestamp, and handoff reason. Failed handoffs display retry/reassign actions.",
+  "intent": "Auditable vertical timeline of every ownership transfer in a multi-agent or human-in-loop workflow. Each node records who held ownership, when, and why.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-handoff-timeline/ai-handoff-timeline.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiHandoffTimeline",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-handoff-timeline/AIHandoffTimeline.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-handoff-timeline/AIHandoffTimeline.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "steps",
+      "values": [
+        "`HandoffStep[]`"
+      ],
+      "default": "`required`",
+      "hint": "Array of timeline steps"
+    },
+    {
+      "name": "direction",
+      "values": [
+        "`HandoffDirection`"
+      ],
+      "default": "`\"agent-to-agent\"`",
+      "hint": "Controls AIChipHandoff in header"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Handoff Timeline\"`",
+      "hint": "Card title"
+    },
+    {
+      "name": "onRetry",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Retry handler (shown on failed)"
+    },
+    {
+      "name": "onReassign",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Reassign handler"
+    },
+    {
+      "name": "onViewAudit",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "View audit handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIHandoffTimeline"
+    ],
+    "import": "import { AIHandoffTimeline } from './AIHandoffTimeline'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Transfer \u00b7 Escalate",
+    "accountability": "Audit trail \u00b7 Owner \u00b7 Rollback"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,13 @@
+{
+  "id": "stacked-bar-chart",
+  "name": "Stacked Bar Chart",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Stacked Bar Chart — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "StackedBarChart"
+    ]
+  }
+}

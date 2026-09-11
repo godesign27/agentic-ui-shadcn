@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISupervisorBar",
+  "repoModule": "aiSupervisorBar",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AISupervisorBar is the flush page-top identity strip for an AI-led workspace \u2014 typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent \u2014 no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (ZSAI tan companion surface \u2014 calmest, default), dark (inverted AI brand ink \u2014 hero / high-emphasis), and light (neutral white with a subtle bottom rule \u2014 low chrome, when the bar should recede).",
+  "intent": "Page-top agent identity strip \u00b7 tan \u00b7 dark \u00b7 light \u00b7 uses AIAvatar",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSupervisorBar",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-supervisor-bar/AISupervisorBar.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-supervisor-bar/AISupervisorBar.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "name",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Agent display name shown as the primary label."
+    },
+    {
+      "name": "role",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Supervisor agent'`",
+      "hint": "Inline eyebrow next to the name."
+    },
+    {
+      "name": "stat",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Second line, e.g. \"7 tasks tracked\"."
+    },
+    {
+      "name": "meta",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Appended to stat with a `\u00b7` separator, e.g. \"Updated 2m ago\"."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`'tan' \\"
+      ],
+      "default": "'dark' \\",
+      "hint": "'light'`"
+    },
+    {
+      "name": "avatarSize",
+      "values": [
+        "`number`"
+      ],
+      "default": "`36`",
+      "hint": "AIAvatar pixel size. Bar height auto-adjusts."
+    },
+    {
+      "name": "actions",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`undefined`",
+      "hint": "Right-aligned slot for optional controls (chevron / settings / dismiss)."
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "When set, the bar renders as role=\"button\" with Enter/Space activation."
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "``${name}, ${role}``",
+      "hint": "Accessible label override."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISupervisorBar"
+    ],
+    "import": "import { AISupervisorBar } from './AISupervisorBar'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive",
+      "AI Assisted"
+    ],
+    "aiBehavior": "Identify \u00b7 Monitor \u00b7 Attribute",
+    "accountability": "Owner \u00b7 Permission state \u00b7 Data freshness"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

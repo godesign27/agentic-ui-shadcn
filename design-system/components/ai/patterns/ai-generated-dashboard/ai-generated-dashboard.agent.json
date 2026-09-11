@@ -1,0 +1,193 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIGeneratedDashboard",
+  "repoModule": "aiGeneratedDashboard",
+  "tier": "pages",
+  "status": "experimental",
+  "description": "AIGeneratedDashboard is a page-level pattern that renders the AI\u2019s response to a strategic prompt as a multi-zone living dashboard rather than a single chat message. The starter scenario \u2014 Cardiology Expansion Q2 \u2014 demonstrates how the AI proposes a Boston cluster re-alignment, surfaces concurrent scenarios (Immunology Launch Readiness, Newark Territory Health Review), shows impact and risk telemetry, and overlays the proposal on a territory map. Every zone carries accountability: confidence, impact, agent attribution, rationale, sources, and an explicit Draft / Submit governance handoff. The component is designed to inhabit the right pane of AICommandCenterSplitView and also to stand alone as a saved artifact.",
+  "intent": "The AI-generated workspace. Scenarios, impact, and map overlays compose into a single governed output the operator can shape, approve, and submit.",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-generated-dashboard/ai-generated-dashboard.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiGeneratedDashboard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-generated-dashboard/AIGeneratedDashboard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-generated-dashboard/AIGeneratedDashboard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u201cCardiology Expansion Q2\u201d`",
+      "hint": "Dashboard title shown in the header."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`\"draft\" \\"
+      ],
+      "default": "\"active\" \\",
+      "hint": "\"generating\" \\"
+    },
+    {
+      "name": "outputType",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Alignment Map\"`",
+      "hint": "Output-type label shown next to the title (e.g. Alignment Map, Scenario Plan)."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`number`"
+      ],
+      "default": "`92.4`",
+      "hint": "Confidence percentage displayed in the header trust pair."
+    },
+    {
+      "name": "impactScore",
+      "values": [
+        "`number`"
+      ],
+      "default": "`12.2`",
+      "hint": "Impact percentage displayed in the header trust pair."
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`\"draft\" \\"
+      ],
+      "default": "\"live\"`",
+      "hint": "`\"draft\"`"
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`\"standalone\" \\"
+      ],
+      "default": "\"embedded\"`",
+      "hint": "`\"standalone\"`"
+    },
+    {
+      "name": "showHeader",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Whether to render the dashboard header. Set false when embedded."
+    },
+    {
+      "name": "criticalMode",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Surfaces signal-orange highlights on impact tiles and escalation thresholds."
+    },
+    {
+      "name": "mapFocused",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Expands the map module to full width and condenses other modules to a side rail."
+    },
+    {
+      "name": "onSubmit",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when the Submit button is pressed."
+    },
+    {
+      "name": "onToggleDraft",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when the Draft Mode toggle is flipped."
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when any \u201cView rationale\u201d link is activated."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when any \u201cView sources\u201d link is activated."
+    },
+    {
+      "name": "onPromptSelect",
+      "values": [
+        "`(prompt: string) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fires when a contextual prompt chip is selected."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIGeneratedDashboard"
+    ],
+    "import": "import { AIGeneratedDashboard } from './AIGeneratedDashboard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Analyze \u00b7 Generate \u00b7 Simulate \u00b7 Monitor \u00b7 Compare \u00b7 Recommend \u00b7 Evaluate \u00b7 Learn \u00b7 Escalate",
+    "accountability": "Confidence \u00b7 Impact \u00b7 Sources \u00b7 Rationale \u00b7 Assumptions \u00b7 Audit trail \u00b7 Owner \u00b7 Approval \u00b7 Output ownership"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

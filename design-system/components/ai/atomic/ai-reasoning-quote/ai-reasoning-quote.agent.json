@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIReasoningQuote",
+  "repoModule": "aiReasoningQuote",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section (\"REASONING SUMMARY\", \"RATIONALE\", \"SUMMARY\"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones \u2014 `ai` (brand blue), `warning` (ZS orange for risk/guardrail contexts), and `neutral` \u2014 keep the atom usable across the AI brand without breaking color discipline.",
+  "intent": "A short, italic blockquote with a tinted left rule \u2014 the agent speaking in its own voice without breaking the surrounding chrome.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiReasoningQuote",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-reasoning-quote/AIReasoningQuote.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-reasoning-quote/AIReasoningQuote.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "quote",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "The italicized body content."
+    },
+    {
+      "name": "eyebrow",
+      "values": [
+        "`string \\"
+      ],
+      "default": "null`",
+      "hint": "`\"REASONING SUMMARY\"`"
+    },
+    {
+      "name": "eyebrowIcon",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"zs-icon-ai-assist\"`",
+      "hint": "ZAIDYN icon class for the eyebrow glyph."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"ai\" \\"
+      ],
+      "default": "\"warning\" \\",
+      "hint": "\"neutral\"`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    },
+    {
+      "name": "attribution",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional caption under the quote."
+    },
+    {
+      "name": "addQuotes",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Wraps the quote in curly quotation marks."
+    },
+    {
+      "name": "id",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "When provided, ties the eyebrow to the blockquote via aria-labelledby."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIReasoningQuote"
+    ],
+    "import": "import { AIReasoningQuote } from './AIReasoningQuote'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Explain \u00b7 Summarize \u00b7 Rationalize",
+    "accountability": "Transparency \u00b7 Accountability \u00b7 Safe explanation"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

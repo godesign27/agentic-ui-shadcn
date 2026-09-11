@@ -1,0 +1,112 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardQueue",
+  "repoModule": "aiCardQueue",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The AI Card Queue surfaces the live execution queue for an agent workstream, letting operators monitor progress, approve individual items, and pause or stop execution. It is the primary control surface for AI Led batch processing.",
+  "intent": "Live view of an agent's execution queue with per-item approval controls, progress tracking, and pause/approve-all governance actions.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-queue/ai-card-queue.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardQueue",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-queue/AICardQueue.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-queue/AICardQueue.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Execution Queue\"`",
+      "hint": "Card title"
+    },
+    {
+      "name": "summary",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Subtitle summary below title"
+    },
+    {
+      "name": "items",
+      "values": [
+        "`QueueItem[]`"
+      ],
+      "default": "`required`",
+      "hint": "Queue items array"
+    },
+    {
+      "name": "onApproveAll",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Approve all handler"
+    },
+    {
+      "name": "onPause",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Pause queue handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardQueue"
+    ],
+    "import": "import { AICardQueue } from './AICardQueue'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Execute \u00b7 Confirm",
+    "accountability": "Approval \u00b7 Audit trail \u00b7 Escalation"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

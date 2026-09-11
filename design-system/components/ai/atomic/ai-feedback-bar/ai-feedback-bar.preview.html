@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Feedback Bar — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    @keyframes fbReceived {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: none; }
+    }
+    :root {
+      --ai-divider: #EBEBEB;
+      --ai-neutral-text: #2f2c3c;
+      --ai-neutral-helper: #5b5864;
+      --ai-feedback-active-helpful: rgba(21, 128, 61, 0.12);
+      --ai-feedback-active-not: rgba(185, 28, 28, 0.12);
+      --ai-action-primary: #5A6DFF;
+      --ai-action-surface: rgba(90, 109, 255, 0.12);
+    }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .response-card {
+      max-width: 560px; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden;
+    }
+    .response-body {
+      padding: 16px 18px 12px; font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--ai-neutral-text);
+    }
+
+    /* ── Feedback bar (matches AIFeedbackBar.tsx) ── */
+    .feedback-bar {
+      display: flex; align-items: center; gap: 1px;
+      padding: 6px 10px 8px; min-height: 42px;
+      border-top: 1px solid var(--ai-divider);
+    }
+    .feedback-bar.no-divider { border-top: none; }
+
+    .feed-btn {
+      width: 26px; height: 26px; border-radius: 6px; border: none; padding: 0;
+      background: transparent; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ai-neutral-helper);
+      transition: background 0.14s ease, color 0.14s ease;
+    }
+    .feed-btn:hover { background: var(--ai-divider); color: var(--ai-neutral-text); }
+    .feed-btn.active-brand { background: var(--ai-action-surface); color: var(--ai-action-primary); }
+    .feed-btn.active-helpful { background: var(--ai-feedback-active-helpful); color: #15803d; }
+    .feed-btn.active-helpful:hover { background: var(--ai-feedback-active-helpful); color: #15803d; }
+    .feed-btn.active-not { background: var(--ai-feedback-active-not); color: #B91C1C; }
+    .feed-btn.active-not:hover { background: var(--ai-feedback-active-not); color: #dc2626; }
+    .feed-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+
+    .feedback-received {
+      display: flex; align-items: center; gap: 6px;
+      color: #15803d; font-size: 12px; font-weight: 400; line-height: 1.5;
+      animation: fbReceived 0.2s ease both;
+    }
+    .feedback-received svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    .feed-spacer { flex: 1; }
+
+    /* Portal tooltip */
+    .ai-tooltip {
+      position: fixed; z-index: 1000; pointer-events: none; user-select: none;
+      background: #1A1628; color: #FAFAFA;
+      padding: 3px 6px; border-radius: 4px;
+      font-size: 13px; font-weight: 400; line-height: 1.55; letter-spacing: -0.176px;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(26,22,40,0.12), 0 0 2px rgba(26,22,40,0.12);
+      transform: translate(-50%, calc(-100% - 6px));
+      opacity: 0; transition: opacity 0.12s;
+    }
+    .ai-tooltip.visible { opacity: 1; }
+    .ai-tooltip-arrow {
+      position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      width: 10px; height: 5px; display: block;
+    }
+
+    .state-list { display: flex; flex-direction: column; gap: 24px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 8px; display: block;
+    }
+    .overflow-wrap {
+      max-width: 300px; border: 1px solid var(--neutral-border-subtle); border-radius: 8px;
+      overflow: hidden; background: #fff;
+    }
+    .overflow-wrap p { margin: 0; padding: 12px 14px; font-size: 13px; color: var(--neutral-text-helper); border-bottom: 1px solid var(--ai-divider); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Feedback Bar</h1>
+    <p class="subtitle">Icon row below each AI response — Read aloud, helpful, not helpful, share, copy, save. Standard filled icons, portal tooltips.</p>
+
+    <section>
+      <h2>Below a response</h2>
+      <p class="section-desc">Icon order: Read aloud → Helpful → Not helpful → Share → Copy → Save. Vote replaces the bar with a thank-you message.</p>
+      <div class="demo-surface">
+        <div class="response-card">
+          <div class="response-body" id="response-text">
+            Based on Q3 pipeline velocity, I recommend reallocating territories T-042 and T-043 from Northeast to Mid-Atlantic.
+          </div>
+          <div id="live-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Default resting state</h2>
+      <p class="section-desc">Matches reference — divider line, 26×26 icon buttons, NEUTRAL.iconDefault (#5b5864).</p>
+      <div class="demo-surface" style="padding:0;">
+        <div class="response-card" style="border:none; max-width:100%;">
+          <div id="static-default"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tooltip escape</h2>
+      <div class="demo-surface">
+        <div class="overflow-wrap">
+          <p>overflow:hidden parent</p>
+          <div id="overflow-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>State gallery</h2>
+      <div class="demo-surface">
+        <div class="state-list" id="state-gallery"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Standard icon paths — verbatim from AIFeedbackBar.tsx
+    const ICONS = {
+      volume: "M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z",
+      like: "M14.3636 9.19247H20.1818C20.664 9.19247 21.1265 9.38403 21.4675 9.72501C21.8084 10.066 22 10.5284 22 11.0107V12.9234C22.0002 13.161 21.9539 13.3963 21.8636 13.6161L19.05 20.4479C18.9814 20.6145 18.8648 20.7569 18.7151 20.8571C18.5653 20.9573 18.3892 21.0107 18.2091 21.0107H2.90909C2.66798 21.0107 2.43675 20.9149 2.26627 20.7444C2.09578 20.5739 2 20.3427 2 20.1016V11.0107C2 10.7695 2.09578 10.5383 2.26627 10.3678C2.43675 10.1973 2.66798 10.1016 2.90909 10.1016H6.07454C6.22009 10.1016 6.36351 9.96673 6.49276 9.99978C6.622 9.93286 6.73329 9.83589 6.81727 9.71702L11.7745 2.69247C11.8372 2.60367 11.9296 2.54026 12.035 2.51374C12.1404 2.48722 12.2519 2.49935 12.3491 2.54793L13.9982 3.37247C14.4623 3.60444 14.833 3.98821 15.0488 4.46003C15.2647 4.93185 15.3125 5.46331 15.1845 5.96611L14.3636 9.19247ZM7.45455 11.5452V19.1925H17.6L20.1818 12.9234V11.0107H14.3636C14.0867 11.0106 13.8135 10.9473 13.5648 10.8256C13.316 10.7039 13.0984 10.527 12.9284 10.3084C12.7585 10.0897 12.6407 9.83519 12.5841 9.56413C12.5275 9.29307 12.5336 9.01266 12.6018 8.74429L13.4227 5.51884C13.4484 5.41823 13.4389 5.31185 13.3957 5.21741C13.3525 5.12297 13.2783 5.04615 13.1855 4.99975L12.5845 4.69975L8.30273 10.7652C8.07545 11.087 7.78454 11.3507 7.45455 11.5452ZM5.63636 11.9197H3.81818V19.1925H5.63636V11.9197Z",
+      dislike: "M9.63636 14.3182H3.81818C3.33597 14.3182 2.87351 14.1266 2.53253 13.7856C2.19156 13.4447 2 12.9822 2 12.5V10.5873C1.99976 10.3497 2.04608 10.1143 2.13636 9.89455L4.95 3.06273C5.01864 2.89617 5.13521 2.75375 5.28493 2.65356C5.43465 2.55337 5.61076 2.49992 5.79091 2.5H21.0909C21.332 2.5 21.5632 2.59578 21.7337 2.76627C21.9042 2.93675 22 3.16798 22 3.40909V12.5C22 12.7411 21.9042 12.9723 21.7337 13.1428C21.5632 13.3133 21.332 13.4091 21.0909 13.4091H17.9255C17.7799 13.4091 17.6365 13.444 17.5072 13.5109C17.378 13.5778 17.2667 13.6748 17.1827 13.7936L12.2255 20.8182C12.1628 20.907 12.0704 20.9704 11.965 20.9969C11.8596 21.0234 11.7481 21.0113 11.6509 20.9627L10.0018 20.1382C9.53773 19.9062 9.16697 19.5224 8.95115 19.0506C8.73534 18.5788 8.68745 18.0473 8.81545 17.5445L9.63636 14.3182ZM16.5455 11.9655V4.31818H6.4L3.81818 10.5873V12.5H9.63636C9.91327 12.5 10.1865 12.5633 10.4352 12.685C10.684 12.8067 10.9016 12.9837 11.0716 13.2023C11.2415 13.4209 11.3593 13.6755 11.4159 13.9465C11.4725 14.2176 11.4664 14.498 11.3982 14.7664L10.5773 17.9918C10.5516 18.0924 10.5611 18.1988 10.6043 18.2932C10.6474 18.3877 10.7217 18.4645 10.8145 18.5109L11.4155 18.8109L15.6973 12.7455C15.9245 12.4236 16.2155 12.16 16.5455 11.9655ZM18.3636 11.5909H20.1818V4.31818H18.3636V11.5909Z",
+      share: "M13.12 17.023L8.92101 14.733C8.3728 15.3191 7.66099 15.7267 6.87808 15.9029C6.09517 16.0791 5.27736 16.0157 4.53093 15.721C3.7845 15.4263 3.14397 14.914 2.69258 14.2504C2.24118 13.5869 1.9998 12.803 1.9998 12.0005C1.9998 11.198 2.24118 10.4141 2.69258 9.75055C3.14397 9.08704 3.7845 8.57465 4.53093 8.27996C5.27736 7.98527 6.09517 7.92191 6.87808 8.09811C7.66099 8.27431 8.3728 8.68193 8.92101 9.268L13.121 6.978C12.8826 6.03407 12.9966 5.03559 13.4416 4.1697C13.8867 3.30381 14.6323 2.62998 15.5387 2.2745C16.445 1.91902 17.4499 1.9063 18.365 2.23873C19.2801 2.57116 20.0425 3.22591 20.5093 4.08026C20.9762 4.9346 21.1154 5.92989 20.9009 6.87954C20.6864 7.8292 20.133 8.66803 19.3442 9.23881C18.5555 9.80958 17.5857 10.0731 16.6166 9.97999C15.6475 9.88687 14.7456 9.44351 14.08 8.733L9.88001 11.023C10.0412 11.6644 10.0412 12.3356 9.88001 12.977L14.079 15.267C14.7446 14.5565 15.6465 14.1131 16.6156 14.02C17.5847 13.9269 18.5545 14.1904 19.3432 14.7612C20.132 15.332 20.6854 16.1708 20.8999 17.1205C21.1144 18.0701 20.9752 19.0654 20.5083 19.9197C20.0415 20.7741 19.2791 21.4288 18.364 21.7613C17.4489 22.0937 16.444 22.081 15.5377 21.7255C14.6313 21.37 13.8857 20.6962 13.4406 19.8303C12.9956 18.9644 12.8816 17.9659 13.12 17.022V17.023ZM6.00001 14C6.53044 14 7.03915 13.7893 7.41422 13.4142C7.78929 13.0391 8.00001 12.5304 8.00001 12C8.00001 11.4696 7.78929 10.9609 7.41422 10.5858C7.03915 10.2107 6.53044 10 6.00001 10C5.46957 10 4.96087 10.2107 4.58579 10.5858C4.21072 10.9609 4.00001 11.4696 4.00001 12C4.00001 12.5304 4.21072 13.0391 4.58579 13.4142C4.96087 13.7893 5.46957 14 6.00001 14V14ZM17 8C17.5304 8 18.0391 7.78928 18.4142 7.41421C18.7893 7.03914 19 6.53043 19 6C19 5.46956 18.7893 4.96086 18.4142 4.58578C18.0391 4.21071 17.5304 4 17 4C16.4696 4 15.9609 4.21071 15.5858 4.58578C15.2107 4.96086 15 5.46956 15 6C15 6.53043 15.2107 7.03914 15.5858 7.41421C15.9609 7.78928 16.4696 8 17 8V8ZM17 20C17.5304 20 18.0391 19.7893 18.4142 19.4142C18.7893 19.0391 19 18.5304 19 18C19 17.4696 18.7893 16.9609 18.4142 16.5858C18.0391 16.2107 17.5304 16 17 16C16.4696 16 15.9609 16.2107 15.5858 16.5858C15.2107 16.9609 15 17.4696 15 18C15 18.5304 15.2107 19.0391 15.5858 19.4142C15.9609 19.7893 16.4696 20 17 20V20Z",
+      copy: "M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",
+      tag: "M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z",
+    };
+
+    const CHECK_CIRCLE = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M7.5 12l3 3 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    // Single portal tooltip
+    let tooltipEl = null;
+    function ensureTooltip() {
+      if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.className = 'ai-tooltip';
+        tooltipEl.innerHTML = '<span class="ai-tooltip-text"></span><svg class="ai-tooltip-arrow" viewBox="0 0 10 5" aria-hidden="true"><path d="M0 0 L5 5 L10 0 Z" fill="#1A1628"/></svg>';
+        document.body.appendChild(tooltipEl);
+      }
+      return tooltipEl;
+    }
+    function showTooltip(btn, label) {
+      const t = ensureTooltip();
+      const r = btn.getBoundingClientRect();
+      t.querySelector('.ai-tooltip-text').textContent = label;
+      t.style.left = (r.left + r.width / 2) + 'px';
+      t.style.top = r.top + 'px';
+      t.classList.add('visible');
+    }
+    function hideTooltip() {
+      if (tooltipEl) tooltipEl.classList.remove('visible');
+    }
+
+    function feedBtn(path, label, { activeClass = 'active-brand', active = false, onClick, hoverHelpful, hoverNot } = {}) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'feed-btn' + (active ? ' ' + activeClass : '');
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('aria-pressed', String(active));
+      btn.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+
+      if (hoverHelpful) {
+        btn.addEventListener('mouseenter', () => { if (!active) { btn.style.background = 'var(--ai-feedback-active-helpful)'; btn.style.color = '#15803d'; } });
+        btn.addEventListener('mouseleave', () => { if (!active) { btn.style.background = ''; btn.style.color = ''; } });
+      }
+      if (hoverNot) {
+        btn.addEventListener('mouseenter', () => { if (!active) { btn.style.background = 'var(--ai-feedback-active-not)'; btn.style.color = '#dc2626'; } });
+        btn.addEventListener('mouseleave', () => { if (!active) { btn.style.background = ''; btn.style.color = ''; } });
+      }
+
+      btn.addEventListener('mouseenter', () => showTooltip(btn, label));
+      btn.addEventListener('mouseleave', hideTooltip);
+      btn.addEventListener('focus', () => showTooltip(btn, label));
+      btn.addEventListener('blur', hideTooltip);
+      if (onClick) btn.addEventListener('click', onClick);
+      return btn;
+    }
+
+    function createFeedbackBar(options = {}) {
+      const {
+        showDivider = true,
+        readonly = false,
+        preset = {},
+        responseText = '',
+      } = options;
+
+      const state = {
+        vote: preset.vote ?? null,
+        received: preset.received ?? false,
+        playing: preset.playing ?? false,
+        copied: preset.copied ?? false,
+        tagged: preset.tagged ?? false,
+      };
+
+      const bar = document.createElement('div');
+      bar.className = 'feedback-bar' + (showDivider ? '' : ' no-divider');
+
+      function render() {
+        bar.innerHTML = '';
+
+        if (state.received) {
+          const msg = document.createElement('div');
+          msg.className = 'feedback-received';
+          msg.innerHTML = CHECK_CIRCLE + ' Feedback received — thank you';
+          bar.appendChild(msg);
+          return;
+        }
+
+        const buttons = [
+          feedBtn(ICONS.volume, state.playing ? 'Stop reading' : 'Read aloud', {
+            active: state.playing, activeClass: 'active-brand',
+            onClick: readonly ? null : () => { state.playing = !state.playing; render(); },
+          }),
+          feedBtn(ICONS.like, 'Mark as helpful', {
+            active: state.vote === 'up', activeClass: 'active-helpful', hoverHelpful: true,
+            onClick: readonly ? null : () => { state.vote = 'up'; state.received = true; render(); },
+          }),
+          feedBtn(ICONS.dislike, 'Mark as not helpful', {
+            active: state.vote === 'down', activeClass: 'active-not', hoverNot: true,
+            onClick: readonly ? null : () => { state.vote = 'down'; state.received = true; render(); },
+          }),
+          feedBtn(ICONS.share, 'Share response', {
+            active: false, onClick: readonly ? null : () => {},
+          }),
+          feedBtn(ICONS.copy, state.copied ? 'Copied!' : 'Copy response', {
+            active: state.copied, activeClass: 'active-brand',
+            onClick: readonly ? null : async () => {
+              if (responseText) {
+                try { await navigator.clipboard.writeText(responseText); } catch { /* ok */ }
+              }
+              state.copied = true;
+              render();
+              setTimeout(() => { state.copied = false; render(); }, 2000);
+            },
+          }),
+          feedBtn(ICONS.tag, state.tagged ? 'Saved' : 'Save response', {
+            active: state.tagged, activeClass: 'active-brand',
+            onClick: readonly ? null : () => { state.tagged = !state.tagged; render(); },
+          }),
+        ];
+
+        buttons.forEach(b => bar.appendChild(b));
+        const spacer = document.createElement('div');
+        spacer.className = 'feed-spacer';
+        bar.appendChild(spacer);
+      }
+
+      render();
+      return bar;
+    }
+
+    const responseText = document.getElementById('response-text').textContent.trim();
+    document.getElementById('live-bar').appendChild(createFeedbackBar({ responseText }));
+    document.getElementById('static-default').appendChild(createFeedbackBar({ readonly: true }));
+    document.getElementById('overflow-bar').appendChild(createFeedbackBar({ showDivider: false, readonly: true }));
+
+    const gallery = document.getElementById('state-gallery');
+    [
+      { label: 'Default (all idle)', preset: {} },
+      { label: 'Read aloud active', preset: { playing: true } },
+      { label: 'Copied', preset: { copied: true } },
+      { label: 'Saved', preset: { tagged: true } },
+      { label: 'Feedback received', preset: { received: true, vote: 'up' } },
+    ].forEach(s => {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = s.label;
+      const card = document.createElement('div');
+      card.className = 'response-card';
+      card.style.maxWidth = '100%';
+      card.appendChild(createFeedbackBar({ readonly: true, preset: s.preset }));
+      wrap.append(lbl, card);
+      gallery.appendChild(wrap);
+    });
+  </script>
+</body>
+</html>

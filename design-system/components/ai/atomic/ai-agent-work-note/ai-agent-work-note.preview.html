@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Agent Work Note — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    @keyframes awn-pulse { 0%,100%{opacity:.35} 50%{opacity:.85} }
+    @keyframes awn-dot { 0%,80%,100%{transform:scale(.6);opacity:.4} 40%{transform:scale(1);opacity:1} }
+    @keyframes awn-open { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:translateY(0)} }
+    @media (prefers-reduced-motion: reduce) {
+      [data-awn], [data-awn-open] { animation: none !important; transition: none !important; }
+    }
+
+    :root {
+      --ai-brand-surface: var(--brand-00);
+      --ai-neutral-text: #1A1628;
+      --ai-neutral-helper: #6B6575;
+      --ai-brand: #5A6DFF;
+      --ai-brand-strong: var(--brand-90);
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 680px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .awn-trigger:focus { outline: none; }
+    .awn-trigger:focus-visible { outline: 2px solid var(--ai-brand); outline-offset: 2px; }
+
+    .note-list { display: flex; flex-direction: column; gap: 28px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 10px; display: block;
+    }
+
+    .chat-thread { max-width: 520px; display: flex; flex-direction: column; gap: 16px; }
+    .chat-user {
+      align-self: flex-end; max-width: 85%; padding: 12px 14px; border-radius: 12px;
+      background: var(--neutral-surface-muted); font-size: 14px; line-height: 1.5;
+    }
+    .chat-agent { align-self: flex-start; max-width: 100%; }
+    .chat-agent__avatar {
+      width: 28px; height: 28px; border-radius: 50%; margin-bottom: 8px;
+      background: linear-gradient(135deg, #B4BDFF 0%, #5A6DFF 55%, #1F2A66 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .chat-agent__avatar svg { width: 14px; height: 14px; }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Agent Work Note</h1>
+    <p class="subtitle">Lightweight inline disclosure for agent transparency — safe summary only, not chain-of-thought. Ported from canonical <code>AIAgentWorkNote.tsx</code>.</p>
+
+    <section>
+      <h2>In chat context</h2>
+      <p class="section-desc">Appears above the agent response while working. Expand, hide, or escalate to full trace.</p>
+      <div class="demo-surface">
+        <div class="chat-thread">
+          <div class="chat-user">Reallocate territories T-042 and T-043 based on Q3 pipeline.</div>
+          <div class="chat-agent">
+            <div class="chat-agent__avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="white"><path d="M12 2l2.2 6.8H21l-5.5 4 2.1 6.5L12 15.8 6.4 19.3l2.1-6.5L3 8.8h6.8z"/></svg>
+            </div>
+            <div id="chat-note"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Bundle examples</h2>
+      <p class="section-desc">Matches the usage examples from the self-contained component bundle.</p>
+      <div class="demo-surface">
+        <div class="note-list" id="bundle-examples"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>All states</h2>
+      <div class="demo-surface">
+        <div class="note-list" id="state-gallery"></div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const AI = { brand: '#5A6DFF', brandStrong: '#2D3DA3' };
+    const F = '"Open Sans", sans-serif';
+
+    const STATUS_LABEL = {
+      idle: 'Working', active: 'Working', planning: 'Plan',
+      checkingContext: 'Context check', searching: 'Checking context',
+      routing: 'Routing', validating: 'Validating',
+      complete: 'Working note', hidden: 'Working',
+    };
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2200);
+    }
+
+    function loadingDots() {
+      const wrap = document.createElement('span');
+      wrap.style.cssText = 'display:inline-flex;align-items:center;gap:3px;margin-left:4px;vertical-align:middle;';
+      wrap.setAttribute('aria-hidden', 'true');
+      [0, 160, 320].forEach(delay => {
+        const dot = document.createElement('span');
+        dot.setAttribute('data-awn', '');
+        dot.style.cssText = `display:inline-block;width:4px;height:4px;border-radius:50%;background:${AI.brand};animation:awn-dot 1.2s ${delay}ms ease-in-out infinite;`;
+        wrap.appendChild(dot);
+      });
+      return wrap;
+    }
+
+    function chevronSvg(open) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '12');
+      svg.setAttribute('height', '12');
+      svg.setAttribute('viewBox', '0 0 12 12');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = `transition:transform 0.2s ease;transform:rotate(${open ? '90deg' : '0deg'});flex-shrink:0;`;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M4 2.5l4 3.5-4 3.5');
+      path.setAttribute('stroke', AI.brand);
+      path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(path);
+      return svg;
+    }
+
+    /** Vanilla port of AIAgentWorkNote — mirrors AIAgentWorkNote.tsx */
+    function mountAIAgentWorkNote(container, initialProps = {}) {
+      let props = { ...initialProps };
+      let openInternal = props.defaultExpanded ?? false;
+      let hiddenInternal = false;
+      let hoverTrigger = false;
+      let hoverHide = false;
+      let hoverTrace = false;
+      let hoverRestore = false;
+
+      const root = document.createElement('div');
+      container.appendChild(root);
+
+      function render() {
+        const {
+          label, status = 'idle', content, items, icon,
+          showChevron = true, hideable = false,
+          hidden: hiddenProp, showViewTrace = false, loading = false,
+          expanded: expandedProp, onToggle, onHide, onViewTrace,
+        } = props;
+
+        const isControlled = expandedProp !== undefined;
+        const isOpen = isControlled ? expandedProp : openInternal;
+        const isHiddenCtrl = hiddenProp !== undefined;
+        const isHidden = isHiddenCtrl ? hiddenProp : hiddenInternal;
+        const resolvedLabel = label ?? STATUS_LABEL[status] ?? 'Working';
+        const isActive = status === 'active';
+        const isComplete = status === 'complete';
+        const hasContent = !!(content || (items && items.length > 0));
+
+        root.innerHTML = '';
+
+        if (isHidden) {
+          const restore = document.createElement('button');
+          restore.type = 'button';
+          restore.textContent = 'Show working note';
+          restore.setAttribute('aria-label', 'Show working note');
+          restore.style.cssText = [
+            `font-family:${F}`, 'font-size:11px', 'font-weight:500',
+            `color:${hoverRestore ? AI.brandStrong : AI.brand}`,
+            'background:transparent', 'border:none', 'cursor:pointer', 'padding:0',
+            `text-decoration:${hoverRestore ? 'underline' : 'none'}`,
+            'transition:color 0.15s ease',
+          ].join(';');
+          restore.onmouseenter = () => { hoverRestore = true; render(); };
+          restore.onmouseleave = () => { hoverRestore = false; render(); };
+          restore.onclick = () => { hiddenInternal = false; render(); };
+          root.appendChild(restore);
+          return;
+        }
+
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'display:inline-flex;flex-direction:column;gap:0;';
+
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex;align-items:center;gap:6px;';
+
+        if (icon) {
+          const iconWrap = document.createElement('span');
+          iconWrap.style.cssText = `display:flex;align-items:center;color:${AI.brand};flex-shrink:0;`;
+          iconWrap.appendChild(typeof icon === 'string' ? document.createTextNode(icon) : icon);
+          row.appendChild(iconWrap);
+        }
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'awn-trigger';
+        const canToggle = hasContent || isActive;
+        trigger.style.cssText = [
+          'display:inline-flex', 'align-items:center', 'gap:5px',
+          `font-family:${F}`, 'font-size:14px', 'font-weight:400', 'line-height:1.4',
+          `color:${hoverTrigger && canToggle ? AI.brandStrong : AI.brand}`,
+          `background:${hoverTrigger && canToggle ? 'var(--ai-brand-surface)' : 'transparent'}`,
+          'border:none',
+          `cursor:${canToggle ? 'pointer' : 'default'}`,
+          'padding:2px 6px 2px 4px', 'border-radius:6px',
+          'transition:background 0.15s ease, color 0.15s ease', 'box-shadow:none',
+        ].join(';');
+        if (hasContent) {
+          trigger.setAttribute('aria-expanded', String(isOpen));
+          trigger.setAttribute('aria-controls', 'awn-body');
+        }
+
+        trigger.onmouseenter = () => { hoverTrigger = true; render(); };
+        trigger.onmouseleave = () => { hoverTrigger = false; render(); };
+        trigger.onclick = () => {
+          if (!canToggle) return;
+          if (!isControlled) openInternal = !openInternal;
+          onToggle?.(!isOpen);
+          render();
+        };
+
+        if (isActive && loading) {
+          const lbl = document.createElement('span');
+          lbl.style.cssText = `font-family:${F};font-size:13px;font-weight:500;color:${AI.brand};`;
+          lbl.textContent = resolvedLabel;
+          lbl.appendChild(loadingDots());
+          trigger.appendChild(lbl);
+        } else {
+          const lbl = document.createElement('span');
+          lbl.style.cssText = `font-family:${F};font-size:13px;font-weight:500;color:inherit;`;
+          lbl.textContent = isComplete ? `${resolvedLabel} complete` : resolvedLabel;
+          trigger.appendChild(lbl);
+          if (showChevron && !isComplete && !(isActive && loading)) {
+            trigger.appendChild(chevronSvg(isOpen));
+          }
+        }
+        row.appendChild(trigger);
+
+        if (hideable && !isHidden) {
+          const hideBtn = document.createElement('button');
+          hideBtn.type = 'button';
+          hideBtn.textContent = 'Hide';
+          hideBtn.setAttribute('aria-label', 'Hide working note');
+          hideBtn.style.cssText = [
+            `font-family:${F}`, 'font-size:11px',
+            `color:${hoverHide ? 'var(--ai-neutral-text)' : 'var(--ai-neutral-helper)'}`,
+            'background:transparent', 'border:none', 'cursor:pointer', 'padding:2px 4px',
+            'transition:color 0.15s ease',
+          ].join(';');
+          hideBtn.onmouseenter = () => { hoverHide = true; render(); };
+          hideBtn.onmouseleave = () => { hoverHide = false; render(); };
+          hideBtn.onclick = () => { hiddenInternal = true; onHide?.(); render(); };
+          row.appendChild(hideBtn);
+        }
+
+        wrap.appendChild(row);
+
+        if (isOpen && hasContent) {
+          const body = document.createElement('div');
+          body.id = 'awn-body';
+          body.setAttribute('role', 'region');
+          body.setAttribute('aria-label', 'Working note details');
+          body.setAttribute('data-awn-open', '');
+          body.style.cssText = 'margin-top:6px;padding-left:4px;animation:awn-open 0.18s ease forwards;';
+
+          if (content) {
+            const p = document.createElement('p');
+            p.style.cssText = `font-family:${F};font-size:13px;line-height:1.55;color:var(--ai-neutral-text);margin:0 0 6px;`;
+            p.textContent = content;
+            body.appendChild(p);
+          }
+
+          if (items?.length) {
+            const ol = document.createElement('ol');
+            ol.style.cssText = 'margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:4px;';
+            items.forEach(item => {
+              const li = document.createElement('li');
+              li.style.cssText = `font-family:${F};font-size:13px;line-height:1.55;color:var(--ai-neutral-text);`;
+              li.textContent = item;
+              ol.appendChild(li);
+            });
+            body.appendChild(ol);
+          }
+
+          if (showViewTrace) {
+            const trace = document.createElement('button');
+            trace.type = 'button';
+            trace.textContent = 'View trace →';
+            trace.setAttribute('aria-label', 'View full reasoning trace');
+            trace.style.cssText = [
+              'display:inline-block', 'margin-top:8px',
+              `font-family:${F}`, 'font-size:11px', 'font-weight:500',
+              `color:${hoverTrace ? AI.brandStrong : AI.brand}`,
+              'background:transparent', 'border:none', 'cursor:pointer', 'padding:0',
+              `text-decoration:${hoverTrace ? 'underline' : 'none'}`,
+              'transition:color 0.15s ease',
+            ].join(';');
+            trace.onmouseenter = () => { hoverTrace = true; render(); };
+            trace.onmouseleave = () => { hoverTrace = false; render(); };
+            trace.onclick = () => { onViewTrace?.(); toast('Would open ai-reasoning-trace'); };
+            body.appendChild(trace);
+          }
+
+          wrap.appendChild(body);
+        }
+
+        root.appendChild(wrap);
+      }
+
+      render();
+
+      return {
+        update(next) { props = { ...props, ...next }; render(); },
+        resetHidden() { hiddenInternal = false; render(); },
+      };
+    }
+
+    function labeledDemo(label, mountFn) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      const host = document.createElement('div');
+      mountFn(host);
+      wrap.append(lbl, host);
+      return wrap;
+    }
+
+    // Chat context — simulates active → expanded workflow
+    const chatNote = mountAIAgentWorkNote(document.getElementById('chat-note'), {
+      status: 'active', loading: true,
+      content: "I'm checking the request and preparing a design-system-safe prompt.",
+      hideable: true, showViewTrace: true,
+      onViewTrace: () => toast('Would open ai-reasoning-trace'),
+    });
+    setTimeout(() => {
+      chatNote.update({ status: 'idle', loading: false, defaultExpanded: true });
+    }, 2400);
+
+    // Bundle examples
+    const bundleHost = document.getElementById('bundle-examples');
+    bundleHost.appendChild(labeledDemo('Collapsed (default)', h => {
+      mountAIAgentWorkNote(h, { status: 'idle' });
+    }));
+    bundleHost.appendChild(labeledDemo('Active — loading dots', h => {
+      mountAIAgentWorkNote(h, { status: 'active', loading: true });
+    }));
+    bundleHost.appendChild(labeledDemo('Planning steps (expanded)', h => {
+      mountAIAgentWorkNote(h, {
+        status: 'planning', defaultExpanded: true,
+        items: [
+          'Review the drawer pattern',
+          'Align the AI panel to the standard drawer',
+          'Create the split-view command center variant',
+        ],
+      });
+    }));
+    bundleHost.appendChild(labeledDemo('Context check (expanded)', h => {
+      mountAIAgentWorkNote(h, {
+        status: 'checkingContext', defaultExpanded: true,
+        content: 'This should be a lightweight inline disclosure, not a full reasoning trace.',
+      });
+    }));
+    bundleHost.appendChild(labeledDemo('Hideable + View trace', h => {
+      mountAIAgentWorkNote(h, {
+        status: 'idle', defaultExpanded: true,
+        content: "I'm checking the request and preparing a design-system-safe prompt.",
+        hideable: true, showViewTrace: true,
+        onViewTrace: () => toast('Would open ai-reasoning-trace'),
+      });
+    }));
+
+    // State gallery
+    const gallery = document.getElementById('state-gallery');
+    [
+      { label: 'Collapsed', props: { status: 'idle', content: 'Checking territory alignment rules…' } },
+      { label: 'Expanded prose', props: { status: 'idle', defaultExpanded: true, content: 'Reviewing Q3 pipeline data and cross-referencing territory assignments.' } },
+      { label: 'Searching', props: { status: 'searching', defaultExpanded: true, content: 'Looking up territory definitions for the Northeast region.' } },
+      { label: 'Routing', props: { status: 'routing', defaultExpanded: true, content: 'Handing off to Planner Agent for quota analysis.' } },
+      { label: 'Validating', props: { status: 'validating', defaultExpanded: true, content: 'Verifying recommendation against comp plan rules.' } },
+      { label: 'Complete', props: { status: 'complete' } },
+      { label: 'Hidden (click Hide on demo above)', props: { hidden: true } },
+    ].forEach(s => {
+      gallery.appendChild(labeledDemo(s.label, h => mountAIAgentWorkNote(h, s.props)));
+    });
+  </script>
+</body>
+</html>

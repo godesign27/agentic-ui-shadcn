@@ -1,0 +1,174 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISourceAccordion",
+  "repoModule": "aiSourceAccordion",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AISourceAccordion is a collapsible, question-scoped multi-select surface used for agent decision prompts (\"Which brand(s) is this campaign for?\", \"Which sources should the agent draw from?\"). A header pairs the question with a live \"N selected\" pill; expanding the accordion reveals a grouped list of selectable AISourceTile rows and \u2014 optionally \u2014 a free-text row for adding user-authored options and a Continue CTA. Selection state can be controlled or uncontrolled.",
+  "intent": "Collapsible question-scoped multi-select. Stacks selectable AISourceTile rows under a header with a live \"N selected\" pill; optional free-text row + Continue CTA.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-source-accordion/ai-source-accordion.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSourceAccordion",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-source-accordion/AISourceAccordion.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-source-accordion/AISourceAccordion.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "``",
+      "hint": "Header label \u2014 the decision prompt this accordion scopes."
+    },
+    {
+      "name": "",
+      "values": [
+        "`AISourceAccordionOption[]`"
+      ],
+      "default": "``",
+      "hint": "Rows to render. Each option supports title, subtitle, rank, tone, disabled."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "``",
+      "hint": "Controlled selection \u2014 pair with onChange."
+    },
+    {
+      "name": "",
+      "values": [
+        "`(ids: string[]) => void`"
+      ],
+      "default": "``",
+      "hint": "Fires whenever selection changes (controlled or uncontrolled)."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "``",
+      "hint": "Uncontrolled default selection. Defaults to []."
+    },
+    {
+      "name": "",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "``",
+      "hint": "Renders a dashed-tile free-text row below the last option."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Placeholder for the free-text input. Defaults to \"Or type\u2026\"."
+    },
+    {
+      "name": "",
+      "values": [
+        "`(value: string) => void`"
+      ],
+      "default": "``",
+      "hint": "Fires when the user submits the free-text row."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Continue CTA label. Renders only when paired with onSubmit."
+    },
+    {
+      "name": "",
+      "values": [
+        "`(selectedIds: string[]) => void`"
+      ],
+      "default": "``",
+      "hint": "CTA click handler \u2014 receives the current selection."
+    },
+    {
+      "name": "",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "``",
+      "hint": "Initial open state. Defaults to true."
+    },
+    {
+      "name": "",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "``",
+      "hint": "Suppresses toggling + CTA + input."
+    },
+    {
+      "name": "",
+      "values": [
+        "`AISourceTileTone`"
+      ],
+      "default": "``",
+      "hint": "Applied to rows that don't set their own tone. Defaults to \"ai\"."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISourceAccordion"
+    ],
+    "import": "import { AISourceAccordion } from './AISourceAccordion'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

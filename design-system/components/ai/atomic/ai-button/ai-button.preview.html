@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Button — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes aibtn-spin { to { transform: rotate(360deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .aibtn-spin { animation: none !important; }
+    }
+
+    :root {
+      --ai-neutral-text: #2f2c3c;
+      --ai-neutral-helper: #5b5864;
+      --ai-btn-disabled-text: #716e79;
+      --ai-btn-disabled-border: #b2b0b6;
+      --ai-signal-surface: #fefbf4;
+      --ai-signal-border: #ffd68f;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      background: #F4F3F3;
+      color: var(--neutral-text);
+      line-height: 1.5;
+    }
+
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface {
+      background: #fff;
+      border: 1px solid var(--neutral-border-subtle);
+      border-radius: 8px;
+      padding: 32px;
+    }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .state-card { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .state-label {
+      font-size: 13px; font-weight: 400; color: var(--neutral-text-helper);
+    }
+    .variant-block { margin-bottom: 28px; }
+    .variant-block:last-child { margin-bottom: 0; }
+    .variant-heading { font-size: 13px; font-weight: 700; color: var(--neutral-text); margin: 0 0 12px; }
+    .radius-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .radius-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .radius-meta { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; color: var(--neutral-text-helper); }
+    .radius-token { font-size: 11px; color: var(--neutral-text-helper); font-family: monospace; }
+    .radius-picker {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 12px; background: var(--neutral-surface-muted); border: 1px solid var(--neutral-border-subtle); border-radius: 8px;
+    }
+    .radius-picker label {
+      font-size: 11px; font-weight: 600; color: var(--neutral-text-helper); width: 100%;
+      margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;
+    }
+    .radius-opt {
+      padding: 6px 10px; border: 1px solid var(--neutral-border-subtle); border-radius: 6px;
+      background: #fff; font-size: 12px; font-weight: 600; cursor: pointer;
+      color: var(--neutral-text); transition: background 0.12s, border-color 0.12s;
+    }
+    .radius-opt.active { background: #5A6DFF; border-color: #5A6DFF; color: #fff; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none; z-index: 100;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    .nav-link {
+      display: inline-block; margin-bottom: 24px; font-size: 13px;
+      color: #5A6DFF; text-decoration: none; font-weight: 600;
+    }
+    .nav-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <a class="nav-link" href="/preview/review.html" style="margin-left:16px">AI Button + Dialog</a>
+
+    <h1>AI Button</h1>
+    <p class="subtitle">Ported from canonical <code>AIButton.tsx</code> — 3 variants · 3 sizes · 5 radii · 5 status states on primary. Ghost toolbar triggers use <code>AIDialogButton</code>.</p>
+
+    <section>
+      <h2>State variations</h2>
+      <p class="section-desc">Documented emphasis levels, sizes, and primary status feedback.</p>
+      <div class="demo-surface">
+        <div class="variant-block">
+          <div class="variant-heading">Variants — emphasis levels</div>
+          <div class="row" id="variant-row"></div>
+        </div>
+        <div class="variant-block">
+          <div class="variant-heading">Sizes — sm · md · lg</div>
+          <div class="row" id="size-row"></div>
+        </div>
+        <div class="variant-block">
+          <div class="variant-heading">Status — loading · complete · error</div>
+          <div class="state-grid" id="status-row"></div>
+        </div>
+        <div class="variant-block">
+          <div class="variant-heading">Disabled — all variants</div>
+          <div class="row" id="disabled-row"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Radius scale</h2>
+      <p class="section-desc">Five corner-radius tokens. Picker applies radius to variant demos below.</p>
+      <div class="demo-surface">
+        <div class="radius-grid" id="radius-scale"></div>
+        <div class="radius-picker" id="radius-picker"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Confirm / cancel pair</h2>
+      <p class="section-desc">Click Apply to simulate loading → complete (~1.5s) cycle.</p>
+      <div class="demo-surface">
+        <div class="row" id="pair-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>AIAction composition</h2>
+      <p class="section-desc"><code>AIAction</code> ships alongside <code>AIButton</code> — primary + secondary + tertiary row with optional review pill.</p>
+      <div class="demo-surface">
+        <div id="action-inline"></div>
+        <div style="height:24px"></div>
+        <div id="action-stacked"></div>
+        <div style="height:24px"></div>
+        <div id="action-review"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Primary</strong> — brand gradient CTA with action shadow; status spinner/check/error</li>
+        <li><strong>Secondary</strong> — Standard border outline, AI tint on hover</li>
+        <li><strong>Tertiary</strong> — ghost helper text, darkens on hover</li>
+        <li><strong>Loading / complete</strong> — click suppressed; minWidth prevents reflow</li>
+        <li><strong>Disabled</strong> — reduced opacity across all variants</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIButton } from 'ai/atomic/button/AIButton';
+
+&lt;AIButton variant="primary" label="Apply Recommendation" onClick={apply} /&gt;
+&lt;AIButton variant="primary" label="Applying…" status="loading" /&gt;
+&lt;AIButton variant="secondary" label="Edit First" onClick={edit} /&gt;
+&lt;AIButton variant="tertiary" label="Dismiss" onClick={dismiss} /&gt;</pre>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    /** Tier 2 tokens from ai-tokens.ts */
+    const AI = {
+      gradient: { action: { full: 'linear-gradient(135deg, #7A8CFF 0%, #5A6DFF 100%)' } },
+      color: {
+        action: { primaryActive: '#3F50C7' },
+        surface: { default: '#F5F6FF' },
+        text: { onAction: '#FFFFFF' },
+      },
+      shadow: { action: { default: 'rgba(90, 109, 255, 0.18)' } },
+      radius: { xs: '6px', sm: '12px', md: '16px', lg: '20px', full: '100px' },
+    };
+    const NEUTRAL = { border: '#B2B0B6' };
+    const SIGNAL = { 60: '#EC7200', 70: '#CB6100' };
+    const ERROR_BG = '#C0392B';
+
+    /** SIZE_MAP from AIButton.tsx */
+    const SIZE_MAP = {
+      sm: { height: '32px', pad: '5px 14px', font: '11px', weight: 600, minW: '80px' },
+      md: { height: '40px', pad: '8px 16px', font: '12px', weight: 600, minW: '120px' },
+      lg: { height: '48px', pad: '10px 22px', font: '13px', weight: 700, minW: '160px' },
+    };
+
+    const RADIUS_MAP = {
+      xs: AI.radius.xs, sm: AI.radius.sm, md: AI.radius.md,
+      lg: AI.radius.lg, full: AI.radius.full,
+    };
+
+    const ACTION_GAP = { sm: '6px', md: '8px', lg: '10px' };
+
+    let globalRadius = 'md';
+
+    function spinnerSvg(size) {
+      return `<svg class="aibtn-spin" width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="animation:aibtn-spin 0.7s linear infinite;flex-shrink:0"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.35)" stroke-width="2.5"/><path d="M10 2a8 8 0 0 1 8 8" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+    }
+
+    function checkSvg(size) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="flex-shrink:0"><path d="M4 10l4.5 4.5L16 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    }
+
+    function reviewIconSvg() {
+      return `<svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true" style="flex-shrink:0"><circle cx="10" cy="10" r="9" stroke="${SIGNAL[60]}" stroke-width="1.5"/><path d="M10 6v5" stroke="${SIGNAL[60]}" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="14" r="1" fill="${SIGNAL[60]}"/></svg>`;
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => el.classList.remove('visible'), 2000);
+    }
+
+    /** Vanilla port of AIButton */
+    function createAIButton(opts = {}) {
+      const state = {
+        variant: opts.variant || 'primary',
+        status: opts.status || 'default',
+        size: opts.size || 'md',
+        radius: opts.radius,
+        label: opts.label || '',
+        disabled: opts.disabled || false,
+        readOnly: opts.readOnly || false,
+        onClick: opts.onClick,
+        hov: false,
+      };
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      const sz = () => SIZE_MAP[state.size];
+      const rKey = () => state.radius || globalRadius;
+      const spinSize = () => state.size === 'lg' ? 14 : 12;
+
+      function render() {
+        const szv = sz();
+        const isLoading = state.status === 'loading';
+        const isComplete = state.status === 'complete';
+        const isError = state.status === 'error';
+        const isDisabled = state.disabled;
+        const clickBlocked = isDisabled || isLoading || isComplete;
+        const { variant } = state;
+
+        if (variant === 'primary') {
+          const bg = isLoading || isComplete
+            ? AI.color.action.primaryActive
+            : isError ? ERROR_BG
+            : state.hov && !isDisabled ? AI.color.action.primaryActive
+            : AI.gradient.action.full;
+
+          btn.style.cssText = [
+            'display:inline-flex', 'align-items:center', 'justify-content:center', 'gap:6px',
+            `height:${szv.height}`, `padding:${szv.pad}`,
+            `background:${bg}`, `color:${AI.color.text.onAction}`,
+            'border:none', `border-radius:${RADIUS_MAP[rKey()]}`,
+            `cursor:${clickBlocked ? 'default' : state.readOnly && !state.hov ? 'default' : 'pointer'}`,
+            `font-size:${szv.font}`, `font-family:${F}`, `font-weight:${szv.weight}`,
+            'transition:background 0.15s',
+            `box-shadow:${state.hov || isLoading || isComplete || isError ? 'none' : `0 2px 8px ${AI.shadow.action.default}`}`,
+            `opacity:${isDisabled ? 0.45 : 1}`,
+            `min-width:${szv.minW}`, 'white-space:nowrap',
+          ].join(';');
+
+          btn.innerHTML = '';
+          if (isLoading) btn.insertAdjacentHTML('beforeend', spinnerSvg(spinSize()));
+          if (isComplete) btn.insertAdjacentHTML('beforeend', checkSvg(spinSize()));
+          btn.insertAdjacentHTML('beforeend', state.label);
+
+          const ariaLabel = isLoading ? `${state.label} — loading`
+            : isComplete ? `${state.label} — complete`
+            : state.label;
+          btn.setAttribute('aria-label', ariaLabel);
+        } else if (variant === 'secondary') {
+          btn.style.cssText = [
+            'display:inline-flex', 'align-items:center', 'justify-content:center',
+            `height:${szv.height}`, `padding:${szv.pad}`,
+            `background:${state.hov && !isDisabled ? AI.color.surface.default : 'transparent'}`,
+            `color:${isDisabled ? 'var(--ai-btn-disabled-text)' : 'var(--ai-neutral-text)'}`,
+            `border:1px solid ${isDisabled ? 'var(--ai-btn-disabled-border)' : NEUTRAL.border}`,
+            `border-radius:${RADIUS_MAP[rKey()]}`,
+            `cursor:${isDisabled ? 'default' : 'pointer'}`,
+            `font-size:${szv.font}`, `font-family:${F}`, 'font-weight:500',
+            `opacity:${isDisabled ? 0.5 : 1}`,
+            'transition:background 0.14s', 'white-space:nowrap',
+          ].join(';');
+          btn.textContent = state.label;
+        } else {
+          const horizPad = state.size === 'sm' ? '6px' : '8px';
+          btn.style.cssText = [
+            'display:inline-flex', 'align-items:center', 'justify-content:center',
+            `height:${szv.height}`, `padding:0 ${horizPad}`,
+            'background:none',
+            `color:${isDisabled ? 'var(--ai-btn-disabled-text)' : state.hov ? 'var(--ai-neutral-text)' : 'var(--ai-neutral-helper)'}`,
+            'border:none',
+            `cursor:${isDisabled ? 'default' : 'pointer'}`,
+            `font-size:${szv.font}`, `font-family:${F}`, 'font-weight:400',
+            `opacity:${isDisabled ? 0.4 : 1}`,
+            'white-space:nowrap',
+          ].join(';');
+          btn.textContent = state.label;
+        }
+
+        btn.disabled = isDisabled;
+      }
+
+      if (!state.readOnly && !state.disabled && state.onClick) {
+        btn.addEventListener('click', () => {
+          if (state.status !== 'loading' && state.status !== 'complete') {
+            state.onClick();
+          }
+        });
+      }
+      if (!state.readOnly && !state.disabled) {
+        btn.addEventListener('mouseenter', () => { state.hov = true; render(); });
+        btn.addEventListener('mouseleave', () => { state.hov = false; render(); });
+      }
+
+      render();
+      btn.dataset.liveBtn = '1';
+      btn._setStatus = (s) => { state.status = s; render(); };
+      btn._setLabel = (t) => { state.label = t; render(); };
+      return btn;
+    }
+
+    /** Vanilla port of AIAction */
+    function mountAIAction(container, {
+      primaryLabel, secondaryLabel, tertiaryLabel,
+      size = 'md', layout = 'inline', radius = 'md',
+      status = 'default', requiresReview = false,
+      onPrimary, onSecondary, onTertiary,
+    }) {
+      const wrap = document.createElement('div');
+      wrap.style.cssText = [
+        'display:flex',
+        `flex-direction:${layout === 'stacked' ? 'column' : 'row'}`,
+        `align-items:${layout === 'stacked' ? 'stretch' : 'center'}`,
+        `gap:${ACTION_GAP[size]}`, 'flex-wrap:wrap',
+      ].join(';');
+
+      const isDisabled = status === 'disabled';
+      const showReview = requiresReview || status === 'requires-review';
+      const primaryStatus = isDisabled ? 'default'
+        : status === 'loading' ? 'loading'
+        : status === 'complete' ? 'complete'
+        : status === 'error' ? 'error'
+        : 'default';
+
+      if (showReview) {
+        const pill = document.createElement('div');
+        pill.style.cssText = [
+          'display:flex', 'align-items:center', 'gap:5px', 'padding:4px 10px',
+          'background:var(--ai-signal-surface)', 'border:1px solid var(--ai-signal-border)',
+          `border-radius:${AI.radius.xs}`,
+          layout === 'stacked' ? 'margin-bottom:2px;align-self:flex-start' : '',
+        ].join(';');
+        pill.innerHTML = reviewIconSvg() + `<span style="font-size:10px;font-weight:600;font-family:${F};color:${SIGNAL[70]};line-height:1">Requires review</span>`;
+        wrap.appendChild(pill);
+      }
+
+      wrap.appendChild(createAIButton({
+        variant: 'primary', label: primaryLabel, size, radius,
+        status: primaryStatus, disabled: isDisabled, onClick: onPrimary,
+      }));
+
+      if (secondaryLabel) {
+        wrap.appendChild(createAIButton({
+          variant: 'secondary', label: secondaryLabel, size, radius,
+          disabled: isDisabled, onClick: onSecondary,
+        }));
+      }
+      if (tertiaryLabel) {
+        wrap.appendChild(createAIButton({
+          variant: 'tertiary', label: tertiaryLabel, size, radius,
+          disabled: isDisabled, onClick: onTertiary,
+        }));
+      }
+
+      container.appendChild(wrap);
+      return wrap;
+    }
+
+    function applyGlobalRadius(key) {
+      globalRadius = key;
+      document.querySelectorAll('.radius-opt').forEach(el => {
+        el.classList.toggle('active', el.dataset.radius === key);
+      });
+      document.querySelectorAll('[data-live-btn]').forEach(el => {
+        el.style.borderRadius = RADIUS_MAP[key];
+      });
+    }
+
+    // State variations — variants
+    const variantRow = document.getElementById('variant-row');
+    [
+      { variant: 'primary', label: 'Apply Recommendation', onClick: () => showToast('Primary') },
+      { variant: 'secondary', label: 'Edit First', onClick: () => showToast('Secondary') },
+      { variant: 'tertiary', label: 'Dismiss', onClick: () => showToast('Tertiary') },
+    ].forEach(c => variantRow.appendChild(createAIButton(c)));
+
+    // Sizes
+    const sizeRow = document.getElementById('size-row');
+    ['sm', 'md', 'lg'].forEach(sz => {
+      sizeRow.appendChild(createAIButton({
+        variant: 'primary',
+        label: sz === 'sm' ? 'Small' : sz === 'md' ? 'Medium' : 'Large',
+        size: sz,
+      }));
+    });
+
+    // Status
+    const statusRow = document.getElementById('status-row');
+    [
+      { label: 'Default', props: { label: 'Apply Recommendation', onClick: () => showToast('Apply') } },
+      { label: 'Loading', props: { label: 'Applying…', status: 'loading', readOnly: true } },
+      { label: 'Complete', props: { label: 'Applied', status: 'complete', readOnly: true } },
+      { label: 'Error', props: { label: 'Retry', status: 'error', onClick: () => showToast('Retry') } },
+    ].forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'state-card';
+      const lbl = document.createElement('div');
+      lbl.className = 'state-label';
+      lbl.textContent = s.label;
+      card.append(lbl, createAIButton({ variant: 'primary', ...s.props }));
+      statusRow.appendChild(card);
+    });
+
+    // Disabled
+    const disabledRow = document.getElementById('disabled-row');
+    ['primary', 'secondary', 'tertiary'].forEach(v => {
+      disabledRow.appendChild(createAIButton({
+        variant: v,
+        label: v.charAt(0).toUpperCase() + v.slice(1),
+        disabled: true,
+        readOnly: true,
+      }));
+    });
+
+    // Radius scale
+    const scaleEl = document.getElementById('radius-scale');
+    Object.entries(RADIUS_MAP).forEach(([key, val]) => {
+      const item = document.createElement('div');
+      item.className = 'radius-item';
+      const px = parseInt(val, 10);
+      item.innerHTML = `<div class="radius-meta">${key.toUpperCase()} ${px}px</div><div class="radius-token">AI.radius.${key}</div>`;
+      item.appendChild(createAIButton({ label: 'Button', radius: key, readOnly: true }));
+      scaleEl.appendChild(item);
+    });
+
+    const pickerEl = document.getElementById('radius-picker');
+    const pickerLabel = document.createElement('label');
+    pickerLabel.textContent = 'Apply radius to live buttons';
+    pickerEl.appendChild(pickerLabel);
+    Object.keys(RADIUS_MAP).forEach(key => {
+      const opt = document.createElement('button');
+      opt.type = 'button';
+      opt.className = 'radius-opt' + (key === 'md' ? ' active' : '');
+      opt.dataset.radius = key;
+      opt.textContent = `${key} ${parseInt(RADIUS_MAP[key], 10)}px`;
+      opt.addEventListener('click', () => applyGlobalRadius(key));
+      pickerEl.appendChild(opt);
+    });
+
+    // Confirm / cancel pair
+    const pairEl = document.getElementById('pair-row');
+    const applyBtn = createAIButton({
+      variant: 'primary',
+      label: 'Apply Recommendation',
+      onClick: () => {
+        applyBtn._setStatus('loading');
+        applyBtn._setLabel('Applying…');
+        setTimeout(() => {
+          applyBtn._setStatus('complete');
+          applyBtn._setLabel('Applied');
+          setTimeout(() => {
+            applyBtn._setStatus('default');
+            applyBtn._setLabel('Apply Recommendation');
+          }, 1500);
+        }, 1200);
+      },
+    });
+    pairEl.append(applyBtn, createAIButton({
+      variant: 'secondary', label: 'Edit First', onClick: () => showToast('Edit First'),
+    }));
+
+    // AIAction demos
+    mountAIAction(document.getElementById('action-inline'), {
+      primaryLabel: 'Apply Recommendation',
+      secondaryLabel: 'Review Details',
+      tertiaryLabel: 'Dismiss',
+      onPrimary: () => showToast('Apply'),
+      onSecondary: () => showToast('Review'),
+      onTertiary: () => showToast('Dismiss'),
+    });
+
+    mountAIAction(document.getElementById('action-stacked'), {
+      primaryLabel: 'Confirm',
+      secondaryLabel: 'Edit First',
+      layout: 'stacked',
+      onPrimary: () => showToast('Confirm'),
+      onSecondary: () => showToast('Edit'),
+    });
+
+    mountAIAction(document.getElementById('action-review'), {
+      primaryLabel: 'Apply Recommendation',
+      secondaryLabel: 'Review Details',
+      requiresReview: true,
+      onPrimary: () => showToast('Apply (review required)'),
+      onSecondary: () => showToast('Review'),
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../preview/ai-preview-shared.css" />
+  <link rel="stylesheet" href="../../preview/ai-brand.css" />
+  <title>AI Color Tokens — Preview</title>
+  <style>
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+    .swatch { border-radius: 8px; overflow: hidden; border: 1px solid var(--neutral-border-subtle); background: #fff; }
+    .swatch__color { height: 56px; }
+    .swatch__meta { padding: 8px 10px; font-size: 11px; }
+    .swatch__meta strong { display: block; color: var(--neutral-text); font-size: 12px; }
+    .swatch__meta code { color: var(--neutral-text-helper); font-size: 10px; }
+    section { margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="../preview/preview.html">← All AI components</a>
+    <span class="tier-badge">tokens</span>
+    <h1>AI Color Tokens</h1>
+    <p class="subtitle">Three-tier system from <code>ai/tokens/ai-tokens.ts</code> — NEUTRAL for chrome, COMPANION tan + SIGNAL orange + BRAND for accents.</p>
+    <section><h2>Neutral</h2><div class="swatches">
+      <div class="swatch"><div class="swatch__color" style="background:var(--neutral-text)"></div><div class="swatch__meta"><strong>text</strong><code>#2f2c3c</code></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--neutral-page-bg)"></div><div class="swatch__meta"><strong>page</strong><code>#F4F3F3</code></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--neutral-border-subtle)"></div><div class="swatch__meta"><strong>border</strong><code>#DEDCDE</code></div></div>
+    </div></section>
+    <section><h2>Companion tan</h2><div class="swatches">
+      <div class="swatch"><div class="swatch__color" style="background:var(--companion-00)"></div><div class="swatch__meta"><strong>paper</strong><code>#F6F2EB</code></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--companion-10)"></div><div class="swatch__meta"><strong>surface</strong><code>#ECE6DD</code></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--companion-20)"></div><div class="swatch__meta"><strong>highlight</strong><code>#F1E4D0</code></div></div>
+    </div></section>
+    <section><h2>Brand + Signal</h2><div class="swatches">
+      <div class="swatch"><div class="swatch__color" style="background:var(--brand-60)"></div><div class="swatch__meta"><strong>brand</strong><code>#5A6DFF</code></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--signal-60)"></div><div class="swatch__meta"><strong>signal</strong><code>#EC7200</code></div></div>
+    </div></section>
+    <p class="spec-link" style="margin-top:16px;font-size:13px">Also see <a href="../../tokens/color/color.preview.html">standard color tokens preview</a> · <a href="color.md">color.md</a></p>
+  </div>
+</body>
+</html>

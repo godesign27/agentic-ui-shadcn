@@ -1,0 +1,105 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIStatusPill",
+  "repoModule": "aiStatusPill",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "Tone-driven pill with a leading icon (check for success, alert triangle for warning / critical, dot for neutral / info) and a label. Five tones map to the metric-card accent system so the pill, the card dot, and the bottom rail share one color story.",
+  "intent": "Tone-aware status pill for any card or row that needs a quick \"is this OK?\" read.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-status-pill/ai-status-pill.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiStatusPill",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-status-pill/AIStatusPill.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-status-pill/AIStatusPill.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Pill label."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"success\" \\"
+      ],
+      "default": "\"warning\" \\",
+      "hint": "\"critical\" \\"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIStatusPill"
+    ],
+    "import": "import { AIStatusPill } from './AIStatusPill'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atoms from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [
+    {
+      "url": "https://www.figma.com/design/soPDiNgUZ0J2M3pnfqQ5pD/ZDS-AI-Design-System-v2?node-id=1-229",
+      "nodeId": "1:229",
+      "page": "Atoms",
+      "fileKey": "soPDiNgUZ0J2M3pnfqQ5pD"
+    }
+  ],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Evaluate \u00b7 Warn",
+    "accountability": "Approval"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "curated": true
+}

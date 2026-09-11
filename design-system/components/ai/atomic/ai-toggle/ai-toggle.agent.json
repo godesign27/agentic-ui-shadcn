@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIToggle",
+  "repoModule": "aiToggle",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than ZDS border so the white thumb stays visible \u2014 meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role=\"switch\" + aria-checked.",
+  "intent": "Track + thumb switch with high-contrast OFF state. White thumb passes 3:1 contrast against both ON and OFF tracks.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-toggle/ai-toggle.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiToggle",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-toggle/AIToggle.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-toggle/AIToggle.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "checked",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Current on/off state."
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(next: boolean) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires with the next state on click or Space/Enter."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Adjacent label. Omit for icon-only / wrapped usage; provide aria-label instead."
+    },
+    {
+      "name": "labelPlacement",
+      "values": [
+        "`\"start\" \\"
+      ],
+      "default": "\"end\" \\",
+      "hint": "\"none\"`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Suppresses interaction + desaturates the track."
+    },
+    {
+      "name": "aria-label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Required when label is omitted."
+    },
+    {
+      "name": "id",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "When provided, ties the label to the switch via htmlFor."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIToggle"
+    ],
+    "import": "import { AIToggle } from './AIToggle'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Configure \u00b7 Toggle",
+    "accountability": "User control \u00b7 Accessibility"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

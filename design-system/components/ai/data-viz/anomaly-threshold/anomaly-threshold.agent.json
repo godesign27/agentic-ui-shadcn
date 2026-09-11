@@ -1,0 +1,13 @@
+{
+  "id": "anomaly-threshold",
+  "name": "Anomaly / Threshold",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Anomaly / Threshold — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "AnomalyThreshold"
+    ]
+  }
+}

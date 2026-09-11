@@ -1,0 +1,13 @@
+{
+  "id": "map-territory",
+  "name": "Map / Territory",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Map / Territory — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "MapTerritory"
+    ]
+  }
+}

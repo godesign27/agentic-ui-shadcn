@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "VisualizationPanel",
+  "repoModule": "visualizationPanel",
+  "tier": "data-viz",
+  "status": "experimental",
+  "description": "Visualization Panel — stub pending Make sync (Draft).",
+  "intent": "Placeholder for Visualization Panel. Fill from Figma Make ZSD-AI-Design-System-V1.2.",
+  "authority": {
+    "mirrorSpec": "components/ai/data-viz/ai-visualization-panel/ai-visualization-panel.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "visualizationPanel",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "note": "Stub created by scripts/reorganize-ai-library.mjs — replace with full spec."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [
+    "default"
+  ],
+  "slots": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "VisualizationPanel"
+    ]
+  },
+  "accessibility": {
+    "notes": []
+  },
+  "rules": [
+    "Do not invent API — sync from Make registry before shipping.",
+    "Use AI tokens only; no bare semantic hex."
+  ]
+}

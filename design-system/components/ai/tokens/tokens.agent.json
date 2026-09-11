@@ -1,0 +1,136 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITokens",
+  "repoModule": "aiTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Master index for the ZAIDYN AI Design System token layer (2026-07-06 bundle sync). Three-tier structure: Tier 1 palettes, Tier 2 semantic aliases (AI.*), Tier 3 component tokens (ai-* CSS vars).",
+  "intent": "Single entry point for AI agents building components. Read this index first, then the category-specific .md, .json, and .agent.json files.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/color.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
+    "note": "Category manifests and JSON mirrors live alongside this file",
+    "zdsAgentMarkdown": [
+      "components/ai/tokens/typography-variants.md",
+      "components/ai/tokens/color-palette-reference.md",
+      "components/ai/tokens/agentic-prompt.md"
+    ]
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "javascriptApi": {
+    "exports": [
+      "AI",
+      "ZSAI",
+      "ZS_ORANGE",
+      "ZSAI_TAN",
+      "ZDS",
+      "AI_THEME",
+      "F",
+      "AI_TYPOGRAPHY"
+    ],
+    "import": "import { AI, ZDS, F } from './ai-tokens'; import { AI_TYPOGRAPHY } from './ai-typography'",
+    "notes": [
+      "ai-tokens.ts — color, gradient, shadow, radius, motion",
+      "ai-typography.ts — @zsai-* typography scale",
+      "Category JSON mirrors for agent-parseable flat lookup"
+    ]
+  },
+  "tokenCategories": [
+    {
+      "name": "color",
+      "md": "components/ai/tokens/color.md",
+      "json": "components/ai/tokens/color.json",
+      "agentJson": "components/ai/tokens/color.agent.json",
+      "exports": [
+        "AI.color.*",
+        "AI.gradient.*",
+        "ZDS.*"
+      ]
+    },
+    {
+      "name": "typography",
+      "md": "components/ai/tokens/typography.md",
+      "json": "components/ai/tokens/typography.json",
+      "agentJson": "components/ai/tokens/typography.agent.json",
+      "exports": [
+        "AI_TYPOGRAPHY",
+        "F"
+      ]
+    },
+    {
+      "name": "radius",
+      "md": "components/ai/tokens/radius.md",
+      "json": "components/ai/tokens/radius.json",
+      "agentJson": "components/ai/tokens/radius.agent.json",
+      "exports": [
+        "AI.radius.*"
+      ]
+    },
+    {
+      "name": "shadow",
+      "md": "components/ai/tokens/shadow.md",
+      "json": "components/ai/tokens/shadow.json",
+      "agentJson": "components/ai/tokens/shadow.agent.json",
+      "exports": [
+        "AI.shadow.*"
+      ]
+    },
+    {
+      "name": "spacing",
+      "md": "components/ai/tokens/spacing.md",
+      "json": "components/ai/tokens/spacing.json",
+      "agentJson": "components/ai/tokens/spacing.agent.json",
+      "exports": []
+    },
+    {
+      "name": "motion",
+      "md": "components/ai/tokens/motion.md",
+      "json": "components/ai/tokens/motion.json",
+      "agentJson": "components/ai/tokens/motion.agent.json",
+      "exports": [
+        "AI.motion.icon.*"
+      ]
+    }
+  ],
+  "tokens": {
+    "cssVars": [
+      "--ai-card-bg",
+      "--ai-brand-surface",
+      "--ai-zds-text",
+      "--ai-zds-text-helper"
+    ]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not hardcode hex, pixel, duration, or font-size values",
+      "Do not reference Tier 1 palette steps (ZSAI[n]) in component code",
+      "Do not invent new token names outside the documented namespaces"
+    ],
+    "agentRules": [
+      "Start with tokens.agent.json (this file) for navigation",
+      "Use *.json files for structured token lookup",
+      "Use *.md files for narrative rules, consumer mapping, and validation checklists",
+      "Import from ai-tokens.ts and ai-typography.ts in generated code"
+    ]
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "curated": true
+}
