@@ -1,0 +1,69 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "description": "Which components may compose with which. Checked by VALIDATE_COMPOSITION.",
+  "rules": [
+    {
+      "pattern": "destructive-action",
+      "mustInclude": ["ui:alert-dialog", "ui:button"],
+      "mustNotInclude": ["ui:tooltip as the only warning surface"],
+      "source": "/design-system/patterns/destructive-action.json"
+    },
+    {
+      "pattern": "form-submit",
+      "mustInclude": ["ui:form", "ui:label", "ui:button"],
+      "mustNotInclude": ["More than one primary button per action region"],
+      "source": "/design-system/patterns/form-submit.json"
+    },
+    {
+      "pattern": "empty-state",
+      "mustInclude": ["ui:card"],
+      "mustNotInclude": ["Dead-end state with no recovery action"],
+      "source": "/design-system/patterns/empty-state.json"
+    },
+    {
+      "pattern": "ai-approval-flow",
+      "mustInclude": ["ai:ai-action"],
+      "shouldInclude": ["ai:ai-confidence-risk-badge", "ai:ai-why-this-link"],
+      "mustNotInclude": ["Auto-applied change with no human confirmation step"],
+      "source": "/design-system/patterns/ai-approval-flow.json"
+    },
+    {
+      "pattern": "ai-response",
+      "mustInclude": ["ai:ai-message-header", "ai:ai-message-body"],
+      "shouldInclude": ["ai:ai-message-footer", "ai:ai-feedback-bar"],
+      "source": "/design-system/patterns/ai-response.json"
+    },
+    {
+      "pattern": "agent-read-flow",
+      "mustInclude": ["Core markdown read order", "COMPONENTS_INDEX.json verification"],
+      "source": "/design-system/patterns/agent-read-flow.json"
+    }
+  ],
+  "structuralConstraints": [
+    {
+      "id": "COMPOUND_PARTS_STAY_TOGETHER",
+      "rule": "Compound component parts must render inside their root. SheetContent requires Sheet; SelectItem requires SelectContent; CardTitle belongs in CardHeader.",
+      "severity": "critical"
+    },
+    {
+      "id": "SINGLE_PRIMARY_PER_REGION",
+      "rule": "One primary-variant button per action region.",
+      "severity": "medium"
+    },
+    {
+      "id": "NO_NESTED_OVERLAYS",
+      "rule": "Do not nest ui:dialog inside ui:dialog or ui:sheet. Use one overlay and change its content.",
+      "severity": "high"
+    },
+    {
+      "id": "NO_INTERACTIVE_IN_TRIGGER",
+      "rule": "Do not place a button or link inside another interactive trigger (DropdownMenuTrigger, TooltipTrigger, etc.) without asChild.",
+      "severity": "high"
+    },
+    {
+      "id": "AI_ATTRIBUTION_REQUIRED",
+      "rule": "Any ai:* body or output component must be preceded by an attribution affordance in the same region (ai:ai-message-header or ai:ai-avatar).",
+      "severity": "critical"
+    }
+  ]
+}

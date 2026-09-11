@@ -1,0 +1,61 @@
+{
+  "$schema": "../schemas/meta.schema.json",
+  "name": "Agentic UI — shadcn/ui Implementation",
+  "systemVersion": "2.0.0",
+  "schemaVersion": "1.0.0",
+  "owner": "Design System — Agentic UI",
+  "lastUpdated": "2026-09-11",
+  "repositoryRole": "implementation-layer",
+  "coreGovernanceRepo": "godesign27/agentic-ui-design-system",
+  "framework": {
+    "name": "shadcn/ui",
+    "primitives": "Radix UI",
+    "styling": "Tailwind CSS",
+    "runtime": "React 18 + Vite + TypeScript"
+  },
+  "platforms": ["web", "react", "responsive"],
+  "supportedThemes": ["light", "dark"],
+  "tokenStrategy": "hsl-css-variable-with-tailwind-mapping",
+  "componentModel": "closed-world-index-gated",
+  "validationMode": "enforce",
+  "defaultDensity": "comfortable",
+  "namespaces": {
+    "ui": {
+      "source": "src/components/ui/",
+      "specs": "design-system/components/ui/",
+      "importPrefix": "@/components/ui/",
+      "idPrefix": "ui:",
+      "description": "Standard shadcn/ui components. Use for all non-AI product UI."
+    },
+    "ai": {
+      "source": "src/components/ai/",
+      "specs": "design-system/components/ai/",
+      "importPrefix": "@/components/ai/",
+      "idPrefix": "ai:",
+      "description": "AI-native components. Use ONLY for AI-generated or agent-driven surfaces. Do not mix into standard product UI."
+    }
+  },
+  "coreDocumentationPaths": [
+    "/README.md",
+    "/SYSTEM_ARCHITECTURE.md",
+    "/AGENT_RULES.md",
+    "/DESIGN_PRINCIPLES.md",
+    "/ACCESSIBILITY.md",
+    "/TOKENS_REFERENCE.md",
+    "/BRAND_THEMING.md"
+  ],
+  "machineReadablePaths": [
+    "/design-system/meta/system.json",
+    "/design-system/tokens/*.json",
+    "/design-system/rules/*.json",
+    "/design-system/agents/*.json",
+    "/design-system/patterns/*.json",
+    "/design-system/graph/*.json",
+    "/design-system/components/agent-manifest.index.json"
+  ],
+  "notes": [
+    "Every component in src/components/{ui,ai}/ has a co-located 4-file spec folder under design-system/components/. A component with no spec folder is not in the closed world.",
+    "src/ is canonical on conflict. Mirror specs describe; they do not define.",
+    "AI namespace components carry experienceMetadata declaring autonomy level and accountability obligations."
+  ]
+}

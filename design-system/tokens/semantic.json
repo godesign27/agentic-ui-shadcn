@@ -1,0 +1,76 @@
+{
+  "$schema": "../schemas/tokens.schema.json",
+  "_purpose": "The token contract an agent is allowed to reference. If a role is not listed here, it does not exist — do not invent one.",
+  "_usage": "Reference these as Tailwind utilities (bg-background, text-muted-foreground, border-border), not as raw CSS variables, unless writing a cva base string that needs arbitrary values.",
+  "roles": {
+    "surface": [
+      { "token": "background", "utility": "bg-background", "meaning": "The page canvas. One per view." },
+      { "token": "card", "utility": "bg-card", "meaning": "A raised content container sitting on the page canvas." },
+      { "token": "popover", "utility": "bg-popover", "meaning": "Floating surfaces: dropdown, tooltip, select, combobox, hover card." },
+      { "token": "muted", "utility": "bg-muted", "meaning": "A recessed region: skeletons, disabled fills, table stripes, inactive tabs." },
+      { "token": "accent", "utility": "bg-accent", "meaning": "Hover and highlight state for menu items and list rows. Not a brand color." },
+      { "token": "secondary", "utility": "bg-secondary", "meaning": "A lower-emphasis filled surface for secondary buttons and badges." }
+    ],
+    "content": [
+      { "token": "foreground", "utility": "text-foreground", "meaning": "Default body and heading text." },
+      { "token": "muted-foreground", "utility": "text-muted-foreground", "meaning": "Supporting text: descriptions, placeholders, helper text, timestamps." },
+      { "token": "card-foreground", "utility": "text-card-foreground", "meaning": "Text on a card surface." },
+      { "token": "popover-foreground", "utility": "text-popover-foreground", "meaning": "Text on a floating surface." },
+      { "token": "primary-foreground", "utility": "text-primary-foreground", "meaning": "Text on a primary fill." },
+      { "token": "secondary-foreground", "utility": "text-secondary-foreground", "meaning": "Text on a secondary fill." },
+      { "token": "accent-foreground", "utility": "text-accent-foreground", "meaning": "Text on an accent fill." },
+      { "token": "destructive-foreground", "utility": "text-destructive-foreground", "meaning": "Text on a destructive fill." }
+    ],
+    "action": [
+      { "token": "primary", "utility": "bg-primary", "meaning": "The single highest-emphasis action in a region." },
+      { "token": "destructive", "utility": "bg-destructive", "meaning": "Irreversible or damaging actions only. Never decorative." }
+    ],
+    "boundary": [
+      { "token": "border", "utility": "border-border", "meaning": "All dividers and container edges." },
+      { "token": "input", "utility": "border-input", "meaning": "Form control edges specifically." },
+      { "token": "ring", "utility": "ring-ring", "meaning": "Focus indicator. Never remove; never recolor below 3:1." }
+    ],
+    "sidebar": [
+      { "token": "sidebar-background", "utility": "bg-sidebar-background", "meaning": "Sidebar canvas, deliberately distinct from the page canvas." },
+      { "token": "sidebar-foreground", "utility": "text-sidebar-foreground", "meaning": "Sidebar text." },
+      { "token": "sidebar-primary", "utility": "bg-sidebar-primary", "meaning": "Active or selected sidebar item." },
+      { "token": "sidebar-accent", "utility": "bg-sidebar-accent", "meaning": "Sidebar hover state." },
+      { "token": "sidebar-border", "utility": "border-sidebar-border", "meaning": "Sidebar dividers." },
+      { "token": "sidebar-ring", "utility": "ring-sidebar-ring", "meaning": "Sidebar focus indicator." }
+    ],
+    "ai": [
+      { "token": "ai-accent", "utility": "bg-ai-accent", "meaning": "The AI identity color. Marks machine authorship. Forbidden on standard UI.", "namespace": "ai" },
+      { "token": "ai-accent-strong", "utility": "to-ai-accent-strong", "meaning": "Gradient terminus for the AI primary action.", "namespace": "ai" },
+      { "token": "ai-accent-active", "utility": "bg-ai-accent-active", "meaning": "Hover, loading and complete states of an AI primary action.", "namespace": "ai" },
+      { "token": "ai-accent-foreground", "utility": "text-ai-accent-foreground", "meaning": "Text on an AI accent fill.", "namespace": "ai" },
+      { "token": "ai-surface", "utility": "bg-ai-surface", "meaning": "The soft canvas behind AI-generated regions. The primary attribution affordance.", "namespace": "ai" },
+      { "token": "ai-surface-border", "utility": "border-ai-surface-border", "meaning": "Edge of an AI region.", "namespace": "ai" },
+      { "token": "ai-signal", "utility": "text-ai-signal", "meaning": "Requires-review and needs-attention signalling. Never used for generic warnings.", "namespace": "ai" },
+      { "token": "ai-signal-surface", "utility": "bg-ai-signal-surface", "meaning": "Review pill background.", "namespace": "ai" },
+      { "token": "ai-signal-border", "utility": "border-ai-signal-border", "meaning": "Review pill edge.", "namespace": "ai" },
+      { "token": "ai-confidence-high", "utility": "text-ai-confidence-high", "meaning": "High confidence. Must be paired with a text label.", "namespace": "ai" },
+      { "token": "ai-confidence-medium", "utility": "text-ai-confidence-medium", "meaning": "Medium confidence. Must be paired with a text label.", "namespace": "ai" },
+      { "token": "ai-confidence-low", "utility": "text-ai-confidence-low", "meaning": "Low confidence. Must be paired with a text label.", "namespace": "ai" },
+      { "token": "ai-muted", "utility": "text-ai-muted", "meaning": "Supporting text inside AI regions.", "namespace": "ai" }
+    ]
+  },
+  "decisionTable": [
+    { "need": "Page background", "use": "bg-background" },
+    { "need": "A card or panel", "use": "bg-card + border-border" },
+    { "need": "A dropdown, tooltip or select menu", "use": "bg-popover text-popover-foreground" },
+    { "need": "Helper or placeholder text", "use": "text-muted-foreground" },
+    { "need": "The main action", "use": "bg-primary text-primary-foreground" },
+    { "need": "A dangerous action", "use": "bg-destructive text-destructive-foreground" },
+    { "need": "A hover state on a list row", "use": "hover:bg-accent hover:text-accent-foreground" },
+    { "need": "A loading placeholder", "use": "bg-muted with animate-pulse" },
+    { "need": "Focus indication", "use": "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" },
+    { "need": "Marking a region as AI-generated", "use": "bg-ai-surface border-ai-surface-border" },
+    { "need": "An AI action the user must approve", "use": "bg-ai-signal-surface text-ai-signal border-ai-signal-border on the review pill" }
+  ],
+  "forbidden": [
+    "Raw hex, rgb() or hsl() literals in component code",
+    "Tailwind palette utilities (bg-slate-900, text-gray-500) — they bypass theming and break dark mode",
+    "Inventing a token name not present in src/index.css",
+    "Using --ai-* tokens outside src/components/ai/"
+  ]
+}

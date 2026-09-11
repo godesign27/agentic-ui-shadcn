@@ -1,0 +1,111 @@
+{
+  "$schema": "../schemas/rules.schema.json",
+  "description": "Hard failures. An agent encountering any of these must reject the request rather than degrade gracefully.",
+  "forbidden": [
+    {
+      "id": "FORBID_UNINDEXED_COMPONENT",
+      "rule": "No component, pattern, or layout not listed in components/COMPONENTS_INDEX.json",
+      "source": "/AGENT_RULES.md",
+      "severity": "critical",
+      "agentResponse": "Component {id} is not in the closed inventory. Available alternatives: {list}"
+    },
+    {
+      "id": "FORBID_UNAPPROVED_IMPORT",
+      "rule": "No imports outside @/components/ui/*, @/components/ai/*, @/components/patterns/*, @/components/layout/*, @/lib/*, @/hooks/*",
+      "source": "/AGENT_RULES.md",
+      "severity": "critical",
+      "agentResponse": "Import path {path} is not approved. Use {approved} instead."
+    },
+    {
+      "id": "FORBID_THIRD_PARTY_UI",
+      "rule": "No external UI libraries (Material UI, Ant Design, Chakra, Mantine, Bootstrap) without explicit approval and indexing",
+      "source": "/AGENT_RULES.md",
+      "severity": "critical",
+      "agentResponse": "External UI libraries are forbidden unless explicitly approved and added to COMPONENTS_INDEX.json."
+    },
+    {
+      "id": "FORBID_BESPOKE_WHEN_INDEXED",
+      "rule": "No raw custom markup when an indexed component covers the need",
+      "source": "/AGENT_RULES.md",
+      "severity": "high",
+      "agentResponse": "Component {name} exists in inventory. Use {id} instead of custom markup."
+    },
+    {
+      "id": "FORBID_BASE_MUTATION",
+      "rule": "No edits to src/components/ui/* without an explicit task requirement",
+      "source": "/AGENT_RULES.md",
+      "severity": "high",
+      "agentResponse": "Base component modifications require explicit task requirement."
+    },
+    {
+      "id": "FORBID_RAW_COLOR",
+      "rule": "No hard-coded hex, rgb, or hsl values in component classes where a semantic Tailwind token exists (bg-background, text-foreground, border-border, ...)",
+      "source": "/TOKENS_REFERENCE.md",
+      "severity": "high",
+      "agentResponse": "Use the semantic token {token} instead of the raw value {value}."
+    },
+    {
+      "id": "FORBID_NEW_DEPENDENCIES",
+      "rule": "No npm installs, package.json edits, bundler changes, or new build tooling initiated by an agent",
+      "source": "/AGENT_RULES.md",
+      "severity": "critical",
+      "agentResponse": "Adding dependencies is outside agent authority. Request human approval."
+    },
+    {
+      "id": "FORBID_MISSING_KEYBOARD",
+      "rule": "No interactive control without keyboard operation and a visible focus-visible ring",
+      "source": "/ACCESSIBILITY.md",
+      "severity": "critical",
+      "agentResponse": "Interactive elements require keyboard support and focus-visible styling."
+    },
+    {
+      "id": "FORBID_COLOR_ONLY_STATUS",
+      "rule": "No status, error, or state communicated by color alone",
+      "source": "/ACCESSIBILITY.md",
+      "severity": "high",
+      "agentResponse": "Pair the color with text, an icon, or an ARIA attribute."
+    },
+    {
+      "id": "FORBID_SMALL_TEXT",
+      "rule": "No body copy below 14px; prefer 16px",
+      "source": "/DESIGN_PRINCIPLES.md",
+      "severity": "medium",
+      "agentResponse": "Body text must be at least text-sm (14px)."
+    },
+    {
+      "id": "FORBID_SMALL_TARGET",
+      "rule": "No interactive target below 44x44px effective hit area",
+      "source": "/DESIGN_PRINCIPLES.md",
+      "severity": "medium",
+      "agentResponse": "Increase padding or use a larger size variant to reach a 44px target."
+    },
+    {
+      "id": "FORBID_MODAL_WORKFLOW",
+      "rule": "No modal or dialog for a primary multi-step workflow that belongs on a full page",
+      "source": "/DESIGN_PRINCIPLES.md",
+      "severity": "medium",
+      "agentResponse": "Multi-step workflows belong on a page route, not in ui:dialog."
+    },
+    {
+      "id": "FORBID_CRITICAL_IN_TOOLTIP",
+      "rule": "No critical-only information inside ui:tooltip or ui:hover-card",
+      "source": "/DESIGN_PRINCIPLES.md",
+      "severity": "medium",
+      "agentResponse": "Critical information must be visible without hover or focus."
+    },
+    {
+      "id": "FORBID_AI_IN_STANDARD_UI",
+      "rule": "No ai:* component on a surface that is not AI-generated or agent-driven",
+      "source": "/design-system/meta/system.json",
+      "severity": "high",
+      "agentResponse": "AI-namespace components signal machine authorship. Use the ui:* equivalent for human-authored UI."
+    },
+    {
+      "id": "FORBID_UNATTRIBUTED_AI_OUTPUT",
+      "rule": "No AI-generated content rendered without attribution, and no ai:* action with aiBehavior of Apply or Approve rendered without an accountability affordance",
+      "source": "/design-system/rules/ai-interaction.json",
+      "severity": "critical",
+      "agentResponse": "AI output requires visible attribution and, for Apply/Approve behaviors, a review or undo path."
+    }
+  ]
+}

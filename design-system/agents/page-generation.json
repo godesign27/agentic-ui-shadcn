@@ -1,0 +1,34 @@
+{
+  "$schema": "../schemas/agents.schema.json",
+  "description": "The contract for generating a page or feature. Missing a required input is a blocking condition, not a guess.",
+  "requiredInputs": [
+    { "name": "pageGoal", "description": "What the user accomplishes on this surface" },
+    { "name": "experienceMode", "values": ["Standard", "AI Assisted", "Adaptive", "AI Led"], "description": "Determines whether the ai:* namespace is in scope at all" },
+    { "name": "allowedComponents", "description": "Resolved from COMPONENTS_INDEX.json; the closed set for this task" },
+    { "name": "themeModeRequirement", "values": ["light", "dark", "both"], "default": "both" },
+    { "name": "brandTokenAvailability", "description": "Whether brand-* tokens are defined, per BRAND_THEMING.md" },
+    { "name": "routeOrEmbed", "description": "Full page route, panel, or embedded region" }
+  ],
+  "requiredOutputs": [
+    { "name": "componentList", "description": "Every component id used, in render order" },
+    { "name": "layoutRationale", "description": "Why this structure, referencing DESIGN_PRINCIPLES.md" },
+    { "name": "tokenComplianceReport", "description": "Tokens used; any place a raw value was unavoidable, with reason" },
+    { "name": "accessibilityChecklist", "description": "Focus order, labels, live regions, contrast, reduced motion" },
+    { "name": "accountabilityReport", "description": "AI surfaces only: which obligations from ai-interaction.json are satisfied and how" },
+    { "name": "gapNotes", "description": "Anything requested that the inventory could not supply" },
+    { "name": "generatedUI", "description": "The code" }
+  ],
+  "instructions": [
+    "Start from DESIGN_PRINCIPLES.md: prefer a full page over a modal when the workflow is multi-step",
+    "Select only components present in COMPONENTS_INDEX.json",
+    "Apply the BRAND_THEMING.md detection rule before falling back to default shadcn colors",
+    "Compose from patterns in /design-system/patterns when one matches the flow",
+    "For AI surfaces, choose components whose experienceMetadata.aiBehavior matches the actual autonomy being granted — do not use an Approve-level component for a Suggest-level interaction, or the reverse",
+    "Return output shaped for /design-system/agents/validation.json"
+  ],
+  "blockingConditions": [
+    "experienceMode is unspecified and the request implies AI behavior",
+    "A required component is absent from the inventory and no composition substitutes",
+    "The request requires an action with no reversibility or approval path"
+  ]
+}

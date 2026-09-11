@@ -1,0 +1,24 @@
+{
+  "$schema": "../schemas/graph.schema.json",
+  "_purpose": "Which components consume which tokens. Use for impact analysis before retheming.",
+  "entries": [
+    { "token": "primary", "usedBy": [{ "component": "ui:button", "variant": "default" }, { "component": "ui:badge", "variant": "default" }, { "component": "ui:switch", "variant": "checked" }, { "component": "ui:progress", "variant": "indicator" }, { "component": "ui:checkbox", "variant": "checked" }] },
+    { "token": "destructive", "usedBy": [{ "component": "ui:button", "variant": "destructive" }, { "component": "ui:badge", "variant": "destructive" }, { "component": "ui:alert", "variant": "destructive" }, { "component": "ui:toast", "variant": "destructive" }] },
+    { "token": "muted", "usedBy": [{ "component": "ui:skeleton", "variant": "default" }, { "component": "ui:tabs", "variant": "list" }, { "component": "ui:toggle", "variant": "default" }, { "component": "ui:progress", "variant": "track" }] },
+    { "token": "muted-foreground", "usedBy": [{ "component": "ui:card", "variant": "description" }, { "component": "ui:input", "variant": "placeholder" }, { "component": "ui:form", "variant": "description" }, { "component": "ui:breadcrumb", "variant": "separator" }, { "component": "ui:dialog", "variant": "description" }] },
+    { "token": "popover", "usedBy": [{ "component": "ui:popover" }, { "component": "ui:dropdown-menu" }, { "component": "ui:select" }, { "component": "ui:hover-card" }, { "component": "ui:command" }, { "component": "ui:context-menu" }, { "component": "ui:menubar" }, { "component": "ui:navigation-menu" }] },
+    { "token": "accent", "usedBy": [{ "component": "ui:dropdown-menu", "variant": "item-focus" }, { "component": "ui:select", "variant": "item-focus" }, { "component": "ui:command", "variant": "item-selected" }, { "component": "ui:calendar", "variant": "day-hover" }, { "component": "ui:button", "variant": "ghost" }, { "component": "ui:button", "variant": "outline" }] },
+    { "token": "border", "usedBy": [{ "component": "ui:card" }, { "component": "ui:table" }, { "component": "ui:separator" }, { "component": "ui:alert" }, { "component": "ui:accordion" }] },
+    { "token": "input", "usedBy": [{ "component": "ui:input" }, { "component": "ui:textarea" }, { "component": "ui:select", "variant": "trigger" }, { "component": "ui:button", "variant": "outline" }, { "component": "ui:checkbox" }] },
+    { "token": "ring", "usedBy": [{ "component": "ALL interactive components", "variant": "focus-visible" }], "note": "Every focusable control. Never override to none." },
+    { "token": "ai-accent", "usedBy": [{ "component": "ai:ai-action", "variant": "primary" }, { "component": "ai:ai-button", "variant": "primary" }, { "component": "ai:ai-avatar" }, { "component": "ai:ai-launcher" }, { "component": "ai:ai-progress" }] },
+    { "token": "ai-surface", "usedBy": [{ "component": "ai:ai-soft-surface" }, { "component": "ai:ai-message-body" }, { "component": "ai:ai-agent-work-note" }] },
+    { "token": "ai-signal", "usedBy": [{ "component": "ai:ai-action", "variant": "requires-review" }, { "component": "ai:ai-queue-badge", "variant": "waiting-approval" }, { "component": "ai:ai-chip-brief", "variant": "waiting-approval" }] },
+    { "token": "ai-confidence-high", "usedBy": [{ "component": "ai:ai-confidence-risk-badge", "variant": "high" }] }
+  ],
+  "rethemeImpact": {
+    "primary": "Highest. Changing it recolors buttons, badges, switches, checkboxes and progress across the entire app.",
+    "ring": "Accessibility-critical. Must stay at 3:1 against both the component and its background in light and dark.",
+    "ai-accent": "Scoped to the AI namespace only. Safe to rebrand independently of the product palette — that separation is the point."
+  }
+}

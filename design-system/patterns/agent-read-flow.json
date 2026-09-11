@@ -1,0 +1,19 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "agent-read-flow",
+  "intent": "Ensure an agent loads governance context before generating any UI.",
+  "sourceDocs": ["/AGENT_RULES.md", "/SYSTEM_ARCHITECTURE.md"],
+  "requiredComponents": [],
+  "sequence": [
+    "Read the core docs in mandatory order (README through BRAND_THEMING)",
+    "Load /design-system/meta/system.json, tokens/, rules/",
+    "Load agent-manifest.index.json and COMPONENTS_INDEX.json",
+    "For each component you intend to use, read its agentic-prompt.md, .agent.json, then .md",
+    "Only then generate UI composed of indexed components"
+  ],
+  "requiredRules": [
+    "Do not generate code until required documentation has been read",
+    "Verify every component exists in COMPONENTS_INDEX.json before use"
+  ],
+  "forbiddenRules": ["Do not add npm packages or build tooling"]
+}

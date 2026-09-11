@@ -1,0 +1,30 @@
+{
+  "$schema": "../schemas/pattern.schema.json",
+  "name": "ai-response",
+  "intent": "Render a single AI turn so that authorship, progress and recourse are all legible.",
+  "sourceDocs": ["/design-system/rules/ai-interaction.json"],
+  "experienceMode": ["AI Assisted", "Adaptive", "AI Led"],
+  "aiBehavior": ["Suggest"],
+  "requiredComponents": ["ai:ai-message-header", "ai:ai-message-body"],
+  "shouldInclude": ["ai:ai-message-footer", "ai:ai-feedback-bar"],
+  "optionalComponents": ["ai:ai-avatar", "ai:ai-loading-indicators", "ai:ai-agent-work-note", "ai:ai-text-link"],
+  "sequence": [
+    "ai:ai-message-header names the agent and timestamps the turn",
+    "While generating, ai:ai-loading-indicators announces status via aria-live=polite",
+    "ai:ai-agent-work-note optionally discloses intermediate reasoning, collapsed by default",
+    "ai:ai-message-body renders the response prose",
+    "ai:ai-message-footer carries any actions the response affords",
+    "ai:ai-feedback-bar offers like, copy and share so the human can correct the record"
+  ],
+  "requiredRules": [
+    "Attribution is present before the body renders, not after",
+    "Streaming start and completion are announced to assistive technology",
+    "A response that cites sources links them via ai:ai-text-link"
+  ],
+  "forbiddenRules": [
+    "No response body without a header",
+    "No simulated typing delay on already-complete content",
+    "No feedback bar that discards input silently"
+  ],
+  "accountabilitySatisfied": ["Attribution", "Rationale disclosure"]
+}
