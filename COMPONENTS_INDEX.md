@@ -24,14 +24,65 @@ The following directories contain authorized UI components and patterns:
 
 ## shadcn/ui Base Components
 
+Components with Category `—` have not been categorized or documented yet.
+
 | ID | Name | Import Path | Category | Files |
 |---|---|---|---|---|
+| `ui:accordion` | Accordion | `@/components/ui/accordion` | — | `src/components/ui/accordion.tsx` |
+| `ui:alert` | Alert | `@/components/ui/alert` | — | `src/components/ui/alert.tsx` |
+| `ui:alert-dialog` | Alert Dialog | `@/components/ui/alert-dialog` | — | `src/components/ui/alert-dialog.tsx` |
+| `ui:aspect-ratio` | Aspect Ratio | `@/components/ui/aspect-ratio` | — | `src/components/ui/aspect-ratio.tsx` |
+| `ui:avatar` | Avatar | `@/components/ui/avatar` | — | `src/components/ui/avatar.tsx` |
+| `ui:badge` | Badge | `@/components/ui/badge` | — | `src/components/ui/badge.tsx` |
+| `ui:breadcrumb` | Breadcrumb | `@/components/ui/breadcrumb` | — | `src/components/ui/breadcrumb.tsx` |
 | `ui:button` | Button | `@/components/ui/button` | Forms | `src/components/ui/button.tsx` |
+| `ui:button-group` | Button Group | `@/components/ui/button-group` | — | `src/components/ui/button-group.tsx` |
+| `ui:calendar` | Calendar | `@/components/ui/calendar` | — | `src/components/ui/calendar.tsx` |
 | `ui:card` | Card | `@/components/ui/card` | Layout | `src/components/ui/card.tsx` |
+| `ui:carousel` | Carousel | `@/components/ui/carousel` | — | `src/components/ui/carousel.tsx` |
+| `ui:chart` | Chart | `@/components/ui/chart` | — | `src/components/ui/chart.tsx` |
+| `ui:checkbox` | Checkbox | `@/components/ui/checkbox` | — | `src/components/ui/checkbox.tsx` |
+| `ui:collapsible` | Collapsible | `@/components/ui/collapsible` | — | `src/components/ui/collapsible.tsx` |
+| `ui:command` | Command | `@/components/ui/command` | — | `src/components/ui/command.tsx` |
+| `ui:context-menu` | Context Menu | `@/components/ui/context-menu` | — | `src/components/ui/context-menu.tsx` |
+| `ui:dialog` | Dialog | `@/components/ui/dialog` | — | `src/components/ui/dialog.tsx` |
+| `ui:drawer` | Drawer | `@/components/ui/drawer` | — | `src/components/ui/drawer.tsx` |
+| `ui:dropdown-menu` | Dropdown Menu | `@/components/ui/dropdown-menu` | — | `src/components/ui/dropdown-menu.tsx` |
+| `ui:empty` | Empty | `@/components/ui/empty` | — | `src/components/ui/empty.tsx` |
+| `ui:field` | Field | `@/components/ui/field` | — | `src/components/ui/field.tsx` |
+| `ui:form` | Form | `@/components/ui/form` | — | `src/components/ui/form.tsx` |
+| `ui:hover-card` | Hover Card | `@/components/ui/hover-card` | — | `src/components/ui/hover-card.tsx` |
 | `ui:input` | Input | `@/components/ui/input` | Forms | `src/components/ui/input.tsx` |
+| `ui:input-group` | Input Group | `@/components/ui/input-group` | — | `src/components/ui/input-group.tsx` |
+| `ui:input-otp` | Input OTP | `@/components/ui/input-otp` | — | `src/components/ui/input-otp.tsx` |
+| `ui:item` | Item | `@/components/ui/item` | — | `src/components/ui/item.tsx` |
+| `ui:kbd` | Kbd | `@/components/ui/kbd` | — | `src/components/ui/kbd.tsx` |
+| `ui:label` | Label | `@/components/ui/label` | — | `src/components/ui/label.tsx` |
+| `ui:menubar` | Menubar | `@/components/ui/menubar` | — | `src/components/ui/menubar.tsx` |
+| `ui:navigation-menu` | Navigation Menu | `@/components/ui/navigation-menu` | — | `src/components/ui/navigation-menu.tsx` |
+| `ui:pagination` | Pagination | `@/components/ui/pagination` | — | `src/components/ui/pagination.tsx` |
+| `ui:popover` | Popover | `@/components/ui/popover` | — | `src/components/ui/popover.tsx` |
+| `ui:progress` | Progress | `@/components/ui/progress` | — | `src/components/ui/progress.tsx` |
+| `ui:radio-group` | Radio Group | `@/components/ui/radio-group` | — | `src/components/ui/radio-group.tsx` |
+| `ui:resizable` | Resizable | `@/components/ui/resizable` | — | `src/components/ui/resizable.tsx` |
 | `ui:scroll-area` | Scroll Area | `@/components/ui/scroll-area` | Layout | `src/components/ui/scroll-area.tsx` |
+| `ui:select` | Select | `@/components/ui/select` | — | `src/components/ui/select.tsx` |
 | `ui:separator` | Separator | `@/components/ui/separator` | Layout | `src/components/ui/separator.tsx` |
 | `ui:sheet` | Sheet | `@/components/ui/sheet` | Overlay | `src/components/ui/sheet.tsx` |
+| `ui:sidebar` | Sidebar | `@/components/ui/sidebar` | — | `src/components/ui/sidebar.tsx` |
+| `ui:skeleton` | Skeleton | `@/components/ui/skeleton` | — | `src/components/ui/skeleton.tsx` |
+| `ui:slider` | Slider | `@/components/ui/slider` | — | `src/components/ui/slider.tsx` |
+| `ui:sonner` | Sonner | `@/components/ui/sonner` | — | `src/components/ui/sonner.tsx` |
+| `ui:spinner` | Spinner | `@/components/ui/spinner` | — | `src/components/ui/spinner.tsx` |
+| `ui:switch` | Switch | `@/components/ui/switch` | — | `src/components/ui/switch.tsx` |
+| `ui:table` | Table | `@/components/ui/table` | — | `src/components/ui/table.tsx` |
+| `ui:tabs` | Tabs | `@/components/ui/tabs` | — | `src/components/ui/tabs.tsx` |
+| `ui:textarea` | Textarea | `@/components/ui/textarea` | — | `src/components/ui/textarea.tsx` |
+| `ui:toast` | Toast | `@/components/ui/toast` | — | `src/components/ui/toast.tsx` |
+| `ui:toaster` | Toaster | `@/components/ui/toaster` | — | `src/components/ui/toaster.tsx` |
+| `ui:toggle` | Toggle | `@/components/ui/toggle` | — | `src/components/ui/toggle.tsx` |
+| `ui:toggle-group` | Toggle Group | `@/components/ui/toggle-group` | — | `src/components/ui/toggle-group.tsx` |
+| `ui:tooltip` | Tooltip | `@/components/ui/tooltip` | — | `src/components/ui/tooltip.tsx` |
 
 ### Component Details
 

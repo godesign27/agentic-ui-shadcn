@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "source": "shadcn/ui",
   "enforcement": "closed-world",
-  "lastUpdated": "2025-12-25",
+  "lastUpdated": "2026-09-11",
   "components": [
     {
       "id": "ui:accordion",
@@ -101,6 +101,18 @@
       "status": "allowed"
     },
     {
+      "id": "ui:button-group",
+      "name": "ButtonGroup",
+      "importPath": "@/components/ui/button-group",
+      "files": [
+        "src/components/ui/button-group.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
       "id": "ui:calendar",
       "name": "Calendar",
       "importPath": "@/components/ui/calendar",
@@ -130,6 +142,18 @@
       "importPath": "@/components/ui/carousel",
       "files": [
         "src/components/ui/carousel.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:chart",
+      "name": "Chart",
+      "importPath": "@/components/ui/chart",
+      "files": [
+        "src/components/ui/chart.tsx"
       ],
       "category": "Unknown",
       "propsNotes": "See component source for details.",
@@ -197,11 +221,47 @@
       "status": "allowed"
     },
     {
+      "id": "ui:drawer",
+      "name": "Drawer",
+      "importPath": "@/components/ui/drawer",
+      "files": [
+        "src/components/ui/drawer.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
       "id": "ui:dropdown-menu",
       "name": "DropdownMenu",
       "importPath": "@/components/ui/dropdown-menu",
       "files": [
         "src/components/ui/dropdown-menu.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:empty",
+      "name": "Empty",
+      "importPath": "@/components/ui/empty",
+      "files": [
+        "src/components/ui/empty.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:field",
+      "name": "Field",
+      "importPath": "@/components/ui/field",
+      "files": [
+        "src/components/ui/field.tsx"
       ],
       "category": "Unknown",
       "propsNotes": "See component source for details.",
@@ -242,6 +302,54 @@
       "category": "Forms",
       "propsNotes": "Standard HTML input with shadcn styling. Supports all native input props and types.",
       "a11yNotes": "Requires associated label element. Supports aria-describedby for error messages. Focus-visible ring included.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:input-group",
+      "name": "InputGroup",
+      "importPath": "@/components/ui/input-group",
+      "files": [
+        "src/components/ui/input-group.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:input-otp",
+      "name": "InputOtp",
+      "importPath": "@/components/ui/input-otp",
+      "files": [
+        "src/components/ui/input-otp.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:item",
+      "name": "Item",
+      "importPath": "@/components/ui/item",
+      "files": [
+        "src/components/ui/item.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:kbd",
+      "name": "Kbd",
+      "importPath": "@/components/ui/kbd",
+      "files": [
+        "src/components/ui/kbd.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
       "status": "allowed"
     },
     {
@@ -430,6 +538,18 @@
       "importPath": "@/components/ui/sonner",
       "files": [
         "src/components/ui/sonner.tsx"
+      ],
+      "category": "Unknown",
+      "propsNotes": "See component source for details.",
+      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
+      "status": "allowed"
+    },
+    {
+      "id": "ui:spinner",
+      "name": "Spinner",
+      "importPath": "@/components/ui/spinner",
+      "files": [
+        "src/components/ui/spinner.tsx"
       ],
       "category": "Unknown",
       "propsNotes": "See component source for details.",
