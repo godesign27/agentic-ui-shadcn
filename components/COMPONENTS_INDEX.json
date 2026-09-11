@@ -4,9 +4,57 @@
   "source": "shadcn/ui + Agentic UI AI namespace",
   "enforcement": "closed-world",
   "rule": "Only ids listed here may be used. Anything absent must be rejected, not improvised. Each entry points at a spec folder containing the full contract.",
-  "generatedAt": "2026-09-11T14:33:05.265Z",
-  "count": 74,
+  "generatedAt": "2026-09-11T17:37:41.921Z",
+  "count": 93,
   "components": [
+    {
+      "id": "ai:ai-accent-line",
+      "name": "AIAccentLine",
+      "importPath": "@/components/ai/atomic/ai-accent-line/AIAccentLine",
+      "files": [
+        "src/components/ai/atomic/ai-accent-line/AIAccentLine.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIAccentLine",
+        "ACCENT_LINE_STYLES"
+      ],
+      "variants": [
+        "gradient",
+        "solid",
+        "top-bar",
+        "glow",
+        "dash",
+        "double",
+        "none"
+      ],
+      "sizes": [],
+      "intent": "Seven pluggable accent treatments for insight cards — switchable at the AIAnalysisMessage level.",
+      "spec": "design-system/components/ai/atomic/ai-accent-line/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
     {
       "id": "ai:ai-action",
       "name": "AIAction",
@@ -53,6 +101,50 @@
         ],
         "humanGestureRequired": true,
         "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-agent-drawer",
+      "name": "AIAgentDrawer",
+      "importPath": "@/components/ai/organisms/ai-agent-drawer/AIAgentDrawer",
+      "files": [
+        "src/components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx"
+      ],
+      "category": "AI",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AIAgentDrawer",
+        "AIAgentDrawerPanel",
+        "AIAgentDrawerDemo"
+      ],
+      "variants": [
+        "default",
+        "focused-dialog",
+        "hanging-panel"
+      ],
+      "sizes": [],
+      "intent": "Canonical AI assistant panel content for any container.",
+      "spec": "design-system/components/ai/organisms/ai-agent-drawer/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics",
+        "Do not require an external AI UI package for agents",
+        "Do not render orange avatar ring"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
       },
       "gaps": []
     },
@@ -137,6 +229,84 @@
       "gaps": []
     },
     {
+      "id": "ai:ai-analysis-insight",
+      "name": "AIAnalysisInsight",
+      "importPath": "@/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight",
+      "files": [
+        "src/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIAnalysisInsight"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The individual finding unit inside an AI analysis message. Each insight is labeled by type and confidence-rated.",
+      "spec": "design-system/components/ai/molecules/ai-analysis-insight/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-analysis-message",
+      "name": "AIAnalysisMessage",
+      "importPath": "@/components/ai/organisms/ai-analysis-message/AIAnalysisMessage",
+      "files": [
+        "src/components/ai/organisms/ai-analysis-message/AIAnalysisMessage.tsx"
+      ],
+      "category": "AI",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIAnalysisMessage"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The primary output surface for AI-generated analysis. Structured insights are labeled, sourced, and confidence-rated.",
+      "spec": "design-system/components/ai/organisms/ai-analysis-message/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
       "id": "ai:ai-approval-card",
       "name": "AIApprovalCard",
       "importPath": "@/components/ai/ai-approval-card",
@@ -208,6 +378,57 @@
         "Adding a gradient or orange ring",
         "Using it as a human avatar",
         "Decorative use on non-AI surfaces"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-badge",
+      "name": "AIBadge",
+      "importPath": "@/components/ai/atomic/ai-badge/AIBadge",
+      "files": [
+        "src/components/ai/atomic/ai-badge/AIBadge.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIBadge",
+        "AI_BADGE_VARIANTS",
+        "AI_BADGE_QUEUE_STATUSES"
+      ],
+      "variants": [
+        "neutral",
+        "info",
+        "success",
+        "warning",
+        "error",
+        "dataviz"
+      ],
+      "sizes": [
+        "default",
+        "small"
+      ],
+      "intent": "The compact label atom for AI status and metrics. Not a button and not a chip.",
+      "spec": "design-system/components/ai/atomic/ai-badge/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "If the label needs to be clickable, use AIChip instead"
       ],
       "experienceMetadata": {
         "experienceMode": [
@@ -1015,6 +1236,95 @@
       "gaps": []
     },
     {
+      "id": "ai:ai-response-footer",
+      "name": "AIResponseFooter",
+      "importPath": "@/components/ai/molecules/ai-response-footer/AIResponseFooter",
+      "files": [
+        "src/components/ai/molecules/ai-response-footer/AIResponseFooter.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIResponseFooter"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Closes the loop after every AI output. Sources ground the claim; feedback improves the model.",
+      "spec": "design-system/components/ai/molecules/ai-response-footer/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-response-patterns",
+      "name": "AIResponsePatterns",
+      "importPath": "@/components/ai/_support/AIResponsePatterns",
+      "files": [
+        "src/components/ai/_support/AIResponsePatterns.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AnalyticalResponse",
+        "QAResponse",
+        "ActionableResponse",
+        "ContextualResponse",
+        "AwaitingApprovalResponse",
+        "AIPatternMessage"
+      ],
+      "variants": [
+        "analytical",
+        "qa",
+        "actionable",
+        "contextual",
+        "awaiting-approval"
+      ],
+      "sizes": [],
+      "intent": "Analytical, Q&A, and actionable response patterns composed into the agent drawer transcript.",
+      "spec": "design-system/components/ai/_support/",
+      "forbiddenUsage": [
+        "Do not require an external AI UI package",
+        "Do not use as production message content outside a demo or drawer shell"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
       "id": "ai:ai-soft-surface",
       "name": "AISoftSurface",
       "importPath": "@/components/ai/ai-soft-surface",
@@ -1038,6 +1348,45 @@
         "Decorative use",
         "Nested soft surfaces",
         "As a replacement for ui:card"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-spinner",
+      "name": "AISpinner",
+      "importPath": "@/components/ai/molecules/ai-spinner/AISpinner",
+      "files": [
+        "src/components/ai/molecules/ai-spinner/AISpinner.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AISpinner"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The standard DS spinner, wearing the AI brand. Same engineering — indigo arc on a soft light-indigo ring.",
+      "spec": "design-system/components/ai/molecules/ai-spinner/",
+      "forbiddenUsage": [
+        "Do not invent dependency atoms — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
       ],
       "experienceMetadata": {
         "experienceMode": [
@@ -1098,6 +1447,51 @@
       "gaps": []
     },
     {
+      "id": "ai:ai-user-bubble",
+      "name": "AIUserBubble",
+      "importPath": "@/components/ai/molecules/ai-user-bubble/AIUserBubble",
+      "files": [
+        "src/components/ai/molecules/ai-user-bubble/AIUserBubble.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIUserBubble"
+      ],
+      "variants": [
+        "light",
+        "dark"
+      ],
+      "sizes": [
+        "default",
+        "medium"
+      ],
+      "intent": "Message container for the human user's input in a conversational AI interface.",
+      "spec": "design-system/components/ai/molecules/ai-user-bubble/",
+      "forbiddenUsage": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
       "id": "ai:ai-why-this-link",
       "name": "AIWhyThisLink",
       "importPath": "@/components/ai/ai-why-this-link",
@@ -1135,6 +1529,440 @@
         ],
         "humanGestureRequired": false,
         "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-avatar",
+      "name": "AIAvatar",
+      "importPath": "@/components/ai/atomic/ai-avatar/AIAvatar",
+      "files": [
+        "src/components/ai/atomic/ai-avatar/AIAvatar.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIAvatar",
+        "AIAvatar3D",
+        "BotAvatar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Presentational fixed-color SVG. Same structure for both exports; only size, optional drop-shadow, and a11y differ.",
+      "spec": "design-system/components/ai/atomic/ai-avatar/",
+      "forbiddenUsage": [
+        "Do not add orange gradient ring or linearGradient",
+        "Do not theme-adapt ring fills for dark mode",
+        "Do not use currentColor on circles or monogram"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-button",
+      "name": "AIButton",
+      "importPath": "@/components/ai/atomic/ai-button/AIButton",
+      "files": [
+        "src/components/ai/atomic/ai-button/AIButton.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIButton",
+        "AIAction",
+        "QUICK_ACTIONS"
+      ],
+      "variants": [
+        "primary",
+        "primary-solid",
+        "secondary",
+        "tertiary",
+        "link"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "intent": "Confirm/cancel pairs, Apply/Edit/Dismiss rows, status-aware CTAs.",
+      "spec": "design-system/components/ai/atomic/ai-button/",
+      "forbiddenUsage": [
+        "Do not use for AI Dialog toolbar triggers — use AIDialogButton",
+        "Do not use for navigation links",
+        "Do not omit label text"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-feedback-bar",
+      "name": "AIFeedbackBar",
+      "importPath": "@/components/ai/atomic/ai-feedback-bar/AIFeedbackBar",
+      "files": [
+        "src/components/ai/atomic/ai-feedback-bar/AIFeedbackBar.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIFeedbackBar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Inline feedback controls surfaced after every AI response.",
+      "spec": "design-system/components/ai/atomic/ai-feedback-bar/",
+      "forbiddenUsage": [
+        "Do not use inside a read-only or print view where interactions are disabled",
+        "Do not show on mid-stream responses — wait until the response is complete"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-loading-indicators",
+      "name": "AILoadingIndicators",
+      "importPath": "@/components/ai/atomic/ai-loading-indicators/AILoadingIndicators",
+      "files": [
+        "src/components/ai/atomic/ai-loading-indicators/AILoadingIndicators.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIWorkingIndicator",
+        "AIThinkingIndicator",
+        "AIGettingInfoIndicator",
+        "AIGettingInfoIndicatorTan"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A family of loading states that communicate AI thinking, processing, and progress.",
+      "spec": "design-system/components/ai/atomic/ai-loading-indicators/",
+      "forbiddenUsage": [
+        "Do not show all three indicators at the same time — use them sequentially",
+        "Do not keep any indicator visible after the response has fully rendered"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-message-body",
+      "name": "AIMessageBody",
+      "importPath": "@/components/ai/atomic/ai-message-body/AIMessageBody",
+      "files": [
+        "src/components/ai/atomic/ai-message-body/AIMessageBody.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageBody"
+      ],
+      "variants": [],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "intent": "The voice of the AI. Plain, direct, readable — the atomic text body for unstructured replies.",
+      "spec": "design-system/components/ai/atomic/ai-message-body/",
+      "forbiddenUsage": [
+        "When the response contains structured data — use the appropriate group component",
+        "Do not use bold or headings inside this atom"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-message-footer",
+      "name": "AIMessageFooter",
+      "importPath": "@/components/ai/atomic/ai-message-footer/AIMessageFooter",
+      "files": [
+        "src/components/ai/atomic/ai-message-footer/AIMessageFooter.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageFooter"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The decision point at the end of every actionable AI response.",
+      "spec": "design-system/components/ai/atomic/ai-message-footer/",
+      "forbiddenUsage": [
+        "Informational-only responses — omit footer",
+        "When AIFeedbackBar is the only follow-up",
+        "Do not use AIButton tertiary — use ghost variant here"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:atomic-ai-message-header",
+      "name": "AIMessageHeader",
+      "importPath": "@/components/ai/atomic/ai-message-header/AIMessageHeader",
+      "files": [
+        "src/components/ai/atomic/ai-message-header/AIMessageHeader.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageHeader"
+      ],
+      "variants": [],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "intent": "Establishes authorship, agent identity, and recency before the response body.",
+      "spec": "design-system/components/ai/atomic/ai-message-header/",
+      "forbiddenUsage": [
+        "Do not invent avatar — use BotAvatar from AIAvatar.tsx",
+        "No orange gradient ring on avatar",
+        "Do not use for unattributed system notifications"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ds-spinner",
+      "name": "DSSpinner",
+      "importPath": "@/components/ai/molecules/ai-spinner/ds-spinner",
+      "files": [
+        "src/components/ai/molecules/ai-spinner/ds-spinner.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "DSSpinner"
+      ],
+      "variants": [],
+      "sizes": [
+        "48px",
+        "32px",
+        "24px",
+        "20px",
+        "16px",
+        "14px",
+        "12px",
+        "8px"
+      ],
+      "intent": "Canonical animated loading spinner. AISpinner wraps this; do not fork the SVG.",
+      "spec": "design-system/components/ai/molecules/ai-spinner/",
+      "forbiddenUsage": [
+        "Do not fork the SVG geometry",
+        "Do not replace AI loading indicators with this spinner"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:organisms-ai-dialog",
+      "name": "AIDialog",
+      "importPath": "@/components/ai/organisms/ai-dialog/AIDialog",
+      "files": [
+        "src/components/ai/organisms/ai-dialog/AIDialog.tsx"
+      ],
+      "category": "AI",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIDialogSlim",
+        "AIInputCard",
+        "AIDialog"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Message composer for AI Command Center and chat surfaces. Not a search field — preserves AI-specific affordances (skills, mode, mic).",
+      "spec": "design-system/components/ai/organisms/ai-dialog/",
+      "forbiddenUsage": [
+        "Do not use as a generic search input",
+        "Do not substitute standard Field or Textarea",
+        "Do not strip Add or Mode controls without design review"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:skill-menu",
+      "name": "SkillMenu",
+      "importPath": "@/components/ai/_support/SkillMenu",
+      "files": [
+        "src/components/ai/_support/SkillMenu.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "SkillMenu",
+        "SkillMenuButton",
+        "SKILLS"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "/ Skills picker for the AI prompt toolbar.",
+      "spec": "design-system/components/ai/_support/",
+      "forbiddenUsage": [
+        "Do not require an external AI UI package",
+        "Do not use as a general command palette"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
       },
       "gaps": []
     },

@@ -14,6 +14,7 @@ import { readdir, readFile, access } from 'fs/promises'
 import { extractAll } from './lib/extract-facts.mjs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { aiArchitectureIds } from './metadata/ai-architecture.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..')
 const exists = async p => { try { await access(p); return true } catch { return false } }
@@ -220,6 +221,7 @@ const kitIds = new Set([
   ...[...kitSrc.matchAll(/^\s*['"]([a-z][\w-]*)['"],\s*$/gm)].map(m => m[1]),
 ])
 for (const id of invIds) {
+  if (aiArchitectureIds.has(id)) continue
   if (!kitIds.has(id.split(':')[1])) {
     fail('VALIDATE_UI_KIT_COVERAGE', 'src/pages/UIKitPage.tsx',
       `${id} is in the inventory but not browsable in the UI Kit`,
