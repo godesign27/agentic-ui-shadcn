@@ -1,0 +1,90 @@
+<title>Input — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Input</h1>
+<p class="lede">A single line of user-supplied text, with the focus and disabled behavior already correct.</p>
+<div class="meta">
+<span class="pill mono">ui:input</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><input class="fld" placeholder="you@example.com" /></div>
+<div class="specimen"><span class="specimen-label">with value</span><input class="fld" value="ada@analytical.dev" /></div>
+<div class="specimen"><span class="specimen-label">disabled</span><input class="fld" placeholder="Unavailable" disabled /></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>border-input on bg-background</td></tr>
+<tr><td><strong>Placeholder</strong></td><td><code>Empty</code></td><td>text-muted-foreground. Never a substitute for a label.</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard or click focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>cursor-not-allowed, opacity-50</td></tr>
+<tr><td><strong>Invalid</strong></td><td><code>Validation failure</code></td><td>Not styled by this component. ui:form supplies the error colouring and aria-describedby wiring.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The native input element. No wrapper is provided — pair it with ui:label and ui:form yourself.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>input.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Single-line text, email, password, number, search, url, tel</li>
+<li>File selection via type=&quot;file&quot;</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Multi-line text — use ui:textarea</li>
+<li>Choosing from a known set — use ui:select</li>
+<li>Searching a large set with filtering — use ui:command</li>
+<li>Dates — use ui:calendar inside ui:popover</li>
+<li>Any input without a ui:label, which is never acceptable</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>textbox</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Standard text editing keys</td></tr>
+<tr><th scope="row">Required</th><td>An associated label via ui:label htmlFor, or aria-label<br />aria-describedby pointing at any helper or error text<br />aria-invalid when validation fails</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>A placeholder is not a label. It disappears on input and is invisible to some assistive technology.</li>
+<li>type=&quot;number&quot; is hostile to screen readers and to users who paste formatted values. Prefer type=&quot;text&quot; with inputMode=&quot;numeric&quot;.</li>
+<li>This component does not render error state. Use ui:form, which wires aria-invalid and aria-describedby for you.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/input.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="input.agent.json"><code>input.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="input.md"><code>input.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

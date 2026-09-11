@@ -1,0 +1,87 @@
+<title>Toaster — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Toaster</h1>
+<p class="lede">The same job as ui:toaster, through a different library with a simpler imperative API.</p>
+<div class="meta">
+<span class="pill mono">ui:sonner</span>
+<span class="pill stable">stable</span>
+<span class="pill">templates</span>
+<span class="pill">Feedback</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/sonner.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Empty</strong></td><td><code>No toasts</code></td><td>Nothing visible</td></tr>
+<tr><td><strong>Stacked</strong></td><td><code>Several toasts</code></td><td>Sonner stacks and collapses them</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The Sonner Toaster, themed with shadcn CSS variables</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>sonner.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>When you prefer Sonner's imperative toast() API and stacking behaviour</li>
+<li>Promise-based toasts that resolve to success or failure</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Alongside ui:toaster — running both produces two toast systems and two viewports</li>
+<li>When you need the Radix action and altText contract</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>region</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Sonner supplies its own focus and dismissal handling</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast.</li>
+<li>Reads the active theme from next-themes. This is a Vite app with Tailwind darkMode: [&quot;class&quot;], so next-themes is not what toggles the class here — confirm the theme it reports matches the class actually on the html element.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.</li>
+<li>Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/sonner.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="sonner.agent.json"><code>sonner.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="sonner.md"><code>sonner.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

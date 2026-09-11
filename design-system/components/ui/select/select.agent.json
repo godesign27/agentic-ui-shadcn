@@ -1,0 +1,214 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:select",
+  "name": "Select",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Select with a popover-styled content surface, scroll buttons, and typeahead. Renders in a portal.",
+  "intent": "One choice from a list too long to show all at once.",
+  "authority": {
+    "source": "src/components/ui/select.tsx",
+    "mirrorSpec": "design-system/components/ui/select/select.md",
+    "contract": "design-system/components/ui/select/select.agent.json",
+    "prompt": "design-system/components/ui/select/agentic-prompt.md",
+    "preview": "design-system/components/ui/select/select.preview.html",
+    "upstream": "shadcn/ui registry: select",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-select",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-select"
+  },
+  "exports": [
+    "Select",
+    "SelectContent",
+    "SelectGroup",
+    "SelectItem",
+    "SelectLabel",
+    "SelectScrollDownButton",
+    "SelectScrollUpButton",
+    "SelectSeparator",
+    "SelectTrigger",
+    "SelectValue"
+  ],
+  "compound": {
+    "root": "Select",
+    "parts": [
+      {
+        "name": "SelectTrigger",
+        "parent": "Select",
+        "required": true,
+        "note": "The closed-state control"
+      },
+      {
+        "name": "SelectValue",
+        "parent": "SelectTrigger",
+        "required": true,
+        "note": "Renders the selection or the placeholder"
+      },
+      {
+        "name": "SelectContent",
+        "parent": "Select",
+        "required": true,
+        "note": "Portalled popover surface"
+      },
+      {
+        "name": "SelectGroup",
+        "parent": "SelectContent",
+        "required": false
+      },
+      {
+        "name": "SelectLabel",
+        "parent": "SelectGroup",
+        "required": false,
+        "note": "Group heading, not an item"
+      },
+      {
+        "name": "SelectItem",
+        "parent": "SelectContent",
+        "required": true,
+        "note": "Requires a unique value. An empty-string value is invalid in Radix."
+      },
+      {
+        "name": "SelectSeparator",
+        "parent": "SelectContent",
+        "required": false
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open",
+    "Item selected",
+    "Item focused",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "default": "false",
+      "required": false,
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Select, SelectContent, SelectGroup, … } from \"@/components/ui/select\"",
+    "exports": [
+      "Select",
+      "SelectContent",
+      "SelectGroup",
+      "SelectItem",
+      "SelectLabel",
+      "SelectScrollDownButton",
+      "SelectScrollUpButton",
+      "SelectSeparator",
+      "SelectTrigger",
+      "SelectValue"
+    ],
+    "forwardsRef": true,
+    "asChild": true,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "input",
+      "muted",
+      "popover",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-muted",
+      "bg-popover",
+      "border-input",
+      "ring-ring",
+      "text-accent",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "combobox",
+    "keyboard": [
+      "Enter or Space — open",
+      "Arrow keys — move between items",
+      "Type a letter — jump to matching item",
+      "Enter — select",
+      "Escape — close and return focus to trigger"
+    ],
+    "requiredAttributes": [
+      "A label on the trigger, via ui:label htmlFor or aria-label"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix supplies combobox semantics, focus return and typeahead.",
+      "Content is portalled to the body — inside an overflow-hidden container it still renders correctly.",
+      "SelectItem with value=\"\" throws. Use a sentinel value for \"none\"."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "SelectTrigger",
+      "SelectValue",
+      "SelectContent",
+      "SelectGroup",
+      "SelectLabel",
+      "SelectItem",
+      "SelectSeparator"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "SelectItem with an empty value",
+      "SelectItem outside SelectContent",
+      "Unlabelled trigger",
+      "Using Select to fire actions"
+    ],
+    "agentRules": [
+      "Always label the trigger.",
+      "Always give SelectValue a placeholder.",
+      "Never use an empty string as an item value.",
+      "Over fifty options, or any need to search, means ui:command.",
+      "Actions belong in ui:dropdown-menu, not here."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:command",
+      "note": "Searchable, large sets"
+    },
+    {
+      "id": "ui:radio-group",
+      "note": "Few options"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "note": "Actions, not values"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

@@ -1,0 +1,196 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:alert-dialog",
+  "name": "AlertDialog",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix AlertDialog. Unlike ui:dialog it cannot be dismissed by clicking the overlay, and Cancel receives initial focus — both deliberate.",
+  "intent": "Stop the user before something irreversible happens, and make cancelling the easy path.",
+  "authority": {
+    "source": "src/components/ui/alert-dialog.tsx",
+    "mirrorSpec": "design-system/components/ui/alert-dialog/alert-dialog.md",
+    "contract": "design-system/components/ui/alert-dialog/alert-dialog.agent.json",
+    "prompt": "design-system/components/ui/alert-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ui/alert-dialog/alert-dialog.preview.html",
+    "upstream": "shadcn/ui registry: alert-dialog",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:button"
+    ],
+    "external": [
+      "@radix-ui/react-alert-dialog"
+    ],
+    "radixPrimitive": "@radix-ui/react-alert-dialog"
+  },
+  "exports": [
+    "AlertDialog",
+    "AlertDialogAction",
+    "AlertDialogCancel",
+    "AlertDialogContent",
+    "AlertDialogDescription",
+    "AlertDialogFooter",
+    "AlertDialogHeader",
+    "AlertDialogOverlay",
+    "AlertDialogPortal",
+    "AlertDialogTitle",
+    "AlertDialogTrigger"
+  ],
+  "compound": {
+    "root": "AlertDialog",
+    "parts": [
+      {
+        "name": "AlertDialogTrigger",
+        "parent": "AlertDialog",
+        "required": false
+      },
+      {
+        "name": "AlertDialogContent",
+        "parent": "AlertDialog",
+        "required": true
+      },
+      {
+        "name": "AlertDialogHeader",
+        "parent": "AlertDialogContent",
+        "required": false
+      },
+      {
+        "name": "AlertDialogTitle",
+        "parent": "AlertDialogHeader",
+        "required": true,
+        "note": "Name the specific object: \"Delete Apollo?\""
+      },
+      {
+        "name": "AlertDialogDescription",
+        "parent": "AlertDialogHeader",
+        "required": true,
+        "note": "State exactly what is lost. This is the whole point of the component."
+      },
+      {
+        "name": "AlertDialogFooter",
+        "parent": "AlertDialogContent",
+        "required": true
+      },
+      {
+        "name": "AlertDialogCancel",
+        "parent": "AlertDialogFooter",
+        "required": true,
+        "note": "Receives initial focus. Never omit it."
+      },
+      {
+        "name": "AlertDialogAction",
+        "parent": "AlertDialogFooter",
+        "required": true,
+        "note": "Label with the verb. Add destructive styling via className."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AlertDialog, AlertDialogAction, AlertDialogCancel, … } from \"@/components/ui/alert-dialog\"",
+    "exports": [
+      "AlertDialog",
+      "AlertDialogAction",
+      "AlertDialogCancel",
+      "AlertDialogContent",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogHeader",
+      "AlertDialogOverlay",
+      "AlertDialogPortal",
+      "AlertDialogTitle",
+      "AlertDialogTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "muted"
+    ],
+    "utilities": [
+      "bg-background",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "alertdialog",
+    "keyboard": [
+      "Escape — cancel",
+      "Tab — cycle within the trap",
+      "Enter — activate the focused control, which is Cancel by default"
+    ],
+    "requiredAttributes": [
+      "AlertDialogTitle and AlertDialogDescription are both required"
+    ],
+    "focusManagement": "Cancel receives initial focus. Overlay clicks do not dismiss. Both differ from ui:dialog and are intentional.",
+    "handledByRadix": true,
+    "notes": [
+      "role=\"alertdialog\" makes assistive technology announce it more assertively than a plain dialog.",
+      "Never move initial focus to AlertDialogAction. A stray Enter would then destroy data.",
+      "AlertDialogAction is not destructive-styled by default — add bg-destructive text-destructive-foreground yourself."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AlertDialogTrigger",
+      "AlertDialogContent",
+      "AlertDialogHeader",
+      "AlertDialogTitle",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogCancel",
+      "AlertDialogAction"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Confirm button labelled OK or Yes",
+      "Initial focus on the confirm action",
+      "Omitting AlertDialogCancel",
+      "Collecting input inside an alert dialog"
+    ],
+    "agentRules": [
+      "Name the object in the title and the loss in the description.",
+      "Label the action with the verb — \"Delete project\", never \"OK\" or \"Yes\".",
+      "Never focus the confirm action by default.",
+      "Style AlertDialogAction as destructive when the action is destructive.",
+      "An AI agent must never open and confirm this flow without a human gesture."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:dialog",
+      "note": "Non-destructive tasks and forms"
+    },
+    {
+      "id": "ui:toast",
+      "note": "Reporting the outcome afterwards"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

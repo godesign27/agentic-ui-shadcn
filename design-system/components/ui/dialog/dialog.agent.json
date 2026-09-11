@@ -1,0 +1,215 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:dialog",
+  "name": "Dialog",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix Dialog: a centred modal with an overlay, focus trap, Escape dismissal and focus return. Renders in a portal.",
+  "intent": "Interrupt the user for a self-contained task that must finish before anything else continues.",
+  "authority": {
+    "source": "src/components/ui/dialog.tsx",
+    "mirrorSpec": "design-system/components/ui/dialog/dialog.md",
+    "contract": "design-system/components/ui/dialog/dialog.agent.json",
+    "prompt": "design-system/components/ui/dialog/agentic-prompt.md",
+    "preview": "design-system/components/ui/dialog/dialog.preview.html",
+    "upstream": "shadcn/ui registry: dialog",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-dialog",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-dialog"
+  },
+  "exports": [
+    "Dialog",
+    "DialogClose",
+    "DialogContent",
+    "DialogDescription",
+    "DialogFooter",
+    "DialogHeader",
+    "DialogOverlay",
+    "DialogPortal",
+    "DialogTitle",
+    "DialogTrigger"
+  ],
+  "compound": {
+    "root": "Dialog",
+    "parts": [
+      {
+        "name": "DialogTrigger",
+        "parent": "Dialog",
+        "required": false,
+        "note": "Use asChild to wrap your own button"
+      },
+      {
+        "name": "DialogPortal",
+        "parent": "Dialog",
+        "required": false,
+        "note": "Applied automatically by DialogContent"
+      },
+      {
+        "name": "DialogOverlay",
+        "parent": "DialogPortal",
+        "required": false,
+        "note": "Rendered by DialogContent"
+      },
+      {
+        "name": "DialogContent",
+        "parent": "Dialog",
+        "required": true,
+        "note": "The modal surface. Includes its own close button."
+      },
+      {
+        "name": "DialogHeader",
+        "parent": "DialogContent",
+        "required": false
+      },
+      {
+        "name": "DialogTitle",
+        "parent": "DialogHeader",
+        "required": true,
+        "note": "Required by Radix for the accessible name. Omitting it logs a warning and breaks screen-reader announcement."
+      },
+      {
+        "name": "DialogDescription",
+        "parent": "DialogHeader",
+        "required": false,
+        "note": "Wired to aria-describedby"
+      },
+      {
+        "name": "DialogFooter",
+        "parent": "DialogContent",
+        "required": false,
+        "note": "Action row. Reverses to a column on mobile."
+      },
+      {
+        "name": "DialogClose",
+        "parent": "DialogContent",
+        "required": false
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open",
+    "Closing"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Dialog, DialogClose, DialogContent, … } from \"@/components/ui/dialog\"",
+    "exports": [
+      "Dialog",
+      "DialogClose",
+      "DialogContent",
+      "DialogDescription",
+      "DialogFooter",
+      "DialogHeader",
+      "DialogOverlay",
+      "DialogPortal",
+      "DialogTitle",
+      "DialogTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "ring-ring",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "dialog",
+    "keyboard": [
+      "Escape — close",
+      "Tab — cycle within the trap",
+      "Shift+Tab — reverse"
+    ],
+    "requiredAttributes": [
+      "DialogTitle is mandatory — it supplies the accessible name"
+    ],
+    "focusManagement": "Focus moves into the content on open and returns to the trigger on close. Radix handles both.",
+    "handledByRadix": true,
+    "notes": [
+      "DialogTitle is not optional. If the design has no visible title, render one inside a VisuallyHidden wrapper.",
+      "Do not nest a Dialog inside a Dialog. Replace the content instead.",
+      "Page scroll is locked while open. Long content needs its own scroll container."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "DialogTrigger",
+      "DialogPortal",
+      "DialogOverlay",
+      "DialogContent",
+      "DialogHeader",
+      "DialogTitle",
+      "DialogDescription",
+      "DialogFooter",
+      "DialogClose"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "DialogContent without DialogTitle",
+      "Nested dialogs",
+      "Multi-step wizards",
+      "Destructive confirmation without alert-dialog semantics"
+    ],
+    "agentRules": [
+      "DialogTitle is mandatory, visually hidden if necessary.",
+      "Multi-step workflows go on a page route, not in here.",
+      "Destructive confirmations use ui:alert-dialog.",
+      "Never nest dialogs.",
+      "Long content needs an inner scroll region, not a taller modal."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:alert-dialog",
+      "note": "Destructive confirmation — Cancel is focused by default"
+    },
+    {
+      "id": "ui:sheet",
+      "note": "Edge panel with more room"
+    },
+    {
+      "id": "ui:popover",
+      "note": "Non-modal contextual content"
+    },
+    {
+      "id": "ui:drawer",
+      "note": "Not in this inventory — use ui:sheet with side=\"bottom\""
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

@@ -1,0 +1,91 @@
+<title>NavigationMenu — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>NavigationMenu</h1>
+<p class="lede">Primary site navigation, with room for a rich panel under each top-level item.</p>
+<div class="meta">
+<span class="pill mono">ui:navigation-menu</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Navigation</span>
+<span class="pill mono">@radix-ui/react-navigation-menu</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/navigation-menu.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>Rest</code></td><td>Triggers visible</td></tr>
+<tr><td><strong>Open</strong></td><td><code>Hover or focus on a trigger</code></td><td>Viewport animates to the panel size</td></tr>
+<tr><td><strong>Active link</strong></td><td><code>data-active</code></td><td>bg-accent/50</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">NavigationMenu
+  NavigationMenuList
+    NavigationMenuItem
+      NavigationMenuTrigger   <span class="opt">(optional)</span>
+      NavigationMenuContent   <span class="opt">(optional)</span>
+    NavigationMenuIndicator   <span class="opt">(optional)</span>
+  NavigationMenuViewport   <span class="opt">(optional)</span>
+  NavigationMenuLink   <span class="opt">(inside NavigationMenuItem | NavigationMenuContent)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>navigation-menu.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Marketing site headers</li>
+<li>Mega-menus with grouped links and descriptions</li>
+<li>Primary navigation with two levels</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Application menus — use ui:menubar or a toolbar with ui:dropdown-menu</li>
+<li>Actions rather than navigation</li>
+<li>Mobile — collapse to a ui:sheet instead</li>
+<li>Flat navigation with no second level — plain links are better</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-navigation-menu</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>navigation</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab — move between top-level items<br />Enter or Space — open a panel<br />Arrow keys — move within a panel<br />Escape — close</td></tr>
+<tr><th scope="row">Required</th><td>An accessible name on the nav when there is more than one on the page</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Opens on hover as well as focus, which is right for site navigation and wrong for actions.</li>
+<li>Use navigationMenuTriggerStyle() for links that must match trigger styling.</li>
+<li>On mobile this pattern does not work. Swap to ui:sheet below the breakpoint.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/navigation-menu.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="navigation-menu.agent.json"><code>navigation-menu.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="navigation-menu.md"><code>navigation-menu.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,461 @@
+/**
+ * Curated metadata — Layout, data display and feedback.
+ */
+
+export const display = {
+
+  card: {
+    tier: 'organisms', category: 'Layout', status: 'stable',
+    intent: 'Group related content into a unit the eye reads as one thing.',
+    description: 'Six composable parts. No variants — a card is a container, and its meaning comes from what you put in it.',
+    whenToUse: ['Grouping related information with a clear boundary', 'Repeating items in a grid or list', 'Sectioning a settings or dashboard page', 'Empty states'],
+    whenNotToUse: [
+      'Wrapping every element on the page — nesting cards in cards destroys the hierarchy they exist to create',
+      'A single paragraph with no grouping need',
+      'Tabular data — use ui:table',
+      'As a clickable button — put the interactive element inside, or the whole card in a link',
+    ],
+    compound: {
+      root: 'Card',
+      parts: [
+        { name: 'CardHeader', parent: 'Card', required: false, note: 'Title and description region' },
+        { name: 'CardTitle', parent: 'CardHeader', required: false, note: 'Renders a div, not a heading. Pass asChild or add role="heading" aria-level if it is a real heading.' },
+        { name: 'CardDescription', parent: 'CardHeader', required: false, note: 'text-muted-foreground' },
+        { name: 'CardContent', parent: 'Card', required: false, note: 'The body. Note its pt-0 — it assumes a CardHeader above.' },
+        { name: 'CardFooter', parent: 'Card', required: false, note: 'Action row' },
+      ],
+    },
+    states: [{ name: 'Default', trigger: 'Rest', note: 'bg-card, border-border, rounded-lg, shadow-sm' }],
+    a11y: {
+      role: 'none', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: [],
+      notes: [
+        'A Card is a div. It carries no semantics of its own — that is correct and deliberate.',
+        'CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.',
+        'For a card grid, wrap in a ul and each card in an li so the count is announced.',
+        'A whole-card click target needs a real button or link inside — do not attach onClick to the Card div.',
+      ],
+    },
+    agentRules: [
+      'Do not nest cards.',
+      'CardTitle is not a heading element. Make it one when the page structure needs it.',
+      'CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.',
+      'Clickable cards need a real interactive element inside.',
+    ],
+    forbiddenUsage: ['Nested cards', 'onClick on the Card div with no focusable child', 'Using Card for tabular data'],
+    related: [{ id: 'ui:table', note: 'Tabular data' }, { id: 'ui:accordion', note: 'Collapsible sections' }, { id: 'ui:skeleton', note: 'Loading placeholder' }],
+    examples: [{ title: 'Standard card', code: '<Card>\n  <CardHeader>\n    <CardTitle>Deployments</CardTitle>\n    <CardDescription>Last 30 days</CardDescription>\n  </CardHeader>\n  <CardContent>\n    <p className="text-2xl font-semibold">1,284</p>\n  </CardContent>\n  <CardFooter>\n    <Button variant="outline" size="sm">View all</Button>\n  </CardFooter>\n</Card>' }],
+    gaps: ['CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it.'],
+  },
+
+  alert: {
+    tier: 'molecules', category: 'Feedback', status: 'stable',
+    intent: 'A message that stays on the page because it remains true.',
+    description: 'A static inline message with default and destructive variants. Icons are positioned automatically by the base class.',
+    whenToUse: ['Persistent form-level errors', 'Ongoing system state — maintenance, degraded service, quota', 'Contextual warnings before the user acts'],
+    whenNotToUse: [
+      'Confirming something that just happened — use ui:toast, which dismisses itself',
+      'A blocking confirmation — use ui:alert-dialog',
+      'So routinely that users learn to ignore it',
+      'Field-level validation — use ui:form and FormMessage',
+    ],
+    compound: {
+      root: 'Alert',
+      parts: [
+        { name: 'AlertTitle', parent: 'Alert', required: false, note: 'Renders an h5' },
+        { name: 'AlertDescription', parent: 'Alert', required: false },
+      ],
+    },
+    variantGuidance: {
+      default: 'Informational or neutral state.',
+      destructive: 'An error or a risk. Do not use for merely important information.',
+    },
+    states: [
+      { name: 'Default', trigger: 'variant="default"', note: 'bg-background, border-border' },
+      { name: 'Destructive', trigger: 'variant="destructive"', note: 'border-destructive/50, text-destructive' },
+    ],
+    a11y: {
+      role: 'alert', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: ['role="alert" is set on the root'],
+      notes: [
+        'role="alert" is an assertive live region: it interrupts the screen reader. That is right for an error appearing in response to an action, and wrong for content present on page load — which will be announced over everything else.',
+        'For a message present at load, render a plain styled div instead, or use role="status".',
+        'The destructive variant must not rely on colour alone — keep the icon and the title.',
+      ],
+    },
+    agentRules: [
+      'Reserve destructive for errors and risks.',
+      'Always pair the variant with an icon and a title so colour is not the only signal.',
+      'For an alert present on page load, reconsider role="alert" — it will interrupt.',
+      'Transient confirmations belong in ui:toast.',
+    ],
+    forbiddenUsage: ['Colour as the only error signal', 'Using Alert for transient confirmations', 'Destructive variant for non-errors'],
+    related: [{ id: 'ui:toast', note: 'Transient' }, { id: 'ui:alert-dialog', note: 'Blocking' }, { id: 'ui:form', note: 'Field-level errors' }],
+    examples: [{ title: 'Error alert', code: '<Alert variant="destructive">\n  <AlertCircle className="h-4 w-4" />\n  <AlertTitle>Payment failed</AlertTitle>\n  <AlertDescription>Your card was declined. Try another payment method.</AlertDescription>\n</Alert>' }],
+  },
+
+  badge: {
+    tier: 'atoms', category: 'Data Display', status: 'stable',
+    intent: 'A short label that classifies the thing next to it.',
+    description: 'A small pill with four variants. Renders a div — not interactive, despite having hover styles.',
+    whenToUse: ['Status labels — Active, Pending, Archived', 'Categories and tags', 'Counts beside a label'],
+    whenNotToUse: [
+      'As a button or filter chip — a Badge is a div and is not focusable',
+      'For long text — it does not wrap gracefully',
+      'Status conveyed by colour alone',
+    ],
+    anatomy: [{ part: 'Root', role: 'The pill. A div with badgeVariants applied.' }],
+    variantGuidance: {
+      default: 'Primary emphasis. Use sparingly or it stops meaning anything.',
+      secondary: 'The everyday choice for neutral labels.',
+      destructive: 'Error and failure states.',
+      outline: 'Lowest emphasis, for dense surfaces like table cells.',
+    },
+    states: [{ name: 'Default', trigger: 'Rest', note: 'Variant-specific fill; hover styles are present but the element is not interactive' }],
+    a11y: {
+      role: 'none', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: [],
+      notes: [
+        'A Badge is a div with no semantics. Its text is read inline with surrounding content, which is usually what you want.',
+        'Status must be in the text, not only the colour. "Failed" plus red — never red alone.',
+        'A count badge needs context: aria-label="3 unread notifications", not a bare "3".',
+        'The base class includes hover and focus styles, which is misleading — the element is not focusable. For an interactive chip, use ui:button or ui:toggle.',
+      ],
+    },
+    agentRules: [
+      'Status goes in the text, not only the colour.',
+      'A bare number needs an aria-label giving it meaning.',
+      'For an interactive chip use ui:button variant="outline" size="sm", not a Badge.',
+      'Keep to one or two words.',
+    ],
+    forbiddenUsage: ['Badge as a clickable control', 'Colour-only status', 'Long text'],
+    related: [{ id: 'ui:button', note: 'Interactive chips' }, { id: 'ui:toggle', note: 'Filter chips' }],
+    examples: [{ title: 'Status', code: '<Badge variant="secondary">Active</Badge>' }, { title: 'Count with context', code: '<Badge aria-label="3 unread notifications">3</Badge>' }],
+    gaps: ['Carries hover and focus-visible styling despite rendering a non-focusable div. Do not read that as permission to make it interactive.'],
+  },
+
+  avatar: {
+    tier: 'atoms', category: 'Data Display', status: 'stable',
+    intent: 'Identify a person or entity at a glance, and degrade gracefully when the image is missing.',
+    description: 'Radix Avatar with automatic fallback. AvatarFallback renders only after the image fails or while it loads.',
+    whenToUse: ['User identity in a header, comment or list', 'Attribution on content', 'Stacked group membership'],
+    whenNotToUse: ['Decorative imagery — use a plain img', 'Logos that must not be cropped to a circle', 'Any image where detail matters — this is 40px and circular'],
+    compound: {
+      root: 'Avatar',
+      parts: [
+        { name: 'AvatarImage', parent: 'Avatar', required: false, note: 'Requires alt. Radix hides it until it loads successfully.' },
+        { name: 'AvatarFallback', parent: 'Avatar', required: true, note: 'Initials or an icon. Not optional in practice — without it a failed image leaves an empty circle.' },
+      ],
+    },
+    states: [
+      { name: 'Loading', trigger: 'Image in flight', note: 'Fallback shown' },
+      { name: 'Loaded', trigger: 'Image resolved', note: 'Image replaces the fallback' },
+      { name: 'Error', trigger: 'Image failed', note: 'Fallback stays' },
+    ],
+    a11y: {
+      role: 'img', handledByRadix: true,
+      keyboard: [],
+      requiredAttributes: ['alt on AvatarImage'],
+      notes: [
+        'Always give AvatarImage an alt — the person\'s name, not "avatar" or "profile picture".',
+        'When the name is already visible next to the avatar, set alt="" so it is not announced twice.',
+        'Initials in a fallback are announced letter by letter by some screen readers. With alt set correctly on the image this rarely matters.',
+      ],
+    },
+    agentRules: ['Always include AvatarFallback.', 'alt is the person\'s name, or empty if the name is already adjacent.', 'Do not use Avatar for logos or detailed imagery.'],
+    forbiddenUsage: ['Avatar without a fallback', 'alt="avatar"', 'Decorative use'],
+    related: [{ id: 'ui:skeleton', note: 'Loading placeholder before data arrives' }, { id: 'ai:ai-avatar', note: 'Agent identity, with a deliberately fixed palette' }],
+    examples: [{ title: 'With fallback', code: '<Avatar>\n  <AvatarImage src="/ada.png" alt="Ada Lovelace" />\n  <AvatarFallback>AL</AvatarFallback>\n</Avatar>' }],
+  },
+
+  separator: {
+    tier: 'atoms', category: 'Layout', status: 'stable',
+    intent: 'A visible break between groups, without implying they are different kinds of thing.',
+    description: 'Radix Separator. Decorative by default, which keeps it out of the accessibility tree.',
+    whenToUse: ['Between sections inside a card or panel', 'Between groups in a menu or list', 'As a vertical divider in a toolbar, with orientation="vertical"'],
+    whenNotToUse: ['Where spacing alone would do — a rule is heavier than a gap', 'Between every item in a list', 'To create a border — use border utilities'],
+    anatomy: [{ part: 'Root', role: 'A 1px line, horizontal or vertical' }],
+    states: [
+      { name: 'Horizontal', trigger: 'Default', note: 'h-px w-full' },
+      { name: 'Vertical', trigger: 'orientation="vertical"', note: 'h-full w-px — requires the parent to have a height' },
+    ],
+    a11y: {
+      role: 'separator or none', handledByRadix: true,
+      keyboard: [],
+      requiredAttributes: [],
+      notes: [
+        'decorative defaults to true, which sets role="none" and keeps it out of the accessibility tree. That is right for visual grouping.',
+        'Set decorative={false} only when the separation carries meaning a screen-reader user would otherwise miss.',
+        'A vertical separator needs a parent with a resolved height, or it collapses to nothing.',
+      ],
+    },
+    agentRules: ['Leave decorative true unless the break is semantically meaningful.', 'Vertical separators need a parent height.', 'Prefer spacing over rules when either would work.'],
+    forbiddenUsage: ['Separator as a general border', 'Vertical separator in a parent with no height'],
+    related: [{ id: 'ui:card', note: 'Sectioning inside a card' }],
+    examples: [{ title: 'Toolbar divider', code: '<div className="flex h-5 items-center gap-4">\n  <span>Edit</span>\n  <Separator orientation="vertical" />\n  <span>View</span>\n</div>' }],
+  },
+
+  'scroll-area': {
+    tier: 'molecules', category: 'Layout', status: 'stable',
+    intent: 'A scrollable region with a scrollbar that looks the same on every platform.',
+    description: 'Radix ScrollArea with a custom-styled scrollbar. The root must have a bounded height or nothing scrolls.',
+    whenToUse: ['A long list inside a fixed-height panel', 'Sheet or dialog content that exceeds the viewport', 'Anywhere the native scrollbar is visually disruptive'],
+    whenNotToUse: [
+      'The main page scroll — let the browser do it',
+      'Short content that fits',
+      'Where a native scrollbar is genuinely fine, since this adds DOM weight',
+    ],
+    compound: {
+      root: 'ScrollArea',
+      parts: [{ name: 'ScrollBar', parent: 'ScrollArea', required: false, note: 'Rendered automatically for the vertical axis. Add explicitly with orientation="horizontal" for horizontal scrolling.' }],
+    },
+    states: [
+      { name: 'Not scrollable', trigger: 'Content fits', note: 'No scrollbar rendered' },
+      { name: 'Scrollable', trigger: 'Content overflows', note: 'Scrollbar appears on hover and during scroll' },
+    ],
+    a11y: {
+      role: 'none', handledByRadix: true,
+      keyboard: ['Arrow keys — scroll when the viewport has focus', 'Page Up/Down', 'Home/End'],
+      requiredAttributes: [],
+      notes: [
+        'The viewport is keyboard scrollable. Radix handles the focus behaviour.',
+        'The scrollbar fades unless hovered. Some users rely on a persistent scrollbar as an affordance — consider whether that matters on your surface.',
+        'Set an explicit height on the root. Without one, the content simply grows and nothing scrolls.',
+      ],
+    },
+    agentRules: ['Always set an explicit height or max-height on the root.', 'Add ScrollBar orientation="horizontal" explicitly for horizontal scroll.', 'Do not wrap the whole page in a ScrollArea.'],
+    forbiddenUsage: ['ScrollArea with no bounded height', 'Wrapping the document scroll'],
+    related: [{ id: 'ui:sheet', note: 'Common host for long content' }, { id: 'ui:table', note: 'Wrap wide tables for horizontal scroll' }],
+    examples: [{ title: 'Bounded list', code: '<ScrollArea className="h-72 w-full rounded-md border">\n  <div className="p-4">{items.map(i => <div key={i.id}>{i.name}</div>)}</div>\n</ScrollArea>' }],
+  },
+
+  'aspect-ratio': {
+    tier: 'layout', category: 'Layout', status: 'stable',
+    intent: 'Reserve the right shape before the content arrives, so nothing jumps.',
+    description: 'Radix AspectRatio. A six-line wrapper that holds a proportional box.',
+    whenToUse: ['Images and video where the ratio is known', 'Preventing layout shift while media loads', 'Uniform media tiles in a grid'],
+    whenNotToUse: ['Text content, which should size to its content', 'When the natural dimensions are already known and set'],
+    anatomy: [{ part: 'Root', role: 'The proportional box. Children should fill it with object-cover.' }],
+    states: [{ name: 'Default', trigger: 'Always', note: 'Maintains the given ratio at any width' }],
+    a11y: {
+      role: 'none', handledByRadix: true,
+      keyboard: [],
+      requiredAttributes: ['alt on any image inside'],
+      notes: ['Purely presentational. Accessibility lives with the content you place inside.'],
+    },
+    agentRules: ['Children need object-cover or object-contain and full width and height.', 'Use for media, not text.'],
+    forbiddenUsage: ['Constraining text content'],
+    related: [{ id: 'ui:skeleton', note: 'Pair for a loading placeholder of the same shape' }],
+    examples: [{ title: '16:9 image', code: '<AspectRatio ratio={16 / 9}>\n  <img src="/cover.jpg" alt="Conference stage" className="h-full w-full rounded-md object-cover" />\n</AspectRatio>' }],
+  },
+
+  skeleton: {
+    tier: 'atoms', category: 'Feedback', status: 'stable',
+    intent: 'Show the shape of what is coming, so the wait feels shorter and the layout does not jump.',
+    description: 'A pulsing placeholder block. Sixteen lines: a div with animate-pulse, bg-muted and rounded-md.',
+    whenToUse: ['Loading content whose shape is known', 'Initial page load', 'Anywhere a spinner would leave a blank region'],
+    whenNotToUse: [
+      'Waits under about 300ms — the flash is worse than nothing',
+      'Unknown-shape content — a skeleton that misleads is worse than a spinner',
+      'Indeterminate background work — use ui:progress',
+      'After an error — show the error, not a permanent skeleton',
+    ],
+    anatomy: [{ part: 'Root', role: 'One placeholder block. Compose several to mirror the real layout.' }],
+    states: [{ name: 'Pulsing', trigger: 'Always', note: 'animate-pulse on bg-muted. Respects prefers-reduced-motion via Tailwind defaults.' }],
+    a11y: {
+      role: 'status', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: ['aria-busy="true" on the container, or a role="status" region announcing loading'],
+      notes: [
+        'A Skeleton has no semantics of its own. On its own, a screen-reader user hears nothing at all while waiting.',
+        'Wrap the loading region with role="status" aria-live="polite" and an sr-only "Loading" — otherwise the wait is silent.',
+        'Announce completion too, or the user does not know the content arrived.',
+      ],
+    },
+    agentRules: [
+      'Mirror the real layout — matching sizes and counts.',
+      'Always pair with an announced loading state; the visual pulse is invisible to screen readers.',
+      'Do not leave a skeleton up after an error.',
+      'Skip it for waits under 300ms.',
+    ],
+    forbiddenUsage: ['Skeleton with no announced loading state', 'Skeleton persisting through an error', 'Shapes that do not match the eventual content'],
+    related: [{ id: 'ui:progress', note: 'Determinate progress' }, { id: 'ui:card', note: 'Common host' }],
+    examples: [{ title: 'Announced skeleton', code: '<div role="status" aria-live="polite" aria-busy={loading}>\n  <span className="sr-only">Loading profile</span>\n  <div className="flex items-center space-x-4">\n    <Skeleton className="h-12 w-12 rounded-full" />\n    <div className="space-y-2">\n      <Skeleton className="h-4 w-[250px]" />\n      <Skeleton className="h-4 w-[200px]" />\n    </div>\n  </div>\n</div>' }],
+    gaps: ['Provides no live-region semantics of its own. The announcement is yours to add every time.'],
+  },
+
+  table: {
+    tier: 'organisms', category: 'Data Display', status: 'stable',
+    intent: 'Data with real rows and columns, where comparing across both matters.',
+    description: 'Semantic HTML table elements with shadcn styling. No sorting, filtering, pagination or virtualisation — those are yours to add.',
+    whenToUse: ['Genuinely tabular data', 'Comparison across rows and columns', 'Data with a stable column structure'],
+    whenNotToUse: [
+      'Layout — this has been wrong since 2005',
+      'A list of items with one attribute each — use a list or ui:card',
+      'Hundreds of rows with no virtualisation',
+      'Narrow screens without a responsive strategy',
+    ],
+    compound: {
+      root: 'Table',
+      parts: [
+        { name: 'TableCaption', parent: 'Table', required: false, note: 'Describes the table for screen readers. Renders visually at the bottom.' },
+        { name: 'TableHeader', parent: 'Table', required: true, note: 'thead' },
+        { name: 'TableBody', parent: 'Table', required: true, note: 'tbody' },
+        { name: 'TableFooter', parent: 'Table', required: false, note: 'tfoot — totals' },
+        { name: 'TableRow', parent: 'TableHeader | TableBody | TableFooter', required: true },
+        { name: 'TableHead', parent: 'TableRow', required: false, note: 'th. Add scope="col".' },
+        { name: 'TableCell', parent: 'TableRow', required: false, note: 'td' },
+      ],
+    },
+    states: [
+      { name: 'Default', trigger: 'Rest', note: 'Rows separated by border-b' },
+      { name: 'Row hover', trigger: 'Pointer over', note: 'hover:bg-muted/50' },
+      { name: 'Row selected', trigger: 'data-state="selected"', note: 'bg-muted' },
+    ],
+    a11y: {
+      role: 'table', handledByRadix: false,
+      keyboard: ['Standard reading-mode navigation'],
+      requiredAttributes: ['scope="col" on column headers', 'A TableCaption or aria-label naming the table'],
+      notes: [
+        'TableHead does not set scope automatically. Add scope="col" yourself — without it, screen readers cannot associate cells with headers, which is the entire benefit of a table.',
+        'TableCaption is the accessible name. Use sr-only if it should not be visible.',
+        'The wrapper div already has overflow-auto for horizontal scroll on narrow screens.',
+        'Sortable headers need a button inside the th plus aria-sort on the th.',
+      ],
+    },
+    agentRules: [
+      'Add scope="col" to every TableHead.',
+      'Every table needs a caption or aria-label.',
+      'Never use a table for layout.',
+      'Sorting, filtering and pagination are not included — build them and wire aria-sort yourself.',
+      'Past a few hundred rows, paginate or virtualise.',
+    ],
+    forbiddenUsage: ['Layout tables', 'Headers with no scope', 'Unnamed tables', 'Unbounded row counts'],
+    related: [{ id: 'ui:pagination', note: 'Paging through rows' }, { id: 'ui:scroll-area', note: 'Bounded scroll regions' }, { id: 'ui:skeleton', note: 'Loading rows' }],
+    examples: [{ title: 'Accessible table', code: '<Table>\n  <TableCaption className="sr-only">Recent deployments</TableCaption>\n  <TableHeader>\n    <TableRow>\n      <TableHead scope="col">Service</TableHead>\n      <TableHead scope="col">Status</TableHead>\n      <TableHead scope="col" className="text-right">Duration</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow>\n      <TableCell className="font-medium">api</TableCell>\n      <TableCell><Badge variant="secondary">Succeeded</Badge></TableCell>\n      <TableCell className="text-right">2m 14s</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>' }],
+    gaps: ['No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead.'],
+  },
+
+  progress: {
+    tier: 'atoms', category: 'Feedback', status: 'stable',
+    intent: 'Show how much of a known quantity of work is done.',
+    description: 'Radix Progress: a track with an indicator translated by value. Determinate only in practice.',
+    whenToUse: ['File uploads', 'Multi-step completion', 'Anything where the total is known'],
+    whenNotToUse: [
+      'Unknown duration — a progress bar that sits at an arbitrary percentage is a lie',
+      'Very short operations',
+      'As a slider — this is read-only; use ui:slider for input',
+    ],
+    anatomy: [{ part: 'Root', role: 'The track, bg-secondary' }, { part: 'Indicator', role: 'The filled portion, bg-primary, positioned by transform' }],
+    states: [
+      { name: 'Empty', trigger: 'value={0}', note: 'Indicator fully translated out' },
+      { name: 'In progress', trigger: '0 < value < 100', note: 'Indicator partially visible' },
+      { name: 'Complete', trigger: 'value={100}', note: 'Indicator fills the track' },
+      { name: 'Indeterminate', trigger: 'value={null}', note: 'Radix supports it; this styling does not animate for it. Prefer a spinner.' },
+    ],
+    a11y: {
+      role: 'progressbar', handledByRadix: true,
+      keyboard: [],
+      requiredAttributes: ['aria-label or aria-labelledby naming what is progressing'],
+      notes: [
+        'Radix sets aria-valuenow, aria-valuemin and aria-valuemax.',
+        'Label it — "Progress" alone does not say progress of what.',
+        'Show the percentage in text too. The bar alone is hard to read precisely and invisible to some users.',
+        'Announce completion in a live region; the bar reaching 100% is not itself announced.',
+      ],
+    },
+    agentRules: ['Always label the bar.', 'Show the numeric value in text alongside.', 'Use a spinner for unknown duration, not a fake percentage.', 'Announce completion separately.'],
+    forbiddenUsage: ['Fabricated progress values', 'Unlabelled progress bar', 'Using Progress as an input'],
+    related: [{ id: 'ui:slider', note: 'Input along a range' }, { id: 'ui:skeleton', note: 'Content loading' }, { id: 'ai:ai-progress', note: 'Agentic work with blocked and escalated states' }],
+    examples: [{ title: 'Labelled upload', code: '<div className="space-y-2">\n  <div className="flex justify-between text-sm">\n    <span id="upload-label">Uploading report.pdf</span>\n    <span>{pct}%</span>\n  </div>\n  <Progress value={pct} aria-labelledby="upload-label" />\n</div>' }],
+    gaps: ['The indeterminate state is not visually distinguished. Use a spinner instead.'],
+  },
+
+  resizable: {
+    tier: 'layout', category: 'Layout', status: 'stable',
+    intent: 'Let the user decide how to divide the space.',
+    description: 'A react-resizable-panels wrapper. Panels, a group, and a handle that can show a grip.',
+    whenToUse: ['Split editor and preview layouts', 'A resizable sidebar beside content', 'Any layout where users have genuinely different space preferences'],
+    whenNotToUse: [
+      'Mobile — there is not enough room for the interaction to be worth it',
+      'When a sensible fixed layout exists; resizing is a cost the user pays',
+      'For content that reflows badly at arbitrary widths',
+    ],
+    compound: {
+      root: 'ResizablePanelGroup',
+      parts: [
+        { name: 'ResizablePanel', parent: 'ResizablePanelGroup', required: true, note: 'Accepts defaultSize, minSize and maxSize as percentages' },
+        { name: 'ResizableHandle', parent: 'ResizablePanelGroup', required: true, note: 'Sits between panels. withHandle renders a visible grip.' },
+      ],
+    },
+    states: [
+      { name: 'Default', trigger: 'Rest', note: 'Panels at their default sizes' },
+      { name: 'Dragging', trigger: 'Pointer down on the handle', note: 'Panels resize live' },
+      { name: 'Handle focused', trigger: 'Keyboard focus', note: 'ring-1 ring-ring' },
+    ],
+    a11y: {
+      role: 'separator', handledByRadix: false,
+      keyboard: ['Arrow keys — resize when the handle has focus', 'Enter — collapse or expand where configured'],
+      requiredAttributes: ['An accessible name on the handle when the panels are not otherwise identifiable'],
+      notes: [
+        'The library supplies keyboard resizing. The default handle is 1px wide — well under any reasonable target size.',
+        'Use withHandle on touch surfaces so there is something to grab.',
+        'Set minSize so a panel cannot be resized into uselessness.',
+      ],
+    },
+    agentRules: ['Set minSize on every panel.', 'Use withHandle where touch or discoverability matters.', 'Provide a non-resizable fallback for mobile.', 'Persist the user\'s sizes if resizing is worth offering at all.'],
+    forbiddenUsage: ['Resizable layouts on mobile', 'Panels with no minSize'],
+    related: [{ id: 'ui:sidebar', note: 'A purpose-built collapsible navigation panel' }, { id: 'ui:separator', note: 'A static divider' }],
+    examples: [{ title: 'Split view', code: '<ResizablePanelGroup direction="horizontal">\n  <ResizablePanel defaultSize={30} minSize={20}>\n    <nav className="p-4">Navigation</nav>\n  </ResizablePanel>\n  <ResizableHandle withHandle />\n  <ResizablePanel defaultSize={70} minSize={40}>\n    <main className="p-4">Content</main>\n  </ResizablePanel>\n</ResizablePanelGroup>' }],
+  },
+
+  carousel: {
+    tier: 'organisms', category: 'Data Display', status: 'stable',
+    intent: 'Move horizontally through a set of items when vertical space genuinely will not stretch.',
+    description: 'An Embla wrapper with previous and next controls and keyboard arrow support.',
+    whenToUse: ['Image galleries where sequence matters', 'Horizontally scrolling card rows on constrained surfaces', 'When the user is expected to browse rather than compare'],
+    whenNotToUse: [
+      'Important content — carousel items past the first are rarely seen. DESIGN_PRINCIPLES.md requires justification.',
+      'Primary calls to action',
+      'Content that would be better as a grid — which is usually',
+      'More than about ten items with no other way to reach them',
+    ],
+    compound: {
+      root: 'Carousel',
+      parts: [
+        { name: 'CarouselContent', parent: 'Carousel', required: true, note: 'The track' },
+        { name: 'CarouselItem', parent: 'CarouselContent', required: true, note: 'One slide. Set basis-* to show several at once.' },
+        { name: 'CarouselPrevious', parent: 'Carousel', required: false, note: 'Auto-disables at the start unless looping' },
+        { name: 'CarouselNext', parent: 'Carousel', required: false, note: 'Auto-disables at the end unless looping' },
+      ],
+    },
+    states: [
+      { name: 'At start', trigger: 'First slide', note: 'Previous disabled unless loop is set' },
+      { name: 'Mid-scroll', trigger: 'Between ends', note: 'Both controls enabled' },
+      { name: 'At end', trigger: 'Last slide', note: 'Next disabled unless loop is set' },
+    ],
+    a11y: {
+      role: 'region with roledescription="carousel"', handledByRadix: false,
+      keyboard: ['ArrowLeft — previous', 'ArrowRight — next', 'Tab — reach the controls'],
+      requiredAttributes: ['An accessible name on the region', 'aria-roledescription="slide" on each item'],
+      notes: [
+        'The component sets role="region" and aria-roledescription="carousel" on the root and "slide" on items.',
+        'Arrow keys work when the carousel region has focus.',
+        'Content outside the current view is still in the DOM and reachable by screen readers — which is good, and means visual position is not the whole story.',
+        'Never autoplay without a pause control. This component does not autoplay by default; keep it that way.',
+      ],
+    },
+    agentRules: [
+      'DESIGN_PRINCIPLES.md requires a justification for using a carousel. A grid is usually better.',
+      'Never put a primary call to action past the first slide.',
+      'No autoplay without a visible pause control.',
+      'Keep the controls visible — hover-revealed arrows are undiscoverable.',
+    ],
+    forbiddenUsage: ['Unjustified carousel where a grid would work', 'Autoplay with no pause', 'Primary CTAs on later slides'],
+    related: [{ id: 'ui:scroll-area', note: 'A simpler horizontal scroll region' }, { id: 'ui:tabs', note: 'When the sections are named' }],
+    examples: [{ title: 'Three-up', code: '<Carousel opts={{ align: "start" }} className="w-full max-w-3xl">\n  <CarouselContent>\n    {items.map(i => (\n      <CarouselItem key={i.id} className="md:basis-1/3">\n        <Card><CardContent className="p-6">{i.title}</CardContent></Card>\n      </CarouselItem>\n    ))}\n  </CarouselContent>\n  <CarouselPrevious />\n  <CarouselNext />\n</Carousel>' }],
+  },
+}

@@ -1,0 +1,88 @@
+<title>Tabs — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Tabs</h1>
+<p class="lede">Switch between peer views of the same subject, where only one is relevant at a time.</p>
+<div class="meta">
+<span class="pill mono">ui:tabs</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Navigation</span>
+<span class="pill mono">@radix-ui/react-tabs</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/tabs.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Inactive</strong></td><td><code>Not the current value</code></td><td>Transparent trigger; content unmounted</td></tr>
+<tr><td><strong>Active</strong></td><td><code>Matches the current value</code></td><td>bg-background with shadow-sm on the trigger</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled on a trigger</code></td><td>opacity-50, skipped by arrow keys</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Tabs
+  TabsList
+    TabsTrigger
+  TabsContent</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>tabs.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Alternative views of one object — Overview, Activity, Settings</li>
+<li>Peer sections where the user rarely needs two at once</li>
+<li>Two to six sections with short labels</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Sequential steps — use a stepper or separate routes; tabs imply order does not matter</li>
+<li>Content the user needs to compare side by side</li>
+<li>More than about six sections, or labels that will not fit</li>
+<li>Content that should be linkable — unless you sync the active tab to the URL</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-tabs</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>tablist</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — move between and activate tabs<br />Tab — move into the panel<br />Home/End — first or last tab</td></tr>
+<tr><th scope="row">Required</th><td>aria-label on TabsList when there is no visible heading</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix wires tablist, tab and tabpanel roles plus aria-selected and aria-controls.</li>
+<li>Activation is automatic: arrowing to a tab selects it. For expensive content use activationMode=&quot;manual&quot; so arrow keys only move focus.</li>
+<li>Inactive content is unmounted, so form state inside a tab is lost on switch. Use forceMount if that matters.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/tabs.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="tabs.agent.json"><code>tabs.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="tabs.md"><code>tabs.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

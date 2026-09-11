@@ -1,0 +1,148 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:alert",
+  "name": "Alert",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "A static inline message with default and destructive variants. Icons are positioned automatically by the base class.",
+  "intent": "A message that stays on the page because it remains true.",
+  "authority": {
+    "source": "src/components/ui/alert.tsx",
+    "mirrorSpec": "design-system/components/ui/alert/alert.md",
+    "contract": "design-system/components/ui/alert/alert.agent.json",
+    "prompt": "design-system/components/ui/alert/agentic-prompt.md",
+    "preview": "design-system/components/ui/alert/alert.preview.html",
+    "upstream": "shadcn/ui registry: alert",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "class-variance-authority"
+    ]
+  },
+  "exports": [
+    "Alert",
+    "AlertDescription",
+    "AlertTitle"
+  ],
+  "compound": {
+    "root": "Alert",
+    "parts": [
+      {
+        "name": "AlertTitle",
+        "parent": "Alert",
+        "required": false,
+        "note": "Renders an h5"
+      },
+      {
+        "name": "AlertDescription",
+        "parent": "Alert",
+        "required": false
+      }
+    ]
+  },
+  "variants": [
+    "default",
+    "destructive"
+  ],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Destructive"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\"",
+    "exports": [
+      "Alert",
+      "AlertDescription",
+      "AlertTitle"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "destructive",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-background",
+      "border-destructive",
+      "text-destructive",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "alert",
+    "keyboard": [],
+    "requiredAttributes": [
+      "role=\"alert\" is set on the root"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "role=\"alert\" is an assertive live region: it interrupts the screen reader. That is right for an error appearing in response to an action, and wrong for content present on page load — which will be announced over everything else.",
+      "For a message present at load, render a plain styled div instead, or use role=\"status\".",
+      "The destructive variant must not rely on colour alone — keep the icon and the title."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AlertTitle",
+      "AlertDescription"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Colour as the only error signal",
+      "Using Alert for transient confirmations",
+      "Destructive variant for non-errors"
+    ],
+    "agentRules": [
+      "Reserve destructive for errors and risks.",
+      "Always pair the variant with an icon and a title so colour is not the only signal.",
+      "For an alert present on page load, reconsider role=\"alert\" — it will interrupt.",
+      "Transient confirmations belong in ui:toast."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toast",
+      "note": "Transient"
+    },
+    {
+      "id": "ui:alert-dialog",
+      "note": "Blocking"
+    },
+    {
+      "id": "ui:form",
+      "note": "Field-level errors"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

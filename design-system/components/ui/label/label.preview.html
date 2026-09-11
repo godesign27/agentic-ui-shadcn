@@ -1,0 +1,72 @@
+<title>Label — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Label</h1>
+<p class="lede">Names a control, and makes its text a click target for it.</p>
+<div class="meta">
+<span class="pill mono">ui:label</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-label</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><label style="font-size:14px;font-weight:500">Email address</label></div>
+<div class="specimen"><span class="specimen-label">peer disabled</span><label style="font-size:14px;font-weight:500;opacity:.7;cursor:not-allowed">Email address</label></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>text-sm font-medium</td></tr>
+<tr><td><strong>Peer disabled</strong></td><td><code>Associated control is disabled</code></td><td>cursor-not-allowed, opacity-70 via peer-disabled: — requires the control to carry the peer class</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The label element. htmlFor must match the control id.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>label.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Every form control, without exception</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>As a general heading — use a semantic heading element</li>
+<li>For static text that names nothing</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-label</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>label</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Clicking the label focuses or toggles the associated control</td></tr>
+<tr><th scope="row">Required</th><td>htmlFor matching the control id</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>A label without htmlFor is decorative text and provides no accessible name.</li>
+<li>Radix Label prevents text selection on double-click, which stops accidental selection when toggling a checkbox.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/label.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="label.agent.json"><code>label.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="label.md"><code>label.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

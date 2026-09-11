@@ -1,0 +1,99 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:label",
+  "name": "Label",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Label with peer-disabled styling. The htmlFor association is what makes a form usable — not decoration.",
+  "intent": "Names a control, and makes its text a click target for it.",
+  "authority": {
+    "source": "src/components/ui/label.tsx",
+    "mirrorSpec": "design-system/components/ui/label/label.md",
+    "contract": "design-system/components/ui/label/label.agent.json",
+    "prompt": "design-system/components/ui/label/agentic-prompt.md",
+    "preview": "design-system/components/ui/label/label.preview.html",
+    "upstream": "shadcn/ui registry: label",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-label",
+      "class-variance-authority"
+    ],
+    "radixPrimitive": "@radix-ui/react-label"
+  },
+  "exports": [
+    "Label"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Peer disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Label } from \"@/components/ui/label\"",
+    "exports": [
+      "Label"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "label",
+    "keyboard": [
+      "Clicking the label focuses or toggles the associated control"
+    ],
+    "requiredAttributes": [
+      "htmlFor matching the control id"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "A label without htmlFor is decorative text and provides no accessible name.",
+      "Radix Label prevents text selection on double-click, which stops accidental selection when toggling a checkbox."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Label with no htmlFor",
+      "Asterisk as the only required indicator"
+    ],
+    "agentRules": [
+      "htmlFor is mandatory. A Label without it is a bug.",
+      "Do not use Label for headings.",
+      "Required-field markers need text or aria-required, not an asterisk alone."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:form",
+      "note": "FormLabel wires htmlFor automatically"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

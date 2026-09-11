@@ -1,0 +1,131 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:hover-card",
+  "name": "HoverCard",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix HoverCard. Opens on hover with a delay. Unlike a tooltip it may contain layout and images — but like a tooltip it is unreachable on touch.",
+  "intent": "A rich preview of what a link points to, without making the user go there.",
+  "authority": {
+    "source": "src/components/ui/hover-card.tsx",
+    "mirrorSpec": "design-system/components/ui/hover-card/hover-card.md",
+    "contract": "design-system/components/ui/hover-card/hover-card.agent.json",
+    "prompt": "design-system/components/ui/hover-card/agentic-prompt.md",
+    "preview": "design-system/components/ui/hover-card/hover-card.preview.html",
+    "upstream": "shadcn/ui registry: hover-card",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-hover-card"
+    ],
+    "radixPrimitive": "@radix-ui/react-hover-card"
+  },
+  "exports": [
+    "HoverCard",
+    "HoverCardContent",
+    "HoverCardTrigger"
+  ],
+  "compound": {
+    "root": "HoverCard",
+    "parts": [
+      {
+        "name": "HoverCardTrigger",
+        "parent": "HoverCard",
+        "required": true
+      },
+      {
+        "name": "HoverCardContent",
+        "parent": "HoverCard",
+        "required": true
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Hidden",
+    "Visible"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/components/ui/hover-card\"",
+    "exports": [
+      "HoverCard",
+      "HoverCardContent",
+      "HoverCardTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "popover"
+    ],
+    "utilities": [
+      "bg-popover",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "dialog",
+    "keyboard": [
+      "Focus on the trigger opens it",
+      "Escape closes"
+    ],
+    "requiredAttributes": [
+      "A meaningful accessible name on the trigger"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Hover-only by design. Always duplicate anything important somewhere reachable.",
+      "Do not place primary actions inside — they are unreachable on touch."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "HoverCardTrigger",
+      "HoverCardContent"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Critical information",
+      "Primary actions inside the card",
+      "Mobile-first usage"
+    ],
+    "agentRules": [
+      "Preview only. Never the sole source of anything.",
+      "No primary actions inside.",
+      "Not appropriate on mobile-first surfaces."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:tooltip",
+      "note": "Short text"
+    },
+    {
+      "id": "ui:popover",
+      "note": "Click-triggered, interactive"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

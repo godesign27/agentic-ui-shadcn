@@ -1,0 +1,137 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:calendar",
+  "name": "Calendar",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "A react-day-picker wrapper styled with buttonVariants. Single, multiple and range selection modes.",
+  "intent": "Pick a date when the surrounding days matter to the choice.",
+  "authority": {
+    "source": "src/components/ui/calendar.tsx",
+    "mirrorSpec": "design-system/components/ui/calendar/calendar.md",
+    "contract": "design-system/components/ui/calendar/calendar.agent.json",
+    "prompt": "design-system/components/ui/calendar/agentic-prompt.md",
+    "preview": "design-system/components/ui/calendar/calendar.preview.html",
+    "upstream": "shadcn/ui registry: calendar",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:button"
+    ],
+    "external": [
+      "lucide-react",
+      "react-day-picker"
+    ]
+  },
+  "exports": [
+    "Calendar",
+    "CalendarDayButton"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Selected",
+    "Today",
+    "Outside month",
+    "Disabled",
+    "Range middle"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Calendar, CalendarDayButton } from \"@/components/ui/calendar\"",
+    "exports": [
+      "Calendar",
+      "CalendarDayButton"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "input",
+      "muted",
+      "popover",
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-popover",
+      "bg-primary",
+      "border-input",
+      "border-ring",
+      "ring-ring",
+      "text-accent",
+      "text-muted",
+      "text-primary"
+    ]
+  },
+  "accessibility": {
+    "role": "grid",
+    "keyboard": [
+      "Arrow keys — move by day",
+      "PageUp/PageDown — move by month",
+      "Home/End — start or end of week",
+      "Enter or Space — select"
+    ],
+    "requiredAttributes": [
+      "An accessible label on the calendar",
+      "aria-live announcement of the selected date"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "react-day-picker supplies grid semantics and keyboard navigation.",
+      "Always offer a typed alternative. Keyboard-only users navigating months by arrow key is punishing for distant dates.",
+      "Announce the selection in a live region — the visual highlight alone is not enough.",
+      "Set the disabled matcher rather than allowing an invalid pick and rejecting it afterwards."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Calendar as the only date-entry route",
+      "Allowing invalid dates then rejecting on submit",
+      "Using a day grid for distant historical dates"
+    ],
+    "agentRules": [
+      "Pair with a text input for typed entry.",
+      "Use the disabled matcher to prevent invalid selections up front.",
+      "Announce selections in a live region.",
+      "Inside ui:popover, render PopoverContent with className=\"w-auto p-0\"."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:popover",
+      "note": "The usual host for a date-picker field"
+    },
+    {
+      "id": "ui:input",
+      "note": "Typed entry alternative"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

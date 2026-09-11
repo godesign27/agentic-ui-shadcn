@@ -1,0 +1,84 @@
+<title>Toggle — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Toggle</h1>
+<p class="lede">A control that stays pressed — formatting state in a toolbar, not an action.</p>
+<div class="meta">
+<span class="pill mono">ui:toggle</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-toggle</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/toggle.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Off</strong></td><td><code>pressed={false}</code></td><td>Transparent background</td></tr>
+<tr><td><strong>On</strong></td><td><code>pressed={true}</code></td><td>bg-accent text-accent-foreground</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>opacity-50, pointer-events-none</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The button, carrying data-state=on|off</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>toggle.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Text formatting controls — bold, italic, underline</li>
+<li>A single filter that is either applied or not</li>
+<li>Toolbar controls where the pressed state must be visible</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A settings toggle — use ui:switch, which announces on and off</li>
+<li>One of several exclusive options — use ui:toggle-group with type=&quot;single&quot;</li>
+<li>An action that fires and completes — use ui:button</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-toggle</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button with aria-pressed</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Space — toggle<br />Enter — toggle</td></tr>
+<tr><th scope="row">Required</th><td>aria-label when icon-only</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix sets aria-pressed. Screen readers announce &quot;pressed&quot; or &quot;not pressed&quot;.</li>
+<li>Icon-only toggles always need an accessible name and usually a ui:tooltip.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/toggle.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="toggle.agent.json"><code>toggle.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="toggle.md"><code>toggle.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

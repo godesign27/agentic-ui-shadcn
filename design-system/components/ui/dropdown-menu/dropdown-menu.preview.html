@@ -1,0 +1,96 @@
+<title>DropdownMenu — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>DropdownMenu</h1>
+<p class="lede">A list of actions revealed from a button, with proper menu semantics.</p>
+<div class="meta">
+<span class="pill mono">ui:dropdown-menu</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-dropdown-menu</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/dropdown-menu.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>Rest</code></td><td>Nothing rendered</td></tr>
+<tr><td><strong>Open</strong></td><td><code>Click, Enter, Space or ArrowDown</code></td><td>Focus moves into the menu</td></tr>
+<tr><td><strong>Item focused</strong></td><td><code>Arrow keys or hover</code></td><td>bg-accent text-accent-foreground</td></tr>
+<tr><td><strong>Submenu open</strong></td><td><code>Hover or ArrowRight on SubTrigger</code></td><td>Opens to the side with collision detection</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">DropdownMenu
+  DropdownMenuTrigger
+  DropdownMenuContent
+    DropdownMenuLabel   <span class="opt">(optional)</span>
+    DropdownMenuItem   <span class="opt">(optional)</span>
+      DropdownMenuShortcut   <span class="opt">(optional)</span>
+    DropdownMenuCheckboxItem   <span class="opt">(optional)</span>
+    DropdownMenuRadioGroup   <span class="opt">(optional)</span>
+      DropdownMenuRadioItem
+    DropdownMenuSub   <span class="opt">(optional)</span>
+    DropdownMenuSeparator   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>dropdown-menu.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>An overflow or &quot;more actions&quot; menu</li>
+<li>A user account menu</li>
+<li>Actions too numerous to sit in a toolbar</li>
+<li>View options, using checkbox or radio items</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Selecting a form value — use ui:select, which has the right semantics for a value</li>
+<li>Navigating a site — use ui:navigation-menu</li>
+<li>Right-click context — use ui:context-menu</li>
+<li>Two or fewer actions — just show the buttons</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-dropdown-menu</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>menu</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>ArrowDown or Enter — open<br />Arrow keys — move between items<br />ArrowRight/ArrowLeft — enter and leave submenus<br />Type a letter — typeahead<br />Escape — close and return focus<br />Tab — close and move on</td></tr>
+<tr><th scope="row">Required</th><td>An accessible name on the trigger</td></tr>
+<tr><th scope="row">Focus</th><td>Focus enters the menu on open and returns to the trigger on close.</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix supplies menu, menuitem, menuitemcheckbox and menuitemradio roles plus roving focus.</li>
+<li>DropdownMenuShortcut only renders the hint. Bind the actual key yourself.</li>
+<li>Destructive items still need ui:alert-dialog confirmation — closing the menu is not a confirmation.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/dropdown-menu.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="dropdown-menu.agent.json"><code>dropdown-menu.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="dropdown-menu.md"><code>dropdown-menu.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

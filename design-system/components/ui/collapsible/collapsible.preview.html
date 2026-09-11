@@ -1,0 +1,80 @@
+<title>Collapsible — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Collapsible</h1>
+<p class="lede">One thing that opens and closes, with no group to coordinate.</p>
+<div class="meta">
+<span class="pill mono">ui:collapsible</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Disclosure</span>
+<span class="pill mono">@radix-ui/react-collapsible</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/collapsible.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>open={false}</code></td><td>Content hidden</td></tr>
+<tr><td><strong>Open</strong></td><td><code>open={true}</code></td><td>Content revealed. No animation is applied by this component — add your own.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Collapsible
+  CollapsibleTrigger
+  CollapsibleContent</pre></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>collapsible.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A single show-more region</li>
+<li>Advanced options below a form</li>
+<li>A sidebar section that expands</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Several related sections — use ui:accordion, which handles the group and the heading semantics</li>
+<li>Content that should be visible by default</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-collapsible</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>button with aria-expanded</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — toggle</td></tr>
+<tr><th scope="row">Required</th><td>A meaningful trigger label that reflects the action</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix wires aria-expanded and aria-controls.</li>
+<li>This component applies no styling at all. The chevron, the animation and the spacing are all yours.</li>
+<li>The trigger label should say what will be revealed — &quot;Advanced options&quot;, not &quot;More&quot;.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>Entirely unstyled — no animation, chevron or spacing. Unlike every other component here, you supply all of it.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/collapsible.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="collapsible.agent.json"><code>collapsible.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="collapsible.md"><code>collapsible.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,118 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:progress",
+  "name": "Progress",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "Radix Progress: a track with an indicator translated by value. Determinate only in practice.",
+  "intent": "Show how much of a known quantity of work is done.",
+  "authority": {
+    "source": "src/components/ui/progress.tsx",
+    "mirrorSpec": "design-system/components/ui/progress/progress.md",
+    "contract": "design-system/components/ui/progress/progress.agent.json",
+    "prompt": "design-system/components/ui/progress/agentic-prompt.md",
+    "preview": "design-system/components/ui/progress/progress.preview.html",
+    "upstream": "shadcn/ui registry: progress",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-progress"
+    ],
+    "radixPrimitive": "@radix-ui/react-progress"
+  },
+  "exports": [
+    "Progress"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Empty",
+    "In progress",
+    "Complete",
+    "Indeterminate"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Progress } from \"@/components/ui/progress\"",
+    "exports": [
+      "Progress"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "primary",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-primary",
+      "bg-secondary"
+    ]
+  },
+  "accessibility": {
+    "role": "progressbar",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label or aria-labelledby naming what is progressing"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix sets aria-valuenow, aria-valuemin and aria-valuemax.",
+      "Label it — \"Progress\" alone does not say progress of what.",
+      "Show the percentage in text too. The bar alone is hard to read precisely and invisible to some users.",
+      "Announce completion in a live region; the bar reaching 100% is not itself announced."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Fabricated progress values",
+      "Unlabelled progress bar",
+      "Using Progress as an input"
+    ],
+    "agentRules": [
+      "Always label the bar.",
+      "Show the numeric value in text alongside.",
+      "Use a spinner for unknown duration, not a fake percentage.",
+      "Announce completion separately."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:slider",
+      "note": "Input along a range"
+    },
+    {
+      "id": "ui:skeleton",
+      "note": "Content loading"
+    },
+    {
+      "id": "ai:ai-progress",
+      "note": "Agentic work with blocked and escalated states"
+    }
+  ],
+  "gaps": [
+    "The indeterminate state is not visually distinguished. Use a spinner instead."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

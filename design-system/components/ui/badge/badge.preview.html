@@ -1,0 +1,93 @@
+<title>Badge — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Badge</h1>
+<p class="lede">A short label that classifies the thing next to it.</p>
+<div class="meta">
+<span class="pill mono">ui:badge</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Data Display</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><span class="bdg bdg--default">New</span></div>
+<div class="specimen"><span class="specimen-label">secondary</span><span class="bdg bdg--secondary">Active</span></div>
+<div class="specimen"><span class="specimen-label">destructive</span><span class="bdg bdg--destructive">Failed</span></div>
+<div class="specimen"><span class="specimen-label">outline</span><span class="bdg bdg--outline">Archived</span></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Variant-specific fill; hover styles are present but the element is not interactive</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The pill. A div with badgeVariants applied.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--secondary))"></div><div class="name">--secondary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>badge.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Status labels — Active, Pending, Archived</li>
+<li>Categories and tags</li>
+<li>Counts beside a label</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>As a button or filter chip — a Badge is a div and is not focusable</li>
+<li>For long text — it does not wrap gracefully</li>
+<li>Status conveyed by colour alone</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>A Badge is a div with no semantics. Its text is read inline with surrounding content, which is usually what you want.</li>
+<li>Status must be in the text, not only the colour. &quot;Failed&quot; plus red — never red alone.</li>
+<li>A count badge needs context: aria-label=&quot;3 unread notifications&quot;, not a bare &quot;3&quot;.</li>
+<li>The base class includes hover and focus styles, which is misleading — the element is not focusable. For an interactive chip, use ui:button or ui:toggle.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>Carries hover and focus-visible styling despite rendering a non-focusable div. Do not read that as permission to make it interactive.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/badge.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="badge.agent.json"><code>badge.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="badge.md"><code>badge.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

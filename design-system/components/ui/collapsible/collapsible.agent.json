@@ -1,0 +1,123 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:collapsible",
+  "name": "Collapsible",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Disclosure",
+  "description": "Radix Collapsible, unstyled. Twelve lines: three re-exports with no classes applied.",
+  "intent": "One thing that opens and closes, with no group to coordinate.",
+  "authority": {
+    "source": "src/components/ui/collapsible.tsx",
+    "mirrorSpec": "design-system/components/ui/collapsible/collapsible.md",
+    "contract": "design-system/components/ui/collapsible/collapsible.agent.json",
+    "prompt": "design-system/components/ui/collapsible/agentic-prompt.md",
+    "preview": "design-system/components/ui/collapsible/collapsible.preview.html",
+    "upstream": "shadcn/ui registry: collapsible",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-collapsible"
+    ],
+    "radixPrimitive": "@radix-ui/react-collapsible"
+  },
+  "exports": [
+    "Collapsible",
+    "CollapsibleContent",
+    "CollapsibleTrigger"
+  ],
+  "compound": {
+    "root": "Collapsible",
+    "parts": [
+      {
+        "name": "CollapsibleTrigger",
+        "parent": "Collapsible",
+        "required": true,
+        "note": "Use asChild to supply your own button"
+      },
+      {
+        "name": "CollapsibleContent",
+        "parent": "Collapsible",
+        "required": true
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Collapsible, CollapsibleContent, CollapsibleTrigger } from \"@/components/ui/collapsible\"",
+    "exports": [
+      "Collapsible",
+      "CollapsibleContent",
+      "CollapsibleTrigger"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "button with aria-expanded",
+    "keyboard": [
+      "Enter or Space — toggle"
+    ],
+    "requiredAttributes": [
+      "A meaningful trigger label that reflects the action"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix wires aria-expanded and aria-controls.",
+      "This component applies no styling at all. The chevron, the animation and the spacing are all yours.",
+      "The trigger label should say what will be revealed — \"Advanced options\", not \"More\"."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "CollapsibleTrigger",
+      "CollapsibleContent"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Using Collapsible for a group where Accordion belongs"
+    ],
+    "agentRules": [
+      "Bring your own styling — nothing is applied.",
+      "Use ui:accordion for grouped sections.",
+      "Trigger labels name the content, not the gesture."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:accordion",
+      "note": "Grouped, styled, with heading semantics"
+    }
+  ],
+  "gaps": [
+    "Entirely unstyled — no animation, chevron or spacing. Unlike every other component here, you supply all of it."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

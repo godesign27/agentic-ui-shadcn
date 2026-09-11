@@ -1,0 +1,145 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toggle",
+  "name": "Toggle",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Toggle with two variants and three sizes. Semantically a pressed button, not a checkbox.",
+  "intent": "A control that stays pressed — formatting state in a toolbar, not an action.",
+  "authority": {
+    "source": "src/components/ui/toggle.tsx",
+    "mirrorSpec": "design-system/components/ui/toggle/toggle.md",
+    "contract": "design-system/components/ui/toggle/toggle.agent.json",
+    "prompt": "design-system/components/ui/toggle/agentic-prompt.md",
+    "preview": "design-system/components/ui/toggle/toggle.preview.html",
+    "upstream": "shadcn/ui registry: toggle",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-toggle",
+      "class-variance-authority"
+    ],
+    "radixPrimitive": "@radix-ui/react-toggle"
+  },
+  "exports": [
+    "Toggle",
+    "toggleVariants"
+  ],
+  "variants": [
+    "default",
+    "outline"
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg"
+  ],
+  "states": [
+    "Off",
+    "On",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the variant values declared in toggleVariants."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the size values declared in toggleVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Toggle, toggleVariants } from \"@/components/ui/toggle\"",
+    "exports": [
+      "Toggle",
+      "toggleVariants"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "input",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-muted",
+      "border-input",
+      "ring-ring",
+      "text-accent",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "button with aria-pressed",
+    "keyboard": [
+      "Space — toggle",
+      "Enter — toggle"
+    ],
+    "requiredAttributes": [
+      "aria-label when icon-only"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix sets aria-pressed. Screen readers announce \"pressed\" or \"not pressed\".",
+      "Icon-only toggles always need an accessible name and usually a ui:tooltip."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Icon-only toggle with no accessible name",
+      "Using Toggle for an immediate setting"
+    ],
+    "agentRules": [
+      "Icon-only toggles require aria-label.",
+      "Use ui:switch for settings, not this.",
+      "Pair icon-only toggles with ui:tooltip."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toggle-group",
+      "note": "Several related toggles"
+    },
+    {
+      "id": "ui:switch",
+      "note": "Settings"
+    },
+    {
+      "id": "ui:button",
+      "note": "Actions"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

@@ -1,0 +1,87 @@
+<title>Slider — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Slider</h1>
+<p class="lede">An approximate value along a continuous range, where the relative position matters more than the exact number.</p>
+<div class="meta">
+<span class="pill mono">ui:slider</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Forms</span>
+<span class="pill mono">@radix-ui/react-slider</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/slider.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>Thumb positioned by value</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Keyboard focus on a thumb</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Dragging</strong></td><td><code>Pointer down on a thumb</code></td><td>Value updates continuously</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>opacity-50, pointer-events-none</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>Owns value, min, max, step</td></tr>
+<tr><td><strong>Track</strong></td><td>The full range, bg-secondary</td></tr>
+<tr><td><strong>Range</strong></td><td>The filled portion, bg-primary</td></tr>
+<tr><td><strong>Thumb</strong></td><td>The draggable handle. One per value in the array.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--secondary))"></div><div class="name">--secondary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>slider.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Volume, opacity, zoom, brightness — anything with immediate visible feedback</li>
+<li>A price or date range, using two thumbs</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Precise numeric entry — use ui:input, or pair the slider with one</li>
+<li>Fewer than about ten discrete steps — use ui:radio-group or ui:toggle-group</li>
+<li>Any value where being one step off matters</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-slider</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>slider</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — step by one<br />Page Up/Down — step by a larger increment<br />Home/End — jump to min or max</td></tr>
+<tr><th scope="row">Required</th><td>aria-label or aria-labelledby on the root<br />aria-valuetext when the raw number is not meaningful on its own</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix sets aria-valuemin, aria-valuemax and aria-valuenow.</li>
+<li>Set aria-valuetext when the number needs units or context — &quot;40 percent&quot; rather than &quot;40&quot;.</li>
+<li>The thumb is 20px. Its hit area is below the 44px guideline; add vertical padding to the container on touch surfaces.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/slider.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="slider.agent.json"><code>slider.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="slider.md"><code>slider.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

@@ -1,0 +1,95 @@
+<title>Progress — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Progress</h1>
+<p class="lede">Show how much of a known quantity of work is done.</p>
+<div class="meta">
+<span class="pill mono">ui:progress</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Feedback</span>
+<span class="pill mono">@radix-ui/react-progress</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">0%</span><div class="prog"><i style="width:0%"></i></div></div>
+<div class="specimen"><span class="specimen-label">38%</span><div class="prog"><i style="width:38%"></i></div></div>
+<div class="specimen"><span class="specimen-label">100%</span><div class="prog"><i style="width:100%"></i></div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Empty</strong></td><td><code>value={0}</code></td><td>Indicator fully translated out</td></tr>
+<tr><td><strong>In progress</strong></td><td><code>0 &lt; value &lt; 100</code></td><td>Indicator partially visible</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>value={100}</code></td><td>Indicator fills the track</td></tr>
+<tr><td><strong>Indeterminate</strong></td><td><code>value={null}</code></td><td>Radix supports it; this styling does not animate for it. Prefer a spinner.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The track, bg-secondary</td></tr>
+<tr><td><strong>Indicator</strong></td><td>The filled portion, bg-primary, positioned by transform</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--primary))"></div><div class="name">--primary</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--secondary))"></div><div class="name">--secondary</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>progress.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>File uploads</li>
+<li>Multi-step completion</li>
+<li>Anything where the total is known</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Unknown duration — a progress bar that sits at an arbitrary percentage is a lie</li>
+<li>Very short operations</li>
+<li>As a slider — this is read-only; use ui:slider for input</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-progress</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>progressbar</code></td></tr>
+<tr><th scope="row">Required</th><td>aria-label or aria-labelledby naming what is progressing</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Radix sets aria-valuenow, aria-valuemin and aria-valuemax.</li>
+<li>Label it — &quot;Progress&quot; alone does not say progress of what.</li>
+<li>Show the percentage in text too. The bar alone is hard to read precisely and invisible to some users.</li>
+<li>Announce completion in a live region; the bar reaching 100% is not itself announced.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>The indeterminate state is not visually distinguished. Use a spinner instead.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/progress.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="progress.agent.json"><code>progress.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="progress.md"><code>progress.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

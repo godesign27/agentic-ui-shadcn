@@ -1,0 +1,85 @@
+<title>Alert — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Alert</h1>
+<p class="lede">A message that stays on the page because it remains true.</p>
+<div class="meta">
+<span class="pill mono">ui:alert</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Feedback</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><div class="alrt"><div class="alrt__title">Scheduled maintenance</div><div class="alrt__desc">The API will be read-only on Sunday from 02:00 UTC.</div></div></div>
+<div class="specimen"><span class="specimen-label">destructive</span><div class="alrt alrt--destructive"><div class="alrt__title">Payment failed</div><div class="alrt__desc">Your card was declined. Try another payment method.</div></div></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>variant=&quot;default&quot;</code></td><td>bg-background, border-border</td></tr>
+<tr><td><strong>Destructive</strong></td><td><code>variant=&quot;destructive&quot;</code></td><td>border-destructive/50, text-destructive</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Alert
+  AlertTitle   <span class="opt">(optional)</span>
+  AlertDescription   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>alert.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Persistent form-level errors</li>
+<li>Ongoing system state — maintenance, degraded service, quota</li>
+<li>Contextual warnings before the user acts</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Confirming something that just happened — use ui:toast, which dismisses itself</li>
+<li>A blocking confirmation — use ui:alert-dialog</li>
+<li>So routinely that users learn to ignore it</li>
+<li>Field-level validation — use ui:form and FormMessage</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>alert</code></td></tr>
+<tr><th scope="row">Required</th><td>role=&quot;alert&quot; is set on the root</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>role=&quot;alert&quot; is an assertive live region: it interrupts the screen reader. That is right for an error appearing in response to an action, and wrong for content present on page load — which will be announced over everything else.</li>
+<li>For a message present at load, render a plain styled div instead, or use role=&quot;status&quot;.</li>
+<li>The destructive variant must not rely on colour alone — keep the icon and the title.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/alert.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="alert.agent.json"><code>alert.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="alert.md"><code>alert.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

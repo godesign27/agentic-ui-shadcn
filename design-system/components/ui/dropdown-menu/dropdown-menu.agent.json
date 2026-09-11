@@ -1,0 +1,232 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:dropdown-menu",
+  "name": "DropdownMenu",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix DropdownMenu with submenus, checkbox items, radio groups, labels, separators and shortcut slots.",
+  "intent": "A list of actions revealed from a button, with proper menu semantics.",
+  "authority": {
+    "source": "src/components/ui/dropdown-menu.tsx",
+    "mirrorSpec": "design-system/components/ui/dropdown-menu/dropdown-menu.md",
+    "contract": "design-system/components/ui/dropdown-menu/dropdown-menu.agent.json",
+    "prompt": "design-system/components/ui/dropdown-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/dropdown-menu/dropdown-menu.preview.html",
+    "upstream": "shadcn/ui registry: dropdown-menu",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-dropdown-menu",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-dropdown-menu"
+  },
+  "exports": [
+    "DropdownMenu",
+    "DropdownMenuCheckboxItem",
+    "DropdownMenuContent",
+    "DropdownMenuGroup",
+    "DropdownMenuItem",
+    "DropdownMenuLabel",
+    "DropdownMenuPortal",
+    "DropdownMenuRadioGroup",
+    "DropdownMenuRadioItem",
+    "DropdownMenuSeparator",
+    "DropdownMenuShortcut",
+    "DropdownMenuSub",
+    "DropdownMenuSubContent",
+    "DropdownMenuSubTrigger",
+    "DropdownMenuTrigger"
+  ],
+  "compound": {
+    "root": "DropdownMenu",
+    "parts": [
+      {
+        "name": "DropdownMenuTrigger",
+        "parent": "DropdownMenu",
+        "required": true,
+        "note": "Use asChild with a Button"
+      },
+      {
+        "name": "DropdownMenuContent",
+        "parent": "DropdownMenu",
+        "required": true
+      },
+      {
+        "name": "DropdownMenuLabel",
+        "parent": "DropdownMenuContent",
+        "required": false,
+        "note": "A section heading, not selectable"
+      },
+      {
+        "name": "DropdownMenuItem",
+        "parent": "DropdownMenuContent",
+        "required": false
+      },
+      {
+        "name": "DropdownMenuCheckboxItem",
+        "parent": "DropdownMenuContent",
+        "required": false
+      },
+      {
+        "name": "DropdownMenuRadioGroup",
+        "parent": "DropdownMenuContent",
+        "required": false
+      },
+      {
+        "name": "DropdownMenuRadioItem",
+        "parent": "DropdownMenuRadioGroup",
+        "required": true
+      },
+      {
+        "name": "DropdownMenuSub",
+        "parent": "DropdownMenuContent",
+        "required": false,
+        "note": "Wraps SubTrigger and SubContent"
+      },
+      {
+        "name": "DropdownMenuSeparator",
+        "parent": "DropdownMenuContent",
+        "required": false
+      },
+      {
+        "name": "DropdownMenuShortcut",
+        "parent": "DropdownMenuItem",
+        "required": false,
+        "note": "Presentational only — it does not bind the key"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open",
+    "Item focused",
+    "Submenu open"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, … } from \"@/components/ui/dropdown-menu\"",
+    "exports": [
+      "DropdownMenu",
+      "DropdownMenuCheckboxItem",
+      "DropdownMenuContent",
+      "DropdownMenuGroup",
+      "DropdownMenuItem",
+      "DropdownMenuLabel",
+      "DropdownMenuPortal",
+      "DropdownMenuRadioGroup",
+      "DropdownMenuRadioItem",
+      "DropdownMenuSeparator",
+      "DropdownMenuShortcut",
+      "DropdownMenuSub",
+      "DropdownMenuSubContent",
+      "DropdownMenuSubTrigger",
+      "DropdownMenuTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-muted",
+      "bg-popover",
+      "text-accent",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "menu",
+    "keyboard": [
+      "ArrowDown or Enter — open",
+      "Arrow keys — move between items",
+      "ArrowRight/ArrowLeft — enter and leave submenus",
+      "Type a letter — typeahead",
+      "Escape — close and return focus",
+      "Tab — close and move on"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the trigger"
+    ],
+    "focusManagement": "Focus enters the menu on open and returns to the trigger on close.",
+    "handledByRadix": true,
+    "notes": [
+      "Radix supplies menu, menuitem, menuitemcheckbox and menuitemradio roles plus roving focus.",
+      "DropdownMenuShortcut only renders the hint. Bind the actual key yourself.",
+      "Destructive items still need ui:alert-dialog confirmation — closing the menu is not a confirmation."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "DropdownMenuTrigger",
+      "DropdownMenuContent",
+      "DropdownMenuLabel",
+      "DropdownMenuItem",
+      "DropdownMenuCheckboxItem",
+      "DropdownMenuRadioGroup",
+      "DropdownMenuRadioItem",
+      "DropdownMenuSub",
+      "DropdownMenuSeparator",
+      "DropdownMenuShortcut"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Selecting a form value",
+      "Destructive item with no confirmation",
+      "Items outside DropdownMenuContent",
+      "Unlabelled trigger"
+    ],
+    "agentRules": [
+      "Use ui:select for values, this for actions.",
+      "Group with separators and labels once past about seven items.",
+      "Destructive items get destructive styling and a confirmation step.",
+      "DropdownMenuShortcut is display only — bind the key separately.",
+      "Icon-only triggers need an accessible name."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:select",
+      "note": "Form values"
+    },
+    {
+      "id": "ui:context-menu",
+      "note": "Right-click"
+    },
+    {
+      "id": "ui:menubar",
+      "note": "Persistent application menu bar"
+    },
+    {
+      "id": "ui:command",
+      "note": "Searchable command palette"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

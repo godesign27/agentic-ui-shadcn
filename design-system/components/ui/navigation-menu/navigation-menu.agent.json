@@ -1,0 +1,196 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:navigation-menu",
+  "name": "NavigationMenu",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Navigation",
+  "description": "Radix NavigationMenu with an animated viewport and an indicator. Built for websites rather than applications.",
+  "intent": "Primary site navigation, with room for a rich panel under each top-level item.",
+  "authority": {
+    "source": "src/components/ui/navigation-menu.tsx",
+    "mirrorSpec": "design-system/components/ui/navigation-menu/navigation-menu.md",
+    "contract": "design-system/components/ui/navigation-menu/navigation-menu.agent.json",
+    "prompt": "design-system/components/ui/navigation-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/navigation-menu/navigation-menu.preview.html",
+    "upstream": "shadcn/ui registry: navigation-menu",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-navigation-menu",
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-navigation-menu"
+  },
+  "exports": [
+    "NavigationMenu",
+    "NavigationMenuContent",
+    "NavigationMenuIndicator",
+    "NavigationMenuItem",
+    "NavigationMenuLink",
+    "NavigationMenuList",
+    "NavigationMenuTrigger",
+    "NavigationMenuViewport",
+    "navigationMenuTriggerStyle"
+  ],
+  "compound": {
+    "root": "NavigationMenu",
+    "parts": [
+      {
+        "name": "NavigationMenuList",
+        "parent": "NavigationMenu",
+        "required": true
+      },
+      {
+        "name": "NavigationMenuItem",
+        "parent": "NavigationMenuList",
+        "required": true
+      },
+      {
+        "name": "NavigationMenuTrigger",
+        "parent": "NavigationMenuItem",
+        "required": false,
+        "note": "For items with a panel"
+      },
+      {
+        "name": "NavigationMenuContent",
+        "parent": "NavigationMenuItem",
+        "required": false,
+        "note": "The panel"
+      },
+      {
+        "name": "NavigationMenuLink",
+        "parent": "NavigationMenuItem | NavigationMenuContent",
+        "required": false,
+        "note": "Use asChild with your router link"
+      },
+      {
+        "name": "NavigationMenuIndicator",
+        "parent": "NavigationMenuList",
+        "required": false,
+        "note": "The arrow pointing at the active trigger"
+      },
+      {
+        "name": "NavigationMenuViewport",
+        "parent": "NavigationMenu",
+        "required": false,
+        "note": "Rendered automatically"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open",
+    "Active link"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, … } from \"@/components/ui/navigation-menu\"",
+    "exports": [
+      "NavigationMenu",
+      "NavigationMenuContent",
+      "NavigationMenuIndicator",
+      "NavigationMenuItem",
+      "NavigationMenuLink",
+      "NavigationMenuList",
+      "NavigationMenuTrigger",
+      "NavigationMenuViewport",
+      "navigationMenuTriggerStyle"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "border",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab — move between top-level items",
+      "Enter or Space — open a panel",
+      "Arrow keys — move within a panel",
+      "Escape — close"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the nav when there is more than one on the page"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Opens on hover as well as focus, which is right for site navigation and wrong for actions.",
+      "Use navigationMenuTriggerStyle() for links that must match trigger styling.",
+      "On mobile this pattern does not work. Swap to ui:sheet below the breakpoint."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "NavigationMenuList",
+      "NavigationMenuItem",
+      "NavigationMenuTrigger",
+      "NavigationMenuContent",
+      "NavigationMenuLink",
+      "NavigationMenuIndicator",
+      "NavigationMenuViewport"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Actions in a navigation menu",
+      "Mobile usage with no fallback",
+      "Application menus"
+    ],
+    "agentRules": [
+      "Navigation only — never actions.",
+      "Use asChild for router integration.",
+      "Provide a ui:sheet fallback on mobile.",
+      "Name the nav when the page has several."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:menubar",
+      "note": "Application menu bar"
+    },
+    {
+      "id": "ui:sheet",
+      "note": "Mobile navigation"
+    },
+    {
+      "id": "ui:breadcrumb",
+      "note": "Location within the hierarchy"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

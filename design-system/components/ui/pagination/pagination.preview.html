@@ -1,0 +1,85 @@
+<title>Pagination — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Pagination</h1>
+<p class="lede">Move through a result set that is too large to show at once.</p>
+<div class="meta">
+<span class="pill mono">ui:pagination</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Navigation</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/pagination.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Inactive page</strong></td><td><code>Not the current page</code></td><td>Ghost variant</td></tr>
+<tr><td><strong>Active page</strong></td><td><code>isActive</code></td><td>Outline variant with aria-current=&quot;page&quot;</td></tr>
+<tr><td><strong>Boundary</strong></td><td><code>First or last page</code></td><td>Disable previous or next yourself — the component does not</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Pagination
+  PaginationContent
+    PaginationItem
+      PaginationLink   <span class="opt">(optional)</span>
+      PaginationPrevious   <span class="opt">(optional)</span>
+      PaginationNext   <span class="opt">(optional)</span>
+      PaginationEllipsis   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>pagination.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Paged tables and result lists</li>
+<li>When the total count is known and useful</li>
+<li>When users need to return to a specific page</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Feeds where infinite scroll suits the content better</li>
+<li>Fewer than about three pages</li>
+<li>When the total is unknown — use a simpler next-and-previous pair</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>navigation</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab through the links</td></tr>
+<tr><th scope="row">Required</th><td>aria-label=&quot;pagination&quot; on the nav — set by the component<br />aria-current=&quot;page&quot; via isActive</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Renders anchors. For client-side routing, use asChild with your router link.</li>
+<li>Previous and Next are not disabled at the boundaries automatically. Handle that yourself or they lead nowhere.</li>
+<li>Announce the page change in a live region — the content updates silently otherwise.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>No page-state logic, no boundary disabling, no live-region announcement. All presentational.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/pagination.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="pagination.agent.json"><code>pagination.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="pagination.md"><code>pagination.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

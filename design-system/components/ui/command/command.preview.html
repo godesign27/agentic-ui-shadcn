@@ -1,0 +1,93 @@
+<title>Command — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Command</h1>
+<p class="lede">Find and run anything by typing, without knowing where it lives in the interface.</p>
+<div class="meta">
+<span class="pill mono">ui:command</span>
+<span class="pill stable">stable</span>
+<span class="pill">organisms</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-dialog</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/command.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Empty query</strong></td><td><code>No input</code></td><td>All items shown, grouped</td></tr>
+<tr><td><strong>Filtering</strong></td><td><code>Typing</code></td><td>Items filter live; empty groups disappear</td></tr>
+<tr><td><strong>No results</strong></td><td><code>Nothing matches</code></td><td>CommandEmpty renders</td></tr>
+<tr><td><strong>Item selected</strong></td><td><code>Arrow keys</code></td><td>bg-accent text-accent-foreground</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Command
+  CommandInput
+  CommandList
+    CommandEmpty
+    CommandGroup   <span class="opt">(optional)</span>
+      CommandItem   <span class="opt">(optional)</span>
+        CommandShortcut   <span class="opt">(optional)</span>
+    CommandSeparator   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--accent))"></div><div class="name">--accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>command.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A global Cmd+K palette</li>
+<li>Searching a large option set — fifty entries or more</li>
+<li>A combobox where the user types to filter</li>
+<li>Power-user navigation</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A small known set — use ui:select</li>
+<li>As the only route to a feature — palettes are for acceleration, not discovery</li>
+<li>A primarily touch interface</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>combobox with listbox</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Arrow keys — move through results<br />Enter — run the selected item<br />Escape — close<br />Cmd/Ctrl+K — the conventional open shortcut, which you must bind yourself</td></tr>
+<tr><th scope="row">Required</th><td>A placeholder on CommandInput describing what can be searched</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>cmdk supplies combobox and listbox semantics and active-descendant management.</li>
+<li>Always render CommandEmpty. Without it a failed search shows a blank box.</li>
+<li>The Cmd+K binding is yours to add — see src/components/prompt-library/usePromptHotkeys.ts for the pattern already used in this repo.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/command.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="command.agent.json"><code>command.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="command.md"><code>command.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

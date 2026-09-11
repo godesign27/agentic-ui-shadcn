@@ -1,0 +1,168 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:pagination",
+  "name": "Pagination",
+  "namespace": "ui",
+  "tier": "molecules",
+  "status": "stable",
+  "category": "Navigation",
+  "description": "Semantic pagination markup using buttonVariants. Presentational only — the page state and routing are yours.",
+  "intent": "Move through a result set that is too large to show at once.",
+  "authority": {
+    "source": "src/components/ui/pagination.tsx",
+    "mirrorSpec": "design-system/components/ui/pagination/pagination.md",
+    "contract": "design-system/components/ui/pagination/pagination.agent.json",
+    "prompt": "design-system/components/ui/pagination/agentic-prompt.md",
+    "preview": "design-system/components/ui/pagination/pagination.preview.html",
+    "upstream": "shadcn/ui registry: pagination",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:button"
+    ],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "Pagination",
+    "PaginationContent",
+    "PaginationEllipsis",
+    "PaginationItem",
+    "PaginationLink",
+    "PaginationNext",
+    "PaginationPrevious"
+  ],
+  "compound": {
+    "root": "Pagination",
+    "parts": [
+      {
+        "name": "PaginationContent",
+        "parent": "Pagination",
+        "required": true,
+        "note": "A ul"
+      },
+      {
+        "name": "PaginationItem",
+        "parent": "PaginationContent",
+        "required": true,
+        "note": "An li"
+      },
+      {
+        "name": "PaginationLink",
+        "parent": "PaginationItem",
+        "required": false,
+        "note": "isActive sets aria-current=\"page\" and the outline variant"
+      },
+      {
+        "name": "PaginationPrevious",
+        "parent": "PaginationItem",
+        "required": false
+      },
+      {
+        "name": "PaginationNext",
+        "parent": "PaginationItem",
+        "required": false
+      },
+      {
+        "name": "PaginationEllipsis",
+        "parent": "PaginationItem",
+        "required": false,
+        "note": "aria-hidden, with an sr-only \"More pages\""
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Inactive page",
+    "Active page",
+    "Boundary"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Pagination, PaginationContent, PaginationEllipsis, … } from \"@/components/ui/pagination\"",
+    "exports": [
+      "Pagination",
+      "PaginationContent",
+      "PaginationEllipsis",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationNext",
+      "PaginationPrevious"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab through the links"
+    ],
+    "requiredAttributes": [
+      "aria-label=\"pagination\" on the nav — set by the component",
+      "aria-current=\"page\" via isActive"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Renders anchors. For client-side routing, use asChild with your router link.",
+      "Previous and Next are not disabled at the boundaries automatically. Handle that yourself or they lead nowhere.",
+      "Announce the page change in a live region — the content updates silently otherwise."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "PaginationContent",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationPrevious",
+      "PaginationNext",
+      "PaginationEllipsis"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Enabled previous on page one",
+      "No current-page indication",
+      "Silent page changes"
+    ],
+    "agentRules": [
+      "Disable previous and next at the boundaries yourself.",
+      "Set isActive on the current page.",
+      "Announce page changes in a live region.",
+      "Use asChild for client-side routing."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:table",
+      "note": "The usual companion"
+    },
+    {
+      "id": "ui:button",
+      "note": "buttonVariants supplies the styling"
+    }
+  ],
+  "gaps": [
+    "No page-state logic, no boundary disabling, no live-region announcement. All presentational."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

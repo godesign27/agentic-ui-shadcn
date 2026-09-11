@@ -1,0 +1,82 @@
+<title>Textarea — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Textarea</h1>
+<p class="lede">Multi-line text where the length is genuinely open-ended.</p>
+<div class="meta">
+<span class="pill mono">ui:textarea</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">Forms</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">Static replicas built from the same token values the component uses. Illustrative — the source component is the truth.</p>
+<div class="surface"><div class="specimens">
+<div class="specimen"><span class="specimen-label">default</span><textarea class="fld" placeholder="Add a note…"></textarea></div>
+<div class="specimen"><span class="specimen-label">disabled</span><textarea class="fld" placeholder="Unavailable" disabled></textarea></div>
+</div></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>Rest</code></td><td>min-h-[80px], resizable by the browser default</td></tr>
+<tr><td><strong>Focus-visible</strong></td><td><code>Focus</code></td><td>ring-2 ring-ring ring-offset-2</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>disabled prop</code></td><td>cursor-not-allowed, opacity-50</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The native textarea element</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--input))"></div><div class="name">--input</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ring))"></div><div class="name">--ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>textarea.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Comments, descriptions, notes, messages — anything where the user may reasonably write a paragraph</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Single-line values, even long ones — use ui:input</li>
+<li>Rich text — this component has no formatting affordances</li>
+<li>Code entry where monospace and tab handling matter</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>textbox</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Standard text editing<br />Tab moves focus out rather than inserting a tab</td></tr>
+<tr><th scope="row">Required</th><td>An associated label<br />aria-describedby for character limits or helper text</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>If you impose a character limit, announce the remaining count in a polite live region, not only visually.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/textarea.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="textarea.agent.json"><code>textarea.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="textarea.md"><code>textarea.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

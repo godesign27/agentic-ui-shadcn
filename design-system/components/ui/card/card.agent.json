@@ -1,0 +1,162 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:card",
+  "name": "Card",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Layout",
+  "description": "Six composable parts. No variants — a card is a container, and its meaning comes from what you put in it.",
+  "intent": "Group related content into a unit the eye reads as one thing.",
+  "authority": {
+    "source": "src/components/ui/card.tsx",
+    "mirrorSpec": "design-system/components/ui/card/card.md",
+    "contract": "design-system/components/ui/card/card.agent.json",
+    "prompt": "design-system/components/ui/card/agentic-prompt.md",
+    "preview": "design-system/components/ui/card/card.preview.html",
+    "upstream": "shadcn/ui registry: card",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "Card",
+    "CardContent",
+    "CardDescription",
+    "CardFooter",
+    "CardHeader",
+    "CardTitle"
+  ],
+  "compound": {
+    "root": "Card",
+    "parts": [
+      {
+        "name": "CardHeader",
+        "parent": "Card",
+        "required": false,
+        "note": "Title and description region"
+      },
+      {
+        "name": "CardTitle",
+        "parent": "CardHeader",
+        "required": false,
+        "note": "Renders a div, not a heading. Pass asChild or add role=\"heading\" aria-level if it is a real heading."
+      },
+      {
+        "name": "CardDescription",
+        "parent": "CardHeader",
+        "required": false,
+        "note": "text-muted-foreground"
+      },
+      {
+        "name": "CardContent",
+        "parent": "Card",
+        "required": false,
+        "note": "The body. Note its pt-0 — it assumes a CardHeader above."
+      },
+      {
+        "name": "CardFooter",
+        "parent": "Card",
+        "required": false,
+        "note": "Action row"
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Card, CardContent, CardDescription, … } from \"@/components/ui/card\"",
+    "exports": [
+      "Card",
+      "CardContent",
+      "CardDescription",
+      "CardFooter",
+      "CardHeader",
+      "CardTitle"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "card",
+      "muted"
+    ],
+    "utilities": [
+      "bg-card",
+      "text-card",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "handledByRadix": false,
+    "notes": [
+      "A Card is a div. It carries no semantics of its own — that is correct and deliberate.",
+      "CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.",
+      "For a card grid, wrap in a ul and each card in an li so the count is announced.",
+      "A whole-card click target needs a real button or link inside — do not attach onClick to the Card div."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "CardHeader",
+      "CardTitle",
+      "CardDescription",
+      "CardContent",
+      "CardFooter"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Nested cards",
+      "onClick on the Card div with no focusable child",
+      "Using Card for tabular data"
+    ],
+    "agentRules": [
+      "Do not nest cards.",
+      "CardTitle is not a heading element. Make it one when the page structure needs it.",
+      "CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.",
+      "Clickable cards need a real interactive element inside."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:table",
+      "note": "Tabular data"
+    },
+    {
+      "id": "ui:accordion",
+      "note": "Collapsible sections"
+    },
+    {
+      "id": "ui:skeleton",
+      "note": "Loading placeholder"
+    }
+  ],
+  "gaps": [
+    "CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

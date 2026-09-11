@@ -1,0 +1,142 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:accordion",
+  "name": "Accordion",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Disclosure",
+  "description": "Radix Accordion in single or multiple mode, with an animated chevron and height transition.",
+  "intent": "Let a long page stay scannable by collapsing detail the user can open on demand.",
+  "authority": {
+    "source": "src/components/ui/accordion.tsx",
+    "mirrorSpec": "design-system/components/ui/accordion/accordion.md",
+    "contract": "design-system/components/ui/accordion/accordion.agent.json",
+    "prompt": "design-system/components/ui/accordion/agentic-prompt.md",
+    "preview": "design-system/components/ui/accordion/accordion.preview.html",
+    "upstream": "shadcn/ui registry: accordion",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-accordion",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-accordion"
+  },
+  "exports": [
+    "Accordion",
+    "AccordionContent",
+    "AccordionItem",
+    "AccordionTrigger"
+  ],
+  "compound": {
+    "root": "Accordion",
+    "parts": [
+      {
+        "name": "AccordionItem",
+        "parent": "Accordion",
+        "required": true,
+        "note": "Needs a unique value"
+      },
+      {
+        "name": "AccordionTrigger",
+        "parent": "AccordionItem",
+        "required": true,
+        "note": "Renders a button inside an h3"
+      },
+      {
+        "name": "AccordionContent",
+        "parent": "AccordionItem",
+        "required": true
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Collapsed",
+    "Expanded",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Accordion, AccordionContent, AccordionItem, … } from \"@/components/ui/accordion\"",
+    "exports": [
+      "Accordion",
+      "AccordionContent",
+      "AccordionItem",
+      "AccordionTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "region",
+    "keyboard": [
+      "Enter or Space — toggle",
+      "Tab — move between triggers",
+      "Arrow keys — move between triggers"
+    ],
+    "requiredAttributes": [
+      "type is required: \"single\" or \"multiple\""
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix wraps each trigger in an h3 with a button inside, and wires aria-expanded and aria-controls.",
+      "Collapsed content is removed from the DOM, so browser find-in-page will not reach it.",
+      "type=\"single\" with collapsible={false} means one section is always open — decide which."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "AccordionItem",
+      "AccordionTrigger",
+      "AccordionContent"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Accordion with no type",
+      "Hiding primary content",
+      "Fewer than three sections"
+    ],
+    "agentRules": [
+      "type is required.",
+      "Do not hide content most users need.",
+      "Three or more sections, or use something else.",
+      "Remember collapsed content is not findable by Ctrl+F."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:collapsible",
+      "note": "A single disclosure with no group behaviour"
+    },
+    {
+      "id": "ui:tabs",
+      "note": "Peer views"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

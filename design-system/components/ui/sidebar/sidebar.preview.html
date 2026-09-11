@@ -1,0 +1,103 @@
+<title>Sidebar — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Sidebar</h1>
+<p class="lede">A complete application navigation shell — collapsible, persistent, responsive, and keyboard-reachable.</p>
+<div class="meta">
+<span class="pill mono">ui:sidebar</span>
+<span class="pill stable">stable</span>
+<span class="pill">templates</span>
+<span class="pill">Layout</span>
+<span class="pill mono">@radix-ui/react-slot</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/sidebar.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Expanded</strong></td><td><code>Default</code></td><td>Full width, labels visible</td></tr>
+<tr><td><strong>Collapsed (icon)</strong></td><td><code>collapsible=&quot;icon&quot;</code></td><td>Icons only. SidebarMenuButton tooltips become the labels.</td></tr>
+<tr><td><strong>Collapsed (offcanvas)</strong></td><td><code>collapsible=&quot;offcanvas&quot;</code></td><td>Slides entirely out of view</td></tr>
+<tr><td><strong>Mobile</strong></td><td><code>Below the breakpoint</code></td><td>Renders as a ui:sheet regardless of the collapsed state</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">SidebarProvider
+  Sidebar
+    SidebarRail   <span class="opt">(optional)</span>
+    SidebarHeader   <span class="opt">(optional)</span>
+    SidebarContent
+      SidebarGroup   <span class="opt">(optional)</span>
+        SidebarGroupLabel   <span class="opt">(optional)</span>
+        SidebarGroupContent   <span class="opt">(optional)</span>
+          SidebarMenu   <span class="opt">(optional)</span>
+            SidebarMenuItem
+              SidebarMenuButton   <span class="opt">(optional)</span>
+              SidebarMenuSub   <span class="opt">(optional)</span>
+              SidebarMenuAction   <span class="opt">(optional)</span>
+              SidebarMenuBadge   <span class="opt">(optional)</span>
+            SidebarMenuSkeleton   <span class="opt">(optional)</span>
+    SidebarFooter   <span class="opt">(optional)</span>
+    SidebarSeparator   <span class="opt">(optional)</span>
+  SidebarInset   <span class="opt">(optional)</span>
+  SidebarTrigger   <span class="opt">(optional)</span></pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--sidebar-accent))"></div><div class="name">--sidebar-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--sidebar-border))"></div><div class="name">--sidebar-border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--sidebar-foreground))"></div><div class="name">--sidebar-foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--sidebar-ring))"></div><div class="name">--sidebar-ring</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>sidebar.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Application shells with persistent navigation</li>
+<li>Dashboards and admin interfaces</li>
+<li>Any layout needing a collapsible nav that survives reloads</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Marketing sites — use ui:navigation-menu</li>
+<li>Simple layouts where a header is enough</li>
+<li>When you only need a static panel — this brings a provider, a cookie and a keyboard shortcut</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>complementary</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Cmd/Ctrl+B — toggle, bound by the provider<br />Tab through menu items<br />Enter — activate</td></tr>
+<tr><th scope="row">Required</th><td>tooltip on SidebarMenuButton when collapsible=&quot;icon&quot;<br />isActive plus aria-current on the active route</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>When collapsed to icons, the tooltip prop is the only accessible name a menu button has. Omitting it makes the collapsed sidebar unusable.</li>
+<li>The Cmd+B shortcut is registered globally by the provider. Check it does not collide with your editor surfaces.</li>
+<li>Uses its own --sidebar-* token scale, deliberately distinct from the page palette.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/sidebar.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="sidebar.agent.json"><code>sidebar.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="sidebar.md"><code>sidebar.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

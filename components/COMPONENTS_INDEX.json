@@ -1,8 +1,11 @@
 {
-  "version": "1.0.0",
-  "source": "shadcn/ui",
+  "$schema": "../design-system/schemas/inventory.schema.json",
+  "version": "2.0.0",
+  "source": "shadcn/ui + Agentic UI AI namespace",
   "enforcement": "closed-world",
-  "lastUpdated": "2025-12-25",
+  "rule": "Only ids listed here may be used. Anything absent must be rejected, not improvised. Each entry points at a spec folder containing the full contract.",
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "count": 45,
   "components": [
     {
       "id": "ui:accordion",
@@ -11,10 +14,26 @@
       "files": [
         "src/components/ui/accordion.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Disclosure",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Accordion",
+        "AccordionContent",
+        "AccordionItem",
+        "AccordionTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Let a long page stay scannable by collapsing detail the user can open on demand.",
+      "spec": "design-system/components/ui/accordion/",
+      "forbiddenUsage": [
+        "Accordion with no type",
+        "Hiding primary content",
+        "Fewer than three sections"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:alert",
@@ -23,10 +42,28 @@
       "files": [
         "src/components/ui/alert.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Alert",
+        "AlertDescription",
+        "AlertTitle"
+      ],
+      "variants": [
+        "default",
+        "destructive"
+      ],
+      "sizes": [],
+      "intent": "A message that stays on the page because it remains true.",
+      "spec": "design-system/components/ui/alert/",
+      "forbiddenUsage": [
+        "Colour as the only error signal",
+        "Using Alert for transient confirmations",
+        "Destructive variant for non-errors"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:alert-dialog",
@@ -35,10 +72,34 @@
       "files": [
         "src/components/ui/alert-dialog.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AlertDialog",
+        "AlertDialogAction",
+        "AlertDialogCancel",
+        "AlertDialogContent",
+        "AlertDialogDescription",
+        "AlertDialogFooter",
+        "AlertDialogHeader",
+        "AlertDialogOverlay",
+        "AlertDialogPortal",
+        "AlertDialogTitle",
+        "AlertDialogTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Stop the user before something irreversible happens, and make cancelling the easy path.",
+      "spec": "design-system/components/ui/alert-dialog/",
+      "forbiddenUsage": [
+        "Confirm button labelled OK or Yes",
+        "Initial focus on the confirm action",
+        "Omitting AlertDialogCancel",
+        "Collecting input inside an alert dialog"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:aspect-ratio",
@@ -47,10 +108,21 @@
       "files": [
         "src/components/ui/aspect-ratio.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Layout",
+      "tier": "layout",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AspectRatio"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Reserve the right shape before the content arrives, so nothing jumps.",
+      "spec": "design-system/components/ui/aspect-ratio/",
+      "forbiddenUsage": [
+        "Constraining text content"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:avatar",
@@ -59,10 +131,25 @@
       "files": [
         "src/components/ui/avatar.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Data Display",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Avatar",
+        "AvatarFallback",
+        "AvatarImage"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Identify a person or entity at a glance, and degrade gracefully when the image is missing.",
+      "spec": "design-system/components/ui/avatar/",
+      "forbiddenUsage": [
+        "Avatar without a fallback",
+        "alt=\"avatar\"",
+        "Decorative use"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:badge",
@@ -71,10 +158,31 @@
       "files": [
         "src/components/ui/badge.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Data Display",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Badge",
+        "badgeVariants"
+      ],
+      "variants": [
+        "default",
+        "secondary",
+        "destructive",
+        "outline"
+      ],
+      "sizes": [],
+      "intent": "A short label that classifies the thing next to it.",
+      "spec": "design-system/components/ui/badge/",
+      "forbiddenUsage": [
+        "Badge as a clickable control",
+        "Colour-only status",
+        "Long text"
+      ],
+      "gaps": [
+        "Carries hover and focus-visible styling despite rendering a non-focusable div. Do not read that as permission to make it interactive."
+      ]
     },
     {
       "id": "ui:breadcrumb",
@@ -83,10 +191,29 @@
       "files": [
         "src/components/ui/breadcrumb.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Navigation",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Breadcrumb",
+        "BreadcrumbEllipsis",
+        "BreadcrumbItem",
+        "BreadcrumbLink",
+        "BreadcrumbList",
+        "BreadcrumbPage",
+        "BreadcrumbSeparator"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Show where this page sits in the hierarchy, and offer a way back up.",
+      "spec": "design-system/components/ui/breadcrumb/",
+      "forbiddenUsage": [
+        "Linking the current page",
+        "Breadcrumbs as a step indicator",
+        "Flat hierarchies"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:button",
@@ -96,9 +223,36 @@
         "src/components/ui/button.tsx"
       ],
       "category": "Forms",
-      "propsNotes": "Supports variants: default, destructive, outline, secondary, ghost, link. Sizes: default, sm, lg, icon. Uses class-variance-authority for variant management.",
-      "a11yNotes": "Native button element with focus-visible ring. Supports disabled state. Keyboard accessible by default.",
-      "status": "allowed"
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Button",
+        "buttonVariants"
+      ],
+      "variants": [
+        "default",
+        "destructive",
+        "outline",
+        "secondary",
+        "ghost",
+        "link"
+      ],
+      "sizes": [
+        "default",
+        "sm",
+        "lg",
+        "icon"
+      ],
+      "intent": "The single most important decision available in a region, and every lesser one alongside it.",
+      "spec": "design-system/components/ui/button/",
+      "forbiddenUsage": [
+        "Two primary buttons in one action region",
+        "variant=\"destructive\" on a non-destructive action",
+        "Removing focus-visible styling",
+        "Icon-only button with no accessible name"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:calendar",
@@ -107,10 +261,24 @@
       "files": [
         "src/components/ui/calendar.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Calendar",
+        "CalendarDayButton"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Pick a date when the surrounding days matter to the choice.",
+      "spec": "design-system/components/ui/calendar/",
+      "forbiddenUsage": [
+        "Calendar as the only date-entry route",
+        "Allowing invalid dates then rejecting on submit",
+        "Using a day grid for distant historical dates"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:card",
@@ -120,9 +288,29 @@
         "src/components/ui/card.tsx"
       ],
       "category": "Layout",
-      "propsNotes": "Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter. Uses CSS variables for theming.",
-      "a11yNotes": "Semantic container. Ensure proper heading hierarchy when using CardTitle.",
-      "status": "allowed"
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Card",
+        "CardContent",
+        "CardDescription",
+        "CardFooter",
+        "CardHeader",
+        "CardTitle"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Group related content into a unit the eye reads as one thing.",
+      "spec": "design-system/components/ui/card/",
+      "forbiddenUsage": [
+        "Nested cards",
+        "onClick on the Card div with no focusable child",
+        "Using Card for tabular data"
+      ],
+      "gaps": [
+        "CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it."
+      ]
     },
     {
       "id": "ui:carousel",
@@ -131,10 +319,28 @@
       "files": [
         "src/components/ui/carousel.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Data Display",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Carousel",
+        "CarouselApi",
+        "CarouselContent",
+        "CarouselItem",
+        "CarouselNext",
+        "CarouselPrevious"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Move horizontally through a set of items when vertical space genuinely will not stretch.",
+      "spec": "design-system/components/ui/carousel/",
+      "forbiddenUsage": [
+        "Unjustified carousel where a grid would work",
+        "Autoplay with no pause",
+        "Primary CTAs on later slides"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:checkbox",
@@ -143,10 +349,23 @@
       "files": [
         "src/components/ui/checkbox.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Checkbox"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "An independent yes-or-no choice, or one of several non-exclusive options.",
+      "spec": "design-system/components/ui/checkbox/",
+      "forbiddenUsage": [
+        "Checkbox with no label",
+        "Using a checkbox where exactly one option must be chosen",
+        "Overriding aria-checked"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:collapsible",
@@ -155,10 +374,25 @@
       "files": [
         "src/components/ui/collapsible.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Disclosure",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Collapsible",
+        "CollapsibleContent",
+        "CollapsibleTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "One thing that opens and closes, with no group to coordinate.",
+      "spec": "design-system/components/ui/collapsible/",
+      "forbiddenUsage": [
+        "Using Collapsible for a group where Accordion belongs"
+      ],
+      "gaps": [
+        "Entirely unstyled — no animation, chevron or spacing. Unlike every other component here, you supply all of it."
+      ]
     },
     {
       "id": "ui:command",
@@ -167,10 +401,31 @@
       "files": [
         "src/components/ui/command.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Command",
+        "CommandDialog",
+        "CommandEmpty",
+        "CommandGroup",
+        "CommandInput",
+        "CommandItem",
+        "CommandList",
+        "CommandSeparator",
+        "CommandShortcut"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Find and run anything by typing, without knowing where it lives in the interface.",
+      "spec": "design-system/components/ui/command/",
+      "forbiddenUsage": [
+        "Omitting CommandEmpty",
+        "Sole route to a feature",
+        "Items outside CommandList"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:context-menu",
@@ -179,10 +434,37 @@
       "files": [
         "src/components/ui/context-menu.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "ContextMenu",
+        "ContextMenuCheckboxItem",
+        "ContextMenuContent",
+        "ContextMenuGroup",
+        "ContextMenuItem",
+        "ContextMenuLabel",
+        "ContextMenuPortal",
+        "ContextMenuRadioGroup",
+        "ContextMenuRadioItem",
+        "ContextMenuSeparator",
+        "ContextMenuShortcut",
+        "ContextMenuSub",
+        "ContextMenuSubContent",
+        "ContextMenuSubTrigger",
+        "ContextMenuTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Actions for the specific thing the user right-clicked.",
+      "spec": "design-system/components/ui/context-menu/",
+      "forbiddenUsage": [
+        "Sole route to an action",
+        "Primary interaction on a touch surface",
+        "Navigation"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:dialog",
@@ -191,10 +473,33 @@
       "files": [
         "src/components/ui/dialog.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Dialog",
+        "DialogClose",
+        "DialogContent",
+        "DialogDescription",
+        "DialogFooter",
+        "DialogHeader",
+        "DialogOverlay",
+        "DialogPortal",
+        "DialogTitle",
+        "DialogTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Interrupt the user for a self-contained task that must finish before anything else continues.",
+      "spec": "design-system/components/ui/dialog/",
+      "forbiddenUsage": [
+        "DialogContent without DialogTitle",
+        "Nested dialogs",
+        "Multi-step wizards",
+        "Destructive confirmation without alert-dialog semantics"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:dropdown-menu",
@@ -203,10 +508,38 @@
       "files": [
         "src/components/ui/dropdown-menu.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuContent",
+        "DropdownMenuGroup",
+        "DropdownMenuItem",
+        "DropdownMenuLabel",
+        "DropdownMenuPortal",
+        "DropdownMenuRadioGroup",
+        "DropdownMenuRadioItem",
+        "DropdownMenuSeparator",
+        "DropdownMenuShortcut",
+        "DropdownMenuSub",
+        "DropdownMenuSubContent",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A list of actions revealed from a button, with proper menu semantics.",
+      "spec": "design-system/components/ui/dropdown-menu/",
+      "forbiddenUsage": [
+        "Selecting a form value",
+        "Destructive item with no confirmation",
+        "Items outside DropdownMenuContent",
+        "Unlabelled trigger"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:form",
@@ -215,10 +548,32 @@
       "files": [
         "src/components/ui/form.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "groups",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Form",
+        "FormControl",
+        "FormDescription",
+        "FormField",
+        "FormItem",
+        "FormLabel",
+        "FormMessage",
+        "useFormField"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Wires a control to its label, description and error message so the accessibility relationships are correct by construction.",
+      "spec": "design-system/components/ui/form/",
+      "forbiddenUsage": [
+        "FormControl with multiple children",
+        "Parts used outside their required parent",
+        "Manual aria-invalid on a wrapped control"
+      ],
+      "gaps": [
+        "Does not move focus to the first invalid field on submit — implement that in your onInvalid handler."
+      ]
     },
     {
       "id": "ui:hover-card",
@@ -227,10 +582,25 @@
       "files": [
         "src/components/ui/hover-card.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "HoverCard",
+        "HoverCardContent",
+        "HoverCardTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A rich preview of what a link points to, without making the user go there.",
+      "spec": "design-system/components/ui/hover-card/",
+      "forbiddenUsage": [
+        "Critical information",
+        "Primary actions inside the card",
+        "Mobile-first usage"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:input",
@@ -240,9 +610,22 @@
         "src/components/ui/input.tsx"
       ],
       "category": "Forms",
-      "propsNotes": "Standard HTML input with shadcn styling. Supports all native input props and types.",
-      "a11yNotes": "Requires associated label element. Supports aria-describedby for error messages. Focus-visible ring included.",
-      "status": "allowed"
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Input"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A single line of user-supplied text, with the focus and disabled behavior already correct.",
+      "spec": "design-system/components/ui/input/",
+      "forbiddenUsage": [
+        "Placeholder as the only label",
+        "Error communicated by border colour alone",
+        "Removing the focus ring"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:label",
@@ -251,10 +634,22 @@
       "files": [
         "src/components/ui/label.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Label"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Names a control, and makes its text a click target for it.",
+      "spec": "design-system/components/ui/label/",
+      "forbiddenUsage": [
+        "Label with no htmlFor",
+        "Asterisk as the only required indicator"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:menubar",
@@ -263,10 +658,38 @@
       "files": [
         "src/components/ui/menubar.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Navigation",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Menubar",
+        "MenubarCheckboxItem",
+        "MenubarContent",
+        "MenubarGroup",
+        "MenubarItem",
+        "MenubarLabel",
+        "MenubarMenu",
+        "MenubarPortal",
+        "MenubarRadioGroup",
+        "MenubarRadioItem",
+        "MenubarSeparator",
+        "MenubarShortcut",
+        "MenubarSub",
+        "MenubarSubContent",
+        "MenubarSubTrigger",
+        "MenubarTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A persistent application menu bar, in the desktop-software sense.",
+      "spec": "design-system/components/ui/menubar/",
+      "forbiddenUsage": [
+        "Website navigation",
+        "Mobile layouts",
+        "As a general toolbar"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:navigation-menu",
@@ -275,10 +698,31 @@
       "files": [
         "src/components/ui/navigation-menu.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Navigation",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "NavigationMenu",
+        "NavigationMenuContent",
+        "NavigationMenuIndicator",
+        "NavigationMenuItem",
+        "NavigationMenuLink",
+        "NavigationMenuList",
+        "NavigationMenuTrigger",
+        "NavigationMenuViewport",
+        "navigationMenuTriggerStyle"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Primary site navigation, with room for a rich panel under each top-level item.",
+      "spec": "design-system/components/ui/navigation-menu/",
+      "forbiddenUsage": [
+        "Actions in a navigation menu",
+        "Mobile usage with no fallback",
+        "Application menus"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:pagination",
@@ -287,10 +731,31 @@
       "files": [
         "src/components/ui/pagination.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Navigation",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Pagination",
+        "PaginationContent",
+        "PaginationEllipsis",
+        "PaginationItem",
+        "PaginationLink",
+        "PaginationNext",
+        "PaginationPrevious"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Move through a result set that is too large to show at once.",
+      "spec": "design-system/components/ui/pagination/",
+      "forbiddenUsage": [
+        "Enabled previous on page one",
+        "No current-page indication",
+        "Silent page changes"
+      ],
+      "gaps": [
+        "No page-state logic, no boundary disabling, no live-region announcement. All presentational."
+      ]
     },
     {
       "id": "ui:popover",
@@ -299,10 +764,25 @@
       "files": [
         "src/components/ui/popover.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Popover",
+        "PopoverContent",
+        "PopoverTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Contextual content anchored to a trigger, without blocking the page.",
+      "spec": "design-system/components/ui/popover/",
+      "forbiddenUsage": [
+        "Critical-only information",
+        "Action menus",
+        "Nesting a modal dialog inside a popover"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:progress",
@@ -311,10 +791,25 @@
       "files": [
         "src/components/ui/progress.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Progress"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Show how much of a known quantity of work is done.",
+      "spec": "design-system/components/ui/progress/",
+      "forbiddenUsage": [
+        "Fabricated progress values",
+        "Unlabelled progress bar",
+        "Using Progress as an input"
+      ],
+      "gaps": [
+        "The indeterminate state is not visually distinguished. Use a spinner instead."
+      ]
     },
     {
       "id": "ui:radio-group",
@@ -323,22 +818,50 @@
       "files": [
         "src/components/ui/radio-group.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "RadioGroup",
+        "RadioGroupItem"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Exactly one choice from a small set, with every option visible.",
+      "spec": "design-system/components/ui/radio-group/",
+      "forbiddenUsage": [
+        "A single radio button",
+        "Items with no labels",
+        "Adding tabIndex to items"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:resizable",
-      "name": "Resizable",
+      "name": "ResizableHandle",
       "importPath": "@/components/ui/resizable",
       "files": [
         "src/components/ui/resizable.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Layout",
+      "tier": "layout",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "ResizableHandle",
+        "ResizablePanel",
+        "ResizablePanelGroup"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Let the user decide how to divide the space.",
+      "spec": "design-system/components/ui/resizable/",
+      "forbiddenUsage": [
+        "Resizable layouts on mobile",
+        "Panels with no minSize"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:scroll-area",
@@ -348,9 +871,22 @@
         "src/components/ui/scroll-area.tsx"
       ],
       "category": "Layout",
-      "propsNotes": "Custom scrollable container using Radix UI ScrollArea. Composed of ScrollArea and ScrollBar components.",
-      "a11yNotes": "Keyboard scrollable. Maintains focus management within scrollable region.",
-      "status": "allowed"
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "ScrollArea",
+        "ScrollBar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A scrollable region with a scrollbar that looks the same on every platform.",
+      "spec": "design-system/components/ui/scroll-area/",
+      "forbiddenUsage": [
+        "ScrollArea with no bounded height",
+        "Wrapping the document scroll"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:select",
@@ -359,10 +895,33 @@
       "files": [
         "src/components/ui/select.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Select",
+        "SelectContent",
+        "SelectGroup",
+        "SelectItem",
+        "SelectLabel",
+        "SelectScrollDownButton",
+        "SelectScrollUpButton",
+        "SelectSeparator",
+        "SelectTrigger",
+        "SelectValue"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "One choice from a list too long to show all at once.",
+      "spec": "design-system/components/ui/select/",
+      "forbiddenUsage": [
+        "SelectItem with an empty value",
+        "SelectItem outside SelectContent",
+        "Unlabelled trigger",
+        "Using Select to fire actions"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:separator",
@@ -372,9 +931,21 @@
         "src/components/ui/separator.tsx"
       ],
       "category": "Layout",
-      "propsNotes": "Visual divider. Supports horizontal (default) and vertical orientations. Uses Radix UI Separator primitive.",
-      "a11yNotes": "Decorative by default. Does not interfere with screen reader navigation.",
-      "status": "allowed"
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Separator"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A visible break between groups, without implying they are different kinds of thing.",
+      "spec": "design-system/components/ui/separator/",
+      "forbiddenUsage": [
+        "Separator as a general border",
+        "Vertical separator in a parent with no height"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:sheet",
@@ -384,9 +955,36 @@
         "src/components/ui/sheet.tsx"
       ],
       "category": "Overlay",
-      "propsNotes": "Slide-out panel from screen edge. Composed of Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter. Supports side: top, bottom, left, right.",
-      "a11yNotes": "Focus trap when open. ESC key closes. Returns focus to trigger on close. Uses Radix UI Dialog primitive with proper ARIA attributes.",
-      "status": "allowed"
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Sheet",
+        "SheetClose",
+        "SheetContent",
+        "SheetDescription",
+        "SheetFooter",
+        "SheetHeader",
+        "SheetOverlay",
+        "SheetPortal",
+        "SheetTitle",
+        "SheetTrigger"
+      ],
+      "variants": [],
+      "sizes": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ],
+      "intent": "A modal panel anchored to a screen edge, for content that needs more room than a dialog affords.",
+      "spec": "design-system/components/ui/sheet/",
+      "forbiddenUsage": [
+        "SheetContent without SheetTitle",
+        "Nested overlays",
+        "Using a sheet for content that must stay visible while working"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:sidebar",
@@ -395,10 +993,54 @@
       "files": [
         "src/components/ui/sidebar.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Layout",
+      "tier": "templates",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Sidebar",
+        "SidebarContent",
+        "SidebarFooter",
+        "SidebarGroup",
+        "SidebarGroupAction",
+        "SidebarGroupContent",
+        "SidebarGroupLabel",
+        "SidebarHeader",
+        "SidebarInput",
+        "SidebarInset",
+        "SidebarMenu",
+        "SidebarMenuAction",
+        "SidebarMenuBadge",
+        "SidebarMenuButton",
+        "SidebarMenuItem",
+        "SidebarMenuSkeleton",
+        "SidebarMenuSub",
+        "SidebarMenuSubButton",
+        "SidebarMenuSubItem",
+        "SidebarProvider",
+        "SidebarRail",
+        "SidebarSeparator",
+        "SidebarTrigger",
+        "useSidebar"
+      ],
+      "variants": [
+        "default",
+        "outline"
+      ],
+      "sizes": [
+        "default",
+        "sm",
+        "lg"
+      ],
+      "intent": "A complete application navigation shell — collapsible, persistent, responsive, and keyboard-reachable.",
+      "spec": "design-system/components/ui/sidebar/",
+      "forbiddenUsage": [
+        "Sidebar without SidebarProvider",
+        "Icon-collapsible menu buttons with no tooltip",
+        "Page tokens instead of sidebar tokens",
+        "Using Sidebar for marketing navigation"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:skeleton",
@@ -407,10 +1049,25 @@
       "files": [
         "src/components/ui/skeleton.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Skeleton"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Show the shape of what is coming, so the wait feels shorter and the layout does not jump.",
+      "spec": "design-system/components/ui/skeleton/",
+      "forbiddenUsage": [
+        "Skeleton with no announced loading state",
+        "Skeleton persisting through an error",
+        "Shapes that do not match the eventual content"
+      ],
+      "gaps": [
+        "Provides no live-region semantics of its own. The announcement is yours to add every time."
+      ]
     },
     {
       "id": "ui:slider",
@@ -419,22 +1076,50 @@
       "files": [
         "src/components/ui/slider.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Slider"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "An approximate value along a continuous range, where the relative position matters more than the exact number.",
+      "spec": "design-system/components/ui/slider/",
+      "forbiddenUsage": [
+        "A slider as the only way to enter a precise value",
+        "Unlabelled slider",
+        "A slider with fewer than ten meaningful steps"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:sonner",
-      "name": "Sonner",
+      "name": "Toaster",
       "importPath": "@/components/ui/sonner",
       "files": [
         "src/components/ui/sonner.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "templates",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Toaster"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The same job as ui:toaster, through a different library with a simpler imperative API.",
+      "spec": "design-system/components/ui/sonner/",
+      "forbiddenUsage": [
+        "Running alongside ui:toaster",
+        "Ambiguous Toaster imports"
+      ],
+      "gaps": [
+        "Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.",
+        "Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted."
+      ]
     },
     {
       "id": "ui:switch",
@@ -443,10 +1128,23 @@
       "files": [
         "src/components/ui/switch.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Switch"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A setting that takes effect the moment it is flipped.",
+      "spec": "design-system/components/ui/switch/",
+      "forbiddenUsage": [
+        "A switch inside a form with a submit button",
+        "A label that reads \"On\" or \"Off\"",
+        "Switch with no label"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:table",
@@ -455,10 +1153,33 @@
       "files": [
         "src/components/ui/table.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Data Display",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Table",
+        "TableBody",
+        "TableCaption",
+        "TableCell",
+        "TableFooter",
+        "TableHead",
+        "TableHeader",
+        "TableRow"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Data with real rows and columns, where comparing across both matters.",
+      "spec": "design-system/components/ui/table/",
+      "forbiddenUsage": [
+        "Layout tables",
+        "Headers with no scope",
+        "Unnamed tables",
+        "Unbounded row counts"
+      ],
+      "gaps": [
+        "No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead."
+      ]
     },
     {
       "id": "ui:tabs",
@@ -467,10 +1188,26 @@
       "files": [
         "src/components/ui/tabs.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Navigation",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Tabs",
+        "TabsContent",
+        "TabsList",
+        "TabsTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Switch between peer views of the same subject, where only one is relevant at a time.",
+      "spec": "design-system/components/ui/tabs/",
+      "forbiddenUsage": [
+        "Tabs as a wizard",
+        "Trigger with no matching content",
+        "More than six tabs"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:textarea",
@@ -479,10 +1216,22 @@
       "files": [
         "src/components/ui/textarea.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Textarea"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Multi-line text where the length is genuinely open-ended.",
+      "spec": "design-system/components/ui/textarea/",
+      "forbiddenUsage": [
+        "Placeholder as the only label",
+        "A hard character limit with no visible or announced counter"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:toast",
@@ -491,10 +1240,35 @@
       "files": [
         "src/components/ui/toast.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "organisms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Toast",
+        "ToastAction",
+        "ToastActionElement",
+        "ToastClose",
+        "ToastDescription",
+        "ToastProps",
+        "ToastProvider",
+        "ToastTitle",
+        "ToastViewport"
+      ],
+      "variants": [
+        "default",
+        "destructive"
+      ],
+      "sizes": [],
+      "intent": "Confirm that something happened, without taking the user away from what they are doing.",
+      "spec": "design-system/components/ui/toast/",
+      "forbiddenUsage": [
+        "Critical information in a toast",
+        "Multiple actions in one toast",
+        "ToastAction with no altText",
+        "Long multi-paragraph toasts"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:toaster",
@@ -503,10 +1277,23 @@
       "files": [
         "src/components/ui/toaster.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Feedback",
+      "tier": "templates",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Toaster"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The one place toasts actually render.",
+      "spec": "design-system/components/ui/toaster/",
+      "forbiddenUsage": [
+        "Multiple Toaster instances",
+        "Conditional mounting",
+        "Running alongside ui:sonner"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:toggle",
@@ -515,10 +1302,30 @@
       "files": [
         "src/components/ui/toggle.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Toggle",
+        "toggleVariants"
+      ],
+      "variants": [
+        "default",
+        "outline"
+      ],
+      "sizes": [
+        "default",
+        "sm",
+        "lg"
+      ],
+      "intent": "A control that stays pressed — formatting state in a toolbar, not an action.",
+      "spec": "design-system/components/ui/toggle/",
+      "forbiddenUsage": [
+        "Icon-only toggle with no accessible name",
+        "Using Toggle for an immediate setting"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:toggle-group",
@@ -527,10 +1334,24 @@
       "files": [
         "src/components/ui/toggle-group.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Forms",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "ToggleGroup",
+        "ToggleGroupItem"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A set of related toggles that share a value and a visual group.",
+      "spec": "design-system/components/ui/toggle-group/",
+      "forbiddenUsage": [
+        "Unlabelled group",
+        "Icon-only items with no accessible name",
+        "Using ToggleGroup for page navigation"
+      ],
+      "gaps": []
     },
     {
       "id": "ui:tooltip",
@@ -539,21 +1360,27 @@
       "files": [
         "src/components/ui/tooltip.tsx"
       ],
-      "category": "Unknown",
-      "propsNotes": "See component source for details.",
-      "a11yNotes": "Follow shadcn/ui accessibility patterns.",
-      "status": "allowed"
+      "category": "Overlay",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "Tooltip",
+        "TooltipContent",
+        "TooltipProvider",
+        "TooltipTrigger"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Name a control whose purpose is not obvious from its appearance.",
+      "spec": "design-system/components/ui/tooltip/",
+      "forbiddenUsage": [
+        "Critical-only information",
+        "Interactive content inside TooltipContent",
+        "Non-focusable trigger",
+        "Tooltip as the only accessible name"
+      ],
+      "gaps": []
     }
-  ],
-  "patterns": [],
-  "layouts": [],
-  "forbidden": [
-    "Do not install external UI libraries (Material UI, Ant Design, Chakra UI, etc.) unless explicitly approved and added to this index",
-    "Do not create new UI components outside src/components/ui/ and src/components/patterns/",
-    "Do not modify base component implementations in src/components/ui/ unless explicitly required by task",
-    "Do not import from non-approved paths (only @/components/ui/*, @/components/patterns/*, @/components/layout/*)",
-    "Do not generate raw bespoke UI markup when an equivalent shadcn/ui component exists",
-    "Do not use third-party component libraries without adding to this index first",
-    "Do not create duplicate components that replicate shadcn/ui functionality"
   ]
 }

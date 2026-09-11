@@ -1,0 +1,191 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:context-menu",
+  "name": "ContextMenu",
+  "namespace": "ui",
+  "tier": "organisms",
+  "status": "stable",
+  "category": "Overlay",
+  "description": "Radix ContextMenu. Structurally identical to ui:dropdown-menu but triggered by right-click or long-press.",
+  "intent": "Actions for the specific thing the user right-clicked.",
+  "authority": {
+    "source": "src/components/ui/context-menu.tsx",
+    "mirrorSpec": "design-system/components/ui/context-menu/context-menu.md",
+    "contract": "design-system/components/ui/context-menu/context-menu.agent.json",
+    "prompt": "design-system/components/ui/context-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/context-menu/context-menu.preview.html",
+    "upstream": "shadcn/ui registry: context-menu",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-context-menu",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-context-menu"
+  },
+  "exports": [
+    "ContextMenu",
+    "ContextMenuCheckboxItem",
+    "ContextMenuContent",
+    "ContextMenuGroup",
+    "ContextMenuItem",
+    "ContextMenuLabel",
+    "ContextMenuPortal",
+    "ContextMenuRadioGroup",
+    "ContextMenuRadioItem",
+    "ContextMenuSeparator",
+    "ContextMenuShortcut",
+    "ContextMenuSub",
+    "ContextMenuSubContent",
+    "ContextMenuSubTrigger",
+    "ContextMenuTrigger"
+  ],
+  "compound": {
+    "root": "ContextMenu",
+    "parts": [
+      {
+        "name": "ContextMenuTrigger",
+        "parent": "ContextMenu",
+        "required": true,
+        "note": "Wraps the right-clickable region — not a button"
+      },
+      {
+        "name": "ContextMenuContent",
+        "parent": "ContextMenu",
+        "required": true
+      },
+      {
+        "name": "ContextMenuItem",
+        "parent": "ContextMenuContent",
+        "required": false
+      },
+      {
+        "name": "ContextMenuCheckboxItem",
+        "parent": "ContextMenuContent",
+        "required": false
+      },
+      {
+        "name": "ContextMenuRadioGroup",
+        "parent": "ContextMenuContent",
+        "required": false
+      },
+      {
+        "name": "ContextMenuSub",
+        "parent": "ContextMenuContent",
+        "required": false
+      },
+      {
+        "name": "ContextMenuSeparator",
+        "parent": "ContextMenuContent",
+        "required": false
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Closed",
+    "Open"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, … } from \"@/components/ui/context-menu\"",
+    "exports": [
+      "ContextMenu",
+      "ContextMenuCheckboxItem",
+      "ContextMenuContent",
+      "ContextMenuGroup",
+      "ContextMenuItem",
+      "ContextMenuLabel",
+      "ContextMenuPortal",
+      "ContextMenuRadioGroup",
+      "ContextMenuRadioItem",
+      "ContextMenuSeparator",
+      "ContextMenuShortcut",
+      "ContextMenuSub",
+      "ContextMenuSubContent",
+      "ContextMenuSubTrigger",
+      "ContextMenuTrigger"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "border",
+      "foreground",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-foreground",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "accessibility": {
+    "role": "menu",
+    "keyboard": [
+      "Shift+F10 or the Menu key — open",
+      "Arrow keys — navigate",
+      "Escape — close"
+    ],
+    "requiredAttributes": [],
+    "handledByRadix": true,
+    "notes": [
+      "Keyboard users reach this via Shift+F10. Most do not know that. Never make it the only route.",
+      "Every action here must also exist in a visible ui:dropdown-menu or toolbar."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "ContextMenuTrigger",
+      "ContextMenuContent",
+      "ContextMenuItem",
+      "ContextMenuCheckboxItem",
+      "ContextMenuRadioGroup",
+      "ContextMenuSub",
+      "ContextMenuSeparator"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Sole route to an action",
+      "Primary interaction on a touch surface",
+      "Navigation"
+    ],
+    "agentRules": [
+      "Always duplicate these actions somewhere visible.",
+      "Not appropriate as a primary interaction on touch.",
+      "Destructive items still require confirmation."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:dropdown-menu",
+      "note": "The discoverable equivalent — provide both"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

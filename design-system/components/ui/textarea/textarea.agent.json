@@ -1,0 +1,111 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:textarea",
+  "name": "Textarea",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "A styled native textarea with a min-height of 80px. Does not auto-grow.",
+  "intent": "Multi-line text where the length is genuinely open-ended.",
+  "authority": {
+    "source": "src/components/ui/textarea.tsx",
+    "mirrorSpec": "design-system/components/ui/textarea/textarea.md",
+    "contract": "design-system/components/ui/textarea/textarea.agent.json",
+    "prompt": "design-system/components/ui/textarea/agentic-prompt.md",
+    "preview": "design-system/components/ui/textarea/textarea.preview.html",
+    "upstream": "shadcn/ui registry: textarea",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "Textarea"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Textarea } from \"@/components/ui/textarea\"",
+    "exports": [
+      "Textarea"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "input",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "border-input",
+      "ring-ring",
+      "text-muted"
+    ]
+  },
+  "accessibility": {
+    "role": "textbox",
+    "keyboard": [
+      "Standard text editing",
+      "Tab moves focus out rather than inserting a tab"
+    ],
+    "requiredAttributes": [
+      "An associated label",
+      "aria-describedby for character limits or helper text"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "If you impose a character limit, announce the remaining count in a polite live region, not only visually."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Placeholder as the only label",
+      "A hard character limit with no visible or announced counter"
+    ],
+    "agentRules": [
+      "Always pair with ui:label.",
+      "Does not auto-grow — set rows or a min-height class if the default is wrong.",
+      "Announce character limits in a live region."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:input",
+      "note": "Single-line"
+    },
+    {
+      "id": "ui:form",
+      "note": "Validation"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

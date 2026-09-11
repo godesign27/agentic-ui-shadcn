@@ -1,0 +1,342 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sidebar",
+  "name": "Sidebar",
+  "namespace": "ui",
+  "tier": "templates",
+  "status": "stable",
+  "category": "Layout",
+  "description": "The largest component in the inventory at 774 lines. Provider, trigger, rail, inset, header, footer, groups, menus, submenus, badges and skeletons. Collapse state persists in a cookie; on mobile it becomes a ui:sheet.",
+  "intent": "A complete application navigation shell — collapsible, persistent, responsive, and keyboard-reachable.",
+  "authority": {
+    "source": "src/components/ui/sidebar.tsx",
+    "mirrorSpec": "design-system/components/ui/sidebar/sidebar.md",
+    "contract": "design-system/components/ui/sidebar/sidebar.agent.json",
+    "prompt": "design-system/components/ui/sidebar/agentic-prompt.md",
+    "preview": "design-system/components/ui/sidebar/sidebar.preview.html",
+    "upstream": "shadcn/ui registry: sidebar",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ui:button",
+      "ui:input",
+      "ui:separator",
+      "ui:sheet",
+      "ui:skeleton",
+      "ui:tooltip"
+    ],
+    "external": [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-slot"
+  },
+  "exports": [
+    "Sidebar",
+    "SidebarContent",
+    "SidebarFooter",
+    "SidebarGroup",
+    "SidebarGroupAction",
+    "SidebarGroupContent",
+    "SidebarGroupLabel",
+    "SidebarHeader",
+    "SidebarInput",
+    "SidebarInset",
+    "SidebarMenu",
+    "SidebarMenuAction",
+    "SidebarMenuBadge",
+    "SidebarMenuButton",
+    "SidebarMenuItem",
+    "SidebarMenuSkeleton",
+    "SidebarMenuSub",
+    "SidebarMenuSubButton",
+    "SidebarMenuSubItem",
+    "SidebarProvider",
+    "SidebarRail",
+    "SidebarSeparator",
+    "SidebarTrigger",
+    "useSidebar"
+  ],
+  "compound": {
+    "root": "SidebarProvider",
+    "parts": [
+      {
+        "name": "SidebarProvider",
+        "parent": null,
+        "required": true,
+        "note": "Owns open state, the cookie and the Cmd+B shortcut. Nothing works without it."
+      },
+      {
+        "name": "Sidebar",
+        "parent": "SidebarProvider",
+        "required": true,
+        "note": "side, variant and collapsible props"
+      },
+      {
+        "name": "SidebarInset",
+        "parent": "SidebarProvider",
+        "required": false,
+        "note": "The main content region beside the sidebar"
+      },
+      {
+        "name": "SidebarTrigger",
+        "parent": "SidebarProvider",
+        "required": false,
+        "note": "The toggle button"
+      },
+      {
+        "name": "SidebarRail",
+        "parent": "Sidebar",
+        "required": false,
+        "note": "The thin drag-to-toggle edge"
+      },
+      {
+        "name": "SidebarHeader",
+        "parent": "Sidebar",
+        "required": false
+      },
+      {
+        "name": "SidebarContent",
+        "parent": "Sidebar",
+        "required": true
+      },
+      {
+        "name": "SidebarFooter",
+        "parent": "Sidebar",
+        "required": false
+      },
+      {
+        "name": "SidebarGroup",
+        "parent": "SidebarContent",
+        "required": false
+      },
+      {
+        "name": "SidebarGroupLabel",
+        "parent": "SidebarGroup",
+        "required": false
+      },
+      {
+        "name": "SidebarGroupContent",
+        "parent": "SidebarGroup",
+        "required": false
+      },
+      {
+        "name": "SidebarMenu",
+        "parent": "SidebarGroupContent",
+        "required": false,
+        "note": "A ul"
+      },
+      {
+        "name": "SidebarMenuItem",
+        "parent": "SidebarMenu",
+        "required": true,
+        "note": "An li"
+      },
+      {
+        "name": "SidebarMenuButton",
+        "parent": "SidebarMenuItem",
+        "required": false,
+        "note": "isActive marks the current route. tooltip shows when collapsed."
+      },
+      {
+        "name": "SidebarMenuSub",
+        "parent": "SidebarMenuItem",
+        "required": false
+      },
+      {
+        "name": "SidebarMenuAction",
+        "parent": "SidebarMenuItem",
+        "required": false,
+        "note": "A secondary action on hover"
+      },
+      {
+        "name": "SidebarMenuBadge",
+        "parent": "SidebarMenuItem",
+        "required": false
+      },
+      {
+        "name": "SidebarMenuSkeleton",
+        "parent": "SidebarMenu",
+        "required": false
+      },
+      {
+        "name": "SidebarSeparator",
+        "parent": "Sidebar",
+        "required": false
+      }
+    ]
+  },
+  "variants": [
+    "default",
+    "outline"
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg"
+  ],
+  "states": [
+    "Expanded",
+    "Collapsed (icon)",
+    "Collapsed (offcanvas)",
+    "Mobile"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the variant values declared in sidebarMenuButtonVariants."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "One of the size values declared in sidebarMenuButtonVariants."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "default": "false",
+      "required": false,
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Sidebar, SidebarContent, SidebarFooter, … } from \"@/components/ui/sidebar\"",
+    "exports": [
+      "Sidebar",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarGroup",
+      "SidebarGroupAction",
+      "SidebarGroupContent",
+      "SidebarGroupLabel",
+      "SidebarHeader",
+      "SidebarInput",
+      "SidebarInset",
+      "SidebarMenu",
+      "SidebarMenuAction",
+      "SidebarMenuBadge",
+      "SidebarMenuButton",
+      "SidebarMenuItem",
+      "SidebarMenuSkeleton",
+      "SidebarMenuSub",
+      "SidebarMenuSubButton",
+      "SidebarMenuSubItem",
+      "SidebarProvider",
+      "SidebarRail",
+      "SidebarSeparator",
+      "SidebarTrigger",
+      "useSidebar"
+    ],
+    "forwardsRef": true,
+    "asChild": true,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "sidebar-accent",
+      "sidebar-border",
+      "sidebar-foreground",
+      "sidebar-ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-sidebar-accent",
+      "bg-sidebar-border",
+      "border-sidebar-border",
+      "ring-sidebar-ring",
+      "text-sidebar-accent",
+      "text-sidebar-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "complementary",
+    "keyboard": [
+      "Cmd/Ctrl+B — toggle, bound by the provider",
+      "Tab through menu items",
+      "Enter — activate"
+    ],
+    "requiredAttributes": [
+      "tooltip on SidebarMenuButton when collapsible=\"icon\"",
+      "isActive plus aria-current on the active route"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "When collapsed to icons, the tooltip prop is the only accessible name a menu button has. Omitting it makes the collapsed sidebar unusable.",
+      "The Cmd+B shortcut is registered globally by the provider. Check it does not collide with your editor surfaces.",
+      "Uses its own --sidebar-* token scale, deliberately distinct from the page palette."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "SidebarProvider",
+      "Sidebar",
+      "SidebarInset",
+      "SidebarTrigger",
+      "SidebarRail",
+      "SidebarHeader",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarGroup",
+      "SidebarGroupLabel",
+      "SidebarGroupContent",
+      "SidebarMenu",
+      "SidebarMenuItem",
+      "SidebarMenuButton",
+      "SidebarMenuSub",
+      "SidebarMenuAction",
+      "SidebarMenuBadge",
+      "SidebarMenuSkeleton",
+      "SidebarSeparator"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Sidebar without SidebarProvider",
+      "Icon-collapsible menu buttons with no tooltip",
+      "Page tokens instead of sidebar tokens",
+      "Using Sidebar for marketing navigation"
+    ],
+    "agentRules": [
+      "SidebarProvider must wrap everything, including SidebarInset.",
+      "Always set the tooltip prop on SidebarMenuButton when collapsible=\"icon\".",
+      "Mark the active route with isActive.",
+      "Use the --sidebar-* tokens, not the page tokens.",
+      "Mobile renders as a Sheet — verify both."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:sheet",
+      "note": "What it becomes on mobile"
+    },
+    {
+      "id": "ui:navigation-menu",
+      "note": "Site navigation"
+    },
+    {
+      "id": "ui:tooltip",
+      "note": "Collapsed labels"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

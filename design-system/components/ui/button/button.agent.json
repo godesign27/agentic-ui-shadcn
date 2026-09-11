@@ -1,0 +1,171 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:button",
+  "name": "Button",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "The primary interactive control. Six variants spanning full emphasis to bare text, four sizes, and asChild polymorphism for rendering as a link while keeping button styling.",
+  "intent": "The single most important decision available in a region, and every lesser one alongside it.",
+  "authority": {
+    "source": "src/components/ui/button.tsx",
+    "mirrorSpec": "design-system/components/ui/button/button.md",
+    "contract": "design-system/components/ui/button/button.agent.json",
+    "prompt": "design-system/components/ui/button/agentic-prompt.md",
+    "preview": "design-system/components/ui/button/button.preview.html",
+    "upstream": "shadcn/ui registry: button",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-slot",
+      "class-variance-authority"
+    ],
+    "radixPrimitive": "@radix-ui/react-slot"
+  },
+  "exports": [
+    "Button",
+    "buttonVariants"
+  ],
+  "variants": [
+    "default",
+    "destructive",
+    "outline",
+    "secondary",
+    "ghost",
+    "link"
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg",
+    "icon"
+  ],
+  "states": [
+    "Default",
+    "Hover",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\" | \"icon\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "See sizeGuidance in the mirror spec."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "default": "false",
+      "required": false,
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Button, buttonVariants } from \"@/components/ui/button\"",
+    "exports": [
+      "Button",
+      "buttonVariants"
+    ],
+    "forwardsRef": true,
+    "asChild": true,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "destructive",
+      "input",
+      "primary",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-destructive",
+      "bg-primary",
+      "bg-secondary",
+      "border-input",
+      "ring-ring",
+      "text-accent",
+      "text-destructive",
+      "text-primary",
+      "text-secondary"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter — activate",
+      "Space — activate"
+    ],
+    "requiredAttributes": [
+      "aria-label or visible text content",
+      "aria-label required when size=\"icon\""
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Native button element gives keyboard and screen-reader behavior for free.",
+      "disabled removes the element from the tab order. If the user needs to know why it is disabled, use aria-disabled and handle the click instead.",
+      "When asChild renders an anchor, the element becomes a link: Space no longer activates it and it gains link semantics. That is usually what you want for navigation, and wrong for actions."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Two primary buttons in one action region",
+      "variant=\"destructive\" on a non-destructive action",
+      "Removing focus-visible styling",
+      "Icon-only button with no accessible name"
+    ],
+    "agentRules": [
+      "One variant=\"default\" button per action region.",
+      "Label with a verb naming the specific outcome — \"Delete project\", not \"OK\".",
+      "size=\"icon\" without an accessible name is a hard failure.",
+      "Do not restyle via className when a variant already expresses the intent.",
+      "buttonVariants is imported by ui:alert-dialog, ui:calendar, ui:carousel and ui:pagination. Renaming a variant breaks all four silently."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toggle",
+      "note": "For binary state rather than an action"
+    },
+    {
+      "id": "ui:dropdown-menu",
+      "note": "When one button hides several actions"
+    },
+    {
+      "id": "ui:alert-dialog",
+      "note": "Required companion for destructive actions"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

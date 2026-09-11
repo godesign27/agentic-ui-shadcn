@@ -1,0 +1,118 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sonner",
+  "name": "Toaster",
+  "namespace": "ui",
+  "tier": "templates",
+  "status": "stable",
+  "category": "Feedback",
+  "description": "A Sonner wrapper themed to shadcn tokens. Exports Toaster, which collides by name with ui:toaster — they are different components and you must choose one.",
+  "intent": "The same job as ui:toaster, through a different library with a simpler imperative API.",
+  "authority": {
+    "source": "src/components/ui/sonner.tsx",
+    "mirrorSpec": "design-system/components/ui/sonner/sonner.md",
+    "contract": "design-system/components/ui/sonner/sonner.agent.json",
+    "prompt": "design-system/components/ui/sonner/agentic-prompt.md",
+    "preview": "design-system/components/ui/sonner/sonner.preview.html",
+    "upstream": "shadcn/ui registry: sonner",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react",
+      "next-themes",
+      "sonner"
+    ]
+  },
+  "exports": [
+    "Toaster"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Empty",
+    "Stacked"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Toaster } from \"@/components/ui/sonner\"",
+    "exports": [
+      "Toaster"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "background",
+      "border",
+      "foreground",
+      "muted",
+      "primary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-muted",
+      "bg-primary",
+      "border-border",
+      "text-foreground",
+      "text-muted",
+      "text-primary"
+    ]
+  },
+  "accessibility": {
+    "role": "region",
+    "keyboard": [
+      "Sonner supplies its own focus and dismissal handling"
+    ],
+    "requiredAttributes": [],
+    "handledByRadix": false,
+    "notes": [
+      "Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast.",
+      "Reads the active theme from next-themes. This is a Vite app with Tailwind darkMode: [\"class\"], so next-themes is not what toggles the class here — confirm the theme it reports matches the class actually on the html element."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Running alongside ui:toaster",
+      "Ambiguous Toaster imports"
+    ],
+    "agentRules": [
+      "Choose Sonner or ui:toaster. Never both.",
+      "Both export a component named Toaster — import deliberately and alias if needed.",
+      "Verify the theme reported by next-themes matches the dark class this app actually sets, or Sonner will render in the wrong theme."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toaster",
+      "note": "The Radix-based alternative"
+    },
+    {
+      "id": "ui:toast",
+      "note": "The Radix primitives"
+    }
+  ],
+  "gaps": [
+    "Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.",
+    "Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

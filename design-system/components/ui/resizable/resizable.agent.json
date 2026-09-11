@@ -1,0 +1,136 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:resizable",
+  "name": "ResizableHandle",
+  "namespace": "ui",
+  "tier": "layout",
+  "status": "stable",
+  "category": "Layout",
+  "description": "A react-resizable-panels wrapper. Panels, a group, and a handle that can show a grip.",
+  "intent": "Let the user decide how to divide the space.",
+  "authority": {
+    "source": "src/components/ui/resizable.tsx",
+    "mirrorSpec": "design-system/components/ui/resizable/resizable.md",
+    "contract": "design-system/components/ui/resizable/resizable.agent.json",
+    "prompt": "design-system/components/ui/resizable/agentic-prompt.md",
+    "preview": "design-system/components/ui/resizable/resizable.preview.html",
+    "upstream": "shadcn/ui registry: resizable",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react",
+      "react-resizable-panels"
+    ]
+  },
+  "exports": [
+    "ResizableHandle",
+    "ResizablePanel",
+    "ResizablePanelGroup"
+  ],
+  "compound": {
+    "root": "ResizablePanelGroup",
+    "parts": [
+      {
+        "name": "ResizablePanel",
+        "parent": "ResizablePanelGroup",
+        "required": true,
+        "note": "Accepts defaultSize, minSize and maxSize as percentages"
+      },
+      {
+        "name": "ResizableHandle",
+        "parent": "ResizablePanelGroup",
+        "required": true,
+        "note": "Sits between panels. withHandle renders a visible grip."
+      }
+    ]
+  },
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Dragging",
+    "Handle focused"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from \"@/components/ui/resizable\"",
+    "exports": [
+      "ResizableHandle",
+      "ResizablePanel",
+      "ResizablePanelGroup"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "border",
+      "ring"
+    ],
+    "utilities": [
+      "bg-border",
+      "ring-ring"
+    ]
+  },
+  "accessibility": {
+    "role": "separator",
+    "keyboard": [
+      "Arrow keys — resize when the handle has focus",
+      "Enter — collapse or expand where configured"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the handle when the panels are not otherwise identifiable"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "The library supplies keyboard resizing. The default handle is 1px wide — well under any reasonable target size.",
+      "Use withHandle on touch surfaces so there is something to grab.",
+      "Set minSize so a panel cannot be resized into uselessness."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [
+      "ResizablePanel",
+      "ResizableHandle"
+    ],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Resizable layouts on mobile",
+      "Panels with no minSize"
+    ],
+    "agentRules": [
+      "Set minSize on every panel.",
+      "Use withHandle where touch or discoverability matters.",
+      "Provide a non-resizable fallback for mobile.",
+      "Persist the user's sizes if resizing is worth offering at all."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:sidebar",
+      "note": "A purpose-built collapsible navigation panel"
+    },
+    {
+      "id": "ui:separator",
+      "note": "A static divider"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

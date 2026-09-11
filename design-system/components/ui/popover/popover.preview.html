@@ -1,0 +1,82 @@
+<title>Popover — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>Popover</h1>
+<p class="lede">Contextual content anchored to a trigger, without blocking the page.</p>
+<div class="meta">
+<span class="pill mono">ui:popover</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">Overlay</span>
+<span class="pill mono">@radix-ui/react-popover</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — focus management, portalling and keyboard interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ui/popover.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Closed</strong></td><td><code>Rest</code></td><td>Nothing rendered</td></tr>
+<tr><td><strong>Open</strong></td><td><code>Click or Enter on trigger</code></td><td>Animates in from the computed side</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<p class="desc">Parts must nest as shown. A part outside its required parent is a structural violation.</p>
+<div class="surface"><pre class="tree">Popover
+  PopoverTrigger
+  PopoverContent</pre></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--popover))"></div><div class="name">--popover</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>popover.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A date picker, colour picker or small settings cluster</li>
+<li>Supplementary detail the user opts into</li>
+<li>Anything needing interactive content near its trigger</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Content critical to the task — if the user must read it, it cannot be behind a click</li>
+<li>A simple text hint — use ui:tooltip</li>
+<li>A list of actions — use ui:dropdown-menu, which has menu semantics and arrow-key navigation</li>
+<li>A form that warrants full attention — use ui:dialog</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">Roles, ARIA wiring and focus management come from <code>@radix-ui/react-popover</code>. Do not re-implement them.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>dialog</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Enter or Space — open<br />Escape — close and return focus to trigger<br />Tab — move through content</td></tr>
+<tr><th scope="row">Required</th><td>An accessible name on the trigger</td></tr>
+<tr><th scope="row">Focus</th><td>Focus moves into the content on open and returns to the trigger on close.</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Non-modal: the rest of the page stays interactive. That is the difference from ui:dialog.</li>
+<li>Content is portalled, so overflow-hidden ancestors do not clip it.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ui/popover.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="popover.agent.json"><code>popover.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="popover.md"><code>popover.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

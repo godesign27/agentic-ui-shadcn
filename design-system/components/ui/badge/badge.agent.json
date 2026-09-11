@@ -1,0 +1,131 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:badge",
+  "name": "Badge",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Data Display",
+  "description": "A small pill with four variants. Renders a div — not interactive, despite having hover styles.",
+  "intent": "A short label that classifies the thing next to it.",
+  "authority": {
+    "source": "src/components/ui/badge.tsx",
+    "mirrorSpec": "design-system/components/ui/badge/badge.md",
+    "contract": "design-system/components/ui/badge/badge.agent.json",
+    "prompt": "design-system/components/ui/badge/agentic-prompt.md",
+    "preview": "design-system/components/ui/badge/badge.preview.html",
+    "upstream": "shadcn/ui registry: badge",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "class-variance-authority"
+    ]
+  },
+  "exports": [
+    "Badge",
+    "badgeVariants"
+  ],
+  "variants": [
+    "default",
+    "secondary",
+    "destructive",
+    "outline"
+  ],
+  "sizes": [],
+  "states": [
+    "Default"
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"secondary\" | \"destructive\" | \"outline\"",
+      "default": "\"default\"",
+      "required": false,
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Badge, badgeVariants } from \"@/components/ui/badge\"",
+    "exports": [
+      "Badge",
+      "badgeVariants"
+    ],
+    "forwardsRef": false,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "destructive",
+      "foreground",
+      "primary",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-destructive",
+      "bg-primary",
+      "bg-secondary",
+      "ring-ring",
+      "text-destructive",
+      "text-foreground",
+      "text-primary",
+      "text-secondary"
+    ]
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "handledByRadix": false,
+    "notes": [
+      "A Badge is a div with no semantics. Its text is read inline with surrounding content, which is usually what you want.",
+      "Status must be in the text, not only the colour. \"Failed\" plus red — never red alone.",
+      "A count badge needs context: aria-label=\"3 unread notifications\", not a bare \"3\".",
+      "The base class includes hover and focus styles, which is misleading — the element is not focusable. For an interactive chip, use ui:button or ui:toggle."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Badge as a clickable control",
+      "Colour-only status",
+      "Long text"
+    ],
+    "agentRules": [
+      "Status goes in the text, not only the colour.",
+      "A bare number needs an aria-label giving it meaning.",
+      "For an interactive chip use ui:button variant=\"outline\" size=\"sm\", not a Badge.",
+      "Keep to one or two words."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:button",
+      "note": "Interactive chips"
+    },
+    {
+      "id": "ui:toggle",
+      "note": "Filter chips"
+    }
+  ],
+  "gaps": [
+    "Carries hover and focus-visible styling despite rendering a non-focusable div. Do not read that as permission to make it interactive."
+  ],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}

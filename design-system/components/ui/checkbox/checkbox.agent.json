@@ -1,0 +1,120 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:checkbox",
+  "name": "Checkbox",
+  "namespace": "ui",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "Forms",
+  "description": "Radix Checkbox with a Lucide check indicator. Supports an indeterminate state through checked=\"indeterminate\".",
+  "intent": "An independent yes-or-no choice, or one of several non-exclusive options.",
+  "authority": {
+    "source": "src/components/ui/checkbox.tsx",
+    "mirrorSpec": "design-system/components/ui/checkbox/checkbox.md",
+    "contract": "design-system/components/ui/checkbox/checkbox.agent.json",
+    "prompt": "design-system/components/ui/checkbox/agentic-prompt.md",
+    "preview": "design-system/components/ui/checkbox/checkbox.preview.html",
+    "upstream": "shadcn/ui registry: checkbox",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "@radix-ui/react-checkbox",
+      "lucide-react"
+    ],
+    "radixPrimitive": "@radix-ui/react-checkbox"
+  },
+  "exports": [
+    "Checkbox"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Unchecked",
+    "Checked",
+    "Indeterminate",
+    "Focus-visible",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { Checkbox } from \"@/components/ui/checkbox\"",
+    "exports": [
+      "Checkbox"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "bg-primary",
+      "border-primary",
+      "ring-ring",
+      "text-primary"
+    ]
+  },
+  "accessibility": {
+    "role": "checkbox",
+    "keyboard": [
+      "Space — toggle",
+      "Tab — move focus"
+    ],
+    "requiredAttributes": [
+      "An associated label, or aria-label"
+    ],
+    "handledByRadix": true,
+    "notes": [
+      "Radix supplies role, aria-checked and the mixed state. Do not add them by hand.",
+      "Group related checkboxes in a fieldset with a legend."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Checkbox with no label",
+      "Using a checkbox where exactly one option must be chosen",
+      "Overriding aria-checked"
+    ],
+    "agentRules": [
+      "Always pair with ui:label using htmlFor.",
+      "Use indeterminate for parent rows rather than a third visual style.",
+      "A checkbox that applies instantly should probably be a ui:switch."
+    ]
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:radio-group",
+      "note": "Exclusive choice"
+    },
+    {
+      "id": "ui:switch",
+      "note": "Immediate setting"
+    },
+    {
+      "id": "ui:form",
+      "note": "Validation"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "curated": true
+}
