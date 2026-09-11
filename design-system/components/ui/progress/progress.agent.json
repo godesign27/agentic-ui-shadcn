@@ -42,6 +42,12 @@
   ],
   "props": [
     {
+      "name": "value",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
@@ -114,6 +120,6 @@
   "gaps": [
     "The indeterminate state is not visually distinguished. Use a spinner instead."
   ],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

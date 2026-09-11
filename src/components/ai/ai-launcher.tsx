@@ -54,7 +54,7 @@ const AILauncher = React.forwardRef<HTMLButtonElement, AILauncherProps>(
         {!iconOnly && <span className="text-sm font-semibold text-foreground">{label}</span>}
         {unread && (
           <span
-            className="absolute -right-0.5 -top-0.5 inline-flex min-w-4 items-center justify-center rounded-full bg-ai-signal px-1 text-[10px] font-bold leading-4 text-white"
+            className="absolute -right-0.5 -top-0.5 inline-flex min-w-4 items-center justify-center rounded-full bg-ai-signal px-1 text-[10px] font-bold leading-4 text-ai-signal-foreground"
             aria-label={unreadCount ? `${unreadCount} unread messages` : "Unread messages"}
           >
             {unreadCount ?? ""}

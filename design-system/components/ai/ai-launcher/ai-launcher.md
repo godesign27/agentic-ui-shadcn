@@ -86,6 +86,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | `unreadCount` | `number` | — | Declared in the component source. |
 | `loading` | `boolean` | — | Declared in the component source. |
 | `disabledReason` | `string` | — | Declared in the component source. |
+| `disabled` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 
@@ -98,7 +99,7 @@ Consumed from the semantic contract in [`design-system/tokens/semantic.json`](..
 | Token | Utilities in this component |
 | --- | --- |
 | `ai-accent` | `border-ai-accent`, `ring-ai-accent`, `text-ai-accent` |
-| `ai-signal` | `bg-ai-signal` |
+| `ai-signal` | `bg-ai-signal`, `text-ai-signal` |
 | `ai-surface` | `bg-ai-surface`, `border-ai-surface` |
 | `card` | `bg-card` |
 | `foreground` | `text-foreground` |

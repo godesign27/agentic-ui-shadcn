@@ -76,6 +76,13 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | `suggestions` | `React.ReactNode` | — | The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState("") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal("") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === "Enter" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, "onSubmit"> { /** Toolbar controls. Use ai:ai-dialog-button for each. */ toolbar?: React.ReactNode /** Suggested prompts shown above the field. Use ai:ai-chip-quick. |
 | `rows` | `number` | — | Declared in the component source. |
 | `label` | `string` | — | Declared in the component source. |
+| `placeholder` | `see source` | — | Declared in the component source. |
+| `submitLabel` | `see source` | — | Declared in the component source. |
+| `value` | `see source` | — | Declared in the component source. |
+| `onValueChange` | `see source` | — | Declared in the component source. |
+| `onSubmit` | `see source` | — | Declared in the component source. |
+| `disabled` | `see source` | — | Declared in the component source. |
+| `busy` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

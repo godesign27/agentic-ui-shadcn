@@ -76,6 +76,12 @@
       "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely. */ loading?: boolean loadingVariant?: \"thinking\" | \"working\" | \"retrieving\" /** While true, the body is a polite live region so arriving text is announced."
     },
     {
+      "name": "workNote",
+      "type": "object",
+      "required": false,
+      "hint": "One AI turn, assembled so that authorship, progress and recourse are all present by construction. This is design-system/patterns/ai-response.json as a component: it renders the required parts in the required order, so the pattern cannot be composed wrongly. The header always precedes the body; the loading indicator announces; feedback is available unless explicitly suppressed. / export interface AIResponseProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string timestamp?: string /** While true, the loading indicator replaces the body and announces politely. */ loading?: boolean loadingVariant?: \"thinking\" | \"working\" | \"retrieving\" /** While true, the body is a polite live region so arriving text is announced. */ streaming?: boolean /** Optional disclosure of what the agent did to produce this."
+    },
+    {
       "name": "actions",
       "type": "FooterAction[]",
       "required": false,
@@ -186,6 +192,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

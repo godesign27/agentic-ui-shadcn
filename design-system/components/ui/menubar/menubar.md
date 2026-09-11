@@ -63,6 +63,11 @@ Radix Menubar: a horizontal row of menus that share focus and open on hover once
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `inset` | `boolean` | — | Declared in the component source. |
+| `align` | `see source` | — | Declared in the component source. |
+| `alignOffset` | `see source` | — | Declared in the component source. |
+| `sideOffset` | `see source` | — | Declared in the component source. |
+| `checked` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

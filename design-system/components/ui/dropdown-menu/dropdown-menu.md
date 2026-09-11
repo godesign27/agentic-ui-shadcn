@@ -70,6 +70,9 @@ Radix DropdownMenu with submenus, checkbox items, radio groups, labels, separato
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `inset` | `boolean` | — | Declared in the component source. |
+| `sideOffset` | `see source` | — | Declared in the component source. |
+| `checked` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

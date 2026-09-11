@@ -82,7 +82,7 @@
     },
     {
       "name": "icon",
-      "type": "React.ComponentType< >",
+      "type": "React.ComponentType<object>",
       "required": true,
       "hint": "Required. Declared in the component source."
     },
@@ -188,6 +188,6 @@
   "gaps": [
     "The handoff-trail, completion-settle, nudge, shimmer and alert-ring motions from the source system are not implemented. Only spin and pulse."
   ],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

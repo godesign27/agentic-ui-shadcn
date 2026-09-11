@@ -21,6 +21,7 @@ export default {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			overlay: 'hsl(var(--overlay))',
   			ai: {
   				accent: 'hsl(var(--ai-accent))',
   				'accent-strong': 'hsl(var(--ai-accent-strong))',
@@ -29,6 +30,7 @@ export default {
   				surface: 'hsl(var(--ai-surface))',
   				'surface-border': 'hsl(var(--ai-surface-border))',
   				signal: 'hsl(var(--ai-signal))',
+  				'signal-foreground': 'hsl(var(--ai-signal-foreground))',
   				'signal-surface': 'hsl(var(--ai-signal-surface))',
   				'signal-border': 'hsl(var(--ai-signal-border))',
   				'confidence-high': 'hsl(var(--ai-confidence-high))',

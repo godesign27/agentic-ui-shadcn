@@ -21,6 +21,15 @@ const SEMANTIC_TOKENS = [
 
 const UTILITY_PREFIXES = 'bg|text|border|ring|from|to|via|fill|stroke|divide|outline|decoration|shadow|accent|caret|placeholder'
 
+function matchAngle(str, openIdx) {
+  let depth = 0
+  for (let i = openIdx; i < str.length; i++) {
+    if (str[i] === '<') depth++
+    else if (str[i] === '>') { depth--; if (!depth) return i }
+  }
+  return -1
+}
+
 function matchBrace(str, openIdx) {
   let depth = 0
   for (let i = openIdx; i < str.length; i++) {
@@ -112,25 +121,45 @@ function extractProps(src) {
 
   // Inline object types in a forwardRef generic:
   //   React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<…> & { as?: … }>
-  for (const m of src.matchAll(/React\.forwardRef<[^,]+,\s*[^>]*?&\s*\{/g)) {
-    const open = src.indexOf('{', m.index + m[0].length - 1)
-    const close = matchBrace(src, open)
-    if (close === -1) continue
-    bodies.push({ owner: null, body: src.slice(open + 1, close) })
+  //
+  // The generic argument list nests its own angle brackets, so the span has to
+  // be found by depth, not by scanning to the first '>'. Getting this wrong
+  // dropped CardTitle's `as` prop from the contract entirely.
+  for (const m of src.matchAll(/React\.forwardRef\s*</g)) {
+    const openAngle = src.indexOf('<', m.index)
+    const closeAngle = matchAngle(src, openAngle)
+    if (closeAngle === -1) continue
+    const generic = src.slice(openAngle + 1, closeAngle)
+
+    // Every inline object literal inside the generic contributes members.
+    let cursor = 0
+    while (true) {
+      const brace = generic.indexOf('{', cursor)
+      if (brace === -1) break
+      const end = matchBrace(generic, brace)
+      if (end === -1) break
+      bodies.push({ owner: null, body: generic.slice(brace + 1, end) })
+      cursor = end + 1
+    }
   }
 
   const props = []
   const seen = new Set()
 
   for (const { owner, body } of bodies) {
-    // Strip nested object literals so a nested member is not read as top level.
+    // Collapse nested object literals to a placeholder rather than deleting
+    // them: `workNote?: { content?: string }` must still register as a member,
+    // and dropping the braces left `workNote?:` with no type at all.
     let depth = 0
     let flat = ''
     for (const ch of body) {
-      if (ch === '{') depth++
-      else if (ch === '}') { depth--; continue }
+      if (ch === '{') {
+        depth++
+        if (depth === 1) flat += 'object'
+        continue
+      }
+      if (ch === '}') { depth--; continue }
       if (depth === 0) flat += ch
-      else if (ch === '{') flat += ' '
     }
 
     for (const line of flat.split(/[;\n]/)) {
@@ -156,6 +185,26 @@ function extractProps(src) {
     const doc = src.match(re)
     if (doc) {
       prop.hint = doc[1].replace(/^\s*\*\s?/gm, '').replace(/\s+/g, ' ').trim()
+    }
+  }
+
+  const IGNORED = new Set(['className', 'children', 'ref', 'props', 'key'])
+  for (const sig of src.matchAll(/\(\s*\{([^}]*)\}\s*,\s*ref\s*\)/g)) {
+    for (const part of sig[1].split(',')) {
+      const t = part.trim()
+      if (!t || t.startsWith('...')) continue
+      const m = t.match(/^([A-Za-z_$][\w$]*)\s*(?::\s*[A-Za-z_$][\w$]*)?\s*(?:=\s*(.+))?$/)
+      if (!m) continue
+      const [, name, defaultValue] = m
+      if (IGNORED.has(name) || seen.has(name)) continue
+      seen.add(name)
+      props.push({
+        name,
+        type: 'see source',
+        required: false,
+        default: defaultValue ? defaultValue.trim() : undefined,
+        inherited: true,
+      })
     }
   }
 

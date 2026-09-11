@@ -68,7 +68,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
-| `icon` | `React.ComponentType< >` | — | Declared in the component source. |
+| `icon` | `React.ComponentType<object>` | — | Declared in the component source. |
 | `label` | `string` | **required** | Required. Declared in the component source. |
 | `isSpecial` | `boolean` | — | A suggested prompt, offered so the user does not have to start from nothing. Suggest-level only: tapping one composes a message, it never executes. A quick chip that performs an action is a different component. / export interface AIChipQuickProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { icon?: React.ComponentType<{ className?: string }> label: string /** The "All prompts" call to action. One per group at most. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |

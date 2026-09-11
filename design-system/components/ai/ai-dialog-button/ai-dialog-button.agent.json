@@ -62,6 +62,12 @@
       "hint": "The ghost toolbar control inside the AI composer. Icon-only, icon + label, or label + trailing icon. Icon-only collapses to a 34px circle and therefore REQUIRES an accessible name — the shape carries no meaning on its own. / export interface AIDialogButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { icon?: React.ReactNode label?: string trailingIcon?: React.ReactNode /** Active when the control owns an open popover or menu."
     },
     {
+      "name": "disabled",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
@@ -148,6 +154,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

@@ -24,6 +24,9 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+    /* Modal scrim. Deliberately dark in both themes — an overlay that flipped
+       to white in light mode would stop reading as "the page is behind this". */
+    --overlay: 0 0% 0%;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -43,6 +46,7 @@
     --ai-surface: 231 100% 98%;
     --ai-surface-border: 231 60% 92%;
     --ai-signal: 29 100% 40%;
+    --ai-signal-foreground: 0 0% 100%;
     --ai-signal-surface: 42 83% 98%;
     --ai-signal-border: 38 100% 78%;
     --ai-confidence-high: 142 71% 45%;
@@ -71,6 +75,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    --overlay: 0 0% 0%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -88,6 +93,7 @@
     --ai-surface: 233 30% 14%;
     --ai-surface-border: 233 25% 24%;
     --ai-signal: 38 95% 62%;
+    --ai-signal-foreground: 29 60% 12%;
     --ai-signal-surface: 29 40% 15%;
     --ai-signal-border: 29 50% 32%;
     --ai-confidence-high: 142 60% 55%;

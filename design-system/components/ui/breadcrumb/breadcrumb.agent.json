@@ -89,6 +89,12 @@
   ],
   "props": [
     {
+      "name": "separator",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "asChild",
       "type": "boolean",
       "default": "false",
@@ -177,6 +183,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

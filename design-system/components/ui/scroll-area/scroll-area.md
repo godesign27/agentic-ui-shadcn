@@ -57,6 +57,7 @@ Radix ScrollArea with a custom-styled scrollbar. The root must have a bounded he
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `orientation` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

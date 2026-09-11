@@ -80,6 +80,17 @@ The largest component in the inventory at 774 lines. Provider, trigger, rail, in
 | --- | --- | --- | --- |
 | `variant` | `"default"` \| `"outline"` | `"default"` | Declared in `sidebarMenuButtonVariants` |
 | `size` | `"default"` \| `"sm"` \| `"lg"` | `"default"` | Declared in `sidebarMenuButtonVariants` |
+| `side` | `"left" \| "right"` | — | Declared in the component source. |
+| `collapsible` | `"offcanvas" \| "icon" \| "none"` | — | Declared in the component source. |
+| `isActive` | `boolean` | — | Declared in the component source. |
+| `tooltip` | `string \| React.ComponentProps<typeof TooltipContent>` | — | Declared in the component source. |
+| `showOnHover` | `boolean` | — | Declared in the component source. |
+| `showIcon` | `boolean` | — | Declared in the component source. |
+| `defaultOpen` | `see source` | — | Declared in the component source. |
+| `open` | `see source` | — | Declared in the component source. |
+| `onOpenChange` | `see source` | — | Declared in the component source. |
+| `style` | `see source` | — | Declared in the component source. |
+| `onClick` | `see source` | — | Declared in the component source. |
 | `asChild` | `boolean` | `false` | Render the child element instead, merging props and styles |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |

@@ -62,6 +62,12 @@ An Embla wrapper with previous and next controls and keyboard arrow support.
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `orientation` | `see source` | — | Declared in the component source. |
+| `opts` | `see source` | — | Declared in the component source. |
+| `setApi` | `see source` | — | Declared in the component source. |
+| `plugins` | `see source` | — | Declared in the component source. |
+| `variant` | `see source` | — | Declared in the component source. |
+| `size` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 
