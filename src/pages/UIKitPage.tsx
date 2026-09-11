@@ -22,7 +22,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Slider } from '@/components/ui/slider'
 import { Toggle } from '@/components/ui/toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Calendar } from '@/components/ui/calendar'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
@@ -36,7 +36,7 @@ import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } fro
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { PromptDrawer } from '@/components/prompt-library/PromptDrawer'
-import { Command, Home, Palette, Copy, Check, Bold, Italic, Underline, ChevronDown, ChevronRight, Info, AlertCircle, Settings } from 'lucide-react'
+import { Command, Home, Palette, Copy, Check, Bold, Italic, Underline, ChevronDown, Info, AlertCircle } from 'lucide-react'
 
 interface ComponentInfo {
   id: string
