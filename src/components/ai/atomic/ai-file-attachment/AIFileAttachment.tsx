@@ -10,7 +10,7 @@
  * a remove control so the user can clear it before submitting the prompt.
  *
  * Icon mapping priority (per spec):
- *   1. ZS / ZAIDYN icon when a matching name exists in AIIcon's registry
+ *   1. Guild icon when a matching name exists in AIIcon's registry
  *   2. Lucide React fallback
  *   3. Generic `file` icon
  */
@@ -18,7 +18,7 @@
 import React, { useState } from 'react';
 import { RiFileTextLine, RiFileCodeLine, RiFileZipLine, RiAlertLine, RiCloseLine, RiLoader4Line } from '@remixicon/react'
 import { RiFileLine, RiFileExcel2Line, RiFileImageLine, RiPresentationLine, RiRefreshLine } from '@remixicon/react';
-import { F, AI, ZDS, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { F, AI, DS, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Public types ────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ export function getFileAttachmentCategory(
   return 'generic';
 }
 
-/** Lucide icon component for a category. ZS icons would be preferred when
+/** Lucide icon component for a category. Guild icons would be preferred when
     they exist in AIIcon's registry — none of the file-* names exist there
     today, so the spec's documented Lucide fallback is the actual rendering. */
 function iconForCategory(category: AIFileCategory) {
@@ -178,9 +178,9 @@ function statusMeta(status: AIFileAttachmentStatus, custom?: string): StatusMeta
 }
 
 const TONE_COLORS = {
-  neutral:  { fg: ZDS.textHelper,      bg: 'transparent',                     border: 'var(--ai-card-border)' },
+  neutral:  { fg: DS.textHelper,      bg: 'transparent',                     border: 'var(--ai-card-border)' },
   progress: { fg: AI.color.action.primary, bg: 'var(--ai-brand-surface)',     border: 'var(--ai-brand-border)' },
-  warning:  { fg: ZS_ORANGE[80],       bg: ZS_ORANGE['00'] as string,         border: ZS_ORANGE[30] as string },
+  warning:  { fg: SIGNAL_ORANGE[80],       bg: SIGNAL_ORANGE['00'] as string,         border: SIGNAL_ORANGE[30] as string },
   error:    { fg: 'var(--ai-status-error-text, #B21111)', bg: 'var(--ai-status-error-bg, #FFEDE9)', border: 'var(--ai-status-error-border, #F5C6C6)' },
 } as const;
 
@@ -287,7 +287,7 @@ export function AIFileAttachment({
           display:       'inline-flex',
           alignItems:    'center',
           justifyContent: 'center',
-          color:         meta.iconKind === 'warning' ? tone.fg : ZDS.textDefault,
+          color:         meta.iconKind === 'warning' ? tone.fg : DS.textDefault,
         }}
       >
         {meta.showSpinner ? (
@@ -324,7 +324,7 @@ export function AIFileAttachment({
           <span style={{
             fontSize:    nameFs,
             fontWeight:  600,
-            color:       ZDS.textDefault,
+            color:       DS.textDefault,
             whiteSpace:  'nowrap',
             overflow:    'hidden',
             textOverflow: 'ellipsis',
@@ -334,14 +334,14 @@ export function AIFileAttachment({
           </span>
           {showFileType && typeLabel && (
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
               fontFamily: F,
               fontSize:    metaFs,
               padding:     '1px 6px',
               background:  'var(--ai-track-bg)',
               border:      '1px solid var(--ai-card-border)',
               borderRadius: AI.radius.xs,
-              color:       ZDS.textHelper,
+              color:       DS.textHelper,
               letterSpacing: 0.4,
               textTransform: 'uppercase',
               whiteSpace:  'nowrap',
@@ -353,7 +353,7 @@ export function AIFileAttachment({
           {(showFileSize ?? !!fileSize) && fileSize && (
             <span style={{
               fontSize: metaFs,
-              color:    ZDS.textHelper,
+              color:    DS.textHelper,
               whiteSpace: 'nowrap',
               flexShrink: 0,
             }}>
@@ -411,7 +411,7 @@ export function AIFileAttachment({
             {helperText && (
               <span style={{
                 fontSize: metaFs,
-                color:    ZDS.textHelper,
+                color:    DS.textHelper,
               }}>
                 {helperText}
               </span>
@@ -462,7 +462,7 @@ export function AIFileAttachment({
             background:   hovRemove && !removeDisabled ? 'var(--ai-track-bg)' : 'transparent',
             border:       '1px solid transparent',
             borderRadius: AI.radius.xs,
-            color:        removeDisabled ? ZDS.textDisabled : ZDS.textHelper,
+            color:        removeDisabled ? DS.textDisabled : DS.textHelper,
             cursor:       removeDisabled ? 'not-allowed' : 'pointer',
             transition:   'background 0.12s ease, color 0.12s ease',
           }}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { F, AI, ZS_ORANGE } from '../../tokens/ai-tokens';
+import { F, AI, SIGNAL_ORANGE } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIMessageHeader } from '../../atomic/ai-message-header/AIMessageHeader';
 import { AIMessageBody } from '../../atomic/ai-message-body/AIMessageBody';
@@ -49,15 +49,15 @@ function AlertRow({ label }: { label: string }) {
     }}>
       {/* Orange alert circle icon */}
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke={ZS_ORANGE[60]} strokeWidth="1.5" />
-        <line x1="8" y1="5" x2="8" y2="8.5" stroke={ZS_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="8" cy="11" r="0.75" fill={ZS_ORANGE[60]} />
+        <circle cx="8" cy="8" r="7" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" />
+        <line x1="8" y1="5" x2="8" y2="8.5" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="8" cy="11" r="0.75" fill={SIGNAL_ORANGE[60]} />
       </svg>
       <span style={{
-        ...AI_TYPOGRAPHY['@zsai-agent-name'],
+        ...AI_TYPOGRAPHY['@ai-agent-name'],
         fontFamily: F,
         fontWeight: 600,
-        color: ZS_ORANGE[70],
+        color: SIGNAL_ORANGE[70],
       }}>
         {label}
       </span>
@@ -106,8 +106,8 @@ export function AIAgentResponseGroup({
   const showFooter     = variant === 'with-footer';
 
   // Notification variant uses orange-tinted card surface
-  const cardBg     = isNotification ? ZS_ORANGE['00'] : 'var(--ai-card-bg-raised)';
-  const cardBorder = isNotification ? ZS_ORANGE[20]   : '#A6B4FC';
+  const cardBg     = isNotification ? SIGNAL_ORANGE['00'] : 'var(--ai-card-bg-raised)';
+  const cardBorder = isNotification ? SIGNAL_ORANGE[20]   : '#A6B4FC';
 
   return (
     <div
@@ -132,15 +132,15 @@ export function AIAgentResponseGroup({
         {isNotification && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7" stroke={ZS_ORANGE[60]} strokeWidth="1.5" />
-              <line x1="8" y1="5" x2="8" y2="8.5" stroke={ZS_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
-              <circle cx="8" cy="11" r="0.75" fill={ZS_ORANGE[60]} />
+              <circle cx="8" cy="8" r="7" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" />
+              <line x1="8" y1="5" x2="8" y2="8.5" stroke={SIGNAL_ORANGE[60]} strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="8" cy="11" r="0.75" fill={SIGNAL_ORANGE[60]} />
             </svg>
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-agent-name'],
+              ...AI_TYPOGRAPHY['@ai-agent-name'],
               fontFamily: F,
               fontWeight: 600,
-              color: ZS_ORANGE[70],
+              color: SIGNAL_ORANGE[70],
             }}>
               {alertLabel}
             </span>

@@ -2,7 +2,7 @@
 
 **Version:** 0.1  
 **Last Updated:** 2026-08-05  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** data-viz (AI)  
 **Repo module:** `aIExplainableChart`  
 **Component type:** Spec stub (awaiting Make → code sync)  

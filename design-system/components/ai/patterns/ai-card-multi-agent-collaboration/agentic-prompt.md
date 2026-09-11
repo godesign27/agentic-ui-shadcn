@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Multi-Agent Collaboration
 
-You are implementing the **AI Card Multi-Agent Collaboration** (`ai-card-multi-agent-collaboration`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Multi-Agent Collaboration** (`ai-card-multi-agent-collaboration`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

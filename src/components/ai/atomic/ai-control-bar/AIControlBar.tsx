@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export type ControlBarState = 'running' | 'paused' | 'redirect-available' | 'cancel-confirm' | 'saved-progress';
@@ -22,7 +22,7 @@ const BASE_BTN: React.CSSProperties = {
   borderRadius: AI.radius.sm,
   border: '1px solid transparent',
   fontFamily: '"Open Sans", sans-serif',
-  ...AI_TYPOGRAPHY['@zsai-caption-1'],
+  ...AI_TYPOGRAPHY['@ai-caption-1'],
   cursor: 'pointer',
 };
 
@@ -36,7 +36,7 @@ const PRIMARY_BTN: React.CSSProperties = {
 const GHOST_BTN: React.CSSProperties = {
   ...BASE_BTN,
   background: 'transparent',
-  color: 'var(--ai-zds-helper)',
+  color: 'var(--ai-ds-helper)',
   border: '1px solid var(--ai-btn-outline-border)',
 };
 
@@ -108,7 +108,7 @@ export function AIControlBar({ state, onPause, onResume, onCancel, onRedirect, o
           style={{
             fontFamily: '"Open Sans", sans-serif',
             fontSize: 12,
-            color: 'var(--ai-zds-helper)',
+            color: 'var(--ai-ds-helper)',
             marginRight: 4,
           }}
         >
@@ -172,7 +172,7 @@ export function AIControlBar({ state, onPause, onResume, onCancel, onRedirect, o
 
       {state === 'cancel-confirm' && (
         <>
-          <span style={{ fontFamily: '"Open Sans", sans-serif', fontSize: 12, color: 'var(--ai-zds-text)' }}>
+          <span style={{ fontFamily: '"Open Sans", sans-serif', fontSize: 12, color: 'var(--ai-ds-text)' }}>
             Confirm cancel?
           </span>
           <button style={DANGER_BTN} onClick={onCancelConfirm}>Yes, cancel</button>

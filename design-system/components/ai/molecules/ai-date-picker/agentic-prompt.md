@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Date Picker
 
-You are implementing the **AI Date Picker** (`ai-date-picker`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Date Picker** (`ai-date-picker`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Date Picker** (`ai-date-picker`) from the ZAIDYN A
 | **Category** | AI molecules |
 | **Source** | Make export 2026-08-06 |
 
-> The ZDS Date Picker on the AI surface — AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.
+> The DS Date Picker on the AI surface — AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.
 
 ## Mandatory read order (before writing code)
 

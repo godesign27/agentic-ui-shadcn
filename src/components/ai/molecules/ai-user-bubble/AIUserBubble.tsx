@@ -7,7 +7,7 @@ export type UserBubbleVariant = 'light' | 'dark';
 
 export interface AIUserBubbleProps {
   text:     string;
-  /** 'default' = @zsai-bubble-body (16px). 'medium' = one level down, @zsai-body-small (14px). */
+  /** 'default' = @ai-bubble-body (16px). 'medium' = one level down, @ai-body-small (14px). */
   size?:    UserBubbleSize;
   /** 'light' = gray surface for dark/dark-ish backgrounds (default). 'dark' = deep indigo fill for use on light backgrounds. */
   variant?: UserBubbleVariant;
@@ -16,8 +16,8 @@ export interface AIUserBubbleProps {
 // User message bubble — right-aligned, two surface variants.
 export function AIUserBubble({ text, size = 'default', variant = 'light' }: AIUserBubbleProps) {
   const typography = size === 'medium'
-    ? AI_TYPOGRAPHY['@zsai-body-small']
-    : AI_TYPOGRAPHY['@zsai-bubble-body'];
+    ? AI_TYPOGRAPHY['@ai-body-small']
+    : AI_TYPOGRAPHY['@ai-bubble-body'];
 
   // Dark variant reads AI brand tokens (no hardcoded hex) so it re-themes with
   // the ai-tokens ramp — same brand-ink surface used by the dark Agent Drawer header.

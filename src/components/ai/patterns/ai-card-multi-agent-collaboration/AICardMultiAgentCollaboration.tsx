@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIBadge, QueueStatus } from '../../atomic/ai-badge/AIBadge';
 import { AIAgentStack } from '../../atomic/ai-agent-stack/AIAgentStack';
@@ -34,7 +34,7 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '6px 14px', borderRadius: AI.radius.sm,
   border: '1px solid transparent', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
 };
 
 const STATUS_COLOR: Record<string, string> = {
@@ -80,7 +80,7 @@ export function AICardMultiAgentCollaboration({
       border: `1px solid ${AI.color.border.default}`,
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 320,
     }}>
       {/* Header */}
@@ -92,8 +92,8 @@ export function AICardMultiAgentCollaboration({
       }}>
         <AIAgentStack agents={stackAgents} maxVisible={4} size={26} />
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, color: ZDS.textHelper, marginBottom: 2 }}>Shared Goal</div>
-          <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: ZDS.textDefault }}>{goal}</div>
+          <div style={{ fontSize: 12, color: DS.textHelper, marginBottom: 2 }}>Shared Goal</div>
+          <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: DS.textDefault }}>{goal}</div>
         </div>
       </div>
 
@@ -129,10 +129,10 @@ export function AICardMultiAgentCollaboration({
             {/* Content */}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-                <span style={{ fontSize: 13, color: ZDS.textDefault }}>{agent.label}</span>
+                <span style={{ fontSize: 13, color: DS.textDefault }}>{agent.label}</span>
                 <AIBadge queue={agent.status} />
               </div>
-              <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], color: ZDS.textHelper }}>
+              <div style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], color: DS.textHelper }}>
                 {agent.contribution}
               </div>
             </div>
@@ -151,7 +151,7 @@ export function AICardMultiAgentCollaboration({
             style={{
               width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '10px 18px', background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: ZDS.font, fontSize: 12, color: ZDS.textDefault,
+              fontFamily: DS.font, fontSize: 12, color: DS.textDefault,
             }}
           >
             <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -162,13 +162,13 @@ export function AICardMultiAgentCollaboration({
             </span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d={findingsExpanded ? 'M2 4L6 8L10 4' : 'M4 2L8 6L4 10'}
-                stroke={ZDS.textHelper} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                stroke={DS.textHelper} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           {findingsExpanded && (
             <div style={{
               padding: '0 18px 12px',
-              ...AI_TYPOGRAPHY['@zsai-body-extra-small'], color: ZDS.textDefault,
+              ...AI_TYPOGRAPHY['@ai-body-extra-small'], color: DS.textDefault,
             }}>
               {sharedFindings}
             </div>
@@ -183,7 +183,7 @@ export function AICardMultiAgentCollaboration({
         display: 'flex', gap: 8,
         background: AI.color.surface.default,
       }}>
-        <button onClick={onPauseAll} style={{ ...BTN_BASE, background: 'transparent', color: ZDS.textHelper, border: `1px solid ${ZDS.border}` }}>
+        <button onClick={onPauseAll} style={{ ...BTN_BASE, background: 'transparent', color: DS.textHelper, border: `1px solid ${DS.border}` }}>
           Pause All
         </button>
         <button onClick={onEscalate} style={{ ...BTN_BASE, background: AI.color.signal.subtle, color: AI.color.signal.strong, border: `1px solid ${AI.color.signal.default}` }}>

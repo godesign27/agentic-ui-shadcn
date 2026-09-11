@@ -3,10 +3,10 @@
  * Imports base palettes from ai-tokens.ts — does not modify that file.
  */
 
-import { AI, ZSAI, ZSAI_TAN, ZS_ORANGE } from '../ai-tokens';
+import { AI, AI_RAMP, COMPANION_TAN, SIGNAL_ORANGE } from '../ai-tokens';
 import type { PaletteOverrides, SurfaceCssOverrides } from '../themes/palette-types';
 
-type PaletteRamp = typeof ZSAI;
+type PaletteRamp = typeof AI_RAMP;
 
 function mergeRamp(base: PaletteRamp, overrides?: Partial<PaletteRamp>): PaletteRamp {
   return { ...base, ...overrides } as PaletteRamp;
@@ -42,54 +42,54 @@ export type ResolvedAISemantics = {
 };
 
 export function createAISemantics(palette?: PaletteOverrides): ResolvedAISemantics {
-  const zsai = mergeRamp(ZSAI, palette?.ZSAI);
-  const zsOrange = mergeRamp(ZS_ORANGE, palette?.ZS_ORANGE);
-  const zsaiTan = mergeRamp(ZSAI_TAN, palette?.ZSAI_TAN);
+  const ramp = mergeRamp(AI_RAMP, palette?.AI_RAMP);
+  const signal = mergeRamp(SIGNAL_ORANGE, palette?.SIGNAL_ORANGE);
+  const companion = mergeRamp(COMPANION_TAN, palette?.COMPANION_TAN);
 
   return {
     action: {
-      primary: zsai[60],
-      primaryHover: zsai[70],
-      primaryActive: zsai[80],
+      primary: ramp[60],
+      primaryHover: ramp[70],
+      primaryActive: ramp[80],
     },
     surface: {
-      default: zsai['00'],
-      subtle: zsai[10],
-      emphasis: zsai[20],
+      default: ramp['00'],
+      subtle: ramp[10],
+      emphasis: ramp[20],
     },
     border: {
-      default: zsai[20],
-      strong: zsai[40],
-      focus: zsai[50],
+      default: ramp[20],
+      strong: ramp[40],
+      focus: ramp[50],
     },
     text: {
-      primary: zsai[90],
-      secondary: zsai[70],
+      primary: ramp[90],
+      secondary: ramp[70],
       onAction: '#FFFFFF',
     },
-    brand: zsai[60],
-    brandSubtle: zsai[10],
-    brandSurface: zsai['00'],
-    brandBorder: zsai[20],
-    brandStrong: zsai[90],
-    brandInk: zsai[100],
+    brand: ramp[60],
+    brandSubtle: ramp[10],
+    brandSurface: ramp['00'],
+    brandBorder: ramp[20],
+    brandStrong: ramp[90],
+    brandInk: ramp[100],
     signal: {
-      default: zsOrange[60],
-      hover: zsOrange[70],
-      strong: zsOrange[80],
-      subtle: zsOrange[10],
-      surface: zsOrange['00'],
+      default: signal[60],
+      hover: signal[70],
+      strong: signal[80],
+      subtle: signal[10],
+      surface: signal['00'],
     },
     companion: {
-      paper: zsaiTan['00'],
-      surface: zsaiTan[10],
-      highlight: zsaiTan[20],
-      border: zsaiTan[30],
-      ink: zsaiTan[100],
+      paper: companion['00'],
+      surface: companion[10],
+      highlight: companion[20],
+      border: companion[30],
+      ink: companion[100],
     },
     gradient: {
-      actionFull: `linear-gradient(135deg, ${zsai[50]} 0%, ${zsai[60]} 100%)`,
-      actionSecondary: `linear-gradient(135deg, ${zsai[40]} 0%, ${zsai[50]} 50%, ${zsai[60]} 100%)`,
+      actionFull: `linear-gradient(135deg, ${ramp[50]} 0%, ${ramp[60]} 100%)`,
+      actionSecondary: `linear-gradient(135deg, ${ramp[40]} 0%, ${ramp[50]} 50%, ${ramp[60]} 100%)`,
       surfaceIdle: AI.gradient.surface.idle,
       surfaceActive: AI.gradient.surface.active,
       surfaceSubtle: AI.gradient.surface.subtle,
@@ -150,8 +150,8 @@ export function semanticsToCssVars(semantics: ResolvedAISemantics): Record<strin
     '--ai-radius-lg': semantics.radius.lg,
     '--ai-radius-full': semantics.radius.full,
     '--ai-card-bg': semantics.surface.subtle,
-    '--ai-zds-text': '#2f2c3c',
-    '--ai-zds-text-helper': '#5b5864',
+    '--ai-ds-text': '#2f2c3c',
+    '--ai-ds-text-helper': '#5b5864',
     '--ai-font-family': '"Open Sans", sans-serif',
   };
 }

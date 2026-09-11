@@ -1,9 +1,9 @@
 import type { SurfaceThemeDefinition } from './palette-types';
 
-/** Aqua ambient surface — gradient overrides with ZDS-teal influence (extends AI_THEME.aqua). */
+/** Aqua ambient surface — gradient overrides with DS-teal influence (extends AI_THEME.aqua). */
 export const aiAquaTheme: SurfaceThemeDefinition = {
   id: 'ai-aqua',
-  label: 'ZSAI Aqua',
+  label: 'AI_RAMP Aqua',
   description: 'Teal-influenced page gradients — color tokens match ai-default.',
   gradientOverrides: {
     'gradient.surface.idle':

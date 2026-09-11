@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiTimePicker`  
 **Component type:** React molecule  
@@ -12,15 +12,15 @@
 
 ## Purpose
 
-The ZDS Time Picker on the AI surface — AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.
+The DS Time Picker on the AI surface — AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.
 
-The AI Time Picker mirrors the ZDS Time Picker (src/timePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a scrollable listbox of time slots with a clock icon affordance — but is restyled onto the ZAIDYN AI brand. The trigger carries the AI Action Field treatment: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The menu sits FLUSH against the field (the ZDS Time Picker signature): the field keeps its top corners rounded when open while the menu carries the bottom radius, so the two read as one continuous brand surface. Items adopt the ZSAI indigo ramp — hover uses the brand-subtle tint, the selected slot fills with the action gradient — and the custom scrollbar is brand-tinted. It reads its palette from the AI.* tokens (mirrored to the --color-ai-* / --gradient-ai-* CSS variables): rendered on a surface carrying the AI data-theme, it stays aligned with the rest of the AI system, so applying the AI theme to a ZDS time picker yields this look. Only the palette and radii differ from ZDS; the anatomy, states, and keyboard model are identical.
+The AI Time Picker mirrors the DS Time Picker (src/timePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a scrollable listbox of time slots with a clock icon affordance — but is restyled onto the Guild AI brand. The trigger carries the AI Action Field treatment: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The menu sits FLUSH against the field (the DS Time Picker signature): the field keeps its top corners rounded when open while the menu carries the bottom radius, so the two read as one continuous brand surface. Items adopt the AI_RAMP indigo ramp — hover uses the brand-subtle tint, the selected slot fills with the action gradient — and the custom scrollbar is brand-tinted. It reads its palette from the AI.* tokens (mirrored to the --color-ai-* / --gradient-ai-* CSS variables): rendered on a surface carrying the AI data-theme, it stays aligned with the rest of the AI system, so applying the AI theme to a DS time picker yields this look. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.
 
 **Export:** `AITimePicker`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -44,7 +44,7 @@ The AI Time Picker mirrors the ZDS Time Picker (src/timePicker/) 1:1 in structur
 
 ## When not to use
 
-- On a standard ZDS surface — use the ZDS Time Picker instead
+- On a standard DS surface — use the DS Time Picker instead
 - Don't detach the menu from the field or drop the flush treatment
 
 ## Anatomy
@@ -64,7 +64,7 @@ The AI Time Picker mirrors the ZDS Time Picker (src/timePicker/) 1:1 in structur
 - **Surface — soft** _(surface='soft')_ — Default. Brand-tinted surface with a gradient-filled selected slot.
 - **Surface — flat AI blue** _(surface='flat-blue')_ — Same brand surface; the selected slot fills with a FLAT AI blue (no gradient).
 - **Surface — flat neutral** _(surface='flat-neutral')_ — Warm neutral gray surface matching the AI cards / accordions.
-- **Surface — flat tan** _(surface='flat-tan')_ — Warm companion tan surface (ZSAI Tan ramp) for the 10% accent role.
+- **Surface — flat tan** _(surface='flat-tan')_ — Warm companion tan surface (AI_RAMP Tan ramp) for the 10% accent role.
 - **Small** _(size=Small)_ — 42px field / 20px icon / 30px items / 14px text.
 - **X-Small** _(size=X-Small)_ — 38px field / 18px icon / 28px items / 12px text.
 
@@ -131,9 +131,9 @@ import { AITimePicker } from '@/components/ai/molecules/time-picker/AITimePicker
 ## Agent rules
 
 1. Read this mirror spec and `ai-time-picker.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-time-picker/ai-time-picker.agent.json`.
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Top Bar
 
-You are implementing the **AI Top Bar** (`ai-supervisor-bar`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Top Bar** (`ai-supervisor-bar`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

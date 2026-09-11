@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { F, AI, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { F, AI, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 export type LoaderType = 'working' | 'thinking' | 'getting-info';
@@ -8,7 +8,7 @@ export type LoaderType = 'working' | 'thinking' | 'getting-info';
 // ai-loader.indicator.color        → AI.color.action.primary
 // ai-loader.indicator.color.track  → AI.color.surface.emphasis
 // ai-loader.indicator.color.muted  → AI.color.border.strong
-// ai-loader.label.color            → ZDS neutral (from ZDS namespace)
+// ai-loader.label.color            → DS neutral (from DS namespace)
 // ai-loader.border.radius          → AI.radius.sm
 const T = {
   indicatorColor:      AI.color.action.primary,
@@ -32,7 +32,7 @@ function ThinkStep({ label, state, details }: {
     <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
       <div style={{ paddingTop: '3px', flexShrink: 0, width: 12, display: 'flex', justifyContent: 'center' }}>
         {isDone ? (
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ai-zds-icon)', marginTop: '2px' }} />
+          <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ai-ds-icon)', marginTop: '2px' }} />
         ) : isActive ? (
           <div style={{ width: 12, height: 12, borderRadius: '50%', background: T.indicatorColor }} />
         ) : (
@@ -42,7 +42,7 @@ function ThinkStep({ label, state, details }: {
       <div style={{ flex: 1, minWidth: 0 }}>
         <span style={{
           fontSize: '13px', fontFamily: F, lineHeight: 1.45,
-          color: isDone ? 'var(--ai-zds-helper)' : isActive ? 'var(--ai-zds-text)' : 'var(--ai-btn-disabled-text)',
+          color: isDone ? 'var(--ai-ds-helper)' : isActive ? 'var(--ai-ds-text)' : 'var(--ai-btn-disabled-text)',
           fontWeight: isActive ? 600 : 400,
           display: 'block',
         }}>
@@ -55,7 +55,7 @@ function ThinkStep({ label, state, details }: {
         }}>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"
             style={{ transition: 'transform 0.15s ease', transform: open ? 'rotate(90deg)' : 'none' }}>
-            <path d="M3.5 2l3 3-3 3" stroke="var(--ai-zds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M3.5 2l3 3-3 3" stroke="var(--ai-ds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span style={{ fontSize: '12px', fontFamily: F, color: 'var(--ai-btn-disabled-text)', lineHeight: 1 }}>View details</span>
         </button>
@@ -63,7 +63,7 @@ function ThinkStep({ label, state, details }: {
           <div style={{
             marginTop: '6px', padding: '8px 10px',
             background: 'var(--ai-confidence-track)', borderRadius: '6px',
-            fontSize: '12px', fontFamily: F, color: 'var(--ai-zds-helper)', lineHeight: 1.55,
+            fontSize: '12px', fontFamily: F, color: 'var(--ai-ds-helper)', lineHeight: 1.55,
           }}>
             {details}
           </div>
@@ -97,8 +97,8 @@ function LoadingStyles() {
 
 export type LoaderTheme = 'default' | 'tan';
 
-const TAN_PILL = 'var(--ai-loading-pill-bg)';   // ZSAI_TAN['00'] @ 50%
-const TAN_CARD = 'var(--ai-loading-card-bg)';   // ZSAI_TAN[10] @ 50%
+const TAN_PILL = 'var(--ai-loading-pill-bg)';   // COMPANION_TAN['00'] @ 50%
+const TAN_CARD = 'var(--ai-loading-card-bg)';   // COMPANION_TAN[10] @ 50%
 
 // ── Level 1: Simple working — for quick/direct requests ───────────────────────
 export function AIWorkingIndicator({ theme = 'default' }: { theme?: LoaderTheme }) {
@@ -117,10 +117,10 @@ export function AIWorkingIndicator({ theme = 'default' }: { theme?: LoaderTheme 
           boxSizing: 'border-box',
         }}>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
-            <path d="M3.5 2l3 3-3 3" stroke="var(--ai-zds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M3.5 2l3 3-3 3" stroke="var(--ai-ds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <span data-ai-loader style={{
-            ...AI_TYPOGRAPHY['@zsai-status-label'], fontFamily: F, color: 'var(--ai-zds-helper)', flex: 1,
+            ...AI_TYPOGRAPHY['@ai-status-label'], fontFamily: F, color: 'var(--ai-ds-helper)', flex: 1,
             animation: 'ai-pulse-text 1.6s ease-in-out infinite',
           }}>
             Working...
@@ -156,10 +156,10 @@ function CollapsedPill({ label, pillBg = 'white', onToggle }: {
       cursor: 'pointer',
     }} onClick={onToggle} role="button" aria-label={`Expand ${label}`}>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-        <path d="M3.5 2l3 3-3 3" stroke="var(--ai-zds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M3.5 2l3 3-3 3" stroke="var(--ai-ds-icon)" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
       <span data-ai-loader style={{
-        fontSize: '12px', fontFamily: F, color: 'var(--ai-zds-helper)', lineHeight: 1, flex: 1,
+        fontSize: '12px', fontFamily: F, color: 'var(--ai-ds-helper)', lineHeight: 1, flex: 1,
         animation: 'ai-pulse-text 1.6s ease-in-out infinite',
       }}>
         {label}
@@ -222,7 +222,7 @@ export function AIThinkingIndicator({ theme = 'default' }: { theme?: LoaderTheme
   }, []);
 
   const STEPS = [
-    { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, Q1 alignment dataset, and territory records. Found 14 relevant data points across 3 sources.' },
+    { label: 'Retrieving data from documents', details: 'Searched Guild Analytics, Q1 alignment dataset, and territory records. Found 14 relevant data points across 3 sources.' },
     { label: 'Thinking', details: 'Analyzing retrieved data for patterns, outliers, and actionable insights relevant to your query.' },
   ];
 
@@ -261,7 +261,7 @@ export function AIGettingInfoIndicator({ theme = 'default' }: { theme?: LoaderTh
   }, []);
 
   const STEPS = [
-    { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
+    { label: 'Retrieving data from documents', details: 'Searched Guild Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
     { label: 'Analyzing retrieved data', details: 'Cross-referencing Q1 performance metrics with territory assignments and quota attainment data.' },
     { label: 'Thinking', details: 'Synthesizing patterns from the analysis to generate a response tailored to your question.' },
   ];
@@ -292,9 +292,9 @@ export function AIGettingInfoIndicatorTan() {
   const [step, setStep]           = useState(0);
   const [collapsed, setCollapsed] = useState(false);
 
-  const tanPill     = 'var(--ai-loading-pill-bg)';  // was ZSAI_TAN['00'] #F6F2EB
-  const tanCard     = 'var(--ai-loading-card-bg)';  // was ZSAI_TAN[10] #ECE6DD
-  const tanDetail   = ZSAI_TAN[20]  as string;   // #F1E4D0
+  const tanPill     = 'var(--ai-loading-pill-bg)';  // was COMPANION_TAN['00'] #F6F2EB
+  const tanCard     = 'var(--ai-loading-card-bg)';  // was COMPANION_TAN[10] #ECE6DD
+  const tanDetail   = COMPANION_TAN[20]  as string;   // #F1E4D0
 
   useEffect(() => {
     const t1 = setTimeout(() => setStep(1), 700);
@@ -303,7 +303,7 @@ export function AIGettingInfoIndicatorTan() {
   }, []);
 
   const STEPS = [
-    { label: 'Retrieving data from documents', details: 'Searched ZAIDYN Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
+    { label: 'Retrieving data from documents', details: 'Searched Guild Analytics, territory alignment records, and historical performance data. Found 22 relevant entries.' },
     { label: 'Analyzing retrieved data', details: 'Cross-referencing Q1 performance metrics with territory assignments and quota attainment data.' },
     { label: 'Thinking', details: 'Synthesizing patterns from the analysis to generate a response tailored to your question.' },
   ];

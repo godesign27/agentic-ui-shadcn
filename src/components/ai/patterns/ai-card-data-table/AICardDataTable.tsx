@@ -119,14 +119,14 @@ const RISK_TONE: Record<AIDataTableRiskLevel, { bg: string; border: string; text
   medium:   { bg: '#FBF1DA', border: '#EAD5A6', text: '#854D0E', label: 'Medium risk' },
   high:     { bg: 'var(--ai-status-error-bg, #FBEFEF)', border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'High risk' },
   critical: { bg: 'var(--ai-status-error-bg, #FBEFEF)', border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'Critical risk' },
-  unknown:  { bg: 'var(--ai-card-bg-raised, #F5F4F7)', border: 'var(--ai-card-border, #E5E7EB)', text: 'var(--ai-zds-helper, #6B6876)', label: 'Risk unknown' },
+  unknown:  { bg: 'var(--ai-card-bg-raised, #F5F4F7)', border: 'var(--ai-card-border, #E5E7EB)', text: 'var(--ai-ds-helper, #6B6876)', label: 'Risk unknown' },
 };
 
 const CONFIDENCE_TONE: Record<AIDataTableConfidenceLevel, { bg: string; border: string; text: string; label: string }> = {
   high:    { bg: '#EAF4EE', border: '#CDE3D5', text: '#1F6B40', label: 'High confidence' },
   medium:  { bg: '#FBF1DA', border: '#EAD5A6', text: '#854D0E', label: 'Medium confidence' },
   low:     { bg: 'var(--ai-status-error-bg, #FBEFEF)', border: 'var(--ai-status-error-border, #F1C7C7)', text: 'var(--ai-status-error-text, #C0392B)', label: 'Low confidence' },
-  unknown: { bg: 'var(--ai-card-bg-raised, #F5F4F7)', border: 'var(--ai-card-border, #E5E7EB)', text: 'var(--ai-zds-helper, #6B6876)', label: 'Confidence unknown' },
+  unknown: { bg: 'var(--ai-card-bg-raised, #F5F4F7)', border: 'var(--ai-card-border, #E5E7EB)', text: 'var(--ai-ds-helper, #6B6876)', label: 'Confidence unknown' },
 };
 
 function Pill({ tone, label }: { tone: { bg: string; border: string; text: string }; label: string }) {
@@ -143,7 +143,7 @@ function Pill({ tone, label }: { tone: { bg: string; border: string; text: strin
 }
 
 // Top-right expand affordance — small icon button with a hover tooltip.
-// Uses the ZAIDYN `frame-expand` glyph (matches the in-product convention
+// Uses the Guild `frame-expand` glyph (matches the in-product convention
 // for "open this view full-screen"). Tooltip is rendered as a small bubble
 // to the left of the button so it doesn't clip outside the card.
 function ExpandButton({ onClick, tooltip }: { onClick: () => void; tooltip: string }) {
@@ -183,12 +183,12 @@ function ExpandButton({ onClick, tooltip }: { onClick: () => void; tooltip: stri
           padding: 4,
           cursor: 'pointer',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          color: 'var(--ai-zds-helper, #6B6876)',
+          color: 'var(--ai-ds-helper, #6B6876)',
           transition: 'background 0.12s ease, border-color 0.12s ease, color 0.12s ease',
           ...(hov ? {
             background: 'var(--ai-card-bg, #FFFFFF)',
             borderColor: 'var(--ai-card-border, #E2E0E6)',
-            color: 'var(--ai-zds-text, #1A1628)',
+            color: 'var(--ai-ds-text, #1A1628)',
           } : {}),
         }}
       >
@@ -227,10 +227,10 @@ const CELL_FG: Partial<Record<CellState, string>> = {
   flagged:        'var(--ai-status-error-text, #C0392B)',
   belowThreshold: 'var(--ai-status-error-text, #C0392B)',
   aboveThreshold: '#1F6B40',
-  stale:          'var(--ai-zds-helper, #6B6876)',
-  estimated:      'var(--ai-zds-helper, #6B6876)',
-  projected:      'var(--ai-zds-helper, #6B6876)',
-  simulated:      'var(--ai-zds-helper, #6B6876)',
+  stale:          'var(--ai-ds-helper, #6B6876)',
+  estimated:      'var(--ai-ds-helper, #6B6876)',
+  projected:      'var(--ai-ds-helper, #6B6876)',
+  simulated:      'var(--ai-ds-helper, #6B6876)',
   aiGenerated:    AI.color.brand,
   error:          'var(--ai-status-error-text, #C0392B)',
 };
@@ -250,7 +250,7 @@ function CellContent({ cell, type }: { cell: AIDataTableCell; type?: AIDataTable
   const s = cell.state ?? 'default';
   if (s === 'loading') return <CellShimmer />;
   if (s === 'empty' || s === 'missing' || s === 'notApplicable') {
-    return <span style={{ color: 'var(--ai-zds-helper, #9CA3AF)' }} aria-label={s === 'notApplicable' ? 'not applicable' : 'missing'}>—</span>;
+    return <span style={{ color: 'var(--ai-ds-helper, #9CA3AF)' }} aria-label={s === 'notApplicable' ? 'not applicable' : 'missing'}>—</span>;
   }
   const italic = s === 'estimated' || s === 'projected' || s === 'simulated' || s === 'aiGenerated';
   const showDot = s === 'aiGenerated';
@@ -291,7 +291,7 @@ function RowLead({ state }: { state?: RowState }) {
   if (state === 'needsReview')      return <span aria-label="Needs review"     style={{ ...common, background: '#854D0E' }} />;
   if (state === 'loading' || state === 'updating') return <span aria-label="Updating" style={{ ...common, background: '#9896A0', animation: 'ai-shimmer 1.4s ease infinite' }} />;
   if (state === 'permissionRestricted') return (
-    <span aria-label="Locked" className="zs-master-style" style={{ display: 'inline-flex', color: 'var(--ai-zds-helper, #6B6876)' }}>
+    <span aria-label="Locked" className="zs-master-style" style={{ display: 'inline-flex', color: 'var(--ai-ds-helper, #6B6876)' }}>
       <i className="zs-icon zs-icon-lock" style={{ fontSize: 12, lineHeight: 1, color: 'currentColor' }} />
     </span>
   );
@@ -445,7 +445,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
       {intro && (
         <p style={{
           margin: '0 0 8px', fontFamily: F, fontSize: 13, lineHeight: 1.55,
-          color: 'var(--ai-zds-text, #2F2C3C)',
+          color: 'var(--ai-ds-text, #2F2C3C)',
         }}>{intro}</p>
       )}
 
@@ -486,10 +486,10 @@ export function AICardDataTable(props: AICardDataTableProps) {
                   }}>{generatedBy}</span>
                 )}
                 {generatedBy && timestamp && (
-                  <span style={{ color: 'var(--ai-zds-helper, #9CA3AF)', opacity: 0.6 }}>·</span>
+                  <span style={{ color: 'var(--ai-ds-helper, #9CA3AF)', opacity: 0.6 }}>·</span>
                 )}
                 {timestamp && (
-                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>{timestamp}</span>
+                  <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>{timestamp}</span>
                 )}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
@@ -504,13 +504,13 @@ export function AICardDataTable(props: AICardDataTableProps) {
             {title && (
               <h3 id={titleId} style={{
                 margin: 0, fontFamily: F, fontSize: 15, fontWeight: 700,
-                color: 'var(--ai-zds-text, #1A1628)', lineHeight: 1.3,
+                color: 'var(--ai-ds-text, #1A1628)', lineHeight: 1.3,
               }}>{title}</h3>
             )}
             {subtitle && density !== 'simple' && (
               <p style={{
                 margin: 0, fontFamily: F, fontSize: 12, lineHeight: 1.55,
-                color: 'var(--ai-zds-helper, #6B6876)',
+                color: 'var(--ai-ds-helper, #6B6876)',
               }}>{subtitle}</p>
             )}
           </header>
@@ -563,7 +563,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
                         padding: '8px 12px',
                         background: tintedBg,
                         borderBottom: `1px solid ${divider}`,
-                        color: 'var(--ai-zds-helper, #6B6876)',
+                        color: 'var(--ai-ds-helper, #6B6876)',
                         fontFamily: F, fontSize: 14, fontWeight: 700,
                         letterSpacing: '0.04em', textTransform: 'uppercase' as const,
                       }}>{c.label}</th>
@@ -589,7 +589,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
           {/* Loading: full-table skeleton */}
           {isLoading && (
             <>
-              <div role="status" aria-live="polite" style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+              <div role="status" aria-live="polite" style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
                 {loadingLabel}
               </div>
               <div style={{ border: `1px solid ${divider}`, borderRadius: 8, overflow: 'hidden' }}>
@@ -601,7 +601,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
                           padding: '8px 12px', background: tintedBg, borderBottom: `1px solid ${divider}`,
                           textAlign: 'left', fontFamily: F, fontSize: 14, fontWeight: 700,
                           letterSpacing: '0.04em', textTransform: 'uppercase' as const,
-                          color: 'var(--ai-zds-helper, #6B6876)',
+                          color: 'var(--ai-ds-helper, #6B6876)',
                         }}>{c.label}</th>
                       ))}
                     </tr>
@@ -619,7 +619,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
           {/* Updating / progressive caption */}
           {(isUpdating || isProgressive) && tableMode && (
             <div role="status" aria-live="polite" style={{
-              fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)',
+              fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)',
             }}>
               {isProgressive ? 'Validating remaining rows…' : 'Updating…'}
             </div>
@@ -637,7 +637,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                   {rowCount != null && (
-                    <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+                    <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
                       {rowCount} {rowCount === 1 ? 'row' : 'rows'}
                     </span>
                   )}
@@ -645,7 +645,7 @@ export function AICardDataTable(props: AICardDataTableProps) {
                     <AIChip kind="brief"
                       label={source.label} size="sm" noDot
                       icon={source.icon ?? 'zs-icon-data-table'}
-                      accentColor="var(--ai-zds-helper, #6B6876)"
+                      accentColor="var(--ai-ds-helper, #6B6876)"
                       accentBg="var(--ai-card-bg, #FFFFFF)"
                     />
                   )}
@@ -653,13 +653,13 @@ export function AICardDataTable(props: AICardDataTableProps) {
                     <AIChip kind="brief"
                       label={freshness} size="sm" noDot
                       icon="zs-icon-clock-pending"
-                      accentColor="var(--ai-zds-helper, #6B6876)"
+                      accentColor="var(--ai-ds-helper, #6B6876)"
                       accentBg="var(--ai-card-bg, #FFFFFF)"
                     />
                   )}
                   {reviewer && (
-                    <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
-                      Reviewer: <span style={{ color: 'var(--ai-zds-text, #2F2C3C)', fontWeight: 600 }}>{reviewer}</span>
+                    <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
+                      Reviewer: <span style={{ color: 'var(--ai-ds-text, #2F2C3C)', fontWeight: 600 }}>{reviewer}</span>
                     </span>
                   )}
                 </div>
@@ -758,7 +758,7 @@ function RowRender({ row, columns }: { row: AIDataTableRow; columns: AIDataTable
               padding: '10px 12px',
               borderTop: '1px solid var(--ai-card-border, #E5E7EB)',
               background: bg,
-              color: fg ?? 'var(--ai-zds-text, #2F2C3C)',
+              color: fg ?? 'var(--ai-ds-text, #2F2C3C)',
               textAlign: c.align ?? (c.type === 'number' || c.type === 'percent' || c.type === 'currency' ? 'right' : 'left'),
               fontWeight: rs === 'highlighted' ? 600 : 400,
               position: 'relative',
@@ -775,7 +775,7 @@ function RowRender({ row, columns }: { row: AIDataTableRow; columns: AIDataTable
               <CellContent cell={cell} type={c.type} />
             </span>
             {cell.note && (
-              <div style={{ marginTop: 2, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+              <div style={{ marginTop: 2, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
                 {cell.note}
               </div>
             )}
@@ -797,7 +797,7 @@ function BodyCallout({ state, onRetry }: { state: AIDataTableState; onRetry?: ()
   const tone =
       cfg.tone === 'err'  ? { bg: 'var(--ai-status-error-bg, #FBEFEF)', bd: 'var(--ai-status-error-border, #F1C7C7)', tx: 'var(--ai-status-error-text, #C0392B)' }
     : cfg.tone === 'warn' ? { bg: '#FBF1DA', bd: '#EAD5A6', tx: '#854D0E' }
-    :                       { bg: 'var(--ai-card-bg-raised, #F5F4F7)', bd: 'var(--ai-card-border, #E5E7EB)', tx: 'var(--ai-zds-helper, #6B6876)' };
+    :                       { bg: 'var(--ai-card-bg-raised, #F5F4F7)', bd: 'var(--ai-card-border, #E5E7EB)', tx: 'var(--ai-ds-helper, #6B6876)' };
   return (
     <div role={cfg.tone === 'err' ? 'alert' : 'status'} style={{
       display: 'flex', flexDirection: 'column', gap: 6,
@@ -806,7 +806,7 @@ function BodyCallout({ state, onRetry }: { state: AIDataTableState; onRetry?: ()
       color: tone.tx, fontFamily: F,
     }}>
       <div style={{ fontSize: 13, fontWeight: 700 }}>{cfg.title}</div>
-      <div style={{ fontSize: 12, lineHeight: 1.55, color: 'var(--ai-zds-text, #2F2C3C)' }}>{cfg.body}</div>
+      <div style={{ fontSize: 12, lineHeight: 1.55, color: 'var(--ai-ds-text, #2F2C3C)' }}>{cfg.body}</div>
       {onRetry && (state === 'error' || state === 'sourceUnavailable') && (
         <div style={{ marginTop: 4 }}>
           <AIButton variant="secondary" size="sm" label="Retry" onClick={onRetry} />

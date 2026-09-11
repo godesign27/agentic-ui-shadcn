@@ -1,21 +1,21 @@
 import React from 'react';
-import { F, AI, ZS_DATAVIZ } from '../../tokens/ai-tokens';
+import { F, AI, DATAVIZ } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── AIBadge ─────────────────────────────────────────────────────────────────
 //
-// A compact, NON-interactive status/metric label. Modeled on the standard ZDS
+// A compact, NON-interactive status/metric label. Modeled on the standard DS
 // Badge (src/badge/) — same semantic variants and two sizes — extended for AI
 // surfaces with:
-//   • an `emphasis` control (bold = canonical ZDS fill; soft = tinted, for
+//   • an `emphasis` control (bold = canonical DS fill; soft = tinted, for
 //     in-card metric highlights like the Analysis Insight "+23% engagement"),
-//   • a `dataviz` variant that colors the badge from the ZDS categorical
+//   • a `dataviz` variant that colors the badge from the DS categorical
 //     chart palette (@zs-data-color-1…12) for metric-delta indicators.
 //
 // Not a button, not a chip. No hover/press/focus states, no onClick. If it
 // needs to be clickable, use AIChip instead.
 
-// Semantic variants mirror the ZDS Badge set.
+// Semantic variants mirror the DS Badge set.
 export type AIBadgeVariant =
   | 'neutral'
   | 'info'
@@ -26,7 +26,7 @@ export type AIBadgeVariant =
 
 export type AIBadgeSize = 'default' | 'small';
 
-// Presentation shape — mirrors the ZDS Badge patterns (src/badge/):
+// Presentation shape — mirrors the DS Badge patterns (src/badge/):
 //   text    → status/label pill (default; e.g. "Complete", "Failed")
 //   counter → circular numeric count pill (e.g. notification counts 1 / 12 / 99+)
 //   dot     → indicator dot, no number ("unread"/"new" marker)
@@ -41,7 +41,7 @@ export type AIBadgeAppearance = 'text' | 'counter' | 'dot' | 'inline';
 export type QueueStatus = 'queued' | 'running' | 'blocked' | 'needs-approval' | 'complete';
 
 const QUEUE_CONFIG: Record<QueueStatus, { bg: string; border: string; text: string; icon: React.ReactNode; defaultLabel: string }> = {
-  'queued':          { bg: 'var(--ai-confidence-track)', border: 'var(--ai-card-border)', text: 'var(--ai-zds-helper)', icon: <ClockIcon />,    defaultLabel: 'Queued'          },
+  'queued':          { bg: 'var(--ai-confidence-track)', border: 'var(--ai-card-border)', text: 'var(--ai-ds-helper)', icon: <ClockIcon />,    defaultLabel: 'Queued'          },
   'running':         { bg: 'var(--ai-brand-surface)', border: 'var(--ai-brand-border)', text: 'var(--ai-brand-text)', icon: <SpinnerIcon />, defaultLabel: 'Running' },
   'blocked':         { bg: 'rgba(231,76,60,0.08)', border: 'rgba(231,76,60,0.25)', text: '#E74C3C', icon: <BlockIcon />,    defaultLabel: 'Blocked'         },
   'needs-approval':  { bg: 'var(--ai-signal-surface)', border: 'var(--ai-signal-border)', text: AI.color.signal.strong, icon: <ApprovalIcon />, defaultLabel: 'Needs Approval' },
@@ -94,7 +94,7 @@ function CheckIcon() {
   );
 }
 
-// bold → solid fill + inverse text (canonical ZDS badge).
+// bold → solid fill + inverse text (canonical DS badge).
 // soft → translucent tint + colored text (AI in-card metric highlight).
 export type AIBadgeEmphasis = 'bold' | 'soft';
 
@@ -104,7 +104,7 @@ export interface AIBadgeProps {
   /** Semantic color role. Defaults to 'neutral'. Use 'dataviz' with `series`. */
   variant?:   AIBadgeVariant;
   /**
-   * Presentation shape (mirrors the ZDS Badge patterns). Defaults to 'text'.
+   * Presentation shape (mirrors the DS Badge patterns). Defaults to 'text'.
    *   'counter' → circular numeric count pill (applies `maxCount`)
    *   'dot'     → indicator dot, no label
    *   'inline'  → colored count text in-flow, no pill background
@@ -120,29 +120,29 @@ export interface AIBadgeProps {
   queue?:     QueueStatus;
   /** Numeric count pill — only used with the `queue` variant. */
   count?:     number;
-  /** Fill treatment. Defaults to 'bold' (canonical ZDS). */
+  /** Fill treatment. Defaults to 'bold' (canonical DS). */
   emphasis?:  AIBadgeEmphasis;
   /** Size. Defaults to 'default'. */
   size?:      AIBadgeSize;
   /** Data-viz series index (1–12) — only used when variant === 'dataviz'. */
-  series?:    keyof typeof ZS_DATAVIZ;
+  series?:    keyof typeof DATAVIZ;
   style?:     React.CSSProperties;
   className?: string;
 }
 
-// Semantic base colors — sourced from AI tokens (Tier 2) with ZDS-parity
+// Semantic base colors — sourced from AI tokens (Tier 2) with DS-parity
 // fallbacks for info/neutral, which the AI status set doesn't carry.
 const VARIANT_COLOR: Record<Exclude<AIBadgeVariant, 'dataviz'>, string> = {
-  neutral: '#1A1628',            // ZDS neutral (@zs-color-neutral)
-  info:    '#1B24AA',            // ZDS info (@zs-color-info)
+  neutral: '#1A1628',            // DS neutral (@zs-color-neutral)
+  info:    '#1B24AA',            // DS info (@zs-color-info)
   success: AI.color.status.success,
   warning: AI.color.status.warning,
   error:   AI.color.status.error,
 };
 
-const INVERSE_TEXT = '#FAFAFA'; // ZDS .zs-text-inverse
+const INVERSE_TEXT = '#FAFAFA'; // DS .zs-text-inverse
 
-// Size spec mirrors the ZDS Badge (pill radius, bold label).
+// Size spec mirrors the DS Badge (pill radius, bold label).
 const SIZE_SPEC: Record<AIBadgeSize, {
   height: string; padding: string; fontSize: string; radius: string;
 }> = {
@@ -219,7 +219,7 @@ export function AIBadge({
                 color: cfg.bg,
                 borderRadius: '10px',
                 padding: '0 5px',
-                ...AI_TYPOGRAPHY['@zsai-numeric-badge'],
+                ...AI_TYPOGRAPHY['@ai-numeric-badge'],
               }}
             >
               {count}
@@ -231,7 +231,7 @@ export function AIBadge({
   }
 
   const base = variant === 'dataviz'
-    ? ZS_DATAVIZ[series] ?? ZS_DATAVIZ[1]
+    ? DATAVIZ[series] ?? DATAVIZ[1]
     : VARIANT_COLOR[variant];
 
   const spec = SIZE_SPEC[size];
@@ -333,7 +333,7 @@ export const AI_BADGE_VARIANTS: {
   { value: 'success', label: 'Success', description: 'Positive / complete status' },
   { value: 'warning', label: 'Warning', description: 'Caution status' },
   { value: 'error',   label: 'Error',   description: 'Failure / blocking status' },
-  { value: 'dataviz', label: 'Data-viz', description: 'Metric-delta indicator colored from the ZDS chart palette (1–12)' },
+  { value: 'dataviz', label: 'Data-viz', description: 'Metric-delta indicator colored from the DS chart palette (1–12)' },
 ];
 
 // Queue-variant statuses — for pickers and documentation.

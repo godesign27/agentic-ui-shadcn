@@ -23,13 +23,13 @@ export interface AITrendIndicatorProps {
 }
 
 const TONE_COLOR: Record<AITrendIndicatorTone, string> = {
-  positive: '#1F6B40',   // ZDS success
-  negative: '#C0392B',   // ZDS error
-  neutral:  'var(--ai-zds-helper)',
+  positive: '#1F6B40',   // DS success
+  negative: '#C0392B',   // DS error
+  neutral:  'var(--ai-ds-helper)',
 };
 
 function TrendGlyph({ tone, size }: { tone: AITrendIndicatorTone; size: number }) {
-  // ZAIDYN-style stroked arrow built inline so the indicator has zero font
+  // Guild-style stroked arrow built inline so the indicator has zero font
   // dependency — runs on any surface that has not loaded the zs-icons font.
   if (tone === 'positive') {
     return (
@@ -79,7 +79,7 @@ export function AITrendIndicator({ delta, label, tone = 'neutral', size = 'md' }
       <TrendGlyph tone={tone} size={px} />
       <span>{delta}</span>
       {label && (
-        <span style={{ color: 'var(--ai-zds-text)', fontWeight: 400, marginLeft: 2 }}>{label}</span>
+        <span style={{ color: 'var(--ai-ds-text)', fontWeight: 400, marginLeft: 2 }}>{label}</span>
       )}
     </span>
   );

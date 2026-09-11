@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Command Center — Slim
 
-You are implementing the **AI Command Center — Slim** (`ai-command-center-slim`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Command Center — Slim** (`ai-command-center-slim`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Process Trace
 
-You are implementing the **AI Process Trace** (`ai-reasoning-trace`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Process Trace** (`ai-reasoning-trace`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

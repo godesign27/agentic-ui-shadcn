@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Workstream Control Panel
 
-You are implementing the **AI Workstream Control Panel** (`ai-workstream-control-panel`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Workstream Control Panel** (`ai-workstream-control-panel`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

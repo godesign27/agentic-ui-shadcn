@@ -5,7 +5,7 @@
   "repoModule": "aiReasoningTrace",
   "tier": "organisms",
   "status": "experimental",
-  "description": "AI Process Trace is the step-level execution transparency component for the ZAIDYN AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output \u2014 not why the output makes sense (that is AI Rationale).",
+  "description": "AI Process Trace is the step-level execution transparency component for the Guild AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output \u2014 not why the output makes sense (that is AI Rationale).",
   "intent": "Governed process telemetry, not private reasoning. Shows what the AI system did \u2014 step by step \u2014 so users, admins, and governance reviewers can inspect execution without seeing internal deliberation.",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.md",
@@ -194,7 +194,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -216,7 +216,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

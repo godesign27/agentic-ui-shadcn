@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiReasoningTrace`  
 **Component type:** React organism  
@@ -14,7 +14,7 @@
 
 Governed process telemetry, not private reasoning. Shows what the AI system did — step by step — so users, admins, and governance reviewers can inspect execution without seeing internal deliberation.
 
-AI Process Trace is the step-level execution transparency component for the ZAIDYN AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output — not why the output makes sense (that is AI Rationale).
+AI Process Trace is the step-level execution transparency component for the Guild AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output — not why the output makes sense (that is AI Rationale).
 
 **Export:** `AIReasoningTrace`
 
@@ -28,7 +28,7 @@ AI Rationale may link to AI Process Trace when users want deeper process context
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -131,13 +131,13 @@ AI Rationale may link to AI Process Trace when users want deeper process context
 | --- | --- | --- |
 | `var(--success-color)` | `#0A6E5E` | Complete step icon, complete step number color |
 | `var(--error-color)` | `#B21111` | Failed step icon, failed step label, container border on failure |
-| `ZS_ORANGE[70]` | `#CB6100` | Blocked/escalated step icon and label, warning icon |
-| `ZS_ORANGE[60]` | `#EC7200` | Warning step icon, needs-review badge |
+| `SIGNAL_ORANGE[70]` | `#CB6100` | Blocked/escalated step icon and label, warning icon |
+| `SIGNAL_ORANGE[60]` | `#EC7200` | Warning step icon, needs-review badge |
 
 ### Role badges
 | Token | Value | Usage |
 | --- | --- | --- |
-| `Validator badge` | `ZS_ORANGE[70] / ZS_ORANGE[00]` | Validator role — orange only for permission/validation roles |
+| `Validator badge` | `SIGNAL_ORANGE[70] / SIGNAL_ORANGE[00]` | Validator role — orange only for permission/validation roles |
 | `Retriever badge` | `#2980B9 / #EBF5FB` | Retriever role — information blue |
 | `Router badge` | `#0DACAD / #f1feff` | Router role — teal routing indicator |
 | `Memory badge` | `#7A5944 / #F6F2EB` | Memory role — companion tan palette |
@@ -145,7 +145,7 @@ AI Rationale may link to AI Process Trace when users want deeper process context
 ## Flows
 
 ### AI Led workflow trace
-User asks ZAIDYN to generate an approval workflow → trace shows planner, router, retriever, validator and executor steps → output completes
+User asks Guild to generate an approval workflow → trace shows planner, router, retriever, validator and executor steps → output completes
 - User submits prompt in Command Center
 - AI Process Trace renders collapsed below response
 - User expands trace → 7 steps visible, all complete with durations
@@ -221,9 +221,9 @@ const steps: TraceStep[] = [
 ## Agent rules
 
 1. Read this mirror spec and `ai-reasoning-trace.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.agent.json`.
 

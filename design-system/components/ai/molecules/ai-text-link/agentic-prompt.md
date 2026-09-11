@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Text Link
 
-You are implementing the **AI Text Link** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Text Link** atom from the Guild AI Design System mirror.
 
 ---
 

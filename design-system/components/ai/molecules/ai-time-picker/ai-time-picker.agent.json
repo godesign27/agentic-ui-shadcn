@@ -5,8 +5,8 @@
   "repoModule": "aiTimePicker",
   "tier": "molecules",
   "status": "experimental",
-  "description": "The AI Time Picker mirrors the ZDS Time Picker (src/timePicker/) 1:1 in structure and behavior \u2014 an Action-Field trigger opening a scrollable listbox of time slots with a clock icon affordance \u2014 but is restyled onto the ZAIDYN AI brand. The trigger carries the AI Action Field treatment: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The menu sits FLUSH against the field (the ZDS Time Picker signature): the field keeps its top corners rounded when open while the menu carries the bottom radius, so the two read as one continuous brand surface. Items adopt the ZSAI indigo ramp \u2014 hover uses the brand-subtle tint, the selected slot fills with the action gradient \u2014 and the custom scrollbar is brand-tinted. It reads its palette from the AI.* tokens (mirrored to the --color-ai-* / --gradient-ai-* CSS variables): rendered on a surface carrying the AI data-theme, it stays aligned with the rest of the AI system, so applying the AI theme to a ZDS time picker yields this look. Only the palette and radii differ from ZDS; the anatomy, states, and keyboard model are identical.",
-  "intent": "The ZDS Time Picker on the AI surface \u2014 AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.",
+  "description": "The AI Time Picker mirrors the DS Time Picker (src/timePicker/) 1:1 in structure and behavior \u2014 an Action-Field trigger opening a scrollable listbox of time slots with a clock icon affordance \u2014 but is restyled onto the Guild AI brand. The trigger carries the AI Action Field treatment: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The menu sits FLUSH against the field (the DS Time Picker signature): the field keeps its top corners rounded when open while the menu carries the bottom radius, so the two read as one continuous brand surface. Items adopt the AI_RAMP indigo ramp \u2014 hover uses the brand-subtle tint, the selected slot fills with the action gradient \u2014 and the custom scrollbar is brand-tinted. It reads its palette from the AI.* tokens (mirrored to the --color-ai-* / --gradient-ai-* CSS variables): rendered on a surface carrying the AI data-theme, it stays aligned with the rest of the AI system, so applying the AI theme to a DS time picker yields this look. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.",
+  "intent": "The DS Time Picker on the AI surface \u2014 AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-time-picker/ai-time-picker.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -106,7 +106,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -128,7 +128,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

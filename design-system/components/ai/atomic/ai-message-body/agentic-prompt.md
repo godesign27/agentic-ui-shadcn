@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Text Response
 
-You are implementing the **AI Text Response** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Text Response** atom from the Guild AI Design System mirror.
 
 ---
 

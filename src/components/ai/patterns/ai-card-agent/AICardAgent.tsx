@@ -12,7 +12,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { RiMicLine, RiMessage2Line, RiCloseLine, RiVolumeUpLine, RiPulseLine, RiGitBranchLine, RiAlertLine } from '@remixicon/react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
   const restOfDesc = rest.join(' ');
 
   return (
-    <div style={{ position: 'relative', width: '100%', minWidth: 0, fontFamily: ZDS.font }}>
+    <div style={{ position: 'relative', width: '100%', minWidth: 0, fontFamily: DS.font }}>
       <style>{`
         @keyframes ai-card-agent-pulse {
           0%, 100% { opacity: 0.5; transform: scaleY(0.8); }
@@ -148,11 +148,11 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
               {config.icon}
             </div>
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-meta-label'], fontWeight: 600,
+              ...AI_TYPOGRAPHY['@ai-meta-label'], fontWeight: 600,
               padding: '5px 11px', borderRadius: 999,
               border: '1px solid var(--ai-card-border)',
               background: 'var(--ai-card-bg)',
-              color: 'var(--ai-zds-helper)',
+              color: 'var(--ai-ds-helper)',
               whiteSpace: 'nowrap',
             }}>
               {config.role}
@@ -162,8 +162,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
           {/* Name */}
           <h3 style={{
             margin: '0 0 6px',
-            ...AI_TYPOGRAPHY['@zsai-h3'],
-            color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-h3'],
+            color: 'var(--ai-ds-text)',
           }}>
             {config.name}
           </h3>
@@ -171,8 +171,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
           {/* Description — first word in accent */}
           <p style={{
             margin: '0 0 16px',
-            ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+            color: 'var(--ai-ds-helper)',
           }}>
             <span style={{ color: config.accent, fontWeight: 600 }}>{firstWord}</span>
             {' '}{restOfDesc}
@@ -183,9 +183,9 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
           {/* Capabilities */}
           <div style={{ marginBottom: 20 }}>
             <div style={{
-              ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+              ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
               textTransform: 'uppercase',
-              color: 'var(--ai-zds-helper)',
+              color: 'var(--ai-ds-helper)',
               marginBottom: 10,
             }}>
               Capabilities
@@ -199,8 +199,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
                     background: config.accent,
                   }} />
                   <span style={{
-                    ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-                    color: 'var(--ai-zds-text)',
+                    ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+                    color: 'var(--ai-ds-text)',
                   }}>{cap}</span>
                 </li>
               ))}
@@ -218,8 +218,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
                 height: 48, borderRadius: 12,
                 background: '#111827', color: '#FFFFFF',
                 border: 'none', cursor: 'pointer',
-                ...AI_TYPOGRAPHY['@zsai-button-label'],
-                fontFamily: ZDS.font,
+                ...AI_TYPOGRAPHY['@ai-button-label'],
+                fontFamily: DS.font,
                 transition: 'background 0.15s ease, transform 0.08s ease',
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = '#1F2937'; }}
@@ -240,7 +240,7 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 border: chatHint ? '1px solid transparent' : '1px solid var(--ai-card-border)',
                 background: chatHint ? config.accent : 'var(--ai-card-bg)',
-                color: chatHint ? '#FFFFFF' : 'var(--ai-zds-helper)',
+                color: chatHint ? '#FFFFFF' : 'var(--ai-ds-helper)',
                 cursor: 'pointer',
                 transition: 'background 0.15s ease, color 0.15s ease, border-color 0.15s ease',
               }}
@@ -257,7 +257,7 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
               padding: '7px 11px', borderRadius: 12,
               background: `${config.accent}15`,
               color: config.accent,
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
             }}>
               <RiMessage2Line size={12} />
               Opening AI Assisted Panel for {config.name}…
@@ -276,7 +276,7 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
           transform:      state === 'talking' ? 'scale(1)' : 'scale(0.95)',
           pointerEvents:  state === 'talking' ? 'auto' : 'none',
           background: 'linear-gradient(160deg, #EEF0FF 0%, #F4F0FF 60%, #FFF5EE 100%)',
-          fontFamily: ZDS.font,
+          fontFamily: DS.font,
         }}
       >
         <div
@@ -298,8 +298,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
             padding: '6px 14px', borderRadius: 999,
             background: 'rgba(255,255,255,0.9)',
             boxShadow: '0 1px 3px rgba(26,22,40,0.08)',
-            color: 'var(--ai-zds-text)',
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
+            color: 'var(--ai-ds-text)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
             fontWeight: 600,
             marginBottom: 22,
           }}>
@@ -309,8 +309,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
 
           <h3 style={{
             margin: '0 0 14px',
-            ...AI_TYPOGRAPHY['@zsai-h3'],
-            color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-h3'],
+            color: 'var(--ai-ds-text)',
             textAlign: 'center',
           }}>
             {config.name}
@@ -323,8 +323,8 @@ export function AICardAgent({ config, forceState }: AICardAgentProps) {
           <div style={{ flex: 1, width: '100%', padding: '0 8px', marginBottom: 22 }}>
             <p style={{
               margin: 0,
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-              color: 'var(--ai-zds-helper)',
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+              color: 'var(--ai-ds-helper)',
               fontStyle: 'italic',
               textAlign: 'center',
               minHeight: '5rem',

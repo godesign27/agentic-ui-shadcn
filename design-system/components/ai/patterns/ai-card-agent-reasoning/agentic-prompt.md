@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Agent Reasoning
 
-You are implementing the **AI Card Agent Reasoning** (`ai-card-agent-reasoning`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Agent Reasoning** (`ai-card-agent-reasoning`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -26,7 +26,7 @@ Implement `AICardAgentReasoning` exactly as specified in the mirror. Match props
 ## Props (summary)
 
 - `density` (`'basic' \) default `'simple'`` — `—`
-- `agentName` (`string`) default ``'Zaidyn'`` — Bold display name in the header.
+- `agentName` (`string`) default ``'Guild'`` — Bold display name in the header.
 - `agentRole` (`string`) default ``'AGENT'`` — Small tier chip next to the name.
 - `agentEyebrow` (`string`) default ``'REASONING & ANALYSIS'`` — Uppercase subtitle eyebrow under the name.
 - `live` (`boolean`) default ``true`` — Show the green "● LIVE" pill in the top right.

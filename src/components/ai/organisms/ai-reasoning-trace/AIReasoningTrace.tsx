@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AI, ZDS, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, DS, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { copyToClipboard } from '../../_support/clipboard';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIChip } from '../../atomic/ai-chip/AIChip';
@@ -70,27 +70,27 @@ const ROLE_META: Record<TraceRole, { label: string; color: string; bg: string }>
   planner:   { label: 'Planner',   color: AI.color.brand,            bg: AI.color.brandSurface   },
   router:    { label: 'Router',    color: '#0DACAD',                  bg: 'var(--ai-status-info-bg)'           },
   retriever: { label: 'Retriever', color: '#2980B9',                  bg: 'var(--ai-status-info-bg)'           },
-  validator: { label: 'Validator', color: ZS_ORANGE[70],              bg: ZS_ORANGE['00']         },
+  validator: { label: 'Validator', color: SIGNAL_ORANGE[70],              bg: SIGNAL_ORANGE['00']         },
   executor:  { label: 'Executor',  color: AI.color.action.primary,   bg: AI.color.brandSurface   },
   reviewer:  { label: 'Reviewer',  color: 'var(--success-color, #0A6E5E)', bg: 'var(--ai-status-success-bg)'   },
   memory:    { label: 'Memory',    color: '#7A5944',                  bg: 'var(--ai-loading-card-bg)'          },
-  tool:      { label: 'Tool',      color: ZDS.textHelper,             bg: 'var(--ai-track-bg)'                 },
+  tool:      { label: 'Tool',      color: DS.textHelper,             bg: 'var(--ai-track-bg)'                 },
   human:     { label: 'Human',     color: 'var(--success-color, #0A6E5E)', bg: 'var(--ai-status-success-bg)'   },
-  system:    { label: 'System',    color: ZDS.textDefault,            bg: 'var(--ai-track-bg)'                 },
+  system:    { label: 'System',    color: DS.textDefault,            bg: 'var(--ai-track-bg)'                 },
 };
 
 // ── Step status config ────────────────────────────────────────────────────────
 
 const STEP_STATUS_META: Record<TraceStepStatus, { color: string; icon: React.ReactNode; label: string }> = {
-  pending:    { color: ZDS.border,                      label: 'Pending',      icon: <PendingIcon /> },
+  pending:    { color: DS.border,                      label: 'Pending',      icon: <PendingIcon /> },
   running:    { color: AI.color.brand,                  label: 'Running',      icon: <SpinnerIcon /> },
   complete:   { color: 'var(--success-color, #0A6E5E)', label: 'Complete',     icon: <CheckIcon /> },
-  skipped:    { color: ZDS.textHelper,                  label: 'Skipped',      icon: <SkipIcon /> },
-  warning:    { color: ZS_ORANGE[60],                   label: 'Warning',      icon: <WarningIcon /> },
-  blocked:    { color: ZS_ORANGE[70],                   label: 'Blocked',      icon: <BlockedIcon /> },
+  skipped:    { color: DS.textHelper,                  label: 'Skipped',      icon: <SkipIcon /> },
+  warning:    { color: SIGNAL_ORANGE[60],                   label: 'Warning',      icon: <WarningIcon /> },
+  blocked:    { color: SIGNAL_ORANGE[70],                   label: 'Blocked',      icon: <BlockedIcon /> },
   failed:     { color: 'var(--error-color, #B21111)',   label: 'Failed',       icon: <FailedIcon /> },
-  escalated:  { color: ZS_ORANGE[70],                   label: 'Escalated',    icon: <EscalatedIcon /> },
-  needsReview:{ color: ZS_ORANGE[60],                   label: 'Needs review', icon: <ReviewIcon /> },
+  escalated:  { color: SIGNAL_ORANGE[70],                   label: 'Escalated',    icon: <EscalatedIcon /> },
+  needsReview:{ color: SIGNAL_ORANGE[60],                   label: 'Needs review', icon: <ReviewIcon /> },
 };
 
 // ── Overall status config ─────────────────────────────────────────────────────
@@ -98,10 +98,10 @@ const STEP_STATUS_META: Record<TraceStepStatus, { color: string; icon: React.Rea
 const OVERALL_STATUS_META: Record<TraceOverallStatus, { label: string; color: string; bg: string }> = {
   running:    { label: 'Running',      color: AI.color.brand,                  bg: AI.color.brandSurface },
   complete:   { label: 'Done',         color: 'var(--success-color, #0A6E5E)', bg: 'var(--ai-status-success-bg)' },
-  blocked:    { label: 'Blocked',      color: ZS_ORANGE[70],                   bg: ZS_ORANGE['00']       },
+  blocked:    { label: 'Blocked',      color: SIGNAL_ORANGE[70],                   bg: SIGNAL_ORANGE['00']       },
   failed:     { label: 'Failed',       color: 'var(--error-color, #B21111)',   bg: 'var(--ai-status-error-bg)'   },
-  escalated:  { label: 'Escalated',    color: ZS_ORANGE[70],                   bg: ZS_ORANGE['00']       },
-  needsReview:{ label: 'Needs review', color: ZS_ORANGE[60],                   bg: ZS_ORANGE['00']       },
+  escalated:  { label: 'Escalated',    color: SIGNAL_ORANGE[70],                   bg: SIGNAL_ORANGE['00']       },
+  needsReview:{ label: 'Needs review', color: SIGNAL_ORANGE[60],                   bg: SIGNAL_ORANGE['00']       },
 };
 
 // ── Keyframe injection ────────────────────────────────────────────────────────
@@ -127,14 +127,14 @@ function injectKeyframes() {
 
 // ── Step status icons ─────────────────────────────────────────────────────────
 
-function PendingIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke={ZDS.border} strokeWidth="1.5"/></svg>; }
+function PendingIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke={DS.border} strokeWidth="1.5"/></svg>; }
 function CheckIcon()     { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="var(--success-color,#0A6E5E)" opacity="0.12"/><path d="M4 7l2 2 4-4" stroke="var(--success-color,#0A6E5E)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
-function SkipIcon()      { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke={ZDS.textHelper} strokeWidth="1.5"/><line x1="4" y1="7" x2="10" y2="7" stroke={ZDS.textHelper} strokeWidth="1.5" strokeLinecap="round"/></svg>; }
-function WarningIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M7 2L12.5 12H1.5L7 2Z" fill={ZS_ORANGE['00']} stroke={ZS_ORANGE[60]} strokeWidth="1.2"/><line x1="7" y1="6" x2="7" y2="9" stroke={ZS_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round"/><circle cx="7" cy="10.5" r="0.7" fill={ZS_ORANGE[70]}/></svg>; }
-function BlockedIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={ZS_ORANGE['00']} stroke={ZS_ORANGE[60]} strokeWidth="1.2"/><path d="M4.5 4.5L9.5 9.5M9.5 4.5L4.5 9.5" stroke={ZS_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round"/></svg>; }
+function SkipIcon()      { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke={DS.textHelper} strokeWidth="1.5"/><line x1="4" y1="7" x2="10" y2="7" stroke={DS.textHelper} strokeWidth="1.5" strokeLinecap="round"/></svg>; }
+function WarningIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M7 2L12.5 12H1.5L7 2Z" fill={SIGNAL_ORANGE['00']} stroke={SIGNAL_ORANGE[60]} strokeWidth="1.2"/><line x1="7" y1="6" x2="7" y2="9" stroke={SIGNAL_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round"/><circle cx="7" cy="10.5" r="0.7" fill={SIGNAL_ORANGE[70]}/></svg>; }
+function BlockedIcon()   { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={SIGNAL_ORANGE['00']} stroke={SIGNAL_ORANGE[60]} strokeWidth="1.2"/><path d="M4.5 4.5L9.5 9.5M9.5 4.5L4.5 9.5" stroke={SIGNAL_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round"/></svg>; }
 function FailedIcon()    { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="#FFEDE9" stroke="var(--error-color,#B21111)" strokeWidth="1.2"/><path d="M4.5 4.5L9.5 9.5M9.5 4.5L4.5 9.5" stroke="var(--error-color,#B21111)" strokeWidth="1.4" strokeLinecap="round"/></svg>; }
-function EscalatedIcon() { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={ZS_ORANGE['00']} stroke={ZS_ORANGE[70]} strokeWidth="1.2"/><path d="M7 10V5M5 7l2-2 2 2" stroke={ZS_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
-function ReviewIcon()    { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={ZS_ORANGE['00']} stroke={ZS_ORANGE[60]} strokeWidth="1.2"/><ellipse cx="7" cy="7" rx="3" ry="1.8" stroke={ZS_ORANGE[70]} strokeWidth="1.2"/><circle cx="7" cy="7" r="1" fill={ZS_ORANGE[70]}/></svg>; }
+function EscalatedIcon() { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={SIGNAL_ORANGE['00']} stroke={SIGNAL_ORANGE[70]} strokeWidth="1.2"/><path d="M7 10V5M5 7l2-2 2 2" stroke={SIGNAL_ORANGE[70]} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
+function ReviewIcon()    { return <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill={SIGNAL_ORANGE['00']} stroke={SIGNAL_ORANGE[60]} strokeWidth="1.2"/><ellipse cx="7" cy="7" rx="3" ry="1.8" stroke={SIGNAL_ORANGE[70]} strokeWidth="1.2"/><circle cx="7" cy="7" r="1" fill={SIGNAL_ORANGE[70]}/></svg>; }
 
 function SpinnerIcon()   {
   return (
@@ -157,7 +157,7 @@ function Chevron({ open }: { open: boolean }) {
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
       style={{ transition: 'transform 0.18s ease', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', flexShrink: 0 }}
       aria-hidden="true">
-      <path d="M3 4.5l3 3 3-3" stroke={ZDS.textHelper} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3 4.5l3 3 3-3" stroke={DS.textHelper} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
@@ -250,7 +250,7 @@ function StepRow({
           fontWeight: 700,
           color: step.status === 'running' ? AI.color.brand
                : step.status === 'complete' ? 'var(--success-color, #0A6E5E)'
-               : ZDS.textHelper,
+               : DS.textHelper,
           textAlign: 'right',
           lineHeight: 1,
           zIndex: 1,
@@ -260,7 +260,7 @@ function StepRow({
         </span>
 
         {/* Status icon — bumped from 14→16px to match the body-icon size
-            spec (zs-size-n) used everywhere else next to inline text. */}
+            spec (ds-size-n) used everywhere else next to inline text. */}
         <span style={{ width: '16px', height: '16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 0 }}>
           {statusMeta.icon}
         </span>
@@ -278,10 +278,10 @@ function StepRow({
         <span style={{
           fontSize: compact ? '11px' : '12px',
           fontWeight: 500,
-          color: step.status === 'skipped' ? ZDS.textHelper
+          color: step.status === 'skipped' ? DS.textHelper
                : step.status === 'failed'  ? 'var(--error-color, #B21111)'
-               : step.status === 'blocked' ? ZS_ORANGE[70]
-               : ZDS.textDefault,
+               : step.status === 'blocked' ? SIGNAL_ORANGE[70]
+               : DS.textDefault,
           flex: 1,
           whiteSpace: 'nowrap',
           overflow: 'hidden',
@@ -294,14 +294,14 @@ function StepRow({
 
         {/* Agent/tool badge (technical mode) */}
         {showTechnical && step.agent && (
-          <span style={{ fontSize: '9px', color: ZDS.textHelper, fontStyle: 'italic', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <span style={{ fontSize: '9px', color: DS.textHelper, fontStyle: 'italic', whiteSpace: 'nowrap', flexShrink: 0 }}>
             {step.agent}
           </span>
         )}
 
         {/* Source count (technical mode) */}
         {showTechnical && step.sourceCount !== undefined && (
-          <span style={{ fontSize: '9px', color: ZDS.textHelper, whiteSpace: 'nowrap', flexShrink: 0 }}>
+          <span style={{ fontSize: '9px', color: DS.textHelper, whiteSpace: 'nowrap', flexShrink: 0 }}>
             {step.sourceCount} src
           </span>
         )}
@@ -310,7 +310,7 @@ function StepRow({
         {showDurations && step.duration && (
           <span style={{
             fontSize: '10px',
-            color: step.status === 'running' ? AI.color.brand : ZDS.textHelper,
+            color: step.status === 'running' ? AI.color.brand : DS.textHelper,
             whiteSpace: 'nowrap',
             flexShrink: 0,
             fontFamily: '"Roboto Mono", monospace',
@@ -334,7 +334,7 @@ function StepRow({
           }}
         >
           {step.detail && (
-            <p style={{ margin: '0 0 6px', ...AI_TYPOGRAPHY['@zsai-trace-detail'], color: ZDS.textDefault }}>
+            <p style={{ margin: '0 0 6px', ...AI_TYPOGRAPHY['@ai-trace-detail'], color: DS.textDefault }}>
               {step.detail}
             </p>
           )}
@@ -356,7 +356,7 @@ function StepRow({
                 <GhostLink label="↻ Retry" color={AI.color.brand} onClick={() => {}} />
               )}
               {step.canEscalate && (
-                <GhostLink label="↑ Escalate" color={ZS_ORANGE[70]} onClick={() => {}} />
+                <GhostLink label="↑ Escalate" color={SIGNAL_ORANGE[70]} onClick={() => {}} />
               )}
             </div>
           )}
@@ -369,8 +369,8 @@ function StepRow({
 function MetaChip({ label, value }: { label: string; value: string }) {
   return (
     <span style={{ display: 'inline-flex', gap: '3px', fontSize: '10px', fontFamily: F }}>
-      <span style={{ color: ZDS.textHelper, fontWeight: 600, letterSpacing: '0.02em', textTransform: 'uppercase' }}>{label}</span>
-      <span style={{ color: ZDS.textDefault }}>{value}</span>
+      <span style={{ color: DS.textHelper, fontWeight: 600, letterSpacing: '0.02em', textTransform: 'uppercase' }}>{label}</span>
+      <span style={{ color: DS.textDefault }}>{value}</span>
     </span>
   );
 }
@@ -396,11 +396,11 @@ function GhostLink({ label, color, onClick }: { label: string; color: string; on
 }
 
 // RiFileCopyLine-trace link — text + icon, sized to match the inline body icon spec
-// (zs-size-n / 16px from the Foundations Iconography page). Built locally
+// (ds-size-n / 16px from the Foundations Iconography page). Built locally
 // since GhostLink only takes a string label; we need the registry copy glyph.
 function CopyTraceLink({ copied, onClick }: { copied: boolean; onClick: () => void }) {
   const [hov, setHov] = useState(false);
-  const color = copied ? 'var(--success-color, #0A6E5E)' : ZDS.textHelper;
+  const color = copied ? 'var(--success-color, #0A6E5E)' : DS.textHelper;
   return (
     <button
       onClick={onClick}
@@ -530,7 +530,7 @@ export function AIReasoningTrace({
   }
 
   const containerBorder = status === 'blocked' || status === 'escalated' || status === 'needsReview'
-    ? ZS_ORANGE[30]
+    ? SIGNAL_ORANGE[30]
     : status === 'failed'
     ? 'var(--ai-status-error-border)'
     : 'var(--ai-card-border)';
@@ -574,7 +574,7 @@ export function AIReasoningTrace({
             the title carries our canonical AI identity glyph. */}
         <AIIcon name="ai-assist-fill" size="sm" treatment="ai" decorative />
 
-        <span style={{ fontSize: compact ? '11px' : '12px', fontWeight: 700, color: ZDS.textDefault, flex: 1, letterSpacing: '-0.1px' }}>
+        <span style={{ fontSize: compact ? '11px' : '12px', fontWeight: 700, color: DS.textDefault, flex: 1, letterSpacing: '-0.1px' }}>
           {title}
         </span>
 
@@ -607,7 +607,7 @@ export function AIReasoningTrace({
 
         {/* Step count */}
         {!compact && (
-          <span style={{ fontSize: '10px', color: ZDS.textHelper, flexShrink: 0 }}>
+          <span style={{ fontSize: '10px', color: DS.textHelper, flexShrink: 0 }}>
             {steps.length} steps
           </span>
         )}
@@ -695,7 +695,7 @@ export function AIReasoningTrace({
                 <GhostLink label="View sources →" color={AI.color.brand} onClick={() => onViewSources?.()} />
               )}
               {showAuditLink && (
-                <GhostLink label="View audit trail →" color={ZDS.textHelper} onClick={() => onViewAuditTrail?.()} />
+                <GhostLink label="View audit trail →" color={DS.textHelper} onClick={() => onViewAuditTrail?.()} />
               )}
             </div>
           )}

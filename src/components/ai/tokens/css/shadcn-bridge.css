@@ -12,7 +12,7 @@
 [data-theme^="ai-"] {
   /* core */
   --background: var(--ai-surface-default);
-  --foreground: var(--ai-zds-text);
+  --foreground: var(--ai-ds-text);
 
   /* card */
   --card: var(--ai-surface-subtle);
@@ -32,7 +32,7 @@
 
   /* muted */
   --muted: var(--ai-surface-subtle);
-  --muted-foreground: var(--ai-zds-text-helper);
+  --muted-foreground: var(--ai-ds-text-helper);
 
   /* accent */
   --accent: var(--ai-brand-subtle);

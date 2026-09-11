@@ -10,7 +10,7 @@
 
 `@token-space-unit` (8px) ramp shared with the standard spacing system. AI surfaces inherit the same scale — don't hand-tune padding.
 
-AI components use explicit pixel values for spacing in React inline styles (no Tailwind). In LESS / scoped Zaidyn CSS, prefer `ui-padding-*` / `ui-margin-*` utility classes. All values are multiples of the base unit.
+AI components use explicit pixel values for spacing in React inline styles (no Tailwind). In LESS / scoped Guild CSS, prefer `ui-padding-*` / `ui-margin-*` utility classes. All values are multiples of the base unit.
 
 **Programmatic map:** Documentation-only — spacing constants are not yet exported from `ai-tokens.ts`. Use Standard `@token-space-unit` utilities and the tables below.
 
@@ -19,7 +19,7 @@ AI components use explicit pixel values for spacing in React inline styles (no T
 ## Hard Rules
 
 1. **Base unit = 8px.** All spacing is a multiple of `@token-space-unit` (0 / 0.5 / 1 / 1.5 / 2 → 0 / 4 / 8 / 12 / 16 px).
-2. **Use the utilities in CSS.** Reach for `ui-padding-*` / `ui-margin-*` / `ui-gap-*` when working in LESS / scoped Zaidyn CSS.
+2. **Use the utilities in CSS.** Reach for `ui-padding-*` / `ui-margin-*` / `ui-gap-*` when working in LESS / scoped Guild CSS.
 3. **Use the same multiples in React.** Inline styles should use 4 / 8 / 12 / 16 / 20 / 24 / 32 / 48 — never arbitrary values like `13px`.
 4. **CSS variables for Tier 3.** Component slots may emit `--ai-padding-card`, `--ai-gap-thread`, etc., defined at `:root` from documented values.
 5. **Don't compress touch targets.** Bubble and chip padding must not drop below 12px on interactive surfaces.
@@ -138,7 +138,7 @@ When emitting component tokens, define at `:root`:
 </div>
 ```
 
-In Zaidyn-scoped LESS / CSS, use utility classes:
+In Guild-scoped LESS / CSS, use utility classes:
 
 ```html
 <div class="ui-padding-1 ui-margin-bottom-2">…</div>

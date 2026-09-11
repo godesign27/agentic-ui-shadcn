@@ -243,13 +243,13 @@
         "status": "Beta"
       },
       {
-        "id": "zds-ai-checkbox",
-        "name": "ZDS AI Checkbox",
+        "id": "ai-checkbox",
+        "name": "DS AI Checkbox",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-radio",
-        "name": "ZDS AI Radio",
+        "id": "ai-radio",
+        "name": "DS AI Radio",
         "status": "Beta"
       }
     ],
@@ -265,13 +265,13 @@
         "status": "Beta"
       },
       {
-        "id": "zds-ai-accordion",
-        "name": "ZDS AI Accordion",
+        "id": "ai-accordion",
+        "name": "DS AI Accordion",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-spinner",
-        "name": "ZDS AI Spinner",
+        "id": "ai-spinner",
+        "name": "DS AI Spinner",
         "status": "Beta"
       },
       {
@@ -280,8 +280,8 @@
         "status": "Beta"
       },
       {
-        "id": "zds-ai-tooltip",
-        "name": "ZDS AI Tooltip",
+        "id": "ai-tooltip",
+        "name": "DS AI Tooltip",
         "status": "Beta"
       },
       {
@@ -402,43 +402,43 @@
         "status": "Beta"
       },
       {
-        "id": "zds-ai-breadcrumbs",
-        "name": "ZDS AI Breadcrumbs",
+        "id": "ai-breadcrumbs",
+        "name": "DS AI Breadcrumbs",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-card",
-        "name": "ZDS AI Card",
+        "id": "ai-standard-card",
+        "name": "DS AI Card",
         "status": "Stable"
       },
       {
-        "id": "zds-ai-dialog",
-        "name": "ZDS AI Dialog",
+        "id": "ai-modal-dialog",
+        "name": "DS AI Dialog",
         "status": "Stable"
       },
       {
-        "id": "zds-ai-file-upload",
-        "name": "ZDS AI File Upload",
+        "id": "ai-file-upload",
+        "name": "DS AI File Upload",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-segmented-control",
-        "name": "ZDS AI Segmented Control",
+        "id": "ai-segmented-control",
+        "name": "DS AI Segmented Control",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-stepper",
-        "name": "ZDS AI Stepper",
+        "id": "ai-stepper",
+        "name": "DS AI Stepper",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-tab",
-        "name": "ZDS AI Tab",
+        "id": "ai-tab",
+        "name": "DS AI Tab",
         "status": "Beta"
       },
       {
-        "id": "zds-ai-table",
-        "name": "ZDS AI Table",
+        "id": "ai-table",
+        "name": "DS AI Table",
         "status": "Beta"
       }
     ],
@@ -788,8 +788,8 @@
       "file": "tokens/sound.md"
     },
     {
-      "id": "zsai-global-palette",
-      "name": "ZSAI Global Palette",
+      "id": "ai-ramp-global-palette",
+      "name": "AI_RAMP Global Palette",
       "status": "Stable",
       "file": "tokens/color-palette-reference.md"
     },

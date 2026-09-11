@@ -1,0 +1,30 @@
+{
+  "description": "Maps DS --zs-* CSS variables to --ai-* inside [data-theme^=\"ai-\"] scope",
+  "source": "components/ai/tokens/css/ds-bridge.css",
+  "scope": "[data-theme^=\"ai-\"]",
+  "requires": ["zs-master-style on ancestor for DS component styles"],
+  "mappings": [
+    { "ds": "--zs-text-color", "ai": "--ai-ds-text" },
+    { "ds": "--zs-helper-text-color", "ai": "--ai-ds-text-helper" },
+    { "ds": "--zs-headline-text-color", "ai": "--ai-text-primary" },
+    { "ds": "--zs-background", "ai": "--ai-surface-default" },
+    { "ds": "--zs-surface-color-1", "ai": "--ai-surface-subtle" },
+    { "ds": "--zs-surface-color-2", "ai": "--ai-surface-emphasis" },
+    { "ds": "--zs-border-color", "ai": "--ai-border-default" },
+    { "ds": "--zs-border-hover-color", "ai": "--ai-border-strong" },
+    { "ds": "--zs-border-primary-color", "ai": "--ai-border-focus" },
+    { "ds": "--zs-focus-outline-color", "ai": "--ai-border-focus" },
+    { "ds": "--zs-interactive-primary-color", "ai": "--ai-action-primary" },
+    { "ds": "--zs-interactive-primary-hover-color", "ai": "--ai-action-primary-hover" },
+    { "ds": "--zs-interactive-primary-active-color", "ai": "--ai-action-primary-active" },
+    { "ds": "--zs-button-background-color", "ai": "--ai-action-primary" },
+    { "ds": "--zs-button-text-color", "ai": "--ai-text-on-action" },
+    { "ds": "--zs-field-text-color", "ai": "--ai-ds-text" },
+    { "ds": "--zs-field-border-color", "ai": "--ai-border-default" },
+    { "ds": "--zs-field-background-color", "ai": "--ai-surface-default" },
+    { "ds": "--zs-field-label-color", "ai": "--ai-text-primary" },
+    { "ds": "--zs-tabs-active-bar-color", "ai": "--ai-action-primary" },
+    { "ds": "--zs-warning-color", "ai": "--ai-signal" },
+    { "ds": "--zs-warning-background-color", "ai": "--ai-signal-subtle" }
+  ]
+}

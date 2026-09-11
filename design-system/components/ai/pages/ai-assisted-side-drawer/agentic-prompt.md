@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Assisted Side Drawer
 
-You are implementing the **AI Assisted Side Drawer** (`ai-assisted-side-drawer`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Assisted Side Drawer** (`ai-assisted-side-drawer`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

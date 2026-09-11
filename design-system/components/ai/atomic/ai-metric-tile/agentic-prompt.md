@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Metric Tile
 
-You are implementing the **AI Metric Tile** (`ai-metric-tile`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Metric Tile** (`ai-metric-tile`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

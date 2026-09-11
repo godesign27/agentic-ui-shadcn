@@ -6,7 +6,7 @@
  * Proactive Insight alert with Approve / Dismiss. Inline actions mutate the
  * same task record (handled by parent in production).
  *
- * Brand: no teal. Needs Input + warning use ZS orange family; AI emphasis
+ * Brand: no teal. Needs Input + warning use Guild orange family; AI emphasis
  * stays in the supervisor agent header tan tint.
  */
 
@@ -110,7 +110,7 @@ export function AIAgentTaskTrackerMobile({
       {/* Footer — inline-resolution affordance hint */}
       <div style={{
         textAlign: 'center', color: 'rgba(255,255,255,0.55)',
-        ...AI_TYPOGRAPHY['@zsai-meta-label'],
+        ...AI_TYPOGRAPHY['@ai-meta-label'],
       }}>
         Resolutions sync back to your desktop task registry.
       </div>

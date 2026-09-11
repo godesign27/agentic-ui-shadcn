@@ -65,26 +65,26 @@ export interface AIInsightListProps {
 interface SeverityTone {
   dot:     string;
   label:   string;
-  /** zsIcons class name (from /styles/icons.css) — the canonical ZDS icon. */
+  /** icon-font class name (from /styles/icons.css) — the canonical DS icon. */
   icon:    string;
 }
 
-// Severity → canonical ZDS icon (zsIcons font). Mirrors the ZDS status icon
+// Severity → canonical DS icon (icon font). Mirrors the DS status icon
 // conventions documented in Agent_Instructions.md §11 (check-circle-fill /
 // error-triangle-fill / info-fill …) instead of hand-drawn SVG glyphs.
 const TONE: Record<AIInsightSeverity, SeverityTone> = {
   positive:    { dot: '#1F6B40',                             label: 'Positive',     icon: 'zs-icon-check-circle-fill'   },
-  neutral:     { dot: 'var(--ai-zds-helper, #6B6876)',       label: 'Neutral',      icon: 'zs-icon-circle-fill'         },
+  neutral:     { dot: 'var(--ai-ds-helper, #6B6876)',       label: 'Neutral',      icon: 'zs-icon-circle-fill'         },
   warning:     { dot: '#B45309',                             label: 'Warning',      icon: 'zs-icon-error-triangle-fill' },
   critical:    { dot: 'var(--ai-status-error-text, #C0392B)', label: 'Critical',    icon: 'zs-icon-error-circle-fill'   },
   info:        { dot: AI.color.brand,                        label: 'Information',  icon: 'zs-icon-info-fill'           },
   needsReview: { dot: '#B45309',                             label: 'Needs review', icon: 'zs-icon-clock-pending'       },
 };
 
-// Renders a ZDS icon-font glyph. The `content:"\eaXX"` rules in icons.css are
+// Renders a DS icon-font glyph. The `content:"\eaXX"` rules in icons.css are
 // scoped under `.zs-master-style`, so the glyph only resolves inside that
 // wrapper — we scope locally here (same pattern as AIChip's brief icon).
-function ZsIcon({ name, size = 14 }: { name: string; size?: number }) {
+function DsIcon({ name, size = 14 }: { name: string; size?: number }) {
   return (
     <span
       className="zs-master-style"
@@ -147,7 +147,7 @@ export function AIInsightList({
   if (items.length === 0) {
     return (
       <div role="status" style={{
-        fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)',
+        fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)',
         padding: '12px 14px', borderRadius: AI.radius.md,
         border: '1px dashed var(--ai-card-border, #D5D3DA)',
         textAlign: 'center' as const,
@@ -162,7 +162,7 @@ export function AIInsightList({
       {title && (
         <div style={{
           fontFamily: F, fontSize: 12, fontWeight: 700,
-          color: 'var(--ai-zds-helper, #6B6876)', letterSpacing: '0.08em',
+          color: 'var(--ai-ds-helper, #6B6876)', letterSpacing: '0.08em',
           textTransform: 'uppercase' as const,
           marginBottom: 8,
         }}>
@@ -200,7 +200,7 @@ export function AIInsightList({
                   marginTop: 2,
                 }}
               >
-                <ZsIcon name={tone.icon} />
+                <DsIcon name={tone.icon} />
               </span>
 
               {/* Insight body */}
@@ -208,7 +208,7 @@ export function AIInsightList({
                 <p style={{
                   margin: 0,
                   fontFamily: F, fontSize: 13, lineHeight: 1.55,
-                  color: 'var(--ai-zds-text, #2F2C3C)',
+                  color: 'var(--ai-ds-text, #2F2C3C)',
                 }}>
                   {item.text}
                 </p>
@@ -228,7 +228,7 @@ export function AIInsightList({
                         size="sm"
                         noDot
                         icon={item.source.icon ?? 'zs-icon-data-table'}
-                        accentColor="var(--ai-zds-helper, #6B6876)"
+                        accentColor="var(--ai-ds-helper, #6B6876)"
                         accentBg="var(--ai-card-bg-raised, #F5F4F7)"
                       />
                     )}
@@ -238,7 +238,7 @@ export function AIInsightList({
                         size="sm"
                         noDot
                         icon="zs-icon-clock-pending"
-                        accentColor="var(--ai-zds-helper, #6B6876)"
+                        accentColor="var(--ai-ds-helper, #6B6876)"
                         accentBg="var(--ai-card-bg-raised, #F5F4F7)"
                       />
                     )}

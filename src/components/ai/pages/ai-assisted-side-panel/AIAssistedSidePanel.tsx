@@ -22,7 +22,7 @@ const AI = {
   color: {
     surface: { default: 'var(--ai-brand-surface)', subtle: 'var(--ai-brand-surface-hover)' },
     border:  { default: 'var(--ai-brand-border)', strong: 'var(--ai-brand-text)' },
-    text:    { primary: 'var(--ai-zds-text)', secondary: 'var(--ai-zds-helper)', disabled: 'var(--ai-btn-disabled-text)' },
+    text:    { primary: 'var(--ai-ds-text)', secondary: 'var(--ai-ds-helper)', disabled: 'var(--ai-btn-disabled-text)' },
   },
   radius: { full: '100px', lg: '20px', md: '12px', sm: '8px' },
 };
@@ -78,7 +78,7 @@ function UserBubble({ text }: { text: string }) {
         borderRadius: '16px 16px 4px 16px',
         padding: '10px 14px',
         fontFamily: F,
-        ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+        ...AI_TYPOGRAPHY['@ai-section-subtitle'],
         color: AI.color.text.primary,
       }}>
         {text}
@@ -101,7 +101,7 @@ function BotMessage({ text }: { text: string }) {
         borderRadius: '4px 16px 16px 16px',
         padding: '10px 14px',
         fontFamily: F,
-        ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+        ...AI_TYPOGRAPHY['@ai-section-subtitle'],
         color: AI.color.text.primary,
       }}>
         {text}
@@ -165,7 +165,7 @@ function MiniInputBar({ value, onChange, onSend, compact = false }: {
         placeholder="Ask anything…"
         style={{
           flex: 1, border: 'none', outline: 'none', resize: 'none',
-          fontFamily: F, ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: AI.color.text.primary,
+          fontFamily: F, ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: AI.color.text.primary,
           background: 'transparent',
         }}
       />
@@ -218,7 +218,7 @@ function PanelHeader({ title, onClose }: { title?: string; onClose?: () => void 
     }}>
       <AIAvatar size={22} />
       <span style={{
-        flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'],
+        flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'],
         color: AI.color.text.primary,
       }}>
         {title ?? 'AI Assistant'}
@@ -286,7 +286,7 @@ export function FloatingPanel({ onExpand }: { onExpand?: () => void }) {
             flexShrink: 0,
           }}>
             <AIAvatar size={18} />
-            <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'], color: AI.color.text.primary }}>
+            <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'], color: AI.color.text.primary }}>
               AI Assistant
             </span>
             {onExpand && (
@@ -429,7 +429,7 @@ export default function AIAssistedSidePanel() {
               flexShrink: 0, background: 'var(--ai-card-bg)',
             }}>
               <AIAvatar size={22} />
-              <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'], color: AI.color.text.primary }}>
+              <span style={{ flex: 1, fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'], color: AI.color.text.primary }}>
                 AI Assistant
               </span>
             </div>

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Data Table
 
-You are implementing the **AI Card Data Table** (`ai-card-data-table`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Data Table** (`ai-card-data-table`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -30,7 +30,7 @@ Implement `AICardDataTable` exactly as specified in the mirror. Match props, tok
 - `title` (`string`) default ``—`` — Table title (H3).
 - `subtitle` (`string`) default ``—`` — Rich+. Sub-line under the title.
 - `intro` (`string`) default ``—`` — Conversational lead-in sentence rendered above the card shell.
-- `generatedBy` (`string`) default ``—`` — Robust. Uppercase brand-color attribution label ("ZAIDYN AI").
+- `generatedBy` (`string`) default ``—`` — Robust. Uppercase brand-color attribution label ("Guild AI").
 - `timestamp` (`string`) default ``—`` — Robust. Freshness or "Generated" timestamp.
 - `confidence` (`"low" \) default `"medium" \` — "high" \
 - `risk` (`"low" \) default `"medium" \` — "high" \

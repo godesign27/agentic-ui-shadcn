@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules (AI)  
 **Repo module:** `aiPicker`  
 **Component type:** React molecule  
@@ -14,13 +14,13 @@
 
 AI suggests a date or time from data; the human reviews and decides. Never auto-applies. Scales from a passive chip to a full governance panel by density.
 
-The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides — the suggestion is always shown for review and never auto-applied. The date type reuses ZdsDatePickerInline; month, month-range, and time use brand-styled inline panels.
+The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides — the suggestion is always shown for review and never auto-applied. The date type reuses DSDatePickerInline; month, month-range, and time use brand-styled inline panels.
 
 **Export:** `AIPicker`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -107,9 +107,9 @@ import { AIPicker } from '@/components/ai/molecules/ai-picker/AIPicker';
 ## Agent rules
 
 1. Read this mirror spec and `ai-picker.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/molecules/ai-picker/ai-picker.agent.json`.
 

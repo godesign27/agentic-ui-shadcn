@@ -1,5 +1,5 @@
 /**
- * AICapabilityCard — ZAIDYN Agentic AI Group
+ * AICapabilityCard — Guild Agentic AI Group
  *
  * Compact reusable card that surfaces a single AI capability, model skill, or
  * agent behavior. Default click behavior opens a detail drawer with the
@@ -8,14 +8,14 @@
  * into a standalone capability page.
  *
  * Brand discipline:
- *   - AI emphasis uses ZSAI brand blue / purple — no teal.
+ *   - AI emphasis uses AI_RAMP brand blue / purple — no teal.
  *   - Origin chips use neutral / brand-tinted treatment.
- *   - ZS orange is reserved for the needs-review status.
+ *   - Guild orange is reserved for the needs-review status.
  *   - Color always pairs with text so meaning isn't color-dependent.
  */
 
 import React from 'react';
-import { AI, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AITextLink } from '../../molecules/ai-text-link/AITextLink';
 import { AIReasoningQuote } from '../../atomic/ai-reasoning-quote/AIReasoningQuote';
@@ -50,7 +50,7 @@ export interface AICapabilityAutonomy {
   label: string;
   /** Comma-separated or short phrase scope */
   scope: string;
-  /** Tone — silent = AI green/teal-free brand blue, confirm = ZSAI purple */
+  /** Tone — silent = AI green/teal-free brand blue, confirm = AI_RAMP purple */
   tone?: 'silent' | 'confirm';
 }
 
@@ -107,14 +107,14 @@ interface ChipCfg {
 const ORIGIN_CFG: Record<AICapabilityOrigin, ChipCfg> = {
   'system-defined':  { label: 'SYSTEM DEFINED',  bg: AI.color.brandSubtle,           border: AI.color.brandBorder,           text: AI.color.text.secondary              },
   'client-extended': { label: 'CLIENT EXTENDED', bg: 'rgba(67,190,190,0.12)',        border: 'rgba(67,190,190,0.30)',        text: '#0F6E72'             },
-  'user-configured': { label: 'USER CONFIGURED', bg: 'var(--ai-card-bg-raised)',     border: 'var(--ai-card-border)',        text: 'var(--ai-zds-text)'  },
+  'user-configured': { label: 'USER CONFIGURED', bg: 'var(--ai-card-bg-raised)',     border: 'var(--ai-card-border)',        text: 'var(--ai-ds-text)'  },
   'experimental':    { label: 'EXPERIMENTAL',    bg: 'rgba(178,170,255,0.18)',       border: 'rgba(178,170,255,0.40)',       text: AI.color.text.primary  },
 };
 
 const STATUS_CFG: Record<AICapabilityStatus, { label: string; dot: string; text: string }> = {
-  'active':       { label: 'Inspect',     dot: AI.color.brand,            text: 'var(--ai-zds-helper)' },
-  'disabled':     { label: 'Disabled',    dot: 'var(--ai-card-border)',   text: 'var(--ai-zds-helper)' },
-  'needs-review': { label: 'Needs review',dot: ZS_ORANGE[60],             text: ZS_ORANGE[80] },
+  'active':       { label: 'Inspect',     dot: AI.color.brand,            text: 'var(--ai-ds-helper)' },
+  'disabled':     { label: 'Disabled',    dot: 'var(--ai-card-border)',   text: 'var(--ai-ds-helper)' },
+  'needs-review': { label: 'Needs review',dot: SIGNAL_ORANGE[60],             text: SIGNAL_ORANGE[80] },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -232,7 +232,7 @@ export function AICapabilityCard(props: AICapabilityCardProps) {
           background: 'var(--ai-card-bg)',
           border: `1px solid ${
             elevated ? AI.color.brand :
-            isNeedsReview ? ZS_ORANGE[30] :
+            isNeedsReview ? SIGNAL_ORANGE[30] :
             'var(--ai-card-border)'
           }`,
           borderRadius: AI.radius.md,
@@ -258,7 +258,7 @@ export function AICapabilityCard(props: AICapabilityCardProps) {
               flexShrink: 0,
             }} />
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
               color: statusCfg.text,
               fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' as const,
             }}>
@@ -273,7 +273,7 @@ export function AICapabilityCard(props: AICapabilityCardProps) {
           fontSize: 18,
           fontWeight: 700,
           lineHeight: 1.3,
-          color: 'var(--ai-zds-text)',
+          color: 'var(--ai-ds-text)',
           letterSpacing: '-0.005em',
         }}>
           {title}
@@ -283,8 +283,8 @@ export function AICapabilityCard(props: AICapabilityCardProps) {
         {description && (
           <p style={{
             margin: 0,
-            ...AI_TYPOGRAPHY['@zsai-body-small'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-body-small'],
+            color: 'var(--ai-ds-helper)',
             lineHeight: 1.5,
           }}>
             {description}
@@ -297,10 +297,10 @@ export function AICapabilityCard(props: AICapabilityCardProps) {
             paddingTop: 10,
             borderTop: '1px dashed var(--ai-card-border)',
             display: 'flex', alignItems: 'center', gap: 6,
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
           }}>
-            <Glyph name="zs-icon-layers" size={12} color="var(--ai-zds-helper)" />
+            <Glyph name="zs-icon-layers" size={12} color="var(--ai-ds-helper)" />
             <span>{supportingNote}</span>
           </div>
         )}
@@ -344,9 +344,9 @@ function AICapabilityCardDrawer({
   const confLabel = detail?.confidenceLabel ??
     (conf === undefined ? undefined : conf >= 80 ? 'High' : conf >= 60 ? 'Medium' : 'Low');
   const confTone = confLabel === 'High' ? AI.color.brand
-                 : confLabel === 'Medium' ? ZS_ORANGE[60]
-                 : confLabel === 'Low' ? ZS_ORANGE[80]
-                 : 'var(--ai-zds-helper)';
+                 : confLabel === 'Medium' ? SIGNAL_ORANGE[60]
+                 : confLabel === 'Low' ? SIGNAL_ORANGE[80]
+                 : 'var(--ai-ds-helper)';
 
   React.useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -398,11 +398,11 @@ function AICapabilityCardDrawer({
           <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
             <div style={{
               fontFamily: F, fontSize: 18, fontWeight: 700,
-              color: 'var(--ai-zds-text)', lineHeight: 1.25,
+              color: 'var(--ai-ds-text)', lineHeight: 1.25,
             }}>
               {title}
             </div>
-            <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: cfg.text, fontWeight: 700, letterSpacing: '0.08em' }}>
+            <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: cfg.text, fontWeight: 700, letterSpacing: '0.08em' }}>
               {cfg.label}
             </div>
           </div>
@@ -412,7 +412,7 @@ function AICapabilityCardDrawer({
             aria-label="Close capability details"
             style={{
               width: 32, height: 32, borderRadius: 8, background: 'transparent',
-              border: 'none', cursor: 'pointer', color: 'var(--ai-zds-helper)',
+              border: 'none', cursor: 'pointer', color: 'var(--ai-ds-helper)',
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               flexShrink: 0,
             }}
@@ -433,7 +433,7 @@ function AICapabilityCardDrawer({
 
           {/* Confidence + trend */}
           {(confLabel !== undefined || detail?.trend) && (
-            <Section eyebrow="EVOLUTION & CONFIDENCE" eyebrowIcon="zs-icon-trending-up" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="EVOLUTION & CONFIDENCE" eyebrowIcon="zs-icon-trending-up" eyebrowTone="var(--ai-ds-helper)">
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 <AIMetricTile
                   label="CONFIDENCE"
@@ -456,7 +456,7 @@ function AICapabilityCardDrawer({
 
           {/* Autonomy boundaries */}
           {detail?.autonomy && detail.autonomy.length > 0 && (
-            <Section eyebrow="AUTONOMY BOUNDARIES" eyebrowIcon="zs-icon-shield" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="AUTONOMY BOUNDARIES" eyebrowIcon="zs-icon-shield" eyebrowTone="var(--ai-ds-helper)">
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 {detail.autonomy.map((a, i) => (
                   <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
@@ -466,10 +466,10 @@ function AICapabilityCardDrawer({
                       marginTop: 6, flexShrink: 0,
                     }} />
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontFamily: F, fontSize: 13, fontWeight: 600, color: 'var(--ai-zds-text)', lineHeight: 1.35 }}>
+                      <div style={{ fontFamily: F, fontSize: 13, fontWeight: 600, color: 'var(--ai-ds-text)', lineHeight: 1.35 }}>
                         {a.label}
                       </div>
-                      <div style={{ fontFamily: F, fontSize: 13, color: 'var(--ai-zds-helper)', lineHeight: 1.4, marginTop: 2 }}>
+                      <div style={{ fontFamily: F, fontSize: 13, color: 'var(--ai-ds-helper)', lineHeight: 1.4, marginTop: 2 }}>
                         {a.scope}
                       </div>
                     </div>
@@ -481,7 +481,7 @@ function AICapabilityCardDrawer({
 
           {/* Knowledge inputs — composed AISourceTile atoms */}
           {detail?.knowledgeInputs && detail.knowledgeInputs.length > 0 && (
-            <Section eyebrow="KNOWLEDGE INPUTS" eyebrowIcon="zs-icon-data" eyebrowTone="var(--ai-zds-helper)">
+            <Section eyebrow="KNOWLEDGE INPUTS" eyebrowIcon="zs-icon-data" eyebrowTone="var(--ai-ds-helper)">
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {detail.knowledgeInputs.map((k, i) => (
                   <AISourceTile
@@ -542,7 +542,7 @@ function Section({
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
         <Glyph name={eyebrowIcon} size={14} color={eyebrowTone} />
         <span style={{
-          ...AI_TYPOGRAPHY['@zsai-meta-label'],
+          ...AI_TYPOGRAPHY['@ai-meta-label'],
           color: eyebrowTone,
           fontWeight: 700, letterSpacing: '0.10em',
         }}>

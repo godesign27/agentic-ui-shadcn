@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiFileAttachment`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 Selected-file chip for AI composers — name, type, status, remove. Does NOT own the picker, upload API, or validation.
 
-AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior — the parent composer owns those. File-type icons resolve in priority order: ZS/Zaidyn icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (ZS orange), error (semantic error). Border-radius is 0 across all states per the ZDS atom flat-corner rule.
+AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior — the parent composer owns those. File-type icons resolve in priority order: Guild/Guild icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (Guild orange), error (semantic error). Border-radius is 0 across all states per the DS atom flat-corner rule.
 
 **Export:** `AIFileAttachment`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -56,7 +56,7 @@ AIFileAttachment is a compact atom for representing an already-selected file ins
 
 ## Anatomy
 
-1. **Container** _(Unique)_ — Inline-flex group — flat border, neutral surface; tone shifts to brand (progress), ZS orange (warning), or semantic error (failure).
+1. **Container** _(Unique)_ — Inline-flex group — flat border, neutral surface; tone shifts to brand (progress), Guild orange (warning), or semantic error (failure).
 2. **File type icon** _(Shared)_ — Lucide File / File / FileSpreadsheet / FileImage / RiFileCodeLine / RiFileZipLine / Presentation / Alert — replaced by a spinner when status drives one.
 3. **File name** _(Unique)_ — Bold name with mid-string truncation that preserves the extension; full name surfaces via title + aria-label.
 4. **RiFontSize2 badge** _(Shared)_ — Uppercase chip of the explicit fileType or inferred extension.
@@ -70,13 +70,13 @@ AIFileAttachment is a compact atom for representing an already-selected file ins
 - **Compact** _(size="compact")_ — Tighter padding, 20px icon, shorter truncation — for narrow composers / multi-file rows.
 - **Loading / Uploading** _(status="uploading")_ — Spinner replaces icon, brand surface tone, optional progress bar, Remove behaves as Cancel upload.
 - **Processing** _(status="processing")_ — Spinner + brand surface; AI is extracting / reading file context.
-- **Unsupported** _(status="unsupported")_ — ZS orange tone, warning icon, status text "File type not supported" — never relies on color alone.
+- **Unsupported** _(status="unsupported")_ — Guild orange tone, warning icon, status text "File type not supported" — never relies on color alone.
 - **Error** _(status="error")_ — Semantic error tone, warning icon, status text "Upload failed". Optional Retry button.
 - **Selected / Focused** _(:focus-visible)_ — Native focus ring on the remove button — keyboard reachable.
 - **Disabled** _(status="disabled")_ — Muted container, remove disabled; disabledReason surfaces as the button title for accessibility.
 - **Removing** _(status="removing")_ — Spinner replaces icon, "Removing…" status; remove control disabled.
-- **File too large** _(status="fileTooLarge")_ — ZS orange tone, status "File is too large"; remove remains visible.
-- **Permission restricted** _(status="permissionRestricted")_ — ZS orange tone, status "File access restricted".
+- **File too large** _(status="fileTooLarge")_ — Guild orange tone, status "File is too large"; remove remains visible.
+- **Permission restricted** _(status="permissionRestricted")_ — Guild orange tone, status "File access restricted".
 - **Virus scan pending** _(status="virusScanPending")_ — Brand surface, spinner, "Scanning…".
 - **Virus scan failed** _(status="virusScanFailed")_ — Semantic error tone, "File failed security scan".
 - **Icon Types — Documents** _(PDF · DOCX · TXT)_ — Documents group — Lucide File icon mapping.
@@ -115,28 +115,28 @@ AIFileAttachment is a compact atom for representing an already-selected file ins
 | `ai-file-attachment.container.border.neutral` | `var(--ai-card-border)` | Default / disabled / removing border |
 | `ai-file-attachment.container.bg.progress` | `var(--ai-brand-surface)` | uploading / processing / virusScanPending |
 | `ai-file-attachment.container.border.progress` | `var(--ai-brand-border)` | uploading / processing / virusScanPending |
-| `ai-file-attachment.container.bg.warning` | `ZS_ORANGE[00] #FFF5E1` | unsupported / fileTooLarge / permissionRestricted |
-| `ai-file-attachment.container.border.warning` | `ZS_ORANGE[30] #F5C56C` | warning border |
+| `ai-file-attachment.container.bg.warning` | `SIGNAL_ORANGE[00] #FFF5E1` | unsupported / fileTooLarge / permissionRestricted |
+| `ai-file-attachment.container.border.warning` | `SIGNAL_ORANGE[30] #F5C56C` | warning border |
 | `ai-file-attachment.container.bg.error` | `var(--ai-status-error-bg, #FFEDE9)` | error / virusScanFailed |
 | `ai-file-attachment.container.border.error` | `var(--ai-status-error-border, #F5C6C6)` | error border |
 
 ### Text & icon
 | Token | Value | Usage |
 | --- | --- | --- |
-| `ai-file-attachment.text.name` | `ZDS.textDefault #2F2C3C` | File name — 13px (standard) / 12px (compact), weight 600 |
-| `ai-file-attachment.text.meta` | `ZDS.textHelper #5B5864` | RiFontSize2 badge label, file size, helper text |
+| `ai-file-attachment.text.name` | `DS.textDefault #2F2C3C` | File name — 13px (standard) / 12px (compact), weight 600 |
+| `ai-file-attachment.text.meta` | `DS.textHelper #5B5864` | RiFontSize2 badge label, file size, helper text |
 | `ai-file-attachment.text.progress` | `AI.color.action.primary #4D60E6` | Status text during uploading / processing |
-| `ai-file-attachment.text.warning` | `ZS_ORANGE[80] #A54F00` | Status text for unsupported / file-too-large / permission |
+| `ai-file-attachment.text.warning` | `SIGNAL_ORANGE[80] #A54F00` | Status text for unsupported / file-too-large / permission |
 | `ai-file-attachment.text.error` | `var(--ai-status-error-text, #B21111)` | Status text for error / virus-scan-failed |
-| `ai-file-attachment.icon.default` | `ZDS.textDefault #2F2C3C` | File-type icon color in neutral / progress states |
-| `ai-file-attachment.icon.warning` | `ZS_ORANGE[80]` | Alert icon in warning + error tones |
+| `ai-file-attachment.icon.default` | `DS.textDefault #2F2C3C` | File-type icon color in neutral / progress states |
+| `ai-file-attachment.icon.warning` | `SIGNAL_ORANGE[80]` | Alert icon in warning + error tones |
 
 ### RiFontSize2 badge
 | Token | Value | Usage |
 | --- | --- | --- |
 | `ai-file-attachment.badge.bg` | `var(--ai-track-bg)` | RiFontSize2-badge surface |
 | `ai-file-attachment.badge.border` | `var(--ai-card-border)` | RiFontSize2-badge border |
-| `ai-file-attachment.badge.text` | `ZDS.textHelper #5B5864` | RiFontSize2-badge label — uppercase |
+| `ai-file-attachment.badge.text` | `DS.textHelper #5B5864` | RiFontSize2-badge label — uppercase |
 
 ### Actions
 | Token | Value | Usage |
@@ -167,7 +167,7 @@ User picks a file, sees it uploading, then ready, then sends the prompt.
 Parent validates type and surfaces unsupported state.
 - Parent rejects file extension against its allowlist
 - Render <AIFileAttachment status="unsupported" helperText="Try PDF, DOCX, XLSX, CSV, TXT, PNG, or JPG." />
-- Atom switches to ZS orange tone + warning icon + status text "File type not supported"
+- Atom switches to Guild orange tone + warning icon + status text "File type not supported"
 - Submit button on parent composer stays disabled until user removes the attachment
 
 ### Upload fails → retry
@@ -247,9 +247,9 @@ import { AIFileAttachment } from '@/components/ai/atomic/file-attachment/AIFileA
 ## Agent rules
 
 1. Read this mirror spec and `ai-file-attachment.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-file-attachment/ai-file-attachment.agent.json`.
 

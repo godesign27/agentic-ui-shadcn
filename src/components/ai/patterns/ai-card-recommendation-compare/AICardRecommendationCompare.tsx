@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS } from '../../tokens/ai-tokens';
+import { AI, DS } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIConfidenceRiskBadge, ConfidenceLevel, RiskLevel } from '../../atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge';
 
@@ -23,7 +23,7 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '6px 14px', borderRadius: AI.radius.sm,
   border: '1px solid transparent', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
 };
 
 const CONFIDENCE_RANK: Record<ConfidenceLevel, number> = { high: 3, medium: 2, low: 1 };
@@ -57,7 +57,7 @@ export function AICardRecommendationCompare({
       border: `1px solid ${AI.color.border.default}`,
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       minWidth: 360,
     }}>
       {/* Header */}
@@ -67,9 +67,9 @@ export function AICardRecommendationCompare({
         background: AI.color.surface.default,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: ZDS.textDefault }}>{title}</span>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: DS.textDefault }}>{title}</span>
         <span style={{
-          fontSize: 12, color: ZDS.textHelper,
+          fontSize: 12, color: DS.textHelper,
           background: AI.color.surface.emphasis, padding: '2px 8px', borderRadius: 4,
         }}>
           {options.length} options
@@ -102,7 +102,7 @@ export function AICardRecommendationCompare({
             )}
 
             {/* Option name */}
-            <div style={{ fontSize: 13, color: ZDS.textDefault, marginBottom: 10, paddingRight: i === bestIdx ? 70 : 0 }}>
+            <div style={{ fontSize: 13, color: DS.textDefault, marginBottom: 10, paddingRight: i === bestIdx ? 70 : 0 }}>
               {opt.label}
             </div>
 
@@ -116,8 +116,8 @@ export function AICardRecommendationCompare({
               <div style={{ marginBottom: 10 }}>
                 {Object.entries(opt.metrics).map(([k, v]) => (
                   <div key={k} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                    <span style={{ fontSize: 12, color: ZDS.textHelper }}>{k}</span>
-                    <span style={{ fontSize: 12, color: ZDS.textDefault }}>{v}</span>
+                    <span style={{ fontSize: 12, color: DS.textHelper }}>{k}</span>
+                    <span style={{ fontSize: 12, color: DS.textDefault }}>{v}</span>
                   </div>
                 ))}
               </div>
@@ -128,7 +128,7 @@ export function AICardRecommendationCompare({
               onClick={() => toggleTradeoffs(i)}
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                fontFamily: ZDS.font, fontSize: 12, color: AI.color.brand,
+                fontFamily: DS.font, fontSize: 12, color: AI.color.brand,
                 padding: 0, display: 'flex', alignItems: 'center', gap: 4, marginBottom: 6,
               }}
             >
@@ -142,7 +142,7 @@ export function AICardRecommendationCompare({
             {expandedTradeoffs.has(i) && (
               <ul style={{ margin: 0, padding: '0 0 0 14px', listStyle: 'disc' }}>
                 {opt.tradeoffs.map((t, j) => (
-                  <li key={j} style={{ fontSize: 12, color: ZDS.textHelper, lineHeight: 1.5, marginBottom: 2 }}>
+                  <li key={j} style={{ fontSize: 12, color: DS.textHelper, lineHeight: 1.5, marginBottom: 2 }}>
                     {t}
                   </li>
                 ))}
@@ -159,8 +159,8 @@ export function AICardRecommendationCompare({
                 justifyContent: 'center',
                 padding: '5px 10px', fontSize: 12,
                 background: chosen === i ? AI.color.brand : 'transparent',
-                color: chosen === i ? '#fff' : ZDS.textHelper,
-                border: `1px solid ${chosen === i ? AI.color.brand : ZDS.border}`,
+                color: chosen === i ? '#fff' : DS.textHelper,
+                border: `1px solid ${chosen === i ? AI.color.brand : DS.border}`,
               }}
             >
               {chosen === i ? '✓ Chosen' : 'Choose'}
@@ -176,7 +176,7 @@ export function AICardRecommendationCompare({
         display: 'flex', gap: 8,
         background: AI.color.surface.default,
       }}>
-        <button onClick={onMerge} style={{ ...BTN_BASE, background: 'transparent', color: ZDS.textHelper, border: `1px solid ${ZDS.border}` }}>
+        <button onClick={onMerge} style={{ ...BTN_BASE, background: 'transparent', color: DS.textHelper, border: `1px solid ${DS.border}` }}>
           Merge Options
         </button>
         <button onClick={onSendToAgent} style={{ ...BTN_BASE, background: 'transparent', color: AI.color.brand, border: 'none' }}>

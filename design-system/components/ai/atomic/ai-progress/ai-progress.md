@@ -16,15 +16,15 @@ Progress that communicates AI work — not just loading. Five variants, eleven s
 
 **Export:** `AIProgress`
 
-AIProgress is the canonical progress atom for any surface where ZAIDYN AI is actively working. It extends the standard ZAIDYN progress primitive with the full AI visual language: brand fill gradient, semantic status colors, indeterminate shimmer, and agentic state transitions — paused, blocked, escalated, error, and complete.
+AIProgress is the canonical progress atom for any surface where Guild AI is actively working. It extends the standard Guild progress primitive with the full AI visual language: brand fill gradient, semantic status colors, indeterminate shimmer, and agentic state transitions — paused, blocked, escalated, error, and complete.
 
 Use AIProgress inside AI-driven cards, panels, and command center modules when the work takes more than a brief moment. Do not use it as decoration. Do not fake precise percentages when progress is unknown — use the indeterminate variant instead.
 
-AIProgress differs from the standard ZAIDYN progress component in three ways: it applies AI brand tokens for fill and track, it has native agentic status states (blocked, escalated, paused), and it respects the AI motion system (shimmer on indeterminate, settle on complete, prefers-reduced-motion fallback).
+AIProgress differs from the standard Guild progress component in three ways: it applies AI brand tokens for fill and track, it has native agentic status states (blocked, escalated, paused), and it respects the AI motion system (shimmer on indeterminate, settle on complete, prefers-reduced-motion fallback).
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
@@ -188,7 +188,7 @@ import { AIProgress } from '@/components/ai/atomic/progress/AIProgress';
 // Indeterminate
 <AIProgress
   status="indeterminate"
-  label="Retrieving ZAIDYN Analytics data..."
+  label="Retrieving Guild Analytics data..."
   size="md"
 />
 

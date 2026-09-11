@@ -22,7 +22,7 @@ Accent system: six colors (teal / indigo / amber / red / green / gray) shown as 
 
 ## Source (canonical implementation)
 
-Self-contained under `components/ai/`. Agents must not require `@zaidyn/ai-ui`.
+Self-contained under `components/ai/`. Agents must not require `an external AI UI package`.
 
 | Path | Role |
 |------|------|
@@ -53,7 +53,7 @@ Self-contained under `components/ai/`. Agents must not require `@zaidyn/ai-ui`.
 
 ## Anatomy
 1. **Accent dot + rail** _(Shared)_ — Top-left 8px square + optional 2px bottom border (`accentBar`) in the same accent color (teal / indigo / amber / red / green / gray).
-2. **Eyebrow label** _(Shared)_ — Uppercase micro-eyebrow text (`@zsai-micro-eyebrow`). Identifies the metric.
+2. **Eyebrow label** _(Shared)_ — Uppercase micro-eyebrow text (`@ai-micro-eyebrow`). Identifies the metric.
 3. **Status pill** _(Shared)_ — Rich/Robust only. `AIChip kind="status"` top-right — `On track` / `Below target` / `Needs review` / `Critical`.
 4. **Primary value** _(Shared)_ — `AIMetricValue` — large bold KPI number with optional unit suffix.
 5. **Trend + target** _(Shared)_ — `AITrendIndicator` (delta + direction tone) inline with optional `Target: Close` text.
@@ -65,7 +65,7 @@ Self-contained under `components/ai/`. Agents must not require `@zaidyn/ai-ui`.
 11. **Bottom action link** _(Unique)_ — Rich only (when no Robust action row). Inline brand-blue label + right-chevron — `View coverage gaps ›`.
 
 ## State variations
-- **Basic — title + icon + value** _(density="basic")_ — Smallest density. Sentence-case title on the left, icon on the top-right, value below. No accent dot, no rail, no trend, no status. Icon accepts a ZAIDYN glyph (e.g. `"zs-icon-wrench"`) OR any React node (e.g. a Lucide icon) when the ZAIDYN library lacks the right metaphor.
+- **Basic — title + icon + value** _(density="basic")_ — Smallest density. Sentence-case title on the left, icon on the top-right, value below. No accent dot, no rail, no trend, no status. Icon accepts a Guild glyph (e.g. `"zs-icon-wrench"`) OR any React node (e.g. a Lucide icon) when the Guild library lacks the right metaphor.
 - **Up trend — vs prior** _(tone="positive")_ — Green up-arrow + positive delta. Default healthy metric.
 - **Down trend — vs target** _(tone="negative")_ — Red down-arrow + signed negative delta. Card accent flips to red when the metric is below target.
 - **Neutral trend** _(tone="neutral")_ — Flat dash + helper-color delta. Use when there's no comparison yet or the metric is intentionally static.
@@ -85,7 +85,7 @@ Self-contained under `components/ai/`. Agents must not require `@zaidyn/ai-ui`.
 | `unit` | `string` | — | Optional unit suffix rendered inline with the value. |
 | `valueSize` | `"sm" \| "md" \| "lg"` | `"md"` | Type scale for the metric value. |
 | `accent` | `"teal" \| "indigo" \| "amber" \| "red" \| "green" \| "gray"` | `"teal"` | Dot + bottom rail color. Ignored at `density="basic"`. |
-| `icon` | `string \| ReactNode` | — | `basic` only. Top-right glyph. ZAIDYN `zs-icon-*` preferred, or any React node. |
+| `icon` | `string \| ReactNode` | — | `basic` only. Top-right glyph. Guild `zs-icon-*` preferred, or any React node. |
 | `trend` | `{ delta, label?, tone? }` | — | Trend row data. `tone` is `"positive" \| "negative" \| "neutral"`. Ignored at `density="basic"`. |
 | `status` | `{ label, tone }` | — | Rich+. Top-right status pill. |
 | `target` | `string` | — | Rich+. Comparison line ("Target: 81%"). |
@@ -110,10 +110,10 @@ Self-contained under `components/ai/`. Agents must not require `@zaidyn/ai-ui`.
 | --- | --- | --- |
 | `metric-card.accent.teal` | `#0A6E5E` | Default healthy / positive metrics |
 | `metric-card.accent.indigo` | `AI.color.brand` | AI-estimated / forecast values |
-| `metric-card.accent.amber` | `#E67E22` (`ZS_AMBER[60]`) | Caution / review |
+| `metric-card.accent.amber` | `#E67E22` (`SIGNAL_AMBER[60]`) | Caution / review |
 | `metric-card.accent.red` | `#C0392B` | Negative vs target / critical |
-| `metric-card.accent.green` | `#27AE60` (`ZS_GREEN[60]`) | Positive |
-| `metric-card.accent.gray` | `ZDS.iconDefault` | Neutral / static |
+| `metric-card.accent.green` | `#27AE60` (`SIGNAL_GREEN[60]`) | Positive |
+| `metric-card.accent.gray` | `DS.iconDefault` | Neutral / static |
 
 ## Flows
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Trend Indicator
 
-You are implementing the **AI Trend Indicator** (`ai-trend-indicator`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Trend Indicator** (`ai-trend-indicator`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

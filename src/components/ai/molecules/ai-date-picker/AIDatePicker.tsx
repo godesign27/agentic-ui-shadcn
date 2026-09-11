@@ -6,19 +6,19 @@ import { AIInputField } from '../../atomic/ai-input-field/AIInputField';
 /**
  * AI Date Picker
  * =====================
- * The AI-surface counterpart to the ZDS Date Picker (src/datePicker/). Same scope
+ * The AI-surface counterpart to the DS Date Picker (src/datePicker/). Same scope
  * — an Action-Field trigger + popover calendar (month/year nav, day grid, today
- * ring, today link) — restyled onto the ZAIDYN AI brand:
+ * ring, today link) — restyled onto the Guild AI brand:
  *
  *   - Trigger uses the AI Action Field atom (AIInputField, asTrigger) so the field
  *     stays consistent with every other AI form control (rounded ai.radius.md
  *     outline, brand-blue border, AI input shadow + blue focus halo).
- *   - Calendar surface adopts the ZSAI indigo ramp (AI.color.*): selected day uses
+ *   - Calendar surface adopts the AI_RAMP indigo ramp (AI.color.*): selected day uses
  *     the action gradient, today carries a brand ring, range preview uses the
  *     brand-subtle tint, and the panel sits on a brand-tinted card.
  *
- * Structure/behavior mirrors the ZDS master so the two stay 1:1 across libraries;
- * only the palette + radii differ. Colors map the ZDS teal tokens to AI brand
+ * Structure/behavior mirrors the DS master so the two stay 1:1 across libraries;
+ * only the palette + radii differ. Colors map the DS teal tokens to AI brand
  * equivalents (see tokenGroups in the registry entry).
  */
 

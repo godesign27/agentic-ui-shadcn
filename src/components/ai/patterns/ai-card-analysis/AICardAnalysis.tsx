@@ -207,10 +207,10 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
               </span>
             )}
             {analysisType && timestamp && (
-              <span style={{ color: 'var(--ai-zds-helper, #9CA3AF)', opacity: 0.5 }}>·</span>
+              <span style={{ color: 'var(--ai-ds-helper, #9CA3AF)', opacity: 0.5 }}>·</span>
             )}
             {timestamp && (
-              <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+              <span style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
                 {timestamp}
               </span>
             )}
@@ -223,7 +223,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
               style={{
                 background: 'none', border: 'none', padding: 4, cursor: 'pointer',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--ai-zds-helper, #6B6876)',
+                color: 'var(--ai-ds-helper, #6B6876)',
               }}
             >
               <CollapseChevron expanded={expanded} />
@@ -234,7 +234,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
       {title && (
         <h3 style={{
           margin: 0, fontFamily: F, fontSize: 15, fontWeight: 700,
-          color: 'var(--ai-zds-text, #1A1628)', lineHeight: 1.3,
+          color: 'var(--ai-ds-text, #1A1628)', lineHeight: 1.3,
         }}>
           {title}
         </h3>
@@ -242,7 +242,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
       {intro && (
         <p style={{
           margin: 0, fontFamily: F, fontSize: 14, lineHeight: 1.55,
-          color: 'var(--ai-zds-text, #2F2C3C)',
+          color: 'var(--ai-ds-text, #2F2C3C)',
         }}>
           {intro}
         </p>
@@ -259,7 +259,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
     }}>
       {loading && (
         <div role="status" aria-live="polite" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper, #6B6876)' }}>
+          <div style={{ fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper, #6B6876)' }}>
             {loadingLabel}
           </div>
           <div style={{
@@ -316,7 +316,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
             <AIChip kind="brief"
               label={source.label} size="sm" noDot
               icon={source.icon ?? 'zs-icon-data-table'}
-              accentColor="var(--ai-zds-helper, #6B6876)"
+              accentColor="var(--ai-ds-helper, #6B6876)"
               accentBg="var(--ai-card-bg, #FFFFFF)"
             />
           )}
@@ -324,7 +324,7 @@ export function AICardAnalysis(props: AICardAnalysisProps) {
             <AIChip kind="brief"
               label={freshness} size="sm" noDot
               icon="zs-icon-clock-pending"
-              accentColor="var(--ai-zds-helper, #6B6876)"
+              accentColor="var(--ai-ds-helper, #6B6876)"
               accentBg="var(--ai-card-bg, #FFFFFF)"
             />
           )}

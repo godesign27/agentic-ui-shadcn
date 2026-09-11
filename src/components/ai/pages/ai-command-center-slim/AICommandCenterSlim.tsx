@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { RiMicLine, RiArrowUpLine, RiAddLine, RiAttachmentLine, RiFolderAddLine, RiFlashlightLine, RiArrowRightSLine } from '@remixicon/react';
-import { F, ZDS, AI, AI_THEME } from '../../tokens/ai-tokens';
+import { F, DS, AI, AI_THEME } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar3D } from '../../atomic/ai-avatar/AIAvatar';
 import { AIUserBubble } from '../../molecules/ai-user-bubble/AIUserBubble';
@@ -43,13 +43,13 @@ function PlusMenu({ mode, onModeChange, onClose }: {
       background: 'var(--ai-card-bg)',
       borderRadius: '12px',
       boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.12)',
-      border: `1px solid ${ZDS.border}`,
+      border: `1px solid ${DS.border}`,
       overflow: 'hidden',
       zIndex: 100,
     }}>
       {/* Add section */}
-      <div style={{ padding: '6px 0 2px', borderBottom: `1px solid ${ZDS.border}` }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>
+      <div style={{ padding: '6px 0 2px', borderBottom: `1px solid ${DS.border}` }}>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: DS.textHelper, letterSpacing: '0.05em' }}>
           ADD CONTENT
         </div>
         {ADD_ITEMS.map(({ icon: Icon, label, hasArrow }) => (
@@ -59,7 +59,7 @@ function PlusMenu({ mode, onModeChange, onClose }: {
 
       {/* Mode section */}
       <div style={{ padding: '6px 0' }}>
-        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: ZDS.textHelper, letterSpacing: '0.05em' }}>
+        <div style={{ padding: '4px 14px 6px', fontFamily: F, fontSize: '12px', color: DS.textHelper, letterSpacing: '0.05em' }}>
           MODE
         </div>
         {MODE_ITEMS.map(m => (
@@ -87,14 +87,14 @@ function PlusMenuItem({ icon: Icon, label, hasArrow, onClick }: {
       style={{
         display: 'flex', alignItems: 'center', gap: '10px',
         width: '100%', padding: '9px 14px',
-        background: hov ? ZDS.menuHoverBg : 'transparent',
+        background: hov ? DS.menuHoverBg : 'transparent',
         border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s',
       }}
     >
-      <Icon size={15} color={hov ? ZDS.iconHover : ZDS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
-      <span style={{ flex: 1, fontFamily: F, fontSize: '13px', color: ZDS.textDefault }}>{label}</span>
-      {hasArrow && <RiArrowRightSLine size={13} color={ZDS.iconDefault} />}
+      <Icon size={15} color={hov ? DS.iconHover : DS.iconDefault} strokeWidth={1.8} style={{ flexShrink: 0 }} />
+      <span style={{ flex: 1, fontFamily: F, fontSize: '13px', color: DS.textDefault }}>{label}</span>
+      {hasArrow && <RiArrowRightSLine size={13} color={DS.iconDefault} />}
     </button>
   );
 }
@@ -109,14 +109,14 @@ function ModeItem({ label, isActive, onSelect }: { label: string; isActive: bool
       style={{
         display: 'flex', alignItems: 'center', gap: '10px',
         width: '100%', padding: '9px 14px',
-        background: hov ? ZDS.menuHoverBg : 'transparent',
+        background: hov ? DS.menuHoverBg : 'transparent',
         border: 'none', cursor: 'pointer', textAlign: 'left',
         transition: 'background 0.12s',
       }}
     >
       <span style={{
         flex: 1, fontFamily: F, fontSize: '13px',
-        fontWeight: isActive ? 600 : 400, color: ZDS.textDefault,
+        fontWeight: isActive ? 600 : 400, color: DS.textDefault,
       }}>
         {label}
       </span>
@@ -183,7 +183,7 @@ function SlimBar({ inputValue, onInputChange, onSend }: SlimBarProps) {
             background: plusOpen ? 'rgba(77, 96, 230,0.10)' : 'var(--ai-btn-outline-hover-bg)',
             border: plusOpen ? `1.5px solid ${AI.color.action.primary}` : '1.5px solid transparent',
             cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: plusOpen ? AI.color.action.primary : ZDS.iconDefault,
+            color: plusOpen ? AI.color.action.primary : DS.iconDefault,
             transition: 'all 0.15s ease',
           }}
           onMouseEnter={e => { if (!plusOpen) e.currentTarget.style.background = 'var(--ai-btn-outline-hover-bg)'; }}
@@ -223,7 +223,7 @@ function SlimBar({ inputValue, onInputChange, onSend }: SlimBarProps) {
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         placeholder=""
-        aria-label="Message ZAIDYN"
+        aria-label="Message Guild"
         style={{
           flex: 1,
           border: 'none',
@@ -231,7 +231,7 @@ function SlimBar({ inputValue, onInputChange, onSend }: SlimBarProps) {
           background: 'transparent',
           fontSize: '15px',
           fontFamily: F,
-          color: ZDS.textDefault,
+          color: DS.textDefault,
           minWidth: 0,
         }}
       />
@@ -248,7 +248,7 @@ function SlimBar({ inputValue, onInputChange, onSend }: SlimBarProps) {
           border: 'none',
           cursor: filled ? 'pointer' : 'default',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: filled ? AI.color.text.onAction : ZDS.iconDefault,
+          color: filled ? AI.color.text.onAction : DS.iconDefault,
           flexShrink: 0,
           transition: 'background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease',
           boxShadow: filled ? `0 4px 14px ${AI.shadow.action.emphasis}` : 'none',
@@ -325,7 +325,7 @@ export function AICommandCenterSlim({
 
           <div className="slim-greeting" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <AIAvatar3D />
-            <h1 style={{ ...AI_TYPOGRAPHY['@zsai-h1'], color: ZDS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
+            <h1 style={{ ...AI_TYPOGRAPHY['@ai-h1'], color: DS.textDefault, margin: 0, letterSpacing: '-0.5px', fontFamily: F }}>
               {greeting}, Theo!
             </h1>
           </div>

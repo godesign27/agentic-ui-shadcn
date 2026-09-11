@@ -545,7 +545,7 @@ export interface AISkeletonPanelProps extends AISkeletonMotionProps {
 /**
  * A 400×900 side panel: a real header with a live close button over N
  * placeholder rows. The header is deliberately not skeleton — a user must be
- * able to back out of a panel that is still loading. Its fill swaps from ZDS
+ * able to back out of a panel that is still loading. Its fill swaps from DS
  * ink to `AI.color.brandInk`, which is the accent swap and nothing more.
  */
 export function AISkeletonPanel({
@@ -1275,7 +1275,7 @@ export interface AISkeletonTimelineProps extends AISkeletonMotionProps {
 
 /**
  * Covers `ai-reasoning-trace`, `ai-handoff-timeline`, `ai-agent-task-tracker`
- * and `zds-ai-stepper`.
+ * and `ai-stepper`.
  *
  * The connectors are real geometry rather than placeholders: the *shape* of a
  * process is known before its contents are, and drawing it early is what stops

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Agent Work Note
 
-You are implementing the **AI Agent Work Note** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Agent Work Note** atom from the Guild AI Design System mirror.
 
 ---
 

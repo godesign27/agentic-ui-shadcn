@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Time Picker
 
-You are implementing the **AI Time Picker** (`ai-time-picker`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Time Picker** (`ai-time-picker`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Time Picker** (`ai-time-picker`) from the ZAIDYN A
 | **Category** | AI molecules |
 | **Source** | Make export 2026-08-06 |
 
-> The ZDS Time Picker on the AI surface — AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.
+> The DS Time Picker on the AI surface — AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.
 
 ## Mandatory read order (before writing code)
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI User Bubble
 
-You are implementing the **AI User Bubble** (`ai-user-bubble`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI User Bubble** (`ai-user-bubble`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Metric
 
-You are implementing the **AI Card Metric** (`ai-card-metric`) from the ZAIDYN AI Design System.
+You are implementing the **AI Card Metric** (`ai-card-metric`) from the Guild AI Design System.
 
 | | |
 |---|---|
@@ -22,7 +22,7 @@ You are implementing the **AI Card Metric** (`ai-card-metric`) from the ZAIDYN A
 
 ## Task
 
-Implement `AICardMetric` exactly as specified. Match props, tokens, and states. Prefer `AI.color.*` / CSS custom properties over literal hex unless the mirror mandates fixed fills (accent teal `#0A6E5E`, amber `ZS_AMBER[60]`, green `ZS_GREEN[60]`).
+Implement `AICardMetric` exactly as specified. Match props, tokens, and states. Prefer `AI.color.*` / CSS custom properties over literal hex unless the mirror mandates fixed fills (accent teal `#0A6E5E`, amber `SIGNAL_AMBER[60]`, green `SIGNAL_GREEN[60]`).
 
 ## Props (summary)
 
@@ -51,7 +51,7 @@ Implement `AICardMetric` exactly as specified. Match props, tokens, and states. 
 - Do not invent variants or props beyond the mirror.
 - Do not invent atoms — use `AIMetricValue`, `AITrendIndicator`, `AIChip`, `AIInsightCallout`, `AIWhyThisLink`, `AIButton`.
 - Do not hardcode brand hex — use documented tokens.
-- Self-contained under `components/ai/` — do not require `@zaidyn/ai-ui`.
+- Self-contained under `components/ai/` — do not require `an external AI UI package`.
 - Load `components/ai/tokens/css/ai-surface.css` for `--ai-*` surface vars.
 - Preserve accessibility notes from the mirror / agent.json.
 - Respect `prefers-reduced-motion` for skeleton shimmer.

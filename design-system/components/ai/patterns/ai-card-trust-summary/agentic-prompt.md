@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Trust Summary
 
-You are implementing the **AI Card Trust Summary** (`ai-card-trust-summary`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Trust Summary** (`ai-card-trust-summary`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

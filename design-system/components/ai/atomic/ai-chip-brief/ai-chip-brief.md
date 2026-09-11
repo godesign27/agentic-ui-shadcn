@@ -20,7 +20,7 @@ The AI Brief Chip surfaces the live status of an AI task brief inline — wherev
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

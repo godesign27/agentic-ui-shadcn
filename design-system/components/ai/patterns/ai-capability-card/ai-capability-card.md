@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCapabilityCard`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ AICapabilityCard is a compact, reusable card for representing a single AI capabi
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -62,7 +62,7 @@ undefined. **undefined** _(undefined)_ — undefined
 
 - **undefined** _(undefined)_ — Default treatment — full description + footnote. Click opens the detail drawer.
 - **undefined** _(undefined)_ — Client-authored capabilities — teal-toned chip, brand-blue Extend dot.
-- **undefined** _(undefined)_ — ZS orange border + needs-review status — flags capabilities that require human approval.
+- **undefined** _(undefined)_ — Guild orange border + needs-review status — flags capabilities that require human approval.
 
 ## Props API
 
@@ -72,7 +72,7 @@ undefined. **undefined** _(undefined)_ — undefined
 | `` | `string` | `` | Short clarification of what the capability does. |
 | `` | `'system-defined' \| 'client-extended' \| 'user-configured' \| 'experimental'` | `` | Source of the capability. Drives the chip tint. |
 | `` | `'active' \| 'disabled' \| 'needs-review'` | `` | Operational status. Drives the right-side status indicator and border tint. |
-| `` | `string` | `` | ZAIDYN icon class for the drawer header tile. |
+| `` | `string` | `` | Guild icon class for the drawer header tile. |
 | `` | `ReactNode` | `` | Dashed-rule footnote with a layers glyph. |
 | `` | `string` | `` | Override the right-side action label (defaults from status). |
 | `` | `() => void` | `` | Override default drawer behavior. When set, the drawer does not open automatically. |
@@ -152,9 +152,9 @@ import { AICapabilityCard } from '@/components/ai/organisms/ai-capability-card/A
 ## Agent rules
 
 1. Read this mirror spec and `ai-capability-card.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-capability-card/ai-capability-card.agent.json`.
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RiArrowLeftSLine, RiArrowDownSLine, RiSparklingLine, RiPulseLine, RiArrowRightUpLine, RiAlertLine, RiShieldCheckLine, RiCompassLine, RiStackLine, RiSendPlaneLine, RiMessage3Line, RiFlashlightLine, RiEyeLine } from '@remixicon/react'
 import { RiBarChart2Line, RiOrganizationChart } from '@remixicon/react'
 import { RiFileEditLine, RiMapPinLine, RiGitCommitLine, RiBrainLine, RiPushpin2Line } from '@remixicon/react';
-import { F, ZDS, AI } from '../../tokens/ai-tokens';
+import { F, DS, AI } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIMessageHeader } from '../../atomic/ai-message-header/AIMessageHeader';
 import { AIButton } from '../../atomic/ai-button/AIButton';
@@ -34,7 +34,7 @@ export interface AIGeneratedDashboardProps {
 // ── Status badge meta ─────────────────────────────────────────────────────────
 const STATUS_META: Record<DashboardStatus, { label: string; color: string; bg: string; border: string }> = {
   active:        { label: 'Active',          color: 'var(--ai-status-success-text)', bg: 'var(--ai-status-success-bg)', border: 'var(--ai-status-success-border)' },
-  draft:         { label: 'Draft',           color: ZDS.textHelper,                  bg: 'var(--ai-track-bg)',          border: 'var(--ai-card-border)' },
+  draft:         { label: 'Draft',           color: DS.textHelper,                  bg: 'var(--ai-track-bg)',          border: 'var(--ai-card-border)' },
   generating:    { label: 'Generating',      color: AI.color.action.primary,         bg: AI.color.brandSurface,         border: AI.color.brandBorder },
   updating:      { label: 'Updating',        color: AI.color.action.primary,         bg: AI.color.brandSurface,         border: AI.color.brandBorder },
   needsApproval: { label: 'Needs approval',  color: 'var(--ai-signal-strong)',       bg: 'var(--ai-signal-subtle)',     border: 'var(--ai-signal-border)' },
@@ -75,14 +75,14 @@ function Module({ title, eyebrow, right, accent, children }: {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minWidth: 0 }}>
             {eyebrow && (
               <span style={{
-                fontFamily: F, ...AI_TYPOGRAPHY['@zsai-overline'],
-                textTransform: 'uppercase', color: 'var(--ai-zds-helper)',
+                fontFamily: F, ...AI_TYPOGRAPHY['@ai-overline'],
+                textTransform: 'uppercase', color: 'var(--ai-ds-helper)',
               }}>{eyebrow}</span>
             )}
             {title && (
               <h3 style={{
                 margin: 0, fontFamily: F, fontSize: '14px', fontWeight: 600,
-                color: 'var(--ai-zds-text)', letterSpacing: '-0.1px',
+                color: 'var(--ai-ds-text)', letterSpacing: '-0.1px',
               }}>{title}</h3>
             )}
           </div>
@@ -104,7 +104,7 @@ function MetricPill({ label, value, tone = 'neutral' }: {
     ? { color: 'var(--ai-status-success-text)', bg: 'var(--ai-status-success-bg)',     border: 'var(--ai-status-success-border)' }
     : tone === 'signal'
     ? { color: 'var(--ai-signal-strong)',       bg: 'var(--ai-signal-subtle)',         border: 'var(--ai-signal-border)' }
-    : { color: ZDS.textHelper,                  bg: 'var(--ai-track-bg)',              border: 'var(--ai-card-border)' };
+    : { color: DS.textHelper,                  bg: 'var(--ai-track-bg)',              border: 'var(--ai-card-border)' };
   return (
     <div style={{
       display: 'inline-flex', alignItems: 'baseline', gap: '6px',
@@ -112,8 +112,8 @@ function MetricPill({ label, value, tone = 'neutral' }: {
       background: palette.bg, border: `1px solid ${palette.border}`,
       fontFamily: F, whiteSpace: 'nowrap',
     }}>
-      <span style={{ ...AI_TYPOGRAPHY['@zsai-overline'], color: ZDS.textHelper }}>{label}</span>
-      <span style={{ ...AI_TYPOGRAPHY['@zsai-h6'], color: palette.color }}>{value}</span>
+      <span style={{ ...AI_TYPOGRAPHY['@ai-overline'], color: DS.textHelper }}>{label}</span>
+      <span style={{ ...AI_TYPOGRAPHY['@ai-h6'], color: palette.color }}>{value}</span>
     </div>
   );
 }
@@ -167,7 +167,7 @@ function OutputHeader({
           width: 30, height: 30, borderRadius: AI.radius.sm,
           border: '1px solid var(--ai-card-border)', background: 'var(--ai-card-bg)',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          color: ZDS.iconDefault, cursor: 'pointer', flexShrink: 0,
+          color: DS.iconDefault, cursor: 'pointer', flexShrink: 0,
         }}>
           <RiArrowLeftSLine size={16} strokeWidth={2} />
         </button>
@@ -177,7 +177,7 @@ function OutputHeader({
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
           <h2 style={{
             margin: 0, fontFamily: F, fontSize: embedded ? '16px' : '20px',
-            fontWeight: 600, color: 'var(--ai-zds-text)', letterSpacing: '-0.2px',
+            fontWeight: 600, color: 'var(--ai-ds-text)', letterSpacing: '-0.2px',
           }}>{title}</h2>
           <span aria-label={`Status: ${sm.label}`} style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -214,7 +214,7 @@ function OutputHeader({
             padding: '6px 12px', borderRadius: AI.radius.sm,
             border: `1px solid ${draftMode ? 'var(--ai-signal-border)' : 'var(--ai-card-border)'}`,
             background: draftMode ? 'var(--ai-signal-subtle)' : 'var(--ai-card-bg)',
-            color: draftMode ? 'var(--ai-signal-strong)' : ZDS.textDefault,
+            color: draftMode ? 'var(--ai-signal-strong)' : DS.textDefault,
             fontFamily: F, fontSize: '12px', fontWeight: 600, cursor: 'pointer',
           }}
         >
@@ -295,11 +295,11 @@ function CurrentFocusModule({ prompt, why, onViewRationale }: {
       <div style={{ position: 'relative' }}>
         <span style={{
           fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em',
-          textTransform: 'uppercase', color: 'var(--ai-zds-helper)',
+          textTransform: 'uppercase', color: 'var(--ai-ds-helper)',
         }}>Why this matters</span>
         <p style={{
           margin: '4px 0 0', fontFamily: F, fontSize: '13px',
-          color: 'var(--ai-zds-text)', lineHeight: 1.55,
+          color: 'var(--ai-ds-text)', lineHeight: 1.55,
         }}>{why}</p>
       </div>
       {onViewRationale && (
@@ -343,8 +343,8 @@ function IntelligenceEvolutionModule() {
                 <Icon size={14} strokeWidth={2} />
               </span>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontFamily: F, fontSize: '13px', color: 'var(--ai-zds-text)', fontWeight: 600 }}>{row.label}</div>
-                <div style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper }}>{row.hint}</div>
+                <div style={{ fontFamily: F, fontSize: '13px', color: 'var(--ai-ds-text)', fontWeight: 600 }}>{row.label}</div>
+                <div style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper }}>{row.hint}</div>
               </div>
               <span style={{
                 fontFamily: F, fontSize: '13px', fontWeight: 600,
@@ -374,7 +374,7 @@ function AgentAnalysisModule({ onViewRationale, onViewSources, onViewTrace }: {
   return (
     <Module accent="neutral">
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-        <AIMessageHeader agentLabel="ZAIDYN · Reasoning & analysis" timestamp="Live" />
+        <AIMessageHeader agentLabel="Guild · Reasoning & analysis" timestamp="Live" />
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 5,
           padding: '2px 8px', borderRadius: AI.radius.full,
@@ -389,11 +389,11 @@ function AgentAnalysisModule({ onViewRationale, onViewSources, onViewTrace }: {
       <div>
         <span style={{
           fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em',
-          textTransform: 'uppercase', color: 'var(--ai-zds-helper)',
+          textTransform: 'uppercase', color: 'var(--ai-ds-helper)',
         }}>AI summary</span>
         <p style={{
           margin: '4px 0 0', fontFamily: F, fontSize: '13px', lineHeight: 1.55,
-          color: 'var(--ai-zds-text)',
+          color: 'var(--ai-ds-text)',
         }}>
           Scaling the cardiovascular sales force by 15% in high-growth metro clusters.
           The proposed Boston cluster re-alignment prioritizes travel-time efficiency over
@@ -405,14 +405,14 @@ function AgentAnalysisModule({ onViewRationale, onViewSources, onViewTrace }: {
       <div>
         <span style={{
           fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em',
-          textTransform: 'uppercase', color: 'var(--ai-zds-helper)',
+          textTransform: 'uppercase', color: 'var(--ai-ds-helper)',
         }}>Optimization drivers</span>
         <ul style={{ margin: '8px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
           {drivers.map(d => (
             <li key={d.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-text)', flex: 1 }}>{d.label}</span>
-                <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper }}>{d.weight}%</span>
+                <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-text)', flex: 1 }}>{d.label}</span>
+                <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper }}>{d.weight}%</span>
                 <span style={{
                   fontFamily: F, fontSize: '12px', fontWeight: 600,
                   padding: '1px 7px', borderRadius: AI.radius.full,
@@ -438,13 +438,13 @@ function AgentAnalysisModule({ onViewRationale, onViewSources, onViewTrace }: {
         display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
         paddingTop: 10, borderTop: '1px solid var(--ai-divider)',
       }}>
-        <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-helper)' }}>
-          ZAIDYN Analytics · Updated just now
+        <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-helper)' }}>
+          Guild Analytics · Updated just now
         </span>
         <div style={{ flex: 1 }} />
         {onViewRationale && <GhostLink onClick={onViewRationale}>Why this?</GhostLink>}
-        {onViewSources   && <><span style={{ color: 'var(--ai-zds-helper)', fontFamily: F, fontSize: '12px' }}>·</span><GhostLink onClick={onViewSources}>Sources</GhostLink></>}
-        {onViewTrace     && <><span style={{ color: 'var(--ai-zds-helper)', fontFamily: F, fontSize: '12px' }}>·</span><GhostLink onClick={onViewTrace}>Process trace</GhostLink></>}
+        {onViewSources   && <><span style={{ color: 'var(--ai-ds-helper)', fontFamily: F, fontSize: '12px' }}>·</span><GhostLink onClick={onViewSources}>Sources</GhostLink></>}
+        {onViewTrace     && <><span style={{ color: 'var(--ai-ds-helper)', fontFamily: F, fontSize: '12px' }}>·</span><GhostLink onClick={onViewTrace}>Process trace</GhostLink></>}
       </footer>
     </Module>
   );
@@ -486,7 +486,7 @@ function ScenarioCardsModule({ critical }: { critical?: boolean }) {
     if (tone === 'critical') return { color: 'var(--ai-signal-strong)', bg: 'var(--ai-signal-subtle)', border: 'var(--ai-signal-border)' };
     if (tone === 'active')   return { color: 'var(--ai-status-success-text)', bg: 'var(--ai-status-success-bg)', border: 'var(--ai-status-success-border)' };
     if (tone === 'map')      return { color: AI.color.action.primary, bg: AI.color.brandSurface, border: AI.color.brandBorder };
-    return { color: ZDS.textHelper, bg: 'var(--ai-track-bg)', border: 'var(--ai-card-border)' };
+    return { color: DS.textHelper, bg: 'var(--ai-track-bg)', border: 'var(--ai-card-border)' };
   };
 
   return (
@@ -521,11 +521,11 @@ function ScenarioCardsModule({ critical }: { critical?: boolean }) {
               </div>
               <h4 style={{
                 margin: 0, fontFamily: F, fontSize: '14px', fontWeight: 600,
-                color: 'var(--ai-zds-text)', letterSpacing: '-0.1px',
+                color: 'var(--ai-ds-text)', letterSpacing: '-0.1px',
               }}>{s.title}</h4>
               <p style={{
                 margin: 0, fontFamily: F, fontSize: '12px', lineHeight: 1.5,
-                color: ZDS.textHelper,
+                color: DS.textHelper,
               }}>{s.description}</p>
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                 <MetricPill label="Accounts"    value={s.accounts}    />
@@ -534,8 +534,8 @@ function ScenarioCardsModule({ critical }: { critical?: boolean }) {
               </div>
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
-                  <span style={{ fontFamily: F, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.06em', color: ZDS.textHelper, fontWeight: 700 }}>Project health</span>
-                  <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, color: 'var(--ai-zds-text)' }}>{s.health}%</span>
+                  <span style={{ fontFamily: F, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.06em', color: DS.textHelper, fontWeight: 700 }}>Project health</span>
+                  <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, color: 'var(--ai-ds-text)' }}>{s.health}%</span>
                 </div>
                 <div role="progressbar" aria-valuenow={s.health} aria-valuemin={0} aria-valuemax={100} style={{ height: 6, borderRadius: 3, background: 'var(--ai-track-bg)', overflow: 'hidden' }}>
                   <div style={{
@@ -555,7 +555,7 @@ function ScenarioCardsModule({ critical }: { critical?: boolean }) {
                   fontFamily: F, fontSize: '12px', fontWeight: 700,
                   color: AI.color.action.primaryActive,
                 }}>{s.owner}</span>
-                <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper, flex: 1 }}>{s.updated}</span>
+                <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper, flex: 1 }}>{s.updated}</span>
                 {isCritical && (
                   <button style={{
                     fontFamily: F, fontSize: '12px', fontWeight: 600,
@@ -616,7 +616,7 @@ function ImpactActivityModule() {
                 display: 'inline-flex', alignItems: 'center', gap: 5,
                 fontFamily: F, fontSize: '12px', fontWeight: 700,
                 letterSpacing: '0.06em', textTransform: 'uppercase',
-                color: 'var(--ai-zds-helper)',
+                color: 'var(--ai-ds-helper)',
               }}>
                 <Icon size={11} strokeWidth={2} color={tonePalette[m.tone]} />
                 {m.eyebrow}
@@ -624,7 +624,7 @@ function ImpactActivityModule() {
               <span style={{ fontFamily: F, fontSize: '15px', fontWeight: 700, color: tonePalette[m.tone], lineHeight: 1.1 }}>
                 {m.headline}
               </span>
-              <span style={{ fontFamily: F, fontSize: '12px', color: ZDS.textHelper }}>{m.sub}</span>
+              <span style={{ fontFamily: F, fontSize: '12px', color: DS.textHelper }}>{m.sub}</span>
             </div>
           );
         })}
@@ -638,20 +638,20 @@ function ImpactActivityModule() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <RiPulseLine size={12} strokeWidth={2} color={AI.color.action.primary} />
-          <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ai-zds-helper)' }}>
+          <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ai-ds-helper)' }}>
             System activity coherence
           </span>
         </div>
-        <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4, fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-text)' }}>
-          <li><strong style={{ color: ZDS.textHelper, fontWeight: 600 }}>Active signals:</strong> 12 territory alerts</li>
-          <li><strong style={{ color: ZDS.textHelper, fontWeight: 600 }}>Influenced by:</strong> Capability — Workload Index</li>
-          <li><strong style={{ color: ZDS.textHelper, fontWeight: 600 }}>Agents engaged:</strong> Scenario Strategist, ZAIDYN</li>
-          <li><strong style={{ color: ZDS.textHelper, fontWeight: 600 }}>Related flows:</strong> Northeast Monitoring</li>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 4, fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-text)' }}>
+          <li><strong style={{ color: DS.textHelper, fontWeight: 600 }}>Active signals:</strong> 12 territory alerts</li>
+          <li><strong style={{ color: DS.textHelper, fontWeight: 600 }}>Influenced by:</strong> Capability — Workload Index</li>
+          <li><strong style={{ color: DS.textHelper, fontWeight: 600 }}>Agents engaged:</strong> Scenario Strategist, Guild</li>
+          <li><strong style={{ color: DS.textHelper, fontWeight: 600 }}>Related flows:</strong> Northeast Monitoring</li>
         </ul>
       </div>
 
       <div>
-        <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ai-zds-helper)' }}>
+        <span style={{ fontFamily: F, fontSize: '12px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ai-ds-helper)' }}>
           Escalation thresholds
         </span>
         <ul style={{ margin: '6px 0 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -664,7 +664,7 @@ function ImpactActivityModule() {
                 background: m.bg, border: `1px solid ${m.border}`,
               }}>
                 <RiAlertLine size={12} strokeWidth={2} color={m.color} />
-                <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-text)', flex: 1 }}>{t.label}</span>
+                <span style={{ fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-text)', flex: 1 }}>{t.label}</span>
                 <span style={{
                   fontFamily: F, fontSize: '12px', fontWeight: 700,
                   letterSpacing: '0.06em', textTransform: 'uppercase', color: m.color,
@@ -705,7 +705,7 @@ function ContextualPromptsModule({ onPromptSelect }: { onPromptSelect?: (p: stri
       }
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: -4 }}>
-        <AIMessageHeader agentLabel="ZAIDYN" timestamp="" size="sm" />
+        <AIMessageHeader agentLabel="Guild" timestamp="" size="sm" />
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {prompts.map(p => {
@@ -784,7 +784,7 @@ function MapOutputModule({ focused }: { focused?: boolean }) {
               background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(6px)',
               border: '1px solid var(--ai-card-border)',
               fontFamily: F, fontSize: '12px', fontWeight: 600,
-              color: 'var(--ai-zds-text)',
+              color: 'var(--ai-ds-text)',
             }}>
               <RiEyeLine size={10} strokeWidth={2.2} color={AI.color.action.primary} />
               {label}
@@ -827,9 +827,9 @@ function MapOutputModule({ focused }: { focused?: boolean }) {
           border: '1px solid var(--ai-card-border)', borderRadius: AI.radius.sm,
           padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 4,
         }}>
-          <span style={{ fontFamily: F, fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: ZDS.textHelper }}>Pressure</span>
+          <span style={{ fontFamily: F, fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: DS.textHelper }}>Pressure</span>
           {pins.map(p => (
-            <span key={p.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-text)' }}>
+            <span key={p.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-text)' }}>
               <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: '50%', background: pinColor[p.tone] }} />
               {p.label}
             </span>
@@ -843,9 +843,9 @@ function MapOutputModule({ focused }: { focused?: boolean }) {
           border: '1px solid var(--ai-card-border)', borderRadius: AI.radius.sm,
           padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 4,
         }}>
-          <span style={{ fontFamily: F, fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: ZDS.textHelper }}>Territories</span>
+          <span style={{ fontFamily: F, fontSize: '9px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: DS.textHelper }}>Territories</span>
           {regions.map(r => (
-            <span key={r.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: F, fontSize: '12px', color: 'var(--ai-zds-text)' }}>
+            <span key={r.name} style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: F, fontSize: '12px', color: 'var(--ai-ds-text)' }}>
               <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: 2, background: r.color }} />
               {r.name}
             </span>
@@ -855,15 +855,15 @@ function MapOutputModule({ focused }: { focused?: boolean }) {
 
       <footer style={{
         display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
-        paddingTop: 6, fontFamily: F, fontSize: '12px', color: ZDS.textHelper,
+        paddingTop: 6, fontFamily: F, fontSize: '12px', color: DS.textHelper,
       }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
           <RiSparklingLine size={11} strokeWidth={2.2} color={AI.color.action.primary} />
           Analysis in 2.1s
         </span>
-        <span style={{ width: 3, height: 3, borderRadius: '50%', background: ZDS.textHelper, opacity: 0.5 }} />
+        <span style={{ width: 3, height: 3, borderRadius: '50%', background: DS.textHelper, opacity: 0.5 }} />
         <span>Precomputed model active</span>
-        <span style={{ width: 3, height: 3, borderRadius: '50%', background: ZDS.textHelper, opacity: 0.5 }} />
+        <span style={{ width: 3, height: 3, borderRadius: '50%', background: DS.textHelper, opacity: 0.5 }} />
         <span>3 pins · 2 zones · 3 territories · 3 zips</span>
       </footer>
     </Module>
@@ -1037,7 +1037,7 @@ export function AIGeneratedDashboard({
         <footer style={{
           display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
           padding: '12px 4px 4px', borderTop: '1px solid var(--ai-divider)',
-          fontFamily: F, fontSize: '12px', color: ZDS.textHelper,
+          fontFamily: F, fontSize: '12px', color: DS.textHelper,
         }}>
           <RiGitCommitLine size={12} strokeWidth={2} color={AI.color.action.primary} />
           <span>Version 1.4 · {status === 'submitted' ? 'Submitted' : draftMode ? 'Draft' : 'Live'} · Owner: Theo Mitchell</span>

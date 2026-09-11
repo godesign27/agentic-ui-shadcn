@@ -5,7 +5,7 @@
   "repoModule": "aiFileAttachment",
   "tier": "atomic",
   "status": "experimental",
-  "description": "AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior \u2014 the parent composer owns those. File-type icons resolve in priority order: ZS/Zaidyn icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (ZS orange), error (semantic error). Border-radius is 0 across all states per the ZDS atom flat-corner rule.",
+  "description": "AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior \u2014 the parent composer owns those. File-type icons resolve in priority order: Guild/Guild icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (Guild orange), error (semantic error). Border-radius is 0 across all states per the DS atom flat-corner rule.",
   "intent": "Selected-file chip for AI composers \u2014 name, type, status, remove. Does NOT own the picker, upload API, or validation.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-file-attachment/ai-file-attachment.md",
@@ -146,7 +146,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -168,7 +168,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

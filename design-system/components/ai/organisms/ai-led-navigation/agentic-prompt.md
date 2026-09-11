@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Led Navigation
 
-You are implementing the **AI Led Navigation** (`ai-led-navigation`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Led Navigation** (`ai-led-navigation`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Led Navigation** (`ai-led-navigation`) from the ZA
 | **Category** | AI organisms |
 | **Source** | Make export 2026-08-06 |
 
-> The navigation rail for AI Led product shells — inspired by modern AI tools, tuned to ZAIDYN enterprise visual language.
+> The navigation rail for AI Led product shells — inspired by modern AI tools, tuned to Guild enterprise visual language.
 
 ## Mandatory read order (before writing code)
 
@@ -25,8 +25,8 @@ Implement `AILedNavigation` exactly as specified in the mirror. Match props, tok
 
 ## Props (summary)
 
-- `brandLabel` (`string`) default ``"ZAIDYN AI"`` — Product / system label shown next to the AIAvatar mark.
-- `brandIcon` (`ReactNode`) default ``<AIAvatar />`` — Header brand mark. Defaults to the canonical ZAIDYN AI Avatar.
+- `brandLabel` (`string`) default ``"Guild AI"`` — Product / system label shown next to the AIAvatar mark.
+- `brandIcon` (`ReactNode`) default ``<AIAvatar />`` — Header brand mark. Defaults to the canonical Guild AI Avatar.
 - `currentWorkspace` (`{ id: string; label: string; tone?: "ai" \) default `"tan" }`` — `Workspace A`
 - `primaryActions` (`AILedNavItem[]`) default ``5 defaults`` — High-frequency AI actions row.
 - `workspaceGroups` (`AILedNavGroup[]`) default ``Projects preset`` — Workspace / project sections — each group may contain nested children.

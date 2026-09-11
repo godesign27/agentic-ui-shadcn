@@ -2,12 +2,12 @@
 
 **Agents: start at [`agent-instructions.md`](agent-instructions.md), then [`llms.txt`](llms.txt).**
 
-This folder holds AI-native specs for the shadcn implementation repo. Architecture matches the ZAIDYN AI Pattern Library (`zds-ai/components/ai/`).
+This folder holds AI-native specs for the shadcn implementation repo. Architecture matches the Guild AI Pattern Library (this tree).
 
 ```
 design-system/components/ai/
   {slug}/          # governed shadcn AI kit (existing ports; src is canonical)
-  foundations/     # FND — imported zds-ai specs
+  foundations/     # FND — imported AI specs
   atomic/          # ATM (formerly atoms)
   molecules/       # MOL
   organisms/       # ORG (formerly groups)

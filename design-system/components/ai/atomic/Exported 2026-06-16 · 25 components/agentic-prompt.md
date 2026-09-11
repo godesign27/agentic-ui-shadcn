@@ -1,6 +1,6 @@
-# Agentic Prompt — ZAIDYN AI Design System — All Atoms
+# Agentic Prompt — Guild AI Design System — All Atoms
 
-You are implementing the **ZAIDYN AI Design System — All Atoms** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **Guild AI Design System — All Atoms** atom from the Guild AI Design System mirror.
 
 ---
 
@@ -9,9 +9,9 @@ You are implementing the **ZAIDYN AI Design System — All Atoms** atom from the
 | | |
 |---|---|
 | **GitHub** | `https://github.com/brandnc/implementation source-mirror` |
-| **Component** | ZAIDYN AI Design System — All Atoms (`Exported 2026-06-16 · 25 components`) |
+| **Component** | Guild AI Design System — All Atoms (`Exported 2026-06-16 · 25 components`) |
 | **Status** | Stable |
-| **Export** | `ZAIDYNAIDesignSystem—AllAtoms` |
+| **Export** | `GuildAIDesignSystem—AllAtoms` |
 
 ---
 
@@ -27,7 +27,7 @@ You are implementing the **ZAIDYN AI Design System — All Atoms** atom from the
 
 ## Task
 
-Integrate **ZAIDYNAIDesignSystem—AllAtoms** per the mirror spec. Copy canonical implementation — do not recreate tokens from memory.
+Integrate **GuildAIDesignSystem—AllAtoms** per the mirror spec. Copy canonical implementation — do not recreate tokens from memory.
 
 ---
 

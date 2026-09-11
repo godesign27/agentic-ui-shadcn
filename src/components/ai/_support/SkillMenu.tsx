@@ -7,7 +7,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RiStackLine, RiFlashlightLine, RiSearchLine } from '@remixicon/react';
 
-// ── Token set (matches ZDS gray scale) ────────────────────────────────────────
+// ── Token set (matches DS gray scale) ────────────────────────────────────────
 const F = '"Open Sans", sans-serif';
 const T = {
   textDefault:  '#1A1628',

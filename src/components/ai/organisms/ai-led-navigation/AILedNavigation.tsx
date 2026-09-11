@@ -1,46 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { F, AI, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { F, AI, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
-
-/**
- * ZSLogo — canonical ZAIDYN brand mark, sourced verbatim from the GitHub repo:
- *   zsainc/9904PD0068_zds-ai-mirror · src/primaryNavigation/primaryNavigationWithoutText.svg
- *   (referenced from PRIMARYNAVIGATION.md as the official logo asset, alt text "ZAIDYN by ZS")
- *
- * This is the interlocking "Z" + "S" ribbon used in the production ZAIDYN primary navigation
- * shell. It replaces the AI avatar mark in places where the product wants the ZS corporate
- * identity rather than the AI-agent identity. Render at 22px in the AI Led Navigation header.
- */
-function ZSLogo({ size = 22 }: { size?: number }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 28 28"
-      fill="none"
-      aria-label="ZAIDYN by ZS"
-      role="img"
-      style={{ flexShrink: 0 }}
-    >
-      <path d="M23.79 11.4259C22.9812 12.1966 21.8871 12.6703 20.6844 12.6703C21.1958 12.6703 22.416 13.2812 22.416 13.2812L23.633 11.5688C23.6865 11.5224 23.7388 11.4747 23.79 11.4259Z" fill="#EC7200"/>
-      <path d="M5.41622 14.4806L4.21881 16.4293C5.00926 15.7447 6.03957 15.3299 7.16491 15.3299C6.65359 15.3299 5.41622 14.4806 5.41622 14.4806Z" fill="#C1C6C8"/>
-      <path d="M8.57323 12.6702L6.54849 13.7075L5.67328 15.1734C6.15456 15.2758 6.65353 15.3296 7.16485 15.3296H19.276L21.7148 14.4115L22.1759 12.8264C21.6947 12.7241 21.1957 12.6702 20.6844 12.6702H8.57323Z" fill="#B35900"/>
-      <path d="M20.9231 14.8225L19.6014 15.1167L19.276 15.3299L10.1073 23.2444C9.31735 23.9272 8.28849 24.3407 7.16486 24.3407L9.46766 25.199L12.9054 24.3407L22.7577 15.8361L22.5315 15.4959L20.9231 14.8225Z" fill="#98A4AE"/>
-      <path d="M24.8633 14.0183L23.4253 14.8866L22.7577 15.8358C24.2014 16.5874 25.1896 18.098 25.1896 19.8351C25.1896 22.3193 23.1686 24.3405 20.6844 24.3405H12.9054L9.50012 25.4465L7.16486 26.9999H20.6844C24.635 26.9999 27.8493 23.7858 27.8493 19.8351C27.8493 17.4426 26.6705 15.3203 24.8633 14.0183Z" fill="#C1C6C8"/>
-      <path d="M14.9439 3.65933L5.09152 12.164L4.96271 12.275L8.06368 13.1095L8.57329 12.6701L17.742 4.7556C18.5319 4.07282 19.5608 3.65933 20.6844 3.65933L17.4109 3.06775L14.9439 3.65933Z" fill="#98A4AE"/>
-      <path d="M2.98597 13.9816L4.12614 13.2521L5.09149 12.1641C3.64772 11.4126 2.65947 9.90198 2.65947 8.16487C2.65947 5.68058 4.68058 3.65947 7.16487 3.65947H16.0086L20.6844 1H7.16487C3.21416 1 0 4.21416 0 8.16487C0 10.5573 1.17877 12.6796 2.98597 13.9816Z" fill="#EC7200"/>
-      <path d="M2.98598 13.9818L2.48472 14.4145C2.48362 14.4154 2.48254 14.4164 2.48145 14.4174C2.65138 14.2703 2.82824 14.131 3.01153 14.0002L2.98598 13.9818Z" fill="#98A4AE"/>
-      <path d="M24.8633 14.0183L25.3646 13.5856C25.3663 13.5841 25.3681 13.5825 25.3699 13.5809C25.1993 13.7287 25.0217 13.8685 24.8377 13.9999L24.8633 14.0183Z" fill="#98A4AE"/>
-      <path d="M2.65947 19.8351C2.65947 18.4773 3.26321 17.2579 4.21634 16.4312L5.6733 15.1735C5.10843 15.0534 4.50627 14.1358 4.50627 14.1358C4.50627 14.1358 3.34157 14.2356 3.01152 14C2.82823 14.1308 2.65138 14.2701 2.48144 14.4172C0.962484 15.732 0 17.6732 0 19.8351C0 23.7858 3.21416 27 7.16487 27C8.94516 27 10.5758 26.3472 11.8302 25.2686L12.9054 24.3405H7.16487C4.68058 24.3405 2.65947 22.3194 2.65947 19.8351Z" fill="#737F88"/>
-      <path d="M20.6844 1C18.9041 1 17.2734 1.65276 16.019 2.7314L14.9438 3.65947H20.6844C23.1686 3.65947 25.1896 5.68058 25.1896 8.16487C25.1896 9.45015 24.6486 10.6114 23.7824 11.433C23.7336 11.4793 23.6838 11.5247 23.6329 11.5688L22.1759 12.8265L22.1754 12.8264C22.6997 12.9378 23.146 13.9779 23.146 13.9779C23.146 13.9779 24.4748 13.741 24.8377 14C26.6593 12.6996 27.8492 10.5686 27.8492 8.16487C27.8492 4.21416 24.635 1 20.6844 1Z" fill="#8D4900"/>
-      <path d="M20.6844 15.3297C21.4316 15.3297 22.1368 15.5126 22.7578 15.8359L24.8633 14.0184C24.8548 14.0123 24.8463 14.0061 24.8378 14C24.1821 14.4681 22.4763 14.493 22.4763 14.493C22.4763 14.493 21.3662 15.3297 20.6844 15.3297Z" fill="#737F88"/>
-      <path d="M20.6844 15.3299C22.2314 15.3299 23.6654 14.8371 24.8378 14.0002C24.0529 13.4399 23.1508 13.0339 22.176 12.8267L19.2761 15.3299H20.6844Z" fill="#6B3900"/>
-      <path d="M3.01151 13.9998C3.59769 13.5814 5.19237 13.7716 5.19237 13.7716C5.19237 13.7716 6.39137 12.6701 7.16486 12.6701C6.41769 12.6701 5.71246 12.4872 5.09148 12.1639L2.98596 13.9814C2.99447 13.9876 3.00298 13.9937 3.01151 13.9998Z" fill="#8D4900"/>
-      <path d="M7.16488 12.6702C5.61791 12.6702 4.18389 13.163 3.01154 13.9999C3.79639 14.5602 4.69853 14.9662 5.67331 15.1734L8.57327 12.6702H7.16488Z" fill="#6B3900"/>
-    </svg>
-  );
-}
+import { AIAvatar } from '../../atomic/ai-avatar/AIAvatar';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -116,7 +77,7 @@ export interface AILedNavigationProps {
 // ─── Default content (shared by demos + Full Page gallery) ────────────────────
 
 export const DEFAULT_NAV_CONFIG = {
-  brandLabel: 'ZAIDYN AI',
+  brandLabel: 'Guild AI',
   currentWorkspace: { id: 'ws-a', label: 'Workspace Name A', tone: 'ai' as const },
   primaryActions: [
     { id: 'new-chat', label: 'New chat', icon: 'chat',         type: 'action' as const },
@@ -163,7 +124,7 @@ export const DEFAULT_NAV_CONFIG = {
 
 export function AILedNavigation({
   brandLabel       = DEFAULT_NAV_CONFIG.brandLabel,
-  brandIcon        = <ZSLogo size={22} />,
+  brandIcon        = <AIAvatar size={22} />,
   currentWorkspace = DEFAULT_NAV_CONFIG.currentWorkspace,
   primaryActions   = DEFAULT_NAV_CONFIG.primaryActions,
   workspaceGroups  = DEFAULT_NAV_CONFIG.workspaceGroups,
@@ -237,8 +198,8 @@ export function AILedNavigation({
           <>
             <span aria-hidden="true" style={{ flexShrink: 0 }}>{brandIcon}</span>
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-h5'],
-              color: 'var(--ai-zds-text)',
+              ...AI_TYPOGRAPHY['@ai-h5'],
+              color: 'var(--ai-ds-text)',
               flex: 1, minWidth: 0,
               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
             }}>
@@ -356,12 +317,12 @@ export function AILedNavigation({
                 margin: '4px 4px',
               }}>
                 <span className="zs-master-style" style={{ display: 'inline-block', marginBottom: 6 }}>
-                  <i className="zs-icon zs-icon-clock-pending" style={{ fontSize: 18, color: 'var(--ai-zds-helper)' }} aria-hidden="true" />
+                  <i className="zs-icon zs-icon-clock-pending" style={{ fontSize: 18, color: 'var(--ai-ds-helper)' }} aria-hidden="true" />
                 </span>
-                <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontWeight: 600, color: 'var(--ai-zds-text)' }}>
+                <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontWeight: 600, color: 'var(--ai-ds-text)' }}>
                   No recent activity
                 </div>
-                <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+                <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
                   Start a new chat to see it appear here.
                 </div>
               </div>
@@ -384,8 +345,8 @@ export function AILedNavigation({
         <div style={{
           width: 28, height: 28, borderRadius: '50%',
           background: 'var(--ai-card-bg-raised, #F4F3F3)',
-          color: 'var(--ai-zds-text)',
-          ...AI_TYPOGRAPHY['@zsai-meta-label'],
+          color: 'var(--ai-ds-text)',
+          ...AI_TYPOGRAPHY['@ai-meta-label'],
           fontWeight: 600,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
@@ -395,10 +356,10 @@ export function AILedNavigation({
         {!isCollapsed && (
           <>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontWeight: 600, color: 'var(--ai-zds-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontWeight: 600, color: 'var(--ai-ds-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {user.name}
               </div>
-              <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {user.subtitle}
               </div>
             </div>
@@ -407,7 +368,7 @@ export function AILedNavigation({
               aria-label="Open settings"
               style={iconBtnStyle()}
             >
-              <ZsGlyph name="settings" size={15} />
+              <DsGlyph name="settings" size={15} />
             </button>
           </>
         )}
@@ -418,11 +379,11 @@ export function AILedNavigation({
 
 // ─── Subcomponents ────────────────────────────────────────────────────────────
 
-function ZsGlyph({ name, size = 16, color }: { name: string; size?: number; color?: string }) {
+function DsGlyph({ name, size = 16, color }: { name: string; size?: number; color?: string }) {
   // `.zs-master-style` hard-codes `color: var(--zs-text-color, #2F2C3C)` on
   // its wrapper, which would mask the surrounding text color (and disappear
   // in dark mode). Force the span to `color: inherit` so the icon adopts the
-  // parent button's color (which is `--ai-zds-text` and flips with the theme).
+  // parent button's color (which is `--ai-ds-text` and flips with the theme).
   return (
     <span
       className="zs-master-style"
@@ -438,7 +399,7 @@ function iconBtnStyle(active = false): React.CSSProperties {
     width: 24, height: 24, borderRadius: 6,
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     background: active ? 'var(--ai-brand-surface, rgba(77, 96, 230,0.08))' : 'transparent',
-    color: active ? AI.color.brand : 'var(--ai-zds-helper)',
+    color: active ? AI.color.brand : 'var(--ai-ds-helper)',
     border: 'none', cursor: 'pointer',
     flexShrink: 0,
   };
@@ -453,7 +414,7 @@ function CollapseButton({ collapsed, onClick }: { collapsed: boolean; onClick?: 
       aria-expanded={!collapsed}
       style={iconBtnStyle()}
     >
-      <ZsGlyph name="side-panel" size={15} />
+      <DsGlyph name="side-panel" size={15} />
     </button>
   );
 }
@@ -468,7 +429,7 @@ function LogoToggleButton({
   const [hov, setHov] = useState(false);
   return (
     // The button is rendered inside a flex header with `justifyContent: center`.
-    // The ZAIDYN brand SVG has a small amount of internal right-side
+    // The brand mark has a small amount of internal right-side
     // whitespace, which made it read as shifted right inside the 64px rail.
     // Nudge the whole control 6px left so the optical center of the logo
     // matches the optical center of the rail.
@@ -504,7 +465,7 @@ function LogoToggleButton({
           cursor: 'pointer',
           width: 28, height: 28,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          color: 'var(--ai-zds-helper, #6B6876)',
+          color: 'var(--ai-ds-helper, #6B6876)',
           borderRadius: 6,
         }}
       >
@@ -529,9 +490,9 @@ function LogoToggleButton({
             position: 'absolute', inset: 0,
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             opacity: hov ? 1 : 0, transition: 'opacity 0.12s ease',
-            color: 'var(--ai-zds-text, #1A1628)',
+            color: 'var(--ai-ds-text, #1A1628)',
           }}>
-            <ZsGlyph name="side-panel" size={16} />
+            <DsGlyph name="side-panel" size={16} />
           </span>
         </span>
       </button>
@@ -564,12 +525,12 @@ function EdgeCollapseButton({ collapsed, onClick }: { collapsed: boolean; onClic
         borderRadius: 6,
         boxShadow: collapsed ? '0 1px 2px rgba(0,0,0,0.06)' : 'none',
         cursor: 'pointer',
-        color: 'var(--ai-zds-helper, #6B6876)',
+        color: 'var(--ai-ds-helper, #6B6876)',
         padding: 0,
         transition: 'right 0.18s ease, border-color 0.15s, box-shadow 0.15s',
       }}
     >
-      <ZsGlyph name="side-panel" size={14} />
+      <DsGlyph name="side-panel" size={14} />
     </button>
   );
 }
@@ -592,10 +553,10 @@ function WorkspaceSwitcher({ label, subtitle }: { label: string; subtitle?: stri
     >
       <span aria-hidden="true" style={{ width: 7, height: 7, borderRadius: '50%', background: AI.color.brand, flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontWeight: 600, color: 'var(--ai-zds-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</div>
-        {subtitle && <div style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>{subtitle}</div>}
+        <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontWeight: 600, color: 'var(--ai-ds-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</div>
+        {subtitle && <div style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>{subtitle}</div>}
       </div>
-      <ZsGlyph name="carat-down" size={12} />
+      <DsGlyph name="carat-down" size={12} />
     </button>
   );
 }
@@ -607,11 +568,11 @@ function Section({ label, icon, children }: { label?: string; icon?: string; chi
         <div style={{
           display: 'flex', alignItems: 'center', gap: 6,
           padding: '6px 12px 4px',
-          ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+          ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
           textTransform: 'uppercase' as const,
-          color: 'var(--ai-zds-helper)',
+          color: 'var(--ai-ds-helper)',
         }}>
-          {icon && <ZsGlyph name={icon} size={11} />}
+          {icon && <DsGlyph name={icon} size={11} />}
           {label}
         </div>
       )}
@@ -712,8 +673,8 @@ function SearchField({
         boxShadow: `inset 0 0 0 1px ${AI.color.brand}`,
       }}
     >
-      <span style={{ color: 'var(--ai-zds-helper)', display: 'inline-flex', flexShrink: 0 }}>
-        <ZsGlyph name="search" size={15} />
+      <span style={{ color: 'var(--ai-ds-helper)', display: 'inline-flex', flexShrink: 0 }}>
+        <DsGlyph name="search" size={15} />
       </span>
       <input
         ref={inputRef}
@@ -726,8 +687,8 @@ function SearchField({
           flex: 1, minWidth: 0,
           border: 'none', outline: 'none', background: 'transparent',
           fontFamily: 'inherit',
-          ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+          color: 'var(--ai-ds-text)',
           padding: 0,
         }}
       />
@@ -738,10 +699,10 @@ function SearchField({
         style={{
           background: 'none', border: 'none', padding: 2, cursor: 'pointer',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          color: 'var(--ai-zds-helper)', flexShrink: 0,
+          color: 'var(--ai-ds-helper)', flexShrink: 0,
         }}
       >
-        <ZsGlyph name="close" size={12} />
+        <DsGlyph name="close" size={12} />
       </button>
     </div>
   );
@@ -844,9 +805,9 @@ function NavItem({
           border: 'none',
           borderRadius: 6,
           cursor: isDisabled ? 'not-allowed' : 'pointer',
-          color: isLocked ? 'var(--ai-zds-helper)'
+          color: isLocked ? 'var(--ai-ds-helper)'
               : isSelected ? AI.color.brand
-              : 'var(--ai-zds-text)',
+              : 'var(--ai-ds-text)',
           opacity: isDisabled && !isLocked ? 0.45 : (isLocked ? 0.5 : 1),
           textAlign: 'left',
           fontFamily: 'inherit',
@@ -862,13 +823,13 @@ function NavItem({
         )}
 
         {item.icon && (
-          <ZsGlyph name={item.icon} size={15} color={isSelected ? AI.color.brand : undefined} />
+          <DsGlyph name={item.icon} size={15} color={isSelected ? AI.color.brand : undefined} />
         )}
         {!isCollapsed && (
           <>
             <span style={{
               flex: 1, minWidth: 0,
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
               fontWeight: isSelected ? 600 : 400,
               opacity: quiet && !isSelected ? 0.85 : 1,
               overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
@@ -876,10 +837,10 @@ function NavItem({
 
             {isLocked && (
               <>
-                <ZsGlyph name="lock" size={12} color="var(--ai-zds-helper)" />
+                <DsGlyph name="lock" size={12} color="var(--ai-ds-helper)" />
                 <span style={{
-                  ...AI_TYPOGRAPHY['@zsai-action-link'],
-                  color: 'var(--ai-zds-helper)',
+                  ...AI_TYPOGRAPHY['@ai-action-link'],
+                  color: 'var(--ai-ds-helper)',
                   background: 'var(--ai-card-bg-raised, #F4F3F3)',
                   padding: '2px 6px',
                   borderRadius: 999,
@@ -890,7 +851,7 @@ function NavItem({
 
             {item.badge && !isLocked && (
               <span style={{
-                ...AI_TYPOGRAPHY['@zsai-action-link'],
+                ...AI_TYPOGRAPHY['@ai-action-link'],
                 color: AI.color.brand,
                 background: 'var(--ai-brand-surface, rgba(77, 96, 230,0.10))',
                 padding: '2px 7px',
@@ -901,12 +862,12 @@ function NavItem({
 
             {hasChildren && (
               <span aria-hidden="true" style={{
-                color: 'var(--ai-zds-helper)',
+                color: 'var(--ai-ds-helper)',
                 transform: isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)',
                 transition: 'transform 0.15s ease',
                 display: 'inline-flex',
               }}>
-                <ZsGlyph name="carat-down" size={11} color="var(--ai-zds-helper)" />
+                <DsGlyph name="carat-down" size={11} color="var(--ai-ds-helper)" />
               </span>
             )}
           </>
@@ -951,8 +912,8 @@ function NavItem({
 function ShowMore() {
   return (
     <button type="button" style={{
-      ...AI_TYPOGRAPHY['@zsai-meta-label'],
-      color: 'var(--ai-zds-helper)',
+      ...AI_TYPOGRAPHY['@ai-meta-label'],
+      color: 'var(--ai-ds-helper)',
       background: 'transparent',
       border: 'none',
       padding: '4px 12px',

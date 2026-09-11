@@ -20,7 +20,7 @@ AIMessageHeader is the universal attribution row that anchors every AI-generated
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
@@ -42,7 +42,7 @@ AIMessageHeader is the universal attribution row that anchors every AI-generated
 
 - At the top of every AI-generated message, card, or panel output
 - Wherever agent identity must be declared before the response body
-- When source attribution is required by the ZAIDYN accountability layer
+- When source attribution is required by the Guild accountability layer
 
 ## When not to use
 

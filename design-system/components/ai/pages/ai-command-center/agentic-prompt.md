@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Command Center
 
-You are implementing the **AI Command Center** (`ai-command-center`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Command Center** (`ai-command-center`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

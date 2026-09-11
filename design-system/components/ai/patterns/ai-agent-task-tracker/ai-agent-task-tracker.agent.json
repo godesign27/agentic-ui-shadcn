@@ -5,7 +5,7 @@
   "repoModule": "aiAgentTaskTracker",
   "tier": "pages",
   "status": "experimental",
-  "description": "AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (ZSAI tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere \u2014 AI emphasis uses ZSAI blue (#4D60E6); ZS orange is reserved for Needs Input / blocked / warning / pending approval; ZSAI tan stays on the supervisor agent surface only.",
+  "description": "AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (AI_RAMP tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere \u2014 AI emphasis uses AI_RAMP blue (#4D60E6); Guild orange is reserved for Needs Input / blocked / warning / pending approval; AI_RAMP tan stays on the supervisor agent surface only.",
   "intent": "Persistent task supervision \u00b7 Needs Input resolution \u00b7 Bidirectional UI + natural-language mutation",
   "authority": {
     "mirrorSpec": "components/ai/pages/ai-agent-task-tracker/ai-agent-task-tracker.md",
@@ -106,7 +106,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -128,7 +128,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

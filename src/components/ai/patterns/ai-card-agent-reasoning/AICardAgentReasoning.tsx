@@ -1,5 +1,5 @@
 /**
- * AICardAgentReasoning — ZAIDYN Agentic AI Group
+ * AICardAgentReasoning — Guild Agentic AI Group
  *
  * Reasoning & analysis card for an AI agent. Surfaces the agent's
  * identity, a structured AI Summary panel, optional Optimization
@@ -39,7 +39,7 @@ export interface AICardAgentReasoningDriver {
 
 export interface AICardAgentReasoningProps {
   density?:                 AICardAgentReasoningDensity;
-  /** Agent display name. Default "Zaidyn". */
+  /** Agent display name. Default "Guild". */
   agentName?:               string;
   /** Tier role chip next to the name. Default "AGENT". */
   agentRole?:               string;
@@ -78,13 +78,13 @@ export const SAMPLE_REASONING_DRIVERS: AICardAgentReasoningDriver[] = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Driver intensity tokens — tints derived from ZSAI brand ramp
+// Driver intensity tokens — tints derived from AI_RAMP brand ramp
 // ─────────────────────────────────────────────────────────────────────────────
 
 const INTENSITY_CFG: Record<DriverIntensity, { bg: string; border: string; text: string; label: string }> = {
   high:   { bg: AI.color.surface.emphasis, border: AI.color.border.subtle, text: AI.color.text.primary, label: 'High' },
-  medium: { bg: 'transparent',     border: 'transparent', text: 'var(--ai-zds-helper)', label: 'Medium' },
-  low:    { bg: 'transparent',     border: 'transparent', text: 'var(--ai-zds-helper)', label: 'Low'    },
+  medium: { bg: 'transparent',     border: 'transparent', text: 'var(--ai-ds-helper)', label: 'Medium' },
+  low:    { bg: 'transparent',     border: 'transparent', text: 'var(--ai-ds-helper)', label: 'Low'    },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -142,8 +142,8 @@ function AgentHeader({
         <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-card-title'],
-              color: 'var(--ai-zds-text)',
+              ...AI_TYPOGRAPHY['@ai-card-title'],
+              color: 'var(--ai-ds-text)',
               fontWeight: 700,
             }}>
               {agentName}
@@ -161,8 +161,8 @@ function AgentHeader({
             </span>
           </div>
           <div style={{
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' as const,
             marginTop: 2,
           }}>
@@ -177,7 +177,7 @@ function AgentHeader({
           padding: '3px 10px', borderRadius: 999,
           background: 'var(--ai-card-bg-raised)',
           border: '1px solid var(--ai-card-border)',
-          color: 'var(--ai-zds-helper)',
+          color: 'var(--ai-ds-helper)',
           fontFamily: F, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
         }}>
           <span aria-hidden="true" style={{
@@ -202,23 +202,23 @@ function SummaryPanel({ headline, detail }: { headline: string; detail: string }
       display: 'flex', flexDirection: 'column', gap: 10,
     }}>
       <div style={{
-        ...AI_TYPOGRAPHY['@zsai-meta-label'],
+        ...AI_TYPOGRAPHY['@ai-meta-label'],
         color: AI.color.text.secondary,
         fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const,
       }}>
         AI Summary
       </div>
       <div style={{
-        ...AI_TYPOGRAPHY['@zsai-body'],
-        color: 'var(--ai-zds-text)',
+        ...AI_TYPOGRAPHY['@ai-body'],
+        color: 'var(--ai-ds-text)',
       }}>
         {headline}
       </div>
       <div style={{ height: 1, background: AI.color.surface.subtle }} />
       <p style={{
         margin: 0,
-        ...AI_TYPOGRAPHY['@zsai-body-small'],
-        color: 'var(--ai-zds-helper)',
+        ...AI_TYPOGRAPHY['@ai-body-small'],
+        color: 'var(--ai-ds-helper)',
         lineHeight: 1.55,
       }}>
         “{detail}”
@@ -237,8 +237,8 @@ function DriversPanel({ drivers }: { drivers: AICardAgentReasoningDriver[] }) {
       display: 'flex', flexDirection: 'column', gap: 8,
     }}>
       <div style={{
-        ...AI_TYPOGRAPHY['@zsai-meta-label'],
-        color: 'var(--ai-zds-helper)',
+        ...AI_TYPOGRAPHY['@ai-meta-label'],
+        color: 'var(--ai-ds-helper)',
         fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const,
         marginBottom: 4,
       }}>
@@ -250,8 +250,8 @@ function DriversPanel({ drivers }: { drivers: AICardAgentReasoningDriver[] }) {
         return (
           <div key={d.label} style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-            ...AI_TYPOGRAPHY['@zsai-body-small'],
-            color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-body-small'],
+            color: 'var(--ai-ds-text)',
           }}>
             <span>{d.label}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
@@ -289,7 +289,7 @@ function DriversPanel({ drivers }: { drivers: AICardAgentReasoningDriver[] }) {
 
 export function AICardAgentReasoning({
   density      = 'simple',
-  agentName    = 'Zaidyn',
+  agentName    = 'Guild',
   agentRole    = 'AGENT',
   agentEyebrow = 'REASONING & ANALYSIS',
   live         = true,

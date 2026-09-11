@@ -1,5 +1,5 @@
 /**
- * Tier 1 palette override types for ZSAI surface themes.
+ * Tier 1 palette override types for AI_RAMP surface themes.
  * Theme files override palette steps only; semantic names stay fixed.
  */
 
@@ -8,9 +8,9 @@ export type PaletteStep = '100' | '90' | '80' | '70' | '60' | '50' | '40' | '30'
 export type PaletteRamp = Record<PaletteStep, string>;
 
 export type PaletteOverrides = {
-  ZSAI?: Partial<PaletteRamp>;
-  ZS_ORANGE?: Partial<PaletteRamp>;
-  ZSAI_TAN?: Partial<PaletteRamp>;
+  AI_RAMP?: Partial<PaletteRamp>;
+  SIGNAL_ORANGE?: Partial<PaletteRamp>;
+  COMPANION_TAN?: Partial<PaletteRamp>;
 };
 
 /** Direct Tier 3 CSS variable overrides (used when a theme inverts semantics). */

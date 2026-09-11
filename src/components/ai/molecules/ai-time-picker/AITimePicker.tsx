@@ -5,32 +5,32 @@ import { AI, F } from '../../tokens/ai-tokens';
 /**
  * AI Time Picker
  * =====================
- * The AI-surface counterpart to the ZDS Time Picker (src/timePicker/). Same scope
+ * The AI-surface counterpart to the DS Time Picker (src/timePicker/). Same scope
  * — an Action-Field trigger (clock icon + value) opening a scrollable listbox of
- * time slots (default 30-minute intervals) — restyled onto the ZAIDYN AI brand.
+ * time slots (default 30-minute intervals) — restyled onto the Guild AI brand.
  *
  *   - Trigger uses the AI Action Field treatment (rounded ai.radius.md outline,
  *     brand-blue border, AI input shadow + blue focus halo) to stay consistent
  *     with every other AI form control.
- *   - Menu sits FLUSH against the field (the ZDS Time Picker signature): the field
+ *   - Menu sits FLUSH against the field (the DS Time Picker signature): the field
  *     keeps its top corners rounded when open, the menu carries the bottom radius,
  *     so the two read as one continuous brand surface.
- *   - Items adopt the ZSAI indigo ramp — hover uses the brand-subtle tint, the
+ *   - Items adopt the AI_RAMP indigo ramp — hover uses the brand-subtle tint, the
  *     selected slot fills with the action gradient, and the custom scrollbar is
  *     brand-tinted.
  *
  * AI surface theme: the component reads its palette from the AI.* tokens (mirrored
  * to the --color-ai-* / --gradient-ai-* CSS custom properties). Rendering it on a
  * surface that carries the AI data-theme keeps it visually aligned with the rest
- * of the AI system — applying the AI theme to a ZDS time picker yields this look.
+ * of the AI system — applying the AI theme to a DS time picker yields this look.
  *
- * Structure/behavior mirrors the ZDS master so the two stay 1:1 across libraries;
+ * Structure/behavior mirrors the DS master so the two stay 1:1 across libraries;
  * only the palette + radii differ.
  */
 
 const FOCUS_RING = `0 0 0 2px #ffffff, 0 0 0 4px ${AI.color.border.focus}`;
 
-// Sizing contract mirrors the ZDS Time Picker: the "Pick a time" label sits ABOVE
+// Sizing contract mirrors the DS Time Picker: the "Pick a time" label sits ABOVE
 // the field; the field + menu share one width and sit flush (no gap).
 export const AI_TIME_PICKER_SIZES = {
   Normal:    { field: 48, icon: 22, itemH: 34, menuH: 236, label: 13, input: 15, item: 15 },
@@ -81,7 +81,7 @@ export const AI_TIME_SURFACES: Record<AITimeSurface, {
     scrollTrack: '#F4F3F3', scrollThumb: '#C9C7CC', scrollThumbHover: '#B2B0B6',
   },
   'flat-tan': {
-    // Warm companion tan — AI.color.companion.* (ZSAI Tan ramp).
+    // Warm companion tan — AI.color.companion.* (AI_RAMP Tan ramp).
     menuBg: AI.color.companion.paper, menuBorder: AI.color.companion.border,
     selectedBg: AI.color.companion.highlight, selectedText: AI.color.companion.ink,
     hoverBg: AI.color.companion.surface, hoverText: AI.color.companion.ink,

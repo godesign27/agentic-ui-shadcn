@@ -33,16 +33,16 @@ export function ConversationalAIOutputShowcase() {
           >
             Reference
           </p>
-          <h1 style={{ margin: '6px 0 0', fontSize: 24, fontWeight: 700, color: 'var(--ai-zds-text,#1A1628)' }}>
+          <h1 style={{ margin: '6px 0 0', fontSize: 24, fontWeight: 700, color: 'var(--ai-ds-text,#1A1628)' }}>
             Conversational AI Output Showcase
           </h1>
-          <p style={{ margin: '8px 0 0', fontSize: 14, color: 'var(--ai-zds-helper,#5B5864)', lineHeight: 1.5 }}>
+          <p style={{ margin: '8px 0 0', fontSize: 14, color: 'var(--ai-ds-helper,#5B5864)', lineHeight: 1.5 }}>
             Curated previews of conversational atoms, transparency cues, execution controls, and feedback.
           </p>
         </header>
 
         <section style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-zds-helper,#5B5864)' }}>
+          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-ds-helper,#5B5864)' }}>
             Conversation
           </h2>
           <AIUserBubble text="Summarize Northeast territory engagement for Q2." />
@@ -60,7 +60,7 @@ export function ConversationalAIOutputShowcase() {
         </section>
 
         <section style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-zds-helper,#5B5864)' }}>
+          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-ds-helper,#5B5864)' }}>
             Transparency
           </h2>
           <AIAgentWorkNote
@@ -83,7 +83,7 @@ export function ConversationalAIOutputShowcase() {
         </section>
 
         <section style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-zds-helper,#5B5864)' }}>
+          <h2 style={{ margin: 0, fontSize: 14, fontWeight: 700, color: 'var(--ai-ds-helper,#5B5864)' }}>
             Execution
           </h2>
           <AIProgress

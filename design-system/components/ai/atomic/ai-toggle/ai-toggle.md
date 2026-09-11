@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiToggle`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 Track + thumb switch with high-contrast OFF state. White thumb passes 3:1 contrast against both ON and OFF tracks.
 
-AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than ZDS border so the white thumb stays visible — meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role="switch" + aria-checked.
+AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than DS border so the white thumb stays visible — meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role="switch" + aria-checked.
 
 **Export:** `AIToggle`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -97,9 +97,9 @@ const [explain, setExplain] = React.useState(false);
 ## Agent rules
 
 1. Read this mirror spec and `ai-toggle.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-toggle/ai-toggle.agent.json`.
 

@@ -5,7 +5,7 @@
   "repoModule": "aiPicker",
   "tier": "molecules",
   "status": "experimental",
-  "description": "The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides \u2014 the suggestion is always shown for review and never auto-applied. The date type reuses ZdsDatePickerInline; month, month-range, and time use brand-styled inline panels.",
+  "description": "The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides \u2014 the suggestion is always shown for review and never auto-applied. The date type reuses DSDatePickerInline; month, month-range, and time use brand-styled inline panels.",
   "intent": "AI suggests a date or time from data; the human reviews and decides. Never auto-applies. Scales from a passive chip to a full governance panel by density.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-picker/ai-picker.md",
@@ -130,7 +130,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -152,7 +152,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

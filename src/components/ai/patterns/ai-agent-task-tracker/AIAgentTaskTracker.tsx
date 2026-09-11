@@ -16,13 +16,13 @@
  * Density: basic / simple / rich (default) / robust.
  * Flow state: 'default' | 'needs-input' | 'conflict' | 'empty'.
  *
- * Brand: NO teal. AI emphasis via AI.color.brand (#4D60E6). ZS orange ONLY
- * on Needs-Input / blocked / warning. ZSAI tan reserved for the supervisor
+ * Brand: NO teal. AI emphasis via AI.color.brand (#4D60E6). Guild orange ONLY
+ * on Needs-Input / blocked / warning. AI_RAMP tan reserved for the supervisor
  * agent header surface. Status + health always pair glyph WITH text label.
  */
 
 import React, { useMemo, useRef, useState } from 'react';
-import { AI, ZS_ORANGE, ZSAI_TAN, F } from '../../tokens/ai-tokens';
+import { AI, SIGNAL_ORANGE, COMPANION_TAN, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIButton } from '../../atomic/ai-button/AIButton';
 import { AITextLink } from '../../molecules/ai-text-link/AITextLink';
@@ -218,7 +218,7 @@ const FILTERS: FilterChip[] = [
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Renders a ZAIDYN font glyph. The `icons.css` cascade scopes the
+ * Renders a Guild font glyph. The `icons.css` cascade scopes the
  * font-family + ::before content rules to a `.zs-master-style` ancestor,
  * so the wrapper-and-child structure is required — combining both classes
  * on a single element renders an empty box.
@@ -277,7 +277,7 @@ function SupervisorActions({
 
   // Tone-aware "more" button styling so the kebab reads correctly on
   // dark / tan / light supervisor surfaces.
-  const moreBtnColor = tone === 'dark' ? '#FFFFFF' : 'var(--ai-zds-text)';
+  const moreBtnColor = tone === 'dark' ? '#FFFFFF' : 'var(--ai-ds-text)';
   const moreBtnBorder = tone === 'dark'
     ? 'rgba(255,255,255,0.28)'
     : 'var(--ai-card-border)';
@@ -340,13 +340,13 @@ function SupervisorActions({
                 display: 'flex', alignItems: 'center', gap: 8, width: '100%',
                 padding: '8px 10px', borderRadius: 6,
                 background: 'transparent', border: 'none', cursor: 'pointer',
-                fontFamily: F, fontSize: 14, color: 'var(--ai-zds-text)',
+                fontFamily: F, fontSize: 14, color: 'var(--ai-ds-text)',
                 textAlign: 'left',
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = 'var(--ai-card-bg-raised)'; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
             >
-              <Glyph name={item.icon} size={14} color="var(--ai-zds-helper)" />
+              <Glyph name={item.icon} size={14} color="var(--ai-ds-helper)" />
               {item.label}
             </button>
           ))}
@@ -510,16 +510,16 @@ function InsightsRegion({ density }: { density: AIAgentTaskTrackerDensity }) {
     <section aria-labelledby="agentic-insights-h" style={{
       padding: 20,
       // "Context" color application — pulled from AIAnalysisInsight's
-      // context type tokens (ZSAI_TAN). Same warm companion surface used
+      // context type tokens (COMPANION_TAN). Same warm companion surface used
       // by other AI library context-type insights.
-      background: ZSAI_TAN['00'],         // #F6F2EB
-      border: `1px solid ${ZSAI_TAN[60]}`, // #B89580
+      background: COMPANION_TAN['00'],         // #F6F2EB
+      border: `1px solid ${COMPANION_TAN[60]}`, // #B89580
       borderRadius: AI.radius.md,
     }}>
       <header style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
         {/* AI Avatar atom — replaces the inline brand-gradient circle. */}
         <AIAvatar size={24} />
-        <h2 id="agentic-insights-h" style={{ margin: 0, ...AI_TYPOGRAPHY['@zsai-h4'], color: ZSAI_TAN[80] }}>
+        <h2 id="agentic-insights-h" style={{ margin: 0, ...AI_TYPOGRAPHY['@ai-h4'], color: COMPANION_TAN[80] }}>
           Agentic Insights
         </h2>
         <span style={{ flex: 1 }} />
@@ -571,7 +571,7 @@ function FilterBar({
       <div style={{ flex: 1, minWidth: 0, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
         {isFiltered ? (
           <>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
               Filtered by
             </span>
             <span style={{
@@ -580,7 +580,7 @@ function FilterBar({
               background: 'var(--ai-brand-surface)',
               border: '1px solid var(--ai-brand-border)',
               color: 'var(--ai-brand-text)',
-              ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700, fontFamily: F,
+              ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700, fontFamily: F,
             }}>
               {activeLabel}
               <button
@@ -597,12 +597,12 @@ function FilterBar({
                 <Glyph name="zs-icon-close" size={11} color="var(--ai-brand-text)" />
               </button>
             </span>
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
               · {filteredCount} of {totalCount}
             </span>
           </>
         ) : (
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
             Showing all {totalCount} tasks · click any metric card to filter
           </span>
         )}
@@ -614,9 +614,9 @@ function FilterBar({
         <span aria-hidden="true" style={{
           display: 'inline-block', width: 1, height: 18, background: 'var(--ai-card-border)', margin: '0 2px',
         }} />
-        <button aria-label="RiSearchLine" style={iconBtnStyle()}><Glyph name="zs-icon-search" size={14} color="var(--ai-zds-helper)" /></button>
-        <button aria-label="Sort"   style={iconBtnStyle()}><Glyph name="zs-icon-arrow-up-down" size={14} color="var(--ai-zds-helper)" /></button>
-        <button aria-label="Filter" style={iconBtnStyle()}><Glyph name="zs-icon-filter" size={14} color="var(--ai-zds-helper)" /></button>
+        <button aria-label="RiSearchLine" style={iconBtnStyle()}><Glyph name="zs-icon-search" size={14} color="var(--ai-ds-helper)" /></button>
+        <button aria-label="Sort"   style={iconBtnStyle()}><Glyph name="zs-icon-arrow-up-down" size={14} color="var(--ai-ds-helper)" /></button>
+        <button aria-label="Filter" style={iconBtnStyle()}><Glyph name="zs-icon-filter" size={14} color="var(--ai-ds-helper)" /></button>
         <LayoutSegmentedControl layout={layout} onChange={onLayoutChange} />
       </div>
     </section>
@@ -663,7 +663,7 @@ function LayoutSegmentedControl({
     width: 30, height: 28,
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     background: active ? '#FFFFFF' : 'transparent',
-    color: active ? 'var(--ai-brand-text)' : 'var(--ai-zds-helper)',
+    color: active ? 'var(--ai-brand-text)' : 'var(--ai-ds-helper)',
     border: 'none',
     borderRadius: 6,
     cursor: 'pointer',
@@ -745,11 +745,11 @@ function TaskRegistry({
         border: '1px dashed var(--ai-card-border)',
         borderRadius: AI.radius.md,
       }}>
-        <Glyph name="zs-icon-check-circle" size={36} color="var(--ai-zds-helper)" />
-        <div style={{ marginTop: 8, ...AI_TYPOGRAPHY['@zsai-h6'], color: 'var(--ai-zds-text)' }}>
+        <Glyph name="zs-icon-check-circle" size={36} color="var(--ai-ds-helper)" />
+        <div style={{ marginTop: 8, ...AI_TYPOGRAPHY['@ai-h6'], color: 'var(--ai-ds-text)' }}>
           No active tasks
         </div>
-        <div style={{ marginTop: 4, ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-helper)' }}>
+        <div style={{ marginTop: 4, ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-helper)' }}>
           When you delegate a task, Smart Assist will track it here.
         </div>
       </section>
@@ -777,8 +777,8 @@ function TaskRegistry({
               display: 'flex', flexDirection: 'column', gap: 8,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)' }}>{c.label}</span>
-                <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>{items.length}</span>
+                <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)' }}>{c.label}</span>
+                <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>{items.length}</span>
               </div>
               {items.map((t) => (
                 <AIAgentTaskCard
@@ -832,8 +832,8 @@ function DetailPanel({ task, onClose }: { task?: AIAgentTaskCardProps; onClose: 
       maxHeight: 'calc(100vh - 64px)', overflowY: 'auto',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-brand-text)' }}>Task detail</span>
-        <button aria-label="Close" onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-zds-helper)' }}>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-brand-text)' }}>Task detail</span>
+        <button aria-label="Close" onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-ds-helper)' }}>
           <Glyph name="zs-icon-close" size={14} />
         </button>
       </div>
@@ -877,7 +877,7 @@ function DetailPanel({ task, onClose }: { task?: AIAgentTaskCardProps; onClose: 
       />
 
       <div>
-        <div style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)', marginBottom: 6 }}>
+        <div style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)', marginBottom: 6 }}>
           RiPulseLine timeline
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -889,9 +889,9 @@ function DetailPanel({ task, onClose }: { task?: AIAgentTaskCardProps; onClose: 
             <li key={i} style={{
               display: 'flex', gap: 8, padding: '6px 8px',
               background: 'var(--ai-card-bg-raised)', borderRadius: AI.radius.xs,
-              ...AI_TYPOGRAPHY['@zsai-body-extra-small'], color: 'var(--ai-zds-text)',
+              ...AI_TYPOGRAPHY['@ai-body-extra-small'], color: 'var(--ai-ds-text)',
             }}>
-              <span style={{ color: 'var(--ai-zds-helper)', flexShrink: 0, minWidth: 56 }}>{row.time}</span>
+              <span style={{ color: 'var(--ai-ds-helper)', flexShrink: 0, minWidth: 56 }}>{row.time}</span>
               <span>{row.text}</span>
             </li>
           ))}
@@ -936,19 +936,19 @@ function ConflictResolutionModal() {
       <div style={{
         width: 'min(560px, 100%)',
         background: '#FFFFFF',
-        border: `2px solid ${ZS_ORANGE[40]}`,
+        border: `2px solid ${SIGNAL_ORANGE[40]}`,
         borderRadius: AI.radius.md,
         padding: 18,
         display: 'flex', flexDirection: 'column', gap: 14,
       }}>
         <header style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <Glyph name="zs-icon-error-triangle" size={18} color={ZS_ORANGE[80]} />
-          <h2 id="conflict-h" style={{ margin: 0, ...AI_TYPOGRAPHY['@zsai-h5'], color: ZS_ORANGE[80] }}>
+          <Glyph name="zs-icon-error-triangle" size={18} color={SIGNAL_ORANGE[80]} />
+          <h2 id="conflict-h" style={{ margin: 0, ...AI_TYPOGRAPHY['@ai-h5'], color: SIGNAL_ORANGE[80] }}>
             Conflicting edits on task T-3091
           </h2>
         </header>
 
-        <p style={{ margin: 0, ...AI_TYPOGRAPHY['@zsai-body-small'], color: 'var(--ai-zds-text)' }}>
+        <p style={{ margin: 0, ...AI_TYPOGRAPHY['@ai-body-small'], color: 'var(--ai-ds-text)' }}>
           You changed the schedule in the side panel while a natural-language command tried to apply a different date. Pick one to proceed — nothing has been applied yet.
         </p>
 
@@ -962,11 +962,11 @@ function ConflictResolutionModal() {
               background: 'var(--ai-card-bg-raised)',
               border: '1px solid var(--ai-card-border)',
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)', marginBottom: 4 }}>
-                <Glyph name={p.icon} size={11} color="var(--ai-zds-helper)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)', marginBottom: 4 }}>
+                <Glyph name={p.icon} size={11} color="var(--ai-ds-helper)" />
                 {p.label}
               </div>
-              <div style={{ ...AI_TYPOGRAPHY['@zsai-body'], color: 'var(--ai-zds-text)', fontWeight: 600 }}>
+              <div style={{ ...AI_TYPOGRAPHY['@ai-body'], color: 'var(--ai-ds-text)', fontWeight: 600 }}>
                 {p.value}
               </div>
             </div>
@@ -992,7 +992,7 @@ export function AIAgentTaskTracker({
   density = 'rich',
   flow = 'default',
   supervisorAgent = { name: 'AI Agent Task Tracker', tasksTracked: 7, lastUpdated: 'Updated 2m ago' },
-  // Default to the darkest brand-ink (zsai-100) tone. The Basic density
+  // Default to the darkest brand-ink (ai-ramp-100) tone. The Basic density
   // variant overrides this back to "tan" for the calmer MVP scope.
   supervisorTone = 'dark',
   tasks: tasksProp,

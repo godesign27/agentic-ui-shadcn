@@ -1,4 +1,4 @@
-# ZAIDYN AI Design System — All Atoms
+# Guild AI Design System — All Atoms
 
 **Version:** 1.0  
 **Last Updated:** 2026-06-16  
@@ -14,17 +14,17 @@
 
 
 
-**Export:** `ZAIDYNAIDesignSystem—AllAtoms`
+**Export:** `GuildAIDesignSystem—AllAtoms`
 
 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|
-| `ai/atomic/Exported 2026-06-16 · 25 components/ZAIDYNAIDesignSystem—AllAtoms.tsx` | Canonical React source (external repo) |
+| `ai/atomic/Exported 2026-06-16 · 25 components/GuildAIDesignSystem—AllAtoms.tsx` | Canonical React source (external repo) |
 | `components/ai/atomic/Exported 2026-06-16 · 25 components/Exported 2026-06-16 · 25 components.md` | This mirror spec |
 | `components/ai/atomic/Exported 2026-06-16 · 25 components/Exported 2026-06-16 · 25 components.agent.json` | Agent manifest |
 | `components/ai/atomic/Exported 2026-06-16 · 25 components/agentic-prompt.md` | Copy-paste prompt for doc site |
@@ -44,7 +44,7 @@
 ## JavaScript / React API
 
 ```tsx
-import { ZAIDYNAIDesignSystem—AllAtoms } from '@ai/atomic/Exported 2026-06-16 · 25 components/ZAIDYNAIDesignSystem—AllAtoms';
+import { GuildAIDesignSystem—AllAtoms } from '@ai/atomic/Exported 2026-06-16 · 25 components/GuildAIDesignSystem—AllAtoms';
 ```
 
 ## Agent rules

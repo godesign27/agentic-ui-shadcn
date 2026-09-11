@@ -5,7 +5,7 @@
   "repoModule": "aiMetricTile",
   "tier": "atomic",
   "status": "active",
-  "description": "AIMetricTile is the canonical surface for surfacing a single metric reading \u2014 confidence, trend, threshold, target \u2014 inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow (\"CONFIDENCE\", \"TREND\", \"HALT THRESHOLD\") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone (\"High\" in brand blue, \"Medium\" in ZS orange, \"Low\" in ZS orange deep, neutral in helper grey).",
+  "description": "AIMetricTile is the canonical surface for surfacing a single metric reading \u2014 confidence, trend, threshold, target \u2014 inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow (\"CONFIDENCE\", \"TREND\", \"HALT THRESHOLD\") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone (\"High\" in brand blue, \"Medium\" in Guild orange, \"Low\" in Guild orange deep, neutral in helper grey).",
   "intent": "Compact raised tile for a single metric reading \u2014 eyebrow + value + optional qualifier.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-metric-tile/ai-metric-tile.md",
@@ -90,7 +90,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -112,7 +112,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

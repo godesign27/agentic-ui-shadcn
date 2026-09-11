@@ -1,6 +1,6 @@
 # AI components — agent source of truth
 
-**This is the shadcn/ui implementation repo.** Governed AI kit components stay at `src/components/ai/{slug}.tsx` with specs in `design-system/components/ai/{slug}/`. The imported ZAIDYN AI library uses the zds-ai folder architecture.
+**This is the shadcn/ui implementation repo.** Governed AI kit components stay at `src/components/ai/{slug}.tsx` with specs in `design-system/components/ai/{slug}/`. The imported Guild AI library uses this folder architecture.
 
 Folder tiers (aligned to the AI Pattern Library docs-site sidebar — do **not** use a `groups/` folder):
 
@@ -35,7 +35,7 @@ Governed shadcn ports:
 import { AIButton } from '@/components/ai/ai-button'
 ```
 
-Imported zds-ai architecture:
+Imported AI architecture:
 
 ```tsx
 import { AI, F } from '@/components/ai/tokens/ai-tokens'

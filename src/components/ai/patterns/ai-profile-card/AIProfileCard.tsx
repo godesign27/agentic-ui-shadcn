@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ZSAI_TAN, F } from '../../tokens/ai-tokens';
+import { COMPANION_TAN, F } from '../../tokens/ai-tokens';
 import { AIButton } from '../../atomic/ai-button/AIButton';
 import { AIWhyThisLink } from '../../molecules/ai-why-this-link/AIWhyThisLink';
 import { AIIcon } from '../../atomic/ai-icon/AIIcon';
@@ -143,27 +143,27 @@ const THEME: Record<AIProfileCardTheme, ThemeCfg> = {
     bg:             '#F2E8DB',
     border:         '1px solid #C5AD90',
     borderRadius:   '12px',
-    nameColor:      ZSAI_TAN[100],
-    subColor:       ZSAI_TAN[80],
-    captionColor:   ZSAI_TAN[70],
+    nameColor:      COMPANION_TAN[100],
+    subColor:       COMPANION_TAN[80],
+    captionColor:   COMPANION_TAN[70],
     dividerColor:   '#C5AD90',
     decileBg:       '#E4D3BE',
-    decileColor:    ZSAI_TAN[90],
+    decileColor:    COMPANION_TAN[90],
     roleBg:         '#EAD9C5',
-    roleColor:      ZSAI_TAN[80],
+    roleColor:      COMPANION_TAN[80],
     roleBorder:     '#C5AD90',
     aiBadgeBg:      'rgba(53, 68, 164,0.12)',
     aiBadgeColor:   '#3544A4',
     insightBg:      '#EAD9C5',
     insightBorder:  '#C5AD90',
-    insightText:    ZSAI_TAN[100],
-    insightCaption: ZSAI_TAN[80],
+    insightText:    COMPANION_TAN[100],
+    insightCaption: COMPANION_TAN[80],
     insightLink:    '#3544A4',
-    statValue:      ZSAI_TAN[100],
+    statValue:      COMPANION_TAN[100],
     statDeltaPos:   '#16A34A',
     statDeltaNeg:   '#DC2626',
     avatarBg:       '#DCC6B0',
-    avatarColor:    ZSAI_TAN[90],
+    avatarColor:    COMPANION_TAN[90],
     onDark:         false,
   },
 };

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** pages (AI)  
 **Repo module:** `aiCommandCenterSplitView`  
 **Component type:** React page  
@@ -20,7 +20,7 @@ AICommandCenterSplitView extends the standard AI Command Center with a split-vie
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -82,7 +82,7 @@ AICommandCenterSplitView extends the standard AI Command Center with a split-vie
 | --- | --- | --- | --- |
 | `variant` | `"gray" \| "aqua"` | `"gray"` | Background gradient theme. "gray" for neutral surfaces, "aqua" for teal-tinted surfaces. |
 | `showBackground` | `boolean` | `true` | Render the ambient gradient background in the start state. |
-| `suggestions` | `string[]` | `undefined` | Custom quick-action chip labels for the start state. Defaults to 5 ZAIDYN-specific examples. |
+| `suggestions` | `string[]` | `undefined` | Custom quick-action chip labels for the start state. Defaults to 5 Guild-specific examples. |
 
 ## Tokens
 
@@ -129,9 +129,9 @@ import { AICommandCenterSplitView } from '@/components/ai/pages/ai-command-cente
 ## Agent rules
 
 1. Read this mirror spec and `ai-command-center-split-view.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.agent.json`.
 

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Progress
 
-You are implementing the **AI Progress** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Progress** atom from the Guild AI Design System mirror.
 
 ---
 

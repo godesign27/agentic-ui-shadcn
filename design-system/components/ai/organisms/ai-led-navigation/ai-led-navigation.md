@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiLedNavigation`  
 **Component type:** React organism  
@@ -12,7 +12,7 @@
 
 ## Purpose
 
-The navigation rail for AI Led product shells — inspired by modern AI tools, tuned to ZAIDYN enterprise visual language.
+The navigation rail for AI Led product shells — inspired by modern AI tools, tuned to Guild enterprise visual language.
 
 AILedNavigation is the left-rail navigation system for AI Led experiences. It organizes the things an AI workbench needs to surface — new chat, search, library, agents, apps, projects, pinned items, recents and account — under a single composable group. Five companion variants (default · collapsed · workspace-focused · agent-focused · minimal) and five state machines (default · nested-open · loading-recents · empty-recents · permission-restricted) cover the full life-cycle. The header reuses the canonical AIAvatar brand mark from the AI Assisted Side Drawer pattern so AI Led products share one identity across the shell.
 
@@ -20,7 +20,7 @@ AILedNavigation is the left-rail navigation system for AI Led experiences. It or
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -73,8 +73,8 @@ AILedNavigation is the left-rail navigation system for AI Led experiences. It or
 
 | Prop | RiFontSize2 | Default | Description |
 | --- | --- | --- | --- |
-| `brandLabel` | `string` | `"ZAIDYN AI"` | Product / system label shown next to the AIAvatar mark. |
-| `brandIcon` | `ReactNode` | `<AIAvatar />` | Header brand mark. Defaults to the canonical ZAIDYN AI Avatar. |
+| `brandLabel` | `string` | `"Guild AI"` | Product / system label shown next to the AIAvatar mark. |
+| `brandIcon` | `ReactNode` | `<AIAvatar />` | Header brand mark. Defaults to the canonical Guild AI Avatar. |
 | `currentWorkspace` | `{ id: string; label: string; tone?: "ai" \| "tan" }` | `Workspace A` | Active workspace surfaced in the switcher chip. |
 | `primaryActions` | `AILedNavItem[]` | `5 defaults` | High-frequency AI actions row. |
 | `workspaceGroups` | `AILedNavGroup[]` | `Projects preset` | Workspace / project sections — each group may contain nested children. |
@@ -110,9 +110,9 @@ AILedNavigation is the left-rail navigation system for AI Led experiences. It or
 ### Typography
 | Token | Value | Usage |
 | --- | --- | --- |
-| `nav.section-header` | `@zsai-micro-eyebrow` | 11/600/1.0 · 0.02em letter-spacing · uppercase |
-| `nav.item-label` | `@zsai-section-subtitle` | 13/400/1.55 · 600 weight when selected |
-| `nav.brand` | `@zsai-h5` | 14/700/1.4 — brand / workspace label in header |
+| `nav.section-header` | `@ai-micro-eyebrow` | 11/600/1.0 · 0.02em letter-spacing · uppercase |
+| `nav.item-label` | `@ai-section-subtitle` | 13/400/1.55 · 600 weight when selected |
+| `nav.brand` | `@ai-h5` | 14/700/1.4 — brand / workspace label in header |
 
 ## Flows
 
@@ -173,7 +173,7 @@ User toggles the rail using the edge handle.
 ```tsx
 import { AILedNavigation, DEFAULT_NAV_CONFIG } from '@/components/ai/organisms/ai-led-navigation/AILedNavigation';
 
-// Defaults are wired to a representative ZAIDYN AI workspace
+// Defaults are wired to a representative Guild AI workspace
 <AILedNavigation />
 
 // Custom workspace + handlers
@@ -194,9 +194,9 @@ import { AILedNavigation, DEFAULT_NAV_CONFIG } from '@/components/ai/organisms/a
 ## Agent rules
 
 1. Read this mirror spec and `ai-led-navigation.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-led-navigation/ai-led-navigation.agent.json`.
 

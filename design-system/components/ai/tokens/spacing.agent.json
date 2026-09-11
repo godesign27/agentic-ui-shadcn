@@ -5,8 +5,8 @@
   "repoModule": "aiSpacingTokens",
   "tier": "tokens",
   "status": "active",
-  "description": "@zs-space-unit (8px) ramp shared with ZDS. AI surfaces inherit the same scale — documented padding values for components and layout.",
-  "intent": "All spacing is multiples of 8px. Use ZDS utility classes in CSS; same multiples in React inline styles.",
+  "description": "@ds-space-unit (8px) ramp shared with DS. AI surfaces inherit the same scale — documented padding values for components and layout.",
+  "intent": "All spacing is multiples of 8px. Use DS utility classes in CSS; same multiples in React inline styles.",
   "authority": {
     "mirrorSpec": "components/ai/tokens/spacing.md",
     "contract": "components/ai/tokens/spacing.json",
@@ -34,7 +34,7 @@
       "--ai-padding-chip",
       "--ai-max-chat-width"
     ],
-    "less": ["@zs-space-unit", "zs-padding-1", "zs-padding-2", "zs-margin-bottom-2"]
+    "less": ["@ds-space-unit", "zs-padding-1", "zs-padding-2", "zs-margin-bottom-2"]
   },
   "accessibility": {
     "role": "n/a",
@@ -48,7 +48,7 @@
     "forbiddenUsage": [
       "Do not use arbitrary spacing like 13px",
       "Do not compress bubble padding below 12px on touch targets",
-      "Do not mix spacing systems outside @zs-space-unit"
+      "Do not mix spacing systems outside @ds-space-unit"
     ],
     "agentRules": [
       "Read spacing.json for ramp, component padding, and layout values",

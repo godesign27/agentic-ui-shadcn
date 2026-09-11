@@ -1,6 +1,6 @@
 {
   "font": {
-    "$description": "Shared typeface for ZAIDYN AI (F in ai-tokens.ts).",
+    "$description": "Shared typeface for Guild AI (F in ai-tokens.ts).",
     "family": {
       "primary": {
         "$type": "fontFamily",
@@ -9,11 +9,11 @@
       }
     }
   },
-  "zsai": {
-    "$description": "AI typography scale. Runtime: AI_TYPOGRAPHY['@zsai-*'] in ai-typography.ts. Custom $type typography for Zeroheight (composite — no built-in validation).",
+  "ai-ramp": {
+    "$description": "AI typography scale. Runtime: AI_TYPOGRAPHY['@ai-*'] in ai-typography.ts. Custom $type typography for Zeroheight (composite — no built-in validation).",
     "super-hero": {
       "$type": "typography",
-      "$description": "@zsai-super-hero",
+      "$description": "@ai-super-hero",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "64px",
@@ -23,7 +23,7 @@
     },
     "hero": {
       "$type": "typography",
-      "$description": "@zsai-hero",
+      "$description": "@ai-hero",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "48px",
@@ -33,7 +33,7 @@
     },
     "h1": {
       "$type": "typography",
-      "$description": "@zsai-h1",
+      "$description": "@ai-h1",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "32px",
@@ -43,7 +43,7 @@
     },
     "h2": {
       "$type": "typography",
-      "$description": "@zsai-h2",
+      "$description": "@ai-h2",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "24px",
@@ -53,7 +53,7 @@
     },
     "h3": {
       "$type": "typography",
-      "$description": "@zsai-h3",
+      "$description": "@ai-h3",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "20px",
@@ -63,7 +63,7 @@
     },
     "h4": {
       "$type": "typography",
-      "$description": "@zsai-h4",
+      "$description": "@ai-h4",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -73,7 +73,7 @@
     },
     "h5": {
       "$type": "typography",
-      "$description": "@zsai-h5",
+      "$description": "@ai-h5",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -83,7 +83,7 @@
     },
     "h6": {
       "$type": "typography",
-      "$description": "@zsai-h6",
+      "$description": "@ai-h6",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -93,7 +93,7 @@
     },
     "subtitle-1": {
       "$type": "typography",
-      "$description": "@zsai-subtitle-1",
+      "$description": "@ai-subtitle-1",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -103,7 +103,7 @@
     },
     "subtitle-2": {
       "$type": "typography",
-      "$description": "@zsai-subtitle-2",
+      "$description": "@ai-subtitle-2",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -113,7 +113,7 @@
     },
     "body": {
       "$type": "typography",
-      "$description": "@zsai-body",
+      "$description": "@ai-body",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -123,7 +123,7 @@
     },
     "body-small": {
       "$type": "typography",
-      "$description": "@zsai-body-small",
+      "$description": "@ai-body-small",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -133,7 +133,7 @@
     },
     "body-extra-small": {
       "$type": "typography",
-      "$description": "@zsai-body-extra-small — exception: dense prose helper tier",
+      "$description": "@ai-body-extra-small — exception: dense prose helper tier",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -143,7 +143,7 @@
     },
     "caption-1": {
       "$type": "typography",
-      "$description": "@zsai-caption-1 — exception: Carbon-style structural prose caption",
+      "$description": "@ai-caption-1 — exception: Carbon-style structural prose caption",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -153,7 +153,7 @@
     },
     "caption-2": {
       "$type": "typography",
-      "$description": "@zsai-caption-2",
+      "$description": "@ai-caption-2",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -163,7 +163,7 @@
     },
     "overline": {
       "$type": "typography",
-      "$description": "@zsai-overline",
+      "$description": "@ai-overline",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -175,7 +175,7 @@
     },
     "label": {
       "$type": "typography",
-      "$description": "@zsai-label",
+      "$description": "@ai-label",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -186,7 +186,7 @@
     },
     "input-label": {
       "$type": "typography",
-      "$description": "@zsai-input-label",
+      "$description": "@ai-input-label",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -197,7 +197,7 @@
     },
     "button-label": {
       "$type": "typography",
-      "$description": "@zsai-button-label",
+      "$description": "@ai-button-label",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -207,7 +207,7 @@
     },
     "agent-name": {
       "$type": "typography",
-      "$description": "@zsai-agent-name",
+      "$description": "@ai-agent-name",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -217,7 +217,7 @@
     },
     "status-label": {
       "$type": "typography",
-      "$description": "@zsai-status-label",
+      "$description": "@ai-status-label",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -227,7 +227,7 @@
     },
     "micro-eyebrow": {
       "$type": "typography",
-      "$description": "@zsai-micro-eyebrow",
+      "$description": "@ai-micro-eyebrow",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -238,7 +238,7 @@
     },
     "numeric-badge": {
       "$type": "typography",
-      "$description": "@zsai-numeric-badge",
+      "$description": "@ai-numeric-badge",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -248,7 +248,7 @@
     },
     "help-micro": {
       "$type": "typography",
-      "$description": "@zsai-help-micro",
+      "$description": "@ai-help-micro",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -258,7 +258,7 @@
     },
     "bubble-body": {
       "$type": "typography",
-      "$description": "@zsai-bubble-body",
+      "$description": "@ai-bubble-body",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -269,7 +269,7 @@
     },
     "input-text": {
       "$type": "typography",
-      "$description": "@zsai-input-text",
+      "$description": "@ai-input-text",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -279,7 +279,7 @@
     },
     "trace-detail": {
       "$type": "typography",
-      "$description": "@zsai-trace-detail",
+      "$description": "@ai-trace-detail",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -289,7 +289,7 @@
     },
     "notif-title-compact": {
       "$type": "typography",
-      "$description": "@zsai-notif-title-compact",
+      "$description": "@ai-notif-title-compact",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -299,7 +299,7 @@
     },
     "menu-item": {
       "$type": "typography",
-      "$description": "@zsai-menu-item",
+      "$description": "@ai-menu-item",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -310,7 +310,7 @@
     },
     "action-link": {
       "$type": "typography",
-      "$description": "@zsai-action-link",
+      "$description": "@ai-action-link",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -320,7 +320,7 @@
     },
     "metric-value": {
       "$type": "typography",
-      "$description": "@zsai-metric-value",
+      "$description": "@ai-metric-value",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "22px",
@@ -330,7 +330,7 @@
     },
     "impact-headline": {
       "$type": "typography",
-      "$description": "@zsai-impact-headline — exception: 15px compact KPI display",
+      "$description": "@ai-impact-headline — exception: 15px compact KPI display",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "15px",
@@ -340,7 +340,7 @@
     },
     "section-subtitle": {
       "$type": "typography",
-      "$description": "@zsai-section-subtitle",
+      "$description": "@ai-section-subtitle",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -350,7 +350,7 @@
     },
     "table-cell": {
       "$type": "typography",
-      "$description": "@zsai-table-cell",
+      "$description": "@ai-table-cell",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -360,7 +360,7 @@
     },
     "panel-section-head": {
       "$type": "typography",
-      "$description": "@zsai-panel-section-head",
+      "$description": "@ai-panel-section-head",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -370,7 +370,7 @@
     },
     "card-title": {
       "$type": "typography",
-      "$description": "@zsai-card-title",
+      "$description": "@ai-card-title",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "16px",
@@ -380,7 +380,7 @@
     },
     "meta-label": {
       "$type": "typography",
-      "$description": "@zsai-meta-label",
+      "$description": "@ai-meta-label",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "12px",
@@ -390,7 +390,7 @@
     },
     "insight-title": {
       "$type": "typography",
-      "$description": "@zsai-insight-title",
+      "$description": "@ai-insight-title",
       "$value": {
         "fontFamily": "{font.family.primary}",
         "fontSize": "14px",
@@ -410,17 +410,17 @@
       "$value": "#4D60E6",
       "$description": "AI.color.text.secondary"
     },
-    "zds-default": {
+    "ds-default": {
       "$value": "#2F2C3C",
-      "$description": "ZDS.textDefault"
+      "$description": "DS.textDefault"
     },
-    "zds-helper": {
+    "ds-helper": {
       "$value": "#5B5864",
-      "$description": "ZDS.textHelper"
+      "$description": "DS.textHelper"
     },
-    "zds-disabled": {
+    "ds-disabled": {
       "$value": "#716E79",
-      "$description": "ZDS.textDisabled"
+      "$description": "DS.textDisabled"
     }
   }
 }

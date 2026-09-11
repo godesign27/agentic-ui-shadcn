@@ -1,5 +1,5 @@
 import React from 'react';
-import { F, ZDS, AI } from '../../tokens/ai-tokens';
+import { F, DS, AI } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIAvatar } from '../../atomic/ai-avatar/AIAvatar';
 import { AIUserBubble } from '../../molecules/ai-user-bubble/AIUserBubble';
@@ -30,7 +30,7 @@ export type AgentDrawerHeaderTone = 'light' | 'dark';
 
 /**
  * Per-tone header token map. Light reads the existing card/divider CSS vars and
- * ZDS neutrals; dark reads AI brand tokens + white-alpha overlays so the whole
+ * DS neutrals; dark reads AI brand tokens + white-alpha overlays so the whole
  * bar re-themes when the ai-tokens ramp moves. No brand hex is hardcoded here.
  */
 const HEADER_TONE: Record<AgentDrawerHeaderTone, {
@@ -40,11 +40,11 @@ const HEADER_TONE: Record<AgentDrawerHeaderTone, {
   light: {
     bg:             'var(--ai-card-bg)',
     borderBottom:   '1px solid var(--ai-divider)',
-    titleColor:     ZDS.textDefault,
-    iconResting:    ZDS.iconDefault,
+    titleColor:     DS.textDefault,
+    iconResting:    DS.iconDefault,
     iconHoverBg:    'var(--ai-btn-outline-hover-bg)',
-    iconHoverColor: ZDS.textDefault,
-    iconHoverBorder: ZDS.border,
+    iconHoverColor: DS.textDefault,
+    iconHoverBorder: DS.border,
   },
   dark: {
     bg:             AI.color.brandInk,
@@ -114,7 +114,7 @@ function SuggestionChip({ label, onClick }: { label: string; onClick: () => void
         background: hov ? 'var(--ai-chip-bg-hover)' : 'var(--ai-chip-bg)',
         border: hov ? '1.5px solid rgba(77, 96, 230,0.4)' : '1.5px solid var(--ai-chip-border)',
         cursor: 'pointer',
-        color: hov ? AI.color.action.primary : ZDS.textDefault,
+        color: hov ? AI.color.action.primary : DS.textDefault,
         whiteSpace: 'nowrap', transition: 'all 0.15s ease',
         fontFamily: F,
       }}
@@ -125,7 +125,7 @@ function SuggestionChip({ label, onClick }: { label: string; onClick: () => void
 }
 
 // ── Welcome message bubble ────────────────────────────────────────────────────
-// The agent identity already lives in the drawer header (avatar + "ZAIDYN Agent"
+// The agent identity already lives in the drawer header (avatar + "Guild Agent"
 // title), so the bubble shows only the greeting copy — no duplicated avatar/name.
 function WelcomeBubble({ greeting }: { greeting: string }) {
   return (
@@ -134,7 +134,7 @@ function WelcomeBubble({ greeting }: { greeting: string }) {
       boxShadow: '0 1px 4px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04)',
       border: '1px solid rgba(26,22,40,0.09)',
     }}>
-      <p style={{ margin: 0, fontFamily: F, fontSize: '14px', color: ZDS.textDefault, lineHeight: 1.65 }}>
+      <p style={{ margin: 0, fontFamily: F, fontSize: '14px', color: DS.textDefault, lineHeight: 1.65 }}>
         {greeting}
       </p>
     </div>
@@ -143,7 +143,7 @@ function WelcomeBubble({ greeting }: { greeting: string }) {
 
 
 /** Demo drawer content for bare mounts / galleries. */
-export const SAMPLE_DRAWER_TITLE = 'ZAIDYN Agent';
+export const SAMPLE_DRAWER_TITLE = 'Guild Agent';
 export const SAMPLE_DRAWER_GREETING =
   'Hi Theo! I can help with your reports — summarize results, identify alignment trends, or suggest next actions. What would you like to explore?';
 export const SAMPLE_DRAWER_SUGGESTIONS: QuickSuggestion[] = [
@@ -206,7 +206,7 @@ export function AIAgentDrawer({
           flexShrink: 0, background: tone.bg,
         }}>
           <AIAvatar size={30} />
-          <div style={{ flex: 1, minWidth: 0, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'], color: tone.titleColor, letterSpacing: '-0.15px' }}>
+          <div style={{ flex: 1, minWidth: 0, fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'], color: tone.titleColor, letterSpacing: '-0.15px' }}>
             {title}
           </div>
 
@@ -480,7 +480,7 @@ function AIAgentDrawerWithTrigger({
           display: 'flex', alignItems: 'center', padding: '0 16px', gap: '10px', flexShrink: 0, zIndex: 10,
         }}>
           {/* RiSearchLine icon stub — left side */}
-          <button style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-zds-icon)', borderRadius: 6 }}>
+          <button style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-ds-icon)', borderRadius: 6 }}>
             <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13.5 13.5l3 3"/></svg>
           </button>
 
@@ -489,7 +489,7 @@ function AIAgentDrawerWithTrigger({
           {/* Chat trigger button — right side */}
           <button
             onClick={() => setOpen(v => !v)}
-            aria-label={open ? 'Close ZAIDYN Agent' : 'Open ZAIDYN Agent'}
+            aria-label={open ? 'Close Guild Agent' : 'Open Guild Agent'}
             aria-expanded={open}
             style={{
               display: 'flex', alignItems: 'center', gap: '8px',
@@ -504,7 +504,7 @@ function AIAgentDrawerWithTrigger({
             }}
           >
             <AIAvatar size={22} />
-            <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@zsai-button-label'], color: 'white', letterSpacing: '-0.1px', whiteSpace: 'nowrap' }}>Chat</span>
+            <span style={{ fontFamily: F, ...AI_TYPOGRAPHY['@ai-button-label'], color: 'white', letterSpacing: '-0.1px', whiteSpace: 'nowrap' }}>Chat</span>
           </button>
         </div>
 
@@ -514,13 +514,13 @@ function AIAgentDrawerWithTrigger({
           <div style={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 10 }}>
             <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--surface-color-3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7" rx="1.5" fill="var(--ai-zds-icon)" opacity="0.5"/>
-                <rect x="14" y="3" width="7" height="7" rx="1.5" fill="var(--ai-zds-icon)" opacity="0.5"/>
-                <rect x="3" y="14" width="7" height="7" rx="1.5" fill="var(--ai-zds-icon)" opacity="0.5"/>
-                <rect x="14" y="14" width="7" height="7" rx="1.5" fill="var(--ai-zds-icon)" opacity="0.5"/>
+                <rect x="3" y="3" width="7" height="7" rx="1.5" fill="var(--ai-ds-icon)" opacity="0.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5" fill="var(--ai-ds-icon)" opacity="0.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5" fill="var(--ai-ds-icon)" opacity="0.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5" fill="var(--ai-ds-icon)" opacity="0.5"/>
               </svg>
             </div>
-            <span style={{ fontFamily: F, fontSize: '13px', color: 'var(--ai-zds-icon)' }}>Product content</span>
+            <span style={{ fontFamily: F, fontSize: '13px', color: 'var(--ai-ds-icon)' }}>Product content</span>
           </div>
 
           {/* Docked drawer panel — slides in from right. Resize handle on

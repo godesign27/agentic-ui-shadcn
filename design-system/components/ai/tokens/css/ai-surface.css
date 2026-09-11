@@ -1,5 +1,5 @@
 /**
- * ZSAI Surface Theme — Tier 3 semantic CSS variables
+ * AI_RAMP Surface Theme — Tier 3 semantic CSS variables
  *
  * Maps AI.* tokens to --ai-* custom properties.
  * Scope with data-theme on any container; components inside adapt automatically.
@@ -8,10 +8,10 @@
  *   1. ai-surface.css
  *   2. ai-component-tokens.css
  *   3. ai-typography.css
- *   4. zds-bridge.css and/or shadcn-bridge.css
+ *   4. ds-bridge.css and/or shadcn-bridge.css
  */
 
-/* ── ai-default (baseline light ZSAI brand surface) ─────────────────────── */
+/* ── ai-default (baseline light AI_RAMP brand surface) ─────────────────────── */
 
 :root,
 [data-theme="ai-default"] {
@@ -114,17 +114,17 @@
   --ai-input-placeholder: #9896A0;
   --ai-bubble-user-bg: #E8E6ED;
   --ai-bubble-user-text: #1A1628;
-  --ai-zds-text: #2f2c3c;
-  --ai-zds-text-helper: #5b5864;
-  --ai-zds-helper: #5b5864;
-  --ai-zds-icon: #716E79;
-  --ai-zds-border: #b2b0b6;
-  --ai-zds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
-  --ai-zds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
-  --ai-zds-surface: var(--zs-background-default, #ffffff);
-  --ai-zds-text-inverse: var(--zs-text-inverse, #ffffff);
-  --ai-zds-ink-bold: var(--zs-background-extra-bold, #1a1628);
-  --ai-zds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
+  --ai-ds-text: #2f2c3c;
+  --ai-ds-text-helper: #5b5864;
+  --ai-ds-helper: #5b5864;
+  --ai-ds-icon: #716E79;
+  --ai-ds-border: #b2b0b6;
+  --ai-ds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
+  --ai-ds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
+  --ai-ds-surface: var(--zs-background-default, #ffffff);
+  --ai-ds-text-inverse: var(--zs-text-inverse, #ffffff);
+  --ai-ds-ink-bold: var(--zs-background-extra-bold, #1a1628);
+  --ai-ds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
   --ai-suggestion-bg: #F5F6FF;
   --ai-suggestion-border: #BECAFE;
   --ai-insight-brand-bg: #BECAFE;
@@ -239,10 +239,10 @@
   --ai-input-placeholder: rgba(255, 255, 255, 0.35);
   --ai-bubble-user-bg: #3A3748;
   --ai-bubble-user-text: rgba(255, 255, 255, 0.92);
-  --ai-zds-text: rgba(255, 255, 255, 0.87);
-  --ai-zds-text-helper: rgba(255, 255, 255, 0.45);
-  --ai-zds-helper: rgba(255, 255, 255, 0.45);
-  --ai-zds-icon: rgba(255, 255, 255, 0.55);
+  --ai-ds-text: rgba(255, 255, 255, 0.87);
+  --ai-ds-text-helper: rgba(255, 255, 255, 0.45);
+  --ai-ds-helper: rgba(255, 255, 255, 0.45);
+  --ai-ds-icon: rgba(255, 255, 255, 0.55);
   --ai-suggestion-bg: rgba(77, 96, 230, 0.10);
   --ai-suggestion-border: rgba(77, 96, 230, 0.28);
   --ai-insight-brand-bg: rgba(77, 96, 230, 0.15);
@@ -333,8 +333,8 @@
   --ai-companion-ink: #3C2A1D;
 
   --ai-card-bg: var(--ai-surface-subtle);
-  --ai-zds-text: #3C2A1D;
-  --ai-zds-text-helper: #7A5944;
+  --ai-ds-text: #3C2A1D;
+  --ai-ds-text-helper: #7A5944;
 }
 
 /* ── ai-aqua (teal-influenced gradients; colors match ai-default) ─────── */

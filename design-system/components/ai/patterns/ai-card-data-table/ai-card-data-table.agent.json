@@ -5,7 +5,7 @@
   "repoModule": "aiCardDataTable",
   "tier": "organisms",
   "status": "experimental",
-  "description": "AICardDataTable is the canonical pattern for AI-generated tables across ZAIDYN. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.",
+  "description": "AICardDataTable is the canonical pattern for AI-generated tables across Guild. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.",
   "intent": "One reusable table block \u2014 compact in chat, contextual in a drawer, governed in a review flow. Density picks how much trust + action context comes along.",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-card-data-table/ai-card-data-table.md",
@@ -71,7 +71,7 @@
         "`string`"
       ],
       "default": "`\u2014`",
-      "hint": "Robust. Uppercase brand-color attribution label (\"ZAIDYN AI\")."
+      "hint": "Robust. Uppercase brand-color attribution label (\"Guild AI\")."
     },
     {
       "name": "timestamp",
@@ -266,7 +266,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -288,7 +288,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

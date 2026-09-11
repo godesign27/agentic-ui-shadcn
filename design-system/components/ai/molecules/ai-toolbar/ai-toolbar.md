@@ -2,7 +2,7 @@
 
 **Version:** 1.1  
 **Last Updated:** 2026-08-25  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** molecules  
 **Repo module:** `aiToolbar`  
 **Component type:** React molecule  
@@ -12,9 +12,9 @@
 
 ## Purpose
 
-ZDS Toolbar on the AI surface — --aiu-brand fills, 16px radius, soft-blue elevation, and a draggable floating variant.
+DS Toolbar on the AI surface — --aiu-brand fills, 16px radius, soft-blue elevation, and a draggable floating variant.
 
-AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy and behavior — a role="toolbar" strip of icon-link actions with optional labels (icon-only items get a hover / focus tooltip), interactive hover / focus / press / select states — but wears the ZAIDYN AI surface. The AI brand color (--aiu-brand = ZSAI[80]) replaces the standard teal ramp (teal[80]) everywhere a hover / selected / pressed fill appears; the container uses AI corner radius (--aiu-radius-md) and AI elevation (--aiu-shadow-md), and items use the AI focus ring. A `floating` variant wraps the bar in a positioned stage and adds a six-dot grabber so the user can drag it anywhere within the stage (position clamps to bounds). Everything resolves to --aiu-* CSS custom properties in src/styles/ai-utilities.css, so editing that CSS restyles the toolbar; typography is the Open Sans face already loaded by the kit.
+AIToolbar is the AI skin of the standard DS Toolbar. It keeps the same anatomy and behavior — a role="toolbar" strip of icon-link actions with optional labels (icon-only items get a hover / focus tooltip), interactive hover / focus / press / select states — but wears the Guild AI surface. The AI brand color (--aiu-brand = AI_RAMP[80]) replaces the standard teal ramp (teal[80]) everywhere a hover / selected / pressed fill appears; the container uses AI corner radius (--aiu-radius-md) and AI elevation (--aiu-shadow-md), and items use the AI focus ring. A `floating` variant wraps the bar in a positioned stage and adds a six-dot grabber so the user can drag it anywhere within the stage (position clamps to bounds). Everything resolves to --aiu-* CSS custom properties in src/styles/ai-utilities.css, so editing that CSS restyles the toolbar; typography is the Open Sans face already loaded by the kit.
 
 **Export:** `AIToolbar`
 
@@ -26,7 +26,7 @@ AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy 
 
 ## When not to use
 
-- You need the neutral standard styling — use `zds-toolbar`
+- You need the neutral standard styling — use `ds-toolbar`
 - It is a single command / input row — use `ai-control-bar`
 - It is a dropdown action list — use `ai-menu`
 
@@ -50,7 +50,7 @@ AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy 
 - **Vertical + below (dark)** _(.dark label=below)_ — Vertical, labels below, dark AI surface.
 - **Vertical + right (dark)** _(.dark label=right)_ — Vertical, labels to the right, dark AI surface.
 - **Item states** _(default / hover / …)_ — Default, hover, pressed, selected, focused, disabled — with the AI brand fills.
-- **White** _(surface=white)_ — White-surface variant — the standard ZDS light toolbar background, keeping the AI brand accents, radius and elevation.
+- **White** _(surface=white)_ — White-surface variant — the standard DS light toolbar background, keeping the AI brand accents, radius and elevation.
 - **Docked left** _(dock=left)_ — Vertical bar pinned to the left edge of the surface; flush to the edge with the outer corners squared.
 - **Docked left (white)** _(dock=left stageSurface="white")_ — Left-docked vertical bar on a taller, plain white stage — the docked bar reads against a clean page background instead of the blue-tinted gradient.
 - **Docked left (dark)** _(barTheme="dark" stageSurface="white")_ — Dark nav bar kept on the dark AI surface, docked on a taller light/white stage — the dark bar reads against a clean page background.
@@ -77,7 +77,7 @@ AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy 
 ### Brand fill (replaces teal[80])
 | Token | Value | Usage |
 | --- | --- | --- |
-| `--aiu-brand` | `#4D60E6` | Hover / selected item fill (ZSAI[80], the 1:1 swap for teal[80]) |
+| `--aiu-brand` | `#4D60E6` | Hover / selected item fill (AI_RAMP[80], the 1:1 swap for teal[80]) |
 | `--aiu-bg-primary-active` | `#1F2A66` | Pressed item fill |
 | `--aiu-on-primary` | `#FFFFFF` | Icon / label on brand fill |
 | `--aiu-focus` | `#4D60E6` | Focus ring |
@@ -85,7 +85,7 @@ AIToolbar is the AI skin of the standard ZDS Toolbar. It keeps the same anatomy 
 ### Surface & text
 | Token | Value | Usage |
 | --- | --- | --- |
-| `--aiu-surface` | `#F5F6FF` | Toolbar surface (ZSAI[00]) |
+| `--aiu-surface` | `#F5F6FF` | Toolbar surface (AI_RAMP[00]) |
 | `--aiu-surface-emphasis` | `#BECAFE` | Surface emphasis (grouping / hover affordances) |
 | `--aiu-text` | `#1F2A66` | Rest-state label |
 | `--aiu-text-secondary` | `#3544A4` | Rest-state icon / grabber |
@@ -114,7 +114,7 @@ A movable tool strip the user can reposition.
 ## Agent rules
 
 1. Read this mirror spec and `ai-toolbar.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atoms — fetch canonical implementations from mirror specs.
 
 Full agent contract: `components/ai/molecules/ai-toolbar/ai-toolbar.agent.json`.

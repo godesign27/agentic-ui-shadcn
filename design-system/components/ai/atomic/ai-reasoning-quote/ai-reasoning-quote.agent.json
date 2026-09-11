@@ -5,7 +5,7 @@
   "repoModule": "aiReasoningQuote",
   "tier": "atomic",
   "status": "active",
-  "description": "AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section (\"REASONING SUMMARY\", \"RATIONALE\", \"SUMMARY\"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones \u2014 `ai` (brand blue), `warning` (ZS orange for risk/guardrail contexts), and `neutral` \u2014 keep the atom usable across the AI brand without breaking color discipline.",
+  "description": "AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section (\"REASONING SUMMARY\", \"RATIONALE\", \"SUMMARY\"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones \u2014 `ai` (brand blue), `warning` (Guild orange for risk/guardrail contexts), and `neutral` \u2014 keep the atom usable across the AI brand without breaking color discipline.",
   "intent": "A short, italic blockquote with a tinted left rule \u2014 the agent speaking in its own voice without breaking the surrounding chrome.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.md",
@@ -47,7 +47,7 @@
         "`string`"
       ],
       "default": "`\"zs-icon-ai-assist\"`",
-      "hint": "ZAIDYN icon class for the eyebrow glyph."
+      "hint": "Guild icon class for the eyebrow glyph."
     },
     {
       "name": "tone",
@@ -98,7 +98,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -120,7 +120,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

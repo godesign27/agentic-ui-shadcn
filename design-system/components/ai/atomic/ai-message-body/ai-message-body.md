@@ -16,11 +16,11 @@ The voice of the AI. Plain, direct, readable — the atomic text body that carri
 
 **Export:** `AIMessageBody`
 
-AI Text Response is the atomic text body for a plain-language AI response inside a conversation. It handles typography, line height, and surface adaptation — enforcing the ZAIDYN AI typography contract via `@brand-bubble-body` (Open Sans 16px default, 1.55 line-height, `var(--ai-neutral-text)`). No bold, no headings inside this atom — formatting belongs in Markdown-rendering output groups. Max line length is governed by the container, not the atom.
+AI Text Response is the atomic text body for a plain-language AI response inside a conversation. It handles typography, line height, and surface adaptation — enforcing the Guild AI typography contract via `@brand-bubble-body` (Open Sans 16px default, 1.55 line-height, `var(--ai-neutral-text)`). No bold, no headings inside this atom — formatting belongs in Markdown-rendering output groups. Max line length is governed by the container, not the atom.
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `src/` today.
+> Implementation lives in the **Guild AI Design System** package — not under `src/` today.
 
 | Path | Role |
 |------|------|

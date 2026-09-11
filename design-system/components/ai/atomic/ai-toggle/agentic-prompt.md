@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Toggle
 
-You are implementing the **AI Toggle** (`ai-toggle`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Toggle** (`ai-toggle`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

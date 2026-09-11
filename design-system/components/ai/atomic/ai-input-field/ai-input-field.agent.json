@@ -5,8 +5,8 @@
   "repoModule": "aiInputField",
   "tier": "atomic",
   "status": "active",
-  "description": "AIInputField is the AI-surface counterpart to the standard ZDS Field atom (src/field/). It keeps the same scope \u2014 a label, a single-line input, and a helper/validation slot with default/warning/error modes \u2014 but swaps ZDS Field\u2019s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the ZDS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.",
-  "intent": "The text-entry atom for AI surfaces. Mirrors ZDS Field\u2019s scope (label \u00b7 input \u00b7 helper) but restyled onto the ZAIDYN brand surface \u2014 rounded outline, brand-blue border, and a soft blue-halo focus.",
+  "description": "AIInputField is the AI-surface counterpart to the standard DS Field atom (src/field/). It keeps the same scope \u2014 a label, a single-line input, and a helper/validation slot with default/warning/error modes \u2014 but swaps DS Field\u2019s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the DS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.",
+  "intent": "The text-entry atom for AI surfaces. Mirrors DS Field\u2019s scope (label \u00b7 input \u00b7 helper) but restyled onto the Guild brand surface \u2014 rounded outline, brand-blue border, and a soft blue-halo focus.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-input-field/ai-input-field.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -114,7 +114,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -136,7 +136,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

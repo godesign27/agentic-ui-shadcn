@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Skeleton
 
-You are implementing the **AI Skeleton** (`ai-skeleton`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Skeleton** (`ai-skeleton`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -37,7 +37,7 @@ Implement `AISkeleton` exactly as specified in the mirror. Match props, tokens, 
 - `helper` (`boolean`) default ``false`` — AISkeletonField — helper line under the control.
 - `size` (`'normal' \) default `'small' \` — 'xsmall'`
 - `count` (`number`) default ``4`` — AISkeletonChips — how many pills. Widths cycle a fixed uneven set.
-- `shimmer` (`boolean`) default ``true`` — All exports. Brand sweep — ON by default, the inverse of ZDS Skeleton.
+- `shimmer` (`boolean`) default ``true`` — All exports. Brand sweep — ON by default, the inverse of DS Skeleton.
 - `Block · width / height` (`number \) default `string`` — `'100%' / 16`
 - `Block · radius` (`string`) default ``AI.radius.xs`` — Pass AI.radius.full for pill strips.
 - `Block · delay` (`number`) default ``0`` — Offsets the sweep, in ms. Set via a custom property — inline styles cannot reach a ::after.

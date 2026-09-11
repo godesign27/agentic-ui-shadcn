@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Command Center — Split View
 
-You are implementing the **AI Command Center — Split View** (`ai-command-center-split-view`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Command Center — Split View** (`ai-command-center-split-view`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -27,7 +27,7 @@ Implement `AICommandCenterSplitView` exactly as specified in the mirror. Match p
 
 - `variant` (`"gray" \) default `"aqua"`` — `"gray"`
 - `showBackground` (`boolean`) default ``true`` — Render the ambient gradient background in the start state.
-- `suggestions` (`string[]`) default ``undefined`` — Custom quick-action chip labels for the start state. Defaults to 5 ZAIDYN-specific examples.
+- `suggestions` (`string[]`) default ``undefined`` — Custom quick-action chip labels for the start state. Defaults to 5 Guild-specific examples.
 
 ## Rules
 

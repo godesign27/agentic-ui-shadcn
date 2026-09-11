@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Guided Learning
 
-You are implementing the **AI Guided Learning** (`ai-guided-learning`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Guided Learning** (`ai-guided-learning`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

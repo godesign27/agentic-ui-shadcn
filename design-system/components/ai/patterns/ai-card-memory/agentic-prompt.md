@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Memory
 
-You are implementing the **AI Card Memory** (`ai-card-memory`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Memory** (`ai-card-memory`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

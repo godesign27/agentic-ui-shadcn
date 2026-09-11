@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiAgentResponse`  
 **Component type:** React atomic  
@@ -22,7 +22,7 @@ Use it for one-shot responses, confirmation messages, short answers, and any con
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -56,7 +56,7 @@ Use it for one-shot responses, confirmation messages, short answers, and any con
 
 1. **Card surface** _(Unique)_ — Soft raised card — `var(--ai-card-bg-raised)` fill, `var(--ai-card-border)` stroke, `AI.radius.lg` corners.
 2. **Message header** _(Shared)_ — AIMessageHeader — bot avatar dot, agent label, right-aligned timestamp.
-3. **Message body** _(Shared)_ — AIMessageBody — prose content at `@zsai-bubble-body` (16/400/1.55). Bold spans with brand color for emphasis.
+3. **Message body** _(Shared)_ — AIMessageBody — prose content at `@ai-bubble-body` (16/400/1.55). Bold spans with brand color for emphasis.
 
 ## State variations
 
@@ -85,8 +85,8 @@ Use it for one-shot responses, confirmation messages, short answers, and any con
 ### Typography
 | Token | Value | Usage |
 | --- | --- | --- |
-| `@zsai-bubble-body` | `16/400/1.55/-0.1px` | Body text — md size |
-| `@zsai-agent-name` | `12/600/1.0` | Agent label in header |
+| `@ai-bubble-body` | `16/400/1.55/-0.1px` | Body text — md size |
+| `@ai-agent-name` | `12/600/1.0` | Agent label in header |
 
 ## Flows
 
@@ -118,9 +118,9 @@ import { AIAgentResponse } from '@/components/ai/atomic/agent-response/AIAgentRe
 ## Agent rules
 
 1. Read this mirror spec and `ai-agent-response.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-agent-response/ai-agent-response.agent.json`.
 

@@ -128,27 +128,27 @@ export function AIListLanding({
         <header style={{ marginBottom: 28 }}>
           <p style={{
             margin: '0 0 6px',
-            ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+            ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
             textTransform: 'uppercase' as const,
             color: AI.color.action.primary,
           }}>{eyebrow}</p>
           <h1 style={{
             margin: '0 0 8px',
-            ...AI_TYPOGRAPHY['@zsai-h2'],
-            color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-h2'],
+            color: 'var(--ai-ds-text)',
           }}>{heading}</h1>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap',
           }}>
             <p style={{
               margin: 0,
-              ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-              color: 'var(--ai-zds-helper)',
+              ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+              color: 'var(--ai-ds-helper)',
               maxWidth: 680,
             }}>{intro}</p>
             <span style={{
-              ...AI_TYPOGRAPHY['@zsai-meta-label'],
-              color: 'var(--ai-zds-helper)',
+              ...AI_TYPOGRAPHY['@ai-meta-label'],
+              color: 'var(--ai-ds-helper)',
               padding: '2px 10px',
               background: 'rgba(255,255,255,0.7)',
               border: '1px solid var(--ai-card-border)',

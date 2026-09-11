@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Search
 
-You are implementing the **AI Search** (`ai-search`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Search** (`ai-search`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

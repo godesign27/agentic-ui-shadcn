@@ -67,23 +67,23 @@ interface SeverityConfig {
   bgColor:     string;
   labelColor:  string;
   label:       string;
-  /** ZAIDYN icon class — resolves through `.zs-master-style` parent + `icons.css`. */
-  zsIcon:      string;
+  /** Guild icon class — resolves through `.zs-master-style` parent + `icons.css`. */
+  iconClass:      string;
 }
 
 const SEV: Record<NotificationSeverity, SeverityConfig> = {
-  info:        { borderColor: 'var(--ai-brand-border)',         bgColor: 'var(--ai-brand-surface)',     labelColor: 'var(--ai-brand-text)',          label: 'RiInformationLine',            zsIcon: 'zs-icon-info'              },
-  opportunity: { borderColor: 'var(--ai-status-purple-border)', bgColor: 'var(--ai-status-purple-bg)',  labelColor: 'var(--ai-status-purple-text)',  label: 'Opportunity',     zsIcon: 'zs-icon-arrow-up-circle'   },
-  warning:     { borderColor: 'var(--ai-status-warning-border)',bgColor: 'var(--ai-status-warning-bg)', labelColor: 'var(--ai-status-warning-text)', label: 'Warning',         zsIcon: 'zs-icon-error-triangle'    },
-  urgent:      { borderColor: 'var(--ai-status-error-border)',  bgColor: 'var(--ai-status-error-bg)',   labelColor: 'var(--ai-status-error-text)',   label: 'Action required', zsIcon: 'zs-icon-error-circle-fill' },
-  success:     { borderColor: 'var(--ai-status-success-border)',bgColor: 'var(--ai-status-success-bg)', labelColor: 'var(--ai-status-success-text)', label: 'Complete',        zsIcon: 'zs-icon-check-circle'      },
-  blocked:     { borderColor: 'var(--ai-status-error-border)',  bgColor: 'var(--ai-status-error-bg)',   labelColor: 'var(--ai-status-error-text)',   label: 'Blocked',         zsIcon: 'zs-icon-close-circle'      },
-  approval:    { borderColor: 'var(--ai-status-success-border)',bgColor: 'var(--ai-status-success-bg)', labelColor: 'var(--ai-status-success-text)', label: 'Approval needed', zsIcon: 'zs-icon-clock-pending'     },
-  escalated:   { borderColor: 'var(--ai-status-warning-border)',bgColor: 'var(--ai-status-warning-bg)', labelColor: 'var(--ai-status-warning-text)', label: 'Escalated',       zsIcon: 'zs-icon-data-arrow-up'     },
+  info:        { borderColor: 'var(--ai-brand-border)',         bgColor: 'var(--ai-brand-surface)',     labelColor: 'var(--ai-brand-text)',          label: 'RiInformationLine',            iconClass: 'zs-icon-info'              },
+  opportunity: { borderColor: 'var(--ai-status-purple-border)', bgColor: 'var(--ai-status-purple-bg)',  labelColor: 'var(--ai-status-purple-text)',  label: 'Opportunity',     iconClass: 'zs-icon-arrow-up-circle'   },
+  warning:     { borderColor: 'var(--ai-status-warning-border)',bgColor: 'var(--ai-status-warning-bg)', labelColor: 'var(--ai-status-warning-text)', label: 'Warning',         iconClass: 'zs-icon-error-triangle'    },
+  urgent:      { borderColor: 'var(--ai-status-error-border)',  bgColor: 'var(--ai-status-error-bg)',   labelColor: 'var(--ai-status-error-text)',   label: 'Action required', iconClass: 'zs-icon-error-circle-fill' },
+  success:     { borderColor: 'var(--ai-status-success-border)',bgColor: 'var(--ai-status-success-bg)', labelColor: 'var(--ai-status-success-text)', label: 'Complete',        iconClass: 'zs-icon-check-circle'      },
+  blocked:     { borderColor: 'var(--ai-status-error-border)',  bgColor: 'var(--ai-status-error-bg)',   labelColor: 'var(--ai-status-error-text)',   label: 'Blocked',         iconClass: 'zs-icon-close-circle'      },
+  approval:    { borderColor: 'var(--ai-status-success-border)',bgColor: 'var(--ai-status-success-bg)', labelColor: 'var(--ai-status-success-text)', label: 'Approval needed', iconClass: 'zs-icon-clock-pending'     },
+  escalated:   { borderColor: 'var(--ai-status-warning-border)',bgColor: 'var(--ai-status-warning-bg)', labelColor: 'var(--ai-status-warning-text)', label: 'Escalated',       iconClass: 'zs-icon-data-arrow-up'     },
 };
 
-// ── Severity icon — ZAIDYN glyph (font-icon) ──────────────────────────────────
-// Per components/atoms/iconography.md the cascade is ZAIDYN-first; the glyph
+// ── Severity icon — Guild glyph (font-icon) ──────────────────────────────────
+// Per components/atoms/iconography.md the cascade is Guild-first; the glyph
 // only inherits its color when wrapped in `.zs-master-style`. We scope the
 // span locally so the surrounding chrome doesn't need to.
 
@@ -92,7 +92,7 @@ function SeverityIcon({ severity, color }: { severity: NotificationSeverity; col
   return (
     <span className="zs-master-style" style={{ display: 'inline-flex', flexShrink: 0, lineHeight: 0 }}>
       <i
-        className={`zs-icon ${cfg.zsIcon}`}
+        className={`zs-icon ${cfg.iconClass}`}
         aria-hidden="true"
         style={{ fontSize: 15, color, lineHeight: 1 }}
       />
@@ -100,7 +100,7 @@ function SeverityIcon({ severity, color }: { severity: NotificationSeverity; col
   );
 }
 
-// ── Dismiss icon (ZAIDYN close glyph) ────────────────────────────────────────
+// ── Dismiss icon (Guild close glyph) ────────────────────────────────────────
 
 function DismissIcon() {
   return (
@@ -201,14 +201,14 @@ export function AINotification({
           </div>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
             <div style={{
-              fontFamily: F, ...AI_TYPOGRAPHY['@zsai-notif-title-compact'],
+              fontFamily: F, ...AI_TYPOGRAPHY['@ai-notif-title-compact'],
               color: cfg.labelColor,
             }}>
               {title}
             </div>
             <p style={{
-              margin: 0, fontFamily: F, ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-              color: 'var(--ai-zds-text)',
+              margin: 0, fontFamily: F, ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+              color: 'var(--ai-ds-text)',
             }}>
               {message}
             </p>
@@ -294,7 +294,7 @@ export function AINotification({
             }}>
               {title}
             </span>
-            {/* Accordion chevron — ZAIDYN glyph */}
+            {/* Accordion chevron — Guild glyph */}
             {isAccordion && (
               <span
                 className="zs-master-style"
@@ -319,7 +319,7 @@ export function AINotification({
                 onClick={(e) => { e.stopPropagation(); setDismissed(true); onDismiss?.(); }}
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer',
-                  padding: 2, color: 'var(--ai-zds-helper)', display: 'flex', alignItems: 'center',
+                  padding: 2, color: 'var(--ai-ds-helper)', display: 'flex', alignItems: 'center',
                   borderRadius: AI.radius.xs, flexShrink: 0,
                 }}
               >
@@ -335,7 +335,7 @@ export function AINotification({
           <p style={{
             margin: 0,
             fontSize: 14,
-            color: 'var(--ai-zds-text)',
+            color: 'var(--ai-ds-text)',
             lineHeight: 1.55,
             fontFamily: F,
           }}>
@@ -386,7 +386,7 @@ export function AINotification({
                   style={{
                     background: 'none', border: 'none', cursor: 'pointer', padding: 0,
                     fontFamily: F, fontSize: 14, fontWeight: 500,
-                    color: 'var(--ai-zds-helper)',
+                    color: 'var(--ai-ds-helper)',
                   }}
                 >
                   {secondaryAction.label}
@@ -398,7 +398,7 @@ export function AINotification({
                   onClick={onSnooze}
                   style={{
                     background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                    fontFamily: F, fontSize: 14, fontWeight: 500, color: 'var(--ai-zds-helper)',
+                    fontFamily: F, fontSize: 14, fontWeight: 500, color: 'var(--ai-ds-helper)',
                   }}
                 >
                   Snooze
@@ -420,7 +420,7 @@ export function AINotification({
                   onClick={onMarkReviewed}
                   style={{
                     background: 'none', border: 'none', cursor: 'pointer', padding: 0,
-                    fontFamily: F, fontSize: 14, fontWeight: 500, color: 'var(--ai-zds-helper)',
+                    fontFamily: F, fontSize: 14, fontWeight: 500, color: 'var(--ai-ds-helper)',
                   }}
                 >
                   Mark reviewed
@@ -436,15 +436,15 @@ export function AINotification({
               marginTop: compact ? 2 : 4,
             }}>
               {attribution && (
-                <span style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-zds-helper)' }}>
+                <span style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-ds-helper)' }}>
                   {attribution}
                 </span>
               )}
               {attribution && timestamp && (
-                <span style={{ fontSize: 12, color: 'var(--ai-zds-helper)', opacity: 0.5 }}>·</span>
+                <span style={{ fontSize: 12, color: 'var(--ai-ds-helper)', opacity: 0.5 }}>·</span>
               )}
               {timestamp && (
-                <span style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-zds-helper)' }}>
+                <span style={{ fontSize: 12, fontFamily: F, color: 'var(--ai-ds-helper)' }}>
                   {timestamp}
                 </span>
               )}
@@ -478,7 +478,7 @@ export function AINotificationStack({
           margin: 0,
           fontSize: 14,
           fontStyle: 'italic',
-          color: 'var(--ai-zds-helper)',
+          color: 'var(--ai-ds-helper)',
           fontFamily: F,
           lineHeight: 1.45,
           paddingLeft: 2,
@@ -495,7 +495,7 @@ export function AINotificationStack({
 
       {overflow > 0 && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingLeft: 2 }}>
-          <span style={{ fontSize: 12, color: 'var(--ai-zds-helper)', fontFamily: F }}>
+          <span style={{ fontSize: 12, color: 'var(--ai-ds-helper)', fontFamily: F }}>
             +{overflow} more alert{overflow > 1 ? 's' : ''}
           </span>
           {onViewAll && (

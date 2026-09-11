@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
-import { AI, ZDS, ZS_ORANGE, F } from '../../tokens/ai-tokens';
+import { AI, DS, SIGNAL_ORANGE, F } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Tier 3 component tokens — ai-progress.* ──────────────────────────────────
 //   ai-progress.fill.running       → AI.color.brand (#4D60E6)
 //   ai-progress.fill.complete      → var(--success-color)
-//   ai-progress.fill.blocked       → ZS_ORANGE[60] (#EC7200)
-//   ai-progress.fill.escalated     → ZS_ORANGE[70] (#CB6100)
+//   ai-progress.fill.blocked       → SIGNAL_ORANGE[60] (#EC7200)
+//   ai-progress.fill.escalated     → SIGNAL_ORANGE[70] (#CB6100)
 //   ai-progress.fill.error         → var(--error-color)
-//   ai-progress.fill.paused        → ZDS.border
+//   ai-progress.fill.paused        → DS.border
 //   ai-progress.track.default      → AI.color.brandSurface (#F5F6FF)
-//   ai-progress.shimmer.color      → ZSAI[60] (#7F95F2)
+//   ai-progress.shimmer.color      → AI_RAMP[60] (#7F95F2)
 //   ai-progress.height.thin        → 2px
 //   ai-progress.height.sm          → 4px
 //   ai-progress.height.md          → 6px
@@ -19,7 +19,7 @@ import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 // ── Mirrored from the standard bar (see § "Standard mirror" below) ────────────
 //   ai-progress.fill.progress      → AI.color.brand (#4D60E6)  ← the teal swap
 //   ai-progress.fill.info          → var(--zs-background-info-bold, #1b24aa)
-//   ai-progress.fill.master        → ZDS.inkBold
+//   ai-progress.fill.master        → DS.inkBold
 //   ai-progress.track.mirror       → AI.color.brandSurface + brandBorder stroke
 //   ai-progress.label.onFill       → var(--zs-text-inverse, #fafafa)
 //   ai-progress.label.onTrack      → var(--zs-text-default, #2f2c3c)
@@ -97,20 +97,20 @@ const FILL_COLOR: Record<AIProgressStatus, string> = {
   idle:          AI.color.brandSubtle,
   running:       AI.color.brand,
   indeterminate: AI.color.brand,
-  paused:        ZDS.border,
+  paused:        DS.border,
   resuming:      AI.color.action.primary,
   complete:      'var(--success-color)',
-  blocked:       ZS_ORANGE[60],
+  blocked:       SIGNAL_ORANGE[60],
   error:         'var(--error-color)',
-  escalated:     ZS_ORANGE[70],
-  disabled:      ZDS.border,
+  escalated:     SIGNAL_ORANGE[70],
+  disabled:      DS.border,
 };
 
 // Running state gets a gradient for more visual depth
 const FILL_GRADIENT: Partial<Record<AIProgressStatus, string>> = {
   running:   `linear-gradient(90deg, ${AI.color.brand} 0%, ${AI.color.action.primaryHover} 100%)`,
   resuming:  `linear-gradient(90deg, ${AI.color.action.primary} 0%, ${AI.color.brand} 100%)`,
-  escalated: `linear-gradient(90deg, ${ZS_ORANGE[60]} 0%, ${ZS_ORANGE[70]} 100%)`,
+  escalated: `linear-gradient(90deg, ${SIGNAL_ORANGE[60]} 0%, ${SIGNAL_ORANGE[70]} 100%)`,
 };
 
 // Status label text
@@ -127,10 +127,10 @@ const STATUS_LABEL: Partial<Record<AIProgressStatus, string>> = {
 // Status icon colors (for the dot indicator)
 const STATUS_DOT_COLOR: Partial<Record<AIProgressStatus, string>> = {
   complete:  'var(--success-color)',
-  blocked:   ZS_ORANGE[60],
+  blocked:   SIGNAL_ORANGE[60],
   error:     'var(--error-color)',
-  escalated: ZS_ORANGE[70],
-  paused:    ZDS.border,
+  escalated: SIGNAL_ORANGE[70],
+  paused:    DS.border,
 };
 
 // ── Keyframe injection helper ─────────────────────────────────────────────────
@@ -318,7 +318,7 @@ export function AIProgress({
         {showLabel && (label || currentStep) && (
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
             {(label || currentStep) && (
-              <span style={{ ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'], color: ZDS.textHelper }}>
+              <span style={{ ...AI_TYPOGRAPHY['@ai-micro-eyebrow'], color: DS.textHelper }}>
                 {label ?? currentStep}
               </span>
             )}
@@ -329,7 +329,7 @@ export function AIProgress({
         )}
         <SegmentBar segments={segments} height={HEIGHT_MAP[size]} reducedMotion={reducedMotion} />
         {estimatedTimeRemaining && (
-          <div style={{ marginTop: '4px', fontSize: '12px', color: ZDS.textHelper }}>
+          <div style={{ marginTop: '4px', fontSize: '12px', color: DS.textHelper }}>
             {estimatedTimeRemaining}
           </div>
         )}
@@ -348,14 +348,14 @@ export function AIProgress({
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
             {dotColor && <StatusDot color={dotColor} animated={status === 'running' || status === 'resuming'} reducedMotion={reducedMotion} />}
-            <span style={{ fontSize: '12px', fontWeight: 600, color: ZDS.textHelper, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, color: DS.textHelper, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {resolvedStatusLabel
                 ? resolvedStatusLabel + (label ? ` · ${label}` : '')
                 : (currentStep ?? label ?? '')}
             </span>
           </div>
           {percentLabel && !isIndeterminate && (
-            <span style={{ fontSize: '12px', fontWeight: 500, color: ZDS.textHelper, flexShrink: 0 }}>
+            <span style={{ fontSize: '12px', fontWeight: 500, color: DS.textHelper, flexShrink: 0 }}>
               {Math.round(pct)}%
             </span>
           )}
@@ -414,10 +414,10 @@ export function AIProgress({
       {(estimatedTimeRemaining || (currentStep && resolvedStatusLabel)) && (
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
           {currentStep && resolvedStatusLabel && (
-            <span style={{ fontSize: '12px', color: ZDS.textHelper }}>{currentStep}</span>
+            <span style={{ fontSize: '12px', color: DS.textHelper }}>{currentStep}</span>
           )}
           {estimatedTimeRemaining && (
-            <span style={{ fontSize: '12px', color: ZDS.textHelper, marginLeft: 'auto' }}>
+            <span style={{ fontSize: '12px', color: DS.textHelper, marginLeft: 'auto' }}>
               {estimatedTimeRemaining}
             </span>
           )}
@@ -459,8 +459,8 @@ function StatusPill({ status, label, color }: { status: AIProgressStatus; label:
   const bgMap: Partial<Record<AIProgressStatus, string>> = {
     complete:  'var(--success-background-color, #F0FFF4)',
     error:     'var(--error-background-color, #FFEDE9)',
-    blocked:   ZS_ORANGE['00'],
-    escalated: ZS_ORANGE['00'],
+    blocked:   SIGNAL_ORANGE['00'],
+    escalated: SIGNAL_ORANGE['00'],
     paused:    'var(--ai-track-bg)',
   };
   const bg = bgMap[status] ?? AI.color.brandSurface;
@@ -483,7 +483,7 @@ function StatusPill({ status, label, color }: { status: AIProgressStatus; label:
 // Standard mirror
 // ═════════════════════════════════════════════════════════════════════════════
 /**
- * Everything below mirrors `zds-progress-bar.tsx` variant for variant, with the
+ * Everything below mirrors `ds-progress-bar.tsx` variant for variant, with the
  * AI theme applied. The rule is the one the node connector established: the
  * *accent* swaps and nothing else does.
  *
@@ -530,12 +530,12 @@ const BAR = {
   paused:   'var(--zs-background-warning-bold, #8a640c)',
   track:    AI.color.brandSurface,
   trackBorder: AI.color.brandBorder,
-  master:   ZDS.inkBold,
+  master:   DS.inkBold,
   onFill:   'var(--zs-text-inverse, #fafafa)',
   onTrack:  'var(--zs-text-default, #2f2c3c)',
-  helper:   ZDS.textHelper,
-  blocked:   ZS_ORANGE[60],
-  escalated: ZS_ORANGE[70],
+  helper:   DS.textHelper,
+  blocked:   SIGNAL_ORANGE[60],
+  escalated: SIGNAL_ORANGE[70],
 } as const;
 
 export type AIProgressBarState =
@@ -1055,7 +1055,7 @@ export type AIProgressActivity =
   | 'blocked' | 'escalated';
 
 /** Activity → the fill it borrows. Blocked and escalated reach past the state
- *  axis into the ZS Orange signal ramp, exactly as FILL_COLOR does above. */
+ *  axis into the Signal Orange signal ramp, exactly as FILL_COLOR does above. */
 const ACTIVITY_FILL: Record<AIProgressActivity, string> = {
   running:       BAR.progress,
   indeterminate: BAR.progress,
@@ -1122,7 +1122,7 @@ export function AIProgressTask({
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8, marginBottom: 6 }}>
           <span
             style={{
-              ...AI_TYPOGRAPHY['@zsai-micro-eyebrow'],
+              ...AI_TYPOGRAPHY['@ai-micro-eyebrow'],
               minWidth: 0,
               color: BAR.helper,
               whiteSpace: 'nowrap',
@@ -1133,7 +1133,7 @@ export function AIProgressTask({
             {copy}
           </span>
           {showPercent && (
-            <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], flexShrink: 0, color: BAR.helper }}>
+            <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], flexShrink: 0, color: BAR.helper }}>
               {Math.round(pct)}%
             </span>
           )}
@@ -1151,7 +1151,7 @@ export function AIProgressTask({
       />
 
       {helperText && (
-        <div style={{ ...AI_TYPOGRAPHY['@zsai-caption-1'], marginTop: 4, color: BAR.helper, textAlign: 'right' }}>
+        <div style={{ ...AI_TYPOGRAPHY['@ai-caption-1'], marginTop: 4, color: BAR.helper, textAlign: 'right' }}>
           {helperText}
         </div>
       )}

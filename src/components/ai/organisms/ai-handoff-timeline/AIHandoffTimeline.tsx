@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AI, ZDS, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { AI, DS, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 import { AIChip, type HandoffDirection } from '../../atomic/ai-chip/AIChip';
 
@@ -28,8 +28,8 @@ export const SAMPLE_HANDOFF_STEPS: HandoffStep[] = [
   { owner: 'Ops Desk', ownerType: 'system', timestamp: 'Pending', note: 'Awaiting approval gate', status: 'pending' },
 ];
 
-// Tab/header background (ZSAI_TAN[00])
-const TAB_BG = ZSAI_TAN['00'] as string;
+// Tab/header background (COMPANION_TAN[00])
+const TAB_BG = COMPANION_TAN['00'] as string;
 
 const TYPE_COLOR: Record<string, string> = {
   agent:  AI.color.brand,
@@ -114,8 +114,8 @@ const BTN_BASE: React.CSSProperties = {
   display: 'inline-flex', alignItems: 'center', gap: 5,
   padding: '6px 14px', borderRadius: AI.radius.sm,
   border: '1px solid var(--ai-btn-outline-border)', cursor: 'pointer',
-  fontFamily: ZDS.font, ...AI_TYPOGRAPHY['@zsai-caption-1'],
-  background: 'transparent', color: 'var(--ai-zds-helper)',
+  fontFamily: DS.font, ...AI_TYPOGRAPHY['@ai-caption-1'],
+  background: 'transparent', color: 'var(--ai-ds-helper)',
 };
 
 export function AIHandoffTimeline({
@@ -135,7 +135,7 @@ export function AIHandoffTimeline({
       border: '1px solid var(--ai-card-border)',
       borderRadius: AI.radius.lg,
       overflow: 'hidden',
-      fontFamily: ZDS.font,
+      fontFamily: DS.font,
       width: '100%',
     }}>
       {/* Header — tan background */}
@@ -145,12 +145,12 @@ export function AIHandoffTimeline({
         background: TAB_BG,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <span style={{ ...AI_TYPOGRAPHY['@zsai-card-title'], color: 'var(--ai-zds-text)' }}>{title}</span>
+        <span style={{ ...AI_TYPOGRAPHY['@ai-card-title'], color: 'var(--ai-ds-text)' }}>{title}</span>
         <button
           onClick={() => setExpanded(e => !e)}
           aria-label={expanded ? 'Collapse timeline' : 'Expand timeline'}
           aria-expanded={expanded}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-zds-helper)', padding: 4, display: 'flex', alignItems: 'center' }}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ai-ds-helper)', padding: 4, display: 'flex', alignItems: 'center' }}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ transition: 'transform 0.18s ease', transform: expanded ? 'rotate(0deg)' : 'rotate(-90deg)' }}>
             <path d="M2 4.5L7 9.5L12 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -199,20 +199,20 @@ export function AIHandoffTimeline({
                           size="sm"
                         />
                       ) : (
-                        <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)' }}>
+                        <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)' }}>
                           {step.owner}
-                          <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)', marginLeft: 8 }}>
+                          <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)', marginLeft: 8 }}>
                             initiated
                           </span>
                         </span>
                       )}
-                      <span style={{ ...AI_TYPOGRAPHY['@zsai-meta-label'], color: 'var(--ai-zds-helper)' }}>
+                      <span style={{ ...AI_TYPOGRAPHY['@ai-meta-label'], color: 'var(--ai-ds-helper)' }}>
                         {step.timestamp}
                       </span>
                     </div>
                     {step.note && (
                       <div style={{
-                        ...AI_TYPOGRAPHY['@zsai-caption-1'], color: 'var(--ai-zds-helper)',
+                        ...AI_TYPOGRAPHY['@ai-caption-1'], color: 'var(--ai-ds-helper)',
                       }}>
                         {step.note}
                       </div>

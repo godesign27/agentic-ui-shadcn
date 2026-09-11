@@ -5,8 +5,8 @@
   "repoModule": "aiMenu",
   "tier": "molecules",
   "status": "experimental",
-  "description": "AIMenu is the AI skin of the standard ZDS Menu. It keeps the same behavior and prop surface (role=\"menu\", role=\"menuitem\" / role=\"menuitemcheckbox\", submenu cascade, group-title, separator, three sizes) but wears the AI dialog chrome instead of the neutral ZDS one: --ai-card-bg surface, AI.color.brandBorder, 12px (AI.radius.sm) corners, the layered soft-blue elevation shadow, @zsai-menu-item item typography, and AI active/selected accents (AI.color.action.primary fill with white text; AI.color.brand checkmark). Chrome is composed from the AICommandCenterDialog PlusMenu and AIPicker PopoverShell rather than forked, so an AIMenu reads as part of the same AI system as the dialog.",
-  "intent": "A vertical AI-action list \u2014 12px radius, --ai-card-bg surface, brand border, @zsai-menu-item type, AI active/selected accents.",
+  "description": "AIMenu is the AI skin of the standard DS Menu. It keeps the same behavior and prop surface (role=\"menu\", role=\"menuitem\" / role=\"menuitemcheckbox\", submenu cascade, group-title, separator, three sizes) but wears the AI dialog chrome instead of the neutral DS one: --ai-card-bg surface, AI.color.brandBorder, 12px (AI.radius.sm) corners, the layered soft-blue elevation shadow, @ai-menu-item item typography, and AI active/selected accents (AI.color.action.primary fill with white text; AI.color.brand checkmark). Chrome is composed from the AICommandCenterDialog PlusMenu and AIPicker PopoverShell rather than forked, so an AIMenu reads as part of the same AI system as the dialog.",
+  "intent": "A vertical AI-action list \u2014 12px radius, --ai-card-bg surface, brand border, @ai-menu-item type, AI active/selected accents.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-menu/ai-menu.md",
     "contract": "components/ai/tokens/ai-tokens.ts",
@@ -82,7 +82,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -104,7 +104,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

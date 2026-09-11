@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiCardAgent`  
 **Component type:** React organism  
@@ -20,7 +20,7 @@ AICardAgent is the canonical introduction surface for a named agent in a product
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -41,7 +41,7 @@ AICardAgent is the canonical introduction surface for a named agent in a product
 
 1. **RiFontSize2 icon** _(Unique)_ — 48×48 rounded square. Background tinted with the agent accent; foreground is a lucide icon that encodes the agent's domain.
 2. **Role chip** _(Shared)_ — Compact pill in the top-right — short positioning label (e.g. "Primary Partner", "Risk Control").
-3. **Name** _(Unique)_ — Agent name as the card heading (@zsai-h3).
+3. **Name** _(Unique)_ — Agent name as the card heading (@ai-h3).
 4. **Description** _(Unique)_ — First-person blurb. The leading word is rendered in the agent accent + 600 weight to anchor the personality.
 5. **Capabilities** _(Unique)_ — Up to 3 use-case bullets under a CAPABILITIES eyebrow. Bullet dots use the agent accent.
 6. **Talk button** _(Shared)_ — Full-width primary action. Mic icon + label. Flips the card to the talking overlay on click.
@@ -65,7 +65,7 @@ AICardAgent is the canonical introduction surface for a named agent in a product
 ### Agent accents
 | Token | Value | Usage |
 | --- | --- | --- |
-| `agent.accent.brand` | `#4D60E6` | Territory Health Analyst — ZSAI brand blue |
+| `agent.accent.brand` | `#4D60E6` | Territory Health Analyst — AI_RAMP brand blue |
 | `agent.accent.violet` | `#8B5CF6` | Scenario Strategist — exploration tone |
 | `agent.accent.amber` | `#F59E0B` | Impact & Risk Assessor — caution / audit tone |
 
@@ -124,9 +124,9 @@ import { AICardAgent, AGENT_CONFIGS } from '@/components/ai/organisms/ai-card-ag
 ## Agent rules
 
 1. Read this mirror spec and `ai-card-agent.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-card-agent/ai-card-agent.agent.json`.
 

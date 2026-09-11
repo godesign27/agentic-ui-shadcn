@@ -5,7 +5,7 @@
   "repoModule": "aiAgentTaskCard",
   "tier": "organisms",
   "status": "experimental",
-  "description": "AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented \u2014 in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label \u2014 never color alone. Needs Input rows use ZS orange only; AI emphasis uses ZSAI blue (AI.color.brand). No teal anywhere.",
+  "description": "AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented \u2014 in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label \u2014 never color alone. Needs Input rows use Guild orange only; AI emphasis uses AI_RAMP blue (AI.color.brand). No teal anywhere.",
   "intent": "Delegated task record \u00b7 4 densities \u00b7 Needs Input + Health surfaced",
   "authority": {
     "mirrorSpec": "components/ai/organisms/ai-agent-task-card/ai-agent-task-card.md",
@@ -194,7 +194,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -216,7 +216,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

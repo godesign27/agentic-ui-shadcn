@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiReasoningQuote`  
 **Component type:** React atomic  
@@ -14,7 +14,7 @@
 
 A short, italic blockquote with a tinted left rule — the agent speaking in its own voice without breaking the surrounding chrome.
 
-AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section ("REASONING SUMMARY", "RATIONALE", "SUMMARY"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones — `ai` (brand blue), `warning` (ZS orange for risk/guardrail contexts), and `neutral` — keep the atom usable across the AI brand without breaking color discipline.
+AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section ("REASONING SUMMARY", "RATIONALE", "SUMMARY"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones — `ai` (brand blue), `warning` (Guild orange for risk/guardrail contexts), and `neutral` — keep the atom usable across the AI brand without breaking color discipline.
 
 **Export:** `AIReasoningQuote`
 
@@ -22,7 +22,7 @@ This atom never exposes hidden chain-of-thought. Content must be safe, short, an
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -49,8 +49,8 @@ This atom never exposes hidden chain-of-thought. Content must be safe, short, an
 
 ## State variations
 
-- **AI tone (default)** _(tone="ai")_ — Brand-blue left rule + ZSAI eyebrow tint. Used for agent reasoning + capability rationales.
-- **Warning tone** _(tone="warning")_ — ZS orange left rule + orange eyebrow. Reserved for risk guardrails and autonomy boundaries.
+- **AI tone (default)** _(tone="ai")_ — Brand-blue left rule + AI_RAMP eyebrow tint. Used for agent reasoning + capability rationales.
+- **Warning tone** _(tone="warning")_ — Guild orange left rule + orange eyebrow. Reserved for risk guardrails and autonomy boundaries.
 - **Neutral tone** _(tone="neutral")_ — Helper-grey left rule. For muted secondary contexts.
 - **With attribution** _(attribution)_ — Caption under the quote: "— Smart Assist · 2m ago".
 - **No eyebrow** _(eyebrow={null})_ — Pure blockquote without the section header — for tight inline contexts.
@@ -61,7 +61,7 @@ This atom never exposes hidden chain-of-thought. Content must be safe, short, an
 | --- | --- | --- | --- |
 | `quote` | `ReactNode` | `—` | The italicized body content. |
 | `eyebrow` | `string \| null` | `"REASONING SUMMARY"` | Section header. Pass null/"" to hide. |
-| `eyebrowIcon` | `string` | `"zs-icon-ai-assist"` | ZAIDYN icon class for the eyebrow glyph. |
+| `eyebrowIcon` | `string` | `"zs-icon-ai-assist"` | Guild icon class for the eyebrow glyph. |
 | `tone` | `"ai" \| "warning" \| "neutral"` | `"ai"` | Drives the left rule color and eyebrow tint. |
 | `size` | `"sm" \| "md"` | `"md"` | Body font size — sm=13px, md=14px. |
 | `attribution` | `ReactNode` | `—` | Optional caption under the quote. |
@@ -73,10 +73,10 @@ This atom never exposes hidden chain-of-thought. Content must be safe, short, an
 ### Tone
 | Token | Value | Usage |
 | --- | --- | --- |
-| `AI.color.border.subtle` | `ZSAI[60] #7F95F2` | AI tone left rule |
-| `AI.color.text.secondary` | `ZSAI[90] #3544A4` | AI tone eyebrow text |
-| `ZS_ORANGE[40]` | `#F4B583` | Warning tone left rule |
-| `ZS_ORANGE[80]` | `#A14A00` | Warning tone eyebrow text |
+| `AI.color.border.subtle` | `AI_RAMP[60] #7F95F2` | AI tone left rule |
+| `AI.color.text.secondary` | `AI_RAMP[90] #3544A4` | AI tone eyebrow text |
+| `SIGNAL_ORANGE[40]` | `#F4B583` | Warning tone left rule |
+| `SIGNAL_ORANGE[80]` | `#A14A00` | Warning tone eyebrow text |
 
 ## Canonical implementation
 
@@ -98,9 +98,9 @@ import { AIReasoningQuote } from '@/components/ai/atomic/reasoning-quote/AIReaso
 ## Agent rules
 
 1. Read this mirror spec and `ai-reasoning-quote.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.agent.json`.
 

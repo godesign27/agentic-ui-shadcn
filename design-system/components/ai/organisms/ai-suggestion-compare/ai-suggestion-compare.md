@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** organisms (AI)  
 **Repo module:** `aiSuggestionCompare`  
 **Component type:** React organism  
@@ -24,7 +24,7 @@ Higher-density-only props are ignored at lower densities with a dev warning — 
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -62,7 +62,7 @@ Higher-density-only props are ignored at lower densities with a dev warning — 
 
 1. **Title** _(Shared)_ — Optional H3 comparison title ("Coverage recommendations").
 2. **Summary** _(Shared)_ — Optional 1-line summary above the options.
-3. **AI attribution** _(Unique)_ — Optional uppercase generated-by label ("ZAIDYN AI") and timestamp in the header.
+3. **AI attribution** _(Unique)_ — Optional uppercase generated-by label ("Guild AI") and timestamp in the header.
 4. **Status badge** _(Unique)_ — Header tag for `needsApproval` and `sentForApproval` states.
 5. **Option card — title** _(Unique)_ — Action-oriented title ("Expand NE-02 by 5 accounts").
 6. **Option card — benefit** _(Unique)_ — Specific, quantified benefit value.
@@ -96,7 +96,7 @@ Higher-density-only props are ignored at lower densities with a dev warning — 
 | `density` | `"simple" \| "rich" \| "robust"` | `required` | Controls which fields render on each option and which links surface in the footer. Higher-density-only props are ignored at lower densities with a dev warning. |
 | `title` | `string` | `—` | Comparison title (H3). |
 | `summary` | `string` | `—` | 1-line summary under the title. |
-| `generatedBy` | `string` | `—` | Rich+. Uppercase brand-color attribution label ("ZAIDYN AI"). |
+| `generatedBy` | `string` | `—` | Rich+. Uppercase brand-color attribution label ("Guild AI"). |
 | `timestamp` | `string` | `—` | Rich+. Freshness or "Generated" timestamp. |
 | `suggestions` | `AISuggestionItem[]` | `required` | 2–4 option objects. See suggestion shape below. |
 | `layout` | `"sideBySide" \| "stacked" \| "grid" \| "compact"` | `density-driven` | Overrides the auto-layout. Simple defaults to sideBySide for 1–2 options and stacked for more; Rich/Robust default to sideBySide for 1–3 and grid for 4. |
@@ -161,7 +161,7 @@ import { AISuggestionCompare } from 'ai/organisms/ai-suggestion-compare/AISugges
 // Robust — review / approval flow
 <AISuggestionCompare
   density="robust"
-  generatedBy="ZAIDYN AI"
+  generatedBy="Guild AI"
   timestamp="Generated 1h ago"
   title="Coverage recommendations"
   summary="Three options ranked by expected incremental revenue."
@@ -180,9 +180,9 @@ import { AISuggestionCompare } from 'ai/organisms/ai-suggestion-compare/AISugges
 ## Agent rules
 
 1. Read this mirror spec and `ai-suggestion-compare.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.agent.json`.
 

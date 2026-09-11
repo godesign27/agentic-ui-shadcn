@@ -5,7 +5,7 @@
   "repoModule": "aiNodeConnector",
   "tier": "molecules",
   "status": "experimental",
-  "description": "An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the ZDS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient=\"auto\", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The ZDS accent \u2014 teal #2f6f7b, and its subtle fill #eaf4f6 \u2014 becomes AI brand; every neutral stays neutral, read through the ZDS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone \u2014 structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge \u2014 a corner disc marking a node the model has surfaced \u2014 plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.",
+  "description": "An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the DS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient=\"auto\", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The DS accent \u2014 teal #2f6f7b, and its subtle fill #eaf4f6 \u2014 becomes AI brand; every neutral stays neutral, read through the DS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone \u2014 structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge \u2014 a corner disc marking a node the model has surfaced \u2014 plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.",
   "intent": "The standard connector with the theme swapped \u2014 plus the four states an agent graph needs.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-node-connector/ai-node-connector.md",
@@ -162,7 +162,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -184,7 +184,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

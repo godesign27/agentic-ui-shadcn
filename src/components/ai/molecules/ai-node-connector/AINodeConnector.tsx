@@ -1,12 +1,12 @@
 import React from 'react';
-import { AI, ZDS, ZSAI, F } from '../../tokens/ai-tokens';
+import { AI, DS, AI_RAMP, F } from '../../tokens/ai-tokens';
 
 /**
  * AI Node Connector
  * =================
- * The AI-surface counterpart to the ZDS Node Connector (src/nodeConnector/).
+ * The AI-surface counterpart to the DS Node Connector (src/nodeConnector/).
  * Same geometry contract — one open path, three segments, four vertices, with
- * endpoint markers as real stroke caps — restyled onto the ZAIDYN AI brand and
+ * endpoint markers as real stroke caps — restyled onto the Guild AI brand and
  * extended with the one thing an agent graph needs that an org chart does not:
  * **the edge carries state**.
  *
@@ -29,7 +29,7 @@ import { AI, ZDS, ZSAI, F } from '../../tokens/ai-tokens';
  *    **structural intents stay neutral, lifecycle intents carry AI color.**
  *    `default` / `suggested` / `muted` reuse the standard connector's own three
  *    line colors, so a plain edge in an AI tree is pixel-identical to a plain
- *    edge in a ZDS tree. Color departs only when the edge is saying something
+ *    edge in a DS tree. Color departs only when the edge is saying something
  *    the standard connector cannot express — `active`, `complete`, `attention`.
  *  - **Gradient ink.** Active edges stroke with ai.gradient.action rather than a
  *    flat color, so the run reads as brand-energised the way filled AI buttons
@@ -44,7 +44,7 @@ import { AI, ZDS, ZSAI, F } from '../../tokens/ai-tokens';
  *  - **Edge label.** A pill on the bottom run for the relationship itself —
  *    "Handoff", "Cites", "Derived from".
  *
- * Rounder than its ZDS sibling by design: 8px elbows against 4px, matching the
+ * Rounder than its DS sibling by design: 8px elbows against 4px, matching the
  * AI surface's ai.radius scale.
  *
  * The connector owns geometry only. Node cards, their layout, and reflow on
@@ -52,10 +52,10 @@ import { AI, ZDS, ZSAI, F } from '../../tokens/ai-tokens';
  */
 
 // ── Tokens ───────────────────────────────────────────────────────────────────
-// `AI.*` for brand and lifecycle, `ZDS.*` for structure. The one Tier 1 read is
+// `AI.*` for brand and lifecycle, `DS.*` for structure. The one Tier 1 read is
 // the gradient start stop, which has no alias of its own — ai.gradient.action
 // .start is a raw string, not a token the marker can interpolate against.
-const GRADIENT_START = ZSAI[70]; // #657CEC — ai.gradient.action.start
+const GRADIENT_START = AI_RAMP[70]; // #657CEC — ai.gradient.action.start
 
 export type AIConnectorIntent =
   | 'default'    // a plain structural edge
@@ -77,9 +77,9 @@ interface IntentSpec {
 
 const INTENT: Record<AIConnectorIntent, IntentSpec> = {
   // Structural — the standard connector's own three line colors, unchanged.
-  default:   { ink: ZDS.inkBold,              line: 'solid',  weight: 2,   label: 'Linked' },      // --zs-background-extra-bold
-  suggested: { ink: ZDS.lineDashed,           line: 'dashed', weight: 2,   label: 'Suggested' },   // @zs-node-connector-dashed-border-color
-  muted:     { ink: ZDS.borderSubtle,         line: 'solid',  weight: 1.5, label: 'Collapsed' },   // --zs-border-neutral-subtle
+  default:   { ink: DS.inkBold,              line: 'solid',  weight: 2,   label: 'Linked' },      // --zs-background-extra-bold
+  suggested: { ink: DS.lineDashed,           line: 'dashed', weight: 2,   label: 'Suggested' },   // @ds-node-connector-dashed-border-color
+  muted:     { ink: DS.borderSubtle,         line: 'solid',  weight: 1.5, label: 'Collapsed' },   // --zs-border-neutral-subtle
   // Lifecycle — states the standard connector has no equivalent for.
   active:    { ink: AI.color.brand,           line: 'solid',  weight: 2.5, label: 'In progress', gradient: true },
   complete:  { ink: AI.color.status.success,  line: 'solid',  weight: 2,   label: 'Complete' },
@@ -93,12 +93,12 @@ const INTENT: Record<AIConnectorIntent, IntentSpec> = {
  */
 const STRUCTURAL = new Set<AIConnectorIntent>(['default', 'suggested', 'muted']);
 const pillBg = (intent: AIConnectorIntent) =>
-  STRUCTURAL.has(intent) ? ZDS.surface : AI.color.brandSurface;
+  STRUCTURAL.has(intent) ? DS.surface : AI.color.brandSurface;
 
-/** Rounder than ZDS (4px) — the AI surface's corner language. */
+/** Rounder than DS (4px) — the AI surface's corner language. */
 const CORNER_R = 8;
 
-// Default geometry, in rendered orientation. Matches the ZDS sibling so the two
+// Default geometry, in rendered orientation. Matches the DS sibling so the two
 // are drop-in swappable inside the same layout math.
 const W = 73.5;
 const H = 115;
@@ -167,10 +167,10 @@ function connectorPath(w: number, h: number, indent: number, r: number): string 
 }
 
 // ── Badge ────────────────────────────────────────────────────────────────────
-// 28×28 — four px larger than the ZDS badge, because the AI badge carries a
+// 28×28 — four px larger than the DS badge, because the AI badge carries a
 // gradient fill and a soft brand shadow and needs the room to not read cramped.
 //
-// Drawn as inline SVG, not an icon font: the ZSUI font only resolves inside a
+// Drawn as inline SVG, not an icon font: host icon-font glyphs only resolve inside a
 // `.zs-master-style` context, so a glyph route renders blank in the library.
 
 export interface AINodeConnectorBadgeProps {
@@ -195,8 +195,8 @@ export function AINodeConnectorBadge({
   // Confidence is a ring around a light disc, so the arc is legible; every other
   // badge is a filled disc with a white glyph knocked out of it.
   const ring = badge === 'confidence';
-  const fill = ring ? ZDS.surface : `url(#${gid})`;
-  const glyph = ring ? spec.ink : ZDS.textInverse;
+  const fill = ring ? DS.surface : `url(#${gid})`;
+  const glyph = ring ? spec.ink : DS.textInverse;
 
   return (
     <svg
@@ -216,12 +216,12 @@ export function AINodeConnectorBadge({
       </defs>
 
       {/* Knockout — hides the connector stroke running under the badge. */}
-      <circle cx={14} cy={14} r={13} fill={ZDS.surface} />
+      <circle cx={14} cy={14} r={13} fill={DS.surface} />
       <circle cx={14} cy={14} r={R} fill={fill} />
 
       {ring && (
         <>
-          <circle cx={14} cy={14} r={R} fill="none" stroke={ZDS.borderSubtle} strokeWidth={2.5} />
+          <circle cx={14} cy={14} r={R} fill="none" stroke={DS.borderSubtle} strokeWidth={2.5} />
           <circle
             cx={14} cy={14} r={R} fill="none"
             stroke={spec.ink} strokeWidth={2.5} strokeLinecap="round"
@@ -340,7 +340,7 @@ export function AINodeConnector({
           >
             <circle
               cx={w * 2.5} cy={w * 2.5} r={w * 1.7}
-              fill={startingPoint === 'ring' ? ZDS.surface : capInk}
+              fill={startingPoint === 'ring' ? DS.surface : capInk}
               stroke={capInk}
               strokeWidth={startingPoint === 'ring' ? w : 0}
             />
@@ -391,7 +391,7 @@ export function AINodeConnector({
             d={d}
             pathLength={100}
             fill="none"
-            stroke={ZDS.textInverse}
+            stroke={DS.textInverse}
             strokeWidth={Math.max(1.5, w - 0.75)}
             strokeLinecap="round"
             strokeDasharray="7 100"
@@ -440,7 +440,7 @@ export function AINodeConnector({
           style={{
             position: 'absolute',
             // Seated on the bottom run, midway between the lower elbow and the
-            // child end — the same anchor the ZDS sibling documents, so the two
+            // child end — the same anchor the DS sibling documents, so the two
             // line up when a graph mixes standard and AI edges.
             left: (indent + width) / 2,
             top: height,
@@ -449,7 +449,7 @@ export function AINodeConnector({
             borderRadius: '50%',
             zIndex: 1,
             ...(focused
-              ? { boxShadow: `0 0 0 2px ${ZDS.surface}, 0 0 0 4px ${AI.color.border.focus}` }
+              ? { boxShadow: `0 0 0 2px ${DS.surface}, 0 0 0 4px ${AI.color.border.focus}` }
               : null),
           }}
         >
@@ -582,7 +582,7 @@ export function AINodeBracket({
             d={`M ${x} 0 L ${x} ${h}`}
             pathLength={100}
             fill="none"
-            stroke={ZDS.textInverse}
+            stroke={DS.textInverse}
             strokeWidth={Math.max(1.5, w - 0.75)}
             strokeLinecap="round"
             strokeDasharray="7 100"

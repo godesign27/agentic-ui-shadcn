@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Action Field
 
-You are implementing the **AI Action Field** (`ai-input-field`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Action Field** (`ai-input-field`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Action Field** (`ai-input-field`) from the ZAIDYN 
 | **Category** | AI atomic |
 | **Source** | Make export 2026-08-06 |
 
-> The text-entry atom for AI surfaces. Mirrors ZDS Field’s scope (label · input · helper) but restyled onto the ZAIDYN brand surface — rounded outline, brand-blue border, and a soft blue-halo focus.
+> The text-entry atom for AI surfaces. Mirrors DS Field’s scope (label · input · helper) but restyled onto the Guild brand surface — rounded outline, brand-blue border, and a soft blue-halo focus.
 
 ## Mandatory read order (before writing code)
 

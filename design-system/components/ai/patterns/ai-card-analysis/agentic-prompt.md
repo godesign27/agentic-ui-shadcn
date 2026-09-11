@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Card Analysis
 
-You are implementing the **AI Card Analysis** (`ai-card-analysis`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Card Analysis** (`ai-card-analysis`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

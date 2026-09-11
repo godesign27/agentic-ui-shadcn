@@ -19,7 +19,7 @@ export function AIAgentResponse({
   dark       = false,
 }: AIAgentResponseProps) {
   // Dark surface variant — token-based. Light variant keeps the raised card bg
-  // and the ZSAI-30 brand border; dark variant uses the deep brand ink surface.
+  // and the AI_RAMP-30 brand border; dark variant uses the deep brand ink surface.
   const surface = dark
     ? {
         background: AI.color.brandInk,                          // #1F2A66
@@ -28,7 +28,7 @@ export function AIAgentResponse({
       }
     : {
         background: 'var(--ai-card-bg-raised)',
-        border: '1px solid var(--ai-agent-response-border, #A6B4FC)', // ZSAI-30; hex preserved as fallback (visual unchanged)
+        border: '1px solid var(--ai-agent-response-border, #A6B4FC)', // AI_RAMP-30; hex preserved as fallback (visual unchanged)
       };
 
   return (

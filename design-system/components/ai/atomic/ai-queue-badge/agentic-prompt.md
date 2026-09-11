@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Queue Badge
 
-You are implementing the **AI Queue Badge** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Queue Badge** atom from the Guild AI Design System mirror.
 
 ---
 

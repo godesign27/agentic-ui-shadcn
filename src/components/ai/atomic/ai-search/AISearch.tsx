@@ -1,15 +1,15 @@
 /**
  * AI Search
  * =========
- * The AI-surface counterpart to `ZdsSearch`. Same two component sets, same size
- * ladder, same composition over one shared field — restyled onto the ZAIDYN AI brand.
+ * The AI-surface counterpart to `DSSearch`. Same two component sets, same size
+ * ladder, same composition over one shared field — restyled onto the Guild AI brand.
  *
  *   Search          (Size × Condensed)   → AISearch
  *   Dropdown Filter (Orientation × Size) → AIDropdownFilter
  */
 
 import React, { useState } from 'react';
-import { AI, ZSAI } from '../../tokens/ai-tokens';
+import { AI, AI_RAMP } from '../../tokens/ai-tokens';
 import { AIProgressBar } from '../ai-progress/AIProgress';
 
 const FONT = 'var(--zs-font-family, "Open Sans", system-ui, sans-serif)';
@@ -17,7 +17,7 @@ const FONT = 'var(--zs-font-family, "Open Sans", system-ui, sans-serif)';
 const TOKEN = {
   fieldBg: 'var(--zs-background-default, #ffffff)',
   /** One step softer than AI.color.border.default, matching AIInputField. */
-  fieldBorder: ZSAI[70],
+  fieldBorder: AI_RAMP[70],
   caret: 'var(--zs-icon-neutral-default, #5b5864)',
   helper: 'var(--zs-text-helper, #5b5864)',
   text: 'var(--zs-text-default, #2f2c3c)',

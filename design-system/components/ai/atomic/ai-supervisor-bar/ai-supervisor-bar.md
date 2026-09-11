@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiSupervisorBar`  
 **Component type:** React atomic  
@@ -14,13 +14,13 @@
 
 Page-top agent identity strip · tan · dark · light · uses AIAvatar
 
-AISupervisorBar is the flush page-top identity strip for an AI-led workspace — typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent — no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (ZSAI tan companion surface — calmest, default), dark (inverted AI brand ink — hero / high-emphasis), and light (neutral white with a subtle bottom rule — low chrome, when the bar should recede).
+AISupervisorBar is the flush page-top identity strip for an AI-led workspace — typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent — no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (AI_RAMP tan companion surface — calmest, default), dark (inverted AI brand ink — hero / high-emphasis), and light (neutral white with a subtle bottom rule — low chrome, when the bar should recede).
 
 **Export:** `AISupervisorBar`
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -47,7 +47,7 @@ AISupervisorBar is the flush page-top identity strip for an AI-led workspace —
 
 - Inside cards, drawers, or dialogs — use AICardAgent instead
 - For sub-page section headers — use AIMessageHeader or a regular heading
-- For navigation — use AILedNavigation or ZDS top navigation
+- For navigation — use AILedNavigation or DS top navigation
 
 ## Anatomy
 
@@ -61,7 +61,7 @@ AISupervisorBar is the flush page-top identity strip for an AI-led workspace —
 
 ## State variations
 
-- **Tan (default)** _(actions={…} moreMenu={…})_ — ZSAI tan companion surface with inline action button and overflow trigger. Use for Smart Assist or any default supervisor identity. Remove `actions` and `moreMenu` for the no-chrome minimal pattern.
+- **Tan (default)** _(actions={…} moreMenu={…})_ — AI_RAMP tan companion surface with inline action button and overflow trigger. Use for Smart Assist or any default supervisor identity. Remove `actions` and `moreMenu` for the no-chrome minimal pattern.
 - **Dark (hero)** _(tone="dark" actions={…} moreMenu={…})_ — Inverted AI brand ink with inline action and overflow trigger. Use as the hero header on workspaces where the supervisor is the primary identity.
 - **Light (low-chrome)** _(tone="light" actions={…} moreMenu={…})_ — Neutral white surface with inline action and overflow trigger. Use when the bar should recede inside a longer workspace.
 - **No actions** _(tone="tan")_ — Minimal pattern — no `actions` or `moreMenu` props. Use when the bar is purely informational and all workflow entry points live elsewhere on the page.
@@ -85,16 +85,16 @@ AISupervisorBar is the flush page-top identity strip for an AI-led workspace —
 ### Tone — tan (default)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `bar.bg` | `ZSAI_TAN[‘00’]` | Strip background |
-| `bar.border-bottom` | `ZSAI_TAN[30]` | Bottom separator |
-| `bar.name` | `ZSAI_TAN[100]` | Primary text (name) |
-| `bar.role / stat` | `ZSAI_TAN[80]` | Secondary text |
+| `bar.bg` | `COMPANION_TAN[‘00’]` | Strip background |
+| `bar.border-bottom` | `COMPANION_TAN[30]` | Bottom separator |
+| `bar.name` | `COMPANION_TAN[100]` | Primary text (name) |
+| `bar.role / stat` | `COMPANION_TAN[80]` | Secondary text |
 
 ### Tone — dark
 | Token | Value | Usage |
 | --- | --- | --- |
-| `bar.bg` | `ZSAI[100]` | Strip background — darkest brand ink |
-| `bar.border-bottom` | `ZSAI[100]` | Bottom separator |
+| `bar.bg` | `AI_RAMP[100]` | Strip background — darkest brand ink |
+| `bar.border-bottom` | `AI_RAMP[100]` | Bottom separator |
 | `bar.name` | `AI.color.text.onAction` | Primary text (name) |
 | `bar.role / stat` | `rgba(255,255,255,0.78)` | Secondary text |
 
@@ -103,8 +103,8 @@ AISupervisorBar is the flush page-top identity strip for an AI-led workspace —
 | --- | --- | --- |
 | `bar.bg` | `#FFFFFF` | Strip background |
 | `bar.border-bottom` | `var(--ai-card-border)` | Bottom separator |
-| `bar.name` | `var(--ai-zds-text)` | Primary text (name) |
-| `bar.role / stat` | `var(--ai-zds-helper)` | Secondary text |
+| `bar.name` | `var(--ai-ds-text)` | Primary text (name) |
+| `bar.role / stat` | `var(--ai-ds-helper)` | Secondary text |
 
 ## Flows
 
@@ -133,9 +133,9 @@ import { AISupervisorBar } from '@/components/ai/atomic/supervisor-bar/AISupervi
 ## Agent rules
 
 1. Read this mirror spec and `ai-supervisor-bar.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.agent.json`.
 

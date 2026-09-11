@@ -28,7 +28,7 @@ import {
  * popover.
  *
  * Popovers: all menus (date / month / month-range / time) are neutral-chrome
- * panels from ./AIPickerMenus — no teal. Selected states fill with ZDS dark
+ * panels from ./AIPickerMenus — no teal. Selected states fill with DS dark
  * gray (#1A1628); selected day cells are circles.
  */
 
@@ -94,7 +94,7 @@ function AcceptButton({ children, onClick }: { children: React.ReactNode; onClic
         color: AI.color.text.onAction,
         fontFamily: F,
         cursor: 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-button-label'],
+        ...AI_TYPOGRAPHY['@ai-button-label'],
       }}
     >
       {children}
@@ -103,7 +103,7 @@ function AcceptButton({ children, onClick }: { children: React.ReactNode; onClic
 }
 
 function GhostButton({ children, onClick, tone = 'neutral' }: { children: React.ReactNode; onClick?: () => void; tone?: 'neutral' | 'danger' }) {
-  const color = tone === 'danger' ? 'var(--ai-status-error-text, #C0392B)' : 'var(--ai-zds-helper, #5b5864)';
+  const color = tone === 'danger' ? 'var(--ai-status-error-text, #C0392B)' : 'var(--ai-ds-helper, #5b5864)';
   const border = tone === 'danger' ? 'var(--ai-status-error-border, #E74C3C)' : 'var(--ai-divider, #D9D8DC)';
   return (
     <button
@@ -117,7 +117,7 @@ function GhostButton({ children, onClick, tone = 'neutral' }: { children: React.
         color,
         fontFamily: F,
         cursor: 'pointer',
-        ...AI_TYPOGRAPHY['@zsai-button-label'],
+        ...AI_TYPOGRAPHY['@ai-button-label'],
       }}
     >
       {children}
@@ -137,7 +137,7 @@ function TextLink({ children, href, external }: { children: React.ReactNode; hre
         color: AI.color.text.secondary,
         textDecoration: 'underline',
         fontFamily: F,
-        ...AI_TYPOGRAPHY['@zsai-body-small'],
+        ...AI_TYPOGRAPHY['@ai-body-small'],
         fontWeight: 600,
       }}
     >
@@ -151,15 +151,15 @@ function TextLink({ children, href, external }: { children: React.ReactNode; hre
 function AISuggestionChip({ suggestion, onApply, onDismiss }: { suggestion: AISuggestion; onApply: () => void; onDismiss: () => void }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, paddingTop: 2 }}>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--ai-zds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'] }}>
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--ai-ds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'] }}>
         <Sparkle size={13} color={AI.color.brand} />
-        AI suggests: <strong style={{ color: 'var(--ai-zds-text, #2f2c3c)', fontWeight: 700 }}>{suggestion.value}</strong>
+        AI suggests: <strong style={{ color: 'var(--ai-ds-text, #2f2c3c)', fontWeight: 700 }}>{suggestion.value}</strong>
       </span>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-        <button type="button" onClick={onApply} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: AI.color.text.secondary, fontFamily: F, fontWeight: 700, ...AI_TYPOGRAPHY['@zsai-body-small'] }}>
+        <button type="button" onClick={onApply} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: AI.color.text.secondary, fontFamily: F, fontWeight: 700, ...AI_TYPOGRAPHY['@ai-body-small'] }}>
           Apply
         </button>
-        <button type="button" onClick={onDismiss} aria-label="Dismiss suggestion" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'var(--ai-zds-helper, #716e79)', display: 'inline-flex' }}>
+        <button type="button" onClick={onDismiss} aria-label="Dismiss suggestion" style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'var(--ai-ds-helper, #716e79)', display: 'inline-flex' }}>
           <RiCloseLine size={15} />
         </button>
       </span>
@@ -173,10 +173,10 @@ function AISuggestionPanel({ suggestion, onAccept, onDismiss }: { suggestion: AI
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
         <Sparkle size={14} color={AI.color.brand} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <span style={{ color: 'var(--ai-zds-text, #2f2c3c)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700 }}>
+          <span style={{ color: 'var(--ai-ds-text, #2f2c3c)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700 }}>
             AI suggests: {suggestion.value}
           </span>
-          <span style={{ color: 'var(--ai-zds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'] }}>
+          <span style={{ color: 'var(--ai-ds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'] }}>
             {suggestion.rationale}
           </span>
         </div>
@@ -198,14 +198,14 @@ function AISuggestionPanelRobust({ suggestion, onAccept, onReject, onCustomize }
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
         <Sparkle size={14} color={AI.color.brand} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <span style={{ color: 'var(--ai-zds-text, #2f2c3c)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'], fontWeight: 700 }}>
+          <span style={{ color: 'var(--ai-ds-text, #2f2c3c)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'], fontWeight: 700 }}>
             AI suggests: {suggestion.value}
           </span>
-          <span style={{ color: 'var(--ai-zds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-body-small'] }}>
+          <span style={{ color: 'var(--ai-ds-helper, #5b5864)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-body-small'] }}>
             {suggestion.rationale}
           </span>
           {suggestion.source && (
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 2, color: 'var(--ai-zds-helper, #716e79)', fontFamily: F, ...AI_TYPOGRAPHY['@zsai-caption-1'] }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, marginTop: 2, color: 'var(--ai-ds-helper, #716e79)', fontFamily: F, ...AI_TYPOGRAPHY['@ai-caption-1'] }}>
               <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <circle cx="6" cy="6" r="5" stroke="currentColor" strokeWidth="1" />
                 <path d="M6 3.4V6l1.6 1.4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />

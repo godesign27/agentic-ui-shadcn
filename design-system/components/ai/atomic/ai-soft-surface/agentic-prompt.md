@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Soft Surface
 
-You are implementing the **AI Soft Surface** atom from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Soft Surface** atom from the Guild AI Design System mirror.
 
 ---
 

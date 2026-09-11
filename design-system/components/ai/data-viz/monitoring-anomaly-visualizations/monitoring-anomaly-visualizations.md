@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-10  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** data-viz (AI)  
 **Repo module:** `monitoringAnomalyVisualizations`  
 **Component type:** Spec stub  

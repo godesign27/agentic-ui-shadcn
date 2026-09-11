@@ -1,5 +1,5 @@
 /**
- * ZSAI Surface Theme — Tier 3 component token slots
+ * AI_RAMP Surface Theme — Tier 3 component token slots
  *
  * Maps element.property.variant.state → --ai-* semantic variables.
  * Components should read these --ai-{element}-* vars, not raw hex.

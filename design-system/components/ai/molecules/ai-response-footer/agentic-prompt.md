@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Response Footer
 
-You are implementing the **AI Response Footer** (`ai-response-footer`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Response Footer** (`ai-response-footer`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -27,7 +27,7 @@ Implement `AIResponseFooter` exactly as specified in the mirror. Match props, to
 
 - `sources` (`AISource[]`) default ``[]`` — Data source chip objects — label, freshness, type, href
 - `maxVisibleSources` (`number`) default ``3`` — Max chips shown before "+N more" overflow
-- `attribution` (`string`) default ``undefined`` — Attribution text e.g. "ZAIDYN Analytics"
+- `attribution` (`string`) default ``undefined`` — Attribution text e.g. "Guild Analytics"
 - `updatedAt` (`string`) default ``undefined`` — Freshness label e.g. "just now" or "12 min ago"
 - `freshnessLabel` (`string`) default ``undefined`` — Overrides computed freshness text entirely
 - `showDivider` (`boolean`) default ``true`` — Top divider rule between AI output and footer

@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Menu
 
-You are implementing the **AI Menu** (`ai-menu`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Menu** (`ai-menu`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -9,7 +9,7 @@ You are implementing the **AI Menu** (`ai-menu`) from the ZAIDYN AI Design Syste
 | **Category** | AI molecules |
 | **Source** | Make export 2026-08-06 |
 
-> A vertical AI-action list — 12px radius, --ai-card-bg surface, brand border, @zsai-menu-item type, AI active/selected accents.
+> A vertical AI-action list — 12px radius, --ai-card-bg surface, brand border, @ai-menu-item type, AI active/selected accents.
 
 ## Mandatory read order (before writing code)
 

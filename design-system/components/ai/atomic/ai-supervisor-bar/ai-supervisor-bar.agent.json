@@ -5,7 +5,7 @@
   "repoModule": "aiSupervisorBar",
   "tier": "atomic",
   "status": "experimental",
-  "description": "AISupervisorBar is the flush page-top identity strip for an AI-led workspace \u2014 typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent \u2014 no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (ZSAI tan companion surface \u2014 calmest, default), dark (inverted AI brand ink \u2014 hero / high-emphasis), and light (neutral white with a subtle bottom rule \u2014 low chrome, when the bar should recede).",
+  "description": "AISupervisorBar is the flush page-top identity strip for an AI-led workspace \u2014 typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent \u2014 no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (AI_RAMP tan companion surface \u2014 calmest, default), dark (inverted AI brand ink \u2014 hero / high-emphasis), and light (neutral white with a subtle bottom rule \u2014 low chrome, when the bar should recede).",
   "intent": "Page-top agent identity strip \u00b7 tan \u00b7 dark \u00b7 light \u00b7 uses AIAvatar",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.md",
@@ -106,7 +106,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -128,7 +128,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

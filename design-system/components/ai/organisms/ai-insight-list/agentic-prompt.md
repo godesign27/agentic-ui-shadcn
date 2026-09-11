@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Insight List
 
-You are implementing the **AI Insight List** (`ai-insight-list`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Insight List** (`ai-insight-list`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|

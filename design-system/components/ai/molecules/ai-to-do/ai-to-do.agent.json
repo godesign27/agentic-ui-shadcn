@@ -5,7 +5,7 @@
   "repoModule": "aiToDo",
   "tier": "molecules",
   "status": "experimental",
-  "description": "AIToDo is the agent's scratch-pad checklist \u2014 the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between \"done\" and \"to do\" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on ZSAI_TAN[00]. When every item is completed, the list flips to a calm \"Complete\" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an \"All done\" badge appears, and the progress bar runs one shimmer sweep before settling.",
+  "description": "AIToDo is the agent's scratch-pad checklist \u2014 the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between \"done\" and \"to do\" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on COMPANION_TAN[00]. When every item is completed, the list flips to a calm \"Complete\" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an \"All done\" badge appears, and the progress bar runs one shimmer sweep before settling.",
   "intent": "Calm checklist the agent uses to narrate its plan and progress.",
   "authority": {
     "mirrorSpec": "components/ai/molecules/ai-to-do/ai-to-do.md",
@@ -82,7 +82,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -104,7 +104,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

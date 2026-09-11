@@ -143,7 +143,7 @@ Three-tier color system for AI-native UI. Tier 1 holds raw palette ramps; Tier 2
 
 ## Neutral Namespace (`NEUTRAL.*`)
 
-Standard ZAIDYN text/icon/border tokens — separate from `AI.*`, never mixed.
+Standard Guild text/icon/border tokens — separate from `AI.*`, never mixed.
 
 | Token | Hex | standard equivalent |
 |-------|-----|----------------|

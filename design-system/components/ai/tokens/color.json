@@ -1,7 +1,7 @@
 {
-  "zsai": {
+  "ai-ramp": {
     "$type": "color",
-    "$description": "Tier 1 — ZSAI brand palette (raw hex). Token authors only; components consume ai.color.* aliases.",
+    "$description": "Tier 1 — AI_RAMP brand palette (raw hex). Token authors only; components consume ai.color.* aliases.",
     "100": { "$value": "#1F2A66", "$description": "Darkest brand ink" },
     "90": { "$value": "#2A3784" },
     "80": { "$value": "#3544A4" },
@@ -14,9 +14,9 @@
     "10": { "$value": "#D6DEFD" },
     "00": { "$value": "#F5F6FF", "$description": "Lightest brand surface tint" }
   },
-  "zs-orange": {
+  "signal-orange": {
     "$type": "color",
-    "$description": "Tier 1 — ZS Orange signal / attention / escalation (10% accent role). Not semantic warning — use ZDS warning tokens for validation states.",
+    "$description": "Tier 1 — Signal Orange signal / attention / escalation (10% accent role). Not semantic warning — use DS warning tokens for validation states.",
     "100": { "$value": "#481A00" },
     "90": { "$value": "#663000" },
     "80": { "$value": "#A54F00" },
@@ -29,9 +29,9 @@
     "10": { "$value": "#FFF1D6" },
     "00": { "$value": "#FEFBF4" }
   },
-  "zsai-tan": {
+  "ai-ramp-tan": {
     "$type": "color",
-    "$description": "Tier 1 — ZSAI Tan companion / warm neutral (30% surface role).",
+    "$description": "Tier 1 — AI_RAMP Tan companion / warm neutral (30% surface role).",
     "100": { "$value": "#3C2A1D", "$description": "Companion ink" },
     "90": { "$value": "#5A3E2C" },
     "80": { "$value": "#7A5944" },
@@ -51,54 +51,54 @@
       "action": {
         "$description": "Filled interactive surfaces (buttons, active chips)",
         "primary": {
-          "$value": "{zsai.60}",
+          "$value": "{ai-ramp.60}",
           "$description": "AI.color.action.primary"
         },
         "primary-hover": {
-          "$value": "{zsai.70}",
+          "$value": "{ai-ramp.70}",
           "$description": "AI.color.action.primaryHover"
         },
         "primary-active": {
-          "$value": "{zsai.80}",
+          "$value": "{ai-ramp.80}",
           "$description": "AI.color.action.primaryActive"
         }
       },
       "surface": {
         "$description": "Non-interactive background fills",
         "default": {
-          "$value": "{zsai.00}",
+          "$value": "{ai-ramp.00}",
           "$description": "AI.color.surface.default — panel bg"
         },
         "subtle": {
-          "$value": "{zsai.10}",
+          "$value": "{ai-ramp.10}",
           "$description": "AI.color.surface.subtle — card bg"
         },
         "emphasis": {
-          "$value": "{zsai.20}",
+          "$value": "{ai-ramp.20}",
           "$description": "AI.color.surface.emphasis — badge / table header"
         }
       },
       "border": {
         "default": {
-          "$value": "{zsai.20}",
+          "$value": "{ai-ramp.20}",
           "$description": "AI.color.border.default"
         },
         "strong": {
-          "$value": "{zsai.40}",
+          "$value": "{ai-ramp.40}",
           "$description": "AI.color.border.strong"
         },
         "focus": {
-          "$value": "{zsai.50}",
+          "$value": "{ai-ramp.50}",
           "$description": "AI.color.border.focus"
         }
       },
       "text": {
         "primary": {
-          "$value": "{zsai.90}",
+          "$value": "{ai-ramp.90}",
           "$description": "AI.color.text.primary — heading on light surface"
         },
         "secondary": {
-          "$value": "{zsai.70}",
+          "$value": "{ai-ramp.70}",
           "$description": "AI.color.text.secondary"
         },
         "on-action": {
@@ -107,72 +107,72 @@
         }
       },
       "brand": {
-        "$value": "{zsai.60}",
+        "$value": "{ai-ramp.60}",
         "$description": "AI.color.brand"
       },
       "brand-subtle": {
-        "$value": "{zsai.10}",
+        "$value": "{ai-ramp.10}",
         "$description": "AI.color.brandSubtle"
       },
       "brand-surface": {
-        "$value": "{zsai.00}",
+        "$value": "{ai-ramp.00}",
         "$description": "AI.color.brandSurface"
       },
       "brand-border": {
-        "$value": "{zsai.20}",
+        "$value": "{ai-ramp.20}",
         "$description": "AI.color.brandBorder"
       },
       "brand-strong": {
-        "$value": "{zsai.90}",
+        "$value": "{ai-ramp.90}",
         "$description": "AI.color.brandStrong"
       },
       "brand-ink": {
-        "$value": "{zsai.100}",
+        "$value": "{ai-ramp.100}",
         "$description": "AI.color.brandInk"
       },
       "signal": {
-        "$description": "ZS Orange — attention / escalation (not semantic warning)",
+        "$description": "Signal Orange — attention / escalation (not semantic warning)",
         "default": {
-          "$value": "{zs-orange.60}",
+          "$value": "{signal-orange.60}",
           "$description": "AI.color.signal.default"
         },
         "hover": {
-          "$value": "{zs-orange.70}",
+          "$value": "{signal-orange.70}",
           "$description": "AI.color.signal.hover"
         },
         "strong": {
-          "$value": "{zs-orange.80}",
+          "$value": "{signal-orange.80}",
           "$description": "AI.color.signal.strong"
         },
         "subtle": {
-          "$value": "{zs-orange.10}",
+          "$value": "{signal-orange.10}",
           "$description": "AI.color.signal.subtle"
         },
         "surface": {
-          "$value": "{zs-orange.00}",
+          "$value": "{signal-orange.00}",
           "$description": "AI.color.signal.surface"
         }
       },
       "companion": {
-        "$description": "ZSAI Tan — warm companion surfaces",
+        "$description": "AI_RAMP Tan — warm companion surfaces",
         "paper": {
-          "$value": "{zsai-tan.00}",
+          "$value": "{ai-ramp-tan.00}",
           "$description": "AI.color.companion.paper"
         },
         "surface": {
-          "$value": "{zsai-tan.10}",
+          "$value": "{ai-ramp-tan.10}",
           "$description": "AI.color.companion.surface"
         },
         "highlight": {
-          "$value": "{zsai-tan.20}",
+          "$value": "{ai-ramp-tan.20}",
           "$description": "AI.color.companion.highlight"
         },
         "border": {
-          "$value": "{zsai-tan.30}",
+          "$value": "{ai-ramp-tan.30}",
           "$description": "AI.color.companion.border"
         },
         "ink": {
-          "$value": "{zsai-tan.100}",
+          "$value": "{ai-ramp-tan.100}",
           "$description": "AI.color.companion.ink"
         }
       }
@@ -210,40 +210,40 @@
       }
     }
   },
-  "zds": {
+  "ds": {
     "$type": "color",
-    "$description": "Standard ZAIDYN neutral tokens used on AI surfaces (ZDS.* in ai-tokens.ts). Separate namespace from ai.*",
+    "$description": "Standard Guild neutral tokens used on AI surfaces (DS.* in ai-tokens.ts). Separate namespace from ai.*",
     "text-default": {
       "$value": "#2F2C3C",
-      "$description": "ZDS.textDefault"
+      "$description": "DS.textDefault"
     },
     "text-helper": {
       "$value": "#5B5864",
-      "$description": "ZDS.textHelper"
+      "$description": "DS.textHelper"
     },
     "text-disabled": {
       "$value": "#716E79",
-      "$description": "ZDS.textDisabled"
+      "$description": "DS.textDisabled"
     },
     "icon-default": {
       "$value": "#5B5864",
-      "$description": "ZDS.iconDefault"
+      "$description": "DS.iconDefault"
     },
     "icon-hover": {
       "$value": "#2F2C3C",
-      "$description": "ZDS.iconHover"
+      "$description": "DS.iconHover"
     },
     "menu-hover-bg": {
       "$value": "rgba(178, 176, 182, 0.4)",
-      "$description": "ZDS.menuHoverBg"
+      "$description": "DS.menuHoverBg"
     },
     "border": {
       "$value": "#B2B0B6",
-      "$description": "ZDS.border"
+      "$description": "DS.border"
     },
     "border-func": {
       "$value": "#5B5864",
-      "$description": "ZDS.borderFunc"
+      "$description": "DS.borderFunc"
     }
   },
   "ai-theme": {

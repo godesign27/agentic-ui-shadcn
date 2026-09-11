@@ -1,6 +1,6 @@
 # Agentic Prompt — AI Metric Value
 
-You are implementing the **AI Metric Value** (`ai-metric-value`) from the ZAIDYN AI Design System mirror.
+You are implementing the **AI Metric Value** (`ai-metric-value`) from the Guild AI Design System mirror.
 
 | | |
 |---|---|
@@ -28,7 +28,7 @@ Implement `AIMetricValue` exactly as specified in the mirror. Match props, token
 - `value` (`string \) default `number`` — `required`
 - `unit` (`string`) default ``—`` — Optional inline unit suffix.
 - `size` (`"sm" \) default `"md" \` — "lg"`
-- `color` (`string`) default ``var(--ai-zds-text)`` — Override the value color (e.g. for accent treatment).
+- `color` (`string`) default ``var(--ai-ds-text)`` — Override the value color (e.g. for accent treatment).
 - `ariaLabel` (`string`) default ``—`` — Accessible name. Defaults to `${value} ${unit}`.
 
 ## Rules

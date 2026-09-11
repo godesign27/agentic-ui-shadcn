@@ -1,12 +1,12 @@
 /**
- * AISourceTile — ZAIDYN Agentic AI Atom
+ * AISourceTile — Guild Agentic AI Atom
  *
  * Compact list tile for surfacing a single knowledge input, data source,
  * citation, attached file, or capability dependency. Pairs a tinted icon
  * square with a bold title and an uppercase eyebrow caption.
  *
- * Tones (semantic, aligned with the ZDS Color atom):
- *   'ai'       — ZSAI (Indigo brand) ramp — default
+ * Tones (semantic, aligned with the DS Color atom):
+ *   'ai'       — AI_RAMP (Indigo brand) ramp — default
  *   'warning'  — Dark Yellow ramp (--zs-border-warning-default #8A640C)
  *   'error'    — Red ramp (--zs-border-error-default #B21111)
  *   'success'  — Green ramp (--zs-border-success-default #0A6E5E)
@@ -20,7 +20,7 @@
  *   selectable — leading icon square becomes a checkbox tile
  *   rank       — small numeric badge in the trailing slot (1, 2, 99+)
  *
- * Icon rendering uses the canonical ZAIDYN `.zs-master-style` wrapper
+ * Icon rendering uses the canonical Guild `.zs-master-style` wrapper
  * cascade — the parent span carries `zs-master-style` and the child
  * carries `zs-icon zs-icon-{name}`. This is the same pattern AIButton
  * uses for string icons.
@@ -75,12 +75,12 @@ interface ToneCfg {
   cardBg:       string;
 }
 
-// Tone palette aligned with the ZDS Color atom's canonical semantic tokens
+// Tone palette aligned with the DS Color atom's canonical semantic tokens
 // (see src/app/components/ai-library/standardEntries/phaseE.tsx :: COLOR_ENTRY
-// and /src/imports/ZS.tokens.json). Warning uses Dark Yellow (--zs-border-
+// and /src/imports/Guild.tokens.json). Warning uses Dark Yellow (--zs-border-
 // warning-default #8a640c), NOT Orange — Orange is a brand accent, not a
 // semantic warning. Error uses Red 60/80; Success uses Green 60/80; Neutral
-// uses Brand Gray. AI stays on the ZSAI (Indigo brand family) ramp.
+// uses Brand Gray. AI stays on the AI_RAMP (Indigo brand family) ramp.
 const TONE_CFG: Record<AISourceTileTone, ToneCfg> = {
   'ai': {
     iconBg:       AI.color.brandSubtle,
@@ -91,7 +91,7 @@ const TONE_CFG: Record<AISourceTileTone, ToneCfg> = {
     cardBorder:   'var(--ai-card-border)',
     cardBg:       'var(--ai-card-bg-raised)',
   },
-  // ZDS Semantic / Dark Yellow — the canonical warning ramp.
+  // DS Semantic / Dark Yellow — the canonical warning ramp.
   'warning': {
     iconBg:       '#FFF4DB',    // Dark Yellow 10
     iconBorder:   '#FFDB93',    // Dark Yellow 30
@@ -101,7 +101,7 @@ const TONE_CFG: Record<AISourceTileTone, ToneCfg> = {
     cardBorder:   '#FFDB93',    // Dark Yellow 30 for a visible tinted border
     cardBg:       '#FFF9F1',    // Dark Yellow 0 — background at rest
   },
-  // ZDS Semantic / Red — the canonical error ramp.
+  // DS Semantic / Red — the canonical error ramp.
   'error': {
     iconBg:       '#FFCDC2',    // Red 10
     iconBorder:   '#FA9980',    // Red 30
@@ -111,7 +111,7 @@ const TONE_CFG: Record<AISourceTileTone, ToneCfg> = {
     cardBorder:   '#FFCDC2',    // Red 10
     cardBg:       '#FFEDE9',    // Red 0
   },
-  // ZDS Semantic / Green — the canonical success ramp.
+  // DS Semantic / Green — the canonical success ramp.
   'success': {
     iconBg:       '#D2FAF7',    // Green 10
     iconBorder:   '#82E6CF',    // Green 30
@@ -121,7 +121,7 @@ const TONE_CFG: Record<AISourceTileTone, ToneCfg> = {
     cardBorder:   '#82E6CF',    // Green 30
     cardBg:       '#F1FEFF',    // Green 0
   },
-  // ZDS Brand / Gray — the canonical neutral ramp.
+  // DS Brand / Gray — the canonical neutral ramp.
   'neutral': {
     iconBg:       '#F4F3F3',    // Gray 10
     iconBorder:   '#DEDCDE',    // Gray 20
@@ -277,7 +277,7 @@ export function AISourceTile({
           fontFamily: F,
           fontSize: 14,
           fontWeight: 600,
-          color: 'var(--ai-zds-text)',
+          color: 'var(--ai-ds-text)',
           lineHeight: 1.3,
           overflow: 'hidden',
           textOverflow: 'ellipsis',
@@ -288,8 +288,8 @@ export function AISourceTile({
         </div>
         {subtitle ? (
           <div style={{
-            ...AI_TYPOGRAPHY['@zsai-caption-1'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-caption-1'],
+            color: 'var(--ai-ds-helper)',
             marginTop: 2,
             overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
             textAlign: 'left' as const,
@@ -298,8 +298,8 @@ export function AISourceTile({
           </div>
         ) : source ? (
           <div style={{
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
             letterSpacing: '0.06em',
             marginTop: 2,
             textTransform: 'uppercase' as const,
@@ -310,7 +310,7 @@ export function AISourceTile({
       </div>
 
       {trailing && (
-        <div style={{ flexShrink: 0, fontFamily: F, fontSize: 12, color: 'var(--ai-zds-helper)' }}>
+        <div style={{ flexShrink: 0, fontFamily: F, fontSize: 12, color: 'var(--ai-ds-helper)' }}>
           {trailing}
         </div>
       )}
@@ -325,7 +325,7 @@ export function AISourceTile({
             borderRadius: 999,
             background: selectable && selected ? AI.color.brand : 'var(--ai-card-bg)',
             border: `1px solid ${selectable && selected ? AI.color.brand : 'var(--ai-card-border)'}`,
-            color: selectable && selected ? '#FFFFFF' : 'var(--ai-zds-helper)',
+            color: selectable && selected ? '#FFFFFF' : 'var(--ai-ds-helper)',
             fontFamily: F, fontSize: 12, fontWeight: 600,
           }}
         >
@@ -340,7 +340,7 @@ export function AISourceTile({
             flexShrink: 0,
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             width: 20, height: 20,
-            color: elevated ? cfg.hoverBorder : 'var(--ai-zds-helper)',
+            color: elevated ? cfg.hoverBorder : 'var(--ai-ds-helper)',
             transform: elevated ? 'translateX(2px)' : 'translateX(0)',
             transition: 'transform 0.18s ease, color 0.15s ease',
           }}

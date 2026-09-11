@@ -16,7 +16,7 @@
  */
 
 import React from 'react';
-import { AI, ZDS, ZSAI_TAN } from '../../tokens/ai-tokens';
+import { AI, DS, COMPANION_TAN } from '../../tokens/ai-tokens';
 import { AI_TYPOGRAPHY } from '../../tokens/ai-typography';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ function StatusPill({ status }: { status: WorkstreamStatus }) {
       display: 'inline-flex', alignItems: 'center', gap: 5,
       padding: '3px 9px', borderRadius: 999,
       background: t.bg, color: t.color,
-      ...AI_TYPOGRAPHY['@zsai-overline'],
+      ...AI_TYPOGRAPHY['@ai-overline'],
       whiteSpace: 'nowrap' as const,
     }}>
       <span style={{ width: 6, height: 6, borderRadius: '50%', background: t.color }} />
@@ -169,8 +169,8 @@ function TypeBadge({ label }: { label: string }) {
       display: 'inline-flex', alignItems: 'center',
       padding: '3px 9px', borderRadius: 999,
       background: 'rgba(26,22,40,0.05)',
-      color: 'var(--ai-zds-helper)',
-      ...AI_TYPOGRAPHY['@zsai-overline'],
+      color: 'var(--ai-ds-helper)',
+      ...AI_TYPOGRAPHY['@ai-overline'],
       whiteSpace: 'nowrap' as const,
     }}>
       {label}
@@ -182,13 +182,13 @@ function MetricColumn({ metric }: { metric: WorkstreamMetric }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 4, minWidth: 0 }}>
       <span style={{
-        ...AI_TYPOGRAPHY['@zsai-overline'],
-        color: 'var(--ai-zds-helper)',
+        ...AI_TYPOGRAPHY['@ai-overline'],
+        color: 'var(--ai-ds-helper)',
         whiteSpace: 'nowrap' as const,
       }}>{metric.label}</span>
       <span style={{
-        ...AI_TYPOGRAPHY['@zsai-h3'],
-        color: 'var(--ai-zds-text)',
+        ...AI_TYPOGRAPHY['@ai-h3'],
+        color: 'var(--ai-ds-text)',
         letterSpacing: '-0.4px',
       }}>{metric.value}</span>
     </div>
@@ -226,8 +226,8 @@ function AssigneeStack({ assignees }: { assignees: WorkstreamAssignee[] }) {
             background: '#EFEEF2',
             border: '2px solid var(--ai-card-bg)',
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            ...AI_TYPOGRAPHY['@zsai-meta-label'], fontWeight: 600,
-            color: 'var(--ai-zds-text)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'], fontWeight: 600,
+            color: 'var(--ai-ds-text)',
             marginLeft: i === 0 ? 0 : -8,
             position: 'relative', zIndex: shown.length - i,
             textTransform: 'uppercase',
@@ -241,8 +241,8 @@ function AssigneeStack({ assignees }: { assignees: WorkstreamAssignee[] }) {
           background: '#EFEEF2',
           border: '2px solid var(--ai-card-bg)',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          ...AI_TYPOGRAPHY['@zsai-meta-label'], fontWeight: 600,
-          color: 'var(--ai-zds-helper)',
+          ...AI_TYPOGRAPHY['@ai-meta-label'], fontWeight: 600,
+          color: 'var(--ai-ds-helper)',
           marginLeft: -8,
         }}>
           +{extra}
@@ -283,7 +283,7 @@ export function AICardWorkstream({
         borderRadius: 16,
         padding: '20px 22px 16px',
         gap: 14,
-        fontFamily: ZDS.font,
+        fontFamily: DS.font,
         cursor: clickable ? 'pointer' : 'default',
         textAlign: 'left',
         overflow: 'hidden',
@@ -336,13 +336,13 @@ export function AICardWorkstream({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, position: 'relative' }}>
         <h3 style={{
           margin: 0,
-          ...AI_TYPOGRAPHY['@zsai-h4'],
-          color: 'var(--ai-zds-text)',
+          ...AI_TYPOGRAPHY['@ai-h4'],
+          color: 'var(--ai-ds-text)',
         }}>{title}</h3>
         <p style={{
           margin: 0,
-          ...AI_TYPOGRAPHY['@zsai-section-subtitle'],
-          color: 'var(--ai-zds-helper)',
+          ...AI_TYPOGRAPHY['@ai-section-subtitle'],
+          color: 'var(--ai-ds-helper)',
         }}>{description}</p>
       </div>
 
@@ -367,8 +367,8 @@ export function AICardWorkstream({
       {/* Project Health */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, position: 'relative' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], color: 'var(--ai-zds-text)' }}>Project Health</span>
-          <span style={{ ...AI_TYPOGRAPHY['@zsai-section-subtitle'], fontWeight: 600, color: bar }}>{Math.round(healthPercent)}%</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], color: 'var(--ai-ds-text)' }}>Project Health</span>
+          <span style={{ ...AI_TYPOGRAPHY['@ai-section-subtitle'], fontWeight: 600, color: bar }}>{Math.round(healthPercent)}%</span>
         </div>
         <HealthBar pct={healthPercent} color={bar} />
       </div>
@@ -381,8 +381,8 @@ export function AICardWorkstream({
         {lastUpdated && (
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 5,
-            ...AI_TYPOGRAPHY['@zsai-meta-label'],
-            color: 'var(--ai-zds-helper)',
+            ...AI_TYPOGRAPHY['@ai-meta-label'],
+            color: 'var(--ai-ds-helper)',
             textTransform: 'uppercase',
             letterSpacing: '0.06em',
           }}>

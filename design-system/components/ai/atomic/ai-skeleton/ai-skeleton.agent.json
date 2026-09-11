@@ -5,7 +5,7 @@
   "repoModule": "aiSkeleton",
   "tier": "atomic",
   "status": "experimental",
-  "description": "AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is identical \u2014 48/40 profile, 56\u00d724 controls, 120\u00d724 header, exactly two 16px body lines 16px apart, 280\u00d7160 card, 56px table rows, 400\u00d7900 panel \u2014 so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text \u2014 column names, the panel title \u2014 stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged \u2014 the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.",
+  "description": "AI Skeleton is the AI-library mirror of DS Skeleton. Every measurement is identical \u2014 48/40 profile, 56\u00d724 controls, 120\u00d724 header, exactly two 16px body lines 16px apart, 280\u00d7160 card, 56px table rows, 400\u00d7900 panel \u2014 so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text \u2014 column names, the panel title \u2014 stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged \u2014 the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.",
   "intent": "Four atoms \u2192 three patterns. Brand-blue fill, brand sweep, AI radius. Motion on by default.",
   "authority": {
     "mirrorSpec": "components/ai/atomic/ai-skeleton/ai-skeleton.md",
@@ -127,7 +127,7 @@
         "`boolean`"
       ],
       "default": "`true`",
-      "hint": "All exports. Brand sweep \u2014 ON by default, the inverse of ZDS Skeleton."
+      "hint": "All exports. Brand sweep \u2014 ON by default, the inverse of DS Skeleton."
     },
     {
       "name": "Block \u00b7 width / height",
@@ -402,7 +402,7 @@
     "notes": [
       "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
       "Fetch dependency atomics from components/ai/ mirror specs.",
-      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Self-contained under components/ai/ \u2014 do not require an external AI UI package.",
       "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
     ]
   },
@@ -424,7 +424,7 @@
     "forbiddenUsage": [
       "Do not invent dependency atomics \u2014 use bundled canonical sources",
       "Do not hardcode brand hex \u2014 use AI tokens",
-      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+      "Do not require an external AI UI package for agent implementations \u2014 use co-located TSX"
     ]
   },
   "experienceMetadata": {

@@ -2,7 +2,7 @@
 
 **Version:** 1.2  
 **Last Updated:** 2026-08-06  
-**Owner:** Zaidyn Design System — AI  
+**Owner:** Guild Design System — AI  
 **Tier:** atomic (AI)  
 **Repo module:** `aiMetricValue`  
 **Component type:** React atomic  
@@ -20,7 +20,7 @@ Renders a single KPI value (e.g. `42.8K`, `78%`, `1.18`) at one of three sizes �
 
 ## Source (canonical implementation)
 
-> Implementation lives in the **ZAIDYN AI Design System** package — not under `zds-ai/src/` today.
+> Implementation lives in the **Guild AI Design System** package — co-located in this tree.
 
 | Path | Role |
 |------|------|
@@ -55,7 +55,7 @@ Renders a single KPI value (e.g. `42.8K`, `78%`, `1.18`) at one of three sizes �
 | `value` | `string \| number` | `required` | Primary value to render. |
 | `unit` | `string` | `—` | Optional inline unit suffix. |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | RiFontSize2 scale. |
-| `color` | `string` | `var(--ai-zds-text)` | Override the value color (e.g. for accent treatment). |
+| `color` | `string` | `var(--ai-ds-text)` | Override the value color (e.g. for accent treatment). |
 | `ariaLabel` | `string` | `—` | Accessible name. Defaults to `${value} ${unit}`. |
 
 ## Canonical implementation
@@ -71,9 +71,9 @@ import { AIMetricValue } from 'ai/atomic/metric-value/AIMetricValue';
 ## Agent rules
 
 1. Read this mirror spec and `ai-metric-value.agent.json` before implementing.
-2. Do not hardcode brand hex — use documented AI/ZDS tokens from `ai-tokens.ts`.
+2. Do not hardcode brand hex — use documented AI/DS tokens from `ai-tokens.ts`.
 3. Do not invent dependency atomics — fetch canonical implementations from mirror specs.
-4. Prefer token references (`AI.color.*`, `ZS_DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
+4. Prefer token references (`AI.color.*`, `DATAVIZ`, CSS vars) over literal hex unless the spec mandates fixed fills (e.g. AI Avatar).
 
 Full agent contract: `components/ai/atomic/ai-metric-value/ai-metric-value.agent.json`.
 
