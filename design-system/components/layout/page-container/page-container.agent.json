@@ -61,12 +61,19 @@
       "hint": "One of the spacing values declared in pageContainerVariants."
     },
     {
+      "name": "as",
+      "type": "\"main\" | \"div\" | \"section\" | \"article\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { PageContainer, pageContainerVariants } from \"@/components/layout/page-container\"",
     "exports": [
@@ -119,6 +126,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

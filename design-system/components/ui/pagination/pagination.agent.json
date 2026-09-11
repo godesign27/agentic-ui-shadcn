@@ -93,6 +93,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Pagination, PaginationContent, PaginationEllipsis, … } from \"@/components/ui/pagination\"",
     "exports": [
@@ -163,6 +164,6 @@
   "gaps": [
     "No page-state logic, no boundary disabling, no live-region announcement. All presentational."
   ],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

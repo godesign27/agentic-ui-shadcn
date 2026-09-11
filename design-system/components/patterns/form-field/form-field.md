@@ -60,6 +60,12 @@ The composition rules/composition.json requires for the form-submit pattern. Clo
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `label` | `string` | **required** | Required. Declared in the component source. |
+| `children` | `React.ReactElement` | **required** | A labelled control with its description and error, wired together correctly. This is the composition design-system/rules/composition.json requires for the form-submit pattern. It exists because the three relationships that make a field usable — label to control, control to description, control to error — are the three that get forgotten. Inside react-hook-form, prefer ui:form, which derives the same wiring from form state. Use this for a standalone field with no form library. / export interface FormFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> { label: string /** Rendered as the control. Receives id, aria-describedby and aria-invalid. |
+| `description` | `string` | — | Declared in the component source. |
+| `error` | `string` | — | Declared in the component source. |
+| `required` | `boolean` | — | Declared in the component source. |
+| `id` | `string` | — | A labelled control with its description and error, wired together correctly. This is the composition design-system/rules/composition.json requires for the form-submit pattern. It exists because the three relationships that make a field usable — label to control, control to description, control to error — are the three that get forgotten. Inside react-hook-form, prefer ui:form, which derives the same wiring from form state. Use this for a standalone field with no form library. / export interface FormFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> { label: string /** Rendered as the control. Receives id, aria-describedby and aria-invalid. */ children: React.ReactElement description?: string error?: string required?: boolean /** Supply a stable id when the field must be linked from elsewhere. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

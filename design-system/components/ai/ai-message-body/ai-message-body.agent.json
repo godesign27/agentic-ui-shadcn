@@ -50,12 +50,19 @@
       "hint": "See sizeGuidance in the mirror spec."
     },
     {
+      "name": "streaming",
+      "type": "boolean",
+      "required": false,
+      "hint": "AI response prose. Deliberately plain. Headings and bold inside a response make the model sound more authoritative than it is; keep emphasis for the surrounding UI. / const aiMessageBodyVariants = cva(\"text-foreground [&_p+p]:mt-3\", { variants: { size: { sm: \"text-sm leading-6\", md: \"text-base leading-7\", lg: \"text-lg leading-8\", }, }, defaultVariants: { size: \"md\" }, }) export interface AIMessageBodyProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof aiMessageBodyVariants> { /** Set while the response is still arriving so assistive tech announces the update."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { AIMessageBody, aiMessageBodyVariants } from \"@/components/ai/ai-message-body\"",
     "exports": [
@@ -125,6 +132,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

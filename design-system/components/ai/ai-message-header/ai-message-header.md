@@ -69,6 +69,9 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `agentLabel` | `string` | **required** | Required. Declared in the component source. |
+| `timestamp` | `string` | — | Attribution. Renders before the body, never after. This is the component that satisfies the "Attribution" obligation for a conversational surface. An AI response without it is unattributed output. / export interface AIMessageHeaderProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string /** Pass undefined to hide. Use a machine-readable dateTime on the caller side where possible. |
+| `size` | `"sm" \| "md"` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

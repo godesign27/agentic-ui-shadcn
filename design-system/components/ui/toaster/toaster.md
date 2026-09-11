@@ -93,7 +93,7 @@ This component consumes no semantic colour tokens directly. It inherits from its
 
 1. Mount exactly once, at the root.
 2. Do not conditionally render it.
-3. Pick either this or ui:sonner — not both.
+3. Pick either this or ui:sonner — not both. This is the default: it matches the rest of the library and enforces altText on toast actions.
 
 ### Forbidden
 

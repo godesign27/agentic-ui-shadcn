@@ -29,7 +29,7 @@ You are implementing **Card** (`ui:card`) from the Agentic UI shadcn/ui design s
 ## Critical facts — do not get these wrong
 
 - Do not nest cards.
-- CardTitle is not a heading element. Make it one when the page structure needs it.
+- Set `as` on CardTitle to match the surrounding heading level. The h3 default is a guess about context it cannot see.
 - CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.
 - Clickable cards need a real interactive element inside.
 

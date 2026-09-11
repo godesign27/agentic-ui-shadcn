@@ -70,6 +70,11 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `showDivider` | `boolean` | — | Declared in the component source. |
+| `sentiment` | `Sentiment` | — | Declared in the component source. |
+| `onSentiment` | `(value: Exclude<Sentiment, null>) => void` | — | Declared in the component source. |
+| `onCopy` | `() => void` | — | Declared in the component source. |
+| `onShare` | `() => void` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

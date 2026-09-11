@@ -11,6 +11,7 @@
  */
 
 import { readdir, readFile, access } from 'fs/promises'
+import { extractAll } from './lib/extract-facts.mjs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -24,14 +25,21 @@ const ACCOUNTABILITY = [
   'Approval', 'Audit trail', 'Reversibility',
 ]
 
+const NAMESPACES = [
+  { ns: 'ui', dirName: 'ui' },
+  { ns: 'ai', dirName: 'ai' },
+  { ns: 'pattern', dirName: 'patterns' },
+  { ns: 'layout', dirName: 'layout' },
+]
+
 const violations = []
 const fail = (ruleId, location, message, suggestedFix, severity = 'high') =>
   violations.push({ ruleId, severity, message, location, suggestedFix })
 
 let checked = 0
 
-for (const ns of ['ui', 'ai']) {
-  const nsDir = join(repoRoot, 'design-system/components', ns)
+for (const { ns, dirName } of NAMESPACES) {
+  const nsDir = join(repoRoot, 'design-system/components', dirName)
   if (!(await exists(nsDir))) continue
 
   // Only directories are component folders. Files like llms.txt live alongside them.
@@ -42,7 +50,7 @@ for (const ns of ['ui', 'ai']) {
 
   for (const name of entries) {
     const dir = join(nsDir, name)
-    const loc = `design-system/components/${ns}/${name}`
+    const loc = `design-system/components/${dirName}/${name}`
 
     // VALIDATE_FOUR_FILE_CONTRACT — a folder missing any file is not governed.
     for (const f of [`${name}.md`, `${name}.agent.json`, 'agentic-prompt.md', `${name}.preview.html`]) {
@@ -138,6 +146,40 @@ for (const id of invIds) {
   if (!idxIds.has(id)) fail('VALIDATE_COMPONENT_INDEX', 'design-system/components/agent-manifest.index.json', `${id} is in the inventory but has no spec`, 'Run npm run ds:build', 'critical')
 }
 
+// VALIDATE_PROPS_MATCH_SOURCE — the contract says "if it is not in the
+// .agent.json, it does not exist". A required prop missing from the manifest
+// therefore reads as a prop an agent must not pass, when in fact omitting it
+// breaks the component. This is the check that was missing when AIButton's
+// required `label` went undeclared.
+for (const { ns, dirName, dir } of NAMESPACES.map(n => ({ ...n, dir: join(repoRoot, 'src/components', n.dirName) }))) {
+  if (!(await exists(dir))) continue
+  for (const facts of await extractAll(dir, ns, dirName)) {
+    const manifestPath = join(repoRoot, 'design-system/components', dirName, facts.name, `${facts.name}.agent.json`)
+    if (!(await exists(manifestPath))) continue
+    const m = JSON.parse(await readFile(manifestPath, 'utf8'))
+    const declared = new Set((m.props ?? []).map(p => p.name))
+    const loc = `design-system/components/${dirName}/${facts.name}`
+
+    for (const d of facts.declaredProps ?? []) {
+      if (declared.has(d.name)) continue
+      fail('VALIDATE_PROPS_MATCH_SOURCE', loc,
+        `Source declares ${d.name}${d.required ? ' (required)' : ''}, the manifest does not`,
+        'Run npm run ds:build',
+        d.required ? 'critical' : 'high')
+    }
+
+    // Required props must also be flagged as required, not merely present.
+    for (const d of (facts.declaredProps ?? []).filter(x => x.required)) {
+      const p = (m.props ?? []).find(x => x.name === d.name)
+      if (p && !p.required) {
+        fail('VALIDATE_PROPS_MATCH_SOURCE', loc,
+          `${d.name} is required in source but optional in the manifest`,
+          'Run npm run ds:build', 'critical')
+      }
+    }
+  }
+}
+
 // VALIDATE_NO_DANGLING_REFS — a rule that names a component which does not
 // exist sends an agent straight into the closed-world rejection with nowhere
 // to go. The contract must not contradict its own inventory.
@@ -155,6 +197,24 @@ for (const [id, where] of refs) {
     fail('VALIDATE_NO_DANGLING_REFS', where,
       `References ${id}, which is not in the inventory`,
       'Build the component, or remove the reference', 'critical')
+  }
+}
+
+// VALIDATE_UI_KIT_COVERAGE — an inventory that says a component is available,
+// on a browse page that never shows it, is the drift this system exists to
+// catch. The UI Kit is the human-facing face of the inventory; they must agree.
+const kitSrc = await readFile(join(repoRoot, 'src/pages/UIKitPage.tsx'), 'utf8')
+// Match both object entries (id: 'x') and any bare id string in a list, so a
+// refactor of the arrays cannot make this check silently under-report.
+const kitIds = new Set([
+  ...[...kitSrc.matchAll(/\bid:\s*['"]([\w-]+)['"]/g)].map(m => m[1]),
+  ...[...kitSrc.matchAll(/^\s*['"]([a-z][\w-]*)['"],\s*$/gm)].map(m => m[1]),
+])
+for (const id of invIds) {
+  if (!kitIds.has(id.split(':')[1])) {
+    fail('VALIDATE_UI_KIT_COVERAGE', 'src/pages/UIKitPage.tsx',
+      `${id} is in the inventory but not browsable in the UI Kit`,
+      'Add an entry, or remove the component from the inventory')
   }
 }
 

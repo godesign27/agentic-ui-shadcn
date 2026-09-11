@@ -88,6 +88,80 @@ function extractUtilities(src) {
  *                   namespace for pattern (patterns/), so ids stay singular
  *                   while import paths mirror the real directory.
  */
+
+/**
+ * Props declared in a TypeScript interface or an inline forwardRef generic.
+ *
+ * The cva blocks give us variant and size. Everything else a component
+ * requires — AIButton's `label`, CardTitle's `as`, ResizableHandle's
+ * `withHandle` — is declared in TypeScript, and reading only the cva blocks
+ * silently drops it. A contract that omits a required prop is worse than no
+ * contract: the spec says "if it is not here, it does not exist".
+ */
+function extractProps(src) {
+  const bodies = []
+
+  // export interface XProps extends A, B { ... }  /  interface XProps { ... }
+  for (const m of src.matchAll(/(?:export\s+)?interface\s+(\w*Props)\b/g)) {
+    const open = src.indexOf('{', m.index)
+    if (open === -1) continue
+    const close = matchBrace(src, open)
+    if (close === -1) continue
+    bodies.push({ owner: m[1], body: src.slice(open + 1, close) })
+  }
+
+  // Inline object types in a forwardRef generic:
+  //   React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<…> & { as?: … }>
+  for (const m of src.matchAll(/React\.forwardRef<[^,]+,\s*[^>]*?&\s*\{/g)) {
+    const open = src.indexOf('{', m.index + m[0].length - 1)
+    const close = matchBrace(src, open)
+    if (close === -1) continue
+    bodies.push({ owner: null, body: src.slice(open + 1, close) })
+  }
+
+  const props = []
+  const seen = new Set()
+
+  for (const { owner, body } of bodies) {
+    // Strip nested object literals so a nested member is not read as top level.
+    let depth = 0
+    let flat = ''
+    for (const ch of body) {
+      if (ch === '{') depth++
+      else if (ch === '}') { depth--; continue }
+      if (depth === 0) flat += ch
+      else if (ch === '{') flat += ' '
+    }
+
+    for (const line of flat.split(/[;\n]/)) {
+      const t = line.trim()
+      if (!t || t.startsWith('//') || t.startsWith('*') || t.startsWith('/*')) continue
+      const m = t.match(/^(?:readonly\s+)?(["']?)([A-Za-z_$][\w$-]*)\1(\?)?\s*:\s*(.+)$/)
+      if (!m) continue
+      const [, , name, optional, rawType] = m
+      if (seen.has(name)) continue
+      seen.add(name)
+      props.push({
+        name,
+        type: rawType.trim().replace(/\s+/g, ' '),
+        required: !optional,
+        owner,
+      })
+    }
+  }
+
+  // Doc comments immediately above a member become the prop hint.
+  for (const prop of props) {
+    const re = new RegExp(`/\\*\\*([\\s\\S]*?)\\*/\\s*${prop.name}\\??\\s*:`, 'm')
+    const doc = src.match(re)
+    if (doc) {
+      prop.hint = doc[1].replace(/^\s*\*\s?/gm, '').replace(/\s+/g, ' ').trim()
+    }
+  }
+
+  return props
+}
+
 export async function extractAll(dir, namespace, dirName = namespace) {
   const files = (await readdir(dir)).filter(f => f.endsWith('.tsx')).sort()
   const out = []
@@ -106,6 +180,22 @@ export async function extractAll(dir, namespace, dirName = namespace) {
       radixPrimitive: imports.find(i => i.startsWith('@radix-ui/')) || null,
       external: [...new Set(imports.filter(i => i !== 'react'))].sort(),
       cva: extractCva(src),
+      declaredProps: extractProps(src),
+      // Helpers this component imports from a sibling, and the helper names it
+      // actually uses in VariantProps<typeof X>. A component can inherit its
+      // whole variant surface from another file — ui:toggle-group takes its
+      // variants from ui:toggle — and reading only local cva blocks reports
+      // those components as having no variants at all.
+      importedHelpers: Object.fromEntries(
+        [...src.matchAll(/import\s*\{([^}]+)\}\s*from\s*"@\/components\/(ui|ai)\/([\w-]+)"/g)]
+          .flatMap(m => m[1].split(',')
+            .map(x => x.trim().replace(/^type\s+/, '').split(/\s+as\s+/).pop().trim())
+            .filter(Boolean)
+            .map(name => [name, `${m[2]}:${m[3]}`]))
+      ),
+      variantPropsRefs: [...new Set(
+        [...src.matchAll(/VariantProps<\s*typeof\s+(\w+)\s*>/g)].map(m => m[1])
+      )],
       forwardsRef: /React\.forwardRef/.test(src),
       asChild: /asChild/.test(src),
       tokens: extractTokens(src),

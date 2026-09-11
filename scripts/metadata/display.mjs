@@ -19,7 +19,7 @@ export const display = {
       root: 'Card',
       parts: [
         { name: 'CardHeader', parent: 'Card', required: false, note: 'Title and description region' },
-        { name: 'CardTitle', parent: 'CardHeader', required: false, note: 'Renders a div, not a heading. Pass asChild or add role="heading" aria-level if it is a real heading.' },
+        { name: 'CardTitle', parent: 'CardHeader', required: false, note: 'Renders <h3> by default. Set `as` to match the surrounding outline — h2 under a page h1, or "div" when it is not a heading at all.' },
         { name: 'CardDescription', parent: 'CardHeader', required: false, note: 'text-muted-foreground' },
         { name: 'CardContent', parent: 'Card', required: false, note: 'The body. Note its pt-0 — it assumes a CardHeader above.' },
         { name: 'CardFooter', parent: 'Card', required: false, note: 'Action row' },
@@ -32,21 +32,21 @@ export const display = {
       requiredAttributes: [],
       notes: [
         'A Card is a div. It carries no semantics of its own — that is correct and deliberate.',
-        'CardTitle renders a div. Screen readers will not treat it as a heading unless you make it one. In a page of cards this matters for navigation.',
+        'CardTitle renders <h3> by default, which is right inside an <h2> section and wrong directly under the page <h1>. Set `as` to match the real outline — screen-reader users navigate by heading, so a page of cards at the wrong level is a broken outline.',
         'For a card grid, wrap in a ul and each card in an li so the count is announced.',
         'A whole-card click target needs a real button or link inside — do not attach onClick to the Card div.',
       ],
     },
     agentRules: [
       'Do not nest cards.',
-      'CardTitle is not a heading element. Make it one when the page structure needs it.',
+      'Set `as` on CardTitle to match the surrounding heading level. The h3 default is a guess about context it cannot see.',
       'CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.',
       'Clickable cards need a real interactive element inside.',
     ],
     forbiddenUsage: ['Nested cards', 'onClick on the Card div with no focusable child', 'Using Card for tabular data'],
     related: [{ id: 'ui:table', note: 'Tabular data' }, { id: 'ui:accordion', note: 'Collapsible sections' }, { id: 'ui:skeleton', note: 'Loading placeholder' }],
-    examples: [{ title: 'Standard card', code: '<Card>\n  <CardHeader>\n    <CardTitle>Deployments</CardTitle>\n    <CardDescription>Last 30 days</CardDescription>\n  </CardHeader>\n  <CardContent>\n    <p className="text-2xl font-semibold">1,284</p>\n  </CardContent>\n  <CardFooter>\n    <Button variant="outline" size="sm">View all</Button>\n  </CardFooter>\n</Card>' }],
-    gaps: ['CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it.'],
+    examples: [{ title: 'Standard card', code: '<Card>\n  <CardHeader>\n    <CardTitle as="h2">Deployments</CardTitle>\n    <CardDescription>Last 30 days</CardDescription>\n  </CardHeader>\n  <CardContent>\n    <p className="text-2xl font-semibold">1,284</p>\n  </CardContent>\n  <CardFooter>\n    <Button variant="outline" size="sm">View all</Button>\n  </CardFooter>\n</Card>' }],
+    gaps: [],
   },
 
   alert: {

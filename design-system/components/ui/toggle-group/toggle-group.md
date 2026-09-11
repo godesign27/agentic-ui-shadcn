@@ -60,6 +60,8 @@ Radix ToggleGroup in single or multiple mode. Items inherit variant and size fro
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `variant` | `"default"` \| `"outline"` | `"default"` | Inherited from `ui:toggle` via `toggleVariants` |
+| `size` | `"default"` \| `"sm"` \| `"lg"` | `"default"` | Inherited from `ui:toggle` via `toggleVariants` |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

@@ -42,6 +42,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Skeleton } from \"@/components/ui/skeleton\"",
     "exports": [
@@ -100,6 +101,6 @@
   "gaps": [
     "Provides no live-region semantics of its own. The announcement is yours to add every time."
   ],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

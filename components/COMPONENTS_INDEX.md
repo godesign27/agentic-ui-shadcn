@@ -77,7 +77,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 | [`ui:alert`](../design-system/components/ui/alert/alert.md) | Alert | `@/components/ui/alert` | molecules | stable | A message that stays on the page because it remains true. |
 | [`ui:progress`](../design-system/components/ui/progress/progress.md) | Progress | `@/components/ui/progress` | atoms | stable | Show how much of a known quantity of work is done. |
 | [`ui:skeleton`](../design-system/components/ui/skeleton/skeleton.md) | Skeleton | `@/components/ui/skeleton` | atoms | stable | Show the shape of what is coming, so the wait feels shorter and the layout does not jump. |
-| [`ui:sonner`](../design-system/components/ui/sonner/sonner.md) | Toaster | `@/components/ui/sonner` | templates | stable | The same job as ui:toaster, through a different library with a simpler imperative API. |
+| [`ui:sonner`](../design-system/components/ui/sonner/sonner.md) | SonnerToaster | `@/components/ui/sonner` | templates | stable | The same job as ui:toaster, through a different library with a simpler imperative API. |
 | [`ui:toast`](../design-system/components/ui/toast/toast.md) | Toast | `@/components/ui/toast` | organisms | stable | Confirm that something happened, without taking the user away from what they are doing. |
 | [`ui:toaster`](../design-system/components/ui/toaster/toaster.md) | Toaster | `@/components/ui/toaster` | templates | stable | The one place toasts actually render. |
 
@@ -145,12 +145,10 @@ Declared limitations. Honor them rather than assuming they have been filled.
 | `ai:ai-icon` | The handoff-trail, completion-settle, nudge, shimmer and alert-ring motions from the source system are not implemented. Only spin and pulse. |
 | `ai:ai-progress` | The segmented and header variants from the source design system are not implemented. Linear only. |
 | `ui:badge` | Carries hover and focus-visible styling despite rendering a non-focusable div. Do not read that as permission to make it interactive. |
-| `ui:card` | CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it. |
 | `ui:collapsible` | Entirely unstyled — no animation, chevron or spacing. Unlike every other component here, you supply all of it. |
 | `ui:form` | Does not move focus to the first invalid field on submit — implement that in your onInvalid handler. |
 | `ui:pagination` | No page-state logic, no boundary disabling, no live-region announcement. All presentational. |
 | `ui:progress` | The indeterminate state is not visually distinguished. Use a spinner instead. |
 | `ui:skeleton` | Provides no live-region semantics of its own. The announcement is yours to add every time. |
-| `ui:sonner` | Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree. |
-| `ui:sonner` | Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted. |
+| `ui:sonner` | Only one toast system may be mounted. Nothing enforces that at build time — it is a review concern. |
 | `ui:table` | No sorting, filtering, pagination, selection or virtualisation. scope is not applied automatically to TableHead. |

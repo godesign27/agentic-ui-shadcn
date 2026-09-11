@@ -77,6 +77,16 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
 | `layout` | `"inline"` \| `"stacked"` | `"inline"` | Declared in `aiActionVariants` |
+| `primaryLabel` | `string` | **required** | Required. Declared in the component source. |
+| `secondaryLabel` | `string` | — | Declared in the component source. |
+| `tertiaryLabel` | `string` | — | Declared in the component source. |
+| `size` | `"sm" \| "md" \| "lg"` | — | Declared in the component source. |
+| `status` | `AIActionStatus` | — | Declared in the component source. |
+| `requiresReview` | `boolean` | — | The decision point at the end of an AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. At most three, because a fourth turns a decision into a menu. ACCOUNTABILITY: nothing here fires without a human gesture. When requiresReview is set, the review signal renders before the action row so the user sees the warning before the button. Auto-applying on mount is a critical violation — see design-system/rules/ai-interaction.json. / const aiActionVariants = cva("flex gap-2", { variants: { layout: { inline: "flex-row flex-wrap items-center", stacked: "flex-col items-stretch", }, }, defaultVariants: { layout: "inline" }, }) type AIActionStatus = "default" | "loading" | "complete" | "disabled" | "error" export interface AIActionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onError">, VariantProps<typeof aiActionVariants> { primaryLabel: string secondaryLabel?: string tertiaryLabel?: string size?: "sm" | "md" | "lg" status?: AIActionStatus /** Renders the review signal above the row. Use when the action needs scrutiny before it fires. |
+| `reviewLabel` | `string` | — | Declared in the component source. |
+| `onPrimary` | `() => void` | — | Declared in the component source. |
+| `onSecondary` | `() => void` | — | Declared in the component source. |
+| `onTertiary` | `() => void` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

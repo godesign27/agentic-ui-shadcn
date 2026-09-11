@@ -68,6 +68,13 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `status` | `WorkNoteStatus` | — | Declared in the component source. |
+| `label` | `string` | — | Declared in the component source. |
+| `content` | `string` | — | Declared in the component source. |
+| `items` | `string[]` | — | Declared in the component source. |
+| `defaultExpanded` | `boolean` | — | Declared in the component source. |
+| `expanded` | `boolean` | — | Declared in the component source. |
+| `onExpandedChange` | `(value: boolean) => void` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

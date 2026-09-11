@@ -30,7 +30,7 @@ You are implementing **Toaster** (`ui:toaster`) from the Agentic UI shadcn/ui de
 
 - Mount exactly once, at the root.
 - Do not conditionally render it.
-- Pick either this or ui:sonner — not both.
+- Pick either this or ui:sonner — not both. This is the default: it matches the rest of the library and enforces altText on toast actions.
 
 ## Never
 

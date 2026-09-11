@@ -74,6 +74,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
 | `size` | `"sm"` \| `"md"` \| `"lg"` | `"md"` | Declared in `aiMessageBodyVariants` |
+| `streaming` | `boolean` | — | AI response prose. Deliberately plain. Headings and bold inside a response make the model sound more authoritative than it is; keep emphasis for the surrounding UI. / const aiMessageBodyVariants = cva("text-foreground [&_p+p]:mt-3", { variants: { size: { sm: "text-sm leading-6", md: "text-base leading-7", lg: "text-lg leading-8", }, }, defaultVariants: { size: "md" }, }) export interface AIMessageBodyProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof aiMessageBodyVariants> { /** Set while the response is still arriving so assistive tech announces the update. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

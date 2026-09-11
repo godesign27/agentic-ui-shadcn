@@ -59,12 +59,37 @@
   ],
   "props": [
     {
+      "name": "toolbar",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each."
+    },
+    {
+      "name": "suggestions",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each. */ toolbar?: React.ReactNode /** Suggested prompts shown above the field. Use ai:ai-chip-quick."
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { AIDialogSlim, AIInputCard } from \"@/components/ai/ai-dialog\"",
     "exports": [
@@ -162,6 +187,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

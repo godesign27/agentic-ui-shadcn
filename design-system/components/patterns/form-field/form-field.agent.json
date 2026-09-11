@@ -40,11 +40,51 @@
   ],
   "props": [
     {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "children",
+      "type": "React.ReactElement",
+      "required": true,
+      "hint": "A labelled control with its description and error, wired together correctly. This is the composition design-system/rules/composition.json requires for the form-submit pattern. It exists because the three relationships that make a field usable — label to control, control to description, control to error — are the three that get forgotten. Inside react-hook-form, prefer ui:form, which derives the same wiring from form state. Use this for a standalone field with no form library. / export interface FormFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, \"children\"> { label: string /** Rendered as the control. Receives id, aria-describedby and aria-invalid."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "hint": "A labelled control with its description and error, wired together correctly. This is the composition design-system/rules/composition.json requires for the form-submit pattern. It exists because the three relationships that make a field usable — label to control, control to description, control to error — are the three that get forgotten. Inside react-hook-form, prefer ui:form, which derives the same wiring from form state. Use this for a standalone field with no form library. / export interface FormFieldProps extends Omit<React.HTMLAttributes<HTMLDivElement>, \"children\"> { label: string /** Rendered as the control. Receives id, aria-describedby and aria-invalid. */ children: React.ReactElement description?: string error?: string required?: boolean /** Supply a stable id when the field must be linked from elsewhere."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
+  ],
+  "requiredProps": [
+    "label",
+    "children"
   ],
   "javascriptApi": {
     "import": "import { FormField } from \"@/components/patterns/form-field\"",
@@ -114,6 +154,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

@@ -65,6 +65,7 @@
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\"",
     "exports": [
@@ -139,6 +140,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

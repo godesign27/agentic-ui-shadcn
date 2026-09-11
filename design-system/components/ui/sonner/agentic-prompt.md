@@ -1,6 +1,6 @@
-# Agentic Prompt — Toaster
+# Agentic Prompt — SonnerToaster
 
-You are implementing **Toaster** (`ui:sonner`) from the Agentic UI shadcn/ui design system.
+You are implementing **SonnerToaster** (`ui:sonner`) from the Agentic UI shadcn/ui design system.
 
 ---
 
@@ -12,7 +12,7 @@ You are implementing **Toaster** (`ui:sonner`) from the Agentic UI shadcn/ui des
 | **Status** | Stable |
 | **Tier / Category** | templates · Feedback |
 | **Import** | `@/components/ui/sonner` |
-| **Exports** | `Toaster` |
+| **Exports** | `SonnerToaster` |
 
 ## What it is for
 
@@ -28,18 +28,18 @@ You are implementing **Toaster** (`ui:sonner`) from the Agentic UI shadcn/ui des
 
 ## Critical facts — do not get these wrong
 
-- Choose Sonner or ui:toaster. Never both.
-- Both export a component named Toaster — import deliberately and alias if needed.
-- Verify the theme reported by next-themes matches the dark class this app actually sets, or Sonner will render in the wrong theme.
+- Choose Sonner or ui:toaster. Never both — two systems means every toast appears twice.
+- The export is SonnerToaster, not Toaster. That is deliberate.
+- Sonner actions carry no altText requirement. If you need that accessibility contract, use ui:toast.
 
 ## Never
 
 - Running alongside ui:toaster
-- Ambiguous Toaster imports
+- Re-aliasing SonnerToaster back to Toaster
 
 ## Task
 
-Implement using `Toaster` exactly as the contract declares. Use only the props, variants and sizes in `sonner.agent.json`. Use only semantic tokens from `design-system/tokens/semantic.json`. Do not invent anything.
+Implement using `SonnerToaster` exactly as the contract declares. Use only the props, variants and sizes in `sonner.agent.json`. Use only semantic tokens from `design-system/tokens/semantic.json`. Do not invent anything.
 
 ## If blocked
 

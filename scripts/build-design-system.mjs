@@ -93,11 +93,38 @@ async function emit(path, content, { protectHandEdits = false } = {}) {
 const manifestIndex = []
 const inventory = []
 
+// Collect every component first, so a component can inherit the variant surface
+// of a helper it imports from a sibling (ui:toggle-group from ui:toggle).
+const allByNamespace = []
 for (const { ns, dirName, dir } of NAMESPACES) {
   if (!(await exists(dir))) continue
-  const all = await extractAll(dir, ns, dirName)
+  allByNamespace.push({ ns, dirName, components: await extractAll(dir, ns, dirName) })
+}
 
-  for (const facts of all) {
+const cvaById = new Map()
+for (const { components } of allByNamespace) {
+  for (const f of components) {
+    for (const block of f.cva) {
+      if (Object.keys(block.groups).length) cvaById.set(`${f.id}::${block.helper}`, block)
+    }
+  }
+}
+
+for (const { components } of allByNamespace) {
+  for (const f of components) {
+    const localHelpers = new Set(f.cva.map(c => c.helper))
+    for (const ref of f.variantPropsRefs) {
+      if (localHelpers.has(ref)) continue
+      const sourceId = f.importedHelpers[ref]
+      const inherited = sourceId && cvaById.get(`${sourceId}::${ref}`)
+      if (!inherited) continue
+      f.cva.push({ ...inherited, inheritedFrom: sourceId })
+    }
+  }
+}
+
+for (const { ns, dirName, components } of allByNamespace) {
+  for (const facts of components) {
     const meta = metadata[facts.name]
     if (!meta) { missingMeta.push(facts.id); continue }
 

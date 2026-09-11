@@ -71,6 +71,13 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `state` | `ControlBarState` | **required** | Required. Declared in the component source. |
+| `label` | `string` | — | Declared in the component source. |
+| `onPause` | `() => void` | — | Declared in the component source. |
+| `onResume` | `() => void` | — | Declared in the component source. |
+| `onCancel` | `() => void` | — | Declared in the component source. |
+| `onRedirect` | `() => void` | — | Declared in the component source. |
+| `onCancelConfirm` | `() => void` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

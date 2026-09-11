@@ -1,8 +1,8 @@
-<title>Toaster — Component Preview</title>
+<title>SonnerToaster — Component Preview</title>
 <link rel="stylesheet" href="../../preview/preview-shared.css" />
 <div class="page">
 <a class="back" href="../../preview/index.html">← All component previews</a>
-<h1>Toaster</h1>
+<h1>SonnerToaster</h1>
 <p class="lede">The same job as ui:toaster, through a different library with a simpler imperative API.</p>
 <div class="meta">
 <span class="pill mono">ui:sonner</span>
@@ -62,16 +62,15 @@
 <tr><th scope="row">Keyboard</th><td>Sonner supplies its own focus and dismissal handling</td></tr>
 </tbody></table></div>
 <ul class="rule-list" style="margin-top:14px">
-<li>Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast.</li>
-<li>Reads the active theme from next-themes. This is a Vite app with Tailwind darkMode: [&quot;class&quot;], so next-themes is not what toggles the class here — confirm the theme it reports matches the class actually on the html element.</li>
+<li>Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast, which requires altText on every action.</li>
+<li>Theme is read from the dark class on &lt;html&gt; via a MutationObserver, matching tailwind darkMode: [&quot;class&quot;]. The upstream shadcn snippet reads next-themes, which no provider here mounts — it would report &quot;system&quot; regardless and render light toasts on a dark page.</li>
 </ul>
 </section>
 <section>
 <h2>Gaps</h2>
 <p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
 <div class="note"><ul class="rule-list" style="margin:0">
-<li>Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.</li>
-<li>Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted.</li>
+<li>Only one toast system may be mounted. Nothing enforces that at build time — it is a review concern.</li>
 </ul></div>
 </section>
 <section>

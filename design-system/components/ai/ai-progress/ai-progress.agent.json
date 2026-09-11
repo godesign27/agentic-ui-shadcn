@@ -53,12 +53,43 @@
       "hint": "One of the size values declared in trackVariants."
     },
     {
+      "name": "value",
+      "type": "number",
+      "required": false,
+      "hint": "Progress for agentic work — which can be blocked or escalated, not just slow. The status vocabulary is the point. A generic progress bar cannot say \"this stopped and needs a human\"; this one can, and must when that is true. / type AIProgressStatus = | \"idle\" | \"running\" | \"indeterminate\" | \"paused\" | \"complete\" | \"blocked\" | \"error\" | \"escalated\" const STATUS: Record<AIProgressStatus, { bar: string; label: string }> = { idle: { bar: \"bg-muted-foreground/40\", label: \"Not started\" }, running: { bar: \"bg-ai-accent\", label: \"Running\" }, indeterminate: { bar: \"bg-ai-accent\", label: \"Working\" }, paused: { bar: \"bg-muted-foreground\", label: \"Paused\" }, complete: { bar: \"bg-ai-confidence-high\", label: \"Complete\" }, blocked: { bar: \"bg-ai-signal\", label: \"Blocked\" }, error: { bar: \"bg-destructive\", label: \"Failed\" }, escalated: { bar: \"bg-ai-signal\", label: \"Escalated to a person\" }, } const trackVariants = cva(\"w-full overflow-hidden rounded-full bg-muted\", { variants: { size: { thin: \"h-0.5\", sm: \"h-1\", md: \"h-1.5\", lg: \"h-2.5\" }, }, defaultVariants: { size: \"md\" }, }) export interface AIProgressProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof trackVariants> { /** 0–100. Omit for an indeterminate bar — never invent a number to fill the slot."
+    },
+    {
+      "name": "status",
+      "type": "AIProgressStatus",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "currentStep",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "percentLabel",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
   ],
+  "requiredProps": [],
   "javascriptApi": {
     "import": "import { AIProgress } from \"@/components/ai/ai-progress\"",
     "exports": [
@@ -148,6 +179,6 @@
   "gaps": [
     "The segmented and header variants from the source design system are not implemented. Linear only."
   ],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

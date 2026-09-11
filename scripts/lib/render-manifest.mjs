@@ -23,6 +23,23 @@ export function renderManifest(facts, meta, { generatedAt }) {
         : `One of the ${group} values declared in ${cva.helper || 'the cva helper'}.`,
     })
   }
+  // Props declared in TypeScript. cva supplies variant and size through
+  // VariantProps, so anything already emitted above is skipped rather than
+  // duplicated with a weaker type.
+  const fromCva = new Set(props.map(p => p.name))
+  for (const d of facts.declaredProps ?? []) {
+    if (fromCva.has(d.name)) continue
+    if (d.name === 'asChild' || d.name === 'className') continue
+    props.push({
+      name: d.name,
+      type: d.type,
+      required: d.required,
+      hint: d.hint ?? (d.required
+        ? 'Required. Declared in the component source.'
+        : 'Optional. Declared in the component source.'),
+    })
+  }
+
   if (facts.asChild) {
     props.push({
       name: 'asChild',
@@ -71,6 +88,7 @@ export function renderManifest(facts, meta, { generatedAt }) {
     sizes: cva.groups.size || cva.groups.side || [],
     states: (meta.states || []).map(s => s.name),
     props,
+    requiredProps: props.filter(p => p.required).map(p => p.name),
     javascriptApi: {
       import: `import { ${facts.exports.slice(0, 3).join(', ')}${facts.exports.length > 3 ? ', …' : ''} } from "@/components/${facts.dirName}/${facts.name}"`,
       exports: facts.exports,

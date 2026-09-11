@@ -81,11 +81,32 @@
       "hint": "One of the motion values declared in aiIconVariants."
     },
     {
+      "name": "icon",
+      "type": "React.ComponentType< >",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Not an icon set — a treatment layer over whatever icon you pass. The 60-30-10 rule governs it: about 60% of icons on a surface should be neutral, 30% semantic, and only 10% carry the AI identity colour. Treat `treatment=\"ai\"` as a scarce resource; if every icon is an AI icon, none is. / const aiIconVariants = cva(\"inline-flex shrink-0 items-center justify-center\", { variants: { size: { xs: \"[&_svg]:size-3\", sm: \"[&_svg]:size-4\", md: \"[&_svg]:size-5\", lg: \"[&_svg]:size-6\", xl: \"[&_svg]:size-8\", }, treatment: { neutral: \"text-muted-foreground\", ai: \"text-ai-accent\", \"ai-contained\": \"rounded-lg bg-ai-surface text-ai-accent\", semantic: \"\", \"orange-signal\": \"text-ai-signal\", }, tone: { default: \"\", success: \"text-ai-confidence-high\", warning: \"text-ai-signal\", error: \"text-destructive\", blocked: \"text-destructive\", escalated: \"text-ai-signal\", }, container: { true: \"p-1.5\", false: \"\", }, motion: { none: \"\", spin: \"[&_svg]:animate-spin motion-reduce:[&_svg]:animate-none\", pulse: \"[&_svg]:animate-pulse motion-reduce:[&_svg]:animate-none\", }, }, defaultVariants: { size: \"md\", treatment: \"neutral\", tone: \"default\", container: false, motion: \"none\", }, }) export interface AIIconProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, \"children\">, VariantProps<typeof aiIconVariants> { icon: React.ComponentType<{ className?: string }> /** Required unless decorative. An icon with meaning and no name is invisible."
+    },
+    {
+      "name": "decorative",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
       "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
     }
+  ],
+  "requiredProps": [
+    "icon"
   ],
   "javascriptApi": {
     "import": "import { AIIcon, aiIconVariants } from \"@/components/ai/ai-icon\"",
@@ -167,6 +188,6 @@
   "gaps": [
     "The handoff-trail, completion-settle, nudge, shimmer and alert-ring motions from the source system are not implemented. Only spin and pulse."
   ],
-  "generatedAt": "2026-09-11T05:07:37.563Z",
+  "generatedAt": "2026-09-11T05:17:43.875Z",
   "curated": true
 }

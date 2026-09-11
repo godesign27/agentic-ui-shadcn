@@ -79,6 +79,13 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `variant` | `"avatar-chat" \| "avatar-only"` | — | Declared in the component source. |
+| `label` | `string` | — | Declared in the component source. |
+| `active` | `boolean` | — | Declared in the component source. |
+| `unread` | `boolean` | — | Declared in the component source. |
+| `unreadCount` | `number` | — | Declared in the component source. |
+| `loading` | `boolean` | — | Declared in the component source. |
+| `disabledReason` | `string` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

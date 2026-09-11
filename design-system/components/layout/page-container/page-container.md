@@ -68,6 +68,7 @@ The layout root named by agents/page-generation.json. Renders <main> by default,
 | `width` | `"prose"` \| `"narrow"` \| `"default"` \| `"wide"` \| `"full"` | `"default"` | Declared in `pageContainerVariants` |
 | `gutter` | `"none"` \| `"default"` \| `"loose"` | `"default"` | Declared in `pageContainerVariants` |
 | `spacing` | `"none"` \| `"tight"` \| `"default"` \| `"loose"` | `"default"` | Declared in `pageContainerVariants` |
+| `as` | `"main" \| "div" \| "section" \| "article"` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

@@ -28,11 +28,19 @@ const CardHeader = React.forwardRef<
 ))
 CardHeader.displayName = "CardHeader"
 
+/**
+ * Defaults to <h3>. Set `as` when that would skip a level — a card directly
+ * under the page <h1> wants h2, and a card in a list that is not a section
+ * heading at all wants "div". Screen-reader users navigate by heading, so a
+ * page of cards with the wrong level is a broken outline.
+ */
 const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h3
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement> & {
+    as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div"
+  }
+>(({ className, as: Comp = "h3", ...props }, ref) => (
+  <Comp
     ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",

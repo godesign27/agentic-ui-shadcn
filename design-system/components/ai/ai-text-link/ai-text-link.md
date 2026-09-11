@@ -81,6 +81,15 @@ This component grants the machine a specific degree of autonomy, and therefore o
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `label` | `string` | **required** | Required. Declared in the component source. |
+| `icon` | `React.ComponentType< >` | — | Declared in the component source. |
+| `variant` | `AITextLinkVariant` | — | Declared in the component source. |
+| `tone` | `AITextLinkTone` | — | Declared in the component source. |
+| `size` | `"sm" \| "md"` | — | Declared in the component source. |
+| `expanded` | `boolean` | — | Declared in the component source. |
+| `loading` | `boolean` | — | Declared in the component source. |
+| `disabled` | `boolean` | — | Declared in the component source. |
+| `disabledReason` | `string` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

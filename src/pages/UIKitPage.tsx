@@ -35,6 +35,40 @@ import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } 
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { AIAvatar, BotAvatar } from '@/components/ai/ai-avatar'
+import { AIButton } from '@/components/ai/ai-button'
+import { AIAction } from '@/components/ai/ai-action'
+import { AISoftSurface } from '@/components/ai/ai-soft-surface'
+import { AIConfidenceRiskBadge } from '@/components/ai/ai-confidence-risk-badge'
+import { AIWhyThisLink } from '@/components/ai/ai-why-this-link'
+import { AIMessageHeader } from '@/components/ai/ai-message-header'
+import { AIMessageBody } from '@/components/ai/ai-message-body'
+import { AIMessageFooter } from '@/components/ai/ai-message-footer'
+import { AIFeedbackBar } from '@/components/ai/ai-feedback-bar'
+import { AILoadingIndicator } from '@/components/ai/ai-loading-indicators'
+import { AIProgress } from '@/components/ai/ai-progress'
+import { AIAgentWorkNote } from '@/components/ai/ai-agent-work-note'
+import { AIControlBar } from '@/components/ai/ai-control-bar'
+import { AILauncher } from '@/components/ai/ai-launcher'
+import { AIAgentStack } from '@/components/ai/ai-agent-stack'
+import { AIQueueBadge } from '@/components/ai/ai-queue-badge'
+import { AIChipBrief } from '@/components/ai/ai-chip-brief'
+import { AIChipHandoff } from '@/components/ai/ai-chip-handoff'
+import { AIChipMemory } from '@/components/ai/ai-chip-memory'
+import { AIChipQuick } from '@/components/ai/ai-chip-quick'
+import { AIDialogButton } from '@/components/ai/ai-dialog-button'
+import { AITextLink } from '@/components/ai/ai-text-link'
+import { AIIcon } from '@/components/ai/ai-icon'
+import { AIInputCard, AIDialogSlim } from '@/components/ai/ai-dialog'
+import { AIResponse } from '@/components/ai/ai-response'
+import { AIApprovalCard } from '@/components/ai/ai-approval-card'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+import { Command as CommandRoot, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable'
+import { FormField } from '@/components/patterns/form-field'
+import { PageContainer } from '@/components/layout/page-container'
 import { PromptDrawer } from '@/components/prompt-library/PromptDrawer'
 import { Command, Home, Palette, Copy, Check, Bold, Italic, Underline, ChevronDown, Info, AlertCircle } from 'lucide-react'
 
@@ -45,6 +79,13 @@ interface ComponentInfo {
   description: string
   importPath: string
   variants?: string[]
+  /**
+   * Present only on ai:* components. Declares how much autonomy the component
+   * grants the machine and what accountability it owes in return — the thing
+   * you most need to know before reaching for one.
+   * Source: design-system/components/ai/{name}/{name}.agent.json
+   */
+  experience?: { mode: string; behavior: string; accountability: string }
   examples?: Array<{
     name: string
     component: React.ReactNode
@@ -927,54 +968,853 @@ const components: ComponentInfo[] = [
 ]
 
 // Add remaining components with note about installation
-const remainingComponents = [
-  'carousel',
-  'command',
-  'form',
-  'navigation-menu',
-  'pagination',
-  'resizable',
-  'sidebar',
-  'sonner',
-  'toast',
-  'toaster',
-].map((id) => ({
-  id,
-  name: id
-    .split('-')
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' '),
-  category: getCategoryForComponent(id),
-  description: `${id.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} component`,
-  importPath: `@/components/ui/${id}`,
-  examples: [
-    {
-      name: 'Component Installed',
-      component: (
-        <div className="space-y-2 text-sm">
-          <p className="text-muted-foreground">This component is installed and ready to use.</p>
-          <Button variant="link" className="h-auto p-0" asChild>
-            <a href={`https://ui.shadcn.com/docs/components/${id}`} target="_blank" rel="noopener noreferrer">
-              View full documentation →
-            </a>
-          </Button>
-        </div>
-      ),
-    },
-  ],
-}))
 
-function getCategoryForComponent(id: string): string {
-  if (['form', 'command'].includes(id)) return 'Forms'
-  if (['toast', 'toaster', 'sonner'].includes(id)) return 'Feedback'
-  if (['navigation-menu', 'pagination'].includes(id)) return 'Navigation'
-  if (['resizable', 'sidebar', 'carousel'].includes(id)) return 'Layout'
-  return 'Other'
+// ─────────────────────────────────────────────────────────────────────────────
+// AI namespace
+//
+// These are NOT interchangeable with the ui:* entries above. Every one carries
+// experienceMetadata declaring how much autonomy it grants the machine and what
+// accountability it owes in return — surfaced in the detail panel, because that
+// is the thing a person browsing this page most needs to know before reaching
+// for one.
+//
+// Source of truth: design-system/components/ai/llms.txt
+// ─────────────────────────────────────────────────────────────────────────────
+
+const aiComponents: ComponentInfo[] = [
+  {
+    id: 'ai-avatar',
+    name: 'AI Avatar',
+    category: 'AI',
+    description: 'The mark that tells a user a machine is speaking',
+    importPath: '@/components/ai/ai-avatar',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Hero and inline',
+        component: (
+          <div className="flex items-center gap-4">
+            <AIAvatar label="Research agent" />
+            <BotAvatar size={20} />
+            <span className="text-sm text-muted-foreground">Fixed palette in both themes — never recolour</span>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-button',
+    name: 'AI Button',
+    category: 'AI',
+    description: 'Commit to something a machine proposed',
+    importPath: '@/components/ai/ai-button',
+    variants: ['primary', 'secondary', 'tertiary'],
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Confirm · Apply', accountability: 'Attribution · Approval' },
+    examples: [
+      {
+        name: 'Variants',
+        component: (
+          <div className="flex flex-wrap items-center gap-2">
+            <AIButton label="Apply" />
+            <AIButton variant="secondary" label="Review" />
+            <AIButton variant="tertiary" label="Dismiss" />
+          </div>
+        ),
+      },
+      {
+        name: 'Status — must track real work',
+        component: (
+          <div className="flex flex-wrap items-center gap-2">
+            <AIButton label="Applying…" status="loading" />
+            <AIButton label="Applied" status="complete" />
+            <AIButton label="Failed" status="error" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-action',
+    name: 'AI Action',
+    category: 'AI',
+    description: 'The decision point at the end of every AI recommendation',
+    importPath: '@/components/ai/ai-action',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest · Confirm · Apply · Approve', accountability: 'Attribution · Approval · Audit trail · Rationale disclosure' },
+    examples: [
+      {
+        name: 'Recommendation',
+        component: (
+          <AIAction primaryLabel="Apply recommendation" secondaryLabel="Review details" tertiaryLabel="Dismiss" />
+        ),
+      },
+      {
+        name: 'Requires review — the signal renders before the buttons',
+        component: <AIAction primaryLabel="Approve territory change" secondaryLabel="Edit first" requiresReview />,
+      },
+    ],
+  },
+  {
+    id: 'ai-confidence-risk-badge',
+    name: 'AI Confidence & Risk Badge',
+    category: 'AI',
+    description: 'How sure the model is, and how much is at stake',
+    importPath: '@/components/ai/ai-confidence-risk-badge',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution · Confidence signalling · Rationale disclosure' },
+    examples: [
+      {
+        name: 'Levels — the label is the value, never the colour',
+        component: (
+          <div className="flex flex-col items-start gap-2">
+            <AIConfidenceRiskBadge confidence="high" />
+            <AIConfidenceRiskBadge confidence="medium" risk="medium" />
+            <AIConfidenceRiskBadge confidence="low" risk="high" staleData missingSource />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-why-this-link',
+    name: 'AI Why This Link',
+    category: 'AI',
+    description: 'Make the reasoning reachable in one interaction',
+    importPath: '@/components/ai/ai-why-this-link',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Rationale disclosure · Attribution' },
+    examples: [
+      {
+        name: 'Variants',
+        component: (
+          <div className="flex flex-col items-start gap-2">
+            <AIWhyThisLink />
+            <AIWhyThisLink variant="view-sources" />
+            <AIWhyThisLink variant="explain-risk" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-soft-surface',
+    name: 'AI Soft Surface',
+    category: 'AI',
+    description: 'The wash that marks a region as machine-generated',
+    importPath: '@/components/ai/ai-soft-surface',
+    variants: ['ai', 'neutral', 'mixed'],
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Tones — never wrap human-authored content',
+        component: (
+          <div className="grid gap-2 sm:grid-cols-3">
+            <AISoftSurface className="p-4 text-xs">ai</AISoftSurface>
+            <AISoftSurface tone="neutral" className="p-4 text-xs">neutral</AISoftSurface>
+            <AISoftSurface tone="mixed" className="p-4 text-xs">mixed</AISoftSurface>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-response',
+    name: 'AI Response',
+    category: 'AI',
+    description: 'One AI turn, with attribution and recourse by construction',
+    importPath: '@/components/ai/ai-response',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution · Rationale disclosure' },
+    examples: [
+      {
+        name: 'Complete turn',
+        component: (
+          <AIResponse agentLabel="Research agent" timestamp="Just now">
+            <p>Three accounts match your criteria. Two are already in an active renewal cycle.</p>
+          </AIResponse>
+        ),
+      },
+      {
+        name: 'Loading — announces politely, withholds actions',
+        component: <AIResponse agentLabel="Research agent" loading />,
+      },
+    ],
+  },
+  {
+    id: 'ai-approval-card',
+    name: 'AI Approval Card',
+    category: 'AI',
+    description: 'A consequential proposal, in an order that cannot be got wrong',
+    importPath: '@/components/ai/ai-approval-card',
+    experience: { mode: 'AI Assisted · AI Led', behavior: 'Confirm · Apply · Approve', accountability: 'Attribution · Rationale disclosure · Confidence signalling · Approval · Audit trail · Reversibility' },
+    examples: [
+      {
+        name: 'Attribution → proposal → confidence → rationale → actions',
+        component: (
+          <AIApprovalCard
+            agentLabel="Planning agent"
+            timestamp="2 min ago"
+            proposal="Move 14 accounts from the West region to Central to balance quota coverage."
+            confidence="medium"
+            risk="high"
+            requiresReview
+            onWhyThis={() => undefined}
+            primaryLabel="Approve territory change"
+            secondaryLabel="Edit first"
+            tertiaryLabel="Dismiss"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-dialog',
+    name: 'AI Dialog',
+    category: 'AI',
+    description: 'The composer — where the human writes to the machine',
+    importPath: '@/components/ai/ai-dialog',
+    experience: { mode: 'AI Assisted', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Input card — Enter sends, Shift+Enter newlines',
+        component: (
+          <AIInputCard
+            toolbar={<AIDialogButton icon={<Info className="h-4 w-4" />} aria-label="About this assistant" />}
+            suggestions={<AIChipQuick label="Find at-risk accounts" />}
+          />
+        ),
+      },
+      { name: 'Slim pill', component: <AIDialogSlim /> },
+    ],
+  },
+  {
+    id: 'ai-loading-indicators',
+    name: 'AI Loading Indicators',
+    category: 'AI',
+    description: 'Say the machine is working — truthfully',
+    importPath: '@/components/ai/ai-loading-indicators',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Variants — the text is the signal, not the animation',
+        component: (
+          <div className="flex flex-wrap gap-2">
+            <AILoadingIndicator variant="thinking" />
+            <AILoadingIndicator variant="working" />
+            <AILoadingIndicator variant="retrieving" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-progress',
+    name: 'AI Progress',
+    category: 'AI',
+    description: 'Progress for work that can be blocked or escalated',
+    importPath: '@/components/ai/ai-progress',
+    experience: { mode: 'AI Led · Adaptive', behavior: 'Suggest', accountability: 'Attribution · Audit trail' },
+    examples: [
+      {
+        name: 'Agentic statuses',
+        component: (
+          <div className="w-full space-y-4">
+            <AIProgress value={62} label="Territory rebalance" currentStep="Step 3 of 5 — analysing" percentLabel />
+            <AIProgress value={62} status="blocked" label="Blocked" currentStep="Waiting on approval" />
+            <AIProgress value={100} status="complete" label="Complete" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-agent-work-note',
+    name: 'AI Agent Work Note',
+    category: 'AI',
+    description: 'What the agent is doing, without raw reasoning',
+    importPath: '@/components/ai/ai-agent-work-note',
+    experience: { mode: 'AI Assisted · AI Led', behavior: 'Suggest', accountability: 'Attribution · Rationale disclosure · Audit trail' },
+    examples: [
+      {
+        name: 'Collapsed by default — the user opts in',
+        component: (
+          <AIAgentWorkNote
+            status="planning"
+            items={['Read the account history', 'Compared against Q3 targets', 'Ranked by expected value']}
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-control-bar',
+    name: 'AI Control Bar',
+    category: 'AI',
+    description: 'The human can always stop the machine',
+    importPath: '@/components/ai/ai-control-bar',
+    experience: { mode: 'AI Led', behavior: 'Confirm · Apply', accountability: 'Attribution · Approval · Audit trail · Reversibility' },
+    examples: [
+      {
+        name: 'States — cancel is two-step by design',
+        component: (
+          <div className="w-full space-y-2">
+            <AIControlBar state="running" label="Rebalancing territories" />
+            <AIControlBar state="cancel-confirm" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-launcher',
+    name: 'AI Launcher',
+    category: 'AI',
+    description: 'The way in — recognisable, never instructional',
+    importPath: '@/components/ai/ai-launcher',
+    experience: { mode: 'AI Assisted', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Forms and states',
+        component: (
+          <div className="flex flex-wrap items-center gap-3">
+            <AILauncher />
+            <AILauncher active />
+            <AILauncher unread unreadCount={2} />
+            <AILauncher variant="avatar-only" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-agent-stack',
+    name: 'AI Agent Stack',
+    category: 'AI',
+    description: 'Several agents at once, and what each is doing',
+    importPath: '@/components/ai/ai-agent-stack',
+    experience: { mode: 'AI Led', behavior: 'Suggest', accountability: 'Attribution · Audit trail' },
+    examples: [
+      {
+        name: 'Status rings — each avatar is labelled with its status',
+        component: (
+          <AIAgentStack
+            agents={[
+              { id: 'a', label: 'Research', status: 'running' },
+              { id: 'b', label: 'Drafting', status: 'waiting' },
+              { id: 'c', label: 'Review', status: 'blocked' },
+              { id: 'd', label: 'QA', status: 'idle' },
+              { id: 'e', label: 'Ship', status: 'idle' },
+            ]}
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-queue-badge',
+    name: 'AI Queue Badge',
+    category: 'AI',
+    description: 'The state of one item in an agent queue',
+    importPath: '@/components/ai/ai-queue-badge',
+    experience: { mode: 'AI Led', behavior: 'Suggest', accountability: 'Attribution · Audit trail' },
+    examples: [
+      {
+        name: 'Colour, icon and text — always all three',
+        component: (
+          <div className="flex flex-wrap gap-2">
+            <AIQueueBadge status="queued" />
+            <AIQueueBadge status="running" />
+            <AIQueueBadge status="needs-approval" count={3} />
+            <AIQueueBadge status="blocked" />
+            <AIQueueBadge status="complete" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-message-header',
+    name: 'AI Message Header',
+    category: 'AI',
+    description: 'Establish who is speaking before a word is read',
+    importPath: '@/components/ai/ai-message-header',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      { name: 'Attribution', component: <div className="w-full"><AIMessageHeader agentLabel="Research agent" timestamp="Just now" /></div> },
+    ],
+  },
+  {
+    id: 'ai-message-body',
+    name: 'AI Message Body',
+    category: 'AI',
+    description: 'AI prose, kept plain on purpose',
+    importPath: '@/components/ai/ai-message-body',
+    experience: { mode: 'AI Assisted · Adaptive', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      { name: 'Response prose', component: <AIMessageBody size="sm"><p>Two of the three accounts renewed early this quarter.</p></AIMessageBody> },
+    ],
+  },
+  {
+    id: 'ai-message-footer',
+    name: 'AI Message Footer',
+    category: 'AI',
+    description: 'Where the user says yes to what a response offered',
+    importPath: '@/components/ai/ai-message-footer',
+    experience: { mode: 'AI Assisted · Adaptive', behavior: 'Confirm · Apply', accountability: 'Attribution · Approval' },
+    examples: [
+      {
+        name: 'Three actions, capped',
+        component: <AIMessageFooter actions={[{ label: 'Use draft' }, { label: 'Edit draft' }, { label: 'Regenerate', variant: 'tertiary' }]} />,
+      },
+    ],
+  },
+  {
+    id: 'ai-feedback-bar',
+    name: 'AI Feedback Bar',
+    category: 'AI',
+    description: 'Let the human correct the record',
+    importPath: '@/components/ai/ai-feedback-bar',
+    experience: { mode: 'AI Assisted · Adaptive', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      { name: 'Sentiment and copy', component: <div className="w-full"><AIFeedbackBar onShare={() => undefined} /></div> },
+    ],
+  },
+  {
+    id: 'ai-chip-brief',
+    name: 'AI Brief Chip',
+    category: 'AI',
+    description: 'Whether an agent task brief is ready to run',
+    importPath: '@/components/ai/ai-chip-brief',
+    experience: { mode: 'AI Led', behavior: 'Suggest', accountability: 'Attribution · Approval' },
+    examples: [
+      {
+        name: 'Statuses',
+        component: (
+          <div className="flex flex-wrap gap-2">
+            <AIChipBrief status="ready" label="Q4 rebalance" />
+            <AIChipBrief status="waiting-approval" label="Territory change" />
+            <AIChipBrief status="missing" label="Renewal outreach" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-chip-handoff',
+    name: 'AI Handoff Chip',
+    category: 'AI',
+    description: 'The moment accountability changed hands',
+    importPath: '@/components/ai/ai-chip-handoff',
+    experience: { mode: 'AI Led', behavior: 'Suggest', accountability: 'Attribution · Audit trail' },
+    examples: [
+      {
+        name: 'Directions',
+        component: (
+          <div className="flex flex-col items-start gap-2">
+            <AIChipHandoff direction="agent-to-human" fromLabel="Research" toLabel="Dana" />
+            <AIChipHandoff direction="agent-to-agent" fromLabel="Research" toLabel="Drafting" />
+            <AIChipHandoff direction="failed" fromLabel="Research" toLabel="Review" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-chip-memory',
+    name: 'AI Memory Chip',
+    category: 'AI',
+    description: 'When the system is drawing on what it learned earlier',
+    importPath: '@/components/ai/ai-chip-memory',
+    experience: { mode: 'Adaptive · AI Assisted', behavior: 'Suggest', accountability: 'Attribution · Rationale disclosure · Audit trail' },
+    examples: [
+      {
+        name: 'Remembering and forgetting are equally visible',
+        component: (
+          <div className="flex flex-col items-start gap-2">
+            <AIChipMemory variant="using-memory" label="Your Q3 pipeline preferences" />
+            <AIChipMemory variant="memory-available" label="Past territory edits" />
+            <AIChipMemory variant="memory-removed" label="Deleted note" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-chip-quick',
+    name: 'AI Quick Chip',
+    category: 'AI',
+    description: 'A starting point, so the box is never empty',
+    importPath: '@/components/ai/ai-chip-quick',
+    experience: { mode: 'AI Assisted', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Composes, never executes',
+        component: (
+          <div className="flex flex-wrap gap-2">
+            <AIChipQuick label="Find at-risk accounts" />
+            <AIChipQuick label="Summarise this quarter" />
+            <AIChipQuick label="All prompts" isSpecial />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-dialog-button',
+    name: 'AI Dialog Button',
+    category: 'AI',
+    description: 'A quiet control in the composer toolbar',
+    importPath: '@/components/ai/ai-dialog-button',
+    experience: { mode: 'AI Assisted', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Shapes — icon-only always carries a name',
+        component: (
+          <div className="flex flex-wrap items-center gap-2">
+            <AIDialogButton icon={<Info className="h-4 w-4" />} aria-label="Information" />
+            <AIDialogButton icon={<Command className="h-4 w-4" />} label="Skills" />
+            <AIDialogButton label="Agent mode" trailingIcon={<ChevronDown className="h-4 w-4" />} />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-text-link',
+    name: 'AI Text Link',
+    category: 'AI',
+    description: 'An inline link whose label stands on its own',
+    importPath: '@/components/ai/ai-text-link',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution · Rationale disclosure' },
+    examples: [
+      {
+        name: 'Variants',
+        component: (
+          <div className="flex flex-col items-start gap-2">
+            <AITextLink label="View the source record" variant="external" href="#" />
+            <AITextLink label="Show assumptions" variant="chevron" />
+            <AITextLink label="Needs review" tone="attention" />
+            <AITextLink label="Audit trail" disabled disabledReason="Unavailable until the run completes" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ai-icon',
+    name: 'AI Icon',
+    category: 'AI',
+    description: 'A treatment layer over standard icons — 60-30-10',
+    importPath: '@/components/ai/ai-icon',
+    experience: { mode: 'AI Assisted · Adaptive · AI Led', behavior: 'Suggest', accountability: 'Attribution' },
+    examples: [
+      {
+        name: 'Treatments — the AI colour is scarce by design',
+        component: (
+          <div className="flex flex-wrap items-center gap-4">
+            <AIIcon icon={Info} treatment="neutral" label="Neutral — about 60%" />
+            <AIIcon icon={AlertCircle} treatment="semantic" tone="warning" label="Semantic — about 30%" />
+            <AIIcon icon={Command} treatment="ai" label="AI identity — about 10%" />
+            <AIIcon icon={Command} treatment="ai-contained" container label="Contained" />
+          </div>
+        ),
+      },
+    ],
+  },
+]
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Components the UI Kit previously showed only as stubs, or not at all.
+//
+// These replace a generated placeholder array whose entries read
+// "Carousel component — this component is installed and ready to use",
+// which told a reader nothing they could act on.
+//
+// Every id in components/COMPONENTS_INDEX.json must appear here — an inventory
+// that says a component is available, on a browse page that never shows it, is
+// the same drift this design system exists to catch. Enforced by
+// scripts/validate-design-system.mjs (VALIDATE_UI_KIT_COVERAGE).
+//
+// Where a component genuinely cannot be demonstrated inline — a toast needs a
+// mounted host, a sidebar needs a provider and a full shell — the example says
+// so rather than faking it.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function NotDemonstrable({ reason, where }: { reason: string; where: string }) {
+  return (
+    <div className="text-sm text-muted-foreground">
+      <p>{reason}</p>
+      <p className="mt-2">
+        See <code className="text-xs">{where}</code>
+      </p>
+    </div>
+  )
 }
 
-const allComponents = [...components, ...remainingComponents].sort((a, b) => a.name.localeCompare(b.name))
+const uncoveredComponents: ComponentInfo[] = [
+  {
+    id: 'carousel',
+    name: 'Carousel',
+    category: 'Data Display',
+    description: 'Horizontal browsing when vertical space will not stretch',
+    importPath: '@/components/ui/carousel',
+    examples: [
+      {
+        name: 'Three-up — a grid is usually better',
+        component: (
+          <Carousel opts={{ align: 'start' }} className="w-full max-w-sm">
+            <CarouselContent>
+              {[1, 2, 3, 4].map((n) => (
+                <CarouselItem key={n} className="basis-1/2">
+                  <div className="flex h-20 items-center justify-center rounded-lg border text-sm">{n}</div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'command',
+    name: 'Command',
+    category: 'Overlay',
+    description: 'Find and run anything by typing',
+    importPath: '@/components/ui/command',
+    examples: [
+      {
+        name: 'Palette — CommandEmpty is mandatory',
+        component: (
+          <CommandRoot className="rounded-lg border shadow-sm">
+            <CommandInput placeholder="Search commands…" />
+            <CommandList>
+              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandGroup heading="Navigation">
+                <CommandItem>UI Kit</CommandItem>
+                <CommandItem>Brand preview</CommandItem>
+              </CommandGroup>
+            </CommandList>
+          </CommandRoot>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'navigation-menu',
+    name: 'Navigation Menu',
+    category: 'Navigation',
+    description: 'Site navigation with a panel under each item',
+    importPath: '@/components/ui/navigation-menu',
+    examples: [
+      {
+        name: 'Two levels',
+        component: (
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[260px] gap-2 p-4">
+                    <li className="text-sm">Analytics</li>
+                    <li className="text-sm">Deployments</li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'pagination',
+    name: 'Pagination',
+    category: 'Navigation',
+    description: 'Move through a result set too large to show at once',
+    importPath: '@/components/ui/pagination',
+    examples: [
+      {
+        name: 'Paged results — disable the boundaries yourself',
+        component: (
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem><PaginationPrevious href="#" /></PaginationItem>
+              <PaginationItem><PaginationLink href="#" isActive>1</PaginationLink></PaginationItem>
+              <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
+              <PaginationItem><PaginationEllipsis /></PaginationItem>
+              <PaginationItem><PaginationNext href="#" /></PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'resizable',
+    name: 'Resizable',
+    category: 'Layout',
+    description: 'Let the user decide how to divide the space',
+    importPath: '@/components/ui/resizable',
+    examples: [
+      {
+        name: 'Split view — set minSize on every panel',
+        component: (
+          <ResizablePanelGroup orientation="horizontal" className="h-28 rounded-lg border">
+            <ResizablePanel defaultSize={35} minSize={20}>
+              <div className="flex h-full items-center justify-center p-4 text-sm">Nav</div>
+            </ResizablePanel>
+            <ResizableHandle withHandle />
+            <ResizablePanel defaultSize={65} minSize={30}>
+              <div className="flex h-full items-center justify-center p-4 text-sm">Content</div>
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'form-field',
+    name: 'Form Field',
+    category: 'Forms',
+    description: 'A labelled control with its description and error, wired correctly',
+    importPath: '@/components/patterns/form-field',
+    examples: [
+      {
+        name: 'Valid and invalid',
+        component: (
+          <div className="w-full space-y-4">
+            <FormField label="Email" description="We only use this for receipts." required>
+              <Input type="email" placeholder="you@example.com" />
+            </FormField>
+            <FormField label="Workspace" error="That name is already taken.">
+              <Input defaultValue="apollo" />
+            </FormField>
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'page-container',
+    name: 'Page Container',
+    category: 'Layout',
+    description: 'One max-width, one gutter, one place to change either',
+    importPath: '@/components/layout/page-container',
+    variants: ['prose', 'narrow', 'default', 'wide', 'full'],
+    examples: [
+      {
+        name: 'Widths — the side gutter never collapses',
+        component: (
+          <div className="w-full space-y-2">
+            {(['prose', 'default', 'wide'] as const).map((w) => (
+              <PageContainer key={w} as="div" width={w} spacing="none" className="rounded border border-dashed py-2 text-center text-xs">
+                {w}
+              </PageContainer>
+            ))}
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'form',
+    name: 'Form',
+    category: 'Forms',
+    description: 'react-hook-form integration that generates the ARIA wiring',
+    importPath: '@/components/ui/form',
+    examples: [
+      {
+        name: 'Needs a form context',
+        component: (
+          <NotDemonstrable
+            reason="Form requires a react-hook-form useForm() instance supplied by the page, so it cannot be shown standalone here. For a field without a form library, use pattern:form-field."
+            where="design-system/components/ui/form/form.md"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'sidebar',
+    name: 'Sidebar',
+    category: 'Layout',
+    description: 'A complete application navigation shell',
+    importPath: '@/components/ui/sidebar',
+    examples: [
+      {
+        name: 'Needs a provider and a full shell',
+        component: (
+          <NotDemonstrable
+            reason="Sidebar requires SidebarProvider wrapping the whole layout, sets a collapse cookie and binds Cmd+B globally. Mounting it inside this panel would hijack the page."
+            where="design-system/components/ui/sidebar/sidebar.md"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'toast',
+    name: 'Toast',
+    category: 'Feedback',
+    description: 'Confirm something happened, without taking the user away',
+    importPath: '@/components/ui/toast',
+    examples: [
+      {
+        name: 'Needs a mounted host',
+        component: (
+          <NotDemonstrable
+            reason="Toast renders through ui:toaster, which must be mounted once at the app root. Neither toast system is mounted in this app — pick one before using either."
+            where="design-system/components/ui/toast/toast.md"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'toaster',
+    name: 'Toaster',
+    category: 'Feedback',
+    description: 'The one place toasts actually render',
+    importPath: '@/components/ui/toaster',
+    examples: [
+      {
+        name: 'Mount once, at the root',
+        component: (
+          <NotDemonstrable
+            reason="Toaster is the render host for ui:toast. Mount exactly one toast system — this or ui:sonner, never both, or every toast appears twice."
+            where="design-system/components/ui/toaster/toaster.md"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: 'sonner',
+    name: 'Sonner',
+    category: 'Feedback',
+    description: 'The alternative toast system — choose one',
+    importPath: '@/components/ui/sonner',
+    examples: [
+      {
+        name: 'Exports SonnerToaster, not Toaster',
+        component: (
+          <NotDemonstrable
+            reason="The export is deliberately named SonnerToaster so it cannot collide with ui:toaster at an import site. Mount one toast system, never both."
+            where="design-system/components/ui/sonner/sonner.md"
+          />
+        ),
+      },
+    ],
+  },
+]
 
-const categories = ['All', 'Forms', 'Layout', 'Overlay', 'Feedback', 'Navigation', 'Data Display', 'Other']
+// One array per origin, merged and sorted. Every id in
+// components/COMPONENTS_INDEX.json must appear here — checked in CI by
+// VALIDATE_UI_KIT_COVERAGE.
+const allComponents = [...components, ...aiComponents, ...uncoveredComponents].sort((a, b) =>
+  a.name.localeCompare(b.name)
+)
+
+const categories = ['All', 'AI', 'Forms', 'Layout', 'Overlay', 'Feedback', 'Navigation', 'Data Display', 'Other']
 
 export default function UIKitPage() {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -1017,7 +1857,9 @@ export default function UIKitPage() {
           <div>
             <h1 className="text-3xl font-bold">Shadcn UI Kit</h1>
             <p className="text-muted-foreground mt-1">
-              Browse and explore {allComponents.length} shadcn/ui components with live examples
+              Browse {allComponents.length} governed components with live examples —{' '}
+              {allComponents.filter((c) => c.category !== 'AI').length} standard and{' '}
+              {allComponents.filter((c) => c.category === 'AI').length} AI-native
             </p>
           </div>
           <div className="flex gap-2">
@@ -1111,6 +1953,30 @@ export default function UIKitPage() {
               </SheetHeader>
 
               <div className="space-y-6 mt-6">
+                {/* Experience metadata — AI namespace only */}
+                {selectedComponent.experience && (
+                  <div className="rounded-lg border border-ai-surface-border bg-ai-surface p-4">
+                    <h3 className="text-sm font-semibold mb-1">Experience metadata</h3>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      How much autonomy this grants the machine, and what it owes you in return.
+                    </p>
+                    <dl className="space-y-2 text-xs">
+                      <div className="flex gap-2">
+                        <dt className="w-28 shrink-0 font-medium text-muted-foreground">Mode</dt>
+                        <dd>{selectedComponent.experience.mode}</dd>
+                      </div>
+                      <div className="flex gap-2">
+                        <dt className="w-28 shrink-0 font-medium text-muted-foreground">Behavior</dt>
+                        <dd>{selectedComponent.experience.behavior}</dd>
+                      </div>
+                      <div className="flex gap-2">
+                        <dt className="w-28 shrink-0 font-medium text-muted-foreground">Accountability</dt>
+                        <dd>{selectedComponent.experience.accountability}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                )}
+
                 {/* Import */}
                 <div>
                   <h3 className="text-sm font-semibold mb-2">Import</h3>
@@ -1165,14 +2031,23 @@ export default function UIKitPage() {
                 <Separator />
                 <div>
                   <h3 className="text-sm font-semibold mb-2">Documentation</h3>
-                  <a
-                    href={`https://ui.shadcn.com/docs/components/${selectedComponent.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-primary hover:underline"
-                  >
-                    View full documentation on shadcn/ui →
-                  </a>
+                  <p className="text-sm text-muted-foreground">
+                    Full contract:{' '}
+                    <code className="text-xs">
+                      design-system/components/{selectedComponent.experience ? 'ai' : 'ui'}/
+                      {selectedComponent.id}/
+                    </code>
+                  </p>
+                  {!selectedComponent.experience && (
+                    <a
+                      href={`https://ui.shadcn.com/docs/components/${selectedComponent.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-block text-sm text-primary hover:underline"
+                    >
+                      View upstream documentation on shadcn/ui →
+                    </a>
+                  )}
                 </div>
               </div>
             </>

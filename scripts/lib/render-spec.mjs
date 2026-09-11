@@ -126,7 +126,17 @@ export function renderSpec(facts, meta, { generatedAt }) {
       `\`${group}\``,
       values.map(v => `\`"${v}"\``).join(' \\| '),
       cva.defaults[group] ? `\`"${cva.defaults[group]}"\`` : '—',
-      `Declared in \`${cva.helper}\``,
+      cva.inheritedFrom ? `Inherited from \`${cva.inheritedFrom}\` via \`${cva.helper}\`` : `Declared in \`${cva.helper}\``,
+    ])
+  }
+  const cvaNames = new Set(Object.keys(cva.groups))
+  for (const d of facts.declaredProps ?? []) {
+    if (cvaNames.has(d.name) || d.name === 'asChild' || d.name === 'className') continue
+    propRows.push([
+      `\`${d.name}\``,
+      `\`${d.type.replace(/\|/g, '\\|')}\``,
+      d.required ? '**required**' : '—',
+      d.hint ?? (d.required ? 'Required. Declared in the component source.' : 'Declared in the component source.'),
     ])
   }
   if (facts.asChild) propRows.push(['`asChild`', '`boolean`', '`false`', 'Render the child element instead, merging props and styles'])

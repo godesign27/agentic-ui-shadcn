@@ -84,6 +84,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | --- | --- | --- | --- |
 | `status` | `"default"` \| `"ready"` \| `"missing"` \| `"edited"` \| `"waiting-approval"` \| `"running"` | `"default"` | Declared in `aiChipBriefVariants` |
 | `size` | `"sm"` \| `"md"` | `"md"` | Declared in `aiChipBriefVariants` |
+| `label` | `string` | **required** | Required. Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 
