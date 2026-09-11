@@ -1,0 +1,71 @@
+<title>PageContainer — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>PageContainer</h1>
+<p class="lede">One max-width, one gutter, one place to change either.</p>
+<div class="meta">
+<span class="pill mono">layout:page-container</span>
+<span class="pill stable">stable</span>
+<span class="pill">layout</span>
+<span class="pill">Layout</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/layout/page-container.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>No props</code></td><td>max-w-5xl, responsive gutter, py-8 to py-12</td></tr>
+<tr><td><strong>Full bleed</strong></td><td><code>width=&quot;full&quot;</code></td><td>Gutter retained — content never touches the viewport edge</td></tr>
+<tr><td><strong>Flush</strong></td><td><code>spacing=&quot;none&quot;</code></td><td>No vertical padding. Side padding is never removed.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>main by default. Carries the max-width, the side gutter and the vertical rhythm.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>page-container.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>The outermost wrapper of any generated page</li>
+<li>Any region needing the standard horizontal rhythm</li>
+<li>Satisfying the layout root in the page-generation contract</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Nested inside another PageContainer — the gutters compound</li>
+<li>Inside a ui:dialog or ui:sheet, which bring their own padding</li>
+<li>For a full-bleed region; use width=&quot;full&quot; on a child instead of dropping the container</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>main</code></td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Renders &lt;main&gt;, which supplies the main landmark. Exactly one per page — set as=&quot;div&quot; for any additional container.</li>
+<li>The gutter never collapses below px-4, so content keeps a 16px side margin at every width, including gutter=&quot;none&quot;.</li>
+<li>Vertical rhythm uses py-*, never a padding shorthand, so the side gutter cannot be zeroed by accident.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/layout/page-container.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="page-container.agent.json"><code>page-container.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="page-container.md"><code>page-container.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

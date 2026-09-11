@@ -20,7 +20,7 @@ function table(headers, rows) {
 export function renderSpec(facts, meta, { generatedAt }) {
   const cva = facts.cva.find(c => Object.keys(c.groups).length) || { groups: {}, defaults: {} }
   const title = facts.exports[0]
-  const specDir = `${facts.namespace}/${facts.name}`
+  const specDir = `${facts.dirName}/${facts.name}`
   const L = []
 
   L.push(`# ${title}`)
@@ -33,7 +33,7 @@ export function renderSpec(facts, meta, { generatedAt }) {
   L.push(`**Category:** ${meta.category}  `)
   L.push(`**Status:** ${meta.status[0].toUpperCase() + meta.status.slice(1)}  `)
   if (facts.radixPrimitive) L.push(`**Primitive:** \`${facts.radixPrimitive}\`  `)
-  L.push(`**Import:** \`@/components/${facts.namespace}/${facts.name}\`  `)
+  L.push(`**Import:** \`@/components/${facts.dirName}/${facts.name}\`  `)
   if (facts.internalDeps.length) L.push(`**Depends on:** ${facts.internalDeps.map(d => `\`${d}\``).join(', ')}  `)
   L.push('')
 

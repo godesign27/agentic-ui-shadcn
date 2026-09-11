@@ -42,10 +42,14 @@ const FORCE = args.includes('--force')
 const CHECK = args.includes('--check')
 const generatedAt = new Date().toISOString()
 
+// ns is the id prefix; dir is the folder under src/components/. They differ
+// for pattern/patterns so ids read singular while paths mirror the tree.
 const NAMESPACES = [
-  { ns: 'ui', dir: join(repoRoot, 'src/components/ui') },
-  { ns: 'ai', dir: join(repoRoot, 'src/components/ai') },
-]
+  { ns: 'ui', dirName: 'ui' },
+  { ns: 'ai', dirName: 'ai' },
+  { ns: 'pattern', dirName: 'patterns' },
+  { ns: 'layout', dirName: 'layout' },
+].map(n => ({ ...n, dir: join(repoRoot, 'src/components', n.dirName) }))
 
 const exists = async p => { try { await access(p); return true } catch { return false } }
 
@@ -89,15 +93,15 @@ async function emit(path, content, { protectHandEdits = false } = {}) {
 const manifestIndex = []
 const inventory = []
 
-for (const { ns, dir } of NAMESPACES) {
+for (const { ns, dirName, dir } of NAMESPACES) {
   if (!(await exists(dir))) continue
-  const all = await extractAll(dir, ns)
+  const all = await extractAll(dir, ns, dirName)
 
   for (const facts of all) {
     const meta = metadata[facts.name]
     if (!meta) { missingMeta.push(facts.id); continue }
 
-    const specDir = join(repoRoot, 'design-system/components', ns, facts.name)
+    const specDir = join(repoRoot, 'design-system/components', dirName, facts.name)
 
     const manifest = renderManifest(facts, meta, { generatedAt })
     await emit(join(specDir, `${facts.name}.agent.json`), JSON.stringify(manifest, null, 2) + '\n', { protectHandEdits: true })
@@ -112,17 +116,18 @@ for (const { ns, dir } of NAMESPACES) {
       tier: meta.tier,
       category: meta.category,
       status: meta.status,
-      mirrorSpec: `design-system/components/${ns}/${facts.name}/${facts.name}.md`,
-      agentManifest: `design-system/components/${ns}/${facts.name}/${facts.name}.agent.json`,
-      prompt: `design-system/components/${ns}/${facts.name}/agentic-prompt.md`,
-      preview: `design-system/components/${ns}/${facts.name}/${facts.name}.preview.html`,
+      dirName,
+      mirrorSpec: `design-system/components/${dirName}/${facts.name}/${facts.name}.md`,
+      agentManifest: `design-system/components/${dirName}/${facts.name}/${facts.name}.agent.json`,
+      prompt: `design-system/components/${dirName}/${facts.name}/agentic-prompt.md`,
+      preview: `design-system/components/${dirName}/${facts.name}/${facts.name}.preview.html`,
       source: facts.file,
     })
 
     inventory.push({
       id: facts.id,
       name: manifest.name,
-      importPath: `@/components/${ns}/${facts.name}`,
+      importPath: `@/components/${dirName}/${facts.name}`,
       files: [facts.file],
       category: meta.category,
       tier: meta.tier,
@@ -132,7 +137,7 @@ for (const { ns, dir } of NAMESPACES) {
       variants: manifest.variants,
       sizes: manifest.sizes,
       intent: meta.intent,
-      spec: `design-system/components/${ns}/${facts.name}/`,
+      spec: `design-system/components/${dirName}/${facts.name}/`,
       forbiddenUsage: meta.forbiddenUsage || [],
       experienceMetadata: meta.experienceMetadata,
       gaps: meta.gaps || [],
@@ -151,10 +156,9 @@ await emit(
     description: 'Lookup from component id to its four spec files and its source. Regenerate with npm run ds:build.',
     generatedAt,
     count: manifestIndex.length,
-    byNamespace: {
-      ui: manifestIndex.filter(m => m.namespace === 'ui').length,
-      ai: manifestIndex.filter(m => m.namespace === 'ai').length,
-    },
+    byNamespace: Object.fromEntries(
+      NAMESPACES.map(n => [n.ns, manifestIndex.filter(m => m.namespace === n.ns).length])
+    ),
     manifests: manifestIndex,
   }, null, 2) + '\n'
 )
@@ -321,7 +325,7 @@ const hub = [
 for (const cat of Object.keys(byCategory).sort()) {
   hub.push(`<section><h2>${cat}</h2><div class="table-wrap"><table><thead><tr><th>Component</th><th>Id</th><th>Tier</th><th>Status</th></tr></thead><tbody>`)
   for (const m of byCategory[cat]) {
-    hub.push(`<tr><td><a href="../${m.namespace}/${m.id.split(':')[1]}/${m.id.split(':')[1]}.preview.html"><strong>${m.name}</strong></a></td><td><code>${m.id}</code></td><td>${m.tier}</td><td><span class="pill ${m.status}">${m.status}</span></td></tr>`)
+    hub.push(`<tr><td><a href="../${m.dirName}/${m.id.split(':')[1]}/${m.id.split(':')[1]}.preview.html"><strong>${m.name}</strong></a></td><td><code>${m.id}</code></td><td>${m.tier}</td><td><span class="pill ${m.status}">${m.status}</span></td></tr>`)
   }
   hub.push('</tbody></table></div></section>')
 }
@@ -329,7 +333,7 @@ hub.push('</div>')
 await emit(join(repoRoot, 'design-system/components/preview/index.html'), hub.join('\n'))
 
 console.log('')
-console.log(`  components   ${manifestIndex.length}  (ui ${manifestIndex.filter(m => m.namespace === 'ui').length}, ai ${manifestIndex.filter(m => m.namespace === 'ai').length})`)
+console.log(`  components   ${manifestIndex.length}  (${NAMESPACES.map(n => `${n.ns} ${manifestIndex.filter(m => m.namespace === n.ns).length}`).filter(x => !x.endsWith(' 0')).join(', ')})`)
 console.log(`  files ${CHECK ? 'checked' : 'written'}  ${CHECK ? stale + ' stale' : written}`)
 if (skipped) console.log(`  preserved    ${skipped} manifest(s) marked handEdited — use --force to overwrite`)
 if (missingMeta.length) {

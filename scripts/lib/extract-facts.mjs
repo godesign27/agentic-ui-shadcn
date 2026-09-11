@@ -81,7 +81,14 @@ function extractUtilities(src) {
   return [...new Set([...src.matchAll(re)].map(m => m[1]))].sort()
 }
 
-export async function extractAll(dir, namespace) {
+/**
+ * @param dir        absolute path to the component directory
+ * @param namespace  the id prefix ("ui", "ai", "pattern", "layout")
+ * @param dirName    the folder under src/components/ — differs from the
+ *                   namespace for pattern (patterns/), so ids stay singular
+ *                   while import paths mirror the real directory.
+ */
+export async function extractAll(dir, namespace, dirName = namespace) {
   const files = (await readdir(dir)).filter(f => f.endsWith('.tsx')).sort()
   const out = []
   for (const file of files) {
@@ -92,7 +99,8 @@ export async function extractAll(dir, namespace) {
       name,
       id: `${namespace}:${name}`,
       namespace,
-      file: `src/components/${namespace}/${file}`,
+      dirName,
+      file: `src/components/${dirName}/${file}`,
       lines: src.split('\n').length,
       exports: extractExports(src),
       radixPrimitive: imports.find(i => i.startsWith('@radix-ui/')) || null,

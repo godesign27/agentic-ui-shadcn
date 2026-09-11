@@ -1,0 +1,86 @@
+<title>FormField — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>FormField</h1>
+<p class="lede">A labelled control with its description and error, wired together correctly.</p>
+<div class="meta">
+<span class="pill mono">pattern:form-field</span>
+<span class="pill stable">stable</span>
+<span class="pill">groups</span>
+<span class="pill">Forms</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/patterns/form-field.tsx</code>.</div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>No error</code></td><td>Label neutral, no alert region</td></tr>
+<tr><td><strong>Required</strong></td><td><code>required</code></td><td>Visual asterisk plus an sr-only &quot;(required)&quot; — the asterisk alone is not a label</td></tr>
+<tr><td><strong>Described</strong></td><td><code>description set</code></td><td>aria-describedby points at the helper text</td></tr>
+<tr><td><strong>Invalid</strong></td><td><code>error set</code></td><td>Label and message destructive; aria-invalid set; error appended to aria-describedby</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Label</strong></td><td>ui:label with htmlFor wired to the generated id. Turns destructive on error.</td></tr>
+<tr><td><strong>Control</strong></td><td>Your child element, cloned with id, aria-describedby and aria-invalid</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional helper text, referenced by aria-describedby</td></tr>
+<tr><td><strong>Error</strong></td><td>role=&quot;alert&quot; so a failure arriving after render is announced</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>form-field.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>A standalone field outside react-hook-form</li>
+<li>Any field needing a description, an error, or both</li>
+<li>Satisfying the form-submit composition rule</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Inside react-hook-form — use ui:form, which derives the same wiring from form state</li>
+<li>For a control that is not a form field</li>
+<li>When the label would be redundant with a visible heading — it is still required, so use sr-only rather than omitting it</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Clicking the label focuses the control</td></tr>
+<tr><th scope="row">Required</th><td>label<br />A single React element as children</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>aria-describedby lists description then error, in that reading order — description is context, error is the newest news.</li>
+<li>The child is cloned, so props you set on it yourself win over the injected ones. That is deliberate: you can override the generated id.</li>
+<li>Children must be exactly one element. A fragment or an array breaks cloneElement.</li>
+<li>The required asterisk is aria-hidden and paired with an sr-only &quot;(required)&quot; — an asterisk announces as &quot;star&quot; or not at all.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/patterns/form-field.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="form-field.agent.json"><code>form-field.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="form-field.md"><code>form-field.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

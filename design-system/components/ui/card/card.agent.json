@@ -157,6 +157,6 @@
   "gaps": [
     "CardTitle renders a div rather than a heading element. Supply your own heading semantics where page structure depends on it."
   ],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:07:37.563Z",
   "curated": true
 }

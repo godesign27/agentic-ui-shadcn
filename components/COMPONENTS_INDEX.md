@@ -4,7 +4,7 @@ The **closed-world inventory**. Only components listed here may be used.
 
 > Generated from source by `npm run ds:build`. Do not hand-edit — edit `scripts/metadata/` instead.
 
-**69 components** · ui 45 · ai 24
+**74 components** · ui 45 · ai 27
 
 ## The rule
 
@@ -29,6 +29,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 | [`ai:ai-action`](../design-system/components/ai/ai-action/ai-action.md) | AIAction | `@/components/ai/ai-action` | atoms | beta | The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. |
 | [`ai:ai-agent-stack`](../design-system/components/ai/ai-agent-stack/ai-agent-stack.md) | AIAgentStack | `@/components/ai/ai-agent-stack` | molecules | stable | Several agents working at once, and what each of them is doing. |
 | [`ai:ai-agent-work-note`](../design-system/components/ai/ai-agent-work-note/ai-agent-work-note.md) | AIAgentWorkNote | `@/components/ai/ai-agent-work-note` | atoms | draft | Show what the agent is doing without exposing raw reasoning. |
+| [`ai:ai-approval-card`](../design-system/components/ai/ai-approval-card/ai-approval-card.md) | AIApprovalCard | `@/components/ai/ai-approval-card` | groups | beta | A consequential proposal, and the human decision about it, in an order that cannot be got wrong. |
 | [`ai:ai-avatar`](../design-system/components/ai/ai-avatar/ai-avatar.md) | AIAvatar | `@/components/ai/ai-avatar` | atoms | stable | The mark that tells a user a machine is speaking. |
 | [`ai:ai-button`](../design-system/components/ai/ai-button/ai-button.md) | AIButton | `@/components/ai/ai-button` | atoms | stable | Commit to something a machine proposed. |
 | [`ai:ai-chip-brief`](../design-system/components/ai/ai-chip-brief/ai-chip-brief.md) | AIChipBrief | `@/components/ai/ai-chip-brief` | atoms | stable | Whether an agent task brief is ready to run — and whether a human still has to say yes. |
@@ -37,6 +38,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 | [`ai:ai-chip-quick`](../design-system/components/ai/ai-chip-quick/ai-chip-quick.md) | AIChipQuick | `@/components/ai/ai-chip-quick` | atoms | stable | Offer a starting point so the user does not face an empty box. |
 | [`ai:ai-confidence-risk-badge`](../design-system/components/ai/ai-confidence-risk-badge/ai-confidence-risk-badge.md) | AIConfidenceRiskBadge | `@/components/ai/ai-confidence-risk-badge` | atoms | stable | State how sure the model is and how much is at stake, before the human decides. |
 | [`ai:ai-control-bar`](../design-system/components/ai/ai-control-bar/ai-control-bar.md) | AIControlBar | `@/components/ai/ai-control-bar` | molecules | stable | The human can always stop the machine. |
+| [`ai:ai-dialog`](../design-system/components/ai/ai-dialog/ai-dialog.md) | AIDialogSlim | `@/components/ai/ai-dialog` | groups | stable | Where the human writes to the machine. |
 | [`ai:ai-dialog-button`](../design-system/components/ai/ai-dialog-button/ai-dialog-button.md) | AIDialogButton | `@/components/ai/ai-dialog-button` | atoms | stable | A quiet control in the composer toolbar that does not compete with the message. |
 | [`ai:ai-feedback-bar`](../design-system/components/ai/ai-feedback-bar/ai-feedback-bar.md) | AIFeedbackBar | `@/components/ai/ai-feedback-bar` | atoms | stable | Let the human correct the record. |
 | [`ai:ai-icon`](../design-system/components/ai/ai-icon/ai-icon.md) | AIIcon | `@/components/ai/ai-icon` | atoms | beta | A treatment layer over standard icons — not a new icon set. |
@@ -47,6 +49,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 | [`ai:ai-message-header`](../design-system/components/ai/ai-message-header/ai-message-header.md) | AIMessageHeader | `@/components/ai/ai-message-header` | atoms | stable | Establish who is speaking before the user reads a word. |
 | [`ai:ai-progress`](../design-system/components/ai/ai-progress/ai-progress.md) | AIProgress | `@/components/ai/ai-progress` | atoms | draft | Progress for work that can be blocked or escalated, not merely slow. |
 | [`ai:ai-queue-badge`](../design-system/components/ai/ai-queue-badge/ai-queue-badge.md) | AIQueueBadge | `@/components/ai/ai-queue-badge` | atoms | stable | The state of one item in an agent queue, readable at a glance. |
+| [`ai:ai-response`](../design-system/components/ai/ai-response/ai-response.md) | AIResponse | `@/components/ai/ai-response` | groups | stable | One AI turn, assembled so attribution, progress and recourse are present by construction. |
 | [`ai:ai-soft-surface`](../design-system/components/ai/ai-soft-surface/ai-soft-surface.md) | AISoftSurface | `@/components/ai/ai-soft-surface` | atoms | beta | The wash that says everything inside this boundary was machine-generated. |
 | [`ai:ai-text-link`](../design-system/components/ai/ai-text-link/ai-text-link.md) | AITextLink | `@/components/ai/ai-text-link` | atoms | beta | An inline link inside AI prose whose label stands on its own. |
 | [`ai:ai-why-this-link`](../design-system/components/ai/ai-why-this-link/ai-why-this-link.md) | AIWhyThisLink | `@/components/ai/ai-why-this-link` | atoms | stable | Make the reasoning reachable in one interaction. |
@@ -82,6 +85,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 
 | Id | Component | Import | Tier | Status | Intent |
 |---|---|---|---|---|---|
+| [`pattern:form-field`](../design-system/components/patterns/form-field/form-field.md) | FormField | `@/components/patterns/form-field` | groups | stable | A labelled control with its description and error, wired together correctly. |
 | [`ui:button`](../design-system/components/ui/button/button.md) | Button | `@/components/ui/button` | atoms | stable | The single most important decision available in a region, and every lesser one alongside it. |
 | [`ui:calendar`](../design-system/components/ui/calendar/calendar.md) | Calendar | `@/components/ui/calendar` | organisms | stable | Pick a date when the surrounding days matter to the choice. |
 | [`ui:checkbox`](../design-system/components/ui/checkbox/checkbox.md) | Checkbox | `@/components/ui/checkbox` | atoms | stable | An independent yes-or-no choice, or one of several non-exclusive options. |
@@ -100,6 +104,7 @@ Machine-readable inventory: [`components/COMPONENTS_INDEX.json`](COMPONENTS_INDE
 
 | Id | Component | Import | Tier | Status | Intent |
 |---|---|---|---|---|---|
+| [`layout:page-container`](../design-system/components/layout/page-container/page-container.md) | PageContainer | `@/components/layout/page-container` | layout | stable | One max-width, one gutter, one place to change either. |
 | [`ui:aspect-ratio`](../design-system/components/ui/aspect-ratio/aspect-ratio.md) | AspectRatio | `@/components/ui/aspect-ratio` | layout | stable | Reserve the right shape before the content arrives, so nothing jumps. |
 | [`ui:card`](../design-system/components/ui/card/card.md) | Card | `@/components/ui/card` | organisms | stable | Group related content into a unit the eye reads as one thing. |
 | [`ui:resizable`](../design-system/components/ui/resizable/resizable.md) | ResizableHandle | `@/components/ui/resizable` | layout | stable | Let the user decide how to divide the space. |

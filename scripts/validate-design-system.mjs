@@ -138,6 +138,26 @@ for (const id of invIds) {
   if (!idxIds.has(id)) fail('VALIDATE_COMPONENT_INDEX', 'design-system/components/agent-manifest.index.json', `${id} is in the inventory but has no spec`, 'Run npm run ds:build', 'critical')
 }
 
+// VALIDATE_NO_DANGLING_REFS — a rule that names a component which does not
+// exist sends an agent straight into the closed-world rejection with nowhere
+// to go. The contract must not contradict its own inventory.
+const refs = new Map()
+for (const d of ['design-system/rules', 'design-system/patterns', 'design-system/graph', 'design-system/agents']) {
+  for (const f of await readdir(join(repoRoot, d))) {
+    const text = await readFile(join(repoRoot, d, f), 'utf8')
+    for (const m of text.matchAll(/"((?:ui|ai|pattern|layout):[a-z0-9-]+)"/g)) {
+      if (!refs.has(m[1])) refs.set(m[1], `${d}/${f}`)
+    }
+  }
+}
+for (const [id, where] of refs) {
+  if (!invIds.has(id)) {
+    fail('VALIDATE_NO_DANGLING_REFS', where,
+      `References ${id}, which is not in the inventory`,
+      'Build the component, or remove the reference', 'critical')
+  }
+}
+
 // ── Report, in the shape agents/validation.json declares ──
 const bySeverity = s => violations.filter(v => v.severity === s)
 const critical = bySeverity('critical')

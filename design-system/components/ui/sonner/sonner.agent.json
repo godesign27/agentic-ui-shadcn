@@ -113,6 +113,6 @@
     "Depends on next-themes (^0.4.6) for theme detection, while the rest of the app toggles the dark class directly. The two can disagree.",
     "Exports a component named Toaster, colliding with ui:toaster. Only one may be mounted."
   ],
-  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "generatedAt": "2026-09-11T05:07:37.563Z",
   "curated": true
 }

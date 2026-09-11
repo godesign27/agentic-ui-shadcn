@@ -7,7 +7,7 @@
 
 export function renderManifest(facts, meta, { generatedAt }) {
   const cva = facts.cva.find(c => Object.keys(c.groups).length) || { groups: {}, defaults: {} }
-  const specDir = `design-system/components/${facts.namespace}/${facts.name}`
+  const specDir = `design-system/components/${facts.dirName}/${facts.name}`
 
   const props = []
   for (const [group, values] of Object.entries(cva.groups)) {
@@ -72,7 +72,7 @@ export function renderManifest(facts, meta, { generatedAt }) {
     states: (meta.states || []).map(s => s.name),
     props,
     javascriptApi: {
-      import: `import { ${facts.exports.slice(0, 3).join(', ')}${facts.exports.length > 3 ? ', …' : ''} } from "@/components/${facts.namespace}/${facts.name}"`,
+      import: `import { ${facts.exports.slice(0, 3).join(', ')}${facts.exports.length > 3 ? ', …' : ''} } from "@/components/${facts.dirName}/${facts.name}"`,
       exports: facts.exports,
       forwardsRef: facts.forwardsRef,
       asChild: facts.asChild,
