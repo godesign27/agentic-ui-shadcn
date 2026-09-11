@@ -99,7 +99,7 @@ The right action button reacts to input state in real time.
 ## Canonical implementation
 
 ```tsx
-import { AICommandCenterSlim } from '@zs/ai/pages/ai-command-center-slim/AICommandCenterSlim';
+import { AICommandCenterSlim } from '@/components/ai/pages/ai-command-center-slim/AICommandCenterSlim';
 
 // Idle — mic visible
 <AICommandCenterSlim />

@@ -126,13 +126,13 @@ AIChip consolidates four formerly separate chip atoms (memory, brief, status, ha
 ### Tag — Semantic (DS-consistent)
 | Token | Value | Usage |
 | --- | --- | --- |
-| `zs.tag.info` | `#1B24AA` | Info border / active fill |
-| `zs.tag.error` | `#B21111` | Error border / active fill |
-| `zs.tag.success` | `#0A6E5E` | Success border / active fill |
-| `zs.tag.warning` | `#8A640C` | Warning border / active fill |
-| `zs.tag.disabled.border` | `#DEDCDE` | Disabled border |
-| `zs.tag.disabled.bg` | `#F4F3F3` | Disabled fill |
-| `zs.tag.disabled.text` | `#716E79` | Disabled label + icon |
+| `DS.tag.info` | `#1B24AA` | Info border / active fill |
+| `DS.tag.error` | `#B21111` | Error border / active fill |
+| `DS.tag.success` | `#0A6E5E` | Success border / active fill |
+| `DS.tag.warning` | `#8A640C` | Warning border / active fill |
+| `DS.tag.disabled.border` | `#DEDCDE` | Disabled border |
+| `DS.tag.disabled.bg` | `#F4F3F3` | Disabled fill |
+| `DS.tag.disabled.text` | `#716E79` | Disabled label + icon |
 
 ### Tag — Structure
 | Token | Value | Usage |

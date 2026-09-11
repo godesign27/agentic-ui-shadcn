@@ -68,10 +68,10 @@ colors:
   ai-ramp-tan-30: "#E8D6BF"  # var(--ai-ramp-tan-30) — companion border
   ai-ramp-tan-100: "#3C2A1D" # var(--ai-ramp-tan-100) — companion ink
   # Guild status anchors (semantic only; not in the 60-30-10 mix)
-  zs-red-60: "#C0392B"    # error fill default (AI.color.status.error)
-  zs-red-70: "#A5322A"    # error hover / pressed
-  zs-green-80: "#0A6E5E"  # success fill (AA 6.16:1)
-  zs-amber-80: "#8A640C"  # warning fill (AA 5.37:1)
+  error-red-60: "#C0392B"    # error fill default (AI.color.status.error)
+  error-red-70: "#A5322A"    # error hover / pressed
+  signal-green-80: "#0A6E5E"  # success fill (AA 6.16:1)
+  signal-amber-80: "#8A640C"  # warning fill (AA 5.37:1)
 
   # ── AI Tier 2 — semantic aliases (AI.* → --color-ai-*) ───────────────────
   ai-action-primary: "#4D60E6"        # var(--color-ai-action-primary) — filled button / active chip
