@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentWorkNote",
+  "repoModule": "aiAgentWorkNote",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "AIAgentWorkNote is a lightweight inline disclosure atom used in chat threads when the agent is actively working, planning, checking context, or summarizing what it is about to do. It gives the user sh",
+  "intent": "Quiet, trustworthy transparency. The agent shows what it is doing without exposing private reasoning.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-agent-work-note/ai-agent-work-note.md",
+    "contract": "components/ai/atomic/ai-agent-work-note/ai-agent-work-note.agent.json",
+    "agentIndexModule": "aiAgentWorkNote",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/agent-work-note/AIAgentWorkNote.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-agent-work-note/AIAgentWorkNote.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`auto from status`",
+      "hint": "Override the disclosure label. Defaults to STATUS_LABEL[status]."
+    },
+    {
+      "name": "status",
+      "values": [
+        "`WorkNoteStatus`"
+      ],
+      "default": "`\"idle\"`",
+      "hint": "Drives the default label and visual state. Options: idle \\"
+    },
+    {
+      "name": "content",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Prose note shown in the expanded body."
+    },
+    {
+      "name": "items",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Numbered list items shown in the expanded body."
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional leading icon to the left of the label."
+    },
+    {
+      "name": "showChevron",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show/hide the expand chevron."
+    },
+    {
+      "name": "defaultExpanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Initial expanded state (uncontrolled)."
+    },
+    {
+      "name": "expanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`undefined`",
+      "hint": "Controlled expanded state."
+    },
+    {
+      "name": "hideable",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show a Hide link next to the label."
+    },
+    {
+      "name": "hidden",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`undefined`",
+      "hint": "Controlled hidden state."
+    },
+    {
+      "name": "showViewTrace",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show \"View trace \u2192\" link in expanded body."
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show loading dots inline when status=active."
+    },
+    {
+      "name": "onToggle",
+      "values": [
+        "`(open: boolean) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the user toggles expand/collapse."
+    },
+    {
+      "name": "onHide",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the user clicks Hide."
+    },
+    {
+      "name": "onViewTrace",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the user clicks View trace."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentWorkNote"
+    ],
+    "import": "import { AIAgentWorkNote } from '@ai/atomic/ai-agent-work-note/AIAgentWorkNote'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use for every response \u2014 only when working transparency is needed",
+      "Do not use for final recommendation rationale \u2014 use ai-rationale-panel instead",
+      "Do not use as a full process trace \u2014 use ai-reasoning-trace instead",
+      "Do not expose hidden chain-of-thought or system prompts",
+      "Do not use when a simple loading indicator is enough",
+      "Do not use for standard product notifications"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Working",
+      "Planning",
+      "Checking context",
+      "Searching",
+      "Routing",
+      "Validating",
+      "Summarizing",
+      "Preparing"
+    ],
+    "accountability": "Transparency \u00b7 Status \u00b7 Context \u00b7 User control \u00b7 Safe explanation"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

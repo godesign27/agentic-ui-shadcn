@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIInputField",
+  "repoModule": "aiInputField",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AIInputField is the AI-surface counterpart to the standard ZDS Field atom (src/field/). It keeps the same scope \u2014 a label, a single-line input, and a helper/validation slot with default/warning/error modes \u2014 but swaps ZDS Field\u2019s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the ZDS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.",
+  "intent": "The text-entry atom for AI surfaces. Mirrors ZDS Field\u2019s scope (label \u00b7 input \u00b7 helper) but restyled onto the ZAIDYN brand surface \u2014 rounded outline, brand-blue border, and a soft blue-halo focus.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-input-field/ai-input-field.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiInputField",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-input-field/AIInputField.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-input-field/AIInputField.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Label'`",
+      "hint": "Field label rendered above the input."
+    },
+    {
+      "name": "value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Controlled input value."
+    },
+    {
+      "name": "placeholder",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Placeholder text\u2026'`",
+      "hint": "Placeholder shown when empty."
+    },
+    {
+      "name": "helper",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Helper text'`",
+      "hint": "Helper / validation text below the input."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small'`",
+      "hint": "`'normal'`"
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'warning' \\",
+      "hint": "'error'`"
+    },
+    {
+      "name": "state",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'focused'`",
+      "hint": "`\u2014`"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Non-editable, reduced contrast."
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(next: string) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Change handler receiving the new value."
+    },
+    {
+      "name": "width",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`280`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIInputField"
+    ],
+    "import": "import { AIInputField } from './AIInputField'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Compose",
+    "accountability": "Data entry"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

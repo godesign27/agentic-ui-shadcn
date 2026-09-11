@@ -1,0 +1,61 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMotionTokens",
+  "repoModule": "aiMotionTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Semantic motion aliases on AI.motion.icon.* for the Motion Icon treatment layer. Used only when state requires emphasis; default is no motion.",
+  "intent": "Respect prefers-reduced-motion. Use semantic motion names — pulse, spin, shimmer, nudge, handoff, completion, alertRing.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/motion.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "aiMotionTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
+    "note": "Structured mirror at components/ai/tokens/motion.json"
+  },
+  "platforms": ["web", "react"],
+  "variants": ["pulse", "spin", "shimmer", "nudge", "handoff", "completion", "alertRing"],
+  "states": [],
+  "javascriptApi": {
+    "exports": ["AI.motion.icon"],
+    "import": "import { AI } from './ai-tokens'",
+    "notes": [
+      "Each token is { duration, easing }",
+      "Gate animations: @media (prefers-reduced-motion: no-preference)",
+      "Spinner aligns with AI.motion.icon.spin (900ms linear)"
+    ]
+  },
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "All animations must respect prefers-reduced-motion",
+      "No motion >5s without user pause control",
+      "Static fallbacks: show percent label or status text without animation"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not hand-tune duration or easing per component",
+      "Do not use decorative parallax in chat",
+      "Do not animate layout height on every streamed token append"
+    ],
+    "agentRules": [
+      "Read motion.json for icon motion, keyframes, and transitions",
+      "Default is no motion — only fire for loading, handoff, completion, alert"
+    ]
+  },
+  "relatedModules": [
+    { "name": "AIIcon", "mirrorSpec": "components/ai/atomic/ai-icon/ai-icon.md" }
+  ],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

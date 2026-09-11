@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Handoff Chip — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ai-brand: #5A6DFF;
+      --ai-brand-surface: var(--brand-00);
+      --ai-brand-border: var(--brand-20);
+      --ai-brand-text: var(--ai-brand);
+      --ai-signal-surface: #FEFBF4;
+      --ai-signal-border: #FFD68F;
+      --ai-signal-strong: #A54F00;
+      --ai-signal-default: #EC7200;
+      --ai-status-success-bg: rgba(39, 174, 96, 0.08);
+      --ai-status-success-border: rgba(39, 174, 96, 0.25);
+      --ai-status-purple-bg: rgba(155, 89, 182, 0.08);
+      --ai-status-purple-border: rgba(155, 89, 182, 0.25);
+      --ai-radius-full: 100px;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .chip-list { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 8px; display: block;
+    }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+
+    /* ── AIChipHandoff (ported from AIChipHandoff.tsx) ── */
+    .ai-chip-handoff {
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--ai-radius-full);
+      border: 1px solid;
+      font-family: "Open Sans", sans-serif;
+      white-space: nowrap;
+    }
+    .ai-chip-handoff--md {
+      gap: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .ai-chip-handoff--sm {
+      gap: 4px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .ai-chip-handoff__glyph { opacity: 0.7; line-height: 1; }
+    .ai-chip-handoff--md .ai-chip-handoff__glyph { font-size: 10px; }
+    .ai-chip-handoff--sm .ai-chip-handoff__glyph { font-size: 9px; }
+    .ai-chip-handoff__arrow {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Handoff Chip</h1>
+    <p class="subtitle">
+      Directional ownership chip for agent-to-agent, agent-to-human, system, and failed handoff
+      transitions. Ported from canonical <code>AIChipHandoff.tsx</code>.
+    </p>
+
+    <section>
+      <h2>All directions</h2>
+      <p class="section-desc">Five handoff directions with entity glyphs (⬡ agent, ◉ human, ⊞ system) and directional arrow SVG.</p>
+      <div class="demo-surface">
+        <div class="chip-list" id="direction-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Size comparison</h2>
+      <p class="section-desc"><code>md</code> (default) and <code>sm</code> for dense audit rows.</p>
+      <div class="demo-surface">
+        <div class="chip-list" id="size-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Audit trail context</h2>
+      <div class="demo-surface" style="padding:0; overflow:hidden;">
+        <table style="width:100%; border-collapse:collapse; font-size:13px;">
+          <thead>
+            <tr style="background:var(--neutral-surface-muted); text-align:left;">
+              <th style="padding:12px 16px; font-weight:600; color:#716E79;">Time</th>
+              <th style="padding:12px 16px; font-weight:600; color:#716E79;">Handoff</th>
+            </tr>
+          </thead>
+          <tbody id="audit-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented directions</h2>
+      <ul class="state-list">
+        <li><strong>Agent → Agent</strong> — Brand-tinted pill; agent delegating to another agent</li>
+        <li><strong>Agent → Human</strong> — Signal-tinted pill; escalation for human review</li>
+        <li><strong>Human → Agent</strong> — Success green; human handing work back to AI</li>
+        <li><strong>System → Agent</strong> — Purple tint; automated trigger initiating agent task</li>
+        <li><strong>Failed</strong> — Red tones with dashed arrow; handoff attempt failed</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIChipHandoff } from '@/components/ai/atomic/chip-handoff/AIChipHandoff';
+
+&lt;AIChipHandoff direction="agent-to-human" fromLabel="Research Agent" toLabel="Sarah K." /&gt;
+&lt;AIChipHandoff direction="failed" fromLabel="Planner Agent" toLabel="Executor Agent" /&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    /* ── Token constants (from ai-tokens.ts) ── */
+    const TOKENS = {
+      brand: '#5A6DFF',
+      brandSurface: '#F5F6FF',
+      brandBorder: '#DEDCDE',
+      brandText: '#2f2c3c',
+      signalSurface: '#FEFBF4',
+      signalBorder: '#FFD68F',
+      signalStrong: '#A54F00',
+      signalDefault: '#EC7200',
+      success: '#27AE60',
+      purple: '#9B59B6',
+      failed: '#E74C3C',
+    };
+
+    /* ── DIR_CONFIG (verbatim from AIChipHandoff.tsx) ── */
+    const DIR_CONFIG = {
+      'agent-to-agent': {
+        bg: 'var(--ai-brand-surface)',
+        border: 'var(--ai-brand-border)',
+        text: 'var(--ai-brand-text)',
+        arrowColor: TOKENS.brand,
+        fromIcon: '⬡', toIcon: '⬡',
+      },
+      'agent-to-human': {
+        bg: 'var(--ai-signal-surface)',
+        border: 'var(--ai-signal-border)',
+        text: TOKENS.signalStrong,
+        arrowColor: TOKENS.signalDefault,
+        fromIcon: '⬡', toIcon: '◉',
+      },
+      'human-to-agent': {
+        bg: 'var(--ai-status-success-bg)',
+        border: 'var(--ai-status-success-border)',
+        text: TOKENS.success,
+        arrowColor: TOKENS.success,
+        fromIcon: '◉', toIcon: '⬡',
+      },
+      'system-to-agent': {
+        bg: 'var(--ai-status-purple-bg)',
+        border: 'var(--ai-status-purple-border)',
+        text: TOKENS.purple,
+        arrowColor: TOKENS.purple,
+        fromIcon: '⊞', toIcon: '⬡',
+      },
+      failed: {
+        bg: 'rgba(231,76,60,0.08)',
+        border: 'rgba(231,76,60,0.25)',
+        text: TOKENS.failed,
+        arrowColor: TOKENS.failed,
+        fromIcon: '⬡', toIcon: '⬡',
+      },
+    };
+
+    function arrowSvg(isFailed, color) {
+      const wrap = document.createElement('span');
+      wrap.className = 'ai-chip-handoff__arrow';
+      wrap.style.color = isFailed ? TOKENS.failed : color;
+      if (isFailed) {
+        wrap.innerHTML = `<svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+          <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 2"/>
+          <path d="M9 2L12 5L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+      } else {
+        wrap.innerHTML = `<svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+          <line x1="1" y1="5" x2="11" y2="5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M9 2L12 5L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+      }
+      return wrap;
+    }
+
+    function createHandoffChip(direction, fromLabel, toLabel, size = 'md') {
+      const cfg = DIR_CONFIG[direction];
+      const isFailed = direction === 'failed';
+      const sm = size === 'sm';
+
+      const chip = document.createElement('span');
+      chip.className = `ai-chip-handoff ai-chip-handoff--${size}`;
+      chip.setAttribute('role', 'status');
+      chip.setAttribute('aria-label', `Handoff from ${fromLabel} to ${toLabel}${isFailed ? ' (failed)' : ''}`);
+      chip.style.background = cfg.bg;
+      chip.style.borderColor = cfg.border;
+      chip.style.color = cfg.text;
+
+      const fromGlyph = document.createElement('span');
+      fromGlyph.className = 'ai-chip-handoff__glyph';
+      fromGlyph.textContent = cfg.fromIcon;
+
+      const from = document.createElement('span');
+      from.textContent = fromLabel;
+
+      const to = document.createElement('span');
+      to.textContent = toLabel;
+
+      const toGlyph = document.createElement('span');
+      toGlyph.className = 'ai-chip-handoff__glyph';
+      toGlyph.textContent = cfg.toIcon;
+
+      chip.append(fromGlyph, from, arrowSvg(isFailed, cfg.arrowColor), to, toGlyph);
+      return chip;
+    }
+
+    function labeledDemo(title, el) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = title;
+      wrap.append(lbl, el);
+      return wrap;
+    }
+
+    /* All directions — labels match design reference */
+    const list = document.getElementById('direction-list');
+    list.append(
+      labeledDemo('Agent → Agent', createHandoffChip('agent-to-agent', 'Research Agent', 'Planner Agent')),
+      labeledDemo('Agent → Human', createHandoffChip('agent-to-human', 'Executor Agent', 'Sarah K.')),
+      labeledDemo('Human → Agent', createHandoffChip('human-to-agent', 'Sarah K.', 'Writer Agent')),
+      labeledDemo('System → Agent', createHandoffChip('system-to-agent', 'Trigger', 'Analysis Agent')),
+      labeledDemo('Failed', createHandoffChip('failed', 'Planner Agent', 'Review Agent'))
+    );
+
+    /* Size comparison */
+    const sizeList = document.getElementById('size-list');
+    sizeList.append(
+      labeledDemo('Medium (md)', createHandoffChip('agent-to-agent', 'Research Agent', 'Planner Agent', 'md')),
+      labeledDemo('Small (sm)', createHandoffChip('agent-to-agent', 'Research Agent', 'Planner Agent', 'sm'))
+    );
+
+    /* Audit trail */
+    const audit = document.getElementById('audit-body');
+    [
+      { time: '10:42 AM', dir: 'system-to-agent', from: 'Trigger', to: 'Analysis Agent' },
+      { time: '10:43 AM', dir: 'agent-to-agent', from: 'Research Agent', to: 'Planner Agent' },
+      { time: '10:45 AM', dir: 'agent-to-human', from: 'Executor Agent', to: 'Sarah K.' },
+      { time: '10:47 AM', dir: 'failed', from: 'Planner Agent', to: 'Review Agent' },
+    ].forEach(row => {
+      const tr = document.createElement('tr');
+      tr.style.borderTop = '1px solid #EBEBEB';
+      tr.innerHTML = `<td style="padding:12px 16px; color:#87848D; white-space:nowrap;">${row.time}</td><td style="padding:12px 16px;"></td>`;
+      tr.cells[1].appendChild(createHandoffChip(row.dir, row.from, row.to, 'sm'));
+      audit.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

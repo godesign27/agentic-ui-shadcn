@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIButton",
+  "repoModule": "aiButton",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Primary, secondary, and tertiary CTA for AI surfaces \u2014 brand gradient primary with loading/complete/error status, outline secondary, ghost tertiary. Also exports AIAction composed row.",
+  "intent": "Confirm/cancel pairs, Apply/Edit/Dismiss rows, status-aware CTAs. Not for AI Dialog toolbar triggers \u2014 use AIDialogButton.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-button/ai-button.md",
+    "contract": "components/ai/atomic/ai-button/ai-button.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiButton",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/button/AIButton.tsx",
+    "preview": "components/ai/atomic/ai-button/ai-button.preview.html",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-button/AIAction.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "primary",
+    "secondary",
+    "tertiary"
+  ],
+  "states": [
+    "default",
+    "loading",
+    "complete",
+    "error",
+    "disabled"
+  ],
+  "slots": [
+    {
+      "name": "label",
+      "required": true,
+      "allowedContent": [
+        "string label text"
+      ]
+    },
+    {
+      "name": "statusGlyph",
+      "required": false,
+      "allowedContent": [
+        "spinner when loading",
+        "check when complete"
+      ],
+      "note": "Primary variant only; prepended to label; minWidth prevents reflow"
+    }
+  ],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "default": "primary",
+      "hint": "Emphasis level \u2014 gradient, outline, or ghost text"
+    },
+    {
+      "name": "label",
+      "values": [
+        "string"
+      ],
+      "hint": "Required visible text"
+    },
+    {
+      "name": "size",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "hint": "sm 32px / md 40px / lg 48px \u2014 font 11/12/13px with minWidth 80/120/160px"
+    },
+    {
+      "name": "radius",
+      "values": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "full"
+      ],
+      "default": "md",
+      "hint": "Corner radius \u2014 AI.radius.xs through full"
+    },
+    {
+      "name": "status",
+      "values": [
+        "default",
+        "loading",
+        "complete",
+        "error"
+      ],
+      "default": "default",
+      "hint": "Primary only \u2014 spinner, check, or #C0392B error fill"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Primary opacity 0.45 \u00b7 secondary 0.5 \u00b7 tertiary 0.4"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "() => void"
+      ],
+      "hint": "Suppressed when disabled or status loading/complete"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIButton",
+      "AIAction"
+    ],
+    "import": "import { AIButton, AIAction } from 'ai/atomic/button/AIButton'",
+    "notes": [
+      "Three variants \u00d7 three sizes \u00d7 five radii",
+      "Status prop primary-only; error fill #C0392B; active fill AI.color.action.primaryActive",
+      "Secondary border NEUTRAL.border; tertiary uses --ai-neutral-helper / --ai-neutral-text CSS vars",
+      "Ghost variant extracted to AIDialogButton"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-neutral-text",
+      "--ai-neutral-helper",
+      "--ai-btn-disabled-text",
+      "--ai-btn-disabled-border",
+      "ai-button.primary.bg",
+      "ai-button.primary.bg.active",
+      "ai-button.primary.shadow",
+      "ai-button.secondary.border",
+      "ai-button.secondary.bg.hover"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "disabled attribute when disabled=true",
+      "aria-label includes loading/complete suffix on primary status"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use for AI Dialog toolbar triggers \u2014 use AIDialogButton",
+      "Do not use for navigation links",
+      "Do not omit label text",
+      "Do not hardcode colors \u2014 use AI.* and standard tokens",
+      "Do not apply status prop to secondary or tertiary variants"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Confirm",
+      "Execute"
+    ],
+    "accountability": "User control"
+  },
+  "relatedModules": [
+    {
+      "name": "AIDialogButton",
+      "mirrorSpec": "components/ai/atomic/ai-dialog-button/ai-dialog-button.md"
+    },
+    {
+      "name": "AIAction",
+      "mirrorSpec": "components/ai/atomic/ai-action/ai-action.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

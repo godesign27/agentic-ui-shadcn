@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Action — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    @keyframes ai-spin { to { transform: rotate(360deg); } }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    .nav-link:hover { text-decoration: underline; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .state-card { display: flex; flex-direction: column; gap: 10px; }
+    .state-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--neutral-text-helper); }
+
+    .ai-action { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .ai-action.inline { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .ai-action.stacked { align-items: stretch; }
+    .ai-action.stacked .ai-action__btn { width: 100%; justify-content: center; }
+
+    .review-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 100px;
+      background: #FEFBF4; border: 1px solid #FFD68F;
+      font-size: 12px; font-weight: 600; color: #CB6100;
+    }
+    .review-pill::before { content: "⚠"; font-size: 11px; }
+
+    .ai-action__btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: inherit; font-weight: 600; cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+      border: none; white-space: nowrap;
+    }
+    .ai-action__btn--primary {
+      background: linear-gradient(135deg, #7A8CFF 0%, #5A6DFF 100%);
+      color: #fff; border-radius: 16px;
+    }
+    .ai-action__btn--primary:hover:not(:disabled) { background: #4D60E6; }
+    .ai-action__btn--primary.loading,
+    .ai-action__btn--primary.complete { background: #4D60E6; }
+    .ai-action__btn--primary.error { background: #C62828; }
+    .ai-action__btn--primary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .ai-action__btn--secondary {
+      background: transparent; color: var(--neutral-text);
+      border: 1px solid var(--neutral-border-subtle); border-radius: 16px;
+    }
+    .ai-action__btn--secondary:hover:not(:disabled) { background: #F4F3F3; }
+    .ai-action__btn--secondary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .ai-action__btn--tertiary {
+      background: transparent; color: var(--neutral-text-helper); border: none;
+      padding-left: 8px; padding-right: 8px;
+    }
+    .ai-action__btn--tertiary:hover:not(:disabled) { color: var(--neutral-text); }
+    .ai-action__btn--tertiary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .ai-action__btn--sm { height: 32px; padding: 0 14px; font-size: 13px; border-radius: 12px; }
+    .ai-action__btn--md { height: 40px; padding: 0 16px; font-size: 14px; }
+    .ai-action__btn--lg { height: 48px; padding: 0 20px; font-size: 15px; border-radius: 20px; }
+
+    .spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff; border-radius: 50%;
+      animation: ai-spin 0.7s linear infinite;
+    }
+    .check { font-size: 16px; line-height: 1; }
+
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .ctrl-btn {
+      padding: 6px 12px; border: 1px solid var(--neutral-border-subtle); border-radius: 8px;
+      background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .ctrl-btn.active { background: #5A6DFF; color: #fff; border-color: #5A6DFF; }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Action</h1>
+    <p class="subtitle">The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses.</p>
+
+    <section>
+      <h2>Interactive demo</h2>
+      <p class="section-desc">Click Apply to cycle through loading → complete. Use controls to switch layout and size.</p>
+      <div class="demo-surface">
+        <div id="interactive-action"></div>
+        <div class="controls">
+          <button class="ctrl-btn active" data-layout="inline">Inline</button>
+          <button class="ctrl-btn" data-layout="stacked">Stacked</button>
+          <button class="ctrl-btn active" data-size="md">MD</button>
+          <button class="ctrl-btn" data-size="sm">SM</button>
+          <button class="ctrl-btn" data-size="lg">LG</button>
+          <button class="ctrl-btn" id="toggle-review">Toggle review pill</button>
+          <button class="ctrl-btn" id="reset-demo">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>All states</h2>
+      <p class="section-desc">Static gallery of every documented status variant.</p>
+      <div class="demo-surface">
+        <div class="state-grid" id="state-gallery"></div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const GRAD = 'linear-gradient(135deg, #7A8CFF 0%, #5A6DFF 100%)';
+
+    function createAction(opts = {}) {
+      const {
+        status = 'default', requiresReview = false, layout = 'inline', size = 'md',
+        primaryLabel = 'Apply Recommendation', secondaryLabel = 'Review Details', tertiaryLabel = 'Dismiss',
+        onPrimary, onSecondary, onTertiary
+      } = opts;
+
+      const wrap = document.createElement('div');
+      wrap.className = `ai-action ${layout}`;
+
+      if (requiresReview) {
+        const pill = document.createElement('div');
+        pill.className = 'review-pill';
+        pill.textContent = 'Requires review';
+        wrap.appendChild(pill);
+        if (layout === 'inline') wrap.style.flexDirection = 'column';
+        wrap.style.alignItems = 'flex-start';
+        const row = document.createElement('div');
+        row.className = `ai-action ${layout}`;
+        row.style.gap = '8px';
+        wrap.appendChild(row);
+        var btnHost = row;
+      } else {
+        var btnHost = wrap;
+      }
+
+      const disabled = status === 'disabled';
+      const primary = document.createElement('button');
+      primary.className = `ai-action__btn ai-action__btn--primary ai-action__btn--${size}`;
+      if (status === 'loading') primary.classList.add('loading');
+      if (status === 'complete') primary.classList.add('complete');
+      if (status === 'error') primary.classList.add('error');
+      primary.disabled = disabled;
+
+      if (status === 'loading') {
+        const sp = document.createElement('span'); sp.className = 'spinner';
+        primary.append(sp, document.createTextNode('Applying…'));
+      } else if (status === 'complete') {
+        primary.innerHTML = '<span class="check">✓</span> Applied';
+      } else if (status === 'error') {
+        primary.textContent = 'Try again';
+      } else {
+        primary.textContent = primaryLabel;
+      }
+      if (onPrimary) primary.onclick = onPrimary;
+      btnHost.appendChild(primary);
+
+      if (secondaryLabel) {
+        const sec = document.createElement('button');
+        sec.className = `ai-action__btn ai-action__btn--secondary ai-action__btn--${size}`;
+        sec.textContent = secondaryLabel;
+        sec.disabled = disabled;
+        if (onSecondary) sec.onclick = onSecondary;
+        btnHost.appendChild(sec);
+      }
+
+      if (tertiaryLabel) {
+        const ter = document.createElement('button');
+        ter.className = `ai-action__btn ai-action__btn--tertiary ai-action__btn--${size}`;
+        ter.textContent = tertiaryLabel;
+        ter.disabled = disabled;
+        if (onTertiary) ter.onclick = onTertiary;
+        btnHost.appendChild(ter);
+      }
+
+      return wrap;
+    }
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2200);
+    }
+
+    // State gallery
+    const gallery = document.getElementById('state-gallery');
+    [
+      { label: 'Default', status: 'default' },
+      { label: 'Loading', status: 'loading' },
+      { label: 'Complete', status: 'complete' },
+      { label: 'Disabled', status: 'disabled' },
+      { label: 'Requires review', status: 'default', requiresReview: true },
+      { label: 'Error', status: 'error', primaryLabel: 'Try again' },
+    ].forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'state-card';
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = s.label;
+      card.append(lbl, createAction(s));
+      gallery.appendChild(card);
+    });
+
+    // Interactive demo
+    let demoStatus = 'default';
+    let demoLayout = 'inline';
+    let demoSize = 'md';
+    let demoReview = false;
+    const host = document.getElementById('interactive-action');
+
+    function renderDemo() {
+      host.innerHTML = '';
+      host.appendChild(createAction({
+        status: demoStatus, requiresReview: demoReview, layout: demoLayout, size: demoSize,
+        onPrimary: () => {
+          if (demoStatus === 'default' || demoStatus === 'error') {
+            demoStatus = 'loading';
+            renderDemo();
+            setTimeout(() => { demoStatus = 'complete'; renderDemo(); toast('Recommendation applied'); }, 1800);
+          }
+        },
+        onSecondary: () => toast('Opening review details…'),
+        onTertiary: () => toast('Dismissed'),
+      }));
+    }
+    renderDemo();
+
+    document.querySelectorAll('[data-layout]').forEach(b => b.onclick = () => {
+      document.querySelectorAll('[data-layout]').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      demoLayout = b.dataset.layout;
+      renderDemo();
+    });
+    document.querySelectorAll('[data-size]').forEach(b => b.onclick = () => {
+      document.querySelectorAll('[data-size]').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      demoSize = b.dataset.size;
+      renderDemo();
+    });
+    document.getElementById('toggle-review').onclick = () => { demoReview = !demoReview; renderDemo(); };
+    document.getElementById('reset-demo').onclick = () => { demoStatus = 'default'; demoReview = false; renderDemo(); };
+  </script>
+</body>
+</html>

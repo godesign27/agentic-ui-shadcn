@@ -1,0 +1,13 @@
+{
+  "id": "ai-autocomplete",
+  "name": "AI Autocomplete",
+  "tier": "foundations",
+  "status": "Draft",
+  "intent": "AI Autocomplete — aligned to AI Pattern Library nav (foundations).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "AIAutocomplete"
+    ]
+  }
+}

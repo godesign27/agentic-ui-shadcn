@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIStepper",
+  "repoModule": "zdsAiStepper",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIStepper is the AI-surface sibling of the standard ZDS Compact Stepper (src/stepper/, ported in phaseH \u2192 CompactStepper). It preserves the stepper contract \u2014 evenly-distributed steps, half-tracks that fill up to and including the current step, icon/number milestones, and italic status badges \u2014 while replacing the ZDS neutral/green token layer with the AI system. Completed and current-complete steps fill with AI.gradient.action.full (brand gradient) under a white glyph and a brand drop shadow; the current step is a white number circle with a 2px AI.color.brand (#4D60E6) ring and the same soft glow, its number in AI.color.text.primary (#1F2A66); steps after the current one are muted (soft-brand #BECAFE ring or a filled soft-brand dot, brand-subtle track, disabled text). Connector tracks are rounded and painted AI brand for done segments over AI.color.brandSubtle (#D2DBFF) for pending ones. Status badges keep the ZDS semantic meaning but recolor to the AI status set (success / warning / error) with the AI brand for info / current. Orientation switches horizontal \u2194 vertical; the small size drops milestones to 28px / labels to 14px. Style-driven and stateless \u2014 the app owns step transitions. Glyphs render through the zsIcons font (zs-icon-*); the root carries zs-master-style so the icon-font glyph rules resolve.",
+  "intent": "ZDS Compact Stepper, AI surface theme \u2014 brand-gradient milestones, brand tracks, glowing current step.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-stepper/zds-ai-stepper.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiStepper",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-stepper/AIStepper.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-stepper/AIStepper.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "steps",
+      "values": [
+        "`AIStepDef[]`"
+      ],
+      "default": "`required`",
+      "hint": "Steps \u2014 { label, sub?, badge?, mode, icon?, num?, dot? }."
+    },
+    {
+      "name": "orientation",
+      "values": [
+        "`'horizontal' \\"
+      ],
+      "default": "'vertical'`",
+      "hint": "`'horizontal'`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small'`",
+      "hint": "`'normal'`"
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`'stacked' \\"
+      ],
+      "default": "'inline'`",
+      "hint": "`'stacked'`"
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`'brand' \\"
+      ],
+      "default": "'neutral'`",
+      "hint": "`'brand'`"
+    },
+    {
+      "name": "mode (step)",
+      "values": [
+        "`'complete' \\"
+      ],
+      "default": "'current-complete' \\",
+      "hint": "'current' \\"
+    },
+    {
+      "name": "badge (step)",
+      "values": [
+        "`{ text, tone }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Italic status pill; tone = success \\"
+    },
+    {
+      "name": "dot (step)",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render a pending step as a filled soft-brand dot instead of a number."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIStepper"
+    ],
+    "import": "import { AIStepper } from './AIStepper'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

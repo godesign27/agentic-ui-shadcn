@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardBrief",
+  "repoModule": "aiCardBrief",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The AI Card Brief surfaces the structured task brief for an agent, showing goal, data sources, constraints, and expected output. It is the foundational transparency layer for AI Led experiences \u2014 always surfaced before an agent executes a consequential action.",
+  "intent": "Pre-execution brief for an agent task. Surfaces goal, data sources, constraints, and output format so humans can review and approve before the AI acts.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-brief/ai-card-brief.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardBrief",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-brief/AICardBrief.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-brief/AICardBrief.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "agentName",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Research Agent\"`",
+      "hint": "Display name of the agent"
+    },
+    {
+      "name": "goal",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Task goal statement shown in GOAL block"
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Data sources list"
+    },
+    {
+      "name": "constraints",
+      "values": [
+        "`string[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Agent constraints list"
+    },
+    {
+      "name": "outputFormat",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Expected output format description"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`BriefChipStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "Status chip state"
+    },
+    {
+      "name": "onRun",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Run button handler"
+    },
+    {
+      "name": "onEdit",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Edit button handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardBrief"
+    ],
+    "import": "import { AICardBrief } from './AICardBrief'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Confirm \u00b7 Execute",
+    "accountability": "Approval \u00b7 Audit trail \u00b7 Rationale"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

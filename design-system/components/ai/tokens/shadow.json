@@ -1,0 +1,38 @@
+{
+  "category": "shadow",
+  "version": "2.0",
+  "lastUpdated": "2026-06-22",
+  "source": "components/ai/tokens/ai-tokens.ts",
+  "mirrorSpec": "components/ai/tokens/shadow.md",
+  "hardRules": [
+    "AI.shadow.action.* is brand-tinted rgba(90,109,255,…) — never plain black",
+    "AI.shadow.input.* are composite values — apply whole, do not decompose",
+    "Wrap action tokens: boxShadow: `0 2px 8px ${AI.shadow.action.default}`",
+    "Use emphasis for hover/pressed elevation"
+  ],
+  "tokens": {
+    "AI.shadow.action.default": {
+      "value": "rgba(90, 109, 255, 0.18)",
+      "type": "color-only",
+      "usage": "Default elevation on primary buttons, active chips",
+      "applyAs": "boxShadow: `0 2px 8px ${AI.shadow.action.default}`"
+    },
+    "AI.shadow.action.emphasis": {
+      "value": "rgba(90, 109, 255, 0.24)",
+      "type": "color-only",
+      "usage": "Hover / pressed / active elevation",
+      "applyAs": "boxShadow: `0 4px 14px ${AI.shadow.action.emphasis}`"
+    },
+    "AI.shadow.input.default": {
+      "value": "0 0 0 1.5px rgba(26,22,40,0.18), 0 8px 40px rgba(0,0,0,0.07), 0 2px 12px rgba(0,0,0,0.05)",
+      "type": "composite",
+      "usage": "AI input card resting state"
+    },
+    "AI.shadow.input.focus": {
+      "value": "0 0 0 2px rgba(90,109,255,0.35), 0 12px 48px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.08)",
+      "type": "composite",
+      "usage": "AI input card focused state"
+    }
+  },
+  "import": "import { AI } from './ai-tokens'"
+}

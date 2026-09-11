@@ -1,0 +1,13 @@
+{
+  "id": "line-chart",
+  "name": "Line Chart",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Line Chart — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "LineChart"
+    ]
+  }
+}

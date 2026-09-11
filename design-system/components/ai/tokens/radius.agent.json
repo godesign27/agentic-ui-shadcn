@@ -1,0 +1,63 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIRadiusTokens",
+  "repoModule": "aiRadiusTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Five-step border-radius scale on AI.radius (xs / sm / md / lg / full). Scale names encode size intent — never raw pixels.",
+  "intent": "Corner radius decisions live in one place. Use scale names in component code, not pixel literals.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/radius.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "aiRadiusTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
+    "note": "Structured mirror at components/ai/tokens/radius.json"
+  },
+  "platforms": ["web", "react"],
+  "variants": ["xs", "sm", "md", "lg", "full"],
+  "states": [],
+  "javascriptApi": {
+    "exports": ["AI.radius"],
+    "import": "import { AI } from './ai-tokens'",
+    "notes": [
+      "xs 6px · sm 12px · md 16px · lg 20px · full 100px",
+      "Input card empty: lg · chat: md · chips: full · avatars: 50%"
+    ]
+  },
+  "tokens": {
+    "cssVars": [
+      "--ai-radius-xs",
+      "--ai-radius-sm",
+      "--ai-radius-md",
+      "--ai-radius-lg",
+      "--ai-radius-full",
+      "AI.radius.md",
+      "AI.radius.full"
+    ]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use raw borderRadius pixel values",
+      "Do not use AI.radius.full for avatars — use 50%",
+      "Do not substitute large pixel values for full — use the token name"
+    ],
+    "agentRules": [
+      "Read radius.json for scale + quick reference mapping",
+      "Pill shapes always use AI.radius.full"
+    ]
+  },
+  "relatedModules": [
+    { "name": "AIShadowTokens", "mirrorSpec": "components/ai/tokens/shadow.md" }
+  ],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIObjectiveCard",
+  "repoModule": "aiObjectiveCard",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIObjectiveCard is a compact, reusable card for surfacing a single goal, constraint, operating mode, autonomy boundary, review requirement, optimization target, risk guardrail, knowledge input, or assumption that governs how an agent should behave for a given task or workflow. Each card leads with a bold title and a small icon, anchors the type chip at the top-right, and lists short bullet items beneath. A subtle \"View details\" link footer connects the card to its underlying configuration drawer.",
+  "intent": "Compact card that frames a goal, constraint, operating mode, or guardrail an agent must respect.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-objective-card/ai-objective-card.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiObjectiveCard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-objective-card/AIObjectiveCard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-objective-card/AIObjectiveCard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "",
+      "values": [
+        "`'primary-goal' \\"
+      ],
+      "default": "'constraint' \\",
+      "hint": "'operating-mode' \\"
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Bold statement of the goal / constraint / mode."
+    },
+    {
+      "name": "",
+      "values": [
+        "`AIObjectiveItem[]`"
+      ],
+      "default": "``",
+      "hint": "Bullet items elaborating the contract."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Override the default icon for the type."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Override the default chip label."
+    },
+    {
+      "name": "",
+      "values": [
+        "`string`"
+      ],
+      "default": "``",
+      "hint": "Footer link label. Defaults to \"View details\"."
+    },
+    {
+      "name": "",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "``",
+      "hint": "Footer link callback \u2014 opens the objective configuration drawer."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIObjectiveCard"
+    ],
+    "import": "import { AIObjectiveCard } from './AIObjectiveCard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

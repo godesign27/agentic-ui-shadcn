@@ -1,0 +1,40 @@
+/**
+ * ZSAI Type Scale — CSS custom properties for font sizes.
+ *
+ * The single source of truth for the AI type scale is
+ * `packages/ai-tokens/src/ai-typography.ts` (AI_TYPOGRAPHY). React components
+ * spread those token objects into inline styles; Angular/CSS components cannot
+ * consume the TS object, so this file mirrors the distinct `fontSize` values as
+ * CSS variables. Components reference them as:
+ *
+ *   font-size: var(--zsai-font-size-14, 14px);   // token-first, px fallback
+ *
+ * Only sizes that exist in AI_TYPOGRAPHY are exposed here. Sizes with no token
+ * (e.g. 10, 11, 13, 18, 28) are intentionally omitted — do not add them; flag
+ * the usage instead so the design decision surfaces (see typography.md §2 floor).
+ *
+ * Import order (append after the other token layers):
+ *   1. ai-surface.css
+ *   2. ai-component-tokens.css
+ *   3. ai-typography.css
+ *   4. zds-bridge.css and/or shadcn-bridge.css
+ */
+
+:root {
+  /* Standard scale (mirrors AI_TYPOGRAPHY['@zsai-*'] fontSize values) */
+  --zsai-font-size-12: 12px;  /* caption-1/2, h6, body-extra-small, overline, agent-name, status-label … */
+  --zsai-font-size-14: 14px;  /* body-small, subtitle-2, h5, button-label, menu-item, table-cell … */
+  --zsai-font-size-15: 15px;  /* impact-headline (deliberate compact-KPI exception) */
+  --zsai-font-size-16: 16px;  /* body, subtitle-1, h4, label, input-label, card-title, bubble-body … */
+  --zsai-font-size-20: 20px;  /* h3 */
+  --zsai-font-size-22: 22px;  /* metric-value */
+  --zsai-font-size-24: 24px;  /* h2 */
+
+  /* Large numeric display scale (KPI hero numbers) — mirrors
+     AI_TYPOGRAPHY['@zsai-metric-value-md' | '@zsai-metric-value-lg']. */
+  --zsai-font-size-26: 26px;  /* metric-value-md (also normalizes stray 28) */
+  --zsai-font-size-34: 34px;  /* metric-value-lg */
+  --zsai-font-size-32: 32px;  /* h1 */
+  --zsai-font-size-48: 48px;  /* hero */
+  --zsai-font-size-64: 64px;  /* super-hero */
+}

@@ -1,0 +1,200 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "node-connector",
+  "repoModule": "aiNodeConnector",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the ZDS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient=\"auto\", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The ZDS accent \u2014 teal #2f6f7b, and its subtle fill #eaf4f6 \u2014 becomes AI brand; every neutral stays neutral, read through the ZDS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone \u2014 structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge \u2014 a corner disc marking a node the model has surfaced \u2014 plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.",
+  "intent": "The standard connector with the theme swapped \u2014 plus the four states an agent graph needs.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-node-connector/ai-node-connector.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiNodeConnector",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-node-connector/AINodeCard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-node-connector/AINodeCard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "intent",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'suggested' \\",
+      "hint": "'active' \\"
+    },
+    {
+      "name": "line",
+      "values": [
+        "`'solid' \\"
+      ],
+      "default": "'dashed'`",
+      "hint": "`intent's default`"
+    },
+    {
+      "name": "radius",
+      "values": [
+        "`'with' \\"
+      ],
+      "default": "'without'`",
+      "hint": "`'with'`"
+    },
+    {
+      "name": "startingPoint",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'circle' \\",
+      "hint": "'ring'`"
+    },
+    {
+      "name": "endingPoint",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'arrow' \\",
+      "hint": "'dot'`"
+    },
+    {
+      "name": "badge",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'expand' \\",
+      "hint": "'collapse' \\"
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0.8`",
+      "hint": "0\u20131. Renders the ring on badge=\"confidence\" and its percentage in the disc."
+    },
+    {
+      "name": "flow",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Marches a pulse along the run. Decorative; suppressed under reduced motion."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Relationship pill on the bottom run."
+    },
+    {
+      "name": "state",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'focused'`",
+      "hint": "`'default'`"
+    },
+    {
+      "name": "weight",
+      "values": [
+        "`number`"
+      ],
+      "default": "`intent's default`",
+      "hint": "Overrides the intent stroke weight."
+    },
+    {
+      "name": "width",
+      "values": [
+        "`number`"
+      ],
+      "default": "`73.5`",
+      "hint": "Overall width \u2014 grow to reach a deeper child column."
+    },
+    {
+      "name": "height",
+      "values": [
+        "`number`"
+      ],
+      "default": "`115`",
+      "hint": "Overall height \u2014 grow to span more rows."
+    },
+    {
+      "name": "indent",
+      "values": [
+        "`number`"
+      ],
+      "default": "`18.5`",
+      "hint": "x of the trunk, and the length of the top run. 0 collapses it to a two-segment elbow."
+    },
+    {
+      "name": "onBadgeClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Supplying it makes the badge a real button with aria-expanded."
+    },
+    {
+      "name": "badgeLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`derived`",
+      "hint": "Accessible name for the badge control."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "node-connector"
+    ],
+    "import": "import { node-connector } from './AINodeCard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI"
+    ],
+    "aiBehavior": "Data visualization \u00b7 Diagram",
+    "accountability": "Tree \u00b7 Agent graph"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

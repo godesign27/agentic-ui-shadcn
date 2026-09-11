@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Control Bar — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    .nav-link:hover { text-decoration: underline; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .control-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 14px; border-radius: 8px;
+      background: var(--neutral-surface-muted); border: 1px solid var(--neutral-border-subtle);
+      min-height: 52px;
+    }
+    .control-bar__label {
+      font-size: 13px; font-weight: 600; color: #5b5864; flex: 1; min-width: 120px;
+    }
+    .control-bar__message {
+      font-size: 13px; color: var(--neutral-text); flex: 1; display: flex; align-items: center; gap: 8px;
+    }
+    .control-bar__message .check { color: #2E7D32; font-weight: 700; }
+    .control-bar__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
+
+    .ctrl-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 32px; padding: 0 14px; border-radius: 16px;
+      font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: background 0.13s, border-color 0.13s;
+      white-space: nowrap;
+    }
+    .ctrl-btn--primary {
+      background: #5A6DFF; color: #fff; border: 1px solid #5A6DFF;
+    }
+    .ctrl-btn--primary:hover { background: #5b5864; border-color: #5b5864; }
+    .ctrl-btn--signal {
+      background: #FEFBF4; color: #A54F00; border: 1px solid #EC7200;
+    }
+    .ctrl-btn--signal:hover { background: #FFF1D6; }
+    .ctrl-btn--ghost {
+      background: transparent; color: var(--neutral-text-helper); border: 1px solid var(--neutral-border-subtle);
+    }
+    .ctrl-btn--ghost:hover { background: #fff; color: var(--neutral-text); }
+    .ctrl-btn--danger {
+      background: transparent; color: #C62828; border: 1px solid #EF9A9A;
+    }
+    .ctrl-btn--danger:hover { background: #FFEBEE; }
+
+    .workflow-panel {
+      border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden; margin-top: 20px;
+    }
+    .workflow-output {
+      padding: 20px; font-size: 14px; color: var(--neutral-text-helper); background: var(--neutral-surface-muted);
+      min-height: 80px;
+    }
+    .workflow-output strong { color: var(--neutral-text); }
+
+    .state-list { display: flex; flex-direction: column; gap: 16px; }
+    .state-card { display: flex; flex-direction: column; gap: 8px; }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper);
+    }
+
+    .scenario-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .scenario-btn {
+      padding: 6px 12px; border: 1px solid var(--neutral-border-subtle); border-radius: 8px;
+      background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .scenario-btn:hover { border-color: #5A6DFF; color: #5b5864; }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Control Bar</h1>
+    <p class="subtitle">State-aware execution control for AI workstreams — pause, resume, redirect, and cancel with inline confirmation.</p>
+
+    <section>
+      <h2>Interactive workflow</h2>
+      <p class="section-desc">Use the control bar to pause, cancel, or redirect. Cancel triggers inline confirmation.</p>
+      <div class="demo-surface">
+        <div class="workflow-panel">
+          <div id="live-bar"></div>
+          <div class="workflow-output" id="workflow-output">
+            Agent is analyzing territory data and drafting recommendations…
+          </div>
+        </div>
+        <div class="scenario-btns">
+          <button class="scenario-btn" data-state="running">Jump: Running</button>
+          <button class="scenario-btn" data-state="paused">Jump: Paused</button>
+          <button class="scenario-btn" data-state="redirect-available">Jump: Redirect available</button>
+          <button class="scenario-btn" data-state="cancel-confirm">Jump: Cancel confirm</button>
+          <button class="scenario-btn" data-state="saved-progress">Jump: Saved progress</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>All states</h2>
+      <div class="demo-surface">
+        <div class="state-list" id="state-gallery"></div>
+      </div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2200);
+    }
+
+    function btn(label, variant, onClick) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = `ctrl-btn ctrl-btn--${variant}`;
+      b.textContent = label;
+      if (onClick) b.onclick = onClick;
+      return b;
+    }
+
+    function controlBar(state, handlers = {}, label) {
+      const bar = document.createElement('div');
+      bar.className = 'control-bar';
+
+      const actions = document.createElement('div');
+      actions.className = 'control-bar__actions';
+
+      if (state === 'running') {
+        if (label) {
+          const lbl = document.createElement('span');
+          lbl.className = 'control-bar__label';
+          lbl.textContent = label;
+          bar.appendChild(lbl);
+        }
+        actions.append(
+          btn('Pause', 'primary', handlers.onPause),
+          btn('Cancel', 'ghost', handlers.onCancel)
+        );
+      } else if (state === 'paused') {
+        if (label) {
+          const lbl = document.createElement('span');
+          lbl.className = 'control-bar__label';
+          lbl.textContent = label || 'Task paused';
+          bar.appendChild(lbl);
+        }
+        actions.append(
+          btn('Resume', 'primary', handlers.onResume),
+          btn('Cancel', 'ghost', handlers.onCancel)
+        );
+      } else if (state === 'redirect-available') {
+        const lbl = document.createElement('span');
+        lbl.className = 'control-bar__label';
+        lbl.textContent = label || 'Alternative route available';
+        bar.appendChild(lbl);
+        actions.append(
+          btn('Redirect', 'signal', handlers.onRedirect),
+          btn('Continue', 'primary', handlers.onResume),
+          btn('Cancel', 'ghost', handlers.onCancel)
+        );
+      } else if (state === 'cancel-confirm') {
+        const msg = document.createElement('div');
+        msg.className = 'control-bar__message';
+        msg.textContent = 'Cancel this task? Progress will be saved.';
+        bar.appendChild(msg);
+        actions.append(
+          btn('Yes, cancel', 'danger', handlers.onCancelConfirm),
+          btn('Keep running', 'ghost', handlers.onResume)
+        );
+      } else if (state === 'saved-progress') {
+        const msg = document.createElement('div');
+        msg.className = 'control-bar__message';
+        msg.innerHTML = '<span class="check">✓</span> Progress saved. You can resume later.';
+        bar.appendChild(msg);
+      }
+
+      bar.appendChild(actions);
+      return bar;
+    }
+
+    const OUTPUT = {
+      running: 'Agent is analyzing territory data and drafting recommendations…',
+      paused: '<strong>Paused.</strong> Agent work is on hold — resume to continue.',
+      'redirect-available': '<strong>Route detected.</strong> A faster path is available via the Planner Agent.',
+      'cancel-confirm': '<strong>Confirm cancel?</strong> Current checkpoint will be preserved.',
+      'saved-progress': '<strong>Task cancelled.</strong> Your progress was saved to the workstream.',
+    };
+
+    let liveState = 'running';
+    const liveHost = document.getElementById('live-bar');
+    const output = document.getElementById('workflow-output');
+
+    function renderLive() {
+      liveHost.innerHTML = '';
+      liveHost.appendChild(controlBar(liveState, {
+        onPause: () => { liveState = 'paused'; renderLive(); toast('Task paused'); },
+        onResume: () => { liveState = 'running'; renderLive(); toast('Task resumed'); },
+        onCancel: () => { liveState = 'cancel-confirm'; renderLive(); },
+        onRedirect: () => { toast('Redirecting to Planner Agent…'); liveState = 'running'; renderLive(); },
+        onCancelConfirm: () => { liveState = 'saved-progress'; renderLive(); toast('Task cancelled'); },
+      }, liveState === 'running' ? 'Territory analysis in progress' : undefined));
+      output.innerHTML = OUTPUT[liveState] || OUTPUT.running;
+    }
+    renderLive();
+
+    document.querySelectorAll('.scenario-btn').forEach(b => {
+      b.onclick = () => { liveState = b.dataset.state; renderLive(); };
+    });
+
+    const gallery = document.getElementById('state-gallery');
+    [
+      { state: 'running', label: 'Running' },
+      { state: 'paused', label: 'Paused' },
+      { state: 'redirect-available', label: 'Redirect available' },
+      { state: 'cancel-confirm', label: 'Cancel confirm' },
+      { state: 'saved-progress', label: 'Saved progress' },
+    ].forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'state-card';
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = s.label;
+      card.append(lbl, controlBar(s.state, {}, s.state === 'running' ? 'Territory analysis in progress' : undefined));
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>

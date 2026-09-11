@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIPicker",
+  "repoModule": "aiPicker",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides \u2014 the suggestion is always shown for review and never auto-applied. The date type reuses ZdsDatePickerInline; month, month-range, and time use brand-styled inline panels.",
+  "intent": "AI suggests a date or time from data; the human reviews and decides. Never auto-applies. Scales from a passive chip to a full governance panel by density.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-picker/ai-picker.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiPicker",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-picker/AIPicker.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-picker/AIPicker.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "type",
+      "values": [
+        "`\"date\" \\"
+      ],
+      "default": "\"month\" \\",
+      "hint": "\"month-range\" \\"
+    },
+    {
+      "name": "density",
+      "values": [
+        "`\"basic\" \\"
+      ],
+      "default": "\"simple\" \\",
+      "hint": "\"rich\" \\"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Field label"
+    },
+    {
+      "name": "value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"\"`",
+      "hint": "Current formatted value"
+    },
+    {
+      "name": "suggestion",
+      "values": [
+        "`AISuggestion`"
+      ],
+      "default": "`\u2014`",
+      "hint": "AI suggestion; absent = trigger only"
+    },
+    {
+      "name": "onAccept",
+      "values": [
+        "`(value) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Explicit accept \u2014 never auto-fired"
+    },
+    {
+      "name": "onReject",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Reject / dismiss the suggestion"
+    },
+    {
+      "name": "onCustomize",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust \u2014 open manual customization"
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(value) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fired on popover selection"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Suppresses all AI signals"
+    },
+    {
+      "name": "state",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"error\"`",
+      "hint": "`\"default\"`"
+    },
+    {
+      "name": "errorMessage",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Message shown in error state"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIPicker"
+    ],
+    "import": "import { AIPicker } from './AIPicker'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Suggest \u00b7 Select \u00b7 Approve",
+    "accountability": "Rationale \u00b7 Audit trail \u00b7 Confidence"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

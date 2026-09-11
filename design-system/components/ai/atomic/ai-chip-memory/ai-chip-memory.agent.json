@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIChipMemory",
+  "repoModule": "aiChipMemory",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Inline memory context chip \u2014 five variants (using, previous, available, ignored, removed) with custom memory SVG icon and companion/brand token surfaces.",
+  "intent": "Communicate how the AI relates to stored context \u2014 active recall, available, dismissed, or removed memory.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-chip-memory/ai-chip-memory.md",
+    "contract": "components/ai/atomic/ai-chip-memory/ai-chip-memory.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiChipMemory",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/chip-memory/AIChipMemory.tsx",
+    "preview": "components/ai/atomic/ai-chip-memory/ai-chip-memory.preview.html",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "using-memory",
+    "previous-context",
+    "memory-available",
+    "memory-ignored",
+    "memory-removed"
+  ],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "using-memory",
+        "previous-context",
+        "memory-available",
+        "memory-ignored",
+        "memory-removed"
+      ],
+      "hint": "MemoryVariant \u2014 controls bg/border/text/strikethrough/opacity"
+    },
+    {
+      "name": "label",
+      "values": [
+        "string"
+      ],
+      "hint": "Required text label for the memory item"
+    },
+    {
+      "name": "size",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "md",
+      "hint": "sm 11px / md @brand-caption-1 (12px)"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIChipMemory",
+      "AIMemoryChip"
+    ],
+    "import": "import { AIChipMemory } from '@/components/ai/atomic/chip-memory/AIChipMemory'",
+    "notes": [
+      "Non-interactive span \u2014 not a button",
+      "Custom MemoryIcon SVG \u2014 not emoji or Lucide",
+      "memory-removed: line-through on label span, opacity 0.7",
+      "memory-ignored: opacity 0.7, helper text color"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-card-bg-raised",
+      "--ai-card-border",
+      "--ai-neutral-text",
+      "--ai-neutral-helper",
+      "--ai-brand-surface",
+      "--ai-brand-border",
+      "--ai-brand-text",
+      "--ai-confidence-track"
+    ],
+    "typography": [
+      "@brand-caption-1"
+    ]
+  },
+  "accessibility": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use emoji for memory icon",
+      "Do not use Lucide Brain icon \u2014 use bundled MemoryIcon SVG",
+      "Do not use for task status \u2014 use AIChipBrief",
+      "Do not hardcode companion hex \u2014 use VARIANT_CONFIG CSS vars"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Recall",
+      "Guide"
+    ],
+    "accountability": "Memory control \u00b7 User feedback"
+  },
+  "relatedModules": [
+    {
+      "name": "AIChipBrief",
+      "mirrorSpec": "components/ai/atomic/ai-chip-brief/ai-chip-brief.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

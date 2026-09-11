@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIChipHandoff",
+  "repoModule": "aiChipHandoff",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Directional ownership chip visualizing transfer between agents, humans, system triggers, or failed handoffs in a compact inline pill.",
+  "intent": "Communicate agent-to-agent, agent-to-human, human-to-agent, system-to-agent, and failed handoff transitions in audit trails and table rows.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-chip-handoff/ai-chip-handoff.md",
+    "contract": "components/ai/atomic/ai-chip-handoff/ai-chip-handoff.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiChipHandoff",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/chip-handoff/AIChipHandoff.tsx",
+    "preview": "components/ai/atomic/ai-chip-handoff/ai-chip-handoff.preview.html",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external). AIHandoffChip is backward-compat alias."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [
+    "agent-to-agent",
+    "agent-to-human",
+    "human-to-agent",
+    "system-to-agent",
+    "failed"
+  ],
+  "props": [
+    {
+      "name": "direction",
+      "values": [
+        "`agent-to-agent`",
+        "`agent-to-human`",
+        "`human-to-agent`",
+        "`system-to-agent`",
+        "`failed`"
+      ],
+      "default": "\u2014",
+      "hint": "Handoff direction \u2014 required."
+    },
+    {
+      "name": "fromLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "\u2014",
+      "hint": "Name of the source party."
+    },
+    {
+      "name": "toLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "\u2014",
+      "hint": "Name of the target party."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`sm`",
+        "`md`"
+      ],
+      "default": "`\"md\"`",
+      "hint": "Padding and font size \u2014 sm for dense audit rows."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIChipHandoff",
+      "AIHandoffChip",
+      "HandoffDirection"
+    ],
+    "import": "import { AIChipHandoff } from '@/components/ai/atomic/chip-handoff/AIChipHandoff'",
+    "notes": [
+      "Display-only \u2014 not interactive.",
+      "Failed state uses dashed arrow SVG.",
+      "Entity glyphs: \u2b21 agent, \u25c9 human, \u229e system."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-brand-surface",
+      "--ai-brand-border",
+      "--ai-brand-text",
+      "--ai-signal-surface",
+      "--ai-signal-border",
+      "--ai-status-success-bg",
+      "--ai-status-success-border",
+      "--ai-status-purple-bg",
+      "--ai-status-purple-border"
+    ],
+    "semantic": [
+      "AI.color.brand",
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "AI.color.signal.strong",
+      "AI.color.signal.default",
+      "AI.color.signal.surface",
+      "AI.radius.full",
+      "AI_TYPOGRAPHY['@brand-caption-1']"
+    ]
+  },
+  "accessibility": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label describing from \u2192 to handoff (includes 'failed' when applicable)"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use emoji or AI Avatar in place of entity glyphs",
+      "Do not use text arrows for failed state \u2014 use dashed SVG from bundle",
+      "Do not hardcode brand hex for agent-to-agent \u2014 use AI tokens and CSS vars"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Transfer",
+      "Escalate"
+    ],
+    "accountability": "Audit trail \u00b7 Owner"
+  },
+  "relatedModules": [
+    "aiQueueBadge"
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

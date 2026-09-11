@@ -1,0 +1,13 @@
+{
+  "id": "scenario-comparison",
+  "name": "Scenario Comparison",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Scenario Comparison — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "ScenarioComparison"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+/**
+ * Shared chrome for AI component preview pages.
+ * Imports canonical tokens — neutral gray for static UI, brand/signal/companion for accents.
+ */
+@import url('../../preview/ai-brand.css');
+
+:root {
+  /* Neutral aliases (match ai atom TS previews) */
+  --ai-neutral-text: var(--neutral-text);
+  --ai-neutral-helper: var(--neutral-text-helper);
+  --ai-neutral-icon: var(--neutral-icon);
+  --ai-neutral-border: var(--neutral-border);
+  --ai-neutral-border-subtle: var(--neutral-border-subtle);
+  --ai-btn-disabled-text: var(--neutral-text-disabled);
+  --ai-btn-disabled-border: var(--neutral-border);
+  --ai-card-bg-raised: var(--neutral-surface-muted);
+  --ai-card-border: var(--neutral-border);
+  --ai-confidence-track: var(--neutral-page-bg);
+
+  /* Brand — interactive / AI-accent states only */
+  --ai-brand-action: var(--ai-brand);
+  --ai-brand-text: var(--ai-brand);
+  --ai-brand-surface: var(--brand-00);
+  --ai-brand-border: var(--brand-20);
+  --ai-brand-subtle: var(--brand-10);
+  --ai-brand-strong: var(--brand-90);
+
+  /* Companion tan */
+  --ai-companion-paper: var(--companion-00);
+  --ai-companion-surface: var(--companion-10);
+  --ai-companion-highlight: var(--companion-20);
+  --ai-companion-border: var(--companion-30);
+  --ai-companion-ink: var(--companion-100);
+
+  /* Signal orange */
+  --ai-signal-surface: var(--signal-00);
+  --ai-signal-border: var(--signal-20);
+  --ai-signal-default: var(--signal-60);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: var(--neutral-page-bg);
+  color: var(--neutral-text);
+  line-height: 1.5;
+}
+
+.page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; color: var(--neutral-text); }
+h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; color: var(--neutral-text); }
+.subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+.section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+.nav-link {
+  display: inline-block; margin-bottom: 24px; font-size: 13px;
+  color: var(--ai-brand); text-decoration: none; font-weight: 600;
+}
+.nav-link:hover { text-decoration: underline; }
+section { margin-bottom: 48px; }
+.demo-surface {
+  background: var(--neutral-surface);
+  border: 1px solid var(--neutral-border-subtle);
+  border-radius: 8px;
+  padding: 32px;
+}
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.state-label { font-size: 13px; font-weight: 400; color: var(--neutral-text-helper); }
+.state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+pre {
+  background: var(--neutral-ink); color: var(--brand-10);
+  padding: 16px; border-radius: 8px; font-size: 12px;
+  overflow-x: auto; white-space: pre-wrap;
+}
+
+.tier-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .4px;
+  padding: 3px 8px; border-radius: 6px;
+  background: var(--neutral-surface-hover); color: var(--neutral-text-helper);
+  margin-bottom: 12px;
+}

@@ -1,0 +1,194 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAnalysisMessage",
+  "repoModule": "aiAnalysisMessage",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIAnalysisMessage is the canonical group component for delivering structured AI-generated analysis in conversational and panel surfaces. It composes an AI attribution header, optional intro text, one or more AIAnalysisInsight cards, a data sources footer, and feedback actions into a single coherent output unit. Each insight is labeled by type, rated by confidence, and grounded with data provenance \u2014 making every AI statement attributable and trust-calibrated before the user acts on it.",
+  "intent": "The primary output surface for AI-generated analysis. Structured insights are labeled, sourced, and confidence-rated \u2014 so users can calibrate trust before acting.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-analysis-message/ai-analysis-message.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAnalysisMessage",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-analysis-message/AIAnalysisMessage.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-analysis-message/AIAnalysisMessage.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "attribution",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI Analysis\"`",
+      "hint": "Agent label in the attribution row"
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Just now\"`",
+      "hint": "Timestamp shown next to the attribution label"
+    },
+    {
+      "name": "intro",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional intro sentence rendered above the insight cards"
+    },
+    {
+      "name": "insights",
+      "values": [
+        "`AIInsightItem[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Array of insight objects \u2014 each renders as an AIAnalysisInsight card"
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`AISource[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Data source objects passed to AIResponseFooter"
+    },
+    {
+      "name": "showFooter",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show AIResponseFooter with sources and feedback bar"
+    },
+    {
+      "name": "showFeedback",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show feedback thumbs and actions inside the footer"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`MessageStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "default \\"
+    },
+    {
+      "name": "loading",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "When true, renders skeleton insight cards \u2014 overrides status"
+    },
+    {
+      "name": "collapsed",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Initial collapsed state \u2014 shows only attribution header"
+    },
+    {
+      "name": "actions",
+      "values": [
+        "`{ label, onClick }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional follow-up action buttons below insight cards"
+    },
+    {
+      "name": "onFeedback",
+      "values": [
+        "`(v: \"up\"\\"
+      ],
+      "default": "\"down\") => void`",
+      "hint": "`undefined`"
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Shows View rationale link in footer when provided"
+    },
+    {
+      "name": "onCopy",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Copy action passed to AIResponseFooter"
+    },
+    {
+      "name": "onShare",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Share action passed to AIResponseFooter"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAnalysisMessage"
+    ],
+    "import": "import { AIAnalysisMessage } from './AIAnalysisMessage'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Analyze \u00b7 Summarize \u00b7 Explain \u00b7 Compare \u00b7 Recommend \u00b7 Evaluate",
+    "accountability": "Sources \u00b7 Confidence \u00b7 Data freshness \u00b7 Rationale \u00b7 Assumptions \u00b7 Feedback"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

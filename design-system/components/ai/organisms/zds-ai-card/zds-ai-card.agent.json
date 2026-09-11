@@ -1,0 +1,203 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICard",
+  "repoModule": "zdsAiCard",
+  "tier": "organisms",
+  "status": "active",
+  "description": "Themed wrapper over the real ZdsCard (zds/zds-card.tsx). ZdsCard is driven entirely by CSS custom properties; ZdsAiCard scopes it inside a container that overrides those variables \u2014 radius \u2192 AI.radius.md (16px), border \u2192 var(--border) #B2B0B6 (neutral, same as ZDS Card) or #BECAFE (brand, via borderTone=\"brand\"), footer \u2192 #FAFAFA (the same gray as the standard card footer, var(--surface-color-1)), body \u2192 #FFFFFF, elevation \u2192 soft neutral drop shadow. Header tones (headerTone): body (white, default), neutral (#FAFAFA), brand (var(--color-ai-brand-surface)), tan (var(--color-ai-companion-paper)); surface tones (surfaceTone): plain, brand-gradient (var(--gradient-ai-surface-subtle)), tan. All applied via scoped data-* !important rules (ZdsCard paints header/section backgrounds inline, so they must be overridden). The shell also composes the header (headerTitle + trailing headerActions) and offers accordion behaviour (collapsible + defaultExpanded via a chevron AIButton). overflow:hidden clips the full-bleed header/footer to the 16px radius. The AI accent (AI.color.action.primary #4D60E6, focus #A6B4FC) is kept for the active/focus states. No fork of the standard component; the structure, slots, and behavior are identical.",
+  "intent": "ZDS Card, AI surface theme \u2014 foundational neutral gray, rounded 16px corners.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/zds-ai-card/zds-ai-card.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiCard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/zds-ai-card/AICard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/zds-ai-card/AICard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "mode",
+      "values": [
+        "`'light' \\"
+      ],
+      "default": "'dark'`",
+      "hint": "`'light'`"
+    },
+    {
+      "name": "interactive",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Focusable surface; role=\"button\" + AI focus ring."
+    },
+    {
+      "name": "hasHeader",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Whether to render the <header> region."
+    },
+    {
+      "name": "hasFooter",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Whether to render the <footer> region."
+    },
+    {
+      "name": "header",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Header slot content."
+    },
+    {
+      "name": "body",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Body slot content (required)."
+    },
+    {
+      "name": "footer",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer slot content."
+    },
+    {
+      "name": "active",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "[active] = selected card border (AI.color.action.primary)."
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Muted surface; pointer-events none."
+    },
+    {
+      "name": "borderTone",
+      "values": [
+        "`'neutral' \\"
+      ],
+      "default": "'brand'`",
+      "hint": "`'neutral'`"
+    },
+    {
+      "name": "headerTone",
+      "values": [
+        "`'body' \\"
+      ],
+      "default": "'neutral' \\",
+      "hint": "'brand' \\"
+    },
+    {
+      "name": "surfaceTone",
+      "values": [
+        "`'plain' \\"
+      ],
+      "default": "'brand-gradient' \\",
+      "hint": "'tan'`"
+    },
+    {
+      "name": "headerTitle",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Composed-header title (left). Falls back to `header` when omitted."
+    },
+    {
+      "name": "headerActions",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Actions pinned to the header trailing edge (e.g. AIButtons)."
+    },
+    {
+      "name": "collapsible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Accordion behaviour with a chevron toggle in the header."
+    },
+    {
+      "name": "defaultExpanded",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Initial expanded state for a collapsible card."
+    },
+    {
+      "name": "fullWidth",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Stretch the card to fill its container width."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICard"
+    ],
+    "import": "import { AICard } from './AICard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

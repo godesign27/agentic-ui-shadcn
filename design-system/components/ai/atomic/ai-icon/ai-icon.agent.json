@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIIcon",
+  "repoModule": "aiIcon",
+  "tier": "atomic",
+  "status": "draft",
+  "description": "AIIcon is the canonical way to render any icon on a ZAIDYN AI surface. The icon set itself is the Zaidyn Icon Library \u2014 the same `ui-icon-{name}` inventory documented in Foundations \u2192 Iconography, whe",
+  "intent": "Not a new icon set \u2014 a behavior and color layer applied to standard icons. Every AI icon choice must justify its treatment against the 60-30-10 color rule: 60% neutral, 30% product/semantic, 10% AI identity.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-icon/ai-icon.md",
+    "contract": "components/ai/atomic/ai-icon/ai-icon.agent.json",
+    "agentIndexModule": "aiIcon",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/icon/AIIcon.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-icon/AIIcon.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "name",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Key from ICON_PATHS registry (e.g. \"ai-assist\", \"search\", \"clock\")"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`AIIconSize`"
+      ],
+      "default": "`\"md\"`",
+      "hint": "xs=12px (inline metadata) \u00b7 sm=16px Standard normal (default for most contexts) \u00b7 md=20px Standard large (standard AI icon) \u00b7 lg=24px Standard x-large (prominent AI identity) \u00b7 xl=32px (hero / empty states only)"
+    },
+    {
+      "name": "treatment",
+      "values": [
+        "`AIIconTreatment`"
+      ],
+      "default": "`\"neutral\"`",
+      "hint": "Color strategy: neutral \\"
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`AIIconTone`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "Semantic tone for treatment=\"semantic\": success \\"
+    },
+    {
+      "name": "container",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render icon in a rounded-square container background"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Accessible label. Required for non-decorative standalone icons."
+    },
+    {
+      "name": "decorative",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Mark icon as aria-hidden (paired with visible text label)"
+    },
+    {
+      "name": "motion",
+      "values": [
+        "`AIIconMotion`"
+      ],
+      "default": "`\"none\"`",
+      "hint": "Animation: none \\"
+    },
+    {
+      "name": "motionLoop",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Loop motion indefinitely (only appropriate for active progress states)"
+    },
+    {
+      "name": "style",
+      "values": [
+        "`CSSProperties`"
+      ],
+      "default": "`undefined`",
+      "hint": "Inline style override applied to outermost element"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIIcon"
+    ],
+    "import": "import { AIIcon } from '@ai/atomic/ai-icon/AIIcon'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use AI identity treatment on every icon on the surface",
+      "Do not use Signal orange for standard AI output icons \u2014 only escalation / stale",
+      "Do not loop attention animations (pulse, nudge) indefinitely",
+      "Do not use motion as the only indicator of state change",
+      "Do not create custom icon shapes outside ICON_PATHS",
+      "Do not use spin for decorative AI presence \u2014 use pulse instead"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Monitor",
+      "Warn",
+      "Suggest",
+      "Execute"
+    ],
+    "accountability": "Confidence \u00b7 Rationale \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

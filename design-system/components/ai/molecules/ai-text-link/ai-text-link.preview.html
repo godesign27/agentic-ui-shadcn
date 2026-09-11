@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Text Link — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @keyframes ail-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes ail-attention-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    @keyframes ail-panel-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ail-spin, .ail-attention { animation: none !important; }
+    }
+
+    :root {
+      --ai-btn-disabled-text: #87848D;
+      --ai-neutral-text: #2f2c3c;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 10px; display: block;
+    }
+    .gallery { display: flex; flex-direction: column; gap: 24px; }
+    .response-card {
+      max-width: 560px; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px; overflow: hidden;
+    }
+    .response-body { padding: 16px 18px 12px; font-size: 14px; line-height: 1.55; color: var(--ai-neutral-text); }
+    .response-footer {
+      padding: 10px 18px 14px; border-top: 1px solid #EBEBEB;
+    }
+    .disclosure-panel {
+      margin-top: 10px; padding: 10px 12px; background: var(--ai-companion-surface);
+      border: 1px solid var(--neutral-border-subtle); border-radius: 6px;
+      font-size: 12px; line-height: 1.55; color: #6B6575;
+      animation: ail-panel-in 0.18s ease both;
+    }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .ail-link:focus { outline: none; }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Text Link</h1>
+    <p class="subtitle">Explainability inline links for rationale, sources, assumptions, and audit trails. Ported from canonical <code>AITextLink.tsx</code>.</p>
+
+    <section>
+      <h2>In response footer</h2>
+      <p class="section-desc">Typical placement — link group below an AI response card.</p>
+      <div class="demo-surface">
+        <div class="response-card">
+          <div class="response-body">
+            Based on Q3 pipeline velocity, I recommend reallocating territories T-042 and T-043 from Northeast to Mid-Atlantic.
+          </div>
+          <div class="response-footer" id="footer-demo"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Accordion disclosure</h2>
+      <p class="section-desc">Icon + chevron variant expands inline assumptions panel.</p>
+      <div class="demo-surface">
+        <div id="accordion-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>All variants</h2>
+      <div class="demo-surface">
+        <div class="gallery" id="variant-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Text / icon-leading</strong> — Default AI brand blue explainability links</li>
+        <li><strong>Chevron / icon-chevron</strong> — Accordion disclosure with rotating chevron</li>
+        <li><strong>External</strong> — Opens audit trail or source record in new tab</li>
+        <li><strong>Attention</strong> — Orange tone for escalation, approval, stale data only</li>
+        <li><strong>Disabled + loading</strong> — Unavailable with tooltip reason; spinner while resolving</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AITextLink, AITextLinkGroup } from '@/components/ai/atomic/text-link/AITextLink';
+
+&lt;AITextLink label="View sources" icon="database" variant="icon-leading" /&gt;
+&lt;AITextLink label="View assumptions" icon="info" variant="icon-chevron" onToggle={setOpen} /&gt;
+&lt;AITextLink label="Open audit trail" variant="external" href="/audit/trail-123" /&gt;</pre>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    const TONE_COLORS = {
+      ai:        { default: '#5A6DFF', hover: '#4D60E6', active: '#2f2c3c' },
+      neutral:   { default: '#5b5864', hover: '#2f2c3c', active: '#2f2c3c' },
+      attention: { default: '#EC7200', hover: '#CB6100', active: '#A54F00' },
+      warning:   { default: '#CB6100', hover: '#A54F00', active: '#481A00' },
+      error:     { default: '#B21111', hover: '#8A0A0A', active: '#8A0A0A' },
+    };
+
+    const SIZE_FONT = { sm: 11, md: 13 };
+    const SIZE_ICON = { sm: 12, md: 14 };
+    const SIZE_GAP  = { sm: 3,  md: 4  };
+
+    const INLINE_ICON_PATHS = {
+      info:         'M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C16.418 20 20 16.418 20 12C20 7.582 16.418 4 12 4C7.582 4 4 7.582 4 12C4 16.418 7.582 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z',
+      database:     'M11 4C8.79086 4 7 5.34315 7 7C7 8.65685 8.79086 10 11 10C13.2091 10 15 8.65685 15 7C15 5.34315 13.2091 4 11 4ZM5 7C5 4.23858 7.68629 2 11 2C14.3137 2 17 4.23858 17 7V17C17 19.7614 14.3137 22 11 22C7.68629 22 5 19.7614 5 17V7ZM7 9.82929C7.62745 10.5507 8.73096 11 11 11C13.269 11 14.3725 10.5507 15 9.82929V12.8293C14.3725 13.5507 13.269 14 11 14C8.73096 14 7.62745 13.5507 7 12.8293V9.82929ZM7 14.8293C7.62745 15.5507 8.73096 16 11 16C13.269 16 14.3725 15.5507 15 14.8293V17C15 18.6569 13.2091 20 11 20C8.79086 20 7 18.6569 7 17V14.8293Z',
+      history:      'M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C9.29614 22 6.85234 20.9371 5.06887 19.2001L6.4904 17.7785C7.90878 19.1498 9.85573 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C8.31087 4 5.22456 6.52046 4.27981 9.92718L6.99988 9.92718L3.49988 14.9272L-0.000122070 9.92718H2.24338C3.2711 5.42174 7.26332 2 12 2ZM13 12V7H11V13L16.2427 15.6213L17.1213 14.0071L13 12Z',
+      'shield-check': 'M12 1L21.5 5.5V11C21.5 16.1086 17.2823 20.7811 12 22C6.71772 20.7811 2.5 16.1086 2.5 11V5.5L12 1ZM12 3.311L4.5 7.0619V11C4.5 15.0606 7.82211 18.9268 12 20.0005C16.1779 18.9268 19.5 15.0606 19.5 11V7.0619L12 3.311ZM16.4874 9L17.9 10.4126L11.2 17.1126L7.1 13.0126L8.5126 11.6L11.2 14.2873L16.4874 9Z',
+      flag:         'M12.9999 5H20.9999C21.5522 5 21.9999 5.44772 21.9999 6V16C21.9999 16.5523 21.5522 17 20.9999 17H12.9999V21H10.9999V3H12.9999V5ZM12.9999 7V15H19.9999V7H12.9999ZM1.99988 6L6.99988 6V18L1.99988 18V6Z',
+      'error-circle': 'M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C14.1217 20 16.1566 19.1571 17.6569 17.6569C19.1571 16.1566 20 14.1217 20 12C20 9.87827 19.1571 7.84344 17.6569 6.34315C16.1566 4.84285 14.1217 4 12 4C9.87827 4 7.84344 4.84285 6.34315 6.34315C4.84285 7.84344 4 9.87827 4 12C4 14.1217 4.84285 16.1566 6.34315 17.6569C7.84344 19.1571 9.87827 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z',
+      link:         'M18.364 15.536L16.95 14.12L18.364 12.706C19.5 11.5693 19.5 9.71 18.364 8.574C17.228 7.438 15.369 7.438 14.233 8.574L12.819 9.988L11.405 8.574L12.819 7.16C14.7427 5.23574 17.854 5.23574 19.778 7.16C21.702 9.08426 21.702 12.196 19.778 14.12L18.364 15.536ZM15.536 18.364L14.12 19.778C12.196 21.702 9.08426 21.702 7.16 19.778C5.23574 17.854 5.23574 14.7427 7.16 12.819L8.574 11.405L9.988 12.819L8.574 14.233C7.438 15.369 7.438 17.228 8.574 18.364C9.71 19.5 11.569 19.5 12.705 18.364L14.119 16.95L15.536 18.364ZM14.829 7.757L16.243 9.171L9.171 16.243L7.757 14.829L14.829 7.757Z',
+    };
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2200);
+    }
+
+    function inlineIcon(name, size) {
+      const d = INLINE_ICON_PATHS[name];
+      if (!d) return null;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', size); svg.setAttribute('height', size);
+      svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'currentColor');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = 'flex-shrink:0;display:block;';
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function chevronIcon(open, size) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', size); svg.setAttribute('height', size);
+      svg.setAttribute('viewBox', '0 0 16 16'); svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = `flex-shrink:0;display:block;transition:transform 200ms ease;transform:rotate(${open ? '180deg' : '0deg'});`;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M3 5.5L8 10.5L13 5.5');
+      path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.5');
+      path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function externalIcon(size) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', size); svg.setAttribute('height', size);
+      svg.setAttribute('viewBox', '0 0 16 16'); svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.cssText = 'flex-shrink:0;display:block;';
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M10 2H14V6M14 2L8.5 7.5M6.5 3H3C2.448 3 2 3.448 2 4V13C2 13.552 2.448 14 3 14H12C12.552 14 13 13.552 13 13V10');
+      path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.4');
+      path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(path);
+      return svg;
+    }
+
+    function loadingSpinner(size, color) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', size); svg.setAttribute('height', size);
+      svg.setAttribute('viewBox', '0 0 16 16'); svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.classList.add('ail-spin');
+      svg.style.cssText = 'flex-shrink:0;display:block;animation:ail-spin 700ms linear infinite;';
+      const track = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      track.setAttribute('cx', '8'); track.setAttribute('cy', '8'); track.setAttribute('r', '6');
+      track.setAttribute('stroke', color); track.setAttribute('stroke-width', '1.5'); track.setAttribute('stroke-opacity', '0.25');
+      const arc = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      arc.setAttribute('d', 'M8 2A6 6 0 0 1 14 8');
+      arc.setAttribute('stroke', color); arc.setAttribute('stroke-width', '1.5'); arc.setAttribute('stroke-linecap', 'round');
+      svg.append(track, arc);
+      return svg;
+    }
+
+    /** Vanilla port of AITextLink — returns { el, update, getExpanded } */
+    function mountAITextLink(container, initialProps = {}) {
+      let props = { ...initialProps };
+      let localExpanded = props.defaultExpanded ?? false;
+      let hovered = false;
+      let focused = false;
+
+      const root = document.createElement('span');
+      root.style.display = 'inline-flex';
+      container.appendChild(root);
+
+      function render() {
+        const {
+          label, href, icon, trailingIcon, showChevron = false,
+          expanded, disabled = false, disabledReason,
+          variant = 'text', tone = 'ai', size = 'md', loading = false,
+          external, ariaLabel, onClick, onToggle,
+        } = props;
+
+        const isExpanded = expanded !== undefined ? expanded : localExpanded;
+        const hasChevron = showChevron || variant === 'chevron' || variant === 'icon-chevron';
+        const isExternal = external || variant === 'external';
+        const isAttention = variant === 'attention' || tone === 'attention' || tone === 'warning';
+        const resolvedTone = variant === 'attention' ? 'attention' : tone;
+        const colors = TONE_COLORS[resolvedTone] || TONE_COLORS.ai;
+        const fontSize = SIZE_FONT[size] || 13;
+        const iconSize = SIZE_ICON[size] || 14;
+        const gap = SIZE_GAP[size] || 4;
+
+        const color = disabled ? 'var(--ai-btn-disabled-text)'
+          : hovered || focused ? colors.hover : colors.default;
+
+        root.innerHTML = '';
+
+        const Tag = href && !disabled ? 'a' : 'button';
+        const el = document.createElement(Tag);
+        el.className = 'ail-link' + (isAttention && !disabled ? ' ail-attention' : '');
+        if (isAttention && !disabled) {
+          el.style.animation = 'ail-attention-pulse 900ms ease-in-out 1';
+        }
+
+        el.style.cssText = [
+          'display:inline-flex', 'align-items:center', `gap:${gap}px`,
+          `font-family:${F}`, `font-size:${fontSize}px`, 'font-weight:500', 'line-height:1',
+          `color:${color}`, 'background:none', 'border:none', 'padding:0',
+          `cursor:${disabled ? 'not-allowed' : 'pointer'}`,
+          `opacity:${disabled ? '0.5' : '1'}`,
+          `text-decoration:${hovered && !disabled ? 'underline' : 'none'}`,
+          'text-underline-offset:2px', 'outline:none', 'border-radius:3px',
+          `box-shadow:${focused ? '0 0 0 2px rgba(90,109,255,0.35)' : 'none'}`,
+          'transition:color 120ms ease, text-decoration 120ms ease, box-shadow 120ms ease',
+          'user-select:none', 'white-space:nowrap',
+        ].join(';');
+
+        if (Tag === 'a') {
+          el.href = href;
+          if (isExternal) { el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+          if (disabled) el.setAttribute('aria-disabled', 'true');
+        } else {
+          el.type = 'button';
+          el.disabled = disabled;
+        }
+
+        if (hasChevron && !isExternal) el.setAttribute('aria-expanded', String(isExpanded));
+        if (ariaLabel) el.setAttribute('aria-label', ariaLabel);
+        else if (disabled && disabledReason) el.setAttribute('aria-label', `${label}, ${disabledReason}`);
+        if (disabled && disabledReason) el.title = disabledReason;
+
+        el.onmouseenter = () => { hovered = true; render(); };
+        el.onmouseleave = () => { hovered = false; render(); };
+        el.onfocus = () => { focused = true; render(); };
+        el.onblur = () => { focused = false; render(); };
+        el.onclick = (e) => {
+          if (disabled || loading) { e.preventDefault(); return; }
+          if (hasChevron && !isExternal) {
+            localExpanded = !isExpanded;
+            onToggle?.(localExpanded);
+            render();
+            props.onPanelToggle?.(localExpanded);
+          }
+          onClick?.();
+        };
+
+        const leadingIconName = icon ?? (variant === 'attention' ? 'error-circle' : undefined);
+
+        if (loading) el.appendChild(loadingSpinner(iconSize, color));
+        else if (leadingIconName) el.appendChild(inlineIcon(leadingIconName, iconSize));
+
+        const lbl = document.createElement('span');
+        lbl.textContent = label;
+        el.appendChild(lbl);
+
+        if (!loading && trailingIcon && !hasChevron && !isExternal) {
+          el.appendChild(inlineIcon(trailingIcon, iconSize));
+        }
+        if (!loading && isExternal) el.appendChild(externalIcon(iconSize));
+        if (!loading && hasChevron && !isExternal) el.appendChild(chevronIcon(isExpanded, iconSize));
+
+        root.appendChild(el);
+      }
+
+      render();
+
+      return {
+        update(next) { props = { ...props, ...next }; render(); },
+        getExpanded: () => (props.expanded !== undefined ? props.expanded : localExpanded),
+        getRoot: () => root,
+      };
+    }
+
+    function mountAITextLinkGroup(container, { gap = 16, wrap = true, links = [] } = {}) {
+      const group = document.createElement('div');
+      group.setAttribute('role', 'group');
+      group.style.cssText = `display:inline-flex;align-items:center;gap:${gap}px;flex-wrap:${wrap ? 'wrap' : 'nowrap'};`;
+      const instances = links.map(cfg => mountAITextLink(group, cfg));
+      container.appendChild(group);
+      return instances;
+    }
+
+    function labeledDemo(label, fn) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      const host = document.createElement('div');
+      fn(host);
+      wrap.append(lbl, host);
+      return wrap;
+    }
+
+    // Footer demo — link group
+    mountAITextLinkGroup(document.getElementById('footer-demo'), {
+      links: [
+        { label: 'Why this?', icon: 'info', variant: 'icon-leading', onClick: () => toast('Would open rationale panel') },
+        { label: 'View sources', icon: 'database', variant: 'icon-leading', onClick: () => toast('Would open source list') },
+        { label: 'View rationale', icon: 'info', variant: 'icon-leading', onClick: () => toast('Would open rationale') },
+      ],
+    });
+
+    // Accordion demo
+    const accHost = document.getElementById('accordion-demo');
+    const accWrap = document.createElement('div');
+    const panel = document.createElement('div');
+    panel.className = 'disclosure-panel';
+    panel.style.display = 'none';
+    panel.textContent = 'Assumes Q3 pipeline data is current as of June 1. Territory assignments reflect the latest approved alignment from ZAIDYN Analytics.';
+    const accLink = mountAITextLink(accWrap, {
+      label: 'View assumptions',
+      icon: 'info',
+      variant: 'icon-chevron',
+      onPanelToggle: (open) => { panel.style.display = open ? 'block' : 'none'; },
+    });
+    accHost.append(accWrap, panel);
+
+    // Variant gallery
+    const gallery = document.getElementById('variant-gallery');
+
+    gallery.appendChild(labeledDemo('Text only', h => {
+      mountAITextLink(h, { label: 'Why this?' });
+    }));
+
+    gallery.appendChild(labeledDemo('Icon + label', h => {
+      mountAITextLinkGroup(h, {
+        links: [
+          { label: 'View sources', icon: 'database', variant: 'icon-leading' },
+          { label: 'Why this?', icon: 'info', variant: 'icon-leading' },
+        ],
+        gap: 20,
+      });
+    }));
+
+    gallery.appendChild(labeledDemo('Chevron accordion', h => {
+      mountAITextLink(h, { label: 'View assumptions', variant: 'chevron' });
+    }));
+
+    gallery.appendChild(labeledDemo('External navigation', h => {
+      mountAITextLink(h, { label: 'Open audit trail', variant: 'external', href: '#', onClick: e => { e.preventDefault(); toast('Would open audit trail'); } });
+    }));
+
+    gallery.appendChild(labeledDemo('Attention (escalation only)', h => {
+      mountAITextLink(h, { label: 'Review required', variant: 'attention', tone: 'attention' });
+    }));
+
+    gallery.appendChild(labeledDemo('Neutral tone', h => {
+      mountAITextLink(h, { label: 'View history', icon: 'history', variant: 'icon-leading', tone: 'neutral' });
+    }));
+
+    gallery.appendChild(labeledDemo('Disabled with reason', h => {
+      mountAITextLink(h, {
+        label: 'View sources', icon: 'database', variant: 'icon-leading',
+        disabled: true, disabledReason: 'Sources unavailable for this recommendation',
+      });
+    }));
+
+    gallery.appendChild(labeledDemo('Loading', h => {
+      const inst = mountAITextLink(h, { label: 'View sources', icon: 'database', variant: 'icon-leading', loading: true });
+      setTimeout(() => inst.update({ loading: false }), 2400);
+    }));
+
+    gallery.appendChild(labeledDemo('Size sm', h => {
+      mountAITextLink(h, { label: 'Why this?', icon: 'info', variant: 'icon-leading', size: 'sm' });
+    }));
+  </script>
+</body>
+</html>

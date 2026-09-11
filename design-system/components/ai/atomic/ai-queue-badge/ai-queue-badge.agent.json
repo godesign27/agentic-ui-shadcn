@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIQueueBadge",
+  "repoModule": "aiQueueBadge",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Compact status badge for a single item in an AI execution queue. Pairs contextual icon with status label and optional count bubble.",
+  "intent": "Show queue state (queued, running, blocked, needs-approval, complete) with accessible color and icon coding in dense layouts.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-queue-badge/ai-queue-badge.md",
+    "contract": "components/ai/atomic/ai-queue-badge/ai-queue-badge.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiQueueBadge",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/queue-badge/AIQueueBadge.tsx",
+    "preview": "components/ai/atomic/ai-queue-badge/ai-queue-badge.preview.html",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [
+    "queued",
+    "running",
+    "blocked",
+    "needs-approval",
+    "complete"
+  ],
+  "props": [
+    {
+      "name": "status",
+      "values": [
+        "`queued`",
+        "`running`",
+        "`blocked`",
+        "`needs-approval`",
+        "`complete`"
+      ],
+      "default": "\u2014",
+      "hint": "Queue execution state \u2014 required."
+    },
+    {
+      "name": "count",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional count shown as a numeric pill inside the badge."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Override the default status label."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIQueueBadge",
+      "QueueStatus"
+    ],
+    "import": "import { AIQueueBadge } from '@/components/ai/atomic/queue-badge/AIQueueBadge'",
+    "notes": [
+      "Display-only \u2014 not interactive.",
+      "Running spinner respects prefers-reduced-motion."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-brand-surface",
+      "--ai-brand-border",
+      "--ai-brand-text",
+      "--ai-signal-surface",
+      "--ai-signal-border",
+      "--ai-confidence-track",
+      "--ai-card-border",
+      "--ai-neutral-helper",
+      "--ai-status-success-bg",
+      "--ai-status-success-border"
+    ],
+    "semantic": [
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "AI.color.brand",
+      "AI.color.text.primary",
+      "AI.color.signal.strong",
+      "AI.color.signal.surface",
+      "AI.radius.sm",
+      "AI_TYPOGRAPHY['@brand-status-label']",
+      "AI_TYPOGRAPHY['@brand-numeric-badge']"
+    ]
+  },
+  "accessibility": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label derived from label or default status string"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use as an interactive button or toggle",
+      "Do not hardcode brand hex \u2014 use AI tokens and CSS vars",
+      "Do not invent status icons \u2014 use bundled SVG icons verbatim"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Monitor",
+      "Execute"
+    ],
+    "accountability": "Audit trail \u00b7 Approval"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

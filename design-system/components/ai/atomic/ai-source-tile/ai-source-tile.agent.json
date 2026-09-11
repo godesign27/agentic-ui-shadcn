@@ -1,0 +1,178 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISourceTile",
+  "repoModule": "aiSourceTile",
+  "tier": "atomic",
+  "status": "active",
+  "description": "AISourceTile surfaces a single knowledge input, data source, citation, attached file, or capability dependency in detail drawers and inspector panels. It composes AIIcon (container + treatment=\"ai-contained\") so the icon tile inherits the brand container chrome correctly and avoids the manual .zs-master-style wrapper bug.",
+  "intent": "Tinted icon square + bold title + uppercase source caption \u2014 for knowledge inputs, citations, attached files.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-source-tile/ai-source-tile.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSourceTile",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-source-tile/AISourceTile.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-source-tile/AISourceTile.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "title",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Source name (bold)."
+    },
+    {
+      "name": "source",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Uppercase caption shown beneath the title."
+    },
+    {
+      "name": "iconName",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"zs-icon-layers\"`",
+      "hint": "ZAIDYN icon class for the leading tile."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"ai\" \\"
+      ],
+      "default": "\"warning\" \\",
+      "hint": "\"error\" \\"
+    },
+    {
+      "name": "trailing",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional small right-aligned meta."
+    },
+    {
+      "name": "chevron",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show a right-facing chevron affordance. Auto-true when onClick is provided. Suppressed when rank is set."
+    },
+    {
+      "name": "subtitle",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Second line under the title (mixed-case body-compact). Wins over `source` when both are set."
+    },
+    {
+      "name": "rank",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`\u2014`"
+    },
+    {
+      "name": "selectable",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Turn the leading icon square into a checkbox tile. Combine with `selected` + `onSelect` for multi-select behavior."
+    },
+    {
+      "name": "selected",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Selectable-only. Selected rows carry a brand-tinted background + border."
+    },
+    {
+      "name": "onSelect",
+      "values": [
+        "`(next: boolean) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Selectable-only. Row becomes role=\"checkbox\" with Space/Enter toggling."
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "When set, the tile becomes a clickable button and auto-enables the chevron + hover state."
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Override the auto-derived aria-label."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISourceTile"
+    ],
+    "import": "import { AISourceTile } from './AISourceTile'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Ground \u00b7 Cite \u00b7 Inspect",
+    "accountability": "Transparency \u00b7 Provenance \u00b7 Accountability"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

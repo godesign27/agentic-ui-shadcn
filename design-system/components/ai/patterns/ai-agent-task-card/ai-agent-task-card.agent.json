@@ -1,0 +1,233 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentTaskCard",
+  "repoModule": "aiAgentTaskCard",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented \u2014 in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label \u2014 never color alone. Needs Input rows use ZS orange only; AI emphasis uses ZSAI blue (AI.color.brand). No teal anywhere.",
+  "intent": "Delegated task record \u00b7 4 densities \u00b7 Needs Input + Health surfaced",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-agent-task-card/ai-agent-task-card.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAgentTaskCard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-agent-task-card/AIAgentTaskCard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-agent-task-card/AIAgentTaskCard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`'basic' \\"
+      ],
+      "default": "'simple' \\",
+      "hint": "'rich' \\"
+    },
+    {
+      "name": "taskId",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Durable task identifier, e.g. T-3091."
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Task title."
+    },
+    {
+      "name": "taskType",
+      "values": [
+        "`'immediate' \\"
+      ],
+      "default": "'scheduled' \\",
+      "hint": "'recurring'`"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`14-value union`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Workflow state. See AIAgentTaskStatus."
+    },
+    {
+      "name": "health",
+      "values": [
+        "`AIAgentTaskHealth`"
+      ],
+      "default": "`undefined`",
+      "hint": "Task-level health signal. Adds a glyph + label badge."
+    },
+    {
+      "name": "agent",
+      "values": [
+        "`{ name; role? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Assigned worker agent for Basic / Simple / Rich."
+    },
+    {
+      "name": "agentStack",
+      "values": [
+        "`AIAgentSummary[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Robust only. Shown via AIAgentStack."
+    },
+    {
+      "name": "originalIntent",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Quoted intent strip \u2014 Rich + Robust."
+    },
+    {
+      "name": "parameters",
+      "values": [
+        "`{ key; value; mutable }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Mutable params are brand-tinted with edit glyph."
+    },
+    {
+      "name": "progress",
+      "values": [
+        "`number 0\u2013100`"
+      ],
+      "default": "`undefined`",
+      "hint": "Renders AIProgress with status-mapped fill."
+    },
+    {
+      "name": "needsInput",
+      "values": [
+        "`{ gap; whyNeeded?; suggestions? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "When present, renders the orange Needs Input panel."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`'high' \\"
+      ],
+      "default": "'medium' \\",
+      "hint": "'low'`"
+    },
+    {
+      "name": "risk",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'low' \\",
+      "hint": "'medium' \\"
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`{ label; freshness? }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Outlined chips. Rich + Robust only."
+    },
+    {
+      "name": "reviewState",
+      "values": [
+        "`{ label; reviewer? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Robust only. Brand-tinted reviewer row."
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "`{ label; onClick?; status? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "AIButton variant=\"primary\"."
+    },
+    {
+      "name": "secondaryActions",
+      "values": [
+        "`{ label; onClick? }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Robust only. AIButton variant=\"secondary\" each."
+    },
+    {
+      "name": "selected / onClick",
+      "values": [
+        "`boolean / () => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "When onClick is set the card becomes role=\"button\"."
+    },
+    {
+      "name": "onViewRationale / onViewTrace / onViewSources / onResolveInput",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional link + suggestion handlers."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentTaskCard"
+    ],
+    "import": "import { AIAgentTaskCard } from './AIAgentTaskCard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Monitor \u00b7 Summarize \u00b7 Validate \u00b7 Ask / clarify \u00b7 Recommend \u00b7 Execute",
+    "accountability": "Durable task ID \u00b7 Intent \u00b7 Mutable parameters \u00b7 Sources \u00b7 Confidence \u00b7 Risk \u00b7 Data freshness \u00b7 Health \u00b7 Human review \u00b7 Approval \u00b7 Owner \u00b7 Process trace"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

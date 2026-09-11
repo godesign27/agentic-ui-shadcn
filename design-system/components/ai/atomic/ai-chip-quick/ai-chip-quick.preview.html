@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Quick Chips — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ai-chip-bg: #ffffff;
+      --ai-chip-bg-hover: var(--neutral-surface-hover);
+      --ai-chip-border: rgba(0, 0, 0, 0.12);
+      --ai-neutral-text: #2f2c3c;
+      --ai-neutral-icon: #5b5864;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .chip-grid {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; max-width: 520px; margin: 0 auto;
+    }
+    .chip-grid--quad {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; max-width: 420px; margin: 0 auto;
+    }
+
+    .command-center {
+      max-width: 520px; margin: 0 auto; text-align: center;
+      border: 1px solid var(--neutral-border-subtle); border-radius: 12px; padding: 32px 24px;
+      background: linear-gradient(to bottom, #F3FCFE, #F9FAFB, #FFFFFF);
+    }
+    .command-center h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; color: var(--ai-neutral-text); }
+    .command-center p { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+
+    .message-bubble {
+      background: var(--neutral-surface-muted); border: 1px solid var(--neutral-border-subtle); border-radius: 12px;
+      padding: 12px 16px; font-size: 13px; text-align: left; margin-top: 16px;
+      display: none;
+    }
+    .message-bubble.visible { display: block; }
+    .reset-btn {
+      margin-top: 16px; padding: 6px 14px; border: 1px solid var(--neutral-border-subtle);
+      border-radius: 8px; background: #fff; font-size: 12px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+    .state-label { font-size: 13px; font-weight: 400; color: var(--neutral-text-helper); margin-bottom: 12px; display: block; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none; z-index: 100;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ai-chip-quick { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Quick Chips</h1>
+    <p class="subtitle">Suggested action chips for the idle state — pill shape, Lucide icon + label. Ported from canonical <code>AIChipQuick.tsx</code>.</p>
+
+    <section>
+      <h2>Primary prompts (idle grid)</h2>
+      <p class="section-desc">Four domain prompts as shown in the design reference — before any message is sent.</p>
+      <div class="demo-surface">
+        <div class="chip-grid--quad" id="quad-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Full QUICK_ACTIONS</h2>
+      <p class="section-desc">All 8 chips including <code>isSpecial</code> “All Prompts” — max recommended count.</p>
+      <div class="demo-surface">
+        <div class="chip-grid" id="full-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Special chip — All Prompts</h2>
+      <p class="section-desc"><code>isSpecial</code> variant — periwinkle border at rest, brand gradient on hover.</p>
+      <div class="demo-surface">
+        <div class="chip-grid" id="special-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Idle → active transition</h2>
+      <p class="section-desc">Click a chip to simulate sending a message. Chips hide once the conversation starts.</p>
+      <div class="demo-surface">
+        <div class="command-center">
+          <h3>How can I help?</h3>
+          <p>Ask about territories, quotas, or pipeline data.</p>
+          <div class="chip-grid" id="idle-host"></div>
+          <div class="message-bubble" id="message"></div>
+          <button class="reset-btn" id="reset" type="button" style="display:none">Reset to idle</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Idle</strong> — Full chip grid visible before first message</li>
+        <li><strong>Active</strong> — Parent hides chips when <code>hasMessages = true</code></li>
+        <li><strong>Standard chip</strong> — white fill, subtle border; hover → brand tint + primary label/icon</li>
+        <li><strong>Special chip</strong> — “All Prompts” with gradient hover CTA treatment</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIChipQuick, QUICK_ACTIONS } from 'ai/atomic/chip-quick/AIChipQuick';
+
+{QUICK_ACTIONS.map(({ icon: Icon, label, isSpecial }) => (
+  &lt;AIChipQuick key={label} icon={Icon} label={label} isSpecial={isSpecial}
+    onClick={() => onChipClick(label)} /&gt;
+))}</pre>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    /** Tier 2 from ai-tokens.ts */
+    const AI = {
+      gradient: { action: { full: 'linear-gradient(135deg, #7A8CFF 0%, #5A6DFF 100%)' } },
+      color: {
+        action: { primary: '#5A6DFF' },
+        border: { default: '#DEDCDE', strong: '#96A4FF' },
+        text: { onAction: '#FFFFFF' },
+      },
+      shadow: { action: { default: 'rgba(90, 109, 255, 0.18)' } },
+      radius: { full: '100px' },
+    };
+
+    /** @brand-body-small from ai-typography.ts */
+    const BODY_SMALL = { fontSize: '14px', fontWeight: 400, lineHeight: 1.4 };
+
+    /** Lucide icon paths (24×24 viewBox) — matches bundle icon names */
+    const ICON_PATHS = {
+      sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>',
+      barChart2: '<line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/>',
+      calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+      users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      activity: '<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/>',
+      userCheck: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>',
+      trendingUp: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+      lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+    };
+
+    /** QUICK_ACTIONS from AIChipQuick.tsx */
+    const QUICK_ACTIONS = [
+      { icon: 'sparkles',   label: 'Create a scenario' },
+      { icon: 'barChart2',  label: 'Territory balance' },
+      { icon: 'calendar',   label: 'Generate call plan' },
+      { icon: 'users',      label: 'Vacancy management' },
+      { icon: 'activity',   label: 'Analyze team health' },
+      { icon: 'userCheck',  label: 'Roster management' },
+      { icon: 'trendingUp', label: 'KPI trend' },
+      { icon: 'lightbulb',  label: 'All Prompts', isSpecial: true },
+    ];
+
+    function iconSvg(name, color, size = 13) {
+      const paths = ICON_PATHS[name] || ICON_PATHS.sparkles;
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => el.classList.remove('visible'), 2000);
+    }
+
+    /** Vanilla port of AIChipQuick */
+    function createAIChipQuick({ icon, label, isSpecial = false, onClick } = {}) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ai-chip-quick';
+      const state = { hovered: false };
+
+      function render() {
+        const hov = state.hovered;
+
+        if (isSpecial) {
+          btn.style.cssText = [
+            'display:inline-flex', 'align-items:center', 'gap:6px',
+            'padding:7px 14px', `border-radius:${AI.radius.full}`,
+            `background:${hov ? AI.gradient.action.full : 'var(--ai-chip-bg)'}`,
+            'border:1.5px solid',
+            `border-color:${hov ? 'transparent' : AI.color.border.default}`,
+            'cursor:pointer', 'transition:all 0.18s ease',
+            `box-shadow:${hov ? `0 4px 16px ${AI.shadow.action.default}` : 'none'}`,
+            `color:${hov ? AI.color.text.onAction : AI.color.action.primary}`,
+            'flex-shrink:0', `font-family:${F}`,
+          ].join(';');
+          btn.innerHTML = iconSvg(icon, hov ? AI.color.text.onAction : AI.color.action.primary, 13)
+            + `<span style="font-size:${BODY_SMALL.fontSize};font-weight:${BODY_SMALL.fontWeight};line-height:${BODY_SMALL.lineHeight};white-space:nowrap">${label}</span>`;
+        } else {
+          btn.style.cssText = [
+            'display:inline-flex', 'align-items:center', 'gap:6px',
+            'padding:7px 14px', `border-radius:${AI.radius.full}`,
+            `background:${hov ? 'var(--ai-chip-bg-hover)' : 'var(--ai-chip-bg)'}`,
+            'border:1.5px solid',
+            `border-color:${hov ? AI.color.border.strong : 'var(--ai-chip-border)'}`,
+            'cursor:pointer', 'transition:all 0.18s ease', 'flex-shrink:0',
+            `font-family:${F}`,
+          ].join(';');
+          const iconColor = hov ? AI.color.action.primary : 'var(--ai-neutral-icon)';
+          const textColor = hov ? AI.color.action.primary : 'var(--ai-neutral-text)';
+          btn.innerHTML = iconSvg(icon, iconColor, 13)
+            + `<span style="font-size:${BODY_SMALL.fontSize};font-weight:${BODY_SMALL.fontWeight};line-height:${BODY_SMALL.lineHeight};color:${textColor};white-space:nowrap">${label}</span>`;
+        }
+      }
+
+      if (onClick) btn.addEventListener('click', onClick);
+      btn.addEventListener('mouseenter', () => { state.hovered = true; render(); });
+      btn.addEventListener('mouseleave', () => { state.hovered = false; render(); });
+      render();
+      return btn;
+    }
+
+    function mountGrid(host, actions, onClick) {
+      host.innerHTML = '';
+      actions.forEach(a => {
+        host.appendChild(createAIChipQuick({
+          ...a,
+          onClick: onClick ? () => onClick(a) : undefined,
+        }));
+      });
+    }
+
+    // Quad grid (design reference — first 4)
+    mountGrid(document.getElementById('quad-grid'), QUICK_ACTIONS.slice(0, 4));
+
+    // Full grid
+    mountGrid(document.getElementById('full-grid'), QUICK_ACTIONS, a => showToast(`Clicked: ${a.label}`));
+
+    // Special only
+    mountGrid(document.getElementById('special-demo'), [QUICK_ACTIONS[7]], a => showToast('Open prompt library'));
+
+    // Idle → active
+    const idleHost = document.getElementById('idle-host');
+    const message = document.getElementById('message');
+    const reset = document.getElementById('reset');
+
+    function renderIdle() {
+      idleHost.innerHTML = '';
+      idleHost.style.display = 'flex';
+      message.classList.remove('visible');
+      reset.style.display = 'none';
+      mountGrid(idleHost, QUICK_ACTIONS, a => {
+        idleHost.style.display = 'none';
+        message.textContent = `You: "${a.label}"`;
+        message.classList.add('visible');
+        reset.style.display = 'inline-block';
+      });
+    }
+    renderIdle();
+    reset.addEventListener('click', renderIdle);
+  </script>
+</body>
+</html>

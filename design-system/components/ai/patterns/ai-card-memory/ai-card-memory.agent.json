@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardMemory",
+  "repoModule": "aiCardMemory",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The ZSAI Tan companion palette grounds memory entries in a warm, archive-like aesthetic.",
+  "intent": "Recalled memory entry with provenance, date, and content. Lets users decide whether to reuse, ignore, or permanently remove a recalled context.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-memory/ai-card-memory.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardMemory",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-memory/AICardMemory.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-memory/AICardMemory.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`MemoryVariant`"
+      ],
+      "default": "`required`",
+      "hint": "Memory state variant"
+    },
+    {
+      "name": "source",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Memory source label"
+    },
+    {
+      "name": "date",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Memory creation/retrieval date"
+    },
+    {
+      "name": "content",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Memory content excerpt"
+    },
+    {
+      "name": "onReuse",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Reuse memory handler"
+    },
+    {
+      "name": "onIgnore",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Ignore for session handler"
+    },
+    {
+      "name": "onRemove",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Permanently remove handler"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardMemory"
+    ],
+    "import": "import { AICardMemory } from './AICardMemory'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Recall \u00b7 Guide",
+    "accountability": "Memory control \u00b7 Sources"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

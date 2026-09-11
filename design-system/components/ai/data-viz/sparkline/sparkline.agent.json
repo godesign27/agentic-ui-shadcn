@@ -1,0 +1,13 @@
+{
+  "id": "sparkline",
+  "name": "Sparkline",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Sparkline — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "Sparkline"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "description": "Maps shadcn/ui semantic CSS variables to --ai-* inside [data-theme^=\"ai-\"] scope",
+  "source": "components/ai/tokens/css/shadcn-bridge.css",
+  "scope": "[data-theme^=\"ai-\"]",
+  "mappings": [
+    { "shadcn": "--background", "ai": "--ai-surface-default" },
+    { "shadcn": "--foreground", "ai": "--ai-zds-text" },
+    { "shadcn": "--card", "ai": "--ai-surface-subtle" },
+    { "shadcn": "--card-foreground", "ai": "--ai-text-primary" },
+    { "shadcn": "--popover", "ai": "--ai-surface-subtle" },
+    { "shadcn": "--popover-foreground", "ai": "--ai-text-primary" },
+    { "shadcn": "--primary", "ai": "--ai-action-primary" },
+    { "shadcn": "--primary-foreground", "ai": "--ai-text-on-action" },
+    { "shadcn": "--secondary", "ai": "--ai-surface-emphasis" },
+    { "shadcn": "--secondary-foreground", "ai": "--ai-text-primary" },
+    { "shadcn": "--muted", "ai": "--ai-surface-subtle" },
+    { "shadcn": "--muted-foreground", "ai": "--ai-zds-text-helper" },
+    { "shadcn": "--accent", "ai": "--ai-brand-subtle" },
+    { "shadcn": "--accent-foreground", "ai": "--ai-text-primary" },
+    { "shadcn": "--destructive", "ai": "--ai-signal-strong" },
+    { "shadcn": "--border", "ai": "--ai-border-default" },
+    { "shadcn": "--input", "ai": "--ai-border-default" },
+    { "shadcn": "--ring", "ai": "--ai-border-focus" },
+    { "shadcn": "--radius", "ai": "--ai-radius-md" },
+    { "shadcn": "--sidebar", "ai": "--ai-surface-default" },
+    { "shadcn": "--sidebar-primary", "ai": "--ai-action-primary" },
+    { "shadcn": "--sidebar-border", "ai": "--ai-border-default" }
+  ],
+  "notes": [
+    "For HSL-based shadcn setups (hsl(var(--primary))), add a hex-to-HSL conversion layer in the consuming app",
+    "Load shadcn-bridge.css after ai-surface.css"
+  ]
+}

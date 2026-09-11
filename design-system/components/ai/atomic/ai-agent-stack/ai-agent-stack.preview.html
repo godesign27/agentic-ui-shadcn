@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Agent Stack — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .stack-row { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; }
+    .stack-demo { display: flex; flex-direction: column; gap: 10px; }
+    .stack-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--neutral-text-helper); }
+
+    .agent-stack { display: flex; align-items: center; }
+    .agent-avatar {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-weight: 700; color: var(--neutral-text); background: var(--neutral-surface-muted);
+      border: 2px solid transparent; flex-shrink: 0;
+    }
+    .agent-avatar + .agent-avatar { margin-left: -10px; }
+    .agent-avatar[data-status="active"] { border-color: #5A6DFF; }
+    .agent-avatar[data-status="waiting"] { border-color: #DEDCDE; color: var(--neutral-text-helper); background: var(--neutral-surface-muted); }
+    .agent-avatar[data-status="complete"] { border-color: #2E7D32; color: #1B5E20; background: #E8F5E9; }
+    .agent-avatar[data-status="error"] { border-color: #C62828; color: #B71C1C; background: #FFEBEE; }
+    .agent-avatar.overflow {
+      background: #DEDCDE; color: #5b5864; border-color: #DEDCDE; font-size: 11px;
+    }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #EBEBEB; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--neutral-text-helper); }
+    .legend-ring { width: 14px; height: 14px; border-radius: 50%; border: 2px solid; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Agent Stack</h1>
+    <p class="subtitle">Overlapping avatar stack representing multiple agents working in parallel. Status rings encode execution state.</p>
+
+    <section>
+      <h2>Status rings</h2>
+      <p class="section-desc">Each agent shows initials with a 2px status-colored ring.</p>
+      <div class="demo-surface">
+        <div class="stack-row" id="status-demos"></div>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-ring" style="border-color:#5A6DFF"></span> Active</div>
+          <div class="legend-item"><span class="legend-ring" style="border-color:#DEDCDE"></span> Waiting</div>
+          <div class="legend-item"><span class="legend-ring" style="border-color:#2E7D32"></span> Complete</div>
+          <div class="legend-item"><span class="legend-ring" style="border-color:#C62828"></span> Error</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Overflow badge</h2>
+      <p class="section-desc">When agents exceed maxVisible (default 3), a "+N" badge appears.</p>
+      <div class="demo-surface">
+        <div class="stack-row" id="overflow-demos"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Size variants</h2>
+      <div class="demo-surface">
+        <div class="stack-row" id="size-demos"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function initials(label) {
+      return label.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    }
+
+    function renderStack(agents, maxVisible = 3, size = 28) {
+      const stack = document.createElement('div');
+      stack.className = 'agent-stack';
+      const visible = agents.slice(0, maxVisible);
+      const overflow = agents.length - maxVisible;
+      const fontSize = Math.round(size * 0.32);
+
+      visible.forEach(a => {
+        const el = document.createElement('div');
+        el.className = 'agent-avatar';
+        el.dataset.status = a.status;
+        el.style.width = el.style.height = size + 'px';
+        el.style.fontSize = fontSize + 'px';
+        el.title = a.label;
+        el.textContent = initials(a.label);
+        stack.appendChild(el);
+      });
+
+      if (overflow > 0) {
+        const el = document.createElement('div');
+        el.className = 'agent-avatar overflow';
+        el.style.width = el.style.height = size + 'px';
+        el.textContent = '+' + overflow;
+        stack.appendChild(el);
+      }
+      return stack;
+    }
+
+    function demo(label, agents, maxVisible, size) {
+      const wrap = document.createElement('div');
+      wrap.className = 'stack-demo';
+      const lbl = document.createElement('span');
+      lbl.className = 'stack-label';
+      lbl.textContent = label;
+      wrap.append(lbl, renderStack(agents, maxVisible, size));
+      return wrap;
+    }
+
+    const agents = [
+      { label: 'Research Agent', status: 'active' },
+      { label: 'Planner Agent', status: 'waiting' },
+      { label: 'Executor Agent', status: 'complete' },
+    ];
+
+    const statusHost = document.getElementById('status-demos');
+    statusHost.append(
+      demo('Mixed statuses', agents),
+      demo('All active', agents.map(a => ({ ...a, status: 'active' }))),
+      demo('Error state', [
+        { label: 'Research Agent', status: 'complete' },
+        { label: 'Planner Agent', status: 'error' },
+        { label: 'Executor Agent', status: 'waiting' },
+      ])
+    );
+
+    const overflowHost = document.getElementById('overflow-demos');
+    const fiveAgents = [
+      { label: 'Research Agent', status: 'active' },
+      { label: 'Planner Agent', status: 'active' },
+      { label: 'Executor Agent', status: 'waiting' },
+      { label: 'Validator Agent', status: 'waiting' },
+      { label: 'Reporter Agent', status: 'complete' },
+    ];
+    overflowHost.append(
+      demo('3 visible (+2)', fiveAgents, 3),
+      demo('4 visible (+1)', fiveAgents, 4),
+      demo('All visible', fiveAgents, 5)
+    );
+
+    const sizeHost = document.getElementById('size-demos');
+    [24, 28, 36].forEach(sz => {
+      sizeHost.appendChild(demo(`${sz}px`, agents, 3, sz));
+    });
+  </script>
+</body>
+</html>

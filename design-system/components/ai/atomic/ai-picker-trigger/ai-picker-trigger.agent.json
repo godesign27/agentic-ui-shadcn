@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIPickerTrigger",
+  "repoModule": "aiPickerTrigger",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "The AI Picker Trigger is the visual shell used in place of the standard ZDS picker trigger when AI is present. It renders the label, the current value (or placeholder), a trailing type icon, and \u2014 at rich/robust density \u2014 an AI badge on the label row. It holds no suggestion logic, calendar, or popover; those belong to the ai-picker group that composes this atom. Colors use the library ZSAI indigo ramp (AI.color.*), mapping the spec's blue tokens to brand.",
+  "intent": "The styled field that signals an AI-enhanced date/time picker \u2014 brand-tinted border, 12px radius, and an AI badge at higher densities.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-picker-trigger/ai-picker-trigger.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiPickerTrigger",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-picker-trigger/AIPickerTrigger.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-picker-trigger/AIPickerTrigger.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Field label"
+    },
+    {
+      "name": "value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Current formatted value"
+    },
+    {
+      "name": "placeholder",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Select\u2026\"`",
+      "hint": "Shown when no value"
+    },
+    {
+      "name": "icon",
+      "values": [
+        "`\"calendar\" \\"
+      ],
+      "default": "\"calendar-range\" \\",
+      "hint": "\"clock\"`"
+    },
+    {
+      "name": "density",
+      "values": [
+        "`\"basic\" \\"
+      ],
+      "default": "\"simple\" \\",
+      "hint": "\"rich\" \\"
+    },
+    {
+      "name": "state",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"focused\" \\",
+      "hint": "\"selected\" \\"
+    },
+    {
+      "name": "aiLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI\"`",
+      "hint": "AI badge label"
+    },
+    {
+      "name": "errorMessage",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Message below field in error state"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Opens popover (wired by the group)"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIPickerTrigger"
+    ],
+    "import": "import { AIPickerTrigger } from './AIPickerTrigger'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Select \u00b7 Input",
+    "accountability": "Owner"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

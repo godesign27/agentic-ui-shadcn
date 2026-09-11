@@ -1,0 +1,103 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AILoadingIndicators",
+  "repoModule": "aiLoadingIndicators",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Three distinct loading patterns for AI response stages. AIWorkingIndicator shows animated pulsing dots during generation. AIThinkingIndicator shows collapsible reasoning steps with done/active/pending",
+  "intent": "A family of loading states that communicate AI thinking, processing, and progress. Different variants map to different task lengths and complexity levels.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-loading-indicators/ai-loading-indicators.md",
+    "contract": "components/ai/atomic/ai-loading-indicators/ai-loading-indicators.agent.json",
+    "agentIndexModule": "aiLoadingIndicators",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/loading-indicator/AILoadingIndicators.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-loading-indicators/AILoadingIndicators.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "theme",
+      "values": [
+        "`default`",
+        "`tan`",
+        "`gray`",
+        "`white`"
+      ],
+      "default": "`default`",
+      "hint": "Surface tint: default (brand), tan (dark tan border), gray, white."
+    },
+    {
+      "name": "steps",
+      "values": [
+        "`ThinkingStep[]?`"
+      ],
+      "default": "`[]`",
+      "hint": "Array of reasoning steps for AIThinkingIndicator."
+    },
+    {
+      "name": "collapsed",
+      "values": [
+        "`boolean?`"
+      ],
+      "default": "`false`",
+      "hint": "Controls whether thinking steps are collapsed."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIWorkingIndicator",
+      "AIThinkingIndicator",
+      "AIGettingInfoIndicator",
+      "AIGettingInfoIndicatorTan"
+    ],
+    "import": "import { AIWorkingIndicator, AIThinkingIndicator, AIGettingInfoIndicator } from '@/components/ai/atomic/loading-indicator/AILoadingIndicators'",
+    "notes": [
+      "Use indicators sequentially \u2014 never show all three at once.",
+      "theme='tan' or AIGettingInfoIndicatorTan for companion surfaces."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not show all three indicators at the same time \u2014 use them sequentially",
+      "Do not keep any indicator visible after the response has fully rendered"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Execute",
+      "Monitor",
+      "Generate"
+    ],
+    "accountability": "Confidence \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

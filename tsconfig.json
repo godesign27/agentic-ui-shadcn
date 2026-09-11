@@ -27,6 +27,18 @@
     }
   },
   "include": ["src"],
+  /* zds-ai architecture snapshot: not the governed shadcn kit. */
+  "exclude": [
+    "src/components/ai/foundations",
+    "src/components/ai/atomic",
+    "src/components/ai/molecules",
+    "src/components/ai/organisms",
+    "src/components/ai/patterns",
+    "src/components/ai/pages",
+    "src/components/ai/data-viz",
+    "src/components/ai/tokens",
+    "src/components/ai/_support"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
 

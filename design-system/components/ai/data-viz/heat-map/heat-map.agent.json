@@ -1,0 +1,13 @@
+{
+  "id": "heat-map",
+  "name": "Heat Map",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Heat Map — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "HeatMap"
+    ]
+  }
+}

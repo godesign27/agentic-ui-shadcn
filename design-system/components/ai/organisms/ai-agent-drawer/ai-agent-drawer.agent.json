@@ -1,0 +1,53 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentDrawer",
+  "repoModule": "aiAgentDrawer",
+  "tier": "organisms",
+  "status": "beta",
+  "description": "Composable ZAIDYN Agent panel content. Self-contained under components/ai/.",
+  "intent": "Canonical AI assistant panel content for any container.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-agent-drawer/ai-agent-drawer.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "primaryJavascript": "components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "default",
+    "focused-dialog",
+    "hanging-panel"
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentDrawer",
+      "AIAgentDrawerPanel",
+      "AIAgentDrawerDemo"
+    ],
+    "import": "import { AIAgentDrawer } from './AIAgentDrawer'",
+    "notes": [
+      "Self-contained under components/ai/.",
+      "Load components/ai/tokens/css/ai-surface.css.",
+      "Do not require @zaidyn/ai-ui for agent implementations.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "rules": {
+    "forbiddenUsage": [
+      "Do not invent dependency atomics",
+      "Do not require @zaidyn/ai-ui for agents",
+      "Do not render orange avatar ring",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "generatedAt": "2026-08-10T00:00:00.000Z",
+  "curated": true
+}

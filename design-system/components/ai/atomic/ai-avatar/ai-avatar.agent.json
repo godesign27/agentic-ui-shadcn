@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAvatar",
+  "repoModule": "aiAvatar",
+  "tier": "atomic",
+  "status": "active",
+  "description": "ZAIDYN AI agent identity \u2014 three concentric BRAND blue rings (#B4BDFF \u2192 #5A6DFF \u2192 #1F2A66) with white cross-star monogram. AIAvatar 34px, BotAvatar 18px. No orange gradient ring.",
+  "intent": "Presentational fixed-color SVG. Same structure for both exports; only size, optional drop-shadow, and a11y differ. Do not theme-adapt fills for dark mode.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-avatar/ai-avatar.md",
+    "contract": "components/ai/atomic/ai-avatar/ai-avatar.agent.json",
+    "agentIndexModule": "aiAvatar",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/components/ai/atomic/avatar/AIAvatar.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-avatar/AIAvatar.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "AIAvatar",
+    "BotAvatar"
+  ],
+  "states": [
+    "default",
+    "bot-inline"
+  ],
+  "slots": [],
+  "props": [
+    {
+      "name": "size",
+      "values": [
+        "number (px)"
+      ],
+      "default": "34 for AIAvatar, 18 for BotAvatar",
+      "hint": "Diameter applied to SVG width and height"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAvatar",
+      "BotAvatar"
+    ],
+    "import": "import { AIAvatar, BotAvatar } from '@ai/atomic/avatar/AIAvatar'",
+    "notes": [
+      "Presentational SVG \u2014 no useId(), no linearGradient",
+      "AIAvatar: optional drop-shadow filter; aria-label ZAIDYN Agent",
+      "BotAvatar: no drop-shadow; aria-hidden when text attributes speaker",
+      "Fixed fills: #B4BDFF, #5A6DFF, #1F2A66, white path \u2014 same on light and dark surfaces"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "ai-avatar.ring.outer",
+      "ai-avatar.ring.mid",
+      "ai-avatar.core",
+      "ai-avatar.monogram.color",
+      "ai-avatar.size.default",
+      "ai-avatar.size.bot"
+    ],
+    "deprecated": [
+      "ai-avatar.ring.gradient.start",
+      "ai-avatar.ring.gradient.end"
+    ]
+  },
+  "accessibility": {
+    "role": "img",
+    "keyboard": [],
+    "requiredAttributes": [
+      "AIAvatar: aria-label on SVG (e.g. ZAIDYN Agent)",
+      "BotAvatar: aria-hidden when message text attributes speaker"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use without AI context",
+      "Do not add orange gradient ring or linearGradient",
+      "Do not use useId() for gradients \u2014 component has no gradients",
+      "Do not theme-adapt ring fills for dark mode \u2014 use fixed BRAND hex",
+      "Do not use currentColor on circles or monogram",
+      "Do not invent sizes outside 34px and 18px without design review",
+      "Do not treat BotAvatar as structurally different from AIAvatar \u2014 same SVG, different default size"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Guide",
+    "accountability": "Confidence"
+  },
+  "relatedModules": [
+    {
+      "name": "AILauncher",
+      "mirrorSpec": "components/ai/atomic/ai-launcher/ai-launcher.md"
+    }
+  ],
+  "generatedAt": "2026-06-11T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISpacingTokens",
+  "repoModule": "aiSpacingTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "@zs-space-unit (8px) ramp shared with ZDS. AI surfaces inherit the same scale — documented padding values for components and layout.",
+  "intent": "All spacing is multiples of 8px. Use ZDS utility classes in CSS; same multiples in React inline styles.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/spacing.md",
+    "contract": "components/ai/tokens/spacing.json",
+    "agentIndexModule": "aiSpacingTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": null,
+    "note": "Not yet exported from ai-tokens.ts — documentation + spacing.json only"
+  },
+  "platforms": ["web", "react"],
+  "variants": ["compact", "default", "spacious"],
+  "states": [],
+  "javascriptApi": {
+    "exports": [],
+    "import": null,
+    "notes": [
+      "Base unit 8px — ramp: 0, 4, 8, 12, 16, 24, 32, 48",
+      "Use zs-padding-* / zs-margin-* in LESS/CSS",
+      "Read spacing.json for component-specific padding values"
+    ]
+  },
+  "tokens": {
+    "cssVars": [
+      "--ai-gap-thread",
+      "--ai-padding-bubble",
+      "--ai-padding-chip",
+      "--ai-max-chat-width"
+    ],
+    "less": ["@zs-space-unit", "zs-padding-1", "zs-padding-2", "zs-margin-bottom-2"]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": ["Touch targets must not drop below 12px padding on interactive surfaces"]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use arbitrary spacing like 13px",
+      "Do not compress bubble padding below 12px on touch targets",
+      "Do not mix spacing systems outside @zs-space-unit"
+    ],
+    "agentRules": [
+      "Read spacing.json for ramp, component padding, and layout values",
+      "Chat max content width is 680px"
+    ]
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

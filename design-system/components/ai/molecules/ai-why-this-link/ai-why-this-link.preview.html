@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Why This Link — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 680px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .state-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 10px; display: block;
+    }
+    .inline-row {
+      font-size: 14px; line-height: 1.55; color: var(--neutral-text); max-width: 560px;
+    }
+    .variant-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 20px 24px;
+      margin-top: 28px; padding-top: 24px; border-top: 1px solid #EBEBEB;
+    }
+    .gallery { display: flex; flex-direction: column; gap: 24px; }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .why-btn:focus { outline: none; }
+    .why-btn:focus-visible { box-shadow: 0 0 0 2px rgba(90,109,255,0.35); border-radius: 4px; }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Why This Link</h1>
+    <p class="subtitle">Minimal inline transparency entry point — ghost link with variant icon. Ported from canonical <code>AIWhyThisLink.tsx</code>.</p>
+
+    <section>
+      <h2>Inline usage</h2>
+      <p class="section-desc">Appears adjacent to AI-generated content without disrupting hierarchy.</p>
+      <div class="demo-surface">
+        <div class="inline-row" id="inline-demo"></div>
+        <div class="variant-row" id="variant-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Custom label override</h2>
+      <div class="demo-surface">
+        <div id="custom-label-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Why this?</strong> — Generic rationale entry (question icon)</li>
+        <li><strong>View rationale</strong> — Full reasoning panel (book icon)</li>
+        <li><strong>View sources</strong> — Source citation list (external link icon)</li>
+        <li><strong>View assumptions</strong> — Underlying assumptions (lightbulb icon)</li>
+        <li><strong>Explain risk</strong> — Risk context (warning triangle icon)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIWhyThisLink } from '@/components/ai/atomic/why-this-link/AIWhyThisLink';
+
+&lt;AIWhyThisLink variant="why-this" onClick={openRationale} /&gt;
+&lt;AIWhyThisLink variant="view-sources" onClick={openSources} /&gt;
+&lt;AIWhyThisLink variant="explain-risk" label="Why is this flagged?" onClick={openRisk} /&gt;</pre>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+    const BRAND = '#5A6DFF';
+    const BRAND_HOVER = '#4D60E6';
+
+    const VARIANT_CONFIG = {
+      'why-this':         { defaultLabel: 'Why this?',        icon: 'question' },
+      'view-rationale':   { defaultLabel: 'View rationale',   icon: 'book' },
+      'view-sources':     { defaultLabel: 'View sources',     icon: 'link' },
+      'view-assumptions': { defaultLabel: 'View assumptions', icon: 'lightbulb' },
+      'explain-risk':     { defaultLabel: 'Explain risk',     icon: 'warning' },
+    };
+
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('visible');
+      setTimeout(() => t.classList.remove('visible'), 2200);
+    }
+
+    function svgIcon(type) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '12'); svg.setAttribute('height', '12');
+      svg.setAttribute('viewBox', '0 0 12 12'); svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.display = 'block';
+
+      if (type === 'question') {
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', '6'); c.setAttribute('cy', '6'); c.setAttribute('r', '5');
+        c.setAttribute('stroke', 'currentColor'); c.setAttribute('stroke-width', '1.2');
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', 'M4.5 4.5a1.5 1.5 0 0 1 3 0c0 1-1.5 1.25-1.5 2.5');
+        p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '1.2'); p.setAttribute('stroke-linecap', 'round');
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', '6'); dot.setAttribute('cy', '8.5'); dot.setAttribute('r', '0.65'); dot.setAttribute('fill', 'currentColor');
+        svg.append(c, p, dot);
+      } else if (type === 'book') {
+        [['M2 2h3.5a2 2 0 0 1 2 2v5.5H2V2Z', 'round'], ['M7.5 4h2.5v5.5H7.5', 'round']].forEach(([d, join]) => {
+          const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          p.setAttribute('d', d); p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '1.2');
+          p.setAttribute('stroke-linejoin', join);
+          svg.appendChild(p);
+        });
+        [[3, 4.5, 6, 4.5], [3, 6, 6, 6]].forEach(([x1, y1, x2, y2]) => {
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+          l.setAttribute('stroke', 'currentColor'); l.setAttribute('stroke-width', '1');
+          svg.appendChild(l);
+        });
+      } else if (type === 'link') {
+        [
+          ['M3 3h3.5', 'round', 'path'],
+          ['M3 3v3.5', 'round', 'path'],
+          ['M3 9h6V5.5', 'round', 'path'],
+          ['M7 5l4-4', 'round', 'path'],
+          ['M8 1h3v3', 'round', 'path'],
+        ].forEach(([d, cap, tag]) => {
+          const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+          el.setAttribute('d', d); el.setAttribute('stroke', 'currentColor'); el.setAttribute('stroke-width', '1.2');
+          el.setAttribute('stroke-linecap', cap);
+          if (tag === 'path') el.setAttribute('stroke-linejoin', 'round');
+          svg.appendChild(el);
+        });
+      } else if (type === 'lightbulb') {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', 'M6 1.5a3 3 0 0 1 1.5 5.6V8.5H4.5V7.1A3 3 0 0 1 6 1.5Z');
+        p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '1.2'); p.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(p);
+        [[4.5, 9.5, 7.5, 9.5], [5, 10.8, 7, 10.8]].forEach(([x1, y1, x2, y2]) => {
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x1); l.setAttribute('y1', y1); l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+          l.setAttribute('stroke', 'currentColor'); l.setAttribute('stroke-width', '1.2'); l.setAttribute('stroke-linecap', 'round');
+          svg.appendChild(l);
+        });
+      } else if (type === 'warning') {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', 'M6 1.5L10.5 10H1.5L6 1.5Z');
+        p.setAttribute('stroke', 'currentColor'); p.setAttribute('stroke-width', '1.2'); p.setAttribute('stroke-linejoin', 'round');
+        const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l.setAttribute('x1', '6'); l.setAttribute('y1', '5'); l.setAttribute('x2', '6'); l.setAttribute('y2', '7.5');
+        l.setAttribute('stroke', 'currentColor'); l.setAttribute('stroke-width', '1.2'); l.setAttribute('stroke-linecap', 'round');
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', '6'); dot.setAttribute('cy', '8.8'); dot.setAttribute('r', '0.6'); dot.setAttribute('fill', 'currentColor');
+        svg.append(p, l, dot);
+      }
+      return svg;
+    }
+
+    /** Vanilla port of AIWhyThisLink */
+    function mountAIWhyThisLink(container, { variant = 'why-this', label, onClick, inline = false } = {}) {
+      const cfg = VARIANT_CONFIG[variant] || VARIANT_CONFIG['why-this'];
+      let hovered = false;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'why-btn';
+
+      function render() {
+        btn.style.cssText = [
+          'display:inline-flex', 'align-items:center', 'gap:4px',
+          'padding:2px 4px', 'background:transparent', 'border:none',
+          'cursor:pointer', `font-family:${F}`,
+          'font-size:12px', 'font-weight:400', 'line-height:1.5',
+          `color:${hovered ? BRAND_HOVER : BRAND}`,
+          `opacity:${hovered ? '1' : '0.75'}`,
+          `text-decoration:${hovered ? 'underline' : 'none'}`,
+          'border-radius:4px',
+          'transition:opacity 0.15s ease, text-decoration 0.1s ease, color 0.15s ease',
+          inline ? 'vertical-align:baseline;margin-left:4px;' : '',
+        ].join(';');
+      }
+
+      btn.onmouseenter = () => { hovered = true; render(); };
+      btn.onmouseleave = () => { hovered = false; render(); };
+      btn.onclick = () => onClick?.();
+
+      btn.innerHTML = '';
+      btn.appendChild(svgIcon(cfg.icon));
+      btn.appendChild(document.createTextNode(label ?? cfg.defaultLabel));
+
+      render();
+      container.appendChild(btn);
+      return btn;
+    }
+
+    // Inline demo — matches screenshot
+    const inlineHost = document.getElementById('inline-demo');
+    inlineHost.appendChild(document.createTextNode(
+      'Based on current pipeline performance, we recommend reallocating 15% of capacity to the onboarding flow. '
+    ));
+    mountAIWhyThisLink(inlineHost, {
+      variant: 'why-this',
+      inline: true,
+      onClick: () => toast('Would open AIRationalePanel'),
+    });
+
+    // All five variants in a row
+    const row = document.getElementById('variant-row');
+    Object.keys(VARIANT_CONFIG).forEach(v => {
+      mountAIWhyThisLink(row, {
+        variant: v,
+        onClick: () => toast(`Would open panel for "${VARIANT_CONFIG[v].defaultLabel}"`),
+      });
+    });
+
+    // Custom label
+    const custom = document.getElementById('custom-label-demo');
+    const lbl = document.createElement('span');
+    lbl.className = 'state-label';
+    lbl.textContent = 'Explain risk — custom label';
+    custom.appendChild(lbl);
+    mountAIWhyThisLink(custom, {
+      variant: 'explain-risk',
+      label: 'Why is this flagged?',
+      onClick: () => toast('Would open risk explanation panel'),
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/**
+ * shadcn/ui bridge — remaps shadcn semantic CSS variables inside AI surface themes.
+ *
+ * Usage:
+ *   import './shadcn-bridge.css';
+ *   <div data-theme="ai-default"><Button /></div>
+ *
+ * Load after ai-surface.css. Works with shadcn components that read var(--primary), etc.
+ * Values are hex/rgba — compatible with shadcn setups using direct var() references.
+ */
+
+[data-theme^="ai-"] {
+  /* core */
+  --background: var(--ai-surface-default);
+  --foreground: var(--ai-zds-text);
+
+  /* card */
+  --card: var(--ai-surface-subtle);
+  --card-foreground: var(--ai-text-primary);
+
+  /* popover */
+  --popover: var(--ai-surface-subtle);
+  --popover-foreground: var(--ai-text-primary);
+
+  /* primary action */
+  --primary: var(--ai-action-primary);
+  --primary-foreground: var(--ai-text-on-action);
+
+  /* secondary */
+  --secondary: var(--ai-surface-emphasis);
+  --secondary-foreground: var(--ai-text-primary);
+
+  /* muted */
+  --muted: var(--ai-surface-subtle);
+  --muted-foreground: var(--ai-zds-text-helper);
+
+  /* accent */
+  --accent: var(--ai-brand-subtle);
+  --accent-foreground: var(--ai-text-primary);
+
+  /* destructive / signal */
+  --destructive: var(--ai-signal-strong);
+  --destructive-foreground: #FFFFFF;
+
+  /* border / input / ring */
+  --border: var(--ai-border-default);
+  --input: var(--ai-border-default);
+  --ring: var(--ai-border-focus);
+
+  /* radius */
+  --radius: var(--ai-radius-md);
+
+  /* chart accents (brand ramp) */
+  --chart-1: var(--ai-action-primary);
+  --chart-2: var(--ai-text-secondary);
+  --chart-3: var(--ai-signal);
+  --chart-4: var(--ai-companion-ink);
+  --chart-5: var(--ai-brand-strong);
+
+  /* sidebar (common in shadcn app shells) */
+  --sidebar: var(--ai-surface-default);
+  --sidebar-foreground: var(--ai-text-primary);
+  --sidebar-primary: var(--ai-action-primary);
+  --sidebar-primary-foreground: var(--ai-text-on-action);
+  --sidebar-accent: var(--ai-brand-subtle);
+  --sidebar-accent-foreground: var(--ai-text-primary);
+  --sidebar-border: var(--ai-border-default);
+  --sidebar-ring: var(--ai-border-focus);
+}

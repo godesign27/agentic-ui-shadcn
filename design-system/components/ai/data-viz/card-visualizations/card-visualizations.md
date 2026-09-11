@@ -1,0 +1,32 @@
+# Card Visualizations
+
+**Version:** 1.2  
+**Last Updated:** 2026-08-10  
+**Owner:** Zaidyn Design System — AI  
+**Tier:** data-viz (AI)  
+**Repo module:** `cardVisualizations`  
+**Component type:** Spec stub  
+**Status:** Draft  
+**Depends On:** `components/ai/tokens/ai-tokens.ts`  
+**Used By:** —  
+
+## Purpose
+
+Card Visualizations (`card-visualizations`) — registered in the AI Pattern Library left navigation (data-viz).
+
+**Intent:** Spec placeholder aligned to the docs-site registry. Replace with full mirror spec + canonical implementation when available.
+
+**Export:** `CardVisualizations`
+
+## Source (canonical implementation)
+
+| Path | Role |
+|------|------|
+| `components/ai/data-viz/card-visualizations/card-visualizations.md` | This mirror spec (stub) |
+| `components/ai/data-viz/card-visualizations/card-visualizations.agent.json` | Agent manifest |
+
+## Notes
+
+- Registry id: `card-visualizations`
+- Display name: Card Visualizations
+- Status: **Draft**

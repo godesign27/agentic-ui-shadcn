@@ -1,0 +1,112 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIWorkstreamControlPanel",
+  "repoModule": "aiWorkstreamControlPanel",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "The Workstream Control Panel is the command-center surface for long-running multi-step AI workflows. It combines a numbered step stepper with visual connectors, a granular progress bar, an inline checkpoint note, the full AIControlBar for state-aware execution controls, and lower-level rollback/escalate actions.",
+  "intent": "Command-center surface for long-running multi-step AI workflows. Combines step stepper, progress tracking, execution controls, and governance actions in one panel.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-workstream-control-panel/ai-workstream-control-panel.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiWorkstreamControlPanel",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-workstream-control-panel/AIWorkstreamControlPanel.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-workstream-control-panel/AIWorkstreamControlPanel.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "steps",
+      "values": [
+        "`WorkstreamStep[]`"
+      ],
+      "default": "`required`",
+      "hint": "Steps array with label and complete flag"
+    },
+    {
+      "name": "currentStep",
+      "values": [
+        "`number`"
+      ],
+      "default": "`required`",
+      "hint": "Zero-based index of active step"
+    },
+    {
+      "name": "progress",
+      "values": [
+        "`number`"
+      ],
+      "default": "`required`",
+      "hint": "Progress percentage 0\u2013100"
+    },
+    {
+      "name": "controlState",
+      "values": [
+        "`ControlBarState`"
+      ],
+      "default": "`required`",
+      "hint": "AIControlBar state"
+    },
+    {
+      "name": "checkpointNote",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Contextual note displayed below stepper"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIWorkstreamControlPanel"
+    ],
+    "import": "import { AIWorkstreamControlPanel } from './AIWorkstreamControlPanel'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": "Execute \u00b7 Monitor \u00b7 Pause \u00b7 Redirect",
+    "accountability": "Rollback \u00b7 Escalation \u00b7 Approval \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

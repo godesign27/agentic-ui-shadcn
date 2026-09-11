@@ -1,0 +1,97 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIInsightCallout",
+  "repoModule": "aiInsightCallout",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "Pale brand-blue card surface (`var(--ai-brand-surface)` + brand border) with a leading sparkle glyph, an `AI INSIGHT` eyebrow, and an italic body quote (rendered as a `<blockquote>` for screen-reader accuracy). Four tones (brand / warning / critical / success) follow the metric-card accent system so the callout can mirror the surrounding card status.",
+  "intent": "The \"what does this mean?\" callout. AI text that earns trust by being clearly attributed as AI-generated.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-insight-callout/ai-insight-callout.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiInsightCallout",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-insight-callout/AIInsightCallout.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-insight-callout/AIInsightCallout.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "body",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Body text rendered as an italic blockquote."
+    },
+    {
+      "name": "eyebrow",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI INSIGHT\"`",
+      "hint": "Label above the body. Override for non-AI insights."
+    },
+    {
+      "name": "tone",
+      "values": [
+        "`\"brand\" \\"
+      ],
+      "default": "\"warning\" \\",
+      "hint": "\"critical\" \\"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIInsightCallout"
+    ],
+    "import": "import { AIInsightCallout } from './AIInsightCallout'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Explain \u00b7 Suggest",
+    "accountability": "Rationale"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

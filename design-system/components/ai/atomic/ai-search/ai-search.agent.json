@@ -1,0 +1,192 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISearch",
+  "repoModule": "aiSearch",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AI Search is a one-for-one port of the standard ZDS Search onto the AI surface. Both libraries describe the same two component sets \u2014 Search (Size x Condensed) and Dropdown Filter (Orientation x Size) \u2014 and both build them over a single shared field whose left icon and caret are independent toggles. That shared box is the whole reason the two sets cannot drift apart.",
+  "intent": "The standard Search, themed. Teal becomes AI brand, square corners become rounded, and the field gains a focus ring.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-search/ai-search.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSearch",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-search/AISearch.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-search/AISearch.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "AISearch \u00b7 size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small' \\",
+      "hint": "'x-small'`"
+    },
+    {
+      "name": "AISearch \u00b7 condensed",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Icon-only round trigger, exactly height x height. Suppresses the button."
+    },
+    {
+      "name": "AISearch \u00b7 button",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Render the solid brand submit button beside the field."
+    },
+    {
+      "name": "AISearch \u00b7 value",
+      "values": [
+        "`string`"
+      ],
+      "default": "`''`",
+      "hint": "Controlled value. A non-empty value flips the text upright."
+    },
+    {
+      "name": "AISearch \u00b7 onChange",
+      "values": [
+        "`(value: string) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires on every keystroke."
+    },
+    {
+      "name": "AISearch \u00b7 onSearch",
+      "values": [
+        "`(value: string) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires on submit, or on click in the condensed variant."
+    },
+    {
+      "name": "AISearch \u00b7 busy",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "AI-only. Indeterminate hairline under the field."
+    },
+    {
+      "name": "AISearch \u00b7 fieldWidth",
+      "values": [
+        "`number \\"
+      ],
+      "default": "'fill'`",
+      "hint": "`332`"
+    },
+    {
+      "name": "AISearch \u00b7 disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Dims to 0.55 and drops the ring."
+    },
+    {
+      "name": "AIDropdownFilter \u00b7 orientation",
+      "values": [
+        "`'horizontal' \\"
+      ],
+      "default": "'vertical'`",
+      "hint": "`'horizontal'`"
+    },
+    {
+      "name": "AIDropdownFilter \u00b7 filterValue / searchValue",
+      "values": [
+        "`string`"
+      ],
+      "default": "`''`",
+      "hint": "The two independently controlled values."
+    },
+    {
+      "name": "AISearchField \u00b7 leftIcon",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Show the magnifier. Off on the dropdown select field."
+    },
+    {
+      "name": "AISearchField \u00b7 caret",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show the caret. On for the dropdown select field."
+    },
+    {
+      "name": "AISearchField \u00b7 asSelect",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Render a listbox trigger button instead of a text input."
+    },
+    {
+      "name": "AISearchField \u00b7 focusState",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Force the focused visual for docs and previews."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISearch"
+    ],
+    "import": "import { AISearch } from './AISearch'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": "Recall",
+    "accountability": "Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

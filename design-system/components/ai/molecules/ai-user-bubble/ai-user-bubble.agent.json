@@ -1,0 +1,89 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIUserBubble",
+  "repoModule": "aiUserBubble",
+  "tier": "molecules",
+  "status": "active",
+  "description": "AIUserBubble renders a right-aligned message pill representing the user's sent text. Two surface variants: light (default) uses a gray (#E8E6ED) surface for chat threads on dark or brand backgrounds; dark uses a deep indigo (#1F2A66 / ZSAI[100]) fill with white text for use on white or light-gray surfaces. Both achieve WCAG AAA contrast ratios. The bubble uses Open Sans at 16px (default) or 14px (medium) with 1.55\u20131.4 line-height and max-width of 82%.",
+  "intent": "Message container for the human user's input in a conversational AI interface. Visually distinct from AI-generated responses \u2014 positioned right-aligned with a light fill.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-user-bubble/ai-user-bubble.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiUserBubble",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-user-bubble/AIUserBubble.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-user-bubble/AIUserBubble.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "text",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"\"`",
+      "hint": "The user's message text to display in the bubble."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"medium\"`",
+      "hint": "`\"default\"`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIUserBubble"
+    ],
+    "import": "import { AIUserBubble } from './AIUserBubble'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Gather context \u00b7 Guide",
+    "accountability": "Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

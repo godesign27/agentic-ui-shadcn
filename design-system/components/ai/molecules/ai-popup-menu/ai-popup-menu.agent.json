@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMenu",
+  "repoModule": "aiPopupMenu",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "AIPopupMenu is the AI skin of the standard ZDS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role=\"button\", aria-haspopup=\"menu\", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.",
+  "intent": "A trigger + hidden AIMenu overlay \u2014 AI dialog chrome, opens on click, closes on outside-click / Escape.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-popup-menu/ai-popup-menu.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiPopupMenu",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-popup-menu/AIPopupMenu.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-popup-menu/AIPopupMenu.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "trigger",
+      "values": [
+        "`ReactNode \\"
+      ],
+      "default": "(open: boolean) => ReactNode`",
+      "hint": "`\u2014`"
+    },
+    {
+      "name": "triggerLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Open menu'`",
+      "hint": "Accessible label for the trigger button."
+    },
+    {
+      "name": "items",
+      "values": [
+        "`AIMenuItem[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Passed through to the embedded AIMenu."
+    },
+    {
+      "name": "align",
+      "values": [
+        "`'left' \\"
+      ],
+      "default": "'right'`",
+      "hint": "`'left'`"
+    },
+    {
+      "name": "multiSelect",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Multi-select menu mode (checkmarks)."
+    },
+    {
+      "name": "closeOnSelect",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Close after a pick \u2014 ignored in multiSelect."
+    },
+    {
+      "name": "onSelect",
+      "values": [
+        "`(item: AIMenuItem) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires when a non-disabled item is activated."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMenu"
+    ],
+    "import": "import { AIMenu } from './AIPopupMenu'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Overlay \u00b7 Navigation",
+    "accountability": "Popup \u00b7 Menu"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

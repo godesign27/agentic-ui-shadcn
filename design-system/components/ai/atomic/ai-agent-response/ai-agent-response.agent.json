@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentResponse",
+  "repoModule": "aiAgentResponse",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AIAgentResponse is the foundational conversational atom \u2014 a single card that wraps an AIMessageHeader (bot avatar, agent name, timestamp) above an AIMessageBody (plain-language prose). It establishes AI authorship with no extra chrome.",
+  "intent": "The minimal unit of AI speech \u2014 header plus body in a branded card. Use this atom when the response stands alone with no follow-up actions or structured data.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-agent-response/ai-agent-response.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAgentResponse",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-agent-response/AIAgentResponse.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-agent-response/AIAgentResponse.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "agentLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI Assistant\"`",
+      "hint": "Name displayed in the attribution header."
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Just now\"`",
+      "hint": "Right-aligned timestamp string in the header."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\"`",
+      "hint": "`\"md\"`"
+    },
+    {
+      "name": "children",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`required`",
+      "hint": "Body content. Use <strong> with brand color for emphasis."
+    },
+    {
+      "name": "dark",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Renders the response card on a deep brand-ink surface with light text \u2014 for use on dark chat chrome."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentResponse"
+    ],
+    "import": "import { AIAgentResponse } from './AIAgentResponse'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Respond \u00b7 Suggest \u00b7 Explain",
+    "accountability": "Agent identity \u00b7 Timestamp \u00b7 Plain-language response"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

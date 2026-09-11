@@ -1,0 +1,114 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMetricValue",
+  "repoModule": "aiMetricValue",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "Renders a single KPI value (e.g. `42.8K`, `78%`, `1.18`) at one of three sizes \u2014 sm 24px, md 32px, lg 40px. Tabular numerals + tight letter-spacing keep numbers crisp and aligned. Optional `unit` slot renders inline at 60% of the value size so suffixes like `K` / `%` stay clearly subordinate.",
+  "intent": "The big number at the heart of every AI Card Metric. Three sizes share one type scale so dashboards stay rhythmic.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-metric-value/ai-metric-value.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiMetricValue",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-metric-value/AIMetricValue.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-metric-value/AIMetricValue.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "value",
+      "values": [
+        "`string \\"
+      ],
+      "default": "number`",
+      "hint": "`required`"
+    },
+    {
+      "name": "unit",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional inline unit suffix."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\" \\"
+      ],
+      "default": "\"md\" \\",
+      "hint": "\"lg\"`"
+    },
+    {
+      "name": "color",
+      "values": [
+        "`string`"
+      ],
+      "default": "`var(--ai-zds-text)`",
+      "hint": "Override the value color (e.g. for accent treatment)."
+    },
+    {
+      "name": "ariaLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Accessible name. Defaults to `${value} ${unit}`."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMetricValue"
+    ],
+    "import": "import { AIMetricValue } from './AIMetricValue'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Evaluate",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

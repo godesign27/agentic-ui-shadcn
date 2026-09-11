@@ -1,0 +1,201 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AILedNavigation",
+  "repoModule": "aiLedNavigation",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AILedNavigation is the left-rail navigation system for AI Led experiences. It organizes the things an AI workbench needs to surface \u2014 new chat, search, library, agents, apps, projects, pinned items, recents and account \u2014 under a single composable group. Five companion variants (default \u00b7 collapsed \u00b7 workspace-focused \u00b7 agent-focused \u00b7 minimal) and five state machines (default \u00b7 nested-open \u00b7 loading-recents \u00b7 empty-recents \u00b7 permission-restricted) cover the full life-cycle. The header reuses the canonical AIAvatar brand mark from the AI Assisted Side Drawer pattern so AI Led products share one identity across the shell.",
+  "intent": "The navigation rail for AI Led product shells \u2014 inspired by modern AI tools, tuned to ZAIDYN enterprise visual language.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-led-navigation/ai-led-navigation.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiLedNavigation",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-led-navigation/AILedNavigation.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-led-navigation/AILedNavigation.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "brandLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"ZAIDYN AI\"`",
+      "hint": "Product / system label shown next to the AIAvatar mark."
+    },
+    {
+      "name": "brandIcon",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`<AIAvatar />`",
+      "hint": "Header brand mark. Defaults to the canonical ZAIDYN AI Avatar."
+    },
+    {
+      "name": "currentWorkspace",
+      "values": [
+        "`{ id: string; label: string; tone?: \"ai\" \\"
+      ],
+      "default": "\"tan\" }`",
+      "hint": "`Workspace A`"
+    },
+    {
+      "name": "primaryActions",
+      "values": [
+        "`AILedNavItem[]`"
+      ],
+      "default": "`5 defaults`",
+      "hint": "High-frequency AI actions row."
+    },
+    {
+      "name": "workspaceGroups",
+      "values": [
+        "`AILedNavGroup[]`"
+      ],
+      "default": "`Projects preset`",
+      "hint": "Workspace / project sections \u2014 each group may contain nested children."
+    },
+    {
+      "name": "pinnedItems",
+      "values": [
+        "`AILedNavItem[]`"
+      ],
+      "default": "`2 defaults`",
+      "hint": "Pinned conversations / agents / artifacts."
+    },
+    {
+      "name": "recentItems",
+      "values": [
+        "`AILedNavItem[]`"
+      ],
+      "default": "`4 defaults`",
+      "hint": "Recent conversations / workstreams / outputs."
+    },
+    {
+      "name": "user",
+      "values": [
+        "`{ initials: string; name: string; subtitle: string }`"
+      ],
+      "default": "`User Name preset`",
+      "hint": "Footer account block."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"collapsed\" \\",
+      "hint": "\"workspace-focused\" \\"
+    },
+    {
+      "name": "state",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"nested-open\" \\",
+      "hint": "\"loading-recents\" \\"
+    },
+    {
+      "name": "selectedItemId",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Active route / item id. Drives aria-current + selected styling."
+    },
+    {
+      "name": "collapsed",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`undefined`",
+      "hint": "Shortcut for variant=\"collapsed\" \u2014 useful when toggling via a parent control."
+    },
+    {
+      "name": "onToggleCollapse",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fired when the user clicks the collapse / expand button."
+    },
+    {
+      "name": "onItemSelect",
+      "values": [
+        "`(item: AILedNavItem) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fired when any item is activated. Parent typically routes via item.href or item.id."
+    },
+    {
+      "name": "onNewChat",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Convenience handler for the New chat action."
+    },
+    {
+      "name": "onSearch",
+      "values": [
+        "`(query: string) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fired when the user submits the inline search (Enter). Receives the typed query string. Existing callers that ignore the arg remain back-compatible."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AILedNavigation"
+    ],
+    "import": "import { AILedNavigation } from './AILedNavigation'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": "Navigate \u00b7 Launch \u00b7 RiSearchLine \u00b7 Resume \u00b7 Organize \u00b7 Pin \u00b7 Switch workspace \u00b7 Open agent \u00b7 Open artifact",
+    "accountability": "User control \u00b7 Workspace context \u00b7 Recents/history \u00b7 Saved artifacts \u00b7 Permissions \u00b7 Account/preferences"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

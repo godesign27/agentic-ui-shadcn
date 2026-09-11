@@ -1,0 +1,134 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIChipQuick",
+  "repoModule": "aiChipQuick",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Pill-shaped suggested-prompt chip with Lucide icon + label for AI idle state. Standard and isSpecial (All Prompts) variants. Exports QUICK_ACTIONS default set.",
+  "intent": "Suggested action chips surfaced by the AI agent \u2014 quick-access prompts before the user types. Hide after first message.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-chip-quick/ai-chip-quick.md",
+    "contract": "components/ai/atomic/ai-chip-quick/ai-chip-quick.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiChipQuick",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/chip-quick/AIChipQuick.tsx",
+    "preview": "components/ai/atomic/ai-chip-quick/ai-chip-quick.preview.html",
+    "agentMarkdown": [],
+    "note": "Canonical TSX lives in ZAIDYN AI Design System (external)."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "standard",
+    "special"
+  ],
+  "states": [
+    "idle",
+    "active"
+  ],
+  "props": [
+    {
+      "name": "icon",
+      "values": [
+        "`React.ElementType`"
+      ],
+      "hint": "Lucide icon component \u2014 13px, strokeWidth 2"
+    },
+    {
+      "name": "label",
+      "values": [
+        "string"
+      ],
+      "hint": "Visible chip label text"
+    },
+    {
+      "name": "isSpecial",
+      "values": [
+        "boolean"
+      ],
+      "default": "false",
+      "hint": "All Prompts variant \u2014 gradient hover CTA"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "hint": "Click handler \u2014 parent receives label via closure"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIChipQuick",
+      "AIQuickChip",
+      "QUICK_ACTIONS"
+    ],
+    "import": "import { AIChipQuick, QUICK_ACTIONS } from 'ai/atomic/chip-quick/AIChipQuick'",
+    "notes": [
+      "Map QUICK_ACTIONS in AICommandCenter idle state \u2014 max 8 chips",
+      "isSpecial last chip opens full prompt library",
+      "Hide grid when hasMessages=true \u2014 parent conditional render",
+      "Not generic buttons \u2014 periwinkle border + brand-blue hover"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-chip-bg",
+      "--ai-chip-bg-hover",
+      "--ai-chip-border",
+      "--ai-neutral-text",
+      "--ai-neutral-icon",
+      "ai-chip.surface",
+      "ai-chip.border.radius",
+      "ai-chip.action.surface.hover"
+    ],
+    "typography": [
+      "@brand-body-small"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "type=button on chip element"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not show chips after the first message is sent",
+      "Do not use more than 8 chips",
+      "Do not use emoji or invented icons \u2014 Lucide only",
+      "Do not use generic neutral buttons instead of AIChipQuick"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Suggest",
+      "Guide"
+    ],
+    "accountability": "Rationale \u00b7 User feedback"
+  },
+  "relatedModules": [
+    {
+      "name": "AIDialog",
+      "mirrorSpec": "components/ai/organisms/ai-dialog/ai-dialog.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

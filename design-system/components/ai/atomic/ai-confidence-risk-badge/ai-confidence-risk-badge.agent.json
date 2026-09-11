@@ -1,0 +1,105 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIConfidenceRiskBadge",
+  "repoModule": "aiConfidenceRiskBadge",
+  "tier": "atomic",
+  "status": "active",
+  "description": "The AI Confidence & Risk Badge is the primary accountability surface for AI outputs. It combines a confidence bar (high/medium/low with % fill), an optional risk chip, a stale-data warning, and a miss",
+  "intent": "Compound accountability badge showing AI output confidence level, risk severity, data freshness, and source availability in a single composable row.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.md",
+    "contract": "components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.agent.json",
+    "agentIndexModule": "aiConfidenceRiskBadge",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/confidence-risk-badge/AIConfidenceRiskBadge.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "confidence",
+      "values": [
+        "`ConfidenceLevel`"
+      ],
+      "default": "`\u2014`",
+      "hint": "high \\"
+    },
+    {
+      "name": "risk",
+      "values": [
+        "`RiskLevel`"
+      ],
+      "default": "`\"none\"`",
+      "hint": "none \\"
+    },
+    {
+      "name": "staleData",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show stale data indicator"
+    },
+    {
+      "name": "missingSource",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show missing source indicator"
+    },
+    {
+      "name": "compact",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Reduce padding for dense layouts"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIConfidenceRiskBadge"
+    ],
+    "import": "import { AIConfidenceRiskBadge } from '@ai/atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Evaluate",
+      "Confirm"
+    ],
+    "accountability": "Confidence \u00b7 Data quality \u00b7 Data freshness"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

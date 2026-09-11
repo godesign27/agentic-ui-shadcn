@@ -1,0 +1,13 @@
+{
+  "id": "bar-chart",
+  "name": "Bar Chart",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Bar Chart — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "BarChart"
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICheckbox",
+  "repoModule": "zdsAiCheckbox",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AICheckbox is the AI-styled selection control for AI cards, drawers, and settings rows. It does NOT reimplement the checkbox \u2014 it wraps the standard `ZdsCheckbox` (the shared ZDS atom, mirror `src/checkbox/`) and re-anchors the ZDS selection / focus / text CSS variables to their AI equivalents inside a scoped wrapper. That means the checked fill and border become AI brand indigo (#4D60E6) instead of ZDS teal, the focus ring uses `AI.color.border.focus`, the label uses `--ai-zds-text`, and the box corners are softened to match the AI card family \u2014 while every accessibility guarantee, the indeterminate dash, error mode, sizing, and disabled state are inherited from ZDS unchanged.",
+  "intent": "The ZDS Checkbox in AI clothing \u2014 same accessible control, AI brand indigo selection, focus ring, and label styling for AI surfaces.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/zds-ai-checkbox/zds-ai-checkbox.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "zdsAiCheckbox",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/zds-ai-checkbox/AICheckbox.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/zds-ai-checkbox/AICheckbox.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "checked",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Controlled checked state."
+    },
+    {
+      "name": "onChange",
+      "values": [
+        "`(e: ChangeEvent<HTMLInputElement>) => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Fires on toggle (inherited from ZdsCheckbox)."
+    },
+    {
+      "name": "label",
+      "values": [
+        "`ReactNode`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional label; clicking it toggles the box."
+    },
+    {
+      "name": "indeterminate",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Mixed state (dash) for a parent \"select all\"."
+    },
+    {
+      "name": "mode",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"error\"`",
+      "hint": "`\"default\"`"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"14px\" \\"
+      ],
+      "default": "\"16px\" \\",
+      "hint": "\"18px\" \\"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Non-interactive, dimmed."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICheckbox"
+    ],
+    "import": "import { AICheckbox } from './AICheckbox'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atoms \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [],
+    "aiBehavior": "",
+    "accountability": ""
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "curated": true
+}

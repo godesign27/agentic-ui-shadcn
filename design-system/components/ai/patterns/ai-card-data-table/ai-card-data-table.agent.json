@@ -1,0 +1,306 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardDataTable",
+  "repoModule": "aiCardDataTable",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICardDataTable is the canonical pattern for AI-generated tables across ZAIDYN. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.",
+  "intent": "One reusable table block \u2014 compact in chat, contextual in a drawer, governed in a review flow. Density picks how much trust + action context comes along.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-data-table/ai-card-data-table.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardDataTable",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-data-table/AICardDataTable.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-data-table/AICardDataTable.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`\"simple\" \\"
+      ],
+      "default": "\"rich\" \\",
+      "hint": "\"robust\"`"
+    },
+    {
+      "name": "state",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"loading\" \\",
+      "hint": "\"progressiveLoading\" \\"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Table title (H3)."
+    },
+    {
+      "name": "subtitle",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Sub-line under the title."
+    },
+    {
+      "name": "intro",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Conversational lead-in sentence rendered above the card shell."
+    },
+    {
+      "name": "generatedBy",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Uppercase brand-color attribution label (\"ZAIDYN AI\")."
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Freshness or \"Generated\" timestamp."
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`\"low\" \\"
+      ],
+      "default": "\"medium\" \\",
+      "hint": "\"high\" \\"
+    },
+    {
+      "name": "risk",
+      "values": [
+        "`\"low\" \\"
+      ],
+      "default": "\"medium\" \\",
+      "hint": "\"high\" \\"
+    },
+    {
+      "name": "columns",
+      "values": [
+        "`AIDataTableColumn[]`"
+      ],
+      "default": "`required`",
+      "hint": "Column definitions \u2014 id, label, align, width, type. RiFontSize2 drives alignment and tabular numerals."
+    },
+    {
+      "name": "rows",
+      "values": [
+        "`AIDataTableRow[]`"
+      ],
+      "default": "`required`",
+      "hint": "Row objects with cells array (must match columns length), optional row state, optional note."
+    },
+    {
+      "name": "rowCount",
+      "values": [
+        "`number`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer row count when truncating (\"5 rows\")."
+    },
+    {
+      "name": "flaggedSummary",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Single-line callout above the table for flagged-row context."
+    },
+    {
+      "name": "source",
+      "values": [
+        "`{ label: string; icon?: string }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer source chip (Rich+)."
+    },
+    {
+      "name": "freshness",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Footer freshness chip (Rich+)."
+    },
+    {
+      "name": "reviewer",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Reviewer name shown in the footer trust line."
+    },
+    {
+      "name": "approvalRequired",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Robust. When true, primary action swaps to \"Send for approval\"."
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Renders the View rationale link."
+    },
+    {
+      "name": "onViewSources",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View sources link."
+    },
+    {
+      "name": "onViewAssumptions",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View assumptions link."
+    },
+    {
+      "name": "onViewAuditTrail",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View audit trail link."
+    },
+    {
+      "name": "onViewChangeSummary",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders the View change summary link."
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "`{ label, onClick?, disabled? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Primary action button in the footer."
+    },
+    {
+      "name": "secondaryAction",
+      "values": [
+        "`{ label, onClick?, disabled? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Rich+. Secondary action button."
+    },
+    {
+      "name": "tertiaryAction",
+      "values": [
+        "`{ label, onClick? }`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Tertiary action (left-anchored)."
+    },
+    {
+      "name": "onExpand",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Robust. Renders a small expand-icon button in the top-right of the header with a hover tooltip. Use this for the \"Expand Full Table\" affordance instead of a footer-anchored action."
+    },
+    {
+      "name": "expandTooltip",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Expand Full Table\"`",
+      "hint": "Hover-tooltip label for the top-right expand icon."
+    },
+    {
+      "name": "onRetry",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "When the state is error or sourceUnavailable, renders a Retry button inside the body callout."
+    },
+    {
+      "name": "loadingLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Generating table\u2026\"`",
+      "hint": "Calm copy displayed above the skeleton during the loading state."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardDataTable"
+    ],
+    "import": "import { AICardDataTable } from './AICardDataTable'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Summarize \u00b7 Compare \u00b7 Detect \u00b7 Review \u00b7 Validate \u00b7 Apply \u00b7 Approve \u00b7 Escalate",
+    "accountability": "Sources \u00b7 Freshness \u00b7 Confidence \u00b7 Risk \u00b7 Rationale \u00b7 Assumptions \u00b7 Audit trail \u00b7 Change summary \u00b7 Human review \u00b7 Approval"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

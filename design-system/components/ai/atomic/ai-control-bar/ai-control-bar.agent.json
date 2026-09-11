@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIControlBar",
+  "repoModule": "aiControlBar",
+  "tier": "atomic",
+  "status": "active",
+  "description": "The AI Control Bar gives users runtime governance over an executing AI task. It surfaces contextually appropriate actions \u2014 pause, resume, redirect, cancel confirm \u2014 based on the current execution sta",
+  "intent": "State-aware execution control bar for AI workstreams. Surfaces contextually appropriate pause, resume, redirect, and cancel actions as the workflow progresses.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-control-bar/ai-control-bar.md",
+    "contract": "components/ai/atomic/ai-control-bar/ai-control-bar.agent.json",
+    "agentIndexModule": "aiControlBar",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/control-bar/AIControlBar.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-control-bar/AIControlBar.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "state",
+      "values": [
+        "`ControlBarState`"
+      ],
+      "default": "`\u2014`",
+      "hint": "running \\"
+    },
+    {
+      "name": "onPause",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Pause button is clicked"
+    },
+    {
+      "name": "onResume",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Resume or Keep running is clicked"
+    },
+    {
+      "name": "onCancel",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Cancel button is clicked"
+    },
+    {
+      "name": "onRedirect",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Redirect button is clicked"
+    },
+    {
+      "name": "onCancelConfirm",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when Yes cancel is confirmed"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional context label shown left of buttons"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIControlBar"
+    ],
+    "import": "import { AIControlBar } from '@ai/atomic/ai-control-bar/AIControlBar'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Pause",
+      "Redirect",
+      "Confirm"
+    ],
+    "accountability": "Rollback \u00b7 Escalation \u00b7 Approval"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

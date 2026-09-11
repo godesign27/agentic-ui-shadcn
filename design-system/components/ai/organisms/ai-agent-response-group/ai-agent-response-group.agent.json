@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentResponseGroup",
+  "repoModule": "aiAgentResponseGroup",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIAgentResponseGroup is the primary conversational AI message group. It composes AIMessageHeader, AIMessageBody, and optional action or footer layers into a single branded card.",
+  "intent": "A flexible conversational card that upgrades from plain text to actions, alerts, or full footer \u2014 controlled by a single variant prop.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-agent-response-group/ai-agent-response-group.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAgentResponseGroup",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-agent-response-group/AIAgentResponseGroup.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-agent-response-group/AIAgentResponseGroup.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "agentLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"AI Assistant\"`",
+      "hint": "Agent name shown in the attribution header."
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Just now\"`",
+      "hint": "Right-aligned timestamp in the header."
+    },
+    {
+      "name": "children",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`required`",
+      "hint": "Body content. Use <strong> with brand color for inline emphasis."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`\"default\" \\"
+      ],
+      "default": "\"with-actions\" \\",
+      "hint": "\"with-alert\" \\"
+    },
+    {
+      "name": "alertLabel",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Heads up\"`",
+      "hint": "Label text inside the orange alert sub-row. Only visible in with-alert variant."
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "`{ label: string; onClick?: () => void }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Primary pill button. Visible in with-actions and with-alert variants."
+    },
+    {
+      "name": "secondaryAction",
+      "values": [
+        "`{ label: string; onClick?: () => void }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Secondary outline pill button. Visible in with-actions and with-alert variants."
+    },
+    {
+      "name": "sources",
+      "values": [
+        "`AISource[]`"
+      ],
+      "default": "`[]`",
+      "hint": "Source chips passed to AIResponseFooter. Only used in with-footer variant."
+    },
+    {
+      "name": "showFeedback",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Shows thumbs up/down feedback bar in AIResponseFooter. Only used in with-footer variant."
+    },
+    {
+      "name": "onFeedback",
+      "values": [
+        "`(v: \"up\" \\"
+      ],
+      "default": "\"down\") => void`",
+      "hint": "`undefined`"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentResponseGroup"
+    ],
+    "import": "import { AIAgentResponseGroup } from './AIAgentResponseGroup'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Respond \u00b7 Suggest \u00b7 Prompt action \u00b7 Alert",
+    "accountability": "Agent identity \u00b7 Timestamp \u00b7 Follow-up action \u00b7 Transparency"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

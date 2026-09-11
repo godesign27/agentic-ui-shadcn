@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Confidence & Risk Badge — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+
+    .badge-row {
+      display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    }
+    .badge-row.compact .conf-bar-wrap { padding: 3px 8px; }
+    .badge-row.compact .conf-label { font-size: 11px; }
+
+    .conf-bar-wrap {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 10px; border-radius: 100px;
+      background: var(--neutral-surface-muted); border: 1px solid #EBEBEB;
+    }
+    .conf-bar {
+      width: 64px; height: 6px; border-radius: 3px;
+      background: #EBEBEB; overflow: hidden;
+    }
+    .conf-bar__fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+    .conf-bar__fill--high { width: 90%; background: #2E7D32; }
+    .conf-bar__fill--medium { width: 55%; background: #F9A825; }
+    .conf-bar__fill--low { width: 20%; background: #C62828; }
+    .conf-label { font-size: 12px; font-weight: 600; color: var(--neutral-text); white-space: nowrap; }
+
+    .risk-chip, .signal-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 100px; font-size: 12px; font-weight: 600;
+    }
+    .risk-chip--low { background: #FEFBF4; border: 1px solid #FFD68F; color: #A54F00; }
+    .risk-chip--medium { background: #FFF1D6; border: 1px solid #EC7200; color: #A54F00; }
+    .risk-chip--high { background: #FFEBEE; border: 1px solid #EF9A9A; color: #B71C1C; }
+    .signal-chip--stale { background: #FEFBF4; border: 1px solid #FFD68F; color: #CB6100; }
+    .signal-chip--missing { background: #FFEBEE; border: 1px solid #EF9A9A; color: #B71C1C; }
+
+    .badge-list { display: flex; flex-direction: column; gap: 16px; }
+    .state-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--neutral-text-helper); margin-bottom: 6px; display: block; }
+
+    .rec-card {
+      border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 16px;
+      max-width: 520px;
+    }
+    .rec-card p { margin: 0 0 12px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Confidence & Risk Badge</h1>
+    <p class="subtitle">Compound accountability badge — confidence level, risk severity, data freshness, and source availability.</p>
+
+    <section>
+      <h2>Confidence levels</h2>
+      <div class="demo-surface">
+        <div class="badge-list" id="confidence-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Combined states</h2>
+      <p class="section-desc">Risk chips, stale data, and missing source indicators compose with confidence.</p>
+      <div class="demo-surface">
+        <div class="badge-list" id="combined-list"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Adjacent to recommendation</h2>
+      <div class="demo-surface">
+        <div class="rec-card">
+          <p>Reallocate territories T-042 and T-043 from Northeast to Mid-Atlantic based on Q3 pipeline velocity.</p>
+          <div id="rec-badge"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const CONF = {
+      high: { pct: 90, label: 'High Confidence', cls: 'high' },
+      medium: { pct: 55, label: 'Medium Confidence', cls: 'medium' },
+      low: { pct: 20, label: 'Low Confidence', cls: 'low' },
+    };
+
+    function confidenceBar(level, compact = false) {
+      const c = CONF[level];
+      const wrap = document.createElement('span');
+      wrap.className = 'conf-bar-wrap';
+      const bar = document.createElement('span');
+      bar.className = 'conf-bar';
+      const fill = document.createElement('span');
+      fill.className = `conf-bar__fill conf-bar__fill--${c.cls}`;
+      bar.appendChild(fill);
+      const lbl = document.createElement('span');
+      lbl.className = 'conf-label';
+      lbl.textContent = c.label;
+      wrap.append(bar, lbl);
+      return wrap;
+    }
+
+    function riskChip(level) {
+      const chip = document.createElement('span');
+      chip.className = `risk-chip risk-chip--${level}`;
+      chip.textContent = level.charAt(0).toUpperCase() + level.slice(1) + ' risk';
+      return chip;
+    }
+
+    function signalChip(type) {
+      const chip = document.createElement('span');
+      chip.className = `signal-chip signal-chip--${type}`;
+      chip.textContent = type === 'stale' ? '🕐 Stale' : 'ⓘ No source';
+      return chip;
+    }
+
+    function badge(confidence, { risk = 'none', staleData = false, missingSource = false, compact = false } = {}) {
+      const row = document.createElement('div');
+      row.className = 'badge-row' + (compact ? ' compact' : '');
+      row.appendChild(confidenceBar(confidence, compact));
+      if (risk !== 'none') row.appendChild(riskChip(risk));
+      if (staleData) row.appendChild(signalChip('stale'));
+      if (missingSource) row.appendChild(signalChip('missing'));
+      return row;
+    }
+
+    function labeled(label, el) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      wrap.append(lbl, el);
+      return wrap;
+    }
+
+    const confList = document.getElementById('confidence-list');
+    ['high', 'medium', 'low'].forEach(l => {
+      confList.appendChild(labeled(l, badge(l)));
+    });
+
+    const combined = document.getElementById('combined-list');
+    combined.append(
+      labeled('High + low risk', badge('high', { risk: 'low' })),
+      labeled('Medium + medium risk + stale', badge('medium', { risk: 'medium', staleData: true })),
+      labeled('Low + high risk + no source', badge('low', { risk: 'high', missingSource: true })),
+      labeled('Compact layout', badge('medium', { risk: 'low', compact: true }))
+    );
+
+    document.getElementById('rec-badge').appendChild(
+      badge('medium', { risk: 'medium', staleData: true })
+    );
+  </script>
+</body>
+</html>

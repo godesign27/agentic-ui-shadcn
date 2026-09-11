@@ -1,0 +1,13 @@
+{
+  "id": "dashboard-visualizations",
+  "name": "Dashboard Visualizations",
+  "tier": "data-viz",
+  "status": "Draft",
+  "intent": "Dashboard Visualizations — aligned to AI Pattern Library nav (data-viz).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "DashboardVisualizations"
+    ]
+  }
+}

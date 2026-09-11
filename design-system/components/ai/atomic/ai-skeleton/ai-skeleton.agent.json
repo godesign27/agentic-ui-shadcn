@@ -1,0 +1,440 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AISkeleton",
+  "repoModule": "aiSkeleton",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AI Skeleton is the AI-library mirror of ZDS Skeleton. Every measurement is identical \u2014 48/40 profile, 56\u00d724 controls, 120\u00d724 header, exactly two 16px body lines 16px apart, 280\u00d7160 card, 56px table rows, 400\u00d7900 panel \u2014 so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text \u2014 column names, the panel title \u2014 stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged \u2014 the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.",
+  "intent": "Four atoms \u2192 three patterns. Brand-blue fill, brand sweep, AI radius. Motion on by default.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-skeleton/ai-skeleton.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiSkeleton",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-skeleton/AISkeleton.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-skeleton/AISkeleton.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "delta",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "AISkeletonMetricTile \u2014 trailing full-radius pill for the trend indicator."
+    },
+    {
+      "name": "sparkline",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "AISkeletonMetricTile \u2014 thin plotted strip beneath the value."
+    },
+    {
+      "name": "bordered",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "AISkeletonMetricTile \u2014 brandSurface plate and brandBorder. Off when the tile sits inside a card that already has one."
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`'bar' \\"
+      ],
+      "default": "'line' \\",
+      "hint": "'donut'`"
+    },
+    {
+      "name": "axis",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "AISkeletonChart \u2014 separator-coloured left and bottom rules. Off for a sparkline strip."
+    },
+    {
+      "name": "bars",
+      "values": [
+        "`number`"
+      ],
+      "default": "`8`",
+      "hint": "AISkeletonChart \u2014 column count for the bar variant."
+    },
+    {
+      "name": "steps",
+      "values": [
+        "`number`"
+      ],
+      "default": "`4`",
+      "hint": "AISkeletonTimeline \u2014 how many nodes to draw."
+    },
+    {
+      "name": "orientation",
+      "values": [
+        "`'vertical' \\"
+      ],
+      "default": "'horizontal'`",
+      "hint": "`'vertical'`"
+    },
+    {
+      "name": "label",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "AISkeletonField / AISkeletonMetricTile \u2014 leading label bar."
+    },
+    {
+      "name": "helper",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "AISkeletonField \u2014 helper line under the control."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`'normal' \\"
+      ],
+      "default": "'small' \\",
+      "hint": "'xsmall'`"
+    },
+    {
+      "name": "count",
+      "values": [
+        "`number`"
+      ],
+      "default": "`4`",
+      "hint": "AISkeletonChips \u2014 how many pills. Widths cycle a fixed uneven set."
+    },
+    {
+      "name": "shimmer",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "All exports. Brand sweep \u2014 ON by default, the inverse of ZDS Skeleton."
+    },
+    {
+      "name": "Block \u00b7 width / height",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`'100%' / 16`"
+    },
+    {
+      "name": "Block \u00b7 radius",
+      "values": [
+        "`string`"
+      ],
+      "default": "`AI.radius.xs`",
+      "hint": "Pass AI.radius.full for pill strips."
+    },
+    {
+      "name": "Block \u00b7 delay",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0`",
+      "hint": "Offsets the sweep, in ms. Set via a custom property \u2014 inline styles cannot reach a ::after."
+    },
+    {
+      "name": "Profile \u00b7 size",
+      "values": [
+        "`number`"
+      ],
+      "default": "`48`",
+      "hint": "Frame size; the disc stays at 40/48 of it."
+    },
+    {
+      "name": "Controls \u00b7 size",
+      "values": [
+        "`number`"
+      ],
+      "default": "`24`",
+      "hint": "Square edge. The 8px gap holds regardless."
+    },
+    {
+      "name": "Header \u00b7 width",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`120`"
+    },
+    {
+      "name": "Body \u00b7 stagger",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Offsets the second line 200ms."
+    },
+    {
+      "name": "Card \u00b7 variant",
+      "values": [
+        "`'profile-left' \\"
+      ],
+      "default": "'profile-center' \\",
+      "hint": "'title' \\"
+    },
+    {
+      "name": "Card \u00b7 title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`'Card Title'`",
+      "hint": "Read by the \"text\" variant only."
+    },
+    {
+      "name": "Card \u00b7 announce",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Set false when an ancestor already carries the live region."
+    },
+    {
+      "name": "Table \u00b7 rows",
+      "values": [
+        "`number`"
+      ],
+      "default": "`7`",
+      "hint": "Skeleton data rows. Row height is fixed at 56px."
+    },
+    {
+      "name": "Table \u00b7 columns",
+      "values": [
+        "`AISkeletonTableColumn[]`"
+      ],
+      "default": "`AI_SKELETON_TABLE_COLUMNS`",
+      "hint": "{ label?, width, icons? }."
+    },
+    {
+      "name": "Table \u00b7 header",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Render the real header row."
+    },
+    {
+      "name": "Table \u00b7 cascade",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "80ms per row."
+    },
+    {
+      "name": "Panel \u00b7 items",
+      "values": [
+        "`number`"
+      ],
+      "default": "`10`",
+      "hint": "48px placeholder rows."
+    },
+    {
+      "name": "Panel \u00b7 title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Optional real Menu Title row."
+    },
+    {
+      "name": "Panel \u00b7 onClose",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`\u2014`",
+      "hint": "The close button is real UI, not a placeholder."
+    },
+    {
+      "name": "Panel \u00b7 cascade",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "60ms per row."
+    },
+    {
+      "name": "duration",
+      "values": [
+        "`number`"
+      ],
+      "default": "`1600`",
+      "hint": "All exports. Sweep duration in ms, via --ai-skeleton-duration. The property inherits, so setting it on any ancestor rescales everything below."
+    },
+    {
+      "name": "Media \u00b7 ratio",
+      "values": [
+        "`'16:9' \\"
+      ],
+      "default": "'4:3' \\",
+      "hint": "'3:2' \\"
+    },
+    {
+      "name": "Media \u00b7 glyph",
+      "values": [
+        "`'none' \\"
+      ],
+      "default": "'play' \\",
+      "hint": "'image'`"
+    },
+    {
+      "name": "Paragraph \u00b7 lines",
+      "values": [
+        "`number`"
+      ],
+      "default": "`3`",
+      "hint": "Line count. The last is short."
+    },
+    {
+      "name": "Paragraph \u00b7 lastLineWidth",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`'60%'`"
+    },
+    {
+      "name": "Paragraph \u00b7 stagger",
+      "values": [
+        "`number`"
+      ],
+      "default": "`120`",
+      "hint": "Per-line sweep offset, ms."
+    },
+    {
+      "name": "List \u00b7 rows",
+      "values": [
+        "`number`"
+      ],
+      "default": "`5`",
+      "hint": "Row count; cascades 80ms each."
+    },
+    {
+      "name": "ListRow \u00b7 avatarShape",
+      "values": [
+        "`'circle' \\"
+      ],
+      "default": "'square'`",
+      "hint": "`'circle'`"
+    },
+    {
+      "name": "ListRow \u00b7 trailing",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Placeholder for a trailing action or timestamp."
+    },
+    {
+      "name": "Message \u00b7 from",
+      "values": [
+        "`'assistant' \\"
+      ],
+      "default": "'user'`",
+      "hint": "`'assistant'`"
+    },
+    {
+      "name": "Message \u00b7 thinking",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Three pulsing brand dots \u2014 still composing."
+    },
+    {
+      "name": "Grid \u00b7 count / columns",
+      "values": [
+        "`number`"
+      ],
+      "default": "`6 / auto-fill`",
+      "hint": "Leave columns unset to auto-fill against minItemWidth."
+    },
+    {
+      "name": "Grid \u00b7 renderItem",
+      "values": [
+        "`(i: number) => ReactNode`"
+      ],
+      "default": "`AISkeletonCard`",
+      "hint": "Any skeleton can be the repeated cell."
+    },
+    {
+      "name": "Overlay \u00b7 busy",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "False removes the plate and restores pointer events."
+    },
+    {
+      "name": "Overlay \u00b7 opacity",
+      "values": [
+        "`number`"
+      ],
+      "default": "`0.82`",
+      "hint": "How much stale content shows through."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AISkeleton"
+    ],
+    "import": "import { AISkeleton } from './AISkeleton'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": "Feedback \u00b7 Loading",
+    "accountability": "Atoms + composed patterns"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

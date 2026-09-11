@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Message Footer — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ai-neutral-text: #2f2c3c;
+      --ai-btn-outline-border: #B2B0B6;
+    }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-label { font-size: 13px; font-weight: 400; color: var(--neutral-text-helper); margin-bottom: 10px; display: block; }
+    .gallery { display: flex; flex-direction: column; gap: 28px; max-width: 640px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .response-card {
+      max-width: 640px; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px;
+      padding: 14px 16px 12px;
+    }
+    .response-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.6; color: var(--neutral-text); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #1A1628; color: #fff;
+      padding: 12px 16px; border-radius: 8px; font-size: 13px;
+      opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none; z-index: 100;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    .empty-note { font-size: 13px; color: var(--neutral-text-helper); font-style: italic; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Message Footer</h1>
+    <p class="subtitle">Decision point at the end of actionable AI responses — primary, secondary, and ghost actions. Ported from canonical <code>AIMessageFooter.tsx</code>.</p>
+
+    <section>
+      <h2>State variations</h2>
+      <p class="section-desc">1–3 actions — primary grows with <code>flex:1</code> and <code>minWidth:140px</code>.</p>
+      <div class="demo-surface">
+        <div class="gallery" id="state-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>In message context</h2>
+      <p class="section-desc">Footer below AI prose — feedback bar may follow separately.</p>
+      <div class="demo-surface">
+        <div class="response-card" id="context-card"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Conditional visibility</h2>
+      <p class="section-desc"><code>visible=false</code> or empty <code>actions</code> renders nothing.</p>
+      <div class="demo-surface">
+        <div id="hidden-demo" class="empty-note">Footer hidden (visible=false)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Primary only</strong> — Single gradient CTA</li>
+        <li><strong>Primary + Secondary</strong> — Confirm + Edit (most common)</li>
+        <li><strong>Primary + Secondary + Ghost</strong> — Approve + Edit First + Cancel</li>
+        <li><strong>Hidden</strong> — No actions or visible=false</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIMessageFooter } from '@/components/ai/atomic/message-footer/AIMessageFooter';
+
+&lt;AIMessageFooter actions={[
+  { label: 'Confirm & Apply', variant: 'primary', onClick: handleConfirm },
+  { label: 'Edit', variant: 'secondary', onClick: handleEdit },
+]} /&gt;</pre>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    const AI = {
+      gradient: { action: { full: 'linear-gradient(135deg, #7A8CFF 0%, #5A6DFF 100%)' } },
+      color: { action: { primaryActive: '#3F50C7' }, text: { onAction: '#FFFFFF' } },
+      shadow: { action: { default: 'rgba(90, 109, 255, 0.18)' } },
+      radius: { md: '16px' },
+    };
+    const NEUTRAL = { textDisabled: '#716e79' };
+
+    /** @brand-agent-name */
+    const AGENT_NAME = { fontSize: 11, fontWeight: 600, lineHeight: 1.0 };
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => el.classList.remove('visible'), 2000);
+    }
+
+    function createPrimaryButton(action) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      const state = { hov: false };
+
+      function render() {
+        btn.style.cssText = [
+          'flex:1', 'min-width:140px', 'padding:8px 12px',
+          `background:${state.hov ? AI.color.action.primaryActive : AI.gradient.action.full}`,
+          `color:${AI.color.text.onAction}`,
+          'border:none', `border-radius:${AI.radius.md}`,
+          `cursor:${action.disabled ? 'not-allowed' : 'pointer'}`,
+          `font-size:${AGENT_NAME.fontSize}px`, `font-weight:${AGENT_NAME.fontWeight}`,
+          `line-height:${AGENT_NAME.lineHeight}`, `font-family:${F}`,
+          'transition:background 0.15s',
+          `box-shadow:${state.hov ? 'none' : `0 2px 8px ${AI.shadow.action.default}`}`,
+          `opacity:${action.disabled ? 0.5 : 1}`,
+        ].join(';');
+        btn.textContent = action.label;
+      }
+
+      if (!action.disabled && action.onClick) btn.addEventListener('click', action.onClick);
+      btn.addEventListener('mouseenter', () => { if (!action.disabled) { state.hov = true; render(); } });
+      btn.addEventListener('mouseleave', () => { state.hov = false; render(); });
+      btn.disabled = !!action.disabled;
+      render();
+      return btn;
+    }
+
+    function createSecondaryButton(action) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.cssText = [
+        'padding:8px 14px', 'background:transparent',
+        'color:var(--ai-neutral-text)',
+        'border:1px solid var(--ai-btn-outline-border)',
+        `border-radius:${AI.radius.md}`,
+        `cursor:${action.disabled ? 'not-allowed' : 'pointer'}`,
+        `font-size:${AGENT_NAME.fontSize}px`, 'font-weight:500',
+        `line-height:${AGENT_NAME.lineHeight}`, `font-family:${F}`,
+        `opacity:${action.disabled ? 0.5 : 1}`,
+      ].join(';');
+      btn.textContent = action.label;
+      if (!action.disabled && action.onClick) btn.addEventListener('click', action.onClick);
+      btn.disabled = !!action.disabled;
+      return btn;
+    }
+
+    function createGhostButton(action) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.cssText = [
+        'padding:8px 6px', 'background:none',
+        `color:${NEUTRAL.textDisabled}`,
+        'border:none',
+        `cursor:${action.disabled ? 'not-allowed' : 'pointer'}`,
+        `font-size:${AGENT_NAME.fontSize}px`, 'font-weight:400',
+        `line-height:${AGENT_NAME.lineHeight}`, `font-family:${F}`,
+        `opacity:${action.disabled ? 0.4 : 1}`,
+      ].join(';');
+      btn.textContent = action.label;
+      if (!action.disabled && action.onClick) btn.addEventListener('click', action.onClick);
+      btn.disabled = !!action.disabled;
+      return btn;
+    }
+
+    /** Vanilla port of AIMessageFooter */
+    function mountAIMessageFooter(container, { actions = [], visible = true } = {}) {
+      container.innerHTML = '';
+      if (!visible || actions.length === 0) return null;
+
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 0 10px;width:100%;';
+
+      actions.forEach(action => {
+        if (action.variant === 'primary') wrap.appendChild(createPrimaryButton(action));
+        else if (action.variant === 'secondary') wrap.appendChild(createSecondaryButton(action));
+        else wrap.appendChild(createGhostButton(action));
+      });
+
+      container.appendChild(wrap);
+      return wrap;
+    }
+
+    function labeledDemo(label, actions) {
+      const block = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      const host = document.createElement('div');
+      host.style.width = '100%';
+      mountAIMessageFooter(host, { actions });
+      block.append(lbl, host);
+      return block;
+    }
+
+    const click = (name) => () => showToast(`${name} clicked`);
+
+    const gallery = document.getElementById('state-gallery');
+    gallery.appendChild(labeledDemo('Example usage', [
+      { label: 'Confirm & Apply Assignment', variant: 'primary', onClick: click('Confirm & Apply Assignment') },
+      { label: 'Edit', variant: 'secondary', onClick: click('Edit') },
+    ]));
+    gallery.appendChild(labeledDemo('Primary only', [
+      { label: 'Primary CTA', variant: 'primary', onClick: click('Primary CTA') },
+    ]));
+    gallery.appendChild(labeledDemo('Primary + Secondary', [
+      { label: 'Primary CTA', variant: 'primary', onClick: click('Primary CTA') },
+      { label: 'Secondary', variant: 'secondary', onClick: click('Secondary') },
+    ]));
+    gallery.appendChild(labeledDemo('Primary + Secondary + Ghost', [
+      { label: 'Primary CTA', variant: 'primary', onClick: click('Primary CTA') },
+      { label: 'Secondary', variant: 'secondary', onClick: click('Secondary') },
+      { label: 'Cancel', variant: 'ghost', onClick: click('Cancel') },
+    ]));
+
+    const ctx = document.getElementById('context-card');
+    const prose = document.createElement('p');
+    prose.textContent = 'I recommend reallocating territories T-042 and T-043 from Northeast to Mid-Atlantic based on Q3 pipeline velocity.';
+    ctx.appendChild(prose);
+    mountAIMessageFooter(ctx, {
+      actions: [
+        { label: 'Approve & Execute', variant: 'primary', onClick: click('Approve & Execute') },
+        { label: 'Edit First', variant: 'secondary', onClick: click('Edit First') },
+        { label: 'Cancel', variant: 'ghost', onClick: click('Cancel') },
+      ],
+    });
+
+    mountAIMessageFooter(document.getElementById('hidden-demo'), {
+      actions: [{ label: 'Hidden', variant: 'primary', onClick: () => {} }],
+      visible: false,
+    });
+  </script>
+</body>
+</html>

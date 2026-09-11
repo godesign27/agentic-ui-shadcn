@@ -1,0 +1,104 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIMessageBody",
+  "repoModule": "aiMessageBody",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Atomic text body for plain-language AI responses \u2014 typography via @brand-bubble-body, size sm/md/lg, no bold or headings inside the atom.",
+  "intent": "The voice of the AI. Plain, direct, readable \u2014 the atomic text body that carries every AI-generated sentence when no structured output is needed.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-message-body/ai-message-body.md",
+    "contract": "components/ai/atomic/ai-message-body/ai-message-body.agent.json",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiMessageBody",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/app/components/ai/atomic/message-body/AIMessageBody.tsx",
+    "preview": "components/ai/atomic/ai-message-body/ai-message-body.preview.html",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-message-body/AIMessageBody.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "standard",
+    "short-answer",
+    "multi-sentence"
+  ],
+  "states": [],
+  "props": [
+    {
+      "name": "children",
+      "values": [
+        "`React.ReactNode`"
+      ],
+      "default": "`required`",
+      "hint": "AI response prose \u2014 any React content. Keep formatting to plain text; no bold or headings."
+    },
+    {
+      "name": "size",
+      "values": [
+        "`\"sm\"`",
+        "`\"md\"`",
+        "`\"lg\"`"
+      ],
+      "default": "\"md\"",
+      "hint": "Typography size: sm=14px, md=16px (@brand-bubble-body), lg=18px. All inherit bubble-body weight and line-height."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIMessageBody"
+    ],
+    "import": "import { AIMessageBody } from '@/components/ai/atomic/message-body/AIMessageBody'",
+    "notes": [
+      "md resolves through AI_TYPOGRAPHY['@brand-bubble-body'] \u2014 16px / 400 / 1.55 / -0.1px letter-spacing.",
+      "Color via var(--ai-neutral-text); font via F from ai-tokens.ts."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "--ai-neutral-text"
+    ],
+    "typography": [
+      "@brand-bubble-body"
+    ]
+  },
+  "accessibility": {
+    "role": "paragraph",
+    "keyboard": [],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "When the response contains structured data \u2014 use the appropriate group component (AIAnalysisMessage, table, etc.)",
+      "For short labels or status text \u2014 use Standard text styles directly",
+      "Do not use bold or headings inside this atom \u2014 those belong in structured output groups"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest",
+      "Explain",
+      "Guide"
+    ],
+    "accountability": "Rationale \u00b7 Assumptions \u00b7 Sources"
+  },
+  "relatedModules": [
+    "aiMessageHeader",
+    "aiFeedbackBar"
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

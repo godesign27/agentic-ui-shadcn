@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentTaskTracker",
+  "repoModule": "aiAgentTaskTracker",
+  "tier": "pages",
+  "status": "experimental",
+  "description": "AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (ZSAI tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere \u2014 AI emphasis uses ZSAI blue (#4D60E6); ZS orange is reserved for Needs Input / blocked / warning / pending approval; ZSAI tan stays on the supervisor agent surface only.",
+  "intent": "Persistent task supervision \u00b7 Needs Input resolution \u00b7 Bidirectional UI + natural-language mutation",
+  "authority": {
+    "mirrorSpec": "components/ai/pages/ai-agent-task-tracker/ai-agent-task-tracker.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAgentTaskTracker",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/pages/ai-agent-task-tracker/AIAgentTaskTracker.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-agent-task-tracker/AIAgentTaskTracker.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`'basic' \\"
+      ],
+      "default": "'simple' \\",
+      "hint": "'rich' \\"
+    },
+    {
+      "name": "flow",
+      "values": [
+        "`'default' \\"
+      ],
+      "default": "'needs-input' \\",
+      "hint": "'conflict' \\"
+    },
+    {
+      "name": "supervisorAgent",
+      "values": [
+        "`{ name; tasksTracked; lastUpdated? }`"
+      ],
+      "default": "`Smart Assist \u00b7 7 tasks`",
+      "hint": "Header companion strip identity."
+    },
+    {
+      "name": "tasks",
+      "values": [
+        "`AIAgentTaskCardProps[]`"
+      ],
+      "default": "`SAMPLE_TASKS`",
+      "hint": "Data-driven task list. Each task is an AIAgentTaskCard props object."
+    },
+    {
+      "name": "selectedTaskId",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Initial selected task id for the detail panel."
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`'list' \\"
+      ],
+      "default": "'board'`",
+      "hint": "`'list'`"
+    },
+    {
+      "name": "onNewTask",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Header New task action."
+    },
+    {
+      "name": "onReviewNeedsInput",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Header Review Needs Input action."
+    },
+    {
+      "name": "onSettings",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Header Settings action."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentTaskTracker"
+    ],
+    "import": "import { AIAgentTaskTracker } from './AIAgentTaskTracker'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive",
+      "AI Assisted"
+    ],
+    "aiBehavior": "Monitor \u00b7 Summarize \u00b7 Prioritize \u00b7 Validate \u00b7 Execute \u00b7 Escalate \u00b7 Review \u00b7 Explain \u00b7 Ask / clarify \u00b7 Recommend \u00b7 Retrieve",
+    "accountability": "Durable task ID \u00b7 Intent \u00b7 Mutable parameters \u00b7 Sources \u00b7 Rationale \u00b7 Confidence \u00b7 Risk \u00b7 Data freshness \u00b7 Health \u00b7 Human review \u00b7 Approval \u00b7 Audit trail \u00b7 Owner \u00b7 Undo \u00b7 Process trace \u00b7 Escalation \u00b7 Permission state \u00b7 Review status"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

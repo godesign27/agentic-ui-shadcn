@@ -1,0 +1,66 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIShadowTokens",
+  "repoModule": "aiShadowTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Two shadow families: action (brand-tinted drop shadow) and input (composite shadow for AI input card resting/focus states).",
+  "intent": "AI shadows use brand-tinted rgba — never plain black. Input card uses complete composite tokens, not decomposed parts.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/shadow.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "aiShadowTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-tokens.ts",
+    "note": "Structured mirror at components/ai/tokens/shadow.json"
+  },
+  "platforms": ["web", "react"],
+  "variants": ["action", "input"],
+  "states": ["default", "emphasis", "focus"],
+  "javascriptApi": {
+    "exports": ["AI.shadow"],
+    "import": "import { AI } from './ai-tokens'",
+    "notes": [
+      "Action tokens are color-only rgba — wrap with offset spread",
+      "Input tokens are full box-shadow composites — apply as-is",
+      "Overlays/drawers use ZDS blur tokens, not AI.shadow"
+    ]
+  },
+  "tokens": {
+    "cssVars": [
+      "--ai-shadow-action-default",
+      "--ai-shadow-action-emphasis",
+      "--ai-shadow-input-default",
+      "--ai-shadow-input-focus",
+      "AI.shadow.action.default",
+      "AI.shadow.input.default",
+      "AI.shadow.input.focus"
+    ]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": ["Shadow is not the only focus signal — pair with AI.color.border.focus"]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use plain-black box-shadows on AI surfaces",
+      "Do not decompose AI.shadow.input.* into separate ring and blur",
+      "Do not invent custom alpha bumps — use emphasis token"
+    ],
+    "agentRules": [
+      "Read shadow.json for applyAs patterns",
+      "Transition input shadow default to focus on textarea focus (0.25s ease)"
+    ]
+  },
+  "relatedModules": [
+    { "name": "AIColorTokens", "mirrorSpec": "components/ai/tokens/color.md" },
+    { "name": "AIMotionTokens", "mirrorSpec": "components/ai/tokens/motion.md" }
+  ],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

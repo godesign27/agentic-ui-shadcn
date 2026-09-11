@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "GovernedVisualization",
+  "repoModule": "governedVisualization",
+  "tier": "data-viz",
+  "status": "experimental",
+  "description": "Governed Visualization — stub pending Make sync (Draft).",
+  "intent": "Placeholder for Governed Visualization. Fill from Figma Make ZSD-AI-Design-System-V1.2.",
+  "authority": {
+    "mirrorSpec": "components/ai/data-viz/ai-governed-visualization/ai-governed-visualization.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "agentIndexModule": "governedVisualization",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "note": "Stub created by scripts/reorganize-ai-library.mjs — replace with full spec."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [
+    "default"
+  ],
+  "slots": [],
+  "props": [],
+  "javascriptApi": {
+    "exports": [
+      "GovernedVisualization"
+    ]
+  },
+  "accessibility": {
+    "notes": []
+  },
+  "rules": [
+    "Do not invent API — sync from Make registry before shipping.",
+    "Use AI tokens only; no bare semantic hex."
+  ]
+}

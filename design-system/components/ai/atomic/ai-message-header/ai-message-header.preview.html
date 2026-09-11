@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Message Header — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root { --ai-neutral-helper: #5b5864; }
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 920px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 680px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 32px; }
+    .state-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--neutral-text-helper); }
+    .state-label { font-size: 13px; font-weight: 400; color: var(--neutral-text-helper); margin-bottom: 8px; display: block; }
+    .gallery { display: flex; flex-direction: column; gap: 20px; max-width: 560px; }
+    .response-card {
+      max-width: 560px; background: #fff; border: 1px solid #EBEBEB; border-radius: 8px;
+      padding: 14px 16px 16px;
+    }
+    .response-card p { margin: 10px 0 0; font-size: 14px; line-height: 1.6; color: var(--neutral-text); }
+    pre {
+      background: #1A1628; color: #EEEDEC; padding: 16px; border-radius: 8px;
+      font-size: 12px; overflow-x: auto; white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Message Header</h1>
+    <p class="subtitle">Attribution row for every AI message — <code>BotAvatar</code>, agent label, optional timestamp. Ported from canonical <code>AIMessageHeader.tsx</code>.</p>
+
+    <section>
+      <h2>State variations</h2>
+      <p class="section-desc">Default <code>md</code> and compact <code>sm</code> — matches design reference.</p>
+      <div class="demo-surface">
+        <div class="gallery" id="state-gallery"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>In message context</h2>
+      <p class="section-desc">Header sits above the response body in chat and card layouts.</p>
+      <div class="demo-surface">
+        <div class="response-card" id="context-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>No timestamp</h2>
+      <p class="section-desc">Pass <code>undefined</code> to <code>timestamp</code> to hide the recency label.</p>
+      <div class="demo-surface">
+        <div id="no-ts-demo"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Documented states</h2>
+      <ul class="state-list">
+        <li><strong>Default (md)</strong> — 16px BotAvatar, @brand-agent-name (11px / 600), 10px timestamp</li>
+        <li><strong>Compact (sm)</strong> — 14px BotAvatar, 10px label, 9px timestamp</li>
+        <li><strong>BotAvatar</strong> — #B4BDFF / #5A6DFF / #1F2A66 + white cross-star (no orange ring)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Code example</h2>
+      <pre>import { AIMessageHeader } from '@/components/ai/atomic/message-header/AIMessageHeader';
+
+&lt;AIMessageHeader agentLabel="AI Analysis" /&gt;
+&lt;AIMessageHeader agentLabel="AI Response" timestamp="2 min ago" /&gt;
+&lt;AIMessageHeader agentLabel="Territory Agent" size="sm" timestamp="2 min ago" /&gt;</pre>
+    </section>
+  </div>
+
+  <script>
+    const F = '"Open Sans", sans-serif';
+
+    /** @brand-agent-name from ai-typography.ts */
+    const AGENT_NAME = { fontSize: 11, fontWeight: 600, lineHeight: 1.0 };
+
+    /** Vanilla port of BotAvatar from AIAvatar.tsx — viewBox 42×42 */
+    function botAvatar(size) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', String(size));
+      svg.setAttribute('height', String(size));
+      svg.setAttribute('viewBox', '0 0 42 42');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.style.flexShrink = '0';
+      svg.innerHTML = [
+        '<circle cx="21" cy="21" r="21" fill="#B4BDFF"/>',
+        '<circle cx="21" cy="21" r="16.3936" fill="#5A6DFF"/>',
+        '<circle cx="21" cy="21" r="11.7871" fill="#1F2A66"/>',
+        '<path clip-rule="evenodd" fill-rule="evenodd" fill="white" d="M12.4645 21C17.8898 21 21 17.8898 21 12.4645C21 17.8898 24.1102 21 29.5355 21C24.1102 21 21 24.1102 21 29.5355C21 24.1102 17.8898 21 12.4645 21Z"/>',
+      ].join('');
+      return svg;
+    }
+
+    /** Vanilla port of AIMessageHeader */
+    function mountAIMessageHeader(container, { agentLabel, timestamp = 'Just now', size = 'md' } = {}) {
+      const avatarSize = size === 'sm' ? 14 : 16;
+      const labelStyle = size === 'sm'
+        ? { fontSize: 10, fontWeight: 600, lineHeight: 1.0 }
+        : AGENT_NAME;
+      const timestampSz = size === 'sm' ? '9px' : '10px';
+
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:7px;width:100%;';
+
+      row.appendChild(botAvatar(avatarSize));
+
+      const label = document.createElement('span');
+      label.style.cssText = [
+        `font-family:${F}`,
+        `font-size:${labelStyle.fontSize}px`,
+        `font-weight:${labelStyle.fontWeight}`,
+        `line-height:${labelStyle.lineHeight}`,
+        'color:var(--ai-neutral-helper)',
+      ].join(';');
+      label.textContent = agentLabel;
+      row.appendChild(label);
+
+      if (timestamp) {
+        const ts = document.createElement('span');
+        ts.style.cssText = [
+          `font-size:${timestampSz}`,
+          'color:var(--ai-neutral-helper)',
+          `font-family:${F}`,
+          'margin-left:auto',
+        ].join(';');
+        ts.textContent = timestamp;
+        row.appendChild(ts);
+      }
+
+      container.appendChild(row);
+      return row;
+    }
+
+    function labeledDemo(label, fn) {
+      const wrap = document.createElement('div');
+      const lbl = document.createElement('span');
+      lbl.className = 'state-label';
+      lbl.textContent = label;
+      const host = document.createElement('div');
+      fn(host);
+      wrap.append(lbl, host);
+      return wrap;
+    }
+
+    // State gallery — matches design reference
+    const gallery = document.getElementById('state-gallery');
+    [
+      { label: 'Default (md)', props: { agentLabel: 'AI Analysis', timestamp: 'Just now' } },
+      { label: 'Custom timestamp', props: { agentLabel: 'AI Response', timestamp: '2 min ago' } },
+      { label: 'Default (md)', props: { agentLabel: 'AI Assistant', timestamp: 'Just now' } },
+      { label: 'Compact (sm)', props: { agentLabel: 'Territory Agent', timestamp: '2 min ago', size: 'sm' } },
+    ].forEach(item => {
+      gallery.appendChild(labeledDemo(item.label, h => {
+        mountAIMessageHeader(h, item.props);
+      }));
+    });
+
+    // In context
+    const ctx = document.getElementById('context-demo');
+    mountAIMessageHeader(ctx, { agentLabel: 'AI Analysis', timestamp: 'Just now' });
+    const body = document.createElement('p');
+    body.textContent = 'Based on Q3 pipeline velocity, I recommend reallocating territories T-042 and T-043 from Northeast to Mid-Atlantic.';
+    ctx.appendChild(body);
+
+    // No timestamp
+    mountAIMessageHeader(document.getElementById('no-ts-demo'), {
+      agentLabel: 'AI Analysis',
+      timestamp: undefined,
+    });
+  </script>
+</body>
+</html>

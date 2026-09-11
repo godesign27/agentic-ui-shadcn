@@ -1,0 +1,13 @@
+{
+  "id": "ai-slider",
+  "name": "AI Slider",
+  "tier": "atomic",
+  "status": "Draft",
+  "intent": "AI Slider — aligned to AI Pattern Library nav (atomic).",
+  "javascriptApi": {
+    "imports": [],
+    "exports": [
+      "AISlider"
+    ]
+  }
+}

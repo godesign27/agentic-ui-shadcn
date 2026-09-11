@@ -1,0 +1,138 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICommandCenterDialog",
+  "repoModule": "aiCommandCenterDialog",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICommandCenterDialog is the composable conversation layer extracted from the AI Command Center page pattern. It ships two variants: robust (the full centred greeting \u2192 input card \u2192 quick action chips experience seen on the Command Center home state) and slim (a compact avatar + greeting row above a pill-shaped input bar). Both variants support full conversation threading, loading indicators, and smart-scroll behaviour via the shared useAIChat hook. Use this component when you need a first-class AI chat experience embedded inside an existing product surface \u2014 without pulling in the full-page shell, background gradients, and routing concerns of the page pattern.",
+  "intent": "The conversational core of the AI Command Center \u2014 independently composable in any surface that needs a first-class AI chat experience without the full page shell.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-command-center-dialog/ai-command-center-dialog.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCommandCenterDialog",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-command-center-dialog/AICommandCenterDialog.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/organisms/ai-command-center-dialog/AICommandCenterDialog.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "variant",
+      "values": [
+        "`\"robust\" \\"
+      ],
+      "default": "\"slim\" \\",
+      "hint": "\"bottom-docked\"`"
+    },
+    {
+      "name": "maxWidth",
+      "values": [
+        "`number \\"
+      ],
+      "default": "string`",
+      "hint": "`680`"
+    },
+    {
+      "name": "backdropColor",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"#F7F8FC\"`",
+      "hint": "Bottom-docked only. Color the gradient backdrop fades into (should match the page background so content reads cleanly behind the pill)."
+    },
+    {
+      "name": "theme",
+      "values": [
+        "`\"gray\" \\"
+      ],
+      "default": "\"aqua\"`",
+      "hint": "`\"gray\"`"
+    },
+    {
+      "name": "greeting",
+      "values": [
+        "`string`"
+      ],
+      "default": "`auto`",
+      "hint": "Override the time-of-day greeting (e.g. \"Good morning, Theo!\")."
+    },
+    {
+      "name": "subtitle",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\"Ask me anything...\"`",
+      "hint": "Subtitle shown below the greeting in robust variant."
+    },
+    {
+      "name": "showBackground",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`true`",
+      "hint": "Enable or disable the ambient gradient background."
+    },
+    {
+      "name": "onSubmit",
+      "values": [
+        "`(text: string) => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional external submit handler (in addition to useAIChat internal handling)."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICommandCenterDialog"
+    ],
+    "import": "import { AICommandCenterDialog } from './AICommandCenterDialog'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Generate \u00b7 Guide \u00b7 Execute",
+    "accountability": "Confidence \u00b7 Audit trail \u00b7 Rationale"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

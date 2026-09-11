@@ -1,0 +1,202 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AINotification",
+  "repoModule": "aiNotification",
+  "tier": "molecules",
+  "status": "experimental",
+  "description": "AI-detected events surfaced clearly, actionably and with accountability. Eight severity variants map to distinct visual treatments \u2014 info, opportunity, warning, urgent, success, blocked, approval and escalated.",
+  "intent": "AI-detected events surfaced clearly, actionably and with accountability. Eight severity variants map to distinct visual treatments \u2014 info, opportunity, warning, urgent, success, blocked, approval and escalated.",
+  "authority": {
+    "mirrorSpec": "components/ai/molecules/ai-notification/ai-notification.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiNotification",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/molecules/ai-notification/AINotification.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/molecules/ai-notification/AINotification.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "severity",
+      "values": [
+        "`NotificationSeverity`"
+      ],
+      "default": "`required`",
+      "hint": "info \\"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Bold severity label shown in the card header"
+    },
+    {
+      "name": "message",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Main notification body text"
+    },
+    {
+      "name": "variant",
+      "values": [
+        "`\"basic\" \\"
+      ],
+      "default": "\"enhanced\"`",
+      "hint": "`\"enhanced\"`"
+    },
+    {
+      "name": "layout",
+      "values": [
+        "`NotificationLayout`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "default \\"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`NotificationStatus`"
+      ],
+      "default": "`\"default\"`",
+      "hint": "default \\"
+    },
+    {
+      "name": "attribution",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "AI agent label shown in the footer"
+    },
+    {
+      "name": "timestamp",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Timestamp shown in the footer"
+    },
+    {
+      "name": "primaryAction",
+      "values": [
+        "`NotificationAction`"
+      ],
+      "default": "`undefined`",
+      "hint": "{ label, onClick } \u2014 text link style primary CTA"
+    },
+    {
+      "name": "secondaryAction",
+      "values": [
+        "`NotificationAction`"
+      ],
+      "default": "`undefined`",
+      "hint": "{ label, onClick } \u2014 ghost secondary CTA"
+    },
+    {
+      "name": "isDismissible",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show dismiss \u00d7 button in the header"
+    },
+    {
+      "name": "isSnoozable",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Show Snooze action in the action row"
+    },
+    {
+      "name": "onDismiss",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the user dismisses the notification"
+    },
+    {
+      "name": "onSnooze",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Called when the user snoozes the notification"
+    },
+    {
+      "name": "onViewRationale",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Shows \"Why this?\" link when provided"
+    },
+    {
+      "name": "onMarkReviewed",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Shows \"Mark reviewed\" link when provided"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AINotification"
+    ],
+    "import": "import { AINotification } from './AINotification'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Monitor \u00b7 Warn \u00b7 Inform \u00b7 Escalate \u00b7 Redirect",
+    "accountability": "Rationale \u00b7 Owner \u00b7 Approval \u00b7 Audit trail \u00b7 Escalation"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preview/ai-preview-shared.css" />
+  <title>AI Icon — Component Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    @keyframes ai-icon-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.55;transform:scale(.94)} }
+    @keyframes ai-icon-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes ai-icon-shimmer { 0%,100%{opacity:.35} 50%{opacity:1} }
+    @keyframes ai-icon-nudge { 0%,100%{transform:translateY(0)} 35%{transform:translateY(-3px)} 65%{transform:translateY(-1px)} }
+    @keyframes ai-icon-handoff { 0%{opacity:.25;transform:translateX(-5px)} 60%,100%{opacity:1;transform:translateX(0)} }
+    @keyframes ai-icon-settle { 0%{opacity:0;transform:scale(.65) rotate(-12deg)} 70%{transform:scale(1.08) rotate(3deg)} 100%{opacity:1;transform:scale(1) rotate(0)} }
+    @keyframes ai-icon-ring { 0%{box-shadow:0 0 0 0 currentColor;opacity:.5} 60%{box-shadow:0 0 0 7px transparent;opacity:0} 100%{box-shadow:0 0 0 0 transparent} }
+    @media (prefers-reduced-motion: reduce) { .ai-icon-anim { animation: none !important; } }
+
+    body { margin: 0; font-family: "Open Sans", sans-serif; background: var(--neutral-page-bg); color: var(--neutral-text); line-height: 1.5; }
+    .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 64px; }
+    h1 { font-size: 24px; font-weight: 700; margin: 0 0 8px; }
+    .subtitle { color: var(--neutral-text-helper); font-size: 14px; margin: 0 0 40px; max-width: 720px; }
+    .nav-link { display: inline-block; margin-bottom: 24px; font-size: 13px; color: #5A6DFF; text-decoration: none; font-weight: 600; }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+    .section-desc { font-size: 13px; color: var(--neutral-text-helper); margin: 0 0 20px; }
+    .demo-surface { background: #fff; border: 1px solid var(--neutral-border-subtle); border-radius: 8px; padding: 28px 32px; }
+
+    .icon-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; }
+    .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 88px; }
+    .icon-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.35px; color: var(--neutral-text-helper); text-align: center; line-height: 1.3; }
+    .icon-meta { font-size: 10px; color: #B2B0B6; text-align: center; }
+
+    .size-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px; }
+    .size-cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .size-tag { font-size: 11px; font-weight: 700; color: var(--neutral-text-helper); }
+
+    .mapping-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .mapping-card {
+      display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+      border: 1px solid #EBEBEB; border-radius: 8px; background: var(--neutral-surface-muted);
+    }
+    .mapping-card__text { flex: 1; min-width: 0; }
+    .mapping-card__title { font-size: 13px; font-weight: 600; margin: 0 0 2px; }
+    .mapping-card__sub { font-size: 11px; color: var(--neutral-text-helper); margin: 0; }
+
+    .flow-panel {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding: 20px; background: var(--neutral-surface-muted); border-radius: 8px; border: 1px solid #EBEBEB;
+    }
+    .flow-panel__label { font-size: 14px; font-weight: 600; min-width: 140px; }
+    .flow-btn {
+      padding: 6px 14px; border: 1px solid var(--neutral-border-subtle); border-radius: 8px;
+      background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .flow-btn:hover { border-color: #5A6DFF; color: #5b5864; }
+
+    .registry { display: flex; flex-wrap: wrap; gap: 8px; }
+    .registry-tag {
+      font-size: 11px; padding: 4px 8px; border-radius: 6px; border: 1px solid #EBEBEB;
+      background: var(--neutral-surface-muted); color: #5b5864;
+    }
+    .registry-tag.standard { border-color: var(--neutral-border-subtle); background: var(--neutral-surface-muted); color: var(--neutral-text-helper); }
+    .registry-tag.lucide { border-color: #FFD68F; background: #FEFBF4; color: #A54F00; }
+
+    .ai-icon-wrap { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ai-icon-wrap svg { display: block; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="nav-link" href="/preview/atoms-review.html">← All AI atoms review</a>
+    <h1>AI Icon</h1>
+    <p class="subtitle">Behavior and color layer over Standard icons — not a new icon set. Treatments follow the 60-30-10 rule: neutral utility, semantic status, AI identity.</p>
+
+    <section>
+      <h2>Treatments</h2>
+      <p class="section-desc">Six color strategies from <code>AIIcon.tsx</code>. Icons use Standard path data with <code>fill="currentColor"</code>.</p>
+      <div class="demo-surface">
+        <div class="icon-row" id="treatment-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sizes</h2>
+      <p class="section-desc">xs=12 · sm=16 · md=20 · lg=24 · xl=32 — aligned with Standard icon scale.</p>
+      <div class="demo-surface">
+        <div class="size-row" id="size-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Motion</h2>
+      <p class="section-desc">Opt-in animations respect <code>prefers-reduced-motion</code>. Spin/pulse loop only during active states.</p>
+      <div class="demo-surface">
+        <div class="icon-row" id="motion-row"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Processing → complete</h2>
+      <p class="section-desc">Spin while processing, then completion-settle on success.</p>
+      <div class="demo-surface">
+        <div class="flow-panel">
+          <span class="flow-panel__label" id="flow-label">Processing…</span>
+          <div id="flow-icon"></div>
+          <button type="button" class="flow-btn" id="flow-toggle">Simulate complete</button>
+          <button type="button" class="flow-btn" id="flow-reset">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Semantic icon mapping</h2>
+      <p class="section-desc">Canonical AI concept → icon + treatment + motion pairings from the spec.</p>
+      <div class="demo-surface">
+        <div class="mapping-grid" id="mapping-grid"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Icon registry</h2>
+      <p class="section-desc"><span class="registry-tag standard" style="display:inline-block">Standard</span> confirmed paths · <span class="registry-tag lucide" style="display:inline-block">Lucide</span> fallbacks</p>
+      <div class="demo-surface">
+        <div class="registry" id="registry"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="ai-icon.preview-icons.js"></script>
+  <script>
+    const AI = {
+      brand: '#5A6DFF', brandSurface: '#F5F6FF', brandStrong: '#2D3DA3',
+      textSecondary: '#4D60E6', actionPrimary: '#5A6DFF',
+    };
+    const NEUTRAL = { textHelper: '#5b5864' };
+    const SIGNAL = { 60: '#EC7200', 0: '#FEFBF4', 70: '#CB6100' };
+    const COMPANION = { 0: '#F6F2EB', 100: '#3C2A1D' };
+
+    const SIZE_PX = { xs: 12, sm: 16, md: 20, lg: 24, xl: 32 };
+    const CONTAINER_PAD = { xs: 4, sm: 6, md: 7, lg: 8, xl: 10 };
+    const CONTAINER_RADIUS = { xs: 6, sm: 8, md: 10, lg: 12, xl: 14 };
+
+    const SEMANTIC_TONE_COLORS = {
+      default: AI.actionPrimary, subtle: AI.textSecondary, strong: AI.brandStrong, inverse: '#ffffff',
+      success: '#0A6E5E', warning: '#8A640C', error: '#B21111', urgent: '#C0392B',
+      blocked: '#7D3C98', approval: '#1A5276', escalated: SIGNAL[70],
+    };
+
+    const MOTION_CONFIG = {
+      none: null,
+      pulse: { animation: 'ai-icon-pulse 1200ms ease-in-out', iterations: 'infinite' },
+      spin: { animation: 'ai-icon-spin 900ms linear', iterations: 'infinite' },
+      shimmer: { animation: 'ai-icon-shimmer 1400ms ease-in-out', iterations: 'infinite' },
+      nudge: { animation: 'ai-icon-nudge 220ms ease-out', iterations: 1 },
+      'handoff-trail': { animation: 'ai-icon-handoff 600ms ease-in-out', iterations: 1 },
+      'completion-settle': { animation: 'ai-icon-settle 280ms ease-out', iterations: 1 },
+      'alert-ring': { animation: 'ai-icon-ring 1000ms ease-out', iterations: 2 },
+    };
+
+    function resolveColor(treatment, tone) {
+      switch (treatment) {
+        case 'neutral': return NEUTRAL.textHelper;
+        case 'ai':
+        case 'ai-contained': return AI.brand;
+        case 'semantic': return SEMANTIC_TONE_COLORS[tone] || SEMANTIC_TONE_COLORS.default;
+        case 'orange-signal': return SIGNAL[60];
+        case 'tan-container': return COMPANION[100];
+        default: return NEUTRAL.textHelper;
+      }
+    }
+
+    function resolveContainerBg(treatment, tone) {
+      switch (treatment) {
+        case 'ai-contained': return AI.brandSurface;
+        case 'tan-container': return COMPANION[0];
+        case 'semantic': return (SEMANTIC_TONE_COLORS[tone] || SEMANTIC_TONE_COLORS.default) + '14';
+        case 'orange-signal': return SIGNAL[0];
+        default: return 'rgba(0,0,0,0.05)';
+      }
+    }
+
+    function buildSvg(icon, px) {
+      const isStroke = !!icon.stroke;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', px);
+      svg.setAttribute('height', px);
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', 'true');
+      if (isStroke) {
+        svg.setAttribute('fill', 'none');
+      } else {
+        svg.setAttribute('fill', 'currentColor');
+      }
+      const mkPath = (d, opacity) => {
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', d);
+        if (opacity != null) p.setAttribute('opacity', opacity);
+        if (isStroke) {
+          p.setAttribute('fill', 'none');
+          p.setAttribute('stroke', 'currentColor');
+          p.setAttribute('stroke-width', icon.strokeWidth || 2);
+          p.setAttribute('stroke-linecap', 'round');
+          p.setAttribute('stroke-linejoin', 'round');
+        }
+        return p;
+      };
+      svg.appendChild(mkPath(icon.d, icon.opacity));
+      icon.extra?.forEach(p => svg.appendChild(mkPath(p.d, p.opacity)));
+      return svg;
+    }
+
+    function createAIIcon(opts) {
+      const {
+        name, size = 'md', treatment = 'neutral', tone = 'default',
+        container = false, label, decorative = false,
+        motion = 'none', motionLoop = false,
+      } = opts;
+
+      const icon = ICON_PATHS[name];
+      const px = SIZE_PX[size];
+      const color = resolveColor(treatment, tone);
+      const motCfg = MOTION_CONFIG[motion];
+      const doContainer = container || treatment === 'ai-contained' || treatment === 'tan-container';
+
+      if (!icon) {
+        const miss = document.createElement('span');
+        miss.className = 'ai-icon-wrap';
+        miss.style.cssText = `width:${px}px;height:${px}px;background:#EBEBEB;border-radius:4px;`;
+        miss.title = `Unknown: ${name}`;
+        return miss;
+      }
+
+      const iterations = motionLoop ? 'infinite' : (motCfg?.iterations ?? 1);
+      const animStr = motCfg
+        ? `${motCfg.animation} ${typeof iterations === 'number' ? iterations : 'infinite'}`
+        : undefined;
+
+      const svgEl = buildSvg(icon, px);
+
+      if (doContainer) {
+        const pad = CONTAINER_PAD[size];
+        const radius = CONTAINER_RADIUS[size];
+        const outer = document.createElement('span');
+        outer.className = 'ai-icon-wrap' + (animStr && treatment === 'alert-ring' ? ' ai-icon-anim' : '');
+        if (label) { outer.setAttribute('role', 'img'); outer.setAttribute('aria-label', label); }
+        if (decorative) outer.setAttribute('aria-hidden', 'true');
+        outer.style.cssText = [
+          `display:inline-flex`, `align-items:center`, `justify-content:center`,
+          `width:${px + pad * 2}px`, `height:${px + pad * 2}px`,
+          `border-radius:${radius}px`, `background:${resolveContainerBg(treatment, tone)}`,
+          `color:${color}`, `flex-shrink:0`,
+          animStr && treatment === 'alert-ring' ? `animation:${animStr}` : '',
+        ].filter(Boolean).join(';');
+
+        const inner = document.createElement('span');
+        inner.style.display = 'flex';
+        if (animStr && treatment !== 'alert-ring') {
+          inner.className = 'ai-icon-anim';
+          inner.style.animation = animStr;
+        }
+        inner.appendChild(svgEl);
+        outer.appendChild(inner);
+        return outer;
+      }
+
+      const wrap = document.createElement('span');
+      wrap.className = 'ai-icon-wrap' + (animStr ? ' ai-icon-anim' : '');
+      if (label) { wrap.setAttribute('role', 'img'); wrap.setAttribute('aria-label', label); }
+      if (decorative) wrap.setAttribute('aria-hidden', 'true');
+      wrap.style.cssText = `color:${color};${animStr ? `animation:${animStr};` : ''}`;
+      wrap.appendChild(svgEl);
+      return wrap;
+    }
+
+    function iconCell(iconEl, label, meta) {
+      const cell = document.createElement('div');
+      cell.className = 'icon-cell';
+      cell.appendChild(iconEl);
+      const lbl = document.createElement('span');
+      lbl.className = 'icon-label';
+      lbl.textContent = label;
+      cell.appendChild(lbl);
+      if (meta) {
+        const m = document.createElement('span');
+        m.className = 'icon-meta';
+        m.textContent = meta;
+        cell.appendChild(m);
+      }
+      return cell;
+    }
+
+    // Treatments
+    const treatmentRow = document.getElementById('treatment-row');
+    [
+      { t: 'neutral', name: 'clock', label: 'Neutral', meta: '60% · utility' },
+      { t: 'semantic', name: 'check-circle', tone: 'success', label: 'Semantic', meta: '30% · status' },
+      { t: 'ai', name: 'ai-assist', label: 'AI identity', meta: '10% · brand' },
+      { t: 'ai-contained', name: 'ai-assist', size: 'lg', label: 'AI contained', meta: 'prominent' },
+      { t: 'orange-signal', name: 'ai-warning', label: 'Orange signal', meta: 'escalation' },
+      { t: 'tan-container', name: 'history', label: 'Tan container', meta: 'companion' },
+    ].forEach(c => {
+      treatmentRow.appendChild(iconCell(
+        createAIIcon({ name: c.name, treatment: c.t, tone: c.tone || 'default', size: c.size || 'md' }),
+        c.label, c.meta
+      ));
+    });
+
+    // Sizes
+    const sizeRow = document.getElementById('size-row');
+    ['xs', 'sm', 'md', 'lg', 'xl'].forEach(sz => {
+      const cell = document.createElement('div');
+      cell.className = 'size-cell';
+      cell.appendChild(createAIIcon({ name: 'ai-assist', treatment: 'ai-contained', size: sz }));
+      const tag = document.createElement('span');
+      tag.className = 'size-tag';
+      tag.textContent = `${sz} · ${SIZE_PX[sz]}px`;
+      cell.appendChild(tag);
+      sizeRow.appendChild(cell);
+    });
+
+    // Motion
+    const motionRow = document.getElementById('motion-row');
+    [
+      { motion: 'pulse', name: 'ai-assist', treatment: 'ai', label: 'Pulse', loop: true },
+      { motion: 'spin', name: 'refresh', treatment: 'ai', label: 'Spin (refresh)', loop: true },
+      { motion: 'spin', name: 'spinner', treatment: 'ai', label: 'Spin (arc)', loop: true },
+      { motion: 'shimmer', name: 'ai-assist', treatment: 'ai', label: 'Shimmer', loop: true },
+      { motion: 'nudge', name: 'info', treatment: 'ai', label: 'Nudge', loop: false },
+      { motion: 'handoff-trail', name: 'users', treatment: 'ai', label: 'Handoff', loop: false },
+      { motion: 'completion-settle', name: 'check-circle', treatment: 'semantic', tone: 'success', label: 'Settle', loop: false },
+      { motion: 'alert-ring', name: 'flag', treatment: 'orange-signal', label: 'Alert ring', loop: false, container: true },
+    ].forEach(c => {
+      motionRow.appendChild(iconCell(
+        createAIIcon({
+          name: c.name, treatment: c.treatment, tone: c.tone,
+          motion: c.motion, motionLoop: c.loop, container: c.container,
+        }),
+        c.label, c.loop ? 'looping' : 'one-shot'
+      ));
+    });
+
+    // Processing flow
+    let processing = true;
+    const flowIcon = document.getElementById('flow-icon');
+    const flowLabel = document.getElementById('flow-label');
+    function renderFlow() {
+      flowIcon.innerHTML = '';
+      if (processing) {
+        flowLabel.textContent = 'Processing…';
+        flowIcon.appendChild(createAIIcon({
+          name: 'refresh', treatment: 'ai', motion: 'spin', motionLoop: true, decorative: true, size: 'lg',
+        }));
+      } else {
+        flowLabel.textContent = 'Complete';
+        flowIcon.appendChild(createAIIcon({
+          name: 'check-circle', treatment: 'semantic', tone: 'success',
+          motion: 'completion-settle', size: 'lg', label: 'Complete',
+        }));
+      }
+    }
+    renderFlow();
+    document.getElementById('flow-toggle').onclick = () => { processing = false; renderFlow(); };
+    document.getElementById('flow-reset').onclick = () => { processing = true; renderFlow(); };
+
+    // Semantic mapping
+    const mappings = [
+      { title: 'AI Thinking', sub: 'refresh · ai · spin', name: 'refresh', treatment: 'ai', motion: 'spin', motionLoop: true },
+      { title: 'AI Identity', sub: 'ai-assist · ai-contained · pulse', name: 'ai-assist', treatment: 'ai-contained', motion: 'pulse', motionLoop: true },
+      { title: 'AI Warning', sub: 'ai-warning · orange-signal · alert-ring', name: 'ai-warning', treatment: 'orange-signal', motion: 'alert-ring', container: true },
+      { title: 'Success', sub: 'check-circle · semantic success', name: 'check-circle', treatment: 'semantic', tone: 'success' },
+      { title: 'Error / Blocked', sub: 'error-circle · semantic error', name: 'error-circle', treatment: 'semantic', tone: 'error' },
+      { title: 'Search', sub: 'search · neutral', name: 'search', treatment: 'neutral' },
+      { title: 'Agent Handoff', sub: 'users · ai · handoff-trail', name: 'users', treatment: 'ai', motion: 'handoff-trail' },
+      { title: 'Memory / History', sub: 'history · tan-container', name: 'history', treatment: 'tan-container' },
+      { title: 'Data Source', sub: 'database · neutral', name: 'database', treatment: 'neutral' },
+      { title: 'Rationale / Why', sub: 'info · ai', name: 'info', treatment: 'ai' },
+      { title: 'Governance', sub: 'shield-check · semantic', name: 'shield-check', treatment: 'semantic', tone: 'approval' },
+      { title: 'Escalation', sub: 'flag · orange-signal', name: 'flag', treatment: 'orange-signal' },
+    ];
+    const mappingGrid = document.getElementById('mapping-grid');
+    mappings.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'mapping-card';
+      card.appendChild(createAIIcon({
+        name: m.name, treatment: m.treatment, tone: m.tone,
+        motion: m.motion, motionLoop: m.motionLoop, container: m.container, size: 'md',
+      }));
+      const text = document.createElement('div');
+      text.className = 'mapping-card__text';
+      text.innerHTML = `<p class="mapping-card__title">${m.title}</p><p class="mapping-card__sub">${m.sub}</p>`;
+      card.appendChild(text);
+      mappingGrid.appendChild(card);
+    });
+
+    // Registry
+    const registry = document.getElementById('registry');
+    Object.entries(ICON_PATHS).sort(([a], [b]) => a.localeCompare(b)).forEach(([name, entry]) => {
+      const tag = document.createElement('span');
+      tag.className = 'registry-tag ' + (entry.src === 'standard' ? 'standard' : 'lucide');
+      tag.textContent = name + (entry.src === 'lucide-fallback' ? ' [Lucide]' : '');
+      registry.appendChild(tag);
+    });
+  </script>
+</body>
+</html>

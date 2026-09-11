@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAgentStack",
+  "repoModule": "aiAgentStack",
+  "tier": "atomic",
+  "status": "active",
+  "description": "The AI Agent Stack compresses a group of AI agents into a compact overlapping avatar row. Each circle shows agent initials with a status-colored ring (active, waiting, complete, error). Overflow beyon",
+  "intent": "Overlapping avatar stack representing multiple agents working in parallel. Status rings encode each agent's execution state at a glance.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-agent-stack/ai-agent-stack.md",
+    "contract": "components/ai/atomic/ai-agent-stack/ai-agent-stack.agent.json",
+    "agentIndexModule": "aiAgentStack",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "ai/atomic/agent-stack/AIAgentStack.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-agent-stack/AIAgentStack.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "agents",
+      "values": [
+        "`Agent[]`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Array of { id, label, status } objects"
+    },
+    {
+      "name": "maxVisible",
+      "values": [
+        "`number`"
+      ],
+      "default": "`3`",
+      "hint": "Max visible avatars before overflow badge appears"
+    },
+    {
+      "name": "size",
+      "values": [
+        "`number`"
+      ],
+      "default": "`28`",
+      "hint": "Avatar diameter in px"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAgentStack"
+    ],
+    "import": "import { AIAgentStack } from '@ai/atomic/ai-agent-stack/AIAgentStack'",
+    "notes": []
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": []
+  },
+  "accessibility": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": []
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Execute",
+      "Monitor"
+    ],
+    "accountability": "Owner \u00b7 Audit trail"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

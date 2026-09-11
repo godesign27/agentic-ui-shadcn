@@ -1,0 +1,64 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AITypographyTokens",
+  "repoModule": "aiTypographyTokens",
+  "tier": "tokens",
+  "status": "active",
+  "description": "Open Sans type scale keyed by @zsai-* semantic names. Spread onto inline styles for matched fontSize, fontWeight, lineHeight, letterSpacing.",
+  "intent": "Never hardcode font sizes. Spread AI_TYPOGRAPHY tokens in TS components; use .zs-master-style + semantic HTML for page typography.",
+  "authority": {
+    "mirrorSpec": "components/ai/tokens/typography.md",
+    "contract": "components/ai/tokens/ai-typography.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiTypographyTokens",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/tokens/ai-typography.ts",
+    "note": "Structured mirror at components/ai/tokens/typography.json"
+  },
+  "platforms": ["web", "react"],
+  "variants": [],
+  "states": [],
+  "javascriptApi": {
+    "exports": ["AI_TYPOGRAPHY", "AITypographyToken"],
+    "import": "import { AI_TYPOGRAPHY } from './ai-typography'; import { F, ZDS } from './ai-tokens'",
+    "notes": [
+      "37 @zsai-* tokens: 20 standard scale + 17 AI extensions",
+      "Always apply fontFamily: F from ai-tokens.ts",
+      "Spread token: style={{ ...AI_TYPOGRAPHY['@zsai-body-small'], color: ZDS.textDefault }}"
+    ]
+  },
+  "tokens": {
+    "cssVars": [
+      "@zsai-font-family",
+      "@zsai-font-size",
+      "@zsai-text-color",
+      "@zsai-helper-text-color"
+    ]
+  },
+  "accessibility": {
+    "role": "n/a",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": ["Maintain semantic heading order h1 through h6", "Link text must be descriptive — no click here"]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not hardcode fontSize or fontWeight in component code",
+      "Do not use Hero/Super display styles inside chat bubbles",
+      "Do not skip heading levels purely for sizing"
+    ],
+    "agentRules": [
+      "Read typography.json for flat token lookup with all spec values",
+      "Pick semantic HTML element before reaching for a token",
+      "Eyebrow labels use letter-spacing from token — not hand-tuned"
+    ]
+  },
+  "relatedModules": [
+    { "name": "AIColorTokens", "mirrorSpec": "components/ai/tokens/color.md" }
+  ],
+  "generatedAt": "2026-06-22T00:00:00.000Z",
+  "curated": true
+}

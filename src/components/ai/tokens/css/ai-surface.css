@@ -1,0 +1,346 @@
+/**
+ * ZSAI Surface Theme — Tier 3 semantic CSS variables
+ *
+ * Maps AI.* tokens to --ai-* custom properties.
+ * Scope with data-theme on any container; components inside adapt automatically.
+ *
+ * Import order:
+ *   1. ai-surface.css
+ *   2. ai-component-tokens.css
+ *   3. ai-typography.css
+ *   4. zds-bridge.css and/or shadcn-bridge.css
+ */
+
+/* ── ai-default (baseline light ZSAI brand surface) ─────────────────────── */
+
+:root,
+[data-theme="ai-default"] {
+  /* action */
+  --ai-action-primary: #4D60E6;
+  --ai-action-primary-hover: #3544A4;
+  --ai-action-primary-active: #1F2A66;
+
+  /* surface */
+  --ai-surface-default: #F5F6FF;
+  --ai-surface-subtle: #D2DBFF;
+  --ai-surface-emphasis: #BECAFE;
+
+  /* border */
+  --ai-border-default: #4D60E6;
+  --ai-border-strong: #3544A4;
+  --ai-border-focus: #4D60E6;
+  --ai-border-subtle: #7F95F2;
+
+  /* text */
+  --ai-text-primary: #1F2A66;
+  --ai-text-secondary: #3544A4;
+  --ai-text-on-action: #FFFFFF;
+
+  /* brand */
+  --ai-brand: #4D60E6;
+  --ai-brand-subtle: #D2DBFF;
+  --ai-brand-surface: #F5F6FF;
+  --ai-brand-border: #BECAFE;
+  --ai-brand-strong: #3544A4;
+  --ai-brand-ink: #1F2A66;
+
+  /* decorative */
+  --ai-decorative-wash: #A6B4FC;
+  --ai-decorative-wash-strong: #7F95F2;
+
+  /* signal */
+  --ai-signal: #A54F00;
+  --ai-signal-hover: #663000;
+  --ai-signal-strong: #481A00;
+  --ai-signal-subtle: #FFF1D6;
+  --ai-signal-surface: #FEFBF4;
+
+  /* status */
+  --ai-status-success: #0A6E5E;
+  --ai-status-warning: #8A640C;
+  --ai-status-error: #C0392B;
+  --ai-status-error-hover: #A5322A;
+
+  /* companion */
+  --ai-companion-paper: #F6F2EB;
+  --ai-companion-surface: #ECE6DD;
+  --ai-companion-highlight: #F1E4D0;
+  --ai-companion-border: #E8D6BF;
+  --ai-companion-ink: #3C2A1D;
+
+  /* gradient */
+  --ai-gradient-action-full: linear-gradient(135deg, #657CEC 0%, #4D60E6 100%);
+  --ai-gradient-action-secondary: linear-gradient(135deg, #7F95F2 0%, #657CEC 50%, #4D60E6 100%);
+  --ai-gradient-surface-idle: linear-gradient(to bottom, #F3FCFE, #F9FAFB, #FFFFFF);
+  --ai-gradient-surface-active: linear-gradient(to bottom, #FFFFFF 0%, #F5FBFC 55%, #EDF8FA 100%);
+  --ai-gradient-surface-subtle: linear-gradient(135deg, #F5F6FF 0%, #D2DBFF 50%, #F5F6FF 100%);
+  --ai-gradient-surface-neutral: linear-gradient(135deg, #F4F3F3 0%, #E8E7EA 100%);
+  --ai-gradient-surface-aqua: linear-gradient(135deg, #E6F6F6 0%, #D0EFEF 100%);
+  --ai-surface-aqua-tint: #E6F6F6;
+
+  /* shadow */
+  --ai-shadow-action-default: rgba(77, 96, 230, 0.18);
+  --ai-shadow-action-emphasis: rgba(77, 96, 230, 0.24);
+  --ai-shadow-input-default: 0 0 0 1.5px rgba(26, 22, 40, 0.18), 0 8px 40px rgba(0, 0, 0, 0.07), 0 2px 12px rgba(0, 0, 0, 0.05);
+  --ai-shadow-input-focus: 0 0 0 2px rgba(77, 96, 230, 0.35), 0 12px 48px rgba(0, 0, 0, 0.10), 0 4px 16px rgba(0, 0, 0, 0.08);
+  --ai-shadow-field-default: 0 0 0 1px #BECAFE;
+  --ai-shadow-field-focus: 0 0 0 2px #3544A4;
+  --ai-shadow-field-warning: 0 0 0 1px #8A640C;
+  --ai-shadow-field-error: 0 0 0 1px #C0392B;
+  --ai-shadow-card-default: 0 1px 4px 0 rgba(77, 96, 230, 0.10);
+  --ai-shadow-card-raised: 0 4px 16px 0 rgba(77, 96, 230, 0.14);
+
+  /* radius */
+  --ai-radius-xs: 6px;
+  --ai-radius-sm: 12px;
+  --ai-radius-md: 16px;
+  --ai-radius-lg: 20px;
+  --ai-radius-full: 100px;
+
+  /* Make V1.2 component surface contract (DarkModeContext LIGHT_CSS) */
+  --ai-chip-bg: white;
+  --ai-chip-bg-hover: rgba(77, 96, 230, 0.07);
+  --ai-chip-border: rgba(0, 0, 0, 0.12);
+  --ai-chip-text: #1A1628;
+  --ai-brand-surface-hover: #D2DBFF;
+  --ai-brand-text: #1F2A66;
+  --ai-brand-text-strong: #1A1628;
+  --ai-card-bg: #ffffff;
+  --ai-card-border: rgba(0, 0, 0, 0.07);
+  --ai-card-bg-raised: #F9F8FA;
+  --ai-input-bg: #ffffff;
+  --ai-input-border: #BECAFE;
+  --ai-input-text: #1A1628;
+  --ai-input-placeholder: #9896A0;
+  --ai-bubble-user-bg: #E8E6ED;
+  --ai-bubble-user-text: #1A1628;
+  --ai-zds-text: #2f2c3c;
+  --ai-zds-text-helper: #5b5864;
+  --ai-zds-helper: #5b5864;
+  --ai-zds-icon: #716E79;
+  --ai-zds-border: #b2b0b6;
+  --ai-zds-border-subtle: var(--zs-border-neutral-subtle, #d5d3d8);
+  --ai-zds-icon-disabled: var(--zs-icon-neutral-disabled, #c7c5cc);
+  --ai-zds-surface: var(--zs-background-default, #ffffff);
+  --ai-zds-text-inverse: var(--zs-text-inverse, #ffffff);
+  --ai-zds-ink-bold: var(--zs-background-extra-bold, #1a1628);
+  --ai-zds-line-dashed: var(--zs-node-connector-dashed-border-color, #9c9aa1);
+  --ai-suggestion-bg: #F5F6FF;
+  --ai-suggestion-border: #BECAFE;
+  --ai-insight-brand-bg: #BECAFE;
+  --ai-insight-brand-border: #7F95F2;
+  --ai-insight-brand-eyebrow: #1F2A66;
+  --ai-insight-brand-body: #1F2A66;
+  --ai-insight-warning-bg: #FBF1DA;
+  --ai-insight-warning-border: #EAD5A6;
+  --ai-insight-warning-eyebrow: #854D0E;
+  --ai-insight-warning-body: #854D0E;
+  --ai-insight-critical-bg: #FFD7D7;
+  --ai-insight-critical-border: #FFB4B4;
+  --ai-insight-critical-eyebrow: #C0392B;
+  --ai-insight-critical-body: #C0392B;
+  --ai-insight-success-bg: #C8E6D3;
+  --ai-insight-success-border: #8FC9A5;
+  --ai-insight-success-eyebrow: #1F6B40;
+  --ai-insight-success-body: #1F6B40;
+  --ai-picker-label-color: #1F2A66;
+  --ai-picker-menu-bg: #F6F2EB;
+  --ai-picker-menu-text: #2f2c3c;
+  --ai-picker-menu-helper: #5b5864;
+  --ai-badge-bg: #F5F6FF;
+  --ai-badge-border: #BECAFE;
+  --ai-badge-color: #4D60E6;
+  --ai-divider: rgba(0, 0, 0, 0.06);
+  --ai-track-bg: #F4F3F3;
+  --ai-feedback-active-helpful: rgba(21, 128, 61, 0.10);
+  --ai-feedback-active-not: rgba(185, 28, 28, 0.09);
+  --ai-signal-border: #FFD68F;
+  --ai-note-bg: #F5F6FF;
+  --ai-note-border: #BECAFE;
+  --ai-confidence-track: #F4F3F3;
+  --ai-btn-outline-border: rgba(26, 22, 40, 0.14);
+  --ai-btn-outline-hover-bg: rgba(77, 96, 230, 0.06);
+  --ai-btn-disabled-text: #9896A0;
+  --ai-btn-disabled-border: #E2E0E6;
+  --ai-source-bg: #F5F6FF;
+  --ai-source-border: #BECAFE;
+  --ai-source-text: #1F2A66;
+  --ai-missing-bg: #F5F5F5;
+  --ai-missing-border: #D4D2D9;
+  --ai-missing-text: #716E79;
+  --ai-loading-bg: #F9F8FA;
+  --ai-loading-pill-bg: white;
+  --ai-loading-card-bg: #F7F6F8;
+  --ai-status-success-bg: #F0FFF4;
+  --ai-status-success-border: #A5D6A7;
+  --ai-status-success-text: #1A8744;
+  --ai-status-error-bg: #FFF5F5;
+  --ai-status-error-border: #FFCDD2;
+  --ai-status-error-text: #C0392B;
+  --ai-status-warning-bg: #FFFBEB;
+  --ai-status-warning-border: #FDE68A;
+  --ai-status-warning-text: #92400E;
+  --ai-status-info-bg: #F1FEFF;
+  --ai-status-info-border: #0DACAD;
+  --ai-status-info-text: #097174;
+  --ai-status-purple-bg: #FAF5FF;
+  --ai-status-purple-border: #CE93D8;
+  --ai-status-purple-text: #6A1B9A;
+  --ai-row-alt: #FAFAFA;
+  --ai-font-family: "Open Sans", sans-serif;
+}
+
+/* ── ai-bold (dark brand surface) ───────────────────────────────────────── */
+
+[data-theme="ai-bold"] {
+  --ai-action-primary: #657CEC;
+  --ai-action-primary-hover: #7F95F2;
+  --ai-action-primary-active: #4D60E6;
+
+  --ai-surface-default: #1F2A66;
+  --ai-surface-subtle: #3544A4;
+  --ai-surface-emphasis: #4D60E6;
+
+  --ai-border-default: rgba(255, 255, 255, 0.12);
+  --ai-border-strong: rgba(255, 255, 255, 0.24);
+  --ai-border-focus: #657CEC;
+  --ai-border-subtle: #7F95F2;
+
+  --ai-text-primary: #F5F6FF;
+  --ai-text-secondary: #BECAFE;
+  --ai-text-on-action: #1F2A66;
+
+  --ai-brand: #657CEC;
+  --ai-brand-subtle: #3544A4;
+  --ai-brand-surface: #1F2A66;
+  --ai-brand-border: rgba(255, 255, 255, 0.12);
+  --ai-brand-strong: #E0E7FF;
+  --ai-brand-ink: #F5F6FF;
+
+  --ai-decorative-wash: #A6B4FC;
+  --ai-decorative-wash-strong: #7F95F2;
+
+  /* Make V1.2 dark component surface contract (DarkModeContext DARK_CSS) */
+  --ai-chip-bg: #3A3748;
+  --ai-chip-bg-hover: rgba(255, 255, 255, 0.07);
+  --ai-chip-border: rgba(255, 255, 255, 0.14);
+  --ai-chip-text: rgba(255, 255, 255, 0.87);
+  --ai-brand-surface: rgba(77, 96, 230, 0.14);
+  --ai-brand-surface-hover: rgba(77, 96, 230, 0.22);
+  --ai-brand-border: rgba(77, 96, 230, 0.30);
+  --ai-brand-text: #9AABFF;
+  --ai-brand-text-strong: rgba(255, 255, 255, 0.92);
+  --ai-card-bg: #2F2C3C;
+  --ai-card-border: rgba(255, 255, 255, 0.09);
+  --ai-card-bg-raised: #3A3748;
+  --ai-input-bg: #2F2C3C;
+  --ai-input-border: rgba(255, 255, 255, 0.12);
+  --ai-input-text: rgba(255, 255, 255, 0.87);
+  --ai-input-placeholder: rgba(255, 255, 255, 0.35);
+  --ai-bubble-user-bg: #3A3748;
+  --ai-bubble-user-text: rgba(255, 255, 255, 0.92);
+  --ai-zds-text: rgba(255, 255, 255, 0.87);
+  --ai-zds-text-helper: rgba(255, 255, 255, 0.45);
+  --ai-zds-helper: rgba(255, 255, 255, 0.45);
+  --ai-zds-icon: rgba(255, 255, 255, 0.55);
+  --ai-suggestion-bg: rgba(77, 96, 230, 0.10);
+  --ai-suggestion-border: rgba(77, 96, 230, 0.28);
+  --ai-insight-brand-bg: rgba(77, 96, 230, 0.15);
+  --ai-insight-brand-border: rgba(77, 96, 230, 0.35);
+  --ai-insight-brand-eyebrow: #9AABFF;
+  --ai-insight-brand-body: #9AABFF;
+  --ai-insight-warning-bg: rgba(161, 109, 5, 0.18);
+  --ai-insight-warning-border: rgba(234, 213, 166, 0.30);
+  --ai-insight-warning-eyebrow: #F5C842;
+  --ai-insight-warning-body: #F5C842;
+  --ai-insight-critical-bg: rgba(231, 76, 60, 0.18);
+  --ai-insight-critical-border: rgba(231, 76, 60, 0.38);
+  --ai-insight-critical-eyebrow: #FFB4B4;
+  --ai-insight-critical-body: #FFB4B4;
+  --ai-insight-success-bg: rgba(31, 107, 64, 0.18);
+  --ai-insight-success-border: rgba(31, 107, 64, 0.35);
+  --ai-insight-success-eyebrow: #5CCF88;
+  --ai-insight-success-body: #5CCF88;
+  --ai-picker-label-color: #D2DBFF;
+  --ai-picker-menu-bg: #ECE6DD;
+  --ai-picker-menu-text: #2f2c3c;
+  --ai-picker-menu-helper: #5b5864;
+  --ai-badge-bg: rgba(210, 219, 255, 0.15);
+  --ai-badge-border: rgba(210, 219, 255, 0.30);
+  --ai-badge-color: #D2DBFF;
+  --ai-divider: rgba(255, 255, 255, 0.08);
+  --ai-track-bg: rgba(255, 255, 255, 0.12);
+  --ai-feedback-active-helpful: rgba(39, 174, 96, 0.22);
+  --ai-feedback-active-not: rgba(231, 76, 60, 0.20);
+  --ai-signal-surface: rgba(236, 114, 0, 0.12);
+  --ai-signal-border: rgba(236, 114, 0, 0.28);
+  --ai-note-bg: #2F2C3C;
+  --ai-note-border: rgba(255, 255, 255, 0.09);
+  --ai-confidence-track: rgba(255, 255, 255, 0.12);
+  --ai-btn-outline-border: rgba(255, 255, 255, 0.18);
+  --ai-btn-outline-hover-bg: rgba(255, 255, 255, 0.07);
+  --ai-btn-disabled-border: rgba(255, 255, 255, 0.12);
+  --ai-btn-disabled-text: rgba(255, 255, 255, 0.28);
+  --ai-source-bg: rgba(77, 96, 230, 0.12);
+  --ai-source-border: rgba(77, 96, 230, 0.25);
+  --ai-source-text: #9AABFF;
+  --ai-missing-bg: rgba(255, 255, 255, 0.06);
+  --ai-missing-border: rgba(255, 255, 255, 0.12);
+  --ai-missing-text: rgba(255, 255, 255, 0.45);
+  --ai-loading-bg: #3A3748;
+  --ai-loading-pill-bg: rgba(255, 255, 255, 0.07);
+  --ai-loading-card-bg: rgba(255, 255, 255, 0.05);
+  --ai-status-success-bg: rgba(39, 174, 96, 0.18);
+  --ai-status-success-border: rgba(39, 174, 96, 0.40);
+  --ai-status-success-text: #4ADE80;
+  --ai-status-error-bg: rgba(231, 76, 60, 0.18);
+  --ai-status-error-border: rgba(231, 76, 60, 0.40);
+  --ai-status-error-text: #FFB4B4;
+  --ai-status-warning-bg: rgba(245, 158, 11, 0.18);
+  --ai-status-warning-border: rgba(245, 158, 11, 0.40);
+  --ai-status-warning-text: #FBBF24;
+  --ai-status-info-bg: rgba(13, 172, 173, 0.16);
+  --ai-status-info-border: rgba(13, 172, 173, 0.40);
+  --ai-status-info-text: #4FD1C5;
+  --ai-status-purple-bg: rgba(155, 89, 182, 0.18);
+  --ai-status-purple-border: rgba(155, 89, 182, 0.40);
+  --ai-status-purple-text: #C39BD3;
+  --ai-row-alt: rgba(255, 255, 255, 0.03);
+}
+
+/* ── ai-companion (warm tan surface) ──────────────────────────────────── */
+
+[data-theme="ai-companion"] {
+  --ai-surface-default: #F6F2EB;
+  --ai-surface-subtle: #ECE6DD;
+  --ai-surface-emphasis: #F1E4D0;
+
+  --ai-border-default: #E8D6BF;
+  --ai-border-strong: #CDB39C;
+  --ai-border-focus: #4D60E6;
+  --ai-border-subtle: #7F95F2;
+
+  --ai-text-primary: #3C2A1D;
+  --ai-text-secondary: #7A5944;
+
+  --ai-brand-surface: #F6F2EB;
+  --ai-brand-border: #E8D6BF;
+
+  --ai-companion-paper: #F6F2EB;
+  --ai-companion-surface: #ECE6DD;
+  --ai-companion-highlight: #F1E4D0;
+  --ai-companion-border: #E8D6BF;
+  --ai-companion-ink: #3C2A1D;
+
+  --ai-card-bg: var(--ai-surface-subtle);
+  --ai-zds-text: #3C2A1D;
+  --ai-zds-text-helper: #7A5944;
+}
+
+/* ── ai-aqua (teal-influenced gradients; colors match ai-default) ─────── */
+
+[data-theme="ai-aqua"] {
+  --ai-gradient-surface-idle: linear-gradient(to bottom, #F3FCFE 0%, #F8FAFB 35%, #F4F3F3 70%, #FAFAFA 100%);
+  --ai-gradient-surface-active: linear-gradient(to bottom, #FFFFFF 0%, #F4F3F3 40%, #EDF8FA 100%);
+  --ai-gradient-surface-neutral: linear-gradient(135deg, #E6F6F6 0%, #D0EFEF 100%);
+}

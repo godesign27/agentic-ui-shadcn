@@ -1,0 +1,190 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIDialogButton",
+  "repoModule": "aiDialogButton",
+  "tier": "atomic",
+  "status": "active",
+  "description": "Unified Ghost pill/circular AI Dialog toolbar button \u2014 icon-only, icon+label, or label+trailing-icon. 34px height, transparent fill, subtle border. Used in AI Dialog toolbar.",
+  "intent": "Consistent Ghost affordance for AI Dialog command bar actions. Not for gradient Send CTA or navigation.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-dialog-button/ai-dialog-button.md",
+    "contract": "components/ai/atomic/ai-dialog-button/ai-dialog-button.agent.json",
+    "agentIndexModule": "aiDialogButton",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "src/components/ai/atomic/dialog-button/AIDialogButton.tsx",
+    "agentMarkdown": [],
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "source": "src/components/ai/atomic/ai-dialog-button/AIDialogButton.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [
+    "ghost-icon-only",
+    "ghost-icon-label",
+    "ghost-label-trailing"
+  ],
+  "states": [
+    "default",
+    "hover",
+    "open",
+    "disabled"
+  ],
+  "slots": [
+    {
+      "name": "icon",
+      "required": false,
+      "allowedContent": [
+        "Lucide icon or custom node e.g. monospace slash"
+      ]
+    },
+    {
+      "name": "label",
+      "required": false,
+      "allowedContent": [
+        "string label text"
+      ]
+    },
+    {
+      "name": "trailingIcon",
+      "required": false,
+      "allowedContent": [
+        "chevron or dropdown indicator"
+      ]
+    }
+  ],
+  "props": [
+    {
+      "name": "icon",
+      "values": [
+        "React.ReactNode"
+      ],
+      "hint": "Leading icon; icon-only when sole content"
+    },
+    {
+      "name": "label",
+      "values": [
+        "string"
+      ],
+      "hint": "Visible label \u2014 13px / 500"
+    },
+    {
+      "name": "trailingIcon",
+      "values": [
+        "React.ReactNode"
+      ],
+      "hint": "Trailing icon for dropdown triggers"
+    },
+    {
+      "name": "isOpen",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Ghost open/active visual while dropdown expanded"
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "true",
+        "false"
+      ],
+      "default": "false",
+      "hint": "Opacity 0.42, suppress onClick"
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "() => void"
+      ],
+      "hint": "Click handler"
+    },
+    {
+      "name": "aria-label",
+      "values": [
+        "string"
+      ],
+      "hint": "Required for icon-only buttons"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIDialogButton"
+    ],
+    "import": "import { AIDialogButton } from '@ai/atomic/dialog-button/AIDialogButton'",
+    "notes": [
+      "Ghost surface only in Stable v1.0",
+      "Peer deps: react, lucide-react",
+      "Pair isOpen with dropdown open state",
+      "Do not use for Send gradient CTA"
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [
+      "ai-dialog-button.height",
+      "ai-dialog-button.border.radius",
+      "ai-dialog-button.border.color.default",
+      "ai-dialog-button.border.color.hover",
+      "ai-dialog-button.border.color.open",
+      "ai-dialog-button.surface.default",
+      "ai-dialog-button.surface.hover",
+      "ai-dialog-button.surface.open",
+      "ai-dialog-button.opacity.disabled",
+      "ai-dialog-button.label.color",
+      "ai-dialog-button.icon.color",
+      "ai-dialog-button.font.size",
+      "ai-dialog-button.font.weight"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "aria-label on icon-only buttons",
+      "disabled attribute when disabled=true"
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not use for gradient Send CTA \u2014 use ai-dialog send pattern",
+      "Do not use for navigation links",
+      "Do not use icon-only without aria-label",
+      "Do not hardcode colors \u2014 use ai-dialog-button.* tokens",
+      "Do not substitute plain icon buttons in AI Dialog toolbar"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest",
+      "Confirm"
+    ],
+    "accountability": "User control"
+  },
+  "relatedModules": [
+    {
+      "name": "AIButton",
+      "mirrorSpec": "components/ai/atomic/ai-button/ai-button.md"
+    },
+    {
+      "name": "AIDialog",
+      "mirrorSpec": "components/ai/organisms/ai-dialog/ai-dialog.md"
+    }
+  ],
+  "generatedAt": "2026-06-16T00:00:00.000Z",
+  "curated": true
+}

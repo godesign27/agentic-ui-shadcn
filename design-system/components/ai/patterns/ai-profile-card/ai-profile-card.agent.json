@@ -1,0 +1,194 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIProfileCard",
+  "repoModule": "aiProfileCard",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AIProfileCard is a progressive-density entity summary card optimized for two placement contexts: inline in a chat thread (max-width 520px) and full-width inside a side drawer. Basic density surfaces identity only. Simple adds Decile chip, KOL role chip, and a three-stat row. Rich adds AI badge, confidence badge, sentiment badge, and a brief insight callout. Robust replaces the insight callout with a full AI Recommendation panel with primary and secondary CTAs.",
+  "intent": "Entity profile \u00b7 4 densities \u00b7 3 themes \u00b7 chat + drawer contexts",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-profile-card/ai-profile-card.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiProfileCard",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-profile-card/AIProfileCard.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-profile-card/AIProfileCard.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "density",
+      "values": [
+        "`'basic' \\"
+      ],
+      "default": "'simple' \\",
+      "hint": "'rich' \\"
+    },
+    {
+      "name": "theme",
+      "values": [
+        "`'light' \\"
+      ],
+      "default": "'dark-gradient' \\",
+      "hint": "'tan'`"
+    },
+    {
+      "name": "context",
+      "values": [
+        "`'chat' \\"
+      ],
+      "default": "'side-drawer'`",
+      "hint": "`'side-drawer'`"
+    },
+    {
+      "name": "name",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Entity full name."
+    },
+    {
+      "name": "specialty",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Entity specialty or job title."
+    },
+    {
+      "name": "organization",
+      "values": [
+        "`string`"
+      ],
+      "default": "`\u2014`",
+      "hint": "Entity organization or affiliation."
+    },
+    {
+      "name": "avatarUrl",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Optional avatar image URL. Falls back to initials."
+    },
+    {
+      "name": "decile",
+      "values": [
+        "`number`"
+      ],
+      "default": "`undefined`",
+      "hint": "AI-computed decile rank (1\u201310). Simple+ only."
+    },
+    {
+      "name": "role",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "KOL role or attribute label. Simple+ only."
+    },
+    {
+      "name": "stats",
+      "values": [
+        "`{ totalVisits, trxLast90d, trxDelta?, lastVisit }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Stat row data. Simple+ only."
+    },
+    {
+      "name": "sentiment",
+      "values": [
+        "`'positive' \\"
+      ],
+      "default": "'negative' \\",
+      "hint": "'neutral'`"
+    },
+    {
+      "name": "confidence",
+      "values": [
+        "`'high' \\"
+      ],
+      "default": "'medium' \\",
+      "hint": "'low'`"
+    },
+    {
+      "name": "insight",
+      "values": [
+        "`{ summary, source, onDismiss? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Brief AI insight. Rich density only."
+    },
+    {
+      "name": "recommendation",
+      "values": [
+        "`{ rationale, source, whyThisUrl?, actions, onDismiss? }`"
+      ],
+      "default": "`undefined`",
+      "hint": "Full AI recommendation panel. Robust density only."
+    },
+    {
+      "name": "disabled",
+      "values": [
+        "`boolean`"
+      ],
+      "default": "`false`",
+      "hint": "Suppresses all AI signals while keeping the identity shell."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIProfileCard"
+    ],
+    "import": "import { AIProfileCard } from './AIProfileCard'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": "Identify \u00b7 Recommend \u00b7 Validate \u00b7 Summarize",
+    "accountability": "Confidence \u00b7 Sentiment \u00b7 Sources \u00b7 Data freshness \u00b7 Human review"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

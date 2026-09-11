@@ -1,0 +1,49 @@
+{
+  "category": "spacing",
+  "version": "2.0",
+  "lastUpdated": "2026-06-22",
+  "source": "components/ai/tokens/spacing.md",
+  "mirrorSpec": "components/ai/tokens/spacing.md",
+  "baseUnit": "8px",
+  "baseUnitToken": "@zs-space-unit",
+  "hardRules": [
+    "All spacing is a multiple of 8px (4px half-steps allowed for compact chips/badges)",
+    "Use zs-padding-* / zs-margin-* utilities in LESS/CSS",
+    "Inline React styles: use 4, 8, 12, 16, 20, 24, 32, 48 — never arbitrary values",
+    "Do not compress touch targets below 12px padding on interactive surfaces"
+  ],
+  "ramp": {
+    "0": { "multiplier": 0, "px": 0 },
+    "0.5": { "multiplier": 0.5, "px": 4, "utility": "zs-padding-0-5" },
+    "1": { "multiplier": 1, "px": 8, "utility": "zs-padding-1" },
+    "1.5": { "multiplier": 1.5, "px": 12, "utility": "zs-padding-1-5" },
+    "2": { "multiplier": 2, "px": 16, "utility": "zs-padding-2" },
+    "3": { "multiplier": 3, "px": 24, "utility": "zs-padding-3" },
+    "4": { "multiplier": 4, "px": 32, "utility": "zs-padding-4" },
+    "6": { "multiplier": 6, "px": 48, "utility": "zs-padding-6" }
+  },
+  "componentPadding": {
+    "inputCardTextareaEmpty": "20px 20px 0",
+    "inputCardTextareaChat": "14px 20px 0",
+    "inputCardToolbar": "12px 16px 16px",
+    "chip": "7px 14px",
+    "insightCard": "10px 14px",
+    "tableCell": "7px 10px",
+    "attributionGap": "7px",
+    "messageGap": "16px",
+    "thinkingStepGap": "12px",
+    "queueBadgeShell": "3px 9px",
+    "handoffChipMd": "4px 10px"
+  },
+  "layout": {
+    "maxChatContentWidth": "680px",
+    "chatScrollAreaPadding": "36px 24px 16px",
+    "chatInputBarPadding": "16px 24px 20px",
+    "emptyStatePadding": "48px 24px"
+  },
+  "densityModes": {
+    "compact": { "cardPadding": "12px", "threadGap": "12px" },
+    "default": { "cardPadding": "16px", "threadGap": "16px" },
+    "spacious": { "cardPadding": "24px", "threadGap": "24px" }
+  }
+}

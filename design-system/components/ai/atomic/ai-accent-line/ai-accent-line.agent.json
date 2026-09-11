@@ -1,0 +1,90 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AIAccentLine",
+  "repoModule": "aiAccentLine",
+  "tier": "atomic",
+  "status": "experimental",
+  "description": "AIAccentLine is a presentational atom that renders an edge accent on AI insight cards. It supports 7 styles \u2014 gradient, solid, top-bar, glow, dash, double, and none \u2014 all driven by a single `style` prop and a `color` prop sourced from the card's insight type.",
+  "intent": "Seven pluggable accent treatments for insight cards \u2014 from gradient ribbons to glowing rules \u2014 switchable at the AIAnalysisMessage level via a built-in style picker.",
+  "authority": {
+    "mirrorSpec": "components/ai/atomic/ai-accent-line/ai-accent-line.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiAccentLine",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/atomic/ai-accent-line/AIAccentLine.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/atomic/ai-accent-line/AIAccentLine.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "color",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Accent element fill color \u2014 typically the insight type's labelColor."
+    },
+    {
+      "name": "style",
+      "values": [
+        "`AccentLineStyle`"
+      ],
+      "default": "`\"gradient\"`",
+      "hint": "One of: gradient \\"
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AIAccentLine"
+    ],
+    "import": "import { AIAccentLine } from './AIAccentLine'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Identify \u00b7 Attribute",
+    "accountability": "Brand identity \u00b7 Insight hierarchy"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}

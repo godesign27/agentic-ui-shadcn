@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "AICardWorkstream",
+  "repoModule": "aiCardWorkstream",
+  "tier": "organisms",
+  "status": "experimental",
+  "description": "AICardWorkstream is the canonical entry-point card for any AI-operated workstream. The icon encodes the workstream type (map / roster / data / forecast); the status pill encodes operational state (active / pending / critical / complete); up to three KPI columns show at-a-glance metrics; a Project Health bar shows progress with color tied to status; the footer carries assignee initials and the last-updated timestamp. Clicking the whole card navigates to the workstream dashboard.",
+  "intent": "Card-style preview of an AI workstream \u2014 surfaces just enough state for the user to decide whether to drill in.",
+  "authority": {
+    "mirrorSpec": "components/ai/organisms/ai-card-workstream/ai-card-workstream.md",
+    "contract": "components/ai/tokens/ai-tokens.ts",
+    "typography": "components/ai/tokens/ai-typography.ts",
+    "agentIndexModule": "aiCardWorkstream",
+    "agentIndexPath": "design-system/generated/agent-index.json",
+    "primaryJavascript": "components/ai/organisms/ai-card-workstream/AICardWorkstream.tsx",
+    "note": "Imported from godesign27/agentic-ui-design-system (branch cursor/import-ai-components-6d77). Runtime TSX lives under src/components/ai/. Existing top-level shadcn ports remain authoritative for the governed AI kit.",
+    "surfaceCss": "components/ai/tokens/css/ai-surface.css",
+    "source": "src/components/ai/patterns/ai-card-workstream/AICardWorkstream.tsx"
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "variants": [],
+  "states": [],
+  "props": [
+    {
+      "name": "type",
+      "values": [
+        "`\"map\" \\"
+      ],
+      "default": "\"roster\" \\",
+      "hint": "\"data\" \\"
+    },
+    {
+      "name": "status",
+      "values": [
+        "`\"active\" \\"
+      ],
+      "default": "\"pending\" \\",
+      "hint": "\"critical\" \\"
+    },
+    {
+      "name": "title",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Workstream name. Rendered as the card heading."
+    },
+    {
+      "name": "description",
+      "values": [
+        "`string`"
+      ],
+      "default": "`required`",
+      "hint": "Two-line supporting paragraph under the title."
+    },
+    {
+      "name": "metrics",
+      "values": [
+        "`{ label: string; value: string }[]`"
+      ],
+      "default": "`required`",
+      "hint": "Up to 3 KPI columns. Excess entries are dropped."
+    },
+    {
+      "name": "healthPercent",
+      "values": [
+        "`number (0\u2013100)`"
+      ],
+      "default": "`required`",
+      "hint": "Project health percentage. Drives the bar width."
+    },
+    {
+      "name": "assignees",
+      "values": [
+        "`{ initial: string; name?: string }[]`"
+      ],
+      "default": "`undefined`",
+      "hint": "Assignee initial chips. Up to 3 shown + a +N counter for the rest."
+    },
+    {
+      "name": "lastUpdated",
+      "values": [
+        "`string`"
+      ],
+      "default": "`undefined`",
+      "hint": "Relative timestamp (\"12M ago\", \"1d ago\")."
+    },
+    {
+      "name": "onClick",
+      "values": [
+        "`() => void`"
+      ],
+      "default": "`undefined`",
+      "hint": "Fired when the card is clicked \u2014 typically navigates to the workstream dashboard."
+    }
+  ],
+  "javascriptApi": {
+    "exports": [
+      "AICardWorkstream"
+    ],
+    "import": "import { AICardWorkstream } from './AICardWorkstream'",
+    "notes": [
+      "Use AI tokens from ai-tokens.ts \u2014 do not hardcode brand hex.",
+      "Fetch dependency atomics from components/ai/ mirror specs.",
+      "Self-contained under components/ai/ \u2014 do not require @zaidyn/ai-ui.",
+      "Load components/ai/tokens/css/ai-surface.css for --ai-* surface vars."
+    ]
+  },
+  "figma": [],
+  "tokens": {
+    "cssVars": [],
+    "semantic": []
+  },
+  "accessibility": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": []
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Do not invent dependency atomics \u2014 use bundled canonical sources",
+      "Do not hardcode brand hex \u2014 use AI tokens",
+      "Do not require @zaidyn/ai-ui for agent implementations \u2014 use co-located TSX"
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive",
+      "AI Led"
+    ],
+    "aiBehavior": "Summarize \u00b7 Recall \u00b7 Monitor",
+    "accountability": "Owner \u00b7 Audit trail \u00b7 Context awareness"
+  },
+  "relatedModules": [],
+  "generatedAt": "2026-08-06T00:00:00.000Z",
+  "curated": true
+}
