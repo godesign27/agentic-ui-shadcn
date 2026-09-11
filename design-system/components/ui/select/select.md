@@ -67,6 +67,7 @@ Radix Select with a popover-styled content surface, scroll buttons, and typeahea
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `position` | `see source` | — | Declared in the component source. |
 | `asChild` | `boolean` | `false` | Render the child element instead, merging props and styles |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |

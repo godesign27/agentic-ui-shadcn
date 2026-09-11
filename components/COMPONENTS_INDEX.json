@@ -4,7 +4,7 @@
   "source": "shadcn/ui + Agentic UI AI namespace",
   "enforcement": "closed-world",
   "rule": "Only ids listed here may be used. Anything absent must be rejected, not improvised. Each entry points at a spec folder containing the full contract.",
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "count": 74,
   "components": [
     {

@@ -58,6 +58,7 @@ Radix Progress: a track with an indicator translated by value. Determinate only 
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `value` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

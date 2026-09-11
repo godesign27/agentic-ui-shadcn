@@ -2,7 +2,7 @@
   "$schema": "../schemas/manifest-index.schema.json",
   "schemaVersion": 1,
   "description": "Lookup from component id to its four spec files and its source. Regenerate with npm run ds:build.",
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "count": 74,
   "byNamespace": {
     "ui": 45,

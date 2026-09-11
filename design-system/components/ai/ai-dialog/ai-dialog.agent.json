@@ -83,6 +83,50 @@
       "hint": "Optional. Declared in the component source."
     },
     {
+      "name": "placeholder",
+      "type": "see source",
+      "required": false,
+      "default": "\"Ask anything…\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "submitLabel",
+      "type": "see source",
+      "required": false,
+      "default": "\"Send message\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "value",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onValueChange",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onSubmit",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "disabled",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "busy",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
@@ -187,6 +231,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

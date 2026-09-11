@@ -61,6 +61,7 @@ Six composable parts. No variants — a card is a container, and its meaning com
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `as` | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "div"` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

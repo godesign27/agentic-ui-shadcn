@@ -34,7 +34,10 @@ export function renderManifest(facts, meta, { generatedAt }) {
       name: d.name,
       type: d.type,
       required: d.required,
-      hint: d.hint ?? (d.required
+      default: d.default,
+      hint: d.hint ?? (d.inherited
+        ? 'Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface.'
+        : d.required
         ? 'Required. Declared in the component source.'
         : 'Optional. Declared in the component source.'),
     })

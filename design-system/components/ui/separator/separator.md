@@ -55,6 +55,8 @@ Radix Separator. Decorative by default, which keeps it out of the accessibility 
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `orientation` | `see source` | — | Declared in the component source. |
+| `decorative` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

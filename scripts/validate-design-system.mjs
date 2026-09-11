@@ -218,6 +218,68 @@ for (const id of invIds) {
   }
 }
 
+// VALIDATE_NO_RAW_COLOR — enforces FORBID_RAW_COLOR from rules/forbidden.json.
+// The rule existed from the start; nothing checked it, so bg-black/80 sat in
+// three overlays for the life of the design system. A rule nothing enforces is
+// a wish.
+const COLOR_EXCEPTIONS = {
+  'ai/ai-avatar.tsx':
+    'The agent mark uses fixed hex fills by design — identical in light and dark so it stays recognisable. Documented in its spec and enforced by its agent rules.',
+}
+const RAW_COLOR = /\b(?:bg|text|border|ring|fill|stroke|from|to|via)-(?:black|white|slate|gray|grey|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)(?:-\d{2,3})?\b|#[0-9a-fA-F]{3,8}\b|\brgba?\(/
+
+for (const { dirName } of NAMESPACES) {
+  const dir = join(repoRoot, 'src/components', dirName)
+  if (!(await exists(dir))) continue
+  for (const file of (await readdir(dir)).filter(f => f.endsWith('.tsx'))) {
+    const rel = `${dirName}/${file}`
+    if (COLOR_EXCEPTIONS[rel]) continue
+    const text = await readFile(join(dir, file), 'utf8')
+    text.split('\n').forEach((line, i) => {
+      if (line.trim().startsWith('//') || line.trim().startsWith('*')) return
+      const hit = line.match(RAW_COLOR)
+      if (!hit) return
+      fail('VALIDATE_NO_RAW_COLOR', `src/components/${rel}:${i + 1}`,
+        `Raw colour "${hit[0]}" where a semantic token belongs`,
+        'Use a token from design-system/tokens/semantic.json, or add one if the role is genuinely new')
+    })
+  }
+}
+
+// VALIDATE_PROPS_INDEPENDENT — a second look at props that does NOT use
+// extract-facts.mjs.
+//
+// The prop check above shares the extractor with the builder, so a blind spot
+// in the extractor is invisible to it: CardTitle's `as` was missing from the
+// contract AND from the check, because both asked the same broken parser. This
+// reads the destructured parameter list instead — a genuinely different signal.
+for (const { ns, dirName } of NAMESPACES) {
+  const dir = join(repoRoot, 'src/components', dirName)
+  if (!(await exists(dir))) continue
+  for (const file of (await readdir(dir)).filter(f => f.endsWith('.tsx'))) {
+    const name = file.replace(/\.tsx$/, '')
+    const manifestPath = join(repoRoot, 'design-system/components', dirName, name, `${name}.agent.json`)
+    if (!(await exists(manifestPath))) continue
+    const m = JSON.parse(await readFile(manifestPath, 'utf8'))
+    const declared = new Set((m.props ?? []).map(p => p.name))
+    const text = await readFile(join(dir, file), 'utf8')
+
+    // ({ className, as: Comp = "h3", variant, ...props }, ref) => …
+    for (const sig of text.matchAll(/\(\s*\{([^}]*)\}\s*,\s*ref\s*\)/g)) {
+      for (const part of sig[1].split(',')) {
+        const nameMatch = part.trim().match(/^([A-Za-z_$][\w$]*)\s*(?::|=|$)/)
+        if (!nameMatch) continue
+        const prop = nameMatch[1]
+        if (['className', 'children', 'ref', 'props'].includes(prop)) continue
+        if (declared.has(prop)) continue
+        fail('VALIDATE_PROPS_INDEPENDENT', `design-system/components/${dirName}/${name}`,
+          `Source destructures ${prop}, the manifest does not list it`,
+          'The extractor may have a blind spot — check extract-facts.mjs, then run npm run ds:build')
+      }
+    }
+  }
+}
+
 // ── Report, in the shape agents/validation.json declares ──
 const bySeverity = s => violations.filter(v => v.severity === s)
 const critical = bySeverity('critical')

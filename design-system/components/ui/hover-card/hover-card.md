@@ -59,6 +59,8 @@ Radix HoverCard. Opens on hover with a delay. Unlike a tooltip it may contain la
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `align` | `see source` | — | Declared in the component source. |
+| `sideOffset` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 

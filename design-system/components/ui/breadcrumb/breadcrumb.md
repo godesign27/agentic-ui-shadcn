@@ -63,6 +63,7 @@ Semantic breadcrumb markup: nav, ordered list, links, and a current page marked 
 
 | Prop | Type | Default | Notes |
 | --- | --- | --- | --- |
+| `separator` | `React.ReactNode` | — | Declared in the component source. |
 | `asChild` | `boolean` | `false` | Render the child element instead, merging props and styles |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |

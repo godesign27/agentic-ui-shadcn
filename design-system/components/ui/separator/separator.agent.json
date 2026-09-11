@@ -40,6 +40,20 @@
   ],
   "props": [
     {
+      "name": "orientation",
+      "type": "see source",
+      "required": false,
+      "default": "\"horizontal\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "decorative",
+      "type": "see source",
+      "required": false,
+      "default": "true",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
       "name": "className",
       "type": "string",
       "required": false,
@@ -95,6 +109,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

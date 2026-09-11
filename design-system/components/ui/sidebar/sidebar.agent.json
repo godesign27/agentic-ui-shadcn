@@ -204,6 +204,73 @@
       "hint": "One of the size values declared in sidebarMenuButtonVariants."
     },
     {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "collapsible",
+      "type": "\"offcanvas\" | \"icon\" | \"none\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "tooltip",
+      "type": "string | React.ComponentProps<typeof TooltipContent>",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "showOnHover",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "showIcon",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "see source",
+      "required": false,
+      "default": "true",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "open",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onOpenChange",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "style",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onClick",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
       "name": "asChild",
       "type": "boolean",
       "default": "false",
@@ -338,6 +405,6 @@
     }
   ],
   "gaps": [],
-  "generatedAt": "2026-09-11T05:17:43.875Z",
+  "generatedAt": "2026-09-11T14:33:05.265Z",
   "curated": true
 }

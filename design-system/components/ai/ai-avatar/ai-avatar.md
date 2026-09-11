@@ -75,6 +75,7 @@ This component grants the machine a specific degree of autonomy, and therefore o
 | `monogram` | `string` | — | Declared in the component source. |
 | `glow` | `boolean` | — | The attribution affordance for the entire AI namespace. The palette is FIXED and identical in light and dark. Do not recolor it, do not use currentColor, do not add a dark: variant, and do not add a gradient ring. A user learns this mark means "a machine produced this"; if it changes with theme or context it stops being recognisable. / const RINGS = ["#B4BDFF", "#5A6DFF", "#1F2A66"] as const interface AvatarMarkProps extends React.SVGProps<SVGSVGElement> { size?: number monogram?: string /** Hero treatment. Only AIAvatar uses it. |
 | `label` | `string` | — | Declared in the component source. |
+| `style` | `see source` | — | Declared in the component source. |
 | `className` | `string` | — | Merged via `cn()`. Layout only — never to override an existing variant |
 | `...props` | `React.ComponentProps` | — | All native props pass through. Ref is forwarded to the root. |
 
