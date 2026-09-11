@@ -1,0 +1,100 @@
+<title>AIAction — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIAction</h1>
+<p class="lede">The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-action</span>
+<span class="pill beta">beta</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-action.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest · Confirm · Apply · Approve</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Approval · Audit trail · Rationale disclosure</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>conditional</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Default</strong></td><td><code>status=&quot;default&quot;</code></td><td>All actions live</td></tr>
+<tr><td><strong>Loading</strong></td><td><code>status=&quot;loading&quot;</code></td><td>Primary shows a spinner; secondary and tertiary disable so the decision cannot change mid-flight</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>status=&quot;complete&quot;</code></td><td>Primary shows a check</td></tr>
+<tr><td><strong>Disabled</strong></td><td><code>status=&quot;disabled&quot;</code></td><td>All actions inert — required information is not yet present</td></tr>
+<tr><td><strong>Error</strong></td><td><code>status=&quot;error&quot;</code></td><td>Primary renders destructive. The failure reason belongs adjacent.</td></tr>
+<tr><td><strong>Requires review</strong></td><td><code>requiresReview</code></td><td>Signal pill renders above the row, before the buttons in DOM order</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Review signal</strong></td><td>The signal-coloured pill. Renders above the row so it is read before the buttons.</td></tr>
+<tr><td><strong>Primary</strong></td><td>Gradient. The recommended next step.</td></tr>
+<tr><td><strong>Secondary</strong></td><td>Outlined. Review, edit, an alternative. Optional.</td></tr>
+<tr><td><strong>Tertiary</strong></td><td>Ghost. Dismiss or skip. Optional.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-action.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>At the end of an AI recommendation or approval card</li>
+<li>After a generated draft — use draft, edit draft, regenerate</li>
+<li>When an agent needs a human to confirm before it proceeds</li>
+<li>In AI Assisted panels where the human stays in control</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Standard product actions that are not AI-generated</li>
+<li>As a generic button group</li>
+<li>With more than three visible actions</li>
+<li>When no decision is actually being requested</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>group</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab between actions<br />Enter or Space to activate</td></tr>
+<tr><th scope="row">Required</th><td>A verb label on every action</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The review signal precedes the buttons in DOM order, so a screen-reader user meets the warning before the action.</li>
+<li>Nothing here fires on mount. A human gesture is required — auto-applying is a critical violation.</li>
+<li>Secondary and tertiary disable during loading so the user cannot change the decision while it is executing.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-action.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-action.agent.json"><code>ai-action.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-action.md"><code>ai-action.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

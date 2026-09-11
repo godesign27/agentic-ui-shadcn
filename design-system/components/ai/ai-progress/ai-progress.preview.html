@@ -1,0 +1,112 @@
+<title>AIProgress — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIProgress</h1>
+<p class="lede">Progress for work that can be blocked or escalated, not merely slow.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-progress</span>
+<span class="pill draft">draft</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-progress.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Led · Adaptive</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Audit trail</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Idle</strong></td><td><code>status=&quot;idle&quot;</code></td><td>Not started</td></tr>
+<tr><td><strong>Running</strong></td><td><code>status=&quot;running&quot;</code></td><td>AI accent fill</td></tr>
+<tr><td><strong>Indeterminate</strong></td><td><code>value omitted</code></td><td>Pulsing third-width bar; no aria-valuenow</td></tr>
+<tr><td><strong>Paused</strong></td><td><code>status=&quot;paused&quot;</code></td><td>Muted fill</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>status=&quot;complete&quot;</code></td><td>Green fill</td></tr>
+<tr><td><strong>Blocked</strong></td><td><code>status=&quot;blocked&quot;</code></td><td>Signal fill — work stopped and needs input</td></tr>
+<tr><td><strong>Error</strong></td><td><code>status=&quot;error&quot;</code></td><td>Destructive fill</td></tr>
+<tr><td><strong>Escalated</strong></td><td><code>status=&quot;escalated&quot;</code></td><td>Signal fill — a person now owns this</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Label row</strong></td><td>Status label and optional percent</td></tr>
+<tr><td><strong>Track</strong></td><td>bg-muted, four heights</td></tr>
+<tr><td><strong>Indicator</strong></td><td>Colour carries the status; the aria-valuetext carries the meaning</td></tr>
+<tr><td><strong>Step line</strong></td><td>Optional current step description</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-confidence-high))"></div><div class="name">--ai-confidence-high</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-muted))"></div><div class="name">--ai-muted</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--foreground))"></div><div class="name">--foreground</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-progress.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Multi-step agent workstreams</li>
+<li>Anywhere work can stop and need a human</li>
+<li>When the total is known</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>Standard determinate progress — use ui:progress</li>
+<li>Unknown-duration model latency — use ai:ai-loading-indicators</li>
+<li>When you would have to invent the percentage</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>progressbar</code></td></tr>
+<tr><th scope="row">Required</th><td>label, or the status default is used</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>aria-valuetext carries the status word, so &quot;Blocked&quot; is announced rather than a bare number.</li>
+<li>Indeterminate omits aria-valuenow entirely rather than reporting a made-up value.</li>
+<li>Blocked and escalated are not decorative. Only set them when a human genuinely needs to act.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>The segmented and header variants from the source design system are not implemented. Linear only.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-progress.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-progress.agent.json"><code>ai-progress.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-progress.md"><code>ai-progress.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

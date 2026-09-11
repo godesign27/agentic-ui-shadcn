@@ -1,0 +1,137 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-launcher",
+  "name": "AILauncher",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "AI",
+  "description": "The assistant entry point. A pill with the bot mark and a label, or the mark alone. Carries active, unread, loading and disabled states.",
+  "intent": "The way in. Recognisable, confident, never instructional.",
+  "authority": {
+    "source": "src/components/ai/ai-launcher.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-launcher/ai-launcher.md",
+    "contract": "design-system/components/ai/ai-launcher/ai-launcher.agent.json",
+    "prompt": "design-system/components/ai/ai-launcher/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-launcher/ai-launcher.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ai:ai-avatar"
+    ],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "AILauncher"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Active",
+    "Unread",
+    "Loading",
+    "Disabled"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AILauncher } from \"@/components/ai/ai-launcher\"",
+    "exports": [
+      "AILauncher"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "ai-surface",
+      "card",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-ai-signal",
+      "bg-ai-surface",
+      "bg-card",
+      "border-ai-accent",
+      "border-ai-surface",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — open"
+    ],
+    "requiredAttributes": [
+      "aria-label in avatar-only mode — supplied by the component",
+      "disabledReason when disabled"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "aria-expanded reflects whether the assistant is open, so the control is announced as a disclosure.",
+      "The unread badge carries an accessible label with the count — a bare number means nothing out of context.",
+      "When AI is unavailable, disabledReason explains why. A dead button teaches nothing."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Multiple launchers on one surface",
+      "Disabled with no reason",
+      "Instructional or chatty labels"
+    ],
+    "agentRules": [
+      "One per surface.",
+      "Always give disabledReason when disabling.",
+      "Keep the label plain — \"Chat\", not \"Ask me anything!\"",
+      "Wire aria-expanded to the real drawer state."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution"
+    ],
+    "humanGestureRequired": true,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:sheet",
+      "note": "The drawer it usually opens"
+    },
+    {
+      "id": "ai:ai-avatar",
+      "note": "The mark it uses"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

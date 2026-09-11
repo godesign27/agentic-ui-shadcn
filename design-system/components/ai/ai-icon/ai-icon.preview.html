@@ -1,0 +1,105 @@
+<title>AIIcon — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIIcon</h1>
+<p class="lede">A treatment layer over standard icons — not a new icon set.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-icon</span>
+<span class="pill beta">beta</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-icon.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive · AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Decorative</strong></td><td><code>decorative</code></td><td>aria-hidden. Correct when adjacent text carries the meaning.</td></tr>
+<tr><td><strong>Labelled</strong></td><td><code>label</code></td><td>role=&quot;img&quot; with an accessible name</td></tr>
+<tr><td><strong>Spinning</strong></td><td><code>motion=&quot;spin&quot;</code></td><td>Respects reduced motion</td></tr>
+<tr><td><strong>Pulsing</strong></td><td><code>motion=&quot;pulse&quot;</code></td><td>Respects reduced motion</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Wrapper</strong></td><td>Carries sizing, colour, container and motion</td></tr>
+<tr><td><strong>Icon</strong></td><td>The component you pass in</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-confidence-high))"></div><div class="name">--ai-confidence-high</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-surface))"></div><div class="name">--ai-surface</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-icon.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Applying AI identity colour to a standard icon</li>
+<li>Semantic tones for agentic states</li>
+<li>Motion on an icon that reflects real activity</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>As a source of new icons — pass in an existing one</li>
+<li>Applying treatment=&quot;ai&quot; broadly; if every icon is an AI icon, none is</li>
+<li>Motion that does not track real work</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>img or none</code></td></tr>
+<tr><th scope="row">Required</th><td>Either label or decorative — one of the two, always</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Setting neither logs a development warning. An icon with meaning and no name is invisible.</li>
+<li>All motion carries motion-reduce:animate-none.</li>
+<li>Motion must reflect real activity. A permanently spinning icon is noise that trains users to ignore it.</li>
+</ul>
+</section>
+<section>
+<h2>Gaps</h2>
+<p class="desc">Known limitations. Honor them rather than assuming they have been filled.</p>
+<div class="note"><ul class="rule-list" style="margin:0">
+<li>The handoff-trail, completion-settle, nudge, shimmer and alert-ring motions from the source system are not implemented. Only spin and pulse.</li>
+</ul></div>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-icon.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-icon.agent.json"><code>ai-icon.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-icon.md"><code>ai-icon.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

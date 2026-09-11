@@ -177,6 +177,6 @@
   "gaps": [
     "Does not move focus to the first invalid field on submit — implement that in your onInvalid handler."
   ],
-  "generatedAt": "2026-09-11T04:06:31.464Z",
+  "generatedAt": "2026-09-11T04:20:52.939Z",
   "curated": true
 }

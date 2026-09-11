@@ -1,0 +1,98 @@
+<title>AIChipMemory — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIChipMemory</h1>
+<p class="lede">Tell the user when the system is drawing on something it learned earlier.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-chip-memory</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-chip-memory.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>Adaptive · AI Assisted</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Rationale disclosure · Audit trail</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Using memory</strong></td><td><code>variant=&quot;using-memory&quot;</code></td><td>Signal tint</td></tr>
+<tr><td><strong>Previous context</strong></td><td><code>variant=&quot;previous-context&quot;</code></td><td>Neutral</td></tr>
+<tr><td><strong>Memory available</strong></td><td><code>variant=&quot;memory-available&quot;</code></td><td>AI surface</td></tr>
+<tr><td><strong>Memory ignored</strong></td><td><code>variant=&quot;memory-ignored&quot;</code></td><td>Transparent, muted</td></tr>
+<tr><td><strong>Memory removed</strong></td><td><code>variant=&quot;memory-removed&quot;</code></td><td>Struck through</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Icon</strong></td><td>Variant glyph, aria-hidden</td></tr>
+<tr><td><strong>Prefix</strong></td><td>sr-only — &quot;Using memory:&quot; etc.</td></tr>
+<tr><td><strong>Label</strong></td><td>What is remembered</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-surface))"></div><div class="name">--ai-surface</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-chip-memory.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>When a response depends on remembered context</li>
+<li>To show what memory is available but unused</li>
+<li>To confirm that memory was ignored or removed</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>When no memory is in play</li>
+<li>As a general tag — use ui:badge</li>
+<li>To imply memory the system does not actually have</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Required</th><td>label</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>The sr-only prefix supplies the variant meaning, so the icon and tint are never the only signal.</li>
+<li>memory-removed uses line-through, which is not announced by screen readers — the prefix carries it instead.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-chip-memory.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-chip-memory.agent.json"><code>ai-chip-memory.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-chip-memory.md"><code>ai-chip-memory.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

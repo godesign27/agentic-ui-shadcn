@@ -1,0 +1,81 @@
+<title>AIMessageFooter — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIMessageFooter</h1>
+<p class="lede">Where the user says yes to what the response offered.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-message-footer</span>
+<span class="pill stable">stable</span>
+<span class="pill">atoms</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-message-footer.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Assisted · Adaptive</td></tr>
+<tr><th scope="row">AI behavior</th><td>Confirm · Apply</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Approval</td></tr>
+<tr><th scope="row">Human gesture</th><td>Required — no state changes without one</td></tr>
+<tr><th scope="row">Reversible</th><td>conditional</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Hidden</strong></td><td><code>visible={false} or no actions</code></td><td>Renders null</td></tr>
+<tr><td><strong>Visible</strong></td><td><code>actions present</code></td><td>First action defaults to primary, the rest to secondary</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Root</strong></td><td>The action row. Renders nothing when actions is empty or visible is false.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-message-footer.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>When a response affords a concrete action</li>
+<li>Below ai:ai-message-body</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>On purely informational responses</li>
+<li>For approval of a consequential change — use ai:ai-action, which carries the review signal</li>
+<li>With more than three actions</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>none</code></td></tr>
+<tr><th scope="row">Keyboard</th><td>Tab between actions</td></tr>
+<tr><th scope="row">Required</th><td>A verb label per action</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Actions beyond the third are dropped, with a console warning in development. Do not rely on that truncation — cap it yourself.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-message-footer.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-message-footer.agent.json"><code>ai-message-footer.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-message-footer.md"><code>ai-message-footer.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

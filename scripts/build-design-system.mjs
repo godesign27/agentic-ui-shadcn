@@ -51,24 +51,31 @@ const exists = async p => { try { await access(p); return true } catch { return 
 
 let written = 0, skipped = 0, stale = 0, missingMeta = []
 
-async function emit(path, content, { protectCurated = false } = {}) {
-  if (protectCurated && !FORCE && await exists(path)) {
-    const current = JSON.parse(await readFile(path, 'utf8'))
-    if (current.curated && current.generatedAt !== undefined) {
-      // Preserve hand edits; only refresh if nothing was hand-changed.
-      const regenerated = JSON.parse(content)
-      const a = { ...current, generatedAt: null }
-      const b = { ...regenerated, generatedAt: null }
-      if (JSON.stringify(a) !== JSON.stringify(b)) {
-        if (CHECK) { stale++; console.log(`  stale: ${path.replace(repoRoot + '/', '')}`); return }
-        // Curated file differs from what we'd generate. Leave it alone.
+async function emit(path, content, { protectHandEdits = false } = {}) {
+  // Manifests are GENERATED from scripts/metadata/, which is where curation
+  // lives — so "curated: true" on a manifest describes its content, not that
+  // the file was typed by hand, and it does not block regeneration.
+  //
+  // A manifest a human edited in place marks itself with "handEdited": true.
+  // Those are preserved, because regenerating would silently discard the edit.
+  if (protectHandEdits && !FORCE && await exists(path)) {
+    try {
+      const current = JSON.parse(await readFile(path, 'utf8'))
+      if (current.handEdited === true) {
         skipped++
         return
       }
+    } catch {
+      // Unparseable: fall through and overwrite with a valid manifest.
     }
   }
   if (CHECK) {
-    if (!(await exists(path)) || (await readFile(path, 'utf8')) !== content) {
+    // generatedAt changes on every run, so normalise it out — otherwise the
+    // check reports every file as stale and tells CI nothing.
+    const norm = t => t.replace(/\d{4}-\d{2}-\d{2}T[\d:.]+Z/g, 'TIMESTAMP')
+                       .replace(/\*\*Last Updated:\*\* \d{4}-\d{2}-\d{2}/g, '**Last Updated:** DATE')
+                       .replace(/Generated \d{4}-\d{2}-\d{2}/g, 'Generated DATE')
+    if (!(await exists(path)) || norm(await readFile(path, 'utf8')) !== norm(content)) {
       stale++
       console.log(`  stale: ${path.replace(repoRoot + '/', '')}`)
     }
@@ -93,7 +100,7 @@ for (const { ns, dir } of NAMESPACES) {
     const specDir = join(repoRoot, 'design-system/components', ns, facts.name)
 
     const manifest = renderManifest(facts, meta, { generatedAt })
-    await emit(join(specDir, `${facts.name}.agent.json`), JSON.stringify(manifest, null, 2) + '\n', { protectCurated: true })
+    await emit(join(specDir, `${facts.name}.agent.json`), JSON.stringify(manifest, null, 2) + '\n', { protectHandEdits: true })
     await emit(join(specDir, `${facts.name}.md`), renderSpec(facts, meta, { generatedAt }))
     await emit(join(specDir, 'agentic-prompt.md'), renderPrompt(facts, meta))
     await emit(join(specDir, `${facts.name}.preview.html`), renderPreview(facts, meta, specimens[facts.name], { generatedAt }))
@@ -218,6 +225,88 @@ if (withGaps.length) {
 }
 await emit(join(repoRoot, 'components/COMPONENTS_INDEX.md'), mdIndex.join('\n'))
 
+// ai/llms.txt — the scoped index for AI-native work.
+const aiComponents = manifestIndex.filter(m => m.namespace === 'ai')
+if (aiComponents.length) {
+  const aiMeta = id => metadata[id.split(':')[1]]
+  const llms = [
+    '# Agentic UI — AI Components Index',
+    '',
+    '> Scoped index for AI-native UI only. Load this when the task is an AI-generated or agent-driven surface.',
+    '>',
+    '> **Rules:** [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json) · **Tokens:** [/design-system/tokens/semantic.json](../../tokens/semantic.json) · **Parent:** [agent-instructions.md](../agent-instructions.md)',
+    '',
+    '---',
+    '',
+    '## Before anything else',
+    '',
+    'The `ai:*` namespace is not a style. These components carry signals — the AI accent, the soft surface, the attribution header — that tell a user **a machine produced this**.',
+    '',
+    '- Using them on human-authored UI falsely attributes it to a machine.',
+    '- Using `ui:*` for AI output hides authorship.',
+    '',
+    'Both are violations. See [`FORBID_AI_IN_STANDARD_UI`](../../rules/forbidden.json).',
+    '',
+    '## Load order',
+    '',
+    '1. [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json) — experience modes, behaviors, accountability obligations',
+    '2. [/design-system/tokens/semantic.json](../../tokens/semantic.json) — the `--ai-*` scale',
+    '3. The component folders below — prompt, then contract, then spec',
+    '4. [/design-system/patterns/ai-approval-flow.json](../../patterns/ai-approval-flow.json) and [ai-response.json](../../patterns/ai-response.json) — composition sequences',
+    '',
+    '## Experience metadata',
+    '',
+    'Every component below declares how much autonomy it grants the machine and what it owes the human in return. **Match the component to the actual autonomy being granted.** Do not reach for an Approve-level component when the interaction is a suggestion, or the reverse.',
+    '',
+    '| Behavior | What the machine may do | What it then owes |',
+    '|---|---|---|',
+    '| Suggest | Propose. No state changes. | Attribution |',
+    '| Confirm | Ask before proceeding. Blocking. | Attribution, Approval |',
+    '| Apply | Execute a change. | Approval, Audit trail, Reversibility |',
+    '| Approve | Act on the human\'s behalf. | All of the above, explicitly consented |',
+    '',
+    '---',
+    '',
+    '## Components',
+    '',
+  ]
+  const byBehavior = { 'Approve / Apply': [], 'Confirm': [], 'Suggest': [] }
+  for (const m of aiComponents) {
+    const e = aiMeta(m.id).experienceMetadata
+    const key = e.aiBehavior.some(b => b === 'Approve' || b === 'Apply') ? 'Approve / Apply'
+      : e.aiBehavior.includes('Confirm') ? 'Confirm' : 'Suggest'
+    byBehavior[key].push(m)
+  }
+  const HEAD = {
+    'Approve / Apply': 'These change state. Every one requires a human gesture and owes an audit trail.',
+    'Confirm': 'These block on the human before anything proceeds.',
+    'Suggest': 'These change nothing. They inform, attribute, or disclose.',
+  }
+  for (const [group, items] of Object.entries(byBehavior)) {
+    if (!items.length) continue
+    llms.push(`### ${group}`, '', HEAD[group], '')
+    llms.push('| Component | Status | Intent | Accountability |')
+    llms.push('|---|---|---|---|')
+    for (const m of items) {
+      const meta = aiMeta(m.id)
+      const name = m.id.split(':')[1]
+      llms.push(`| [\`${m.id}\`](${name}/${name}.md) | ${meta.status} | ${meta.intent} | ${meta.experienceMetadata.accountability.join(', ')} |`)
+    }
+    llms.push('')
+  }
+  llms.push('---', '', '## Non-negotiable', '')
+  llms.push('- **Never auto-apply on render.** A human gesture is required for every Apply and Approve behavior.')
+  llms.push('- **Never render a confidence value the model did not produce.** Absent means absent, not high.')
+  llms.push('- **Never animate to simulate effort.** Loading indicators must track real in-flight work.')
+  llms.push('- **Never exceed three visible actions** in one decision row.')
+  llms.push('- **Never mix `--ai-*` tokens into standard product UI.**')
+  llms.push('- **Attribution comes before the body**, never after.')
+  llms.push('')
+  llms.push('Full set: [/design-system/rules/ai-interaction.json](../../rules/ai-interaction.json)')
+  llms.push('')
+  await emit(join(repoRoot, 'design-system/components/ai/llms.txt'), llms.join('\n'))
+}
+
 // Preview hub
 const byCategory = {}
 for (const m of manifestIndex) (byCategory[m.category] ||= []).push(m)
@@ -242,7 +331,7 @@ await emit(join(repoRoot, 'design-system/components/preview/index.html'), hub.jo
 console.log('')
 console.log(`  components   ${manifestIndex.length}  (ui ${manifestIndex.filter(m => m.namespace === 'ui').length}, ai ${manifestIndex.filter(m => m.namespace === 'ai').length})`)
 console.log(`  files ${CHECK ? 'checked' : 'written'}  ${CHECK ? stale + ' stale' : written}`)
-if (skipped) console.log(`  preserved    ${skipped} curated manifest(s) with hand edits — use --force to overwrite`)
+if (skipped) console.log(`  preserved    ${skipped} manifest(s) marked handEdited — use --force to overwrite`)
 if (missingMeta.length) {
   console.log('')
   console.log(`  MISSING CURATION (${missingMeta.length}):`)

@@ -8,8 +8,11 @@ import { forms } from './forms.mjs'
 import { overlays } from './overlays.mjs'
 import { display } from './display.mjs'
 import { navigation } from './navigation.mjs'
+import { ai } from './ai.mjs'
+import { ai2 } from './ai2.mjs'
+import { ai3 } from './ai3.mjs'
 
-export const metadata = { ...forms, ...overlays, ...display, ...navigation }
+export const metadata = { ...forms, ...overlays, ...display, ...navigation, ...ai, ...ai2, ...ai3 }
 
 export const CATEGORIES = {
   Forms: 'Input collection and submission',

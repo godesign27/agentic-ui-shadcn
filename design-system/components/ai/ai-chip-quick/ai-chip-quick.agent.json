@@ -1,0 +1,128 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-chip-quick",
+  "name": "AIChipQuick",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "AI",
+  "description": "A suggested prompt chip. Tapping one composes a message; it never executes. An optional special variant carries the gradient for an \"All prompts\" call to action.",
+  "intent": "Offer a starting point so the user does not face an empty box.",
+  "authority": {
+    "source": "src/components/ai/ai-chip-quick.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-chip-quick/ai-chip-quick.md",
+    "contract": "design-system/components/ai/ai-chip-quick/ai-chip-quick.agent.json",
+    "prompt": "design-system/components/ai/ai-chip-quick/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-chip-quick/ai-chip-quick.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": []
+  },
+  "exports": [
+    "AIChipQuick"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Default",
+    "Special",
+    "Focus-visible"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIChipQuick } from \"@/components/ai/ai-chip-quick\"",
+    "exports": [
+      "AIChipQuick"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-surface",
+      "card",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-ai-surface",
+      "bg-card",
+      "border-ai-surface",
+      "from-ai-accent",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-foreground",
+      "to-ai-accent"
+    ]
+  },
+  "accessibility": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — compose the prompt"
+    ],
+    "requiredAttributes": [
+      "label"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Composing rather than executing is the whole safety property: the user still sees and sends the message.",
+      "The icon is decorative; the label carries the meaning."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Executing on click",
+      "More than five chips",
+      "Use as filter chips"
+    ],
+    "agentRules": [
+      "Compose, never execute.",
+      "Five chips maximum.",
+      "One isSpecial chip per group.",
+      "Write labels as the user would phrase the request."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution"
+    ],
+    "humanGestureRequired": true,
+    "reversible": "always"
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:toggle",
+      "note": "Filter chips"
+    },
+    {
+      "id": "ai:ai-dialog-button",
+      "note": "Composer toolbar controls"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

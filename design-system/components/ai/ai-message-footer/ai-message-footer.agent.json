@@ -1,0 +1,115 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-message-footer",
+  "name": "AIMessageFooter",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "stable",
+  "category": "AI",
+  "description": "An action row for a response. Capped at three; a fourth logs a development warning and is not rendered.",
+  "intent": "Where the user says yes to what the response offered.",
+  "authority": {
+    "source": "src/components/ai/ai-message-footer.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-message-footer/ai-message-footer.md",
+    "contract": "design-system/components/ai/ai-message-footer/ai-message-footer.agent.json",
+    "prompt": "design-system/components/ai/ai-message-footer/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-message-footer/ai-message-footer.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [
+      "ai:ai-button"
+    ],
+    "external": []
+  },
+  "exports": [
+    "AIMessageFooter"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Hidden",
+    "Visible"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIMessageFooter } from \"@/components/ai/ai-message-footer\"",
+    "exports": [
+      "AIMessageFooter"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "accessibility": {
+    "role": "none",
+    "keyboard": [
+      "Tab between actions"
+    ],
+    "requiredAttributes": [
+      "A verb label per action"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "Actions beyond the third are dropped, with a console warning in development. Do not rely on that truncation — cap it yourself."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "More than three actions",
+      "Consequential approval without a review signal"
+    ],
+    "agentRules": [
+      "Three actions maximum.",
+      "Use ai:ai-action when the decision needs a review signal.",
+      "Label with verbs."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Confirm",
+      "Apply"
+    ],
+    "accountability": [
+      "Attribution",
+      "Approval"
+    ],
+    "humanGestureRequired": true,
+    "reversible": "conditional"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-action",
+      "note": "Approval decisions"
+    },
+    {
+      "id": "ai:ai-feedback-bar",
+      "note": "Sentiment, not actions"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

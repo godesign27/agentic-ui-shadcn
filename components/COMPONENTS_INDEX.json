@@ -4,9 +4,1011 @@
   "source": "shadcn/ui + Agentic UI AI namespace",
   "enforcement": "closed-world",
   "rule": "Only ids listed here may be used. Anything absent must be rejected, not improvised. Each entry points at a spec folder containing the full contract.",
-  "generatedAt": "2026-09-11T04:06:31.464Z",
-  "count": 45,
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "count": 69,
   "components": [
+    {
+      "id": "ai:ai-action",
+      "name": "AIAction",
+      "importPath": "@/components/ai/ai-action",
+      "files": [
+        "src/components/ai/ai-action.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AIAction",
+        "aiActionVariants"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses.",
+      "spec": "design-system/components/ai/ai-action/",
+      "forbiddenUsage": [
+        "Standard product actions that are not AI-generated",
+        "A generic button replacement",
+        "More than three visible actions",
+        "Rendering when no decision is being requested",
+        "Auto-applying on mount"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest",
+          "Confirm",
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval",
+          "Audit trail",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-agent-stack",
+      "name": "AIAgentStack",
+      "importPath": "@/components/ai/ai-agent-stack",
+      "files": [
+        "src/components/ai/ai-agent-stack.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIAgentStack"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Several agents working at once, and what each of them is doing.",
+      "spec": "design-system/components/ai/ai-agent-stack/",
+      "forbiddenUsage": [
+        "Human users",
+        "Status conveyed only by ring colour",
+        "More than about six agents"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-agent-work-note",
+      "name": "AIAgentWorkNote",
+      "importPath": "@/components/ai/ai-agent-work-note",
+      "files": [
+        "src/components/ai/ai-agent-work-note.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIAgentWorkNote"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Show what the agent is doing without exposing raw reasoning.",
+      "spec": "design-system/components/ai/ai-agent-work-note/",
+      "forbiddenUsage": [
+        "Raw chain-of-thought",
+        "Expanded by default",
+        "Fabricated steps"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-avatar",
+      "name": "AIAvatar",
+      "importPath": "@/components/ai/ai-avatar",
+      "files": [
+        "src/components/ai/ai-avatar.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIAvatar",
+        "BotAvatar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The mark that tells a user a machine is speaking.",
+      "spec": "design-system/components/ai/ai-avatar/",
+      "forbiddenUsage": [
+        "Recolouring the rings",
+        "Adding a gradient or orange ring",
+        "Using it as a human avatar",
+        "Decorative use on non-AI surfaces"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-button",
+      "name": "AIButton",
+      "importPath": "@/components/ai/ai-button",
+      "files": [
+        "src/components/ai/ai-button.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIButton",
+        "aiButtonVariants"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "tertiary"
+      ],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "intent": "Commit to something a machine proposed.",
+      "spec": "design-system/components/ai/ai-button/",
+      "forbiddenUsage": [
+        "Use on standard product actions",
+        "Simulated loading",
+        "Error state with no explanation"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-chip-brief",
+      "name": "AIChipBrief",
+      "importPath": "@/components/ai/ai-chip-brief",
+      "files": [
+        "src/components/ai/ai-chip-brief.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIChipBrief",
+        "aiChipBriefVariants"
+      ],
+      "variants": [],
+      "sizes": [
+        "sm",
+        "md"
+      ],
+      "intent": "Whether an agent task brief is ready to run — and whether a human still has to say yes.",
+      "spec": "design-system/components/ai/ai-chip-brief/",
+      "forbiddenUsage": [
+        "Interactive use",
+        "Colour-only status",
+        "Generic badging"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-chip-handoff",
+      "name": "AIChipHandoff",
+      "importPath": "@/components/ai/ai-chip-handoff",
+      "files": [
+        "src/components/ai/ai-chip-handoff.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIChipHandoff"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Show the moment accountability changed hands.",
+      "spec": "design-system/components/ai/ai-chip-handoff/",
+      "forbiddenUsage": [
+        "Decorative direction indicators",
+        "Unnamed parties",
+        "Interactive use"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-chip-memory",
+      "name": "AIChipMemory",
+      "importPath": "@/components/ai/ai-chip-memory",
+      "files": [
+        "src/components/ai/ai-chip-memory.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIChipMemory"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Tell the user when the system is drawing on something it learned earlier.",
+      "spec": "design-system/components/ai/ai-chip-memory/",
+      "forbiddenUsage": [
+        "Implying memory that does not exist",
+        "Generic tagging",
+        "Hiding memory use"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "Adaptive",
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-chip-quick",
+      "name": "AIChipQuick",
+      "importPath": "@/components/ai/ai-chip-quick",
+      "files": [
+        "src/components/ai/ai-chip-quick.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIChipQuick"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Offer a starting point so the user does not face an empty box.",
+      "spec": "design-system/components/ai/ai-chip-quick/",
+      "forbiddenUsage": [
+        "Executing on click",
+        "More than five chips",
+        "Use as filter chips"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-confidence-risk-badge",
+      "name": "AIConfidenceRiskBadge",
+      "importPath": "@/components/ai/ai-confidence-risk-badge",
+      "files": [
+        "src/components/ai/ai-confidence-risk-badge.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIConfidenceRiskBadge"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "State how sure the model is and how much is at stake, before the human decides.",
+      "spec": "design-system/components/ai/ai-confidence-risk-badge/",
+      "forbiddenUsage": [
+        "Invented confidence values",
+        "Colour without the text label",
+        "Use as a generic status badge"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Confidence signalling",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-control-bar",
+      "name": "AIControlBar",
+      "importPath": "@/components/ai/ai-control-bar",
+      "files": [
+        "src/components/ai/ai-control-bar.tsx"
+      ],
+      "category": "AI",
+      "tier": "molecules",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIControlBar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The human can always stop the machine.",
+      "spec": "design-system/components/ai/ai-control-bar/",
+      "forbiddenUsage": [
+        "Unwired controls",
+        "Single-click cancel",
+        "Use as a generic toolbar"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval",
+          "Audit trail",
+          "Reversibility"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-dialog-button",
+      "name": "AIDialogButton",
+      "importPath": "@/components/ai/ai-dialog-button",
+      "files": [
+        "src/components/ai/ai-dialog-button.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIDialogButton"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "A quiet control in the composer toolbar that does not compete with the message.",
+      "spec": "design-system/components/ai/ai-dialog-button/",
+      "forbiddenUsage": [
+        "Icon-only with no accessible name",
+        "Primary actions",
+        "Use outside a composer"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-feedback-bar",
+      "name": "AIFeedbackBar",
+      "importPath": "@/components/ai/ai-feedback-bar",
+      "files": [
+        "src/components/ai/ai-feedback-bar.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIFeedbackBar"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Let the human correct the record.",
+      "spec": "design-system/components/ai/ai-feedback-bar/",
+      "forbiddenUsage": [
+        "Feedback that is discarded",
+        "Multiple bars per response",
+        "Removing the accessible names"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-icon",
+      "name": "AIIcon",
+      "importPath": "@/components/ai/ai-icon",
+      "files": [
+        "src/components/ai/ai-icon.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AIIcon",
+        "aiIconVariants"
+      ],
+      "variants": [],
+      "sizes": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "intent": "A treatment layer over standard icons — not a new icon set.",
+      "spec": "design-system/components/ai/ai-icon/",
+      "forbiddenUsage": [
+        "Neither labelled nor decorative",
+        "Decorative motion",
+        "Overusing the AI treatment"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": [
+        "The handoff-trail, completion-settle, nudge, shimmer and alert-ring motions from the source system are not implemented. Only spin and pulse."
+      ]
+    },
+    {
+      "id": "ai:ai-launcher",
+      "name": "AILauncher",
+      "importPath": "@/components/ai/ai-launcher",
+      "files": [
+        "src/components/ai/ai-launcher.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AILauncher"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The way in. Recognisable, confident, never instructional.",
+      "spec": "design-system/components/ai/ai-launcher/",
+      "forbiddenUsage": [
+        "Multiple launchers on one surface",
+        "Disabled with no reason",
+        "Instructional or chatty labels"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-loading-indicators",
+      "name": "AILoadingIndicator",
+      "importPath": "@/components/ai/ai-loading-indicators",
+      "files": [
+        "src/components/ai/ai-loading-indicators.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AILoadingIndicator"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Say that the machine is working, truthfully.",
+      "spec": "design-system/components/ai/ai-loading-indicators/",
+      "forbiddenUsage": [
+        "Simulated thinking time",
+        "Animation with no status text",
+        "Use for content loading"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-message-body",
+      "name": "AIMessageBody",
+      "importPath": "@/components/ai/ai-message-body",
+      "files": [
+        "src/components/ai/ai-message-body.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageBody",
+        "aiMessageBodyVariants"
+      ],
+      "variants": [],
+      "sizes": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "intent": "AI prose, kept plain so the interface does not lend it authority the model has not earned.",
+      "spec": "design-system/components/ai/ai-message-body/",
+      "forbiddenUsage": [
+        "Human-authored content",
+        "A body with no header",
+        "Simulated typing delay on already-complete text"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-message-footer",
+      "name": "AIMessageFooter",
+      "importPath": "@/components/ai/ai-message-footer",
+      "files": [
+        "src/components/ai/ai-message-footer.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageFooter"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Where the user says yes to what the response offered.",
+      "spec": "design-system/components/ai/ai-message-footer/",
+      "forbiddenUsage": [
+        "More than three actions",
+        "Consequential approval without a review signal"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-message-header",
+      "name": "AIMessageHeader",
+      "importPath": "@/components/ai/ai-message-header",
+      "files": [
+        "src/components/ai/ai-message-header.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIMessageHeader"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Establish who is speaking before the user reads a word.",
+      "spec": "design-system/components/ai/ai-message-header/",
+      "forbiddenUsage": [
+        "Rendering after the body",
+        "Use for human messages",
+        "A generic \"AI\" label where a specific agent name exists"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-progress",
+      "name": "AIProgress",
+      "importPath": "@/components/ai/ai-progress",
+      "files": [
+        "src/components/ai/ai-progress.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "draft",
+      "exports": [
+        "AIProgress"
+      ],
+      "variants": [],
+      "sizes": [
+        "thin"
+      ],
+      "intent": "Progress for work that can be blocked or escalated, not merely slow.",
+      "spec": "design-system/components/ai/ai-progress/",
+      "forbiddenUsage": [
+        "Fabricated percentages",
+        "Blocked or escalated used decoratively",
+        "Use for generic loading"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": [
+        "The segmented and header variants from the source design system are not implemented. Linear only."
+      ]
+    },
+    {
+      "id": "ai:ai-queue-badge",
+      "name": "AIQueueBadge",
+      "importPath": "@/components/ai/ai-queue-badge",
+      "files": [
+        "src/components/ai/ai-queue-badge.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIQueueBadge"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The state of one item in an agent queue, readable at a glance.",
+      "spec": "design-system/components/ai/ai-queue-badge/",
+      "forbiddenUsage": [
+        "Use as an interactive control",
+        "Generic status",
+        "Colour-only status"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-soft-surface",
+      "name": "AISoftSurface",
+      "importPath": "@/components/ai/ai-soft-surface",
+      "files": [
+        "src/components/ai/ai-soft-surface.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AISoftSurface",
+        "aiSoftSurfaceVariants"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "The wash that says everything inside this boundary was machine-generated.",
+      "spec": "design-system/components/ai/ai-soft-surface/",
+      "forbiddenUsage": [
+        "Wrapping human-authored content",
+        "Decorative use",
+        "Nested soft surfaces",
+        "As a replacement for ui:card"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-text-link",
+      "name": "AITextLink",
+      "importPath": "@/components/ai/ai-text-link",
+      "files": [
+        "src/components/ai/ai-text-link.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "beta",
+      "exports": [
+        "AITextLink"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "An inline link inside AI prose whose label stands on its own.",
+      "spec": "design-system/components/ai/ai-text-link/",
+      "forbiddenUsage": [
+        "Icon-only meaning",
+        "Disabled with no reason",
+        "Attention tone for emphasis"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
+    {
+      "id": "ai:ai-why-this-link",
+      "name": "AIWhyThisLink",
+      "importPath": "@/components/ai/ai-why-this-link",
+      "files": [
+        "src/components/ai/ai-why-this-link.tsx"
+      ],
+      "category": "AI",
+      "tier": "atoms",
+      "status": "allowed",
+      "lifecycle": "stable",
+      "exports": [
+        "AIWhyThisLink"
+      ],
+      "variants": [],
+      "sizes": [],
+      "intent": "Make the reasoning reachable in one interaction.",
+      "spec": "design-system/components/ai/ai-why-this-link/",
+      "forbiddenUsage": [
+        "Rendering with no rationale behind it",
+        "Opening a panel without moving focus",
+        "Use as a general help link"
+      ],
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Rationale disclosure",
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      },
+      "gaps": []
+    },
     {
       "id": "ui:accordion",
       "name": "Accordion",

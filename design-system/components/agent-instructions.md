@@ -95,13 +95,20 @@ Full definitions: [`/design-system/rules/ai-interaction.json`](../rules/ai-inter
 
 ---
 
-## `curated: true`
+## Generated, but not guessed
 
-A manifest with `"curated": true` was written by a human. **The generator must never overwrite it.**
+Every manifest is **generated** by `npm run ds:build` from two sources:
 
-`npm run components:generate-manifests` regenerates manifests by parsing source files. It extracts what is mechanically derivable — exports, cva variants, prop types, Radix primitives — and it preserves every curated file untouched. Anything a parser cannot know (when *not* to use a component, what a state means, why a rule exists) is curated by hand and protected by that flag.
+- **Mechanical facts** parsed from the component source — exports, cva variant groups and their defaults, Radix primitives, `forwardRef`, `asChild`, semantic token usage. These cannot drift from the code because they are read out of it.
+- **Curated metadata** in `scripts/metadata/` — intent, when *not* to use the component, what each state means, the accessibility contract, and the mistakes agents actually make. A parser cannot know any of this; a human wrote it.
 
-If you improve a generated manifest by hand, set `curated: true` or your work is lost on the next run.
+`"curated": true` on a manifest records that its content came from that curated layer rather than from extraction alone. It does **not** mean the file was typed by hand, and it does not block regeneration — otherwise editing `scripts/metadata/` would never take effect.
+
+**To change a manifest, edit `scripts/metadata/` and rebuild.** That is the supported path, and it keeps the spec, the prompt and the preview in step.
+
+If you must edit a manifest in place, add `"handEdited": true` to it. The generator preserves those files and reports how many it skipped. Use `--force` to overwrite them anyway.
+
+Run `npm run ds:check` to fail when specs have drifted from source, and `npm run ds:validate` to check the contract's own invariants.
 
 ---
 

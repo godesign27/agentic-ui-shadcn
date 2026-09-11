@@ -1,0 +1,101 @@
+<title>AIAgentStack — Component Preview</title>
+<link rel="stylesheet" href="../../preview/preview-shared.css" />
+<div class="page">
+<a class="back" href="../../preview/index.html">← All component previews</a>
+<h1>AIAgentStack</h1>
+<p class="lede">Several agents working at once, and what each of them is doing.</p>
+<div class="meta">
+<span class="pill mono">ai:ai-agent-stack</span>
+<span class="pill stable">stable</span>
+<span class="pill">molecules</span>
+<span class="pill">AI</span>
+<span class="pill ai">AI namespace</span>
+</div>
+<section>
+<h2>Appearance</h2>
+<p class="desc">No static specimen.</p>
+<div class="note">This component's behaviour — its runtime interaction — cannot be shown honestly in static HTML, so nothing is mocked up here. Run <code>npm run dev</code> and view it at <code>/ui-kit</code>, or read <code>src/components/ai/ai-agent-stack.tsx</code>.</div>
+</section>
+<section>
+<h2>Experience metadata</h2>
+<p class="desc">The autonomy this component grants, and the guarantees it therefore owes.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Experience mode</th><td>AI Led</td></tr>
+<tr><th scope="row">AI behavior</th><td>Suggest</td></tr>
+<tr><th scope="row">Accountability</th><td>Attribution · Audit trail</td></tr>
+<tr><th scope="row">Human gesture</th><td>Not required</td></tr>
+<tr><th scope="row">Reversible</th><td>not-applicable</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>States</h2>
+<p class="desc">Every state the component documents. If a state is not listed here, it does not exist.</p>
+<div class="table-wrap"><table><thead><tr><th>State</th><th>Trigger</th><th>Treatment</th></tr></thead><tbody>
+<tr><td><strong>Running</strong></td><td><code>status=&quot;running&quot;</code></td><td>AI accent ring</td></tr>
+<tr><td><strong>Waiting</strong></td><td><code>status=&quot;waiting&quot;</code></td><td>Signal ring — waiting for approval</td></tr>
+<tr><td><strong>Blocked</strong></td><td><code>status=&quot;blocked&quot;</code></td><td>Destructive ring</td></tr>
+<tr><td><strong>Complete</strong></td><td><code>status=&quot;complete&quot;</code></td><td>Green ring</td></tr>
+<tr><td><strong>Idle</strong></td><td><code>status=&quot;idle&quot;</code></td><td>Border ring</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Anatomy</h2>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Role</th></tr></thead><tbody>
+<tr><td><strong>Marks</strong></td><td>Overlapping BotAvatars, each ringed by status</td></tr>
+<tr><td><strong>Ring</strong></td><td>Colour summary of execution state</td></tr>
+<tr><td><strong>Overflow</strong></td><td>+n badge past maxVisible</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>Tokens</h2>
+<p class="desc">Live swatches from the real scale. These respond to your system theme, exactly as the component does.</p>
+<div class="swatches">
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-accent))"></div><div class="name">--ai-accent</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-confidence-high))"></div><div class="name">--ai-confidence-high</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--ai-signal))"></div><div class="name">--ai-signal</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--background))"></div><div class="name">--background</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--border))"></div><div class="name">--border</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--destructive))"></div><div class="name">--destructive</div></div>
+<div class="swatch"><div class="chip" style="background:hsl(var(--muted))"></div><div class="name">--muted</div></div>
+</div>
+</section>
+<section>
+<h2>Rules</h2>
+<p class="desc">The full set is in <code>ai-agent-stack.agent.json</code>. These are the ones agents get wrong.</p>
+<div class="cols">
+<div class="do"><div class="rule-head">Use it for</div><ul class="rule-list">
+<li>Multi-agent workstreams</li>
+<li>Showing parallel work at a glance</li>
+<li>In a header above ai:ai-progress</li>
+</ul></div>
+<div class="dont"><div class="rule-head">Not for</div><ul class="rule-list">
+<li>A single agent — use ai:ai-avatar</li>
+<li>Human users — use a ui:avatar group</li>
+<li>More than about six agents; the stack stops being readable</li>
+</ul></div>
+</div>
+</section>
+<section>
+<h2>Accessibility</h2>
+<p class="desc">This component supplies no ARIA of its own beyond what is listed. The rest is yours.</p>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Role</th><td><code>group</code></td></tr>
+<tr><th scope="row">Required</th><td>A label per agent — generated from label and status</td></tr>
+</tbody></table></div>
+<ul class="rule-list" style="margin-top:14px">
+<li>Each mark is labelled &quot;Name — status&quot;, so ring colour is never the only signal.</li>
+<li>The group announces the total count, including agents hidden behind the overflow badge.</li>
+<li>The overflow badge is visual only. Provide a full list elsewhere when the detail matters.</li>
+</ul>
+</section>
+<section>
+<h2>Spec files</h2>
+<div class="table-wrap"><table><tbody>
+<tr><th scope="row">Source</th><td><code>src/components/ai/ai-agent-stack.tsx</code> — authoritative</td></tr>
+<tr><th scope="row">Contract</th><td><a href="ai-agent-stack.agent.json"><code>ai-agent-stack.agent.json</code></a></td></tr>
+<tr><th scope="row">Mirror spec</th><td><a href="ai-agent-stack.md"><code>ai-agent-stack.md</code></a></td></tr>
+<tr><th scope="row">Agent prompt</th><td><a href="agentic-prompt.md"><code>agentic-prompt.md</code></a></td></tr>
+</tbody></table></div>
+<p class="desc" style="margin-top:14px">Generated 2026-09-11 from the curated metadata and the component source. Illustrative, never normative.</p>
+</section>
+</div>

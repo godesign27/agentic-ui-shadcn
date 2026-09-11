@@ -10,7 +10,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "ds:build": "node scripts/build-design-system.mjs",
     "ds:check": "node scripts/build-design-system.mjs --check",
-    "ds:force": "node scripts/build-design-system.mjs --force"
+    "ds:force": "node scripts/build-design-system.mjs --force",
+    "ds:validate": "node scripts/validate-design-system.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,0 +1,129 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-work-note",
+  "name": "AIAgentWorkNote",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "draft",
+  "category": "AI",
+  "description": "A collapsed disclosure carrying a status label and, when opened, a prose note or numbered steps. Quiet by default.",
+  "intent": "Show what the agent is doing without exposing raw reasoning.",
+  "authority": {
+    "source": "src/components/ai/ai-agent-work-note.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-agent-work-note/ai-agent-work-note.md",
+    "contract": "design-system/components/ai/ai-agent-work-note/ai-agent-work-note.agent.json",
+    "prompt": "design-system/components/ai/ai-agent-work-note/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-agent-work-note/ai-agent-work-note.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "lucide-react"
+    ]
+  },
+  "exports": [
+    "AIAgentWorkNote"
+  ],
+  "variants": [],
+  "sizes": [],
+  "states": [
+    "Collapsed",
+    "Expanded",
+    "No body"
+  ],
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIAgentWorkNote } from \"@/components/ai/ai-agent-work-note\"",
+    "exports": [
+      "AIAgentWorkNote"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-muted",
+      "ai-surface",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-ai-surface",
+      "border-ai-surface",
+      "ring-ai-accent",
+      "text-ai-muted",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "button with aria-expanded",
+    "keyboard": [
+      "Enter or Space — toggle"
+    ],
+    "requiredAttributes": [
+      "aria-controls, wired automatically to the body id"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "When there is no body the trigger is genuinely disabled, so a keyboard user is not sent to a control that does nothing.",
+      "Status labels are plain language: \"Checking context\", not \"checkingContext\"."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Raw chain-of-thought",
+      "Expanded by default",
+      "Fabricated steps"
+    ],
+    "agentRules": [
+      "Collapsed by default.",
+      "What it discloses must be true — this is not progress theatre.",
+      "Summarise reasoning; do not paste raw model output."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Assisted",
+      "AI Led"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution",
+      "Rationale disclosure",
+      "Audit trail"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ai:ai-loading-indicators",
+      "note": "Simple waiting"
+    },
+    {
+      "id": "ui:collapsible",
+      "note": "Non-AI disclosure"
+    }
+  ],
+  "gaps": [],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

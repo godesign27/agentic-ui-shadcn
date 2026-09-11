@@ -1,0 +1,332 @@
+/**
+ * Curated metadata — the AI namespace, part two.
+ * Progress, agency and composer controls. Merged into `ai` by index.mjs.
+ */
+
+export const ai2 = {
+
+  'ai-loading-indicators': {
+    tier: 'atoms', category: 'AI', status: 'stable',
+    intent: 'Say that the machine is working, truthfully.',
+    description: 'Thinking, working and retrieving indicators. Each announces its status as text through a polite live region; animation is never the only signal.',
+    whenToUse: ['While a model request is genuinely in flight', 'While a tool call or retrieval is running', 'Between a user message and the first token of a response'],
+    whenNotToUse: [
+      'To simulate effort — a deliberate pause to seem thoughtful is forbidden',
+      'For determinate work with a known total — use ai:ai-progress',
+      'For content loading — use ui:skeleton',
+    ],
+    anatomy: [
+      { part: 'Indicator', role: 'Three pulsing dots for thinking; a spinner for working and retrieving. aria-hidden.' },
+      { part: 'Label', role: 'The accessible status text. This is the real signal.' },
+    ],
+    variantGuidance: {
+      thinking: 'Short model latency. Dots.',
+      working: 'A tool call or longer operation. Spinner.',
+      retrieving: 'Fetching context or sources. Spinner.',
+    },
+    states: [
+      { name: 'Thinking', trigger: 'variant="thinking"', note: 'Three staggered pulsing dots' },
+      { name: 'Working', trigger: 'variant="working"', note: 'Spinner with "Working"' },
+      { name: 'Retrieving', trigger: 'variant="retrieving"', note: 'Spinner with "Getting information"' },
+    ],
+    a11y: {
+      role: 'status', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: [],
+      liveRegion: 'role="status" with aria-live="polite"',
+      notes: [
+        'The label is the accessible signal. Animation is decorative and aria-hidden.',
+        'All animation carries motion-reduce:animate-none, so the text still communicates under reduced motion.',
+        'Unmount it when the work finishes and announce the result — a live region that simply disappears says nothing.',
+      ],
+    },
+    agentRules: [
+      'Must track real in-flight work. Never animate to simulate effort.',
+      'Announce the outcome when it unmounts.',
+      'Use ai:ai-progress when the total is known.',
+    ],
+    forbiddenUsage: ['Simulated thinking time', 'Animation with no status text', 'Use for content loading'],
+    related: [{ id: 'ai:ai-progress', note: 'Determinate agentic work' }, { id: 'ui:skeleton', note: 'Content loading' }],
+    examples: [{ title: 'While streaming', code: '{isThinking && <AILoadingIndicator variant="thinking" />}' }],
+    experienceMetadata: {
+      experienceMode: ['AI Assisted', 'Adaptive', 'AI Led'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution'],
+      humanGestureRequired: false,
+      reversible: 'not-applicable',
+    },
+  },
+
+  'ai-progress': {
+    tier: 'atoms', category: 'AI', status: 'draft',
+    intent: 'Progress for work that can be blocked or escalated, not merely slow.',
+    description: 'A progress bar with an agentic status vocabulary: idle, running, indeterminate, paused, complete, blocked, error, escalated. The status word is the accessible value.',
+    whenToUse: ['Multi-step agent workstreams', 'Anywhere work can stop and need a human', 'When the total is known'],
+    whenNotToUse: [
+      'Standard determinate progress — use ui:progress',
+      'Unknown-duration model latency — use ai:ai-loading-indicators',
+      'When you would have to invent the percentage',
+    ],
+    anatomy: [
+      { part: 'Label row', role: 'Status label and optional percent' },
+      { part: 'Track', role: 'bg-muted, four heights' },
+      { part: 'Indicator', role: 'Colour carries the status; the aria-valuetext carries the meaning' },
+      { part: 'Step line', role: 'Optional current step description' },
+    ],
+    states: [
+      { name: 'Idle', trigger: 'status="idle"', note: 'Not started' },
+      { name: 'Running', trigger: 'status="running"', note: 'AI accent fill' },
+      { name: 'Indeterminate', trigger: 'value omitted', note: 'Pulsing third-width bar; no aria-valuenow' },
+      { name: 'Paused', trigger: 'status="paused"', note: 'Muted fill' },
+      { name: 'Complete', trigger: 'status="complete"', note: 'Green fill' },
+      { name: 'Blocked', trigger: 'status="blocked"', note: 'Signal fill — work stopped and needs input' },
+      { name: 'Error', trigger: 'status="error"', note: 'Destructive fill' },
+      { name: 'Escalated', trigger: 'status="escalated"', note: 'Signal fill — a person now owns this' },
+    ],
+    a11y: {
+      role: 'progressbar', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: ['label, or the status default is used'],
+      notes: [
+        'aria-valuetext carries the status word, so "Blocked" is announced rather than a bare number.',
+        'Indeterminate omits aria-valuenow entirely rather than reporting a made-up value.',
+        'Blocked and escalated are not decorative. Only set them when a human genuinely needs to act.',
+      ],
+    },
+    agentRules: [
+      'Omit value rather than inventing a percentage.',
+      'Blocked and escalated must reflect real conditions.',
+      'Pair blocked with an ai:ai-control-bar or an ai:ai-action so the user can resolve it.',
+      'Announce completion separately — the bar reaching 100% is not itself announced.',
+    ],
+    forbiddenUsage: ['Fabricated percentages', 'Blocked or escalated used decoratively', 'Use for generic loading'],
+    related: [{ id: 'ui:progress', note: 'Standard progress' }, { id: 'ai:ai-loading-indicators', note: 'Unknown duration' }, { id: 'ai:ai-control-bar', note: 'Resolving a blocked run' }],
+    examples: [{ title: 'Blocked run', code: '<AIProgress\n  value={62}\n  status="blocked"\n  label="Territory rebalance"\n  currentStep="Step 3 of 5 — waiting on approval"\n  percentLabel\n/>' }],
+    experienceMetadata: {
+      experienceMode: ['AI Led', 'Adaptive'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution', 'Audit trail'],
+      humanGestureRequired: false,
+      reversible: 'not-applicable',
+    },
+    gaps: ['The segmented and header variants from the source design system are not implemented. Linear only.'],
+  },
+
+  'ai-agent-work-note': {
+    tier: 'atoms', category: 'AI', status: 'draft',
+    intent: 'Show what the agent is doing without exposing raw reasoning.',
+    description: 'A collapsed disclosure carrying a status label and, when opened, a prose note or numbered steps. Quiet by default.',
+    whenToUse: ['Disclosing intermediate agent steps', 'Building trust during a long-running operation', 'When a user would reasonably ask "what is it doing?"'],
+    whenNotToUse: [
+      'To dump raw chain-of-thought — this is disclosure, not a transcript',
+      'Expanded by default; the user opts in',
+      'To fill silence during a wait — use ai:ai-loading-indicators',
+    ],
+    anatomy: [
+      { part: 'Trigger', role: 'The status label plus a chevron. Disabled when there is no body.' },
+      { part: 'Body', role: 'Prose and/or a numbered list, revealed on expand' },
+    ],
+    states: [
+      { name: 'Collapsed', trigger: 'Default', note: 'Label only. The default on purpose.' },
+      { name: 'Expanded', trigger: 'Click or Enter', note: 'Body revealed, chevron rotated' },
+      { name: 'No body', trigger: 'No content or items', note: 'Trigger is disabled and the chevron is hidden — nothing to open' },
+    ],
+    a11y: {
+      role: 'button with aria-expanded', handledByRadix: false,
+      keyboard: ['Enter or Space — toggle'],
+      requiredAttributes: ['aria-controls, wired automatically to the body id'],
+      notes: [
+        'When there is no body the trigger is genuinely disabled, so a keyboard user is not sent to a control that does nothing.',
+        'Status labels are plain language: "Checking context", not "checkingContext".',
+      ],
+    },
+    agentRules: [
+      'Collapsed by default.',
+      'What it discloses must be true — this is not progress theatre.',
+      'Summarise reasoning; do not paste raw model output.',
+    ],
+    forbiddenUsage: ['Raw chain-of-thought', 'Expanded by default', 'Fabricated steps'],
+    related: [{ id: 'ai:ai-loading-indicators', note: 'Simple waiting' }, { id: 'ui:collapsible', note: 'Non-AI disclosure' }],
+    examples: [{ title: 'Disclosed steps', code: '<AIAgentWorkNote\n  status="planning"\n  items={["Read the account history", "Compared against Q3 targets", "Ranked by expected value"]}\n/>' }],
+    experienceMetadata: {
+      experienceMode: ['AI Assisted', 'AI Led'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution', 'Rationale disclosure', 'Audit trail'],
+      humanGestureRequired: false,
+      reversible: 'not-applicable',
+    },
+  },
+
+  'ai-control-bar': {
+    tier: 'molecules', category: 'AI', status: 'stable',
+    intent: 'The human can always stop the machine.',
+    description: 'State-aware execution controls for a running workstream: pause, resume, redirect and a two-step cancel.',
+    whenToUse: ['Alongside any AI Led workstream', 'Wherever an agent runs long enough that a user may want to intervene', 'With ai:ai-progress on a multi-step run'],
+    whenNotToUse: ['For a single short request — there is nothing to pause', 'As a generic toolbar', 'Where the actions are not actually wired to the agent'],
+    anatomy: [
+      { part: 'Label', role: 'Optional context, pushed left' },
+      { part: 'Controls', role: 'The set changes with state. Never more than two at once.' },
+    ],
+    states: [
+      { name: 'Running', trigger: 'state="running"', note: 'Pause and Cancel' },
+      { name: 'Paused', trigger: 'state="paused"', note: 'Resume and Cancel' },
+      { name: 'Redirect available', trigger: 'state="redirect-available"', note: 'Redirect and Keep running' },
+      { name: 'Cancel confirm', trigger: 'state="cancel-confirm"', note: 'Two-step. A status message states that progress is kept.' },
+      { name: 'Saved progress', trigger: 'state="saved-progress"', note: 'Resume only, with confirmation that progress was saved' },
+    ],
+    a11y: {
+      role: 'group', handledByRadix: false,
+      keyboard: ['Tab between controls'],
+      requiredAttributes: ['aria-label on the group — supplied by the component'],
+      liveRegion: 'The cancel-confirm and saved-progress messages use role="status"',
+      notes: [
+        'Cancel is two-step by design. A single-click cancel on a long-running agent loses work.',
+        'The confirm message states that progress is kept — reassurance belongs in the moment of hesitation.',
+        'The control set changes with state, so focus can land on a different button than the user expected. Manage focus when the state changes under them.',
+      ],
+    },
+    agentRules: [
+      'Wire every handler to the real agent. A pause that does not pause is worse than none.',
+      'Keep cancel two-step.',
+      'Pair with ai:ai-progress so the user knows what they are pausing.',
+      'This is what makes AI Led mode acceptable — do not ship AI Led without it.',
+    ],
+    forbiddenUsage: ['Unwired controls', 'Single-click cancel', 'Use as a generic toolbar'],
+    related: [{ id: 'ai:ai-progress', note: 'What is being controlled' }, { id: 'ai:ai-queue-badge', note: 'Per-item state' }],
+    examples: [{ title: 'Running workstream', code: '<AIControlBar\n  state="running"\n  label="Rebalancing territories"\n  onPause={pause}\n  onCancel={() => setState("cancel-confirm")}\n/>' }],
+    experienceMetadata: {
+      experienceMode: ['AI Led'],
+      aiBehavior: ['Confirm', 'Apply'],
+      accountability: ['Attribution', 'Approval', 'Audit trail', 'Reversibility'],
+      humanGestureRequired: true,
+      reversible: 'always',
+    },
+  },
+
+  'ai-launcher': {
+    tier: 'atoms', category: 'AI', status: 'stable',
+    intent: 'The way in. Recognisable, confident, never instructional.',
+    description: 'The assistant entry point. A pill with the bot mark and a label, or the mark alone. Carries active, unread, loading and disabled states.',
+    whenToUse: ['The persistent entry point to an assistant', 'In an app header or as a floating action', 'Anywhere the user should be able to reach the agent'],
+    whenNotToUse: ['More than once per surface', 'As a generic button', 'Without a disabledReason when AI is unavailable'],
+    anatomy: [
+      { part: 'Mark', role: 'BotAvatar at 22px, or a spinner while the drawer mounts' },
+      { part: 'Label', role: 'Hidden in avatar-only mode, where aria-label takes over' },
+      { part: 'Unread badge', role: 'Signal-coloured, with an accessible count' },
+    ],
+    variantGuidance: {
+      'avatar-chat': 'The default. Pill with a label — more discoverable.',
+      'avatar-only': 'Circle. For dense headers, where space is genuinely tight.',
+    },
+    states: [
+      { name: 'Default', trigger: 'Rest', note: 'Card background, AI border' },
+      { name: 'Active', trigger: 'active', note: 'AI surface with an accent border; aria-expanded is true' },
+      { name: 'Unread', trigger: 'unread', note: 'Signal badge with a labelled count' },
+      { name: 'Loading', trigger: 'loading', note: 'Spinner replaces the mark while the drawer mounts' },
+      { name: 'Disabled', trigger: 'disabled', note: 'Reduced opacity. disabledReason becomes the title and the accessible name.' },
+    ],
+    a11y: {
+      role: 'button', handledByRadix: false,
+      keyboard: ['Enter or Space — open'],
+      requiredAttributes: ['aria-label in avatar-only mode — supplied by the component', 'disabledReason when disabled'],
+      notes: [
+        'aria-expanded reflects whether the assistant is open, so the control is announced as a disclosure.',
+        'The unread badge carries an accessible label with the count — a bare number means nothing out of context.',
+        'When AI is unavailable, disabledReason explains why. A dead button teaches nothing.',
+      ],
+    },
+    agentRules: ['One per surface.', 'Always give disabledReason when disabling.', 'Keep the label plain — "Chat", not "Ask me anything!"', 'Wire aria-expanded to the real drawer state.'],
+    forbiddenUsage: ['Multiple launchers on one surface', 'Disabled with no reason', 'Instructional or chatty labels'],
+    related: [{ id: 'ui:sheet', note: 'The drawer it usually opens' }, { id: 'ai:ai-avatar', note: 'The mark it uses' }],
+    examples: [{ title: 'Header launcher', code: '<AILauncher active={open} unread unreadCount={2} onClick={() => setOpen(!open)} />' }],
+    experienceMetadata: {
+      experienceMode: ['AI Assisted'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution'],
+      humanGestureRequired: true,
+      reversible: 'not-applicable',
+    },
+  },
+
+  'ai-agent-stack': {
+    tier: 'molecules', category: 'AI', status: 'stable',
+    intent: 'Several agents working at once, and what each of them is doing.',
+    description: 'Overlapping agent marks with status rings and an overflow count. Each mark carries its agent name and status as its accessible name.',
+    whenToUse: ['Multi-agent workstreams', 'Showing parallel work at a glance', 'In a header above ai:ai-progress'],
+    whenNotToUse: ['A single agent — use ai:ai-avatar', 'Human users — use a ui:avatar group', 'More than about six agents; the stack stops being readable'],
+    anatomy: [
+      { part: 'Marks', role: 'Overlapping BotAvatars, each ringed by status' },
+      { part: 'Ring', role: 'Colour summary of execution state' },
+      { part: 'Overflow', role: '+n badge past maxVisible' },
+    ],
+    states: [
+      { name: 'Running', trigger: 'status="running"', note: 'AI accent ring' },
+      { name: 'Waiting', trigger: 'status="waiting"', note: 'Signal ring — waiting for approval' },
+      { name: 'Blocked', trigger: 'status="blocked"', note: 'Destructive ring' },
+      { name: 'Complete', trigger: 'status="complete"', note: 'Green ring' },
+      { name: 'Idle', trigger: 'status="idle"', note: 'Border ring' },
+    ],
+    a11y: {
+      role: 'group', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: ['A label per agent — generated from label and status'],
+      notes: [
+        'Each mark is labelled "Name — status", so ring colour is never the only signal.',
+        'The group announces the total count, including agents hidden behind the overflow badge.',
+        'The overflow badge is visual only. Provide a full list elsewhere when the detail matters.',
+      ],
+    },
+    agentRules: ['Every agent needs a real label and a real status.', 'Keep maxVisible at three or four.', 'Provide a full list somewhere when there is overflow.'],
+    forbiddenUsage: ['Human users', 'Status conveyed only by ring colour', 'More than about six agents'],
+    related: [{ id: 'ai:ai-avatar', note: 'A single agent' }, { id: 'ai:ai-queue-badge', note: 'Per-item detail' }],
+    examples: [{ title: 'Parallel agents', code: '<AIAgentStack agents={[\n  { id: "a", label: "Research", status: "running" },\n  { id: "b", label: "Drafting", status: "waiting" },\n  { id: "c", label: "Review", status: "idle" },\n]} />' }],
+    experienceMetadata: {
+      experienceMode: ['AI Led'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution', 'Audit trail'],
+      humanGestureRequired: false,
+      reversible: 'not-applicable',
+    },
+  },
+
+  'ai-queue-badge': {
+    tier: 'atoms', category: 'AI', status: 'stable',
+    intent: 'The state of one item in an agent queue, readable at a glance.',
+    description: 'Colour, icon and text together for queued, running, blocked, needs-approval and complete.',
+    whenToUse: ['In an agent execution queue or task list', 'In a table of agent work items', 'Wherever per-item state matters'],
+    whenNotToUse: ['As a general status badge — use ui:badge', 'For overall progress — use ai:ai-progress', 'As a button'],
+    anatomy: [
+      { part: 'Icon', role: 'Status glyph, aria-hidden. Spins while running.' },
+      { part: 'Label', role: 'The status word. Always present.' },
+      { part: 'Count', role: 'Optional numeric pill' },
+    ],
+    states: [
+      { name: 'Queued', trigger: 'status="queued"', note: 'Muted, clock icon' },
+      { name: 'Running', trigger: 'status="running"', note: 'AI surface, spinning icon' },
+      { name: 'Blocked', trigger: 'status="blocked"', note: 'Destructive tint' },
+      { name: 'Needs approval', trigger: 'status="needs-approval"', note: 'Signal tint — a human must act' },
+      { name: 'Complete', trigger: 'status="complete"', note: 'Green tint' },
+    ],
+    a11y: {
+      role: 'none', handledByRadix: false,
+      keyboard: [],
+      requiredAttributes: [],
+      notes: [
+        'Colour, icon and text always appear together — colour is never the only signal.',
+        'The spin animation carries motion-reduce:animate-none.',
+        'A bare count pill needs surrounding context; the status word supplies it here.',
+      ],
+    },
+    agentRules: ['Never a button — pair it with a real control.', 'needs-approval must mean a human genuinely has to act.', 'Use ui:badge for non-AI status.'],
+    forbiddenUsage: ['Use as an interactive control', 'Generic status', 'Colour-only status'],
+    related: [{ id: 'ui:badge', note: 'Generic status' }, { id: 'ai:ai-chip-brief', note: 'Task brief readiness' }, { id: 'ai:ai-progress', note: 'Overall progress' }],
+    examples: [{ title: 'Queue row', code: '<AIQueueBadge status="needs-approval" count={3} />' }],
+    experienceMetadata: {
+      experienceMode: ['AI Led'],
+      aiBehavior: ['Suggest'],
+      accountability: ['Attribution', 'Audit trail'],
+      humanGestureRequired: false,
+      reversible: 'not-applicable',
+    },
+  },
+}

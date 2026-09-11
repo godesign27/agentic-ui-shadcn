@@ -1,0 +1,153 @@
+{
+  "$schema": "../../agent-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-progress",
+  "name": "AIProgress",
+  "namespace": "ai",
+  "tier": "atoms",
+  "status": "draft",
+  "category": "AI",
+  "description": "A progress bar with an agentic status vocabulary: idle, running, indeterminate, paused, complete, blocked, error, escalated. The status word is the accessible value.",
+  "intent": "Progress for work that can be blocked or escalated, not merely slow.",
+  "authority": {
+    "source": "src/components/ai/ai-progress.tsx",
+    "mirrorSpec": "design-system/components/ai/ai-progress/ai-progress.md",
+    "contract": "design-system/components/ai/ai-progress/ai-progress.agent.json",
+    "prompt": "design-system/components/ai/ai-progress/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-progress/ai-progress.preview.html",
+    "note": "src/ is authoritative. If this contract disagrees with the source, implement from the source and report the drift."
+  },
+  "platforms": [
+    "web",
+    "react"
+  ],
+  "dependencies": {
+    "internal": [],
+    "external": [
+      "class-variance-authority"
+    ]
+  },
+  "exports": [
+    "AIProgress"
+  ],
+  "variants": [],
+  "sizes": [
+    "thin"
+  ],
+  "states": [
+    "Idle",
+    "Running",
+    "Indeterminate",
+    "Paused",
+    "Complete",
+    "Blocked",
+    "Error",
+    "Escalated"
+  ],
+  "props": [
+    {
+      "name": "size",
+      "type": "\"thin\"",
+      "default": "\"md\"",
+      "required": false,
+      "hint": "One of the size values declared in trackVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "javascriptApi": {
+    "import": "import { AIProgress } from \"@/components/ai/ai-progress\"",
+    "exports": [
+      "AIProgress"
+    ],
+    "forwardsRef": true,
+    "asChild": false,
+    "notes": []
+  },
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-confidence-high",
+      "ai-muted",
+      "ai-signal",
+      "destructive",
+      "foreground",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-accent",
+      "bg-ai-confidence-high",
+      "bg-ai-signal",
+      "bg-destructive",
+      "bg-muted",
+      "text-ai-muted",
+      "text-foreground"
+    ]
+  },
+  "accessibility": {
+    "role": "progressbar",
+    "keyboard": [],
+    "requiredAttributes": [
+      "label, or the status default is used"
+    ],
+    "handledByRadix": false,
+    "notes": [
+      "aria-valuetext carries the status word, so \"Blocked\" is announced rather than a bare number.",
+      "Indeterminate omits aria-valuenow entirely rather than reporting a made-up value.",
+      "Blocked and escalated are not decorative. Only set them when a human genuinely needs to act."
+    ]
+  },
+  "rules": {
+    "allowedChildren": [],
+    "forbiddenChildren": [],
+    "forbiddenUsage": [
+      "Fabricated percentages",
+      "Blocked or escalated used decoratively",
+      "Use for generic loading"
+    ],
+    "agentRules": [
+      "Omit value rather than inventing a percentage.",
+      "Blocked and escalated must reflect real conditions.",
+      "Pair blocked with an ai:ai-control-bar or an ai:ai-action so the user can resolve it.",
+      "Announce completion separately — the bar reaching 100% is not itself announced."
+    ]
+  },
+  "experienceMetadata": {
+    "experienceMode": [
+      "AI Led",
+      "Adaptive"
+    ],
+    "aiBehavior": [
+      "Suggest"
+    ],
+    "accountability": [
+      "Attribution",
+      "Audit trail"
+    ],
+    "humanGestureRequired": false,
+    "reversible": "not-applicable"
+  },
+  "relatedComponents": [
+    {
+      "id": "ui:progress",
+      "note": "Standard progress"
+    },
+    {
+      "id": "ai:ai-loading-indicators",
+      "note": "Unknown duration"
+    },
+    {
+      "id": "ai:ai-control-bar",
+      "note": "Resolving a blocked run"
+    }
+  ],
+  "gaps": [
+    "The segmented and header variants from the source design system are not implemented. Linear only."
+  ],
+  "generatedAt": "2026-09-11T04:20:52.939Z",
+  "curated": true
+}

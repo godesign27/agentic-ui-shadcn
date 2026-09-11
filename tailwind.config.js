@@ -21,6 +21,21 @@ export default {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			ai: {
+  				accent: 'hsl(var(--ai-accent))',
+  				'accent-strong': 'hsl(var(--ai-accent-strong))',
+  				'accent-active': 'hsl(var(--ai-accent-active))',
+  				'accent-foreground': 'hsl(var(--ai-accent-foreground))',
+  				surface: 'hsl(var(--ai-surface))',
+  				'surface-border': 'hsl(var(--ai-surface-border))',
+  				signal: 'hsl(var(--ai-signal))',
+  				'signal-surface': 'hsl(var(--ai-signal-surface))',
+  				'signal-border': 'hsl(var(--ai-signal-border))',
+  				'confidence-high': 'hsl(var(--ai-confidence-high))',
+  				'confidence-medium': 'hsl(var(--ai-confidence-medium))',
+  				'confidence-low': 'hsl(var(--ai-confidence-low))',
+  				muted: 'hsl(var(--ai-muted))'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			primary: {
