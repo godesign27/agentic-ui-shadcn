@@ -1,0 +1,134 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-action",
+  "slug": "ai-action",
+  "name": "AIAction",
+  "description": "AIAction is the compact action atom used at the end of AI-generated recommendations, assignments, approvals, and next-best-action outputs. It gives the user a clear way to accept, apply, edit, reject,",
+  "intent": "The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses — all in one clear, accountable row.",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-action/AIAction",
+    "exports": [
+      "AIAction"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "At the end of AI recommendations, inside approval request cards",
+    "After generated summaries or drafts — use draft, edit draft, regenerate",
+    "When the AI needs the user to confirm, edit or dismiss a proposed action",
+    "In AI Assisted side panels where the user remains in control",
+    "In AI Command Center workflows where an agent needs human approval"
+  ],
+  "doNotUse": [
+    "Do not use for standard product actions that are not AI-generated",
+    "Do not use as a generic button replacement",
+    "Do not place more than three visible actions in one group",
+    "Do not use when no decision or action is being requested"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest",
+        "Confirm",
+        "Apply",
+        "Approve"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail",
+        "Rationale disclosure"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-action/ai-action.md",
+    "manifest": "design-system/components/ai/atomic/ai-action/ai-action.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-action/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-action/ai-action.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-action/ai-action.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

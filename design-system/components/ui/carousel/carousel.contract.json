@@ -1,0 +1,195 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:carousel",
+  "slug": "carousel",
+  "name": "Carousel",
+  "description": "An Embla wrapper with previous and next controls and keyboard arrow support.",
+  "intent": "Move horizontally through a set of items when vertical space genuinely will not stretch.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/carousel",
+    "exports": [
+      "Carousel",
+      "CarouselApi",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselNext",
+      "CarouselPrevious"
+    ],
+    "implementation": "src/components/ui/carousel.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "orientation",
+      "type": "see source",
+      "required": false,
+      "default": "\"horizontal\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "opts",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "setApi",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "plugins",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "variant",
+      "type": "see source",
+      "required": false,
+      "default": "\"outline\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "size",
+      "type": "see source",
+      "required": false,
+      "default": "\"icon\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "At start",
+      "when": "`First slide`"
+    },
+    {
+      "name": "Mid-scroll",
+      "when": "`Between ends`"
+    },
+    {
+      "name": "At end",
+      "when": "`Last slide`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "region with roledescription=\"carousel\"",
+    "keyboard": [
+      "ArrowLeft — previous",
+      "ArrowRight — next",
+      "Tab — reach the controls"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the region",
+      "aria-roledescription=\"slide\" on each item"
+    ],
+    "notes": [
+      "The component sets role=\"region\" and aria-roledescription=\"carousel\" on the root and \"slide\" on items.",
+      "Arrow keys work when the carousel region has focus.",
+      "Content outside the current view is still in the DOM and reachable by screen readers — which is good, and means visual position is not the whole story.",
+      "Never autoplay without a pause control. This component does not autoplay by default; keep it that way."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Image galleries where sequence matters",
+    "Horizontally scrolling card rows on constrained surfaces",
+    "When the user is expected to browse rather than compare"
+  ],
+  "doNotUse": [
+    "Important content — carousel items past the first are rarely seen. DESIGN_PRINCIPLES.md requires justification.",
+    "Primary calls to action",
+    "Content that would be better as a grid — which is usually",
+    "More than about ten items with no other way to reach them",
+    "Unjustified carousel where a grid would work",
+    "Autoplay with no pause",
+    "Primary CTAs on later slides"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "DESIGN_PRINCIPLES.md requires a justification for using a carousel. A grid is usually better.",
+      "Never put a primary call to action past the first slide.",
+      "No autoplay without a visible pause control.",
+      "Keep the controls visible — hover-revealed arrows are undiscoverable."
+    ],
+    "related": [
+      {
+        "id": "ui:scroll-area",
+        "note": "A simpler horizontal scroll region"
+      },
+      {
+        "id": "ui:tabs",
+        "note": "When the sections are named"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/carousel/carousel.md",
+    "manifest": "design-system/components/ui/carousel/carousel.agent.json",
+    "implementation": "src/components/ui/carousel.tsx",
+    "prompt": "design-system/components/ui/carousel/agentic-prompt.md",
+    "preview": "design-system/components/ui/carousel/carousel.preview.html",
+    "contract": "design-system/components/ui/carousel/carousel.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

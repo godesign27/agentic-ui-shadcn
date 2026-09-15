@@ -1,0 +1,192 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-workstream-control-panel",
+  "slug": "ai-workstream-control-panel",
+  "name": "AIWorkstreamControlPanel",
+  "description": "The Workstream Control Panel is the command-center surface for long-running multi-step AI workflows. It combines a numbered step stepper with visual connectors, a granular progress bar, an inline checkpoint note, the full AIControlBar for state-aware execution controls, and lower-level rollback/escalate actions.",
+  "intent": "Command-center surface for long-running multi-step AI workflows. Combines step stepper, progress tracking, execution controls, and governance actions in one panel.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-workstream-control-panel/AIWorkstreamControlPanel",
+    "exports": [
+      "AIWorkstreamControlPanel"
+    ],
+    "implementation": "src/components/ai/organisms/ai-workstream-control-panel/AIWorkstreamControlPanel.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "steps",
+      "type": "WorkstreamStep[]",
+      "required": false
+    },
+    {
+      "name": "currentStep",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "controlState",
+      "type": "ControlBarState",
+      "required": false
+    },
+    {
+      "name": "checkpointNote",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onPause",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onResume",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCancel",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onRedirect",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCancelConfirm",
+      "type": "(confirmed: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onRollback",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onEscalate",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.border.default",
+      "AI.color.brand",
+      "AI.color.signal.default",
+      "AI.color.signal.strong",
+      "AI.color.signal.subtle",
+      "AI.radius.lg",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-workstream-control-panel/ai-workstream-control-panel.md",
+    "manifest": "design-system/components/ai/organisms/ai-workstream-control-panel/ai-workstream-control-panel.agent.json",
+    "implementation": "src/components/ai/organisms/ai-workstream-control-panel/AIWorkstreamControlPanel.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-workstream-control-panel/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-workstream-control-panel/ai-workstream-control-panel.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-workstream-control-panel/ai-workstream-control-panel.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

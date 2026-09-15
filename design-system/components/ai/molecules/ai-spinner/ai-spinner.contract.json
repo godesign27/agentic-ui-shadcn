@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ds-spinner",
+  "slug": "ai-spinner",
+  "name": "AISpinner",
+  "description": "AISpinner does not fork the DS spinner — it wraps the canonical <DSSpinner /> and re-anchors the CSS variables it reads (`--primary` for the rotating arc, the track var for the ring) to AI token values. Geometry, the DS size contract (48/32/24/20/16/14/12/8px), a11y (role=\"status\"), the spin keyframes and the reduced-motion guard are all inherited from the base, so the spinner stays in lockstep with DS while carrying the AI surface. It is a reusable spinner molecule meant to be composed inside other AI molecules and organisms, and it is separate from — it does NOT replace — the AI loading indicator.",
+  "intent": "The standard DS spinner, wearing the AI brand. Same engineering — indigo arc on a soft light-indigo ring.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-spinner/ds-spinner",
+    "exports": [
+      "AISpinner",
+      "DSSpinner"
+    ],
+    "implementation": "src/components/ai/molecules/ai-spinner/ds-spinner.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "SpinnerSize",
+      "required": false
+    },
+    {
+      "name": "light",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.",
+      "AI.color.action.primary",
+      "AI.color.surface.emphasis"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Indeterminate loading inside an AI-generated region, card, or drawer",
+    "Composed inside other AI molecules / organisms that need a brand-consistent spinner",
+    "On dark or filled AI surfaces — use the dark / inverse variants"
+  ],
+  "doNotUse": [
+    "To show multi-step agent progress — use the AI loading indicator or reasoning trace",
+    "For determinate progress — use AI Progress",
+    "It does not replace the AI loading indicator; both exist for different jobs",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not fork the SVG geometry",
+    "Do not replace AI loading indicators with this spinner"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-spinner/ai-spinner.md",
+    "manifest": "design-system/components/ai/molecules/ai-spinner/ai-spinner.agent.json",
+    "implementation": "src/components/ai/molecules/ai-spinner/ds-spinner.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-spinner/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-spinner/ai-spinner.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-spinner/ai-spinner.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

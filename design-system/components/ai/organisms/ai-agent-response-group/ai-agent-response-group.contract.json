@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-response-group",
+  "slug": "ai-agent-response-group",
+  "name": "AIAgentResponseGroup",
+  "description": "AIAgentResponseGroup is the primary conversational AI message group. It composes AIMessageHeader, AIMessageBody, and optional action or footer layers into a single branded card.",
+  "intent": "A flexible conversational card that upgrades from plain text to actions, alerts, or full footer — controlled by a single variant prop.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-agent-response-group/AIAgentResponseGroup",
+    "exports": [
+      "AIAgentResponseGroup"
+    ],
+    "implementation": "src/components/ai/organisms/ai-agent-response-group/AIAgentResponseGroup.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agentLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AgentResponseVariant",
+      "required": false
+    },
+    {
+      "name": "alertLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "sources",
+      "type": "AISource[]",
+      "required": false
+    },
+    {
+      "name": "showFeedback",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onFeedback",
+      "type": "(v: 'up' | 'down') => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    },
+    {
+      "group": "variant",
+      "name": "with-actions"
+    },
+    {
+      "group": "variant",
+      "name": "with-alert"
+    },
+    {
+      "group": "variant",
+      "name": "with-footer"
+    },
+    {
+      "group": "variant",
+      "name": "notification"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.radius.md",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Agent delivers a recommendation and offers a primary + alternative action (with-actions)",
+    "Agent needs to flag a risk, missing field, or important caveat before giving its answer (with-alert)",
+    "Agent response requires source attribution or user feedback collection (with-footer)",
+    "Plain short response with no follow-up needed (default)"
+  ],
+  "doNotUse": [
+    "When the response includes structured insight cards — use AIAnalysisMessage instead",
+    "When you need more than two action buttons — use a separate action bar",
+    "User-authored messages — use AIUserBubble instead",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-agent-response-group/ai-agent-response-group.md",
+    "manifest": "design-system/components/ai/organisms/ai-agent-response-group/ai-agent-response-group.agent.json",
+    "implementation": "src/components/ai/organisms/ai-agent-response-group/AIAgentResponseGroup.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-agent-response-group/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-agent-response-group/ai-agent-response-group.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-agent-response-group/ai-agent-response-group.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

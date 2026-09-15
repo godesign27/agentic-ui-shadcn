@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-rationale-panel",
+  "slug": "ai-rationale-panel",
+  "name": "AIRationalePanel",
+  "description": "AI Rationale is the primary explainability output for AI-generated decisions. It presents four nested disclosure sections — What I found, Why it matters, What I considered, and Assumptions + Sources — in a collapsible disclosure block that can be embedded in any AI output surface: chat responses in the Command Center, AI Assisted side-panel drawers, rationale drawers in notification cards, or inline below structured group outputs.",
+  "intent": "Collapsible explainability output revealing what the AI found, why it matters, what alternatives were considered, and what assumptions and sources informed the decision. Surfaces in chat, drawers, command center, or any AI output context.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-rationale-panel/AIRationalePanel",
+    "exports": [
+      "AIRationalePanel"
+    ],
+    "implementation": "src/components/ai/organisms/ai-rationale-panel/AIRationalePanel.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "whatFound",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "whyMatters",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "considered",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "assumptions",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "sources",
+      "type": "RationaleSource[]",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.default",
+      "AI.color.brand",
+      "AI.radius.lg"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-rationale-panel/ai-rationale-panel.md",
+    "manifest": "design-system/components/ai/organisms/ai-rationale-panel/ai-rationale-panel.agent.json",
+    "implementation": "src/components/ai/organisms/ai-rationale-panel/AIRationalePanel.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-rationale-panel/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-rationale-panel/ai-rationale-panel.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-rationale-panel/ai-rationale-panel.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

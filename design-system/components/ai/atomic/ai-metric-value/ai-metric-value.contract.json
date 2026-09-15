@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-metric-value",
+  "slug": "ai-metric-value",
+  "name": "AIMetricValue",
+  "description": "Renders a single KPI value (e.g. `42.8K`, `78%`, `1.18`) at one of three sizes — sm 24px, md 32px, lg 40px. Tabular numerals + tight letter-spacing keep numbers crisp and aligned. Optional `unit` slot renders inline at 60% of the value size so suffixes like `K` / `%` stay clearly subordinate.",
+  "intent": "The big number at the heart of every AI Card Metric. Three sizes share one type scale so dashboards stay rhythmic.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-metric-value/AIMetricValue",
+    "exports": [
+      "AIMetricValue"
+    ],
+    "implementation": "src/components/ai/atomic/ai-metric-value/AIMetricValue.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "string | number",
+      "required": true
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIMetricValueSize",
+      "required": false
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-metric-value/ai-metric-value.md",
+    "manifest": "design-system/components/ai/atomic/ai-metric-value/ai-metric-value.agent.json",
+    "implementation": "src/components/ai/atomic/ai-metric-value/AIMetricValue.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-metric-value/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-metric-value/ai-metric-value.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-metric-value/ai-metric-value.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

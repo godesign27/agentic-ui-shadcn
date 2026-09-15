@@ -1,0 +1,330 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-progress",
+  "slug": "ai-progress",
+  "name": "AIProgress",
+  "description": "Canonical progress atom for AI work surfaces — brand gradient fill, semantic status states, indeterminate shimmer, and segmented multi-phase variant.",
+  "intent": "Communicate AI work progress with measurable percent, agentic states (paused, blocked, escalated), and accessible motion fallbacks.",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/progress/AIProgress",
+    "exports": [
+      "AIProgress",
+      "AIProgressStatus",
+      "AIProgressVariant",
+      "AIProgressSize",
+      "AIProgressSegment"
+    ],
+    "implementation": "src/components/ai/atomic/ai-progress/AIProgress.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIProgressStatus",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AIProgressVariant",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIProgressSize",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "currentStep",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "percentLabel",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "estimatedTimeRemaining",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showLabel",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "segments",
+      "type": "AIProgressSegment[]",
+      "required": false
+    },
+    {
+      "name": "indeterminate",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "fill",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "withText",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "AIProgressBarState",
+      "required": false
+    },
+    {
+      "name": "textOn",
+      "type": "'duration' | 'track'",
+      "required": false
+    },
+    {
+      "name": "animate",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "fillOverride",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "activity",
+      "type": "AIProgressActivity",
+      "required": false
+    },
+    {
+      "name": "helperText",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "linear"
+    },
+    {
+      "group": "variant",
+      "name": "thin"
+    },
+    {
+      "group": "variant",
+      "name": "header"
+    },
+    {
+      "group": "variant",
+      "name": "segmented"
+    }
+  ],
+  "states": [
+    {
+      "name": "idle"
+    },
+    {
+      "name": "running"
+    },
+    {
+      "name": "indeterminate"
+    },
+    {
+      "name": "paused"
+    },
+    {
+      "name": "resuming"
+    },
+    {
+      "name": "complete"
+    },
+    {
+      "name": "blocked"
+    },
+    {
+      "name": "error"
+    },
+    {
+      "name": "escalated"
+    },
+    {
+      "name": "disabled"
+    }
+  ],
+  "sizes": [
+    "thin",
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [
+      "AI.color.brand",
+      "AI.color.action.primaryHover",
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "SIGNAL[60]",
+      "SIGNAL[70]",
+      "NEUTRAL.border",
+      "AI_TYPOGRAPHY['@brand-micro-eyebrow']"
+    ],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryHover",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.brandSurface",
+      "AI.color.status.success",
+      "AI.radius.full",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "progressbar",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-valuemin",
+      "aria-valuemax",
+      "aria-valuenow (omit when indeterminate)",
+      "aria-label"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "When AI work has measurable progress (retrieval, analysis, generation, validation)",
+    "When an agentic workstream is running in the Command Center",
+    "When a multi-agent task has an overall completion state visible to the user",
+    "Inside AI cards, panels, or command center modules when work takes more than a brief moment",
+    "When agentic progress can be blocked, paused, or escalated — use state to communicate that clearly"
+  ],
+  "doNotUse": [
+    "Do not use for simple button loading states — use the AIButton loading state instead",
+    "Do not use when ai-loading-indicators (spinner, dots) is enough for a brief wait",
+    "Do not show fake precision when progress is unknown — use indeterminate variant",
+    "Do not use for standard non-AI product progress unless the work is AI-driven",
+    "Do not use orange as the default fill — orange is reserved for blocked/escalated states",
+    "Do not use motion without a reduced-motion fallback",
+    "Do not use for simple button loading states — use AIButton loading instead",
+    "Do not use when ai-loading-indicators is enough for a brief wait",
+    "Do not show fake precision when progress is unknown — use indeterminate",
+    "Do not use orange as the default fill — orange is for blocked/escalated only"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-progress/ai-progress.md",
+    "manifest": "design-system/components/ai/atomic/ai-progress/ai-progress.agent.json",
+    "implementation": "src/components/ai/atomic/ai-progress/AIProgress.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-progress/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-progress/ai-progress.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-progress/ai-progress.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

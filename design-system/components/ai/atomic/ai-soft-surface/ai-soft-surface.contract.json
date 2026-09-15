@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-soft-surface",
+  "slug": "ai-soft-surface",
+  "name": "AISoftSurface",
+  "description": "AISoftSurface is a non-content background canvas used to signal that the surface is AI-led or in companion mode. Six tones — dialog (the canonical AI Command Center dialog wash — soft aqua top, teal-b",
+  "intent": "Visual surface primitive that signals \"AI companion context\" — never a content component.",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-soft-surface/AISoftSurface",
+    "exports": [
+      "AISoftSurface"
+    ],
+    "implementation": "src/components/ai/atomic/ai-soft-surface/AISoftSurface.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "tone",
+      "type": "AISoftSurfaceTone",
+      "required": false
+    },
+    {
+      "name": "intensity",
+      "type": "AISoftSurfaceIntensity",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "React.CSSProperties['borderRadius']",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "'flat' | 'soft'",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.decorative.wash",
+      "AI.color.decorative.washStrong",
+      "AI.color.surface.default",
+      "AI.color.surface.emphasis",
+      "AI.color.surface.subtle",
+      "AI.radius.lg"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "See bundle overview"
+  ],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-soft-surface/ai-soft-surface.md",
+    "manifest": "design-system/components/ai/atomic/ai-soft-surface/ai-soft-surface.agent.json",
+    "implementation": "src/components/ai/atomic/ai-soft-surface/AISoftSurface.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-soft-surface/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-soft-surface/ai-soft-surface.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-soft-surface/ai-soft-surface.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

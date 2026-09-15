@@ -1,0 +1,187 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-agent-reasoning",
+  "slug": "ai-card-agent-reasoning",
+  "name": "AICardAgentReasoning",
+  "description": "AICardAgentReasoning is the canonical \"what the agent is thinking\" card for AI-led surfaces. The header carries the agent identity (avatar, name, AGENT chip, REASONING & ANALYSIS eyebrow) and a live-status pill. A white AI Summary panel renders a brief headline + a quoted longer analysis under a divider. In Simple density an Optimization Drivers panel appears below, listing each driver with its percentage contribution and a qualitative intensity chip (only High gets a tinted chip; Medium / Low render as plain labels). A footer pairs an Explainability toggle with a primary \"Deepen Analysis\" action. Use this card whenever you need to surface an agent's reasoning + decision drivers in a governable, scannable way — e.g. inside an Agent Drawer, on a generated dashboard, or above a workspace.",
+  "intent": "Surface an agent's reasoning + optional optimization drivers behind an Explainability toggle.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-agent-reasoning/AICardAgentReasoning",
+    "exports": [
+      "AICardAgentReasoning"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-agent-reasoning/AICardAgentReasoning.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AICardAgentReasoningDensity",
+      "required": false
+    },
+    {
+      "name": "agentName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "agentRole",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "agentEyebrow",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "live",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "summary",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "drivers",
+      "type": "AICardAgentReasoningDriver[]",
+      "required": false
+    },
+    {
+      "name": "explainability",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onExplainabilityChange",
+      "type": "(next: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onDeepenAnalysis",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.subtle",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.surface.emphasis",
+      "AI.color.surface.subtle",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.gradient.surface.subtle",
+      "AI.gradient.surface.subtle.",
+      "AI.radius.lg",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Surfacing an agent's reasoning behind a recommendation",
+    "Showing the weighted decision drivers when Explainability is on",
+    "Inside an AI Agent Drawer, a generated dashboard, or above an AI Led workspace"
+  ],
+  "doNotUse": [
+    "For an active conversation with the agent — use the AI Command Center Dialog group",
+    "For a list of insights without an agent identity — use AIInsightList",
+    "For a step-by-step trace of agent operations — use AIReasoningTrace",
+    "When the surface needs the full agent persona introduction (capabilities, talk script) — use AICardAgent",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "AI Assisted"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-agent-reasoning/ai-card-agent-reasoning.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-agent-reasoning/ai-card-agent-reasoning.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-agent-reasoning/AICardAgentReasoning.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-agent-reasoning/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-agent-reasoning/ai-card-agent-reasoning.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-agent-reasoning/ai-card-agent-reasoning.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-button",
+  "slug": "ai-button",
+  "name": "AIButton",
+  "description": "Primary, secondary, and tertiary CTA for AI surfaces — brand gradient primary with loading/complete/error status, outline secondary, ghost tertiary. Also exports AIAction composed row.",
+  "intent": "Confirm/cancel pairs, Apply/Edit/Dismiss rows, status-aware CTAs. Not for AI Dialog toolbar triggers — use AIDialogButton.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-button/AIButton",
+    "exports": [
+      "AIButton",
+      "AIAction",
+      "QUICK_ACTIONS"
+    ],
+    "implementation": "src/components/ai/atomic/ai-button/AIButton.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "AIButtonVariant",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIButtonStatus",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIButtonSize",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "AIButtonRadius",
+      "required": false
+    },
+    {
+      "name": "onDark",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "AIButtonIcon",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "trailingIcon",
+      "type": "AIButtonIcon",
+      "required": false
+    },
+    {
+      "name": "special",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "previewState",
+      "type": "'hover' | 'pressed' | 'focused'",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "aria-expanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "aria-haspopup",
+      "type": "boolean | 'dialog' | 'listbox' | 'menu'",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "'button' | 'submit' | 'reset'",
+      "required": false
+    },
+    {
+      "name": "primaryLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "secondaryLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tertiaryLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "layout",
+      "type": "AIActionLayout",
+      "required": false
+    },
+    {
+      "name": "requiresConfirmation",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiresReview",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onPrimary",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSecondary",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onTertiary",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "primary",
+      "when": "Affirmative CTA — Apply, Confirm, Run"
+    },
+    {
+      "group": "variant",
+      "name": "primary-solid"
+    },
+    {
+      "group": "variant",
+      "name": "secondary",
+      "when": "Alternative action — Edit First, Review Details"
+    },
+    {
+      "group": "variant",
+      "name": "tertiary",
+      "when": "Dismissive action — Dismiss, Cancel (low emphasis)"
+    },
+    {
+      "group": "variant",
+      "name": "link"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "complete"
+    },
+    {
+      "name": "error"
+    },
+    {
+      "name": "disabled"
+    }
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.color.action.primaryHover",
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.border.strong",
+      "AI.color.brand",
+      "AI.color.brandStrong",
+      "AI.color.status.error",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.radius.full",
+      "AI.radius.lg",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.radius.xs",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "disabled attribute when disabled=true",
+      "aria-label includes loading/complete suffix on primary status"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Confirm / Cancel pairs in agent confirmations",
+    "Apply / Edit / Dismiss action rows in notifications and analysis cards",
+    "Any AI surface that needs a status-aware CTA (loading, complete, error)"
+  ],
+  "doNotUse": [
+    "Toolbar triggers, mode pickers, or dropdown affordances in AI Dialog — use `AIDialogButton`",
+    "Navigation links — use anchors or router links",
+    "Standard `Button` for non-AI product actions",
+    "Do not use for AI Dialog toolbar triggers — use AIDialogButton",
+    "Do not use for navigation links",
+    "Do not omit label text",
+    "Do not hardcode colors — use AI.* and standard tokens",
+    "Do not apply status prop to secondary or tertiary variants"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-button/ai-button.md",
+    "manifest": "design-system/components/ai/atomic/ai-button/ai-button.agent.json",
+    "implementation": "src/components/ai/atomic/ai-button/AIButton.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-button/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-button/ai-button.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-button/ai-button.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

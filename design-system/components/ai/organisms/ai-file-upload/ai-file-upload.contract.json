@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-file-upload",
+  "slug": "ai-file-upload",
+  "name": "AIFileUpload",
+  "description": "The AI-themed variant of the standard DS File Upload. The single DSFileUpload component (ds/ds-file-upload.tsx) accepts theme=\"standard\" (DS primary teal, square browse button, teal progress bar) or theme=\"ai\". In the AI theme the only color that changes is the teal primary → AI brand blue (var(--color-ai-brand)): the drag-over border + tint and the CTA re-anchor to brand, while foreground, helper, the neutral progress track, and the success/error semantics are unchanged. The browse trigger renders the real AIButton atom (variant=\"primary-solid\", rounded AI corners) and each uploading row renders the real AIProgress atom — both consumed, never re-implemented. Drop zone, file list, remove actions, validation states, and the inline-SVG icon set are shared with the standard control. All colors, radii, and spacing read design-system CSS variables; all text uses the \"Open Sans\" face.",
+  "intent": "DS File Upload, AI surface theme — brand-blue accent, real AIButton CTA + AIProgress bars, shared icons.",
+  "status": "active",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-file-upload/AIFileUpload",
+    "exports": [
+      "AIFileUpload"
+    ],
+    "implementation": "src/components/ai/organisms/ai-file-upload/AIFileUpload.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "File upload on AI surfaces that should read as part of the AI experience",
+    "Any upload flow where the AI brand accent is preferred over the DS teal",
+    "Upload with progress feedback via the real AIProgress atom"
+  ],
+  "doNotUse": [
+    "Don't use on a standard (non-AI) surface — use the standard <DSFileUpload> (default theme) instead",
+    "Don't fork ds-file-upload.tsx to restyle — switch the theme prop",
+    "Don't hard-code the browse button or progress bar — the AI theme renders the real AIButton + AIProgress atoms",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-file-upload/ai-file-upload.md",
+    "manifest": "design-system/components/ai/organisms/ai-file-upload/ai-file-upload.agent.json",
+    "implementation": "src/components/ai/organisms/ai-file-upload/AIFileUpload.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-file-upload/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-file-upload/ai-file-upload.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-file-upload/ai-file-upload.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

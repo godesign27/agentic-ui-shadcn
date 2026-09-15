@@ -1,0 +1,191 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-picker-trigger",
+  "slug": "ai-picker-trigger",
+  "name": "AIPickerTrigger",
+  "description": "The AI Picker Trigger is the visual shell used in place of the standard DS picker trigger when AI is present. It renders the label, the current value (or placeholder), a trailing type icon, and — at rich/robust density — an AI badge on the label row. It holds no suggestion logic, calendar, or popover; those belong to the ai-picker group that composes this atom. Colors use the library AI_RAMP indigo ramp (AI.color.*), mapping the spec's blue tokens to brand.",
+  "intent": "The styled field that signals an AI-enhanced date/time picker — brand-tinted border, 12px radius, and an AI badge at higher densities.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-picker-trigger/AIPickerTrigger",
+    "exports": [
+      "AIPickerTrigger"
+    ],
+    "implementation": "src/components/ai/atomic/ai-picker-trigger/AIPickerTrigger.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "AIPickerIcon",
+      "required": true
+    },
+    {
+      "name": "density",
+      "type": "AIPickerDensity",
+      "required": true
+    },
+    {
+      "name": "state",
+      "type": "AIPickerTriggerState",
+      "required": false
+    },
+    {
+      "name": "aiLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelRowAside",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "focused"
+    },
+    {
+      "name": "selected"
+    },
+    {
+      "name": "disabled"
+    },
+    {
+      "name": "error"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSurface",
+      "AI.color.text.primary",
+      "AI.radius.full",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-picker-trigger/ai-picker-trigger.md",
+    "manifest": "design-system/components/ai/atomic/ai-picker-trigger/ai-picker-trigger.agent.json",
+    "implementation": "src/components/ai/atomic/ai-picker-trigger/AIPickerTrigger.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-picker-trigger/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-picker-trigger/ai-picker-trigger.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-picker-trigger/ai-picker-trigger.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

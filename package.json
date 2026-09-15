@@ -11,7 +11,11 @@
     "ds:build": "node scripts/build-design-system.mjs",
     "ds:check": "node scripts/build-design-system.mjs --check",
     "ds:force": "node scripts/build-design-system.mjs --force",
-    "ds:validate": "node scripts/validate-design-system.mjs"
+    "ds:validate": "node scripts/validate-design-system.mjs",
+    "contracts:generate": "node ingestion/generate-contracts.mjs",
+    "contracts:ingest": "node ingestion/ingest.mjs",
+    "contracts:build": "node ingestion/generate-contracts.mjs && node ingestion/ingest.mjs",
+    "contracts:check": "node ingestion/generate-contracts.mjs --check && node ingestion/ingest.mjs --check"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,0 +1,137 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-message-body",
+  "slug": "ai-message-body",
+  "name": "AIMessageBody",
+  "description": "Atomic text body for plain-language AI responses — typography via @brand-bubble-body, size sm/md/lg, no bold or headings inside the atom.",
+  "intent": "The voice of the AI. Plain, direct, readable — the atomic text body that carries every AI-generated sentence when no structured output is needed.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-message-body/AIMessageBody",
+    "exports": [
+      "AIMessageBody"
+    ],
+    "implementation": "src/components/ai/atomic/ai-message-body/AIMessageBody.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md' | 'lg'",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "standard"
+    },
+    {
+      "group": "variant",
+      "name": "short-answer"
+    },
+    {
+      "group": "variant",
+      "name": "multi-sentence"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "paragraph",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "As the content inside AiResponseBubble for any plain-language response — analysis, explanation, suggestion, or guidance",
+    "When output does not require a structured format (no table, no metrics, no notification card)",
+    "As prefix copy before a structured output group — e.g., a one-sentence summary before AiTableOutput"
+  ],
+  "doNotUse": [
+    "When the response contains structured data — use the appropriate group component (AIAnalysisMessage, table, etc.)",
+    "For short labels or status text — use Standard text styles directly",
+    "Do not use bold or headings inside this atom — those belong in structured output groups",
+    "When the response contains structured data — use the appropriate group component",
+    "Do not use bold or headings inside this atom"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-message-body/ai-message-body.md",
+    "manifest": "design-system/components/ai/atomic/ai-message-body/ai-message-body.agent.json",
+    "implementation": "src/components/ai/atomic/ai-message-body/AIMessageBody.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-message-body/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-message-body/ai-message-body.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-message-body/ai-message-body.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

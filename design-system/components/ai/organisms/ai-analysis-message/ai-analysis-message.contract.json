@@ -1,0 +1,221 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-analysis-message",
+  "slug": "ai-analysis-message",
+  "name": "AIAnalysisMessage",
+  "description": "AIAnalysisMessage is the canonical group component for delivering structured AI-generated analysis in conversational and panel surfaces. It composes an AI attribution header, optional intro text, one or more AIAnalysisInsight cards, a data sources footer, and feedback actions into a single coherent output unit. Each insight is labeled by type, rated by confidence, and grounded with data provenance — making every AI statement attributable and trust-calibrated before the user acts on it.",
+  "intent": "The primary output surface for AI-generated analysis. Structured insights are labeled, sourced, and confidence-rated — so users can calibrate trust before acting.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-analysis-message/AIAnalysisMessage",
+    "exports": [
+      "AIAnalysisMessage"
+    ],
+    "implementation": "src/components/ai/organisms/ai-analysis-message/AIAnalysisMessage.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "attribution",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "insights",
+      "type": "AIInsightItem[]",
+      "required": false
+    },
+    {
+      "name": "sources",
+      "type": "AISource[]",
+      "required": false
+    },
+    {
+      "name": "showFooter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showFeedback",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "MessageStatus",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "collapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "actions",
+      "type": "object[]",
+      "required": false
+    },
+    {
+      "name": "accentStyle",
+      "type": "AccentLineStyle",
+      "required": false
+    },
+    {
+      "name": "showAccentPicker",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onFeedback",
+      "type": "(v: 'up' | 'down') => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCopy",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onShare",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.text.secondary",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "When Guild AI summarizes report data or presents multiple analytical findings",
+    "When the response needs structured insight cards with type labels and confidence ratings",
+    "When users need data sources and feedback controls — AI Assisted Side Panel, Command Center, or response thread",
+    "When the AI compares performance, surfaces observations, or explains patterns with source context"
+  ],
+  "doNotUse": [
+    "Simple one-sentence answers — use a plain message bubble instead",
+    "Urgent alerts or blocked states that should be notifications — use AINotification instead",
+    "Generic product cards that are not AI-authored analysis",
+    "Contexts where confidence, sources, or metrics cannot be verified — do not fabricate these fields",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-analysis-message/ai-analysis-message.md",
+    "manifest": "design-system/components/ai/organisms/ai-analysis-message/ai-analysis-message.agent.json",
+    "implementation": "src/components/ai/organisms/ai-analysis-message/AIAnalysisMessage.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-analysis-message/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-analysis-message/ai-analysis-message.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-analysis-message/ai-analysis-message.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

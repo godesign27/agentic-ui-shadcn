@@ -1,0 +1,177 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-supervisor-bar",
+  "slug": "ai-supervisor-bar",
+  "name": "AISupervisorBar",
+  "description": "AISupervisorBar is the flush page-top identity strip for an AI-led workspace — typically the supervisor agent that coordinates work below (e.g. Smart Assist). The bar uses the AIAvatar atom on the left, the agent name + role eyebrow on the same line, and a secondary stat line for tasks-tracked / last-updated. It sits flush against the top edge of its parent — no border-radius, no horizontal margin, only a single bottom border for separation. Three tone variants cover the major surface contexts: tan (AI_RAMP tan companion surface — calmest, default), dark (inverted AI brand ink — hero / high-emphasis), and light (neutral white with a subtle bottom rule — low chrome, when the bar should recede).",
+  "intent": "Page-top agent identity strip · tan · dark · light · uses AIAvatar",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-supervisor-bar/AISupervisorBar",
+    "exports": [
+      "AISupervisorBar"
+    ],
+    "implementation": "src/components/ai/atomic/ai-supervisor-bar/AISupervisorBar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "role",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "stat",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "meta",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AISupervisorBarTone",
+      "required": false
+    },
+    {
+      "name": "avatarSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "actions",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "moreMenu",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brandInk",
+      "AI.color.text.onAction"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "As the flush top-edge identity strip on an AI-led page",
+    "To anchor a supervisor agent (Smart Assist, Orchestrator, etc.) at the top of a workspace",
+    "On mobile companion views where the agent identity must persist across scroll"
+  ],
+  "doNotUse": [
+    "Inside cards, drawers, or dialogs — use AICardAgent instead",
+    "For sub-page section headers — use AIMessageHeader or a regular heading",
+    "For navigation — use AILedNavigation or DS top navigation",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive",
+        "AI Assisted"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.md",
+    "manifest": "design-system/components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.agent.json",
+    "implementation": "src/components/ai/atomic/ai-supervisor-bar/AISupervisorBar.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-supervisor-bar/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-supervisor-bar/ai-supervisor-bar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-notification",
+  "slug": "ai-notification",
+  "name": "AINotification",
+  "description": "AI-detected events surfaced clearly, actionably and with accountability. Eight severity variants map to distinct visual treatments — info, opportunity, warning, urgent, success, blocked, approval and escalated.",
+  "intent": "AI-detected events surfaced clearly, actionably and with accountability. Eight severity variants map to distinct visual treatments — info, opportunity, warning, urgent, success, blocked, approval and escalated.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-notification/AINotification",
+    "exports": [
+      "AINotification"
+    ],
+    "implementation": "src/components/ai/molecules/ai-notification/AINotification.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "severity",
+      "type": "NotificationSeverity",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "variant",
+      "type": "NotificationVariant",
+      "required": false
+    },
+    {
+      "name": "layout",
+      "type": "NotificationLayout",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "NotificationStatus",
+      "required": false
+    },
+    {
+      "name": "attribution",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "chips",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "NotificationAction",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "NotificationAction",
+      "required": false
+    },
+    {
+      "name": "isDismissible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "isSnoozable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onDismiss",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSnooze",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onEscalate",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onMarkReviewed",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "notifications",
+      "type": "AINotificationProps[]",
+      "required": true
+    },
+    {
+      "name": "maxVisible",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onViewAll",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "basic"
+    },
+    {
+      "group": "variant",
+      "name": "enhanced"
+    },
+    {
+      "group": "variant",
+      "name": "link"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "expanded"
+    },
+    {
+      "name": "dismissed"
+    },
+    {
+      "name": "snoozed"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.full",
+      "AI.radius.lg",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "When AI detects an anomaly, risk, opportunity or required action",
+    "When an AI workflow completes or is blocked",
+    "When AI needs to surface a distinct event in a conversation thread",
+    "When the output needs more visual emphasis than plain conversational text"
+  ],
+  "doNotUse": [
+    "Do not use for ordinary product alerts unrelated to AI",
+    "Do not use for every AI response — reserve for genuinely distinct events",
+    "Do not use when plain text is sufficient",
+    "Do not use for marketing messages or system errors outside AI workflows",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-notification/ai-notification.md",
+    "manifest": "design-system/components/ai/molecules/ai-notification/ai-notification.agent.json",
+    "implementation": "src/components/ai/molecules/ai-notification/AINotification.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-notification/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-notification/ai-notification.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-notification/ai-notification.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

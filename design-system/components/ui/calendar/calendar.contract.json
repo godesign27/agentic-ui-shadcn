@@ -1,0 +1,179 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:calendar",
+  "slug": "calendar",
+  "name": "Calendar",
+  "description": "A react-day-picker wrapper styled with buttonVariants. Single, multiple and range selection modes.",
+  "intent": "Pick a date when the surrounding days matter to the choice.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/calendar",
+    "exports": [
+      "Calendar",
+      "CalendarDayButton"
+    ],
+    "implementation": "src/components/ui/calendar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Selected",
+      "when": "`Matches selected`"
+    },
+    {
+      "name": "Today",
+      "when": "`Current date`"
+    },
+    {
+      "name": "Outside month",
+      "when": "`Leading or trailing days`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`Matched by the disabled matcher`"
+    },
+    {
+      "name": "Range middle",
+      "when": "`Between range ends`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "input",
+      "muted",
+      "popover",
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-popover",
+      "bg-primary",
+      "border-input",
+      "border-ring",
+      "ring-ring",
+      "text-accent",
+      "text-muted",
+      "text-primary"
+    ]
+  },
+  "a11y": {
+    "role": "grid",
+    "keyboard": [
+      "Arrow keys — move by day",
+      "PageUp/PageDown — move by month",
+      "Home/End — start or end of week",
+      "Enter or Space — select"
+    ],
+    "requiredAttributes": [
+      "An accessible label on the calendar",
+      "aria-live announcement of the selected date"
+    ],
+    "notes": [
+      "react-day-picker supplies grid semantics and keyboard navigation.",
+      "Always offer a typed alternative. Keyboard-only users navigating months by arrow key is punishing for distant dates.",
+      "Announce the selection in a live region — the visual highlight alone is not enough.",
+      "Set the disabled matcher rather than allowing an invalid pick and rejecting it afterwards."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Date selection where day of week or adjacency matters",
+    "Date ranges",
+    "Inside ui:popover as a date-picker field"
+  ],
+  "doNotUse": [
+    "A known specific date the user can type faster — offer a text input too",
+    "Dates far in the past, like a birth date — a year and month select is far quicker",
+    "Where a relative choice would do — Today, Tomorrow, Next week",
+    "Calendar as the only date-entry route",
+    "Allowing invalid dates then rejecting on submit",
+    "Using a day grid for distant historical dates"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Pair with a text input for typed entry.",
+      "Use the disabled matcher to prevent invalid selections up front.",
+      "Announce selections in a live region.",
+      "Inside ui:popover, render PopoverContent with className=\"w-auto p-0\"."
+    ],
+    "related": [
+      {
+        "id": "ui:popover",
+        "note": "The usual host for a date-picker field"
+      },
+      {
+        "id": "ui:input",
+        "note": "Typed entry alternative"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/calendar/calendar.md",
+    "manifest": "design-system/components/ui/calendar/calendar.agent.json",
+    "implementation": "src/components/ui/calendar.tsx",
+    "prompt": "design-system/components/ui/calendar/agentic-prompt.md",
+    "preview": "design-system/components/ui/calendar/calendar.preview.html",
+    "contract": "design-system/components/ui/calendar/calendar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

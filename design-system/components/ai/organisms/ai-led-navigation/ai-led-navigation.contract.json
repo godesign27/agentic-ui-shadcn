@@ -1,0 +1,204 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-led-navigation",
+  "slug": "ai-led-navigation",
+  "name": "AILedNavigation",
+  "description": "AILedNavigation is the left-rail navigation system for AI Led experiences. It organizes the things an AI workbench needs to surface — new chat, search, library, agents, apps, projects, pinned items, recents and account — under a single composable group. Five companion variants (default · collapsed · workspace-focused · agent-focused · minimal) and five state machines (default · nested-open · loading-recents · empty-recents · permission-restricted) cover the full life-cycle. The header reuses the canonical AIAvatar brand mark from the AI Assisted Side Drawer pattern so AI Led products share one identity across the shell.",
+  "intent": "The navigation rail for AI Led product shells — inspired by modern AI tools, tuned to Guild enterprise visual language.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-led-navigation/AILedNavigation",
+    "exports": [
+      "AILedNavigation"
+    ],
+    "implementation": "src/components/ai/organisms/ai-led-navigation/AILedNavigation.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "brandLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "brandIcon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "currentWorkspace",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "primaryActions",
+      "type": "AILedNavItem[]",
+      "required": false
+    },
+    {
+      "name": "workspaceGroups",
+      "type": "AILedNavGroup[]",
+      "required": false
+    },
+    {
+      "name": "pinnedItems",
+      "type": "AILedNavItem[]",
+      "required": false
+    },
+    {
+      "name": "recentItems",
+      "type": "AILedNavItem[]",
+      "required": false
+    },
+    {
+      "name": "user",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AILedNavVariant",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "AILedNavState",
+      "required": false
+    },
+    {
+      "name": "selectedItemId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "collapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onToggleCollapse",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onItemSelect",
+      "type": "(item: AILedNavItem) => void",
+      "required": false
+    },
+    {
+      "name": "onNewChat",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSearch",
+      "type": "(query: string) => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-led-navigation/ai-led-navigation.md",
+    "manifest": "design-system/components/ai/organisms/ai-led-navigation/ai-led-navigation.agent.json",
+    "implementation": "src/components/ai/organisms/ai-led-navigation/AILedNavigation.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-led-navigation/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-led-navigation/ai-led-navigation.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-led-navigation/ai-led-navigation.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

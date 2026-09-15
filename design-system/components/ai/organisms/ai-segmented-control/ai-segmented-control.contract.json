@@ -1,0 +1,180 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-segmented-control",
+  "slug": "ai-segmented-control",
+  "name": "AISegmentedControl",
+  "description": "AISegmentedControl is the AI-surface sibling of the standard DS Segmented Control. It keeps the same contract — a radiogroup of mutually exclusive segments, one active at a time — and the same variant matrix: two Types (Solid fills the active chip with the AI brand gradient under a white label; Outline keeps the chip transparent with a brand #4D60E6 border + brand label), three Sizes (Normal 40px / Small 35px / X-Small 30px), the interaction states Default / Hover / Pressed / Disabled, keyboard focus and a Full-width stretch mode. The visual language is the AI Pill: chips are fully-rounded (AI.radius.full) inside a raised, rounded track (--ai-card-bg-raised on --ai-card-border) rather than the flat, square, edge-shared segments of the standard control. Solid active adds a soft brand glow; hover/press tint the chip with --ai-card-bg / AI.color.brandSubtle. Optional leading render through the icon-font catalog, tinted to the AI brand. Controlled via value / onChange.",
+  "intent": "DS Segmented Control, AI surface theme — fully-rounded pill chips, brand-gradient active segment.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-segmented-control/AISegmentedControl",
+    "exports": [
+      "AISegmentedControl"
+    ],
+    "implementation": "src/components/ai/organisms/ai-segmented-control/AISegmentedControl.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "segments",
+      "type": "AISegment[]",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": true
+    },
+    {
+      "name": "type",
+      "type": "AISegmentedType",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AISegmentedSize",
+      "required": false
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "states",
+      "type": "AISegmentedInteraction[]",
+      "required": false
+    },
+    {
+      "name": "focusIndex",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "normal",
+    "small",
+    "x-small"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primaryActive",
+      "AI.color.action.primaryHover",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandSubtle",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.radius.full",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Toggling between mutually exclusive views or filters on an AI surface",
+    "A compact segmented control for an AI toolbar, filter row, or panel header",
+    "An AI-branded alternative to the flat standard DS Segmented Control",
+    "A control that must sit visually beside the AI Card, AI Tab, and AI Dialog"
+  ],
+  "doNotUse": [
+    "You need the neutral product control — use the standard `ds-segmented-control`",
+    "Options carry rich content panels — use `ai-tab`",
+    "More than ~5 options, or options of varying length — use a dropdown or tabs",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-segmented-control/ai-segmented-control.md",
+    "manifest": "design-system/components/ai/organisms/ai-segmented-control/ai-segmented-control.agent.json",
+    "implementation": "src/components/ai/organisms/ai-segmented-control/AISegmentedControl.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-segmented-control/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-segmented-control/ai-segmented-control.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-segmented-control/ai-segmented-control.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

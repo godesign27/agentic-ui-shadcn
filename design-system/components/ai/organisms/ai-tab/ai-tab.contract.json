@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-tab",
+  "slug": "ai-tab",
+  "name": "AITab",
+  "description": "AITab is the AI-surface sibling of the standard DS Tab (src/tab/). It preserves the tab contract — role=\"tablist\"/\"tab\"/\"tabpanel\", one active tab, roving tabindex (only the active tab is tabbable), Arrow/Home/End keys on the correct axis — while replacing the DS neutral/teal token layer with the AI system. Active tabs read in AI brand #4D60E6 SemiBold; Solid marks them with a 3px brand-gradient bottom bar, Outline fills the tab with --ai-card-bg and joins it to a rounded content container, and Vertical uses a 3px gradient left stroke over a brand-subtle fill. (The AI-native fully-rounded segmented treatment now lives in DS AI Segmented Control.) Icons render through the icon font catalog, tinted to the AI brand. Disabled tabs are muted and skipped by keyboard navigation. Controlled (`value`/`onChange`) or uncontrolled (`defaultValue`).",
+  "intent": "DS Tab, AI surface theme — brand-gradient active bar, rounded AI surfaces.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-tab/AITab",
+    "exports": [
+      "AITab"
+    ],
+    "implementation": "src/components/ai/organisms/ai-tab/AITab.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "items",
+      "type": "AITabItem[]",
+      "required": true
+    },
+    {
+      "name": "variant",
+      "type": "AITabStyle",
+      "required": false
+    },
+    {
+      "name": "withPanel",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(index: number) => void",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "keyof typeof AI.radius",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.gradient.action.full",
+      "AI.radius",
+      "AI.radius.md",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Switching between generated sections (Summary / Insights / Sources) on an AI surface",
+    "An AI workspace panel that needs Solid, Outline, or Vertical tabs matching the AI look",
+    "Tabs with joined content panels on an AI surface",
+    "Tabs that must sit visually beside the AI Card, AI Accordion, and AI Dialog"
+  ],
+  "doNotUse": [
+    "You need the neutral product tabs — use the standard `ds-tab`",
+    "Only two mutually-exclusive options with no panels — consider a toggle/segmented control",
+    "Primary page navigation — use a nav pattern, not tabs",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-tab/ai-tab.md",
+    "manifest": "design-system/components/ai/organisms/ai-tab/ai-tab.agent.json",
+    "implementation": "src/components/ai/organisms/ai-tab/AITab.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-tab/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-tab/ai-tab.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-tab/ai-tab.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

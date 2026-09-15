@@ -1,0 +1,171 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:context-menu",
+  "slug": "context-menu",
+  "name": "ContextMenu",
+  "description": "Radix ContextMenu. Structurally identical to ui:dropdown-menu but triggered by right-click or long-press.",
+  "intent": "Actions for the specific thing the user right-clicked.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/context-menu",
+    "exports": [
+      "ContextMenu",
+      "ContextMenuCheckboxItem",
+      "ContextMenuContent",
+      "ContextMenuGroup",
+      "ContextMenuItem",
+      "ContextMenuLabel",
+      "ContextMenuPortal",
+      "ContextMenuRadioGroup",
+      "ContextMenuRadioItem",
+      "ContextMenuSeparator",
+      "ContextMenuShortcut",
+      "ContextMenuSub",
+      "ContextMenuSubContent",
+      "ContextMenuSubTrigger",
+      "ContextMenuTrigger"
+    ],
+    "implementation": "src/components/ui/context-menu.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "inset",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "checked",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Open",
+      "when": "`Right-click or long-press on the trigger region`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "border",
+      "foreground",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-foreground",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "menu",
+    "keyboard": [
+      "Shift+F10 or the Menu key — open",
+      "Arrow keys — navigate",
+      "Escape — close"
+    ],
+    "requiredAttributes": [],
+    "notes": [
+      "Keyboard users reach this via Shift+F10. Most do not know that. Never make it the only route.",
+      "Every action here must also exist in a visible ui:dropdown-menu or toolbar."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Per-item actions in a file browser, canvas or grid",
+    "A power-user accelerator for actions that also exist elsewhere"
+  ],
+  "doNotUse": [
+    "As the only path to an action — right-click is undiscoverable and awkward on touch",
+    "On a primarily touch surface",
+    "For navigation",
+    "Sole route to an action",
+    "Primary interaction on a touch surface",
+    "Navigation"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Always duplicate these actions somewhere visible.",
+      "Not appropriate as a primary interaction on touch.",
+      "Destructive items still require confirmation."
+    ],
+    "related": [
+      {
+        "id": "ui:dropdown-menu",
+        "note": "The discoverable equivalent — provide both"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/context-menu/context-menu.md",
+    "manifest": "design-system/components/ui/context-menu/context-menu.agent.json",
+    "implementation": "src/components/ui/context-menu.tsx",
+    "prompt": "design-system/components/ui/context-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/context-menu/context-menu.preview.html",
+    "contract": "design-system/components/ui/context-menu/context-menu.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-file-attachment",
+  "slug": "ai-file-attachment",
+  "name": "AIFileAttachment",
+  "description": "AIFileAttachment is a compact atom for representing an already-selected file inside an AI input surface (ai-dialog, AI Command Center composer, AI Side Drawer composer, AI prompt input). It shows file name, file type, file-type icon, upload/loading state, processing state, unsupported/error state, and a remove control so the user can clear the attachment before sending the prompt. The atom does NOT own the file picker, drag-and-drop, upload API, max-file rules, or submit behavior — the parent composer owns those. File-type icons resolve in priority order: Guild/Guild icon first (when one exists in AIIcon's registry), then Lucide React fallback, then a generic file icon. Status drives visible text + color tone: progress (AI brand surface), warning (Guild orange), error (semantic error). Border-radius is 0 across all states per the DS atom flat-corner rule.",
+  "intent": "Selected-file chip for AI composers — name, type, status, remove. Does NOT own the picker, upload API, or validation.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-file-attachment/AIFileAttachment",
+    "exports": [
+      "AIFileAttachment"
+    ],
+    "implementation": "src/components/ai/atomic/ai-file-attachment/AIFileAttachment.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "fileName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "fileType",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "fileSize",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "fileCategory",
+      "type": "AIFileCategory",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIFileAttachmentStatus",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIFileAttachmentSize",
+      "required": false
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "helperText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showFileSize",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showFileType",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onRemove",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onRetry",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    }
+  ],
+  "sizes": [
+    "compact",
+    "standard"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "A user attaches a file to an AI prompt",
+    "A composer needs to show one or more selected files",
+    "A file is uploading, processing, unsupported, or failed",
+    "The user needs to remove a file before submitting",
+    "A file provides context for AI analysis, summarization, validation, comparison, or generation"
+  ],
+  "doNotUse": [
+    "For full document preview — use or create a document-preview Group",
+    "For file library browsing",
+    "For source citations in AI output — use source chips or source-list patterns",
+    "For generated artifacts after AI output — use artifact / output-card patterns",
+    "For the upload picker itself — parent composer owns that",
+    "For task attachments inside a detailed workflow if a richer attachment Group is needed",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-file-attachment/ai-file-attachment.md",
+    "manifest": "design-system/components/ai/atomic/ai-file-attachment/ai-file-attachment.agent.json",
+    "implementation": "src/components/ai/atomic/ai-file-attachment/AIFileAttachment.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-file-attachment/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-file-attachment/ai-file-attachment.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-file-attachment/ai-file-attachment.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

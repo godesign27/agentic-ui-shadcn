@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:tooltip",
+  "slug": "tooltip",
+  "name": "Tooltip",
+  "description": "Radix Tooltip. Opens on hover and on keyboard focus. Requires TooltipProvider somewhere above it.",
+  "intent": "Name a control whose purpose is not obvious from its appearance.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/tooltip",
+    "exports": [
+      "Tooltip",
+      "TooltipContent",
+      "TooltipProvider",
+      "TooltipTrigger"
+    ],
+    "implementation": "src/components/ui/tooltip.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "sideOffset",
+      "type": "see source",
+      "required": false,
+      "default": "4",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Hidden",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Visible",
+      "when": "`Hover or focus after the delay`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "popover"
+    ],
+    "utilities": [
+      "bg-popover",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "tooltip",
+    "keyboard": [
+      "Tab to the trigger — opens",
+      "Escape — closes"
+    ],
+    "requiredAttributes": [
+      "The trigger must be focusable — a div will not do"
+    ],
+    "notes": [
+      "Opens on keyboard focus as well as hover. Radix handles this; do not reimplement it on mouse events.",
+      "Touch devices have no hover. Anything tooltip-only is invisible to those users — this is the reason for the critical-information rule.",
+      "A tooltip on an icon button supplies the visible hint; the button still needs aria-label for its accessible name."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Naming an icon-only button",
+    "Showing a full value that is truncated",
+    "A keyboard shortcut hint"
+  ],
+  "doNotUse": [
+    "Any information the user needs to complete the task — tooltips are invisible on touch and easy to miss",
+    "Interactive content — a tooltip cannot be focused or clicked into",
+    "Long text — use ui:popover or ui:hover-card",
+    "As a replacement for a visible label",
+    "Critical-only information",
+    "Interactive content inside TooltipContent",
+    "Non-focusable trigger",
+    "Tooltip as the only accessible name"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never put critical information in a tooltip.",
+      "The trigger must be focusable.",
+      "An icon button still needs aria-label — the tooltip is not a substitute.",
+      "Mount TooltipProvider once at the app root, not per tooltip."
+    ],
+    "related": [
+      {
+        "id": "ui:hover-card",
+        "note": "Richer hover preview"
+      },
+      {
+        "id": "ui:popover",
+        "note": "Interactive content"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/tooltip/tooltip.md",
+    "manifest": "design-system/components/ui/tooltip/tooltip.agent.json",
+    "implementation": "src/components/ui/tooltip.tsx",
+    "prompt": "design-system/components/ui/tooltip/agentic-prompt.md",
+    "preview": "design-system/components/ui/tooltip/tooltip.preview.html",
+    "contract": "design-system/components/ui/tooltip/tooltip.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-avatar",
+  "slug": "ai-avatar",
+  "name": "AIAvatar",
+  "description": "Three concentric BRAND-blue circles with a white monogram. Exported at two sizes: AIAvatar (34px, with a glow) for hero identity, BotAvatar (18px, no glow) for inline attribution. Identical artwork; only size and shadow differ.",
+  "intent": "The mark that tells a user a machine is speaking.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-avatar",
+    "exports": [
+      "AIAvatar",
+      "BotAvatar"
+    ],
+    "implementation": "src/components/ai/ai-avatar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "monogram",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "glow",
+      "type": "boolean",
+      "required": false,
+      "hint": "The attribution affordance for the entire AI namespace. The palette is FIXED and identical in light and dark. Do not recolor it, do not use currentColor, do not add a dark: variant, and do not add a gradient ring. A user learns this mark means \"a machine produced this\"; if it changes with theme or context it stops being recognisable. / const RINGS = [\"#B4BDFF\", \"#5A6DFF\", \"#1F2A66\"] as const interface AvatarMarkProps extends React.SVGProps<SVGSVGElement> { size?: number monogram?: string /** Hero treatment. Only AIAvatar uses it."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "style",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Hero",
+      "when": "`AIAvatar`"
+    },
+    {
+      "name": "Inline",
+      "when": "`BotAvatar`"
+    },
+    {
+      "name": "Labelled",
+      "when": "`label prop set`"
+    },
+    {
+      "name": "Decorative",
+      "when": "`no label`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "img",
+    "keyboard": [],
+    "requiredAttributes": [
+      "label, unless an adjacent visible text label already names the agent"
+    ],
+    "notes": [
+      "Without a label the SVG is aria-hidden, which is right when it sits beside the agent name in ai:ai-message-header.",
+      "Standing alone — in ai:ai-agent-stack, say — it must carry a label naming the agent and its status.",
+      "The fixed fills are chosen for contrast against both light and dark chrome. Do not recolour them to \"fix\" dark mode."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Agent identity at the top of an AI surface",
+    "Inline attribution in ai:ai-message-header",
+    "Inside ai:ai-launcher and ai:ai-agent-stack"
+  ],
+  "doNotUse": [
+    "As a human user avatar — use ui:avatar, and keep the two visually distinct",
+    "Decoratively, anywhere that is not AI-generated",
+    "Recoloured to match a surface — the fixed palette is what makes it recognisable",
+    "Recolouring the rings",
+    "Adding a gradient or orange ring",
+    "Using it as a human avatar",
+    "Decorative use on non-AI surfaces"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "The palette is fixed. No currentColor, no dark: variants, no theme tokens, no gradient ring.",
+      "Both exports share the same artwork — only size and glow differ.",
+      "Label it when it stands alone; leave it aria-hidden beside a visible agent name.",
+      "Never use it for a human user."
+    ],
+    "related": [
+      {
+        "id": "ui:avatar",
+        "note": "Human users"
+      },
+      {
+        "id": "ai:ai-message-header",
+        "note": "The usual host"
+      },
+      {
+        "id": "ai:ai-agent-stack",
+        "note": "Several agents at once"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-avatar/ai-avatar.md",
+    "manifest": "design-system/components/ai/ai-avatar/ai-avatar.agent.json",
+    "implementation": "src/components/ai/ai-avatar.tsx",
+    "prompt": "design-system/components/ai/ai-avatar/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-avatar/ai-avatar.preview.html",
+    "contract": "design-system/components/ai/ai-avatar/ai-avatar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

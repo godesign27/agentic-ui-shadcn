@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-response",
+  "slug": "ai-agent-response",
+  "name": "AIAgentResponse",
+  "description": "AIAgentResponse is the foundational conversational atom — a single card that wraps an AIMessageHeader (bot avatar, agent name, timestamp) above an AIMessageBody (plain-language prose). It establishes AI authorship with no extra chrome.",
+  "intent": "The minimal unit of AI speech — header plus body in a branded card. Use this atom when the response stands alone with no follow-up actions or structured data.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-agent-response/AIAgentResponse",
+    "exports": [
+      "AIAgentResponse"
+    ],
+    "implementation": "src/components/ai/atomic/ai-agent-response/AIAgentResponse.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agentLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md'",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "dark",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandInk",
+      "AI.color.text.onAction",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Short, plain-language AI responses with no follow-up actions",
+    "Confirmation or acknowledgement messages from the agent",
+    "Streaming message placeholder before content resolves",
+    "Inline AI answers inside panels or drawers"
+  ],
+  "doNotUse": [
+    "When you need primary/secondary action buttons — use AIAgentResponseGroup with variant=\"with-actions\"",
+    "When the response includes structured insights — use AIAnalysisMessage",
+    "When the response needs source attribution or a feedback bar — use AIAgentResponseGroup with variant=\"with-footer\"",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-agent-response/ai-agent-response.md",
+    "manifest": "design-system/components/ai/atomic/ai-agent-response/ai-agent-response.agent.json",
+    "implementation": "src/components/ai/atomic/ai-agent-response/AIAgentResponse.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-agent-response/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-agent-response/ai-agent-response.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-agent-response/ai-agent-response.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

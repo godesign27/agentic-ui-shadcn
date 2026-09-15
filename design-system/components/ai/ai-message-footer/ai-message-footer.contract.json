@@ -1,0 +1,165 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-message-footer",
+  "slug": "ai-message-footer",
+  "name": "AIMessageFooter",
+  "description": "An action row for a response. Capped at three; a fourth logs a development warning and is not rendered.",
+  "intent": "Where the user says yes to what the response offered.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-message-footer",
+    "exports": [
+      "AIMessageFooter"
+    ],
+    "implementation": "src/components/ai/ai-message-footer.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "actions",
+      "type": "FooterAction[]",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Hidden",
+      "when": "`visible={false} or no actions`"
+    },
+    {
+      "name": "Visible",
+      "when": "`actions present`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [
+      "Tab between actions"
+    ],
+    "requiredAttributes": [
+      "A verb label per action"
+    ],
+    "notes": [
+      "Actions beyond the third are dropped, with a console warning in development. Do not rely on that truncation — cap it yourself."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "When a response affords a concrete action",
+    "Below ai:ai-message-body"
+  ],
+  "doNotUse": [
+    "On purely informational responses",
+    "For approval of a consequential change — use ai:ai-action, which carries the review signal",
+    "With more than three actions",
+    "More than three actions",
+    "Consequential approval without a review signal"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Three actions maximum.",
+      "Use ai:ai-action when the decision needs a review signal.",
+      "Label with verbs."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-action",
+        "note": "Approval decisions"
+      },
+      {
+        "id": "ai:ai-feedback-bar",
+        "note": "Sentiment, not actions"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Confirm",
+        "Apply"
+      ],
+      "accountability": [
+        "Attribution",
+        "Approval"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "conditional"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-message-footer/ai-message-footer.md",
+    "manifest": "design-system/components/ai/ai-message-footer/ai-message-footer.agent.json",
+    "implementation": "src/components/ai/ai-message-footer.tsx",
+    "prompt": "design-system/components/ai/ai-message-footer/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-message-footer/ai-message-footer.preview.html",
+    "contract": "design-system/components/ai/ai-message-footer/ai-message-footer.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

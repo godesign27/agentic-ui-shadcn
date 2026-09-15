@@ -1,0 +1,211 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-source-tile",
+  "slug": "ai-source-tile",
+  "name": "AISourceTile",
+  "description": "AISourceTile surfaces a single knowledge input, data source, citation, attached file, or capability dependency in detail drawers and inspector panels. It composes AIIcon (container + treatment=\"ai-contained\") so the icon tile inherits the brand container chrome correctly and avoids the manual . wrapper bug.",
+  "intent": "Tinted icon square + bold title + uppercase source caption — for knowledge inputs, citations, attached files.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-source-tile/AISourceTile",
+    "exports": [
+      "AISourceTile"
+    ],
+    "implementation": "src/components/ai/atomic/ai-source-tile/AISourceTile.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "subtitle",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "iconName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AISourceTileTone",
+      "required": false
+    },
+    {
+      "name": "trailing",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "chevron",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rank",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "selectable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "selected",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "(next: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "grouped",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AISourceTileListVariant",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "stacked"
+    },
+    {
+      "group": "variant",
+      "name": "grouped"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.text.secondary"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-source-tile/ai-source-tile.md",
+    "manifest": "design-system/components/ai/atomic/ai-source-tile/ai-source-tile.agent.json",
+    "implementation": "src/components/ai/atomic/ai-source-tile/AISourceTile.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-source-tile/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-source-tile/ai-source-tile.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-source-tile/ai-source-tile.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

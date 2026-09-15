@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:popover",
+  "slug": "popover",
+  "name": "Popover",
+  "description": "Radix Popover. Non-modal by default: the page stays interactive and scrollable. Positioned automatically with collision detection.",
+  "intent": "Contextual content anchored to a trigger, without blocking the page.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/popover",
+    "exports": [
+      "Popover",
+      "PopoverContent",
+      "PopoverTrigger"
+    ],
+    "implementation": "src/components/ui/popover.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "align",
+      "type": "see source",
+      "required": false,
+      "default": "\"center\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "sideOffset",
+      "type": "see source",
+      "required": false,
+      "default": "4",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Open",
+      "when": "`Click or Enter on trigger`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "popover"
+    ],
+    "utilities": [
+      "bg-popover",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "dialog",
+    "keyboard": [
+      "Enter or Space — open",
+      "Escape — close and return focus to trigger",
+      "Tab — move through content"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the trigger"
+    ],
+    "notes": [
+      "Non-modal: the rest of the page stays interactive. That is the difference from ui:dialog.",
+      "Content is portalled, so overflow-hidden ancestors do not clip it."
+    ],
+    "focusManagement": "Focus moves into the content on open and returns to the trigger on close.",
+    "handledByRadix": true
+  },
+  "usage": [
+    "A date picker, colour picker or small settings cluster",
+    "Supplementary detail the user opts into",
+    "Anything needing interactive content near its trigger"
+  ],
+  "doNotUse": [
+    "Content critical to the task — if the user must read it, it cannot be behind a click",
+    "A simple text hint — use ui:tooltip",
+    "A list of actions — use ui:dropdown-menu, which has menu semantics and arrow-key navigation",
+    "A form that warrants full attention — use ui:dialog",
+    "Critical-only information",
+    "Action menus",
+    "Nesting a modal dialog inside a popover"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never hide critical information in a popover.",
+      "Use ui:dropdown-menu for action lists, not this.",
+      "Use ui:tooltip for plain hints.",
+      "Trigger needs an accessible name."
+    ],
+    "related": [
+      {
+        "id": "ui:tooltip",
+        "note": "Text hints"
+      },
+      {
+        "id": "ui:dropdown-menu",
+        "note": "Actions"
+      },
+      {
+        "id": "ui:hover-card",
+        "note": "Hover-triggered preview"
+      },
+      {
+        "id": "ui:dialog",
+        "note": "Focused tasks"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/popover/popover.md",
+    "manifest": "design-system/components/ui/popover/popover.agent.json",
+    "implementation": "src/components/ui/popover.tsx",
+    "prompt": "design-system/components/ui/popover/agentic-prompt.md",
+    "preview": "design-system/components/ui/popover/popover.preview.html",
+    "contract": "design-system/components/ui/popover/popover.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

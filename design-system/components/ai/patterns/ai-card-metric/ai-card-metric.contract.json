@@ -1,0 +1,270 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-metric",
+  "slug": "ai-card-metric",
+  "name": "AICardMetric",
+  "description": "AICardMetric renders a KPI summary at basic / simple / rich / robust densities. Simple is a fast-scan tile (label + value + trend). Rich adds business context (target, source, freshness, status, secondary metric, action link). Robust adds AI insight, confidence, view-sources / view-rationale, and primary + secondary actions. Higher-density-only props are ignored with a dev warning at lower densities.",
+  "intent": "Simple optimizes for scanning. Rich adds business context. Robust adds AI insight, trust metadata, and action — all from one density prop.",
+  "status": "beta",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-metric/AICardMetric",
+    "exports": [
+      "AICardMetric",
+      "SAMPLE_CARD_METRIC_SIMPLE",
+      "SAMPLE_CARD_METRIC_RICH",
+      "SAMPLE_CARD_METRIC_ROBUST"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-metric/AICardMetric.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AICardMetricDensity",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "valueSize",
+      "type": "'sm' | 'md' | 'lg'",
+      "required": false
+    },
+    {
+      "name": "accent",
+      "type": "AIMetricAccent",
+      "required": false
+    },
+    {
+      "name": "trend",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "string | React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "freshness",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondaryMetric",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "actionLink",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "insight",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "accentBar",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "positive-trend"
+    },
+    {
+      "name": "negative-trend"
+    },
+    {
+      "name": "neutral-trend"
+    },
+    {
+      "name": "no-trend"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "clickable"
+    },
+    {
+      "name": "accent-bar"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "metric-card.accent.teal",
+      "metric-card.accent.indigo",
+      "metric-card.accent.amber",
+      "metric-card.accent.red",
+      "metric-card.accent.green",
+      "metric-card.accent.gray"
+    ],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.status.error",
+      "AI.radius.full",
+      "AI.shadow.card.default",
+      "AI.shadow.card.raised"
+    ]
+  },
+  "a11y": {
+    "role": "article | button (when onClick)",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order",
+      "Clickable cards expose aria-label from label + value"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Dashboards and KPI grids (Simple)",
+    "Generated dashboards, product overviews, review surfaces (Rich)",
+    "AI-led intelligence cards, agentic review flows, Command Center Split View (Robust)"
+  ],
+  "doNotUse": [
+    "When a single value with no trend or context is all that's needed — use a plain stat tile instead",
+    "When the metric requires multiple visualizations — use a chart pattern",
+    "Robust density when Simple is enough",
+    "Robust density when the AI is not actually interpreting the metric",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX",
+    "Do not pass robust-only props at simple/rich density (dev warning)"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-metric/ai-card-metric.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-metric/ai-card-metric.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-metric/AICardMetric.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-metric/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-metric/ai-card-metric.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-metric/ai-card-metric.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

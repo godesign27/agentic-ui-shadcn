@@ -1,0 +1,218 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-chip-memory",
+  "slug": "ai-chip-memory",
+  "name": "AIChipMemory",
+  "description": "An inline label for remembered context: using-memory, previous-context, memory-available, memory-ignored, memory-removed.",
+  "intent": "Tell the user when the system is drawing on something it learned earlier.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-chip-memory",
+    "exports": [
+      "AIChipMemory"
+    ],
+    "implementation": "src/components/ai/ai-chip-memory.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "MemoryVariant",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "using-memory",
+      "when": "Actively drawing on it now. Signal tint, because the user should notice."
+    },
+    {
+      "group": "variant",
+      "name": "previous-context",
+      "when": "Carried from earlier in the session. Neutral."
+    },
+    {
+      "group": "variant",
+      "name": "memory-available",
+      "when": "Could be used, currently is not."
+    },
+    {
+      "group": "variant",
+      "name": "memory-ignored",
+      "when": "Deliberately not used this time."
+    },
+    {
+      "group": "variant",
+      "name": "memory-removed",
+      "when": "Deleted. Struck through."
+    }
+  ],
+  "states": [
+    {
+      "name": "Using memory",
+      "when": "`variant=\"using-memory\"`"
+    },
+    {
+      "name": "Previous context",
+      "when": "`variant=\"previous-context\"`"
+    },
+    {
+      "name": "Memory available",
+      "when": "`variant=\"memory-available\"`"
+    },
+    {
+      "name": "Memory ignored",
+      "when": "`variant=\"memory-ignored\"`"
+    },
+    {
+      "name": "Memory removed",
+      "when": "`variant=\"memory-removed\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "ai-surface",
+      "border",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-signal",
+      "bg-ai-surface",
+      "bg-muted",
+      "border-ai-signal",
+      "border-ai-surface",
+      "border-border",
+      "text-ai-accent",
+      "text-ai-signal",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [
+      "label"
+    ],
+    "notes": [
+      "The sr-only prefix supplies the variant meaning, so the icon and tint are never the only signal.",
+      "memory-removed uses line-through, which is not announced by screen readers — the prefix carries it instead."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "When a response depends on remembered context",
+    "To show what memory is available but unused",
+    "To confirm that memory was ignored or removed"
+  ],
+  "doNotUse": [
+    "When no memory is in play",
+    "As a general tag — use ui:badge",
+    "To imply memory the system does not actually have",
+    "Implying memory that does not exist",
+    "Generic tagging",
+    "Hiding memory use"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Only render when memory is genuinely involved.",
+      "Name what is remembered, specifically.",
+      "Forgetting should be as visible as remembering — do not silently drop the removed and ignored variants."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-agent-work-note",
+        "note": "What the agent did with it"
+      },
+      {
+        "id": "ui:badge",
+        "note": "Generic tags"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "Adaptive",
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution",
+        "Rationale disclosure",
+        "Audit trail"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-chip-memory/ai-chip-memory.md",
+    "manifest": "design-system/components/ai/ai-chip-memory/ai-chip-memory.agent.json",
+    "implementation": "src/components/ai/ai-chip-memory.tsx",
+    "prompt": "design-system/components/ai/ai-chip-memory/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-chip-memory/ai-chip-memory.preview.html",
+    "contract": "design-system/components/ai/ai-chip-memory/ai-chip-memory.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

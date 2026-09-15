@@ -1,0 +1,184 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toggle",
+  "slug": "toggle",
+  "name": "Toggle",
+  "description": "Radix Toggle with two variants and three sizes. Semantically a pressed button, not a checkbox.",
+  "intent": "A control that stays pressed — formatting state in a toolbar, not an action.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/toggle",
+    "exports": [
+      "Toggle",
+      "toggleVariants"
+    ],
+    "implementation": "src/components/ui/toggle.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the variant values declared in toggleVariants."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the size values declared in toggleVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    },
+    {
+      "group": "variant",
+      "name": "outline"
+    }
+  ],
+  "states": [
+    {
+      "name": "Off",
+      "when": "`pressed={false}`"
+    },
+    {
+      "name": "On",
+      "when": "`pressed={true}`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard focus`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled prop`"
+    }
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "input",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-muted",
+      "border-input",
+      "ring-ring",
+      "text-accent",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "button with aria-pressed",
+    "keyboard": [
+      "Space — toggle",
+      "Enter — toggle"
+    ],
+    "requiredAttributes": [
+      "aria-label when icon-only"
+    ],
+    "notes": [
+      "Radix sets aria-pressed. Screen readers announce \"pressed\" or \"not pressed\".",
+      "Icon-only toggles always need an accessible name and usually a ui:tooltip."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Text formatting controls — bold, italic, underline",
+    "A single filter that is either applied or not",
+    "Toolbar controls where the pressed state must be visible"
+  ],
+  "doNotUse": [
+    "A settings toggle — use ui:switch, which announces on and off",
+    "One of several exclusive options — use ui:toggle-group with type=\"single\"",
+    "An action that fires and completes — use ui:button",
+    "Icon-only toggle with no accessible name",
+    "Using Toggle for an immediate setting"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Icon-only toggles require aria-label.",
+      "Use ui:switch for settings, not this.",
+      "Pair icon-only toggles with ui:tooltip."
+    ],
+    "related": [
+      {
+        "id": "ui:toggle-group",
+        "note": "Several related toggles"
+      },
+      {
+        "id": "ui:switch",
+        "note": "Settings"
+      },
+      {
+        "id": "ui:button",
+        "note": "Actions"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/toggle/toggle.md",
+    "manifest": "design-system/components/ui/toggle/toggle.agent.json",
+    "implementation": "src/components/ui/toggle.tsx",
+    "prompt": "design-system/components/ui/toggle/agentic-prompt.md",
+    "preview": "design-system/components/ui/toggle/toggle.preview.html",
+    "contract": "design-system/components/ui/toggle/toggle.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

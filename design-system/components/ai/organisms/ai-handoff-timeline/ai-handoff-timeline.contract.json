@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-handoff-timeline",
+  "slug": "ai-handoff-timeline",
+  "name": "AIHandoffTimeline",
+  "description": "The AI Handoff Timeline provides an auditable vertical timeline of every ownership transition in a multi-agent or human-in-loop workflow. Each node shows the owner, timestamp, and handoff reason. Failed handoffs display retry/reassign actions.",
+  "intent": "Auditable vertical timeline of every ownership transfer in a multi-agent or human-in-loop workflow. Each node records who held ownership, when, and why.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-handoff-timeline/AIHandoffTimeline",
+    "exports": [
+      "AIHandoffTimeline"
+    ],
+    "implementation": "src/components/ai/organisms/ai-handoff-timeline/AIHandoffTimeline.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "steps",
+      "type": "HandoffStep[]",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "HandoffDirection",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onRetry",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onReassign",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAudit",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.signal.default",
+      "AI.radius.lg",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-handoff-timeline/ai-handoff-timeline.md",
+    "manifest": "design-system/components/ai/organisms/ai-handoff-timeline/ai-handoff-timeline.agent.json",
+    "implementation": "src/components/ai/organisms/ai-handoff-timeline/AIHandoffTimeline.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-handoff-timeline/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-handoff-timeline/ai-handoff-timeline.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-handoff-timeline/ai-handoff-timeline.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

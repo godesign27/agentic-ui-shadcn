@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:accordion",
+  "slug": "accordion",
+  "name": "Accordion",
+  "description": "Radix Accordion in single or multiple mode, with an animated chevron and height transition.",
+  "intent": "Let a long page stay scannable by collapsing detail the user can open on demand.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/accordion",
+    "exports": [
+      "Accordion",
+      "AccordionContent",
+      "AccordionItem",
+      "AccordionTrigger"
+    ],
+    "implementation": "src/components/ui/accordion.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Collapsed",
+      "when": "`Not in value`"
+    },
+    {
+      "name": "Expanded",
+      "when": "`In value`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard focus on a trigger`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled on an item`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "region",
+    "keyboard": [
+      "Enter or Space — toggle",
+      "Tab — move between triggers",
+      "Arrow keys — move between triggers"
+    ],
+    "requiredAttributes": [
+      "type is required: \"single\" or \"multiple\""
+    ],
+    "notes": [
+      "Radix wraps each trigger in an h3 with a button inside, and wires aria-expanded and aria-controls.",
+      "Collapsed content is removed from the DOM, so browser find-in-page will not reach it.",
+      "type=\"single\" with collapsible={false} means one section is always open — decide which."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "FAQs",
+    "Long forms broken into optional sections",
+    "Settings groups most users will not open",
+    "Progressive disclosure of secondary detail"
+  ],
+  "doNotUse": [
+    "Content most users need — hiding it costs more than the vertical space saves",
+    "Fewer than three sections",
+    "Peer views of one object — use ui:tabs",
+    "Content that must be searchable in-page, since collapsed text is not findable by Ctrl+F",
+    "Accordion with no type",
+    "Hiding primary content"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "type is required.",
+      "Do not hide content most users need.",
+      "Three or more sections, or use something else.",
+      "Remember collapsed content is not findable by Ctrl+F."
+    ],
+    "related": [
+      {
+        "id": "ui:collapsible",
+        "note": "A single disclosure with no group behaviour"
+      },
+      {
+        "id": "ui:tabs",
+        "note": "Peer views"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/accordion/accordion.md",
+    "manifest": "design-system/components/ui/accordion/accordion.agent.json",
+    "implementation": "src/components/ui/accordion.tsx",
+    "prompt": "design-system/components/ui/accordion/agentic-prompt.md",
+    "preview": "design-system/components/ui/accordion/accordion.preview.html",
+    "contract": "design-system/components/ui/accordion/accordion.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

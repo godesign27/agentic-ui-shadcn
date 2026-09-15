@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-checkbox",
+  "slug": "ai-checkbox",
+  "name": "AICheckbox",
+  "description": "AICheckbox is the AI-styled selection control for AI cards, drawers, and settings rows. It does NOT reimplement the checkbox — it wraps the standard `DSCheckbox` (the shared DS atom, mirror `src/checkbox/`) and re-anchors the DS selection / focus / text CSS variables to their AI equivalents inside a scoped wrapper. That means the checked fill and border become AI brand indigo (#4D60E6) instead of DS teal, the focus ring uses `AI.color.border.focus`, the label uses `--ai-ds-text`, and the box corners are softened to match the AI card family — while every accessibility guarantee, the indeterminate dash, error mode, sizing, and disabled state are inherited from DS unchanged.",
+  "intent": "The DS Checkbox in AI clothing — same accessible control, AI brand indigo selection, focus ring, and label styling for AI surfaces.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-checkbox/AICheckbox",
+    "exports": [
+      "AICheckbox"
+    ],
+    "implementation": "src/components/ai/atomic/ai-checkbox/AICheckbox.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary"
+    ],
+    "utilities": [
+      "border-primary"
+    ],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.surface.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "A binary opt-in / selection on an AI surface (card, drawer, settings row)",
+    "Multi-select lists where several items can be chosen",
+    "A parent \"select all\" with an indeterminate mixed state",
+    "You want the DS checkbox behavior but AI brand styling"
+  ],
+  "doNotUse": [
+    "A single on/off mode switch — use `ai-toggle` instead",
+    "Mutually exclusive choice — use a radio group",
+    "The neutral product surface — use the standard `ds-checkbox`",
+    "A momentary action — use a button",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-checkbox/ai-checkbox.md",
+    "manifest": "design-system/components/ai/atomic/ai-checkbox/ai-checkbox.agent.json",
+    "implementation": "src/components/ai/atomic/ai-checkbox/AICheckbox.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-checkbox/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-checkbox/ai-checkbox.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-checkbox/ai-checkbox.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:label",
+  "slug": "label",
+  "name": "Label",
+  "description": "Radix Label with peer-disabled styling. The htmlFor association is what makes a form usable — not decoration.",
+  "intent": "Names a control, and makes its text a click target for it.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/label",
+    "exports": [
+      "Label"
+    ],
+    "implementation": "src/components/ui/label.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Peer disabled",
+      "when": "`Associated control is disabled`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "label",
+    "keyboard": [
+      "Clicking the label focuses or toggles the associated control"
+    ],
+    "requiredAttributes": [
+      "htmlFor matching the control id"
+    ],
+    "notes": [
+      "A label without htmlFor is decorative text and provides no accessible name.",
+      "Radix Label prevents text selection on double-click, which stops accidental selection when toggling a checkbox."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Every form control, without exception"
+  ],
+  "doNotUse": [
+    "As a general heading — use a semantic heading element",
+    "For static text that names nothing",
+    "Label with no htmlFor",
+    "Asterisk as the only required indicator"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "htmlFor is mandatory. A Label without it is a bug.",
+      "Do not use Label for headings.",
+      "Required-field markers need text or aria-required, not an asterisk alone."
+    ],
+    "related": [
+      {
+        "id": "ui:form",
+        "note": "FormLabel wires htmlFor automatically"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/label/label.md",
+    "manifest": "design-system/components/ui/label/label.agent.json",
+    "implementation": "src/components/ui/label.tsx",
+    "prompt": "design-system/components/ui/label/agentic-prompt.md",
+    "preview": "design-system/components/ui/label/label.preview.html",
+    "contract": "design-system/components/ui/label/label.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

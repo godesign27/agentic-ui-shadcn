@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:alert-dialog",
+  "slug": "alert-dialog",
+  "name": "AlertDialog",
+  "description": "Radix AlertDialog. Unlike ui:dialog it cannot be dismissed by clicking the overlay, and Cancel receives initial focus — both deliberate.",
+  "intent": "Stop the user before something irreversible happens, and make cancelling the easy path.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/alert-dialog",
+    "exports": [
+      "AlertDialog",
+      "AlertDialogAction",
+      "AlertDialogCancel",
+      "AlertDialogContent",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogHeader",
+      "AlertDialogOverlay",
+      "AlertDialogPortal",
+      "AlertDialogTitle",
+      "AlertDialogTrigger"
+    ],
+    "implementation": "src/components/ui/alert-dialog.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`open={false}`"
+    },
+    {
+      "name": "Open",
+      "when": "`Trigger activated`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "background",
+      "muted"
+    ],
+    "utilities": [
+      "bg-background",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "alertdialog",
+    "keyboard": [
+      "Escape — cancel",
+      "Tab — cycle within the trap",
+      "Enter — activate the focused control, which is Cancel by default"
+    ],
+    "requiredAttributes": [
+      "AlertDialogTitle and AlertDialogDescription are both required"
+    ],
+    "notes": [
+      "role=\"alertdialog\" makes assistive technology announce it more assertively than a plain dialog.",
+      "Never move initial focus to AlertDialogAction. A stray Enter would then destroy data.",
+      "AlertDialogAction is not destructive-styled by default — add bg-destructive text-destructive-foreground yourself."
+    ],
+    "focusManagement": "Cancel receives initial focus. Overlay clicks do not dismiss. Both differ from ui:dialog and are intentional.",
+    "handledByRadix": true
+  },
+  "usage": [
+    "Deleting something",
+    "Discarding unsaved work",
+    "Any action that cannot be undone",
+    "Any action with consequences outside the current session"
+  ],
+  "doNotUse": [
+    "Routine confirmations where the action is trivially reversible — the friction is not free",
+    "A form or any input collection — use ui:dialog",
+    "Informational messages — use ui:toast or ui:alert",
+    "So often that users stop reading it",
+    "Confirm button labelled OK or Yes",
+    "Initial focus on the confirm action",
+    "Omitting AlertDialogCancel",
+    "Collecting input inside an alert dialog"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Name the object in the title and the loss in the description.",
+      "Label the action with the verb — \"Delete project\", never \"OK\" or \"Yes\".",
+      "Never focus the confirm action by default.",
+      "Style AlertDialogAction as destructive when the action is destructive.",
+      "An AI agent must never open and confirm this flow without a human gesture."
+    ],
+    "related": [
+      {
+        "id": "ui:dialog",
+        "note": "Non-destructive tasks and forms"
+      },
+      {
+        "id": "ui:toast",
+        "note": "Reporting the outcome afterwards"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/alert-dialog/alert-dialog.md",
+    "manifest": "design-system/components/ui/alert-dialog/alert-dialog.agent.json",
+    "implementation": "src/components/ui/alert-dialog.tsx",
+    "prompt": "design-system/components/ui/alert-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ui/alert-dialog/alert-dialog.preview.html",
+    "contract": "design-system/components/ui/alert-dialog/alert-dialog.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

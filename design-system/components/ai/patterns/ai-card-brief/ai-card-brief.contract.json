@@ -1,0 +1,181 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-brief",
+  "slug": "ai-card-brief",
+  "name": "AICardBrief",
+  "description": "The AI Card Brief surfaces the structured task brief for an agent, showing goal, data sources, constraints, and expected output. It is the foundational transparency layer for AI Led experiences — always surfaced before an agent executes a consequential action.",
+  "intent": "Pre-execution brief for an agent task. Surfaces goal, data sources, constraints, and output format so humans can review and approve before the AI acts.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-brief/AICardBrief",
+    "exports": [
+      "AICardBrief"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-brief/AICardBrief.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agentName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "goal",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "sources",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "constraints",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "outputFormat",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "BriefChipStatus",
+      "required": false
+    },
+    {
+      "name": "onRun",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onEdit",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSave",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCancel",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.lg",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-brief/ai-card-brief.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-brief/ai-card-brief.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-brief/AICardBrief.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-brief/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-brief/ai-card-brief.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-brief/ai-card-brief.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,972 @@
+{
+  "generatedAt": "2026-09-15T00:18:06.044Z",
+  "brand": "Guild",
+  "catalog": [
+    {
+      "file": "design-system/patterns/agent-read-flow.json",
+      "name": "agent-read-flow",
+      "intent": "Ensure an agent loads governance context before generating any UI.",
+      "requiredComponents": [],
+      "forbiddenRules": [
+        "Do not add npm packages or build tooling"
+      ]
+    },
+    {
+      "file": "design-system/patterns/ai-approval-flow.json",
+      "name": "ai-approval-flow",
+      "intent": "Let an agent propose a consequential action and let a human accept, amend or refuse it — with the reasoning visible and the outcome auditable.",
+      "requiredComponents": [
+        "ai:ai-action"
+      ],
+      "forbiddenRules": [
+        "No auto-apply on render",
+        "No more than three visible actions",
+        "No approval flow whose primary action is pre-focused or pre-selected",
+        "No confidence value invented to fill the slot",
+        "No progress animation that does not track real work"
+      ]
+    },
+    {
+      "file": "design-system/patterns/ai-response.json",
+      "name": "ai-response",
+      "intent": "Render a single AI turn so that authorship, progress and recourse are all legible.",
+      "requiredComponents": [
+        "ai:ai-message-header",
+        "ai:ai-message-body"
+      ],
+      "forbiddenRules": [
+        "No response body without a header",
+        "No simulated typing delay on already-complete content",
+        "No feedback bar that discards input silently"
+      ]
+    },
+    {
+      "file": "design-system/patterns/destructive-action.json",
+      "name": "destructive-action",
+      "intent": "Protect users from irreversible actions.",
+      "requiredComponents": [
+        "ui:alert-dialog",
+        "ui:button"
+      ],
+      "forbiddenRules": [
+        "No single-click irreversible deletion",
+        "No tooltip or popover as the only warning surface",
+        "No destructive variant on a non-destructive action",
+        "No AI agent triggering this flow without an explicit human gesture"
+      ]
+    },
+    {
+      "file": "design-system/patterns/empty-state.json",
+      "name": "empty-state",
+      "intent": "Explain why a region is empty and offer the way out.",
+      "requiredComponents": [
+        "ui:card"
+      ],
+      "forbiddenRules": [
+        "No dead-end state with no explanation",
+        "No illustration-only empty state with no text",
+        "No generic 'No data' for a case the system can distinguish"
+      ]
+    },
+    {
+      "file": "design-system/patterns/form-submit.json",
+      "name": "form-submit",
+      "intent": "Collect and validate input with accessible error reporting.",
+      "requiredComponents": [
+        "ui:form",
+        "ui:label",
+        "ui:button"
+      ],
+      "forbiddenRules": [
+        "No placeholder used as the only label",
+        "No validation message shown only on hover",
+        "No submit button that silently no-ops while invalid"
+      ]
+    }
+  ],
+  "componentPatterns": [
+    {
+      "id": "ai:ai-agent-task-card",
+      "name": "AIAgentTaskCard",
+      "status": "experimental",
+      "intent": "Delegated task record · 4 densities · Needs Input + Health surfaced",
+      "usage": [
+        "Representing a single delegated AI task in any list, drawer, dashboard, board column, or notification",
+        "Surfacing Needs Input + suggestion resolution next to the task itself",
+        "Showing confidence + risk + sources on a consequential agentic task"
+      ],
+      "doNotUse": [
+        "For a step inside one in-flight narration — use AIToDo",
+        "For a queue of mixed work items where the durable task identity is not preserved — use AICardQueue",
+        "For a multi-task project / workstream — use AICardWorkstream",
+        "For an agent persona introduction — use AICardAgent",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-agent-task-tracker",
+      "name": "AIAgentTaskTracker",
+      "status": "experimental",
+      "intent": "Persistent task supervision · Needs Input resolution · Bidirectional UI + natural-language mutation",
+      "usage": [
+        "Users need to monitor delegated AI tasks",
+        "Multiple tasks or agents are active",
+        "Task state must persist across sessions",
+        "Users need to resolve missing input",
+        "Users need proactive task health insights",
+        "Users need to edit tasks through UI or natural language",
+        "Tasks need cross-device supervision",
+        "Human review, approval, or audit is required"
+      ],
+      "doNotUse": [
+        "A single simple task can be shown in ai-to-do",
+        "A simple status card is enough",
+        "The user only needs a notification",
+        "A full task registry is not required",
+        "The workflow does not involve agentic task delegation",
+        "The output is only a static report",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-capability-card",
+      "name": "AICapabilityCard",
+      "status": "experimental",
+      "intent": "Compact card that surfaces a specific AI capability or model skill, with origin chip + Inspect affordance.",
+      "usage": [
+        "A capability gallery or inspector needs an inventoryable view of agent skills",
+        "Capability origin (system / client / user / experimental) needs to be explicit",
+        "Capabilities need to be marked needs-review or disabled with a clear reason"
+      ],
+      "doNotUse": [
+        "A single binary toggle is enough — use ai-toggle",
+        "You need to show *what an agent did*, not *what it can do* — use ai-card-agent-reasoning",
+        "A long-form capability spec is needed — use a dedicated capability detail page",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "governance",
+          "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-agent",
+      "name": "AICardAgent",
+      "status": "experimental",
+      "intent": "Named agent entry-point — voice-first introduction with chat fallback.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-agent-reasoning",
+      "name": "AICardAgentReasoning",
+      "status": "experimental",
+      "intent": "Surface an agent's reasoning + optional optimization drivers behind an Explainability toggle.",
+      "usage": [
+        "Surfacing an agent's reasoning behind a recommendation",
+        "Showing the weighted decision drivers when Explainability is on",
+        "Inside an AI Agent Drawer, a generated dashboard, or above an AI Led workspace"
+      ],
+      "doNotUse": [
+        "For an active conversation with the agent — use the AI Command Center Dialog group",
+        "For a list of insights without an agent identity — use AIInsightList",
+        "For a step-by-step trace of agent operations — use AIReasoningTrace",
+        "When the surface needs the full agent persona introduction (capabilities, talk script) — use AICardAgent",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-analysis",
+      "name": "AICardAnalysis",
+      "status": "experimental",
+      "intent": "Compact analysis summary — metrics + insights + trust + actions in one card. Three densities cover chat, drawer, and dashboard surfaces.",
+      "usage": [
+        "AI summarizes an analysis with metrics and insights",
+        "Conversational response needs structured output",
+        "Side drawer needs compact analysis",
+        "Generated dashboard needs a summary module",
+        "Users need rationale, confidence, or risk metadata attached to an analysis"
+      ],
+      "doNotUse": [
+        "A simple text answer is enough",
+        "A full dashboard is needed",
+        "A single notification / alert is enough — use `ai-notification`",
+        "A long-form report is required",
+        "There are no metrics or structured insights",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-brief",
+      "name": "AICardBrief",
+      "status": "experimental",
+      "intent": "Pre-execution brief for an agent task. Surfaces goal, data sources, constraints, and output format so humans can review and approve before the AI acts.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-data-table",
+      "name": "AICardDataTable",
+      "status": "experimental",
+      "intent": "One reusable table block — compact in chat, contextual in a drawer, governed in a review flow. Density picks how much trust + action context comes along.",
+      "usage": [
+        "AI returns a tabular answer the user wants to scan quickly",
+        "A side drawer or dashboard module needs a compact, source-backed table",
+        "A review flow needs row- and cell-level provenance (applied / pending / suggested / estimated)",
+        "The user must approve, escalate, or apply table-level changes",
+        "Some cells need threshold, freshness, or AI-provenance treatment"
+      ],
+      "doNotUse": [
+        "A single value answer is enough — use `ai-card-metric`",
+        "A full enterprise data grid with sorting / filtering / paging is needed — use the Standard Library table",
+        "No tabular structure is required — use `ai-response-bubble` text",
+        "Long-form rationale is needed — open `ai-rationale-panel` instead of expanding the table card",
+        "The decision is final and the data will not change — use `ai-change-summary`",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-learning-feedback",
+      "name": "AICardLearningFeedback",
+      "status": "experimental",
+      "intent": "Closes the feedback loop between user signals and AI adaptation. Shows what was learned, the preference inferred, and where it has been applied — with undo.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-memory",
+      "name": "AICardMemory",
+      "status": "experimental",
+      "intent": "Recalled memory entry with provenance, date, and content. Lets users decide whether to reuse, ignore, or permanently remove a recalled context.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-metric",
+      "name": "AICardMetric",
+      "status": "beta",
+      "intent": "Simple optimizes for scanning. Rich adds business context. Robust adds AI insight, trust metadata, and action — all from one density prop.",
+      "usage": [
+        "Dashboards and KPI grids (Simple)",
+        "Generated dashboards, product overviews, review surfaces (Rich)",
+        "AI-led intelligence cards, agentic review flows, Command Center Split View (Robust)"
+      ],
+      "doNotUse": [
+        "When a single value with no trend or context is all that's needed — use a plain stat tile instead",
+        "When the metric requires multiple visualizations — use a chart pattern",
+        "Robust density when Simple is enough",
+        "Robust density when the AI is not actually interpreting the metric",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX",
+        "Do not pass robust-only props at simple/rich density (dev warning)"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-multi-agent-collaboration",
+      "name": "AICardMultiAgentCollaboration",
+      "status": "experimental",
+      "intent": "Unified view of a coordinated agent swarm working toward a shared goal. Surfaces each agent's contribution and emergent cross-agent findings.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-queue",
+      "name": "AICardQueue",
+      "status": "experimental",
+      "intent": "Live view of an agent's execution queue with per-item approval controls, progress tracking, and pause/approve-all governance actions.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-recommendation-compare",
+      "name": "AICardRecommendationCompare",
+      "status": "experimental",
+      "intent": "Side-by-side comparison of 2–3 AI-generated options with confidence scores, risk levels, expandable tradeoffs, and operator choice controls.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-trust-summary",
+      "name": "AICardTrustSummary",
+      "status": "experimental",
+      "intent": "Governance surface for AI-generated outputs. Visualises confidence level, risk, data quality, and freshness — and flags when human review is required.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-card-workstream",
+      "name": "AICardWorkstream",
+      "status": "experimental",
+      "intent": "Card-style preview of an AI workstream — surfaces just enough state for the user to decide whether to drill in.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-generated-dashboard",
+      "name": "AIGeneratedDashboard",
+      "status": "experimental",
+      "intent": "The AI-generated workspace. Scenarios, impact, and map overlays compose into a single governed output the operator can shape, approve, and submit.",
+      "usage": [
+        "A user prompt warrants a multi-zone living output rather than a single chat message",
+        "AI is proposing a strategic action with concurrent scenarios, impact, and governance",
+        "The operator needs to compare options, see telemetry, and submit / escalate from one surface",
+        "Output ownership needs explicit Draft → Submit handoff with audit trail",
+        "Map / territory overlays are part of the AI’s rationale"
+      ],
+      "doNotUse": [
+        "Short conversational responses or simple Q&A",
+        "Single-table or single-chart outputs (use the specific table / scenario placeholder)",
+        "Outputs without governance requirements",
+        "Mobile-only viewports where multi-zone layout would degrade the narrative",
+        "When a user just wants to chat with the agent without producing an artifact",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-list-landing",
+      "name": "AIListLanding",
+      "status": "experimental",
+      "intent": "Turn a product home page into an AI-led morning briefing.",
+      "usage": [],
+      "doNotUse": [
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "usage",
+          "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-objective-card",
+      "name": "AIObjectiveCard",
+      "status": "experimental",
+      "intent": "Compact card that frames a goal, constraint, operating mode, or guardrail an agent must respect.",
+      "usage": [
+        "An agent setup or inspector view needs to make the operating contract explicit",
+        "Constraints, guardrails, or autonomy boundaries need standing visibility",
+        "Goals and optimization targets need to be reviewable by humans"
+      ],
+      "doNotUse": [
+        "A free-form notes field is sufficient — use a textarea",
+        "The objective is ephemeral / per-message — use a notification",
+        "A multi-step configuration wizard is required — use a dialog with form fields",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        },
+        {
+          "field": "governance",
+          "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+        }
+      ]
+    },
+    {
+      "id": "ai:ai-profile-card",
+      "name": "AIProfileCard",
+      "status": "experimental",
+      "intent": "Entity profile · 4 densities · 3 themes · chat + drawer contexts",
+      "usage": [
+        "As an inline entity card in a chat thread when the AI surfaces a HCP profile",
+        "Inside a side drawer to show full AI context for a selected entity",
+        "In recommendation flows where AI suggests engagement with a specific person"
+      ],
+      "doNotUse": [
+        "For lists of entities — use AI List or AI Card Queue instead",
+        "When no AI-computed signals are available — use Basic density and omit AI-reserved props",
+        "Do not invent dependency atomics — use bundled canonical sources",
+        "Do not hardcode brand hex — use AI tokens",
+        "Do not require an external AI UI package for agent implementations — use co-located TSX"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "states",
+          "reason": "No states declared in manifest, source unions, or spec table."
+        },
+        {
+          "field": "tokens",
+          "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+        },
+        {
+          "field": "a11y",
+          "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+        }
+      ]
+    },
+    {
+      "id": "pattern:form-field",
+      "name": "FormField",
+      "status": "stable",
+      "intent": "A labelled control with its description and error, wired together correctly.",
+      "usage": [
+        "A standalone field outside react-hook-form",
+        "Any field needing a description, an error, or both",
+        "Satisfying the form-submit composition rule"
+      ],
+      "doNotUse": [
+        "Inside react-hook-form — use ui:form, which derives the same wiring from form state",
+        "For a control that is not a form field",
+        "When the label would be redundant with a visible heading — it is still required, so use sr-only rather than omitting it",
+        "Multiple children",
+        "Omitting the label",
+        "Asterisk as the only required indicator",
+        "Use for non-form controls"
+      ],
+      "gaps": [
+        {
+          "field": "figma",
+          "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+        },
+        {
+          "field": "codeConnect",
+          "reason": "No Code Connect mapping declared."
+        },
+        {
+          "field": "variants",
+          "reason": "No variants declared in manifest, source unions, or spec table."
+        }
+      ]
+    }
+  ]
+}

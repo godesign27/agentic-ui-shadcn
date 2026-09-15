@@ -1,0 +1,189 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-objective-card",
+  "slug": "ai-objective-card",
+  "name": "AIObjectiveCard",
+  "description": "AIObjectiveCard is a compact, reusable card for surfacing a single goal, constraint, operating mode, autonomy boundary, review requirement, optimization target, risk guardrail, knowledge input, or assumption that governs how an agent should behave for a given task or workflow. Each card leads with a bold title and a small icon, anchors the type chip at the top-right, and lists short bullet items beneath. A subtle \"View details\" link footer connects the card to its underlying configuration drawer.",
+  "intent": "Compact card that frames a goal, constraint, operating mode, or guardrail an agent must respect.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-objective-card/AIObjectiveCard",
+    "exports": [
+      "AIObjectiveCard"
+    ],
+    "implementation": "src/components/ai/patterns/ai-objective-card/AIObjectiveCard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "AIObjectiveType",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "AIObjectiveItem[]",
+      "required": false
+    },
+    {
+      "name": "iconName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "typeLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onInspect",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewFullPage",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "detail",
+      "type": "AIObjectiveDetail",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "cfg",
+      "type": "TypeCfg",
+      "required": true
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primaryHover",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "An agent setup or inspector view needs to make the operating contract explicit",
+    "Constraints, guardrails, or autonomy boundaries need standing visibility",
+    "Goals and optimization targets need to be reviewable by humans"
+  ],
+  "doNotUse": [
+    "A free-form notes field is sufficient — use a textarea",
+    "The objective is ephemeral / per-message — use a notification",
+    "A multi-step configuration wizard is required — use a dialog with form fields",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-objective-card/ai-objective-card.md",
+    "manifest": "design-system/components/ai/patterns/ai-objective-card/ai-objective-card.agent.json",
+    "implementation": "src/components/ai/patterns/ai-objective-card/AIObjectiveCard.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-objective-card/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-objective-card/ai-objective-card.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-objective-card/ai-objective-card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

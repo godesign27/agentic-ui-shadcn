@@ -1,0 +1,2621 @@
+{
+  "generatedAt": "2026-09-15T00:18:06.044Z",
+  "brand": "Guild",
+  "phase": 0,
+  "note": "Phase 0 is contracts + ingestion only. Component resolver / specialists / concierge are later.",
+  "closedWorld": {
+    "inventory": "components/COMPONENTS_INDEX.json",
+    "contracts": "contracts/component-index.json"
+  },
+  "rules": [
+    {
+      "id": "accessibility",
+      "file": "design-system/rules/accessibility.json",
+      "severity": null,
+      "rule": "accessibility.json"
+    },
+    {
+      "id": "AI_RULE_ATTRIBUTION",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "critical",
+      "rule": "Never render AI output that a reasonable user would mistake for human-authored or system-authoritative content."
+    },
+    {
+      "id": "AI_RULE_NO_SILENT_APPLY",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "critical",
+      "rule": "An aiBehavior of Apply or Approve must never fire without a human gesture. Auto-apply on render is forbidden."
+    },
+    {
+      "id": "AI_RULE_CONFIDENCE_HONESTY",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "critical",
+      "rule": "Do not render a confidence value the model did not produce. Absence of confidence is shown as absent, not as high."
+    },
+    {
+      "id": "AI_RULE_REVIEW_GATE",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "high",
+      "rule": "When requiresReview is true the primary action must be reachable only after the review signal has been displayed."
+    },
+    {
+      "id": "AI_RULE_MAX_THREE_ACTIONS",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "medium",
+      "rule": "No more than three visible actions in one ai:ai-action row. A fourth belongs in an overflow menu."
+    },
+    {
+      "id": "AI_RULE_LOADING_HONESTY",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "high",
+      "rule": "A thinking or working indicator must reflect real in-flight work. Never animate to simulate effort."
+    },
+    {
+      "id": "AI_RULE_NAMESPACE_ISOLATION",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "high",
+      "rule": "AI tokens (--ai-*) and ai:* components do not appear on standard product surfaces."
+    },
+    {
+      "id": "AI_RULE_ERROR_DISCLOSURE",
+      "file": "design-system/rules/ai-interaction.json",
+      "severity": "high",
+      "rule": "When an AI action fails, say what failed and what the human can do. Never fail silently or retry invisibly."
+    },
+    {
+      "id": "destructive-action",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "destructive-action"
+    },
+    {
+      "id": "form-submit",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "form-submit"
+    },
+    {
+      "id": "empty-state",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "empty-state"
+    },
+    {
+      "id": "ai-approval-flow",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "ai-approval-flow"
+    },
+    {
+      "id": "ai-response",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "ai-response"
+    },
+    {
+      "id": "agent-read-flow",
+      "file": "design-system/rules/composition.json",
+      "severity": null,
+      "rule": "agent-read-flow"
+    },
+    {
+      "id": "FORBID_UNINDEXED_COMPONENT",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No component, pattern, or layout not listed in components/COMPONENTS_INDEX.json"
+    },
+    {
+      "id": "FORBID_UNAPPROVED_IMPORT",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No imports outside @/components/ui/*, @/components/ai/*, @/components/patterns/*, @/components/layout/*, @/lib/*, @/hooks/*"
+    },
+    {
+      "id": "FORBID_THIRD_PARTY_UI",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No external UI libraries (Material UI, Ant Design, Chakra, Mantine, Bootstrap) without explicit approval and indexing"
+    },
+    {
+      "id": "FORBID_BESPOKE_WHEN_INDEXED",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "high",
+      "rule": "No raw custom markup when an indexed component covers the need"
+    },
+    {
+      "id": "FORBID_BASE_MUTATION",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "high",
+      "rule": "No edits to src/components/ui/* without an explicit task requirement"
+    },
+    {
+      "id": "FORBID_RAW_COLOR",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "high",
+      "rule": "No hard-coded hex, rgb, or hsl values in component classes where a semantic Tailwind token exists (bg-background, text-foreground, border-border, ...)"
+    },
+    {
+      "id": "FORBID_NEW_DEPENDENCIES",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No npm installs, package.json edits, bundler changes, or new build tooling initiated by an agent"
+    },
+    {
+      "id": "FORBID_MISSING_KEYBOARD",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No interactive control without keyboard operation and a visible focus-visible ring"
+    },
+    {
+      "id": "FORBID_COLOR_ONLY_STATUS",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "high",
+      "rule": "No status, error, or state communicated by color alone"
+    },
+    {
+      "id": "FORBID_SMALL_TEXT",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "medium",
+      "rule": "No body copy below 14px; prefer 16px"
+    },
+    {
+      "id": "FORBID_SMALL_TARGET",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "medium",
+      "rule": "No interactive target below 44x44px effective hit area"
+    },
+    {
+      "id": "FORBID_MODAL_WORKFLOW",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "medium",
+      "rule": "No modal or dialog for a primary multi-step workflow that belongs on a full page"
+    },
+    {
+      "id": "FORBID_CRITICAL_IN_TOOLTIP",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "medium",
+      "rule": "No critical-only information inside ui:tooltip or ui:hover-card"
+    },
+    {
+      "id": "FORBID_AI_IN_STANDARD_UI",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "high",
+      "rule": "No ai:* component on a surface that is not AI-generated or agent-driven"
+    },
+    {
+      "id": "FORBID_UNATTRIBUTED_AI_OUTPUT",
+      "file": "design-system/rules/forbidden.json",
+      "severity": "critical",
+      "rule": "No AI-generated content rendered without attribution, and no ai:* action with aiBehavior of Apply or Approve rendered without an accountability affordance"
+    },
+    {
+      "id": "generation",
+      "file": "design-system/rules/generation.json",
+      "severity": null,
+      "rule": "generation.json"
+    },
+    {
+      "file": "design-system/rules/naming.json",
+      "severity": null
+    },
+    {
+      "file": "design-system/rules/naming.json",
+      "severity": null
+    },
+    {
+      "file": "design-system/rules/naming.json",
+      "severity": null
+    }
+  ],
+  "byComponent": {
+    "ai:ai-accent-line": {
+      "status": "experimental",
+      "closedWorldIndexed": true,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-accordion": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-action": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest",
+          "Confirm",
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval",
+          "Audit trail",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      }
+    },
+    "ai:ai-agent-drawer": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      }
+    },
+    "ai:ai-agent-response": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-agent-response-group": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-agent-stack": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-agent-task-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Approval"
+        ]
+      }
+    },
+    "ai:ai-agent-task-tracker": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive",
+          "AI Assisted"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-agent-work-note": {
+      "status": "draft",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-analysis-insight": {
+      "status": "experimental",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-analysis-message": {
+      "status": "experimental",
+      "closedWorldIndexed": true,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-anomaly-chart": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-approval-card": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Confidence signalling",
+          "Approval",
+          "Audit trail",
+          "Reversibility"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      }
+    },
+    "ai:ai-assisted-side-drawer": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-autocomplete": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:ai-avatar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-badge": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-breadcrumbs": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": null
+    },
+    "ai:ai-button": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      }
+    },
+    "ai:ai-capability-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": null
+    },
+    "ai:ai-card-agent": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "AI Assisted"
+        ]
+      }
+    },
+    "ai:ai-card-agent-reasoning": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "AI Assisted"
+        ]
+      }
+    },
+    "ai:ai-card-analysis": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-card-brief": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-card-data-table": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Audit trail",
+          "Approval"
+        ]
+      }
+    },
+    "ai:ai-card-learning-feedback": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-card-memory": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-card-metric": {
+      "status": "beta",
+      "closedWorldIndexed": false,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-card-multi-agent-collaboration": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-card-queue": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-card-recommendation-compare": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ]
+      }
+    },
+    "ai:ai-card-trust-summary": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ]
+      }
+    },
+    "ai:ai-card-workstream": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-chart": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-chart-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-chart-shell": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-checkbox": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-chip": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-chip-brief": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-chip-handoff": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-chip-memory": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "Adaptive",
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-chip-quick": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      }
+    },
+    "ai:ai-command-center": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-command-center-dialog": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-command-center-slim": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-command-center-split-view": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail",
+          "Approval"
+        ]
+      }
+    },
+    "ai:ai-comparison-visualization": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-confidence-risk-badge": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Confidence signalling",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-control-bar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval",
+          "Audit trail",
+          "Reversibility"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      }
+    },
+    "ai:ai-dashboard-visualization-module": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-date-picker": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-dialog": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "always"
+      }
+    },
+    "ai:ai-dialog-button": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-explainable-chart": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-feedback-bar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-file-attachment": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-file-upload": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": null
+    },
+    "ai:ai-generated-dashboard": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail",
+          "Approval"
+        ]
+      }
+    },
+    "ai:ai-governed-visualization": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-guided-learning": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-handoff-timeline": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-icon": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-inline-visualization": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-input-field": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-insight-callout": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:ai-insight-list": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-launcher": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-led-navigation": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-list": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-list-item": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "AI Assisted"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-list-landing": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-loading-indicators": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-menu": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-message-body": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-message-footer": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Confirm",
+          "Apply"
+        ],
+        "accountability": [
+          "Attribution",
+          "Approval"
+        ],
+        "humanGestureRequired": true,
+        "reversible": "conditional"
+      }
+    },
+    "ai:ai-message-header": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-metric-tile": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-metric-value": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-mini-chart": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-modal-dialog": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-monitoring-visualization": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-node-connector": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": null
+    },
+    "ai:ai-notification": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-objective-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-picker": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest",
+          "Approve"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-picker-trigger": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-popup-menu": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-profile-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-progress": {
+      "status": "draft",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-queue-badge": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-radio": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-rationale-panel": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-reasoning-quote": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-reasoning-trace": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-response": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-response-footer": {
+      "status": "experimental",
+      "closedWorldIndexed": true,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Attribution",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-scenario-chart": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-search": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-segmented-control": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-skeleton": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ]
+      }
+    },
+    "ai:ai-slider": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": null
+    },
+    "ai:ai-soft-surface": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-source-accordion": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-source-tile": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-standard-card": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-status-pill": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Approval"
+        ]
+      }
+    },
+    "ai:ai-stepper": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-suggestion-compare": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-supervisor-bar": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive",
+          "AI Assisted"
+        ]
+      }
+    },
+    "ai:ai-tab": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-table": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:ai-text-link": {
+      "status": "beta",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Attribution",
+          "Rationale disclosure"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-time-picker": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:ai-to-do": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-toggle": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-toolbar": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": null
+    },
+    "ai:ai-tooltip": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": null
+    },
+    "ai:ai-trend-indicator": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-typography": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:ai-user-bubble": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:ai-visualization-card": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-visualization-module": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-visualization-panel": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 10,
+      "experienceMetadata": null
+    },
+    "ai:ai-why-this-link": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Rationale disclosure",
+          "Attribution"
+        ],
+        "humanGestureRequired": false,
+        "reversible": "not-applicable"
+      }
+    },
+    "ai:ai-workstream-control-panel": {
+      "status": "experimental",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:anomaly-threshold": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:atomic-ai-action": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest",
+          "Confirm",
+          "Apply",
+          "Approve"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail",
+          "Rationale disclosure"
+        ]
+      }
+    },
+    "ai:atomic-ai-agent-stack": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-agent-work-note": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:atomic-ai-avatar": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:atomic-ai-button": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ]
+      }
+    },
+    "ai:atomic-ai-chip-brief": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 8,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Approval",
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-chip-handoff": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-chip-memory": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:atomic-ai-chip-quick": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:atomic-ai-confidence-risk-badge": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ]
+      }
+    },
+    "ai:atomic-ai-control-bar": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Confirm"
+        ],
+        "accountability": [
+          "Approval"
+        ]
+      }
+    },
+    "ai:atomic-ai-dialog-button": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest",
+          "Confirm"
+        ]
+      }
+    },
+    "ai:atomic-ai-feedback-bar": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:atomic-ai-icon": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-launcher": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted"
+        ]
+      }
+    },
+    "ai:atomic-ai-loading-indicators": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-message-body": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:atomic-ai-message-footer": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Approve",
+          "Suggest"
+        ],
+        "accountability": [
+          "Approval"
+        ]
+      }
+    },
+    "ai:atomic-ai-message-header": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Attribution"
+        ]
+      }
+    },
+    "ai:atomic-ai-progress": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 2,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:atomic-ai-queue-badge": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 5,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail",
+          "Approval"
+        ]
+      }
+    },
+    "ai:atomic-ai-soft-surface": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 6,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Led",
+          "Adaptive"
+        ]
+      }
+    },
+    "ai:bar-chart": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:card-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:column-chart": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:conversational-ai-output-showcase": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 7,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:conversational-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:dashboard-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:ds-spinner": {
+      "status": "experimental",
+      "closedWorldIndexed": true,
+      "gapCount": 7,
+      "experienceMetadata": null
+    },
+    "ai:feed-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:governed-review-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:heat-map": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:highcharts-guidance": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:line-chart": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:map-territory": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:molecules-ai-text-link": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "accountability": [
+          "Audit trail"
+        ]
+      }
+    },
+    "ai:molecules-ai-why-this-link": {
+      "status": "active",
+      "closedWorldIndexed": false,
+      "gapCount": 4,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ]
+      }
+    },
+    "ai:monitoring-anomaly-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:organisms-ai-dialog": {
+      "status": "active",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": {
+        "experienceMode": [
+          "AI Assisted",
+          "Adaptive",
+          "AI Led"
+        ],
+        "aiBehavior": [
+          "Suggest"
+        ]
+      }
+    },
+    "ai:scenario-comparison": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:scenario-comparison-visualizations": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:sparkline": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:stacked-bar-chart": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:standard-chart-guidance": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "ai:table-chart-hybrid": {
+      "status": "draft",
+      "closedWorldIndexed": false,
+      "gapCount": 11,
+      "experienceMetadata": null
+    },
+    "layout:page-container": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "pattern:form-field": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:accordion": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:alert": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:alert-dialog": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:aspect-ratio": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:avatar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:badge": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:breadcrumb": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:button": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:calendar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:card": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:carousel": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:checkbox": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:collapsible": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:command": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:context-menu": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:dialog": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:dropdown-menu": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:form": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:hover-card": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:input": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:label": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:menubar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:navigation-menu": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:pagination": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:popover": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:progress": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:radio-group": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:resizable": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:scroll-area": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:select": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:separator": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:sheet": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:sidebar": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:skeleton": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:slider": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:sonner": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:switch": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:table": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:tabs": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:textarea": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:toast": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:toaster": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 4,
+      "experienceMetadata": null
+    },
+    "ui:toggle": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 2,
+      "experienceMetadata": null
+    },
+    "ui:toggle-group": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    },
+    "ui:tooltip": {
+      "status": "stable",
+      "closedWorldIndexed": true,
+      "gapCount": 3,
+      "experienceMetadata": null
+    }
+  }
+}

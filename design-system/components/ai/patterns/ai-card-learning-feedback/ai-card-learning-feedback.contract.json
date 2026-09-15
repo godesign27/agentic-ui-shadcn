@@ -1,0 +1,162 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-learning-feedback",
+  "slug": "ai-card-learning-feedback",
+  "name": "AICardLearningFeedback",
+  "description": "The AI Card Learning Feedback closes the feedback loop between user signals and AI adaptation. It surfaces what feedback was received, the preference inferred from it, and where that preference has been applied — giving users visibility and control over how the AI learns from them.",
+  "intent": "Closes the feedback loop between user signals and AI adaptation. Shows what was learned, the preference inferred, and where it has been applied — with undo.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-learning-feedback/AICardLearningFeedback",
+    "exports": [
+      "AICardLearningFeedback"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-learning-feedback/AICardLearningFeedback.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "feedback",
+      "type": "FeedbackSentiment",
+      "required": false
+    },
+    {
+      "name": "preference",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "appliedAreas",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onUndo",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewHistory",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onEditPreferences",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.border.default",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSurface",
+      "AI.radius.lg",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-learning-feedback/ai-card-learning-feedback.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-learning-feedback/ai-card-learning-feedback.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-learning-feedback/AICardLearningFeedback.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-learning-feedback/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-learning-feedback/ai-card-learning-feedback.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-learning-feedback/ai-card-learning-feedback.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

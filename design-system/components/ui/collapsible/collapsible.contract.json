@@ -1,0 +1,136 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:collapsible",
+  "slug": "collapsible",
+  "name": "Collapsible",
+  "description": "Radix Collapsible, unstyled. Twelve lines: three re-exports with no classes applied.",
+  "intent": "One thing that opens and closes, with no group to coordinate.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/collapsible",
+    "exports": [
+      "Collapsible",
+      "CollapsibleContent",
+      "CollapsibleTrigger"
+    ],
+    "implementation": "src/components/ui/collapsible.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`open={false}`"
+    },
+    {
+      "name": "Open",
+      "when": "`open={true}`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "button with aria-expanded",
+    "keyboard": [
+      "Enter or Space — toggle"
+    ],
+    "requiredAttributes": [
+      "A meaningful trigger label that reflects the action"
+    ],
+    "notes": [
+      "Radix wires aria-expanded and aria-controls.",
+      "This component applies no styling at all. The chevron, the animation and the spacing are all yours.",
+      "The trigger label should say what will be revealed — \"Advanced options\", not \"More\"."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "A single show-more region",
+    "Advanced options below a form",
+    "A sidebar section that expands"
+  ],
+  "doNotUse": [
+    "Several related sections — use ui:accordion, which handles the group and the heading semantics",
+    "Content that should be visible by default",
+    "Using Collapsible for a group where Accordion belongs"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Bring your own styling — nothing is applied.",
+      "Use ui:accordion for grouped sections.",
+      "Trigger labels name the content, not the gesture."
+    ],
+    "related": [
+      {
+        "id": "ui:accordion",
+        "note": "Grouped, styled, with heading semantics"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/collapsible/collapsible.md",
+    "manifest": "design-system/components/ui/collapsible/collapsible.agent.json",
+    "implementation": "src/components/ui/collapsible.tsx",
+    "prompt": "design-system/components/ui/collapsible/agentic-prompt.md",
+    "preview": "design-system/components/ui/collapsible/collapsible.preview.html",
+    "contract": "design-system/components/ui/collapsible/collapsible.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

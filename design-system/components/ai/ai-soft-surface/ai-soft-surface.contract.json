@@ -1,0 +1,285 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-soft-surface",
+  "slug": "ai-soft-surface",
+  "name": "AISoftSurface",
+  "description": "A tinted container using the --ai-surface scale. The primary non-textual attribution affordance for a region of AI output.",
+  "intent": "The wash that says everything inside this boundary was machine-generated.",
+  "status": "beta",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-soft-surface",
+    "exports": [
+      "AISoftSurface",
+      "aiSoftSurfaceVariants"
+    ],
+    "implementation": "src/components/ai/ai-soft-surface.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "tone",
+      "type": "\"ai\" | \"neutral\" | \"mixed\"",
+      "required": false,
+      "default": "\"ai\"",
+      "hint": "One of the tone values declared in aiSoftSurfaceVariants."
+    },
+    {
+      "name": "intensity",
+      "type": "\"subtle\" | \"medium\" | \"expressive\"",
+      "required": false,
+      "default": "\"subtle\"",
+      "hint": "One of the intensity values declared in aiSoftSurfaceVariants."
+    },
+    {
+      "name": "elevation",
+      "type": "\"flat\" | \"soft\"",
+      "required": false,
+      "default": "\"flat\"",
+      "hint": "One of the elevation values declared in aiSoftSurfaceVariants."
+    },
+    {
+      "name": "bordered",
+      "type": "\"true\" | \"false\"",
+      "required": false,
+      "hint": "One of the bordered values declared in aiSoftSurfaceVariants."
+    },
+    {
+      "name": "radius",
+      "type": "\"none\" | \"md\" | \"lg\" | \"full\"",
+      "required": false,
+      "default": "\"lg\"",
+      "hint": "One of the radius values declared in aiSoftSurfaceVariants."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "ai",
+      "when": "The default. Blue wash, the AI identity."
+    },
+    {
+      "group": "variant",
+      "name": "neutral",
+      "when": "Low emphasis, for a secondary AI region on a busy page."
+    },
+    {
+      "group": "variant",
+      "name": "mixed",
+      "when": "Blue into signal — use when the region contains something awaiting review."
+    },
+    {
+      "group": "tone",
+      "name": "ai"
+    },
+    {
+      "group": "tone",
+      "name": "neutral"
+    },
+    {
+      "group": "tone",
+      "name": "mixed"
+    },
+    {
+      "group": "intensity",
+      "name": "subtle"
+    },
+    {
+      "group": "intensity",
+      "name": "medium"
+    },
+    {
+      "group": "intensity",
+      "name": "expressive"
+    },
+    {
+      "group": "elevation",
+      "name": "flat"
+    },
+    {
+      "group": "elevation",
+      "name": "soft"
+    },
+    {
+      "group": "bordered",
+      "name": "true"
+    },
+    {
+      "group": "bordered",
+      "name": "false"
+    },
+    {
+      "group": "radius",
+      "name": "none"
+    },
+    {
+      "group": "radius",
+      "name": "md"
+    },
+    {
+      "group": "radius",
+      "name": "lg"
+    },
+    {
+      "group": "radius",
+      "name": "full"
+    }
+  ],
+  "states": [
+    {
+      "name": "Subtle",
+      "when": "`intensity=\"subtle\"`"
+    },
+    {
+      "name": "Medium",
+      "when": "`intensity=\"medium\"`"
+    },
+    {
+      "name": "Expressive",
+      "when": "`intensity=\"expressive\"`"
+    },
+    {
+      "name": "Raised",
+      "when": "`elevation=\"soft\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "ai-surface",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-surface",
+      "bg-muted",
+      "border-ai-surface",
+      "from-ai-surface",
+      "from-muted",
+      "to-ai-accent",
+      "to-ai-signal",
+      "to-muted",
+      "via-ai-accent",
+      "via-ai-surface"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "A tinted background is invisible to screen readers. The visual wash is NOT sufficient attribution on its own.",
+      "Always pair it with text attribution — ai:ai-message-header, or an aria-label on the region.",
+      "Contrast: --ai-surface is deliberately close to the page background, so any text inside still needs a foreground token, never a lightened one."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Wrapping an AI response, recommendation or generated draft",
+    "Marking an agent-driven region inside an otherwise human-authored page",
+    "As the canvas for an ai-approval-flow"
+  ],
+  "doNotUse": [
+    "As a general card — use ui:card",
+    "Decoratively, for visual interest",
+    "Around human-authored content, ever — it would falsely attribute it to a machine",
+    "Nested inside another soft surface; one boundary per region",
+    "Wrapping human-authored content",
+    "Decorative use",
+    "Nested soft surfaces",
+    "As a replacement for ui:card"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never wrap human-authored content in it.",
+      "The wash is not attribution by itself — pair it with ai:ai-message-header or a labelled region.",
+      "One surface per region. Do not nest.",
+      "Reserve expressive intensity for hero surfaces."
+    ],
+    "related": [
+      {
+        "id": "ui:card",
+        "note": "Human-authored containers"
+      },
+      {
+        "id": "ai:ai-message-header",
+        "note": "The text attribution it needs"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-soft-surface/ai-soft-surface.md",
+    "manifest": "design-system/components/ai/ai-soft-surface/ai-soft-surface.agent.json",
+    "implementation": "src/components/ai/ai-soft-surface.tsx",
+    "prompt": "design-system/components/ai/ai-soft-surface/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-soft-surface/ai-soft-surface.preview.html",
+    "contract": "design-system/components/ai/ai-soft-surface/ai-soft-surface.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

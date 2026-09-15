@@ -1,0 +1,207 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-picker",
+  "slug": "ai-picker",
+  "name": "AIPicker",
+  "description": "The AI Picker wraps the ai-picker-trigger atom with an AI suggestion layer and a calendar/time popover. It consolidates four picker types (date, month, month-range, time) and four density variants that progressively add AI signals, rationale, and governance controls. Core principle: AI suggests, human decides — the suggestion is always shown for review and never auto-applied. The date type reuses DSDatePickerInline; month, month-range, and time use brand-styled inline panels.",
+  "intent": "AI suggests a date or time from data; the human reviews and decides. Never auto-applies. Scales from a passive chip to a full governance panel by density.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-picker/AIPicker",
+    "exports": [
+      "AIPicker"
+    ],
+    "implementation": "src/components/ai/molecules/ai-picker/AIPicker.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "AIPickerType",
+      "required": true
+    },
+    {
+      "name": "density",
+      "type": "AIPickerDensity",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "suggestion",
+      "type": "AISuggestion",
+      "required": false
+    },
+    {
+      "name": "onAccept",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "onReject",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCustomize",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "'default' | 'error'",
+      "required": false
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.surface.subtle",
+      "AI.color.text.onAction",
+      "AI.color.text.secondary",
+      "AI.radius.full",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest",
+        "Approve"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-picker/ai-picker.md",
+    "manifest": "design-system/components/ai/molecules/ai-picker/ai-picker.agent.json",
+    "implementation": "src/components/ai/molecules/ai-picker/AIPicker.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-picker/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-picker/ai-picker.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-picker/ai-picker.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

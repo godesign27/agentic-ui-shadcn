@@ -1,0 +1,264 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-text-link",
+  "slug": "ai-text-link",
+  "name": "AITextLink",
+  "description": "An explainability link with six variants and three tones. Renders an anchor when href is given and a button otherwise, so disclosure actions are announced correctly.",
+  "intent": "An inline link inside AI prose whose label stands on its own.",
+  "status": "beta",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-text-link",
+    "exports": [
+      "AITextLink"
+    ],
+    "implementation": "src/components/ai/ai-text-link.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "icon",
+      "type": "React.ComponentType<object>",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "variant",
+      "type": "AITextLinkVariant",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "tone",
+      "type": "AITextLinkTone",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "href",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onClick",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "text",
+      "when": "Label alone."
+    },
+    {
+      "group": "variant",
+      "name": "icon-leading",
+      "when": "Icon plus label. The common case."
+    },
+    {
+      "group": "variant",
+      "name": "chevron",
+      "when": "Label plus chevron — expands inline content."
+    },
+    {
+      "group": "variant",
+      "name": "icon-chevron",
+      "when": "Full anatomy for a disclosure trigger."
+    },
+    {
+      "group": "variant",
+      "name": "external",
+      "when": "Opens a source record in a new tab."
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Expanded",
+      "when": "`expanded`"
+    },
+    {
+      "name": "Loading",
+      "when": "`loading`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "foreground",
+      "muted"
+    ],
+    "utilities": [
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-signal",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "link or button",
+    "keyboard": [
+      "Enter — activate",
+      "Space — activate when rendered as a button"
+    ],
+    "requiredAttributes": [
+      "label",
+      "disabledReason when disabled"
+    ],
+    "notes": [
+      "No href means it renders a button, because a disclosure action is not navigation. This is what makes Space work and keeps it out of the link list.",
+      "External links carry rel=\"noreferrer noopener\" and an sr-only \"opens in a new tab\".",
+      "Disabling without disabledReason logs a development warning — removing an affordance without explaining why is a dead end.",
+      "The attention tone is reserved for escalation, approval and staleness. Do not use it for emphasis."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Citations and source links inside AI prose",
+    "Inline disclosure triggers",
+    "Opening an audit record in a new tab"
+  ],
+  "doNotUse": [
+    "The standard rationale entry — use ai:ai-why-this-link, which has the right defaults",
+    "General product links — use a plain anchor",
+    "Disabled without a reason",
+    "Icon-only meaning",
+    "Disabled with no reason",
+    "Attention tone for emphasis"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "The label must stand alone — an icon is never the only signal of purpose.",
+      "Always pair disabled with disabledReason.",
+      "Reserve the attention tone for escalation, approval and staleness.",
+      "Use ai:ai-why-this-link for the standard rationale entry."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-why-this-link",
+        "note": "The standard rationale entry"
+      },
+      {
+        "id": "ui:button",
+        "note": "variant=\"link\" for standard links"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution",
+        "Rationale disclosure"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-text-link/ai-text-link.md",
+    "manifest": "design-system/components/ai/ai-text-link/ai-text-link.agent.json",
+    "implementation": "src/components/ai/ai-text-link.tsx",
+    "prompt": "design-system/components/ai/ai-text-link/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-text-link/ai-text-link.preview.html",
+    "contract": "design-system/components/ai/ai-text-link/ai-text-link.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

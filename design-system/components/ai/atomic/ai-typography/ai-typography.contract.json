@@ -1,0 +1,126 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-typography",
+  "slug": "ai-typography",
+  "name": "AITypography",
+  "description": "standard typography is the foundation atom used by every text-bearing AI component. Open Sans at 16px root, semantic HTML first (`h1`–`h6`, `p`, `a`) or utility classes (`.ui-body`, `.ui-overline`, etc.),",
+  "intent": "AI surfaces inherit the Open Sans type system. Same scale, same tokens, same `.ui-master-style` scope as the standard library — never invent fonts or hex sizes in AI components.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-typography/AITypography",
+    "exports": [
+      "AITypography"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Apply .ui-master-style at the AI surface root (or configured scope)",
+    "Use semantic HTML first — h1–h6 / p / a / ul / ol — and reach for utility classes only when the visual style differs from the semantics",
+    "Maintain logical heading order (h1 → h2 → …) for accessibility",
+    "Use the header block (overline + heading + subtitle) as the standard AI page/section title composition",
+    "Use semantic text color tokens for helper, disabled, and caption text",
+    "Prefer the new nested list pattern with .ui-padding-0.ui-list-style-type-none"
+  ],
+  "doNotUse": [
+    "Hardcode Open Sans or pixel font sizes in AI component LESS/CSS",
+    "Skip heading levels purely for sizing — use the type-scale classes on the correct element instead",
+    "Static-class hover, visited, or focus link variants — link states are CSS-only in production",
+    "Use deprecated nested list pattern (nested ul without the list-style-none wrapper)",
+    "Rely on uppercase overline as the only signal of meaning — pair with semantic structure",
+    "Use \"click here\" or other non-descriptive link text"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-typography/ai-typography.md",
+    "manifest": "design-system/components/ai/atomic/ai-typography/ai-typography.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-typography/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-typography/ai-typography.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-typography/ai-typography.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-message-body",
+  "slug": "ai-message-body",
+  "name": "AIMessageBody",
+  "description": "The text body of an AI response. Three sizes. Sets a polite live region while streaming so assistive technology follows the update.",
+  "intent": "AI prose, kept plain so the interface does not lend it authority the model has not earned.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-message-body",
+    "exports": [
+      "AIMessageBody",
+      "aiMessageBodyVariants"
+    ],
+    "implementation": "src/components/ai/ai-message-body.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "default": "\"md\"",
+      "hint": "See sizeGuidance in the mirror spec."
+    },
+    {
+      "name": "streaming",
+      "type": "boolean",
+      "required": false,
+      "hint": "AI response prose. Deliberately plain. Headings and bold inside a response make the model sound more authoritative than it is; keep emphasis for the surrounding UI. / const aiMessageBodyVariants = cva(\"text-foreground [&_p+p]:mt-3\", { variants: { size: { sm: \"text-sm leading-6\", md: \"text-base leading-7\", lg: \"text-lg leading-8\", }, }, defaultVariants: { size: \"md\" }, }) export interface AIMessageBodyProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof aiMessageBodyVariants> { /** Set while the response is still arriving so assistive tech announces the update."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Static",
+      "when": "`streaming={false}`"
+    },
+    {
+      "name": "Streaming",
+      "when": "`streaming={true}`"
+    }
+  ],
+  "sizes": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [
+      "foreground"
+    ],
+    "utilities": [
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "Set streaming only while text is genuinely arriving. Leaving it on makes every later change announce.",
+      "Announce completion too — a live region that stops updating tells the user nothing.",
+      "Headings and bold inside a response make the model sound more certain than it is. Keep emphasis in the surrounding UI."
+    ],
+    "liveRegion": "aria-live=\"polite\" while streaming",
+    "handledByRadix": false
+  },
+  "usage": [
+    "Any AI-generated prose",
+    "Streaming responses, with streaming set while text is arriving"
+  ],
+  "doNotUse": [
+    "Human-authored content",
+    "Structured output like tables — use ui:table inside the region instead",
+    "Without a preceding ai:ai-message-header",
+    "A body with no header",
+    "Simulated typing delay on already-complete text"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Always preceded by ai:ai-message-header.",
+      "Set streaming only while text is arriving, and announce completion.",
+      "Keep formatting plain."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-message-header",
+        "note": "Required above it"
+      },
+      {
+        "id": "ai:ai-message-footer",
+        "note": "Actions below it"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-message-body/ai-message-body.md",
+    "manifest": "design-system/components/ai/ai-message-body/ai-message-body.agent.json",
+    "implementation": "src/components/ai/ai-message-body.tsx",
+    "prompt": "design-system/components/ai/ai-message-body/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-message-body/ai-message-body.preview.html",
+    "contract": "design-system/components/ai/ai-message-body/ai-message-body.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

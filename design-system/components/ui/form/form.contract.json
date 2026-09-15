@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:form",
+  "slug": "form",
+  "name": "Form",
+  "description": "A react-hook-form integration layer. FormField provides context; FormItem generates ids; FormControl wires aria-describedby and aria-invalid; FormMessage renders the error.",
+  "intent": "Wires a control to its label, description and error message so the accessibility relationships are correct by construction.",
+  "status": "stable",
+  "layer": "groups",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/form",
+    "exports": [
+      "Form",
+      "FormControl",
+      "FormDescription",
+      "FormField",
+      "FormItem",
+      "FormLabel",
+      "FormMessage",
+      "useFormField"
+    ],
+    "implementation": "src/components/ui/form.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Pristine",
+      "when": "`Untouched`"
+    },
+    {
+      "name": "Invalid",
+      "when": "`Validation failed`"
+    },
+    {
+      "name": "Submitting",
+      "when": "`formState.isSubmitting`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "destructive",
+      "muted"
+    ],
+    "utilities": [
+      "text-destructive",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "form",
+    "keyboard": [
+      "Tab through fields",
+      "Enter submits from a single-line input"
+    ],
+    "requiredAttributes": [
+      "Generated automatically: id, aria-describedby, aria-invalid"
+    ],
+    "notes": [
+      "This is the reason to use ui:form at all — the ARIA wiring is generated, not hand-written, so it cannot drift.",
+      "FormControl must wrap exactly one element. Two children breaks the Slot.",
+      "On failed submit, move focus to the first invalid field. react-hook-form does not do this for you."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Any form with validation",
+    "Any form of more than two fields",
+    "Whenever error messages must be announced"
+  ],
+  "doNotUse": [
+    "A single search box with no validation",
+    "A settings surface where each control applies immediately",
+    "FormControl with multiple children",
+    "Parts used outside their required parent",
+    "Manual aria-invalid on a wrapped control"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "The five parts are inseparable. Do not use FormLabel outside FormItem.",
+      "FormControl wraps exactly one control.",
+      "Never hand-write aria-describedby inside a form — you will fight the generated value.",
+      "Move focus to the first invalid field after a failed submit.",
+      "One submit button."
+    ],
+    "related": [
+      {
+        "id": "ui:label",
+        "note": "Standalone labelling outside a form"
+      },
+      {
+        "id": "ui:input",
+        "note": "The usual wrapped control"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/form/form.md",
+    "manifest": "design-system/components/ui/form/form.agent.json",
+    "implementation": "src/components/ui/form.tsx",
+    "prompt": "design-system/components/ui/form/agentic-prompt.md",
+    "preview": "design-system/components/ui/form/form.preview.html",
+    "contract": "design-system/components/ui/form/form.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

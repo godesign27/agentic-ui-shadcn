@@ -1,0 +1,272 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-action",
+  "slug": "ai-action",
+  "name": "AIAction",
+  "description": "The compact action row closing an AI recommendation, assignment, approval or next-best-action. At most three choices, an optional review signal, and loading, complete, disabled and error states.",
+  "intent": "The decision point at the end of every AI recommendation. Primary confirms, secondary reviews, tertiary dismisses.",
+  "status": "beta",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-action",
+    "exports": [
+      "AIAction",
+      "aiActionVariants"
+    ],
+    "implementation": "src/components/ai/ai-action.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "layout",
+      "type": "\"inline\" | \"stacked\"",
+      "required": false,
+      "default": "\"inline\"",
+      "hint": "One of the layout values declared in aiActionVariants."
+    },
+    {
+      "name": "primaryLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "secondaryLabel",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "tertiaryLabel",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "status",
+      "type": "AIActionStatus",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "requiresReview",
+      "type": "boolean",
+      "required": false,
+      "hint": "The decision point at the end of an AI recommendation. Primary confirms, secondary reviews, tertiary dismisses. At most three, because a fourth turns a decision into a menu. ACCOUNTABILITY: nothing here fires without a human gesture. When requiresReview is set, the review signal renders before the action row so the user sees the warning before the button. Auto-applying on mount is a critical violation — see design-system/rules/ai-interaction.json. / const aiActionVariants = cva(\"flex gap-2\", { variants: { layout: { inline: \"flex-row flex-wrap items-center\", stacked: \"flex-col items-stretch\", }, }, defaultVariants: { layout: \"inline\" }, }) type AIActionStatus = \"default\" | \"loading\" | \"complete\" | \"disabled\" | \"error\" export interface AIActionProps extends Omit<React.HTMLAttributes<HTMLDivElement>, \"onError\">, VariantProps<typeof aiActionVariants> { primaryLabel: string secondaryLabel?: string tertiaryLabel?: string size?: \"sm\" | \"md\" | \"lg\" status?: AIActionStatus /** Renders the review signal above the row. Use when the action needs scrutiny before it fires."
+    },
+    {
+      "name": "reviewLabel",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onPrimary",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onSecondary",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onTertiary",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "layout",
+      "name": "inline"
+    },
+    {
+      "group": "layout",
+      "name": "stacked"
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`status=\"default\"`"
+    },
+    {
+      "name": "Loading",
+      "when": "`status=\"loading\"`"
+    },
+    {
+      "name": "Complete",
+      "when": "`status=\"complete\"`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`status=\"disabled\"`"
+    },
+    {
+      "name": "Error",
+      "when": "`status=\"error\"`"
+    },
+    {
+      "name": "Requires review",
+      "when": "`requiresReview`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-signal"
+    ],
+    "utilities": [
+      "bg-ai-signal",
+      "border-ai-signal",
+      "text-ai-signal"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Tab between actions",
+      "Enter or Space to activate"
+    ],
+    "requiredAttributes": [
+      "A verb label on every action"
+    ],
+    "notes": [
+      "The review signal precedes the buttons in DOM order, so a screen-reader user meets the warning before the action.",
+      "Nothing here fires on mount. A human gesture is required — auto-applying is a critical violation.",
+      "Secondary and tertiary disable during loading so the user cannot change the decision while it is executing."
+    ],
+    "liveRegion": "The review pill is role=\"status\" — a standing condition, not an interruption.",
+    "handledByRadix": false
+  },
+  "usage": [
+    "At the end of an AI recommendation or approval card",
+    "After a generated draft — use draft, edit draft, regenerate",
+    "When an agent needs a human to confirm before it proceeds",
+    "In AI Assisted panels where the human stays in control"
+  ],
+  "doNotUse": [
+    "Standard product actions that are not AI-generated",
+    "As a generic button group",
+    "With more than three visible actions",
+    "When no decision is actually being requested",
+    "A generic button replacement",
+    "More than three visible actions",
+    "Rendering when no decision is being requested",
+    "Auto-applying on mount"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never auto-fire. A human gesture is always required.",
+      "Three visible actions maximum. A fourth belongs in an overflow menu.",
+      "When requiresReview is set, the signal must render before the row — do not reorder it.",
+      "Label with verbs naming the outcome: \"Approve territory change\", not \"OK\".",
+      "Pair with ai:ai-confidence-risk-badge and ai:ai-why-this-link so the user can judge before deciding."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-button",
+        "note": "The individual button"
+      },
+      {
+        "id": "ai:ai-confidence-risk-badge",
+        "note": "Show certainty before asking for a decision"
+      },
+      {
+        "id": "ai:ai-why-this-link",
+        "note": "Show reasoning before asking for a decision"
+      },
+      {
+        "id": "ui:alert-dialog",
+        "note": "Destructive confirmations still need one"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest",
+        "Confirm",
+        "Apply",
+        "Approve"
+      ],
+      "accountability": [
+        "Attribution",
+        "Approval",
+        "Audit trail",
+        "Rationale disclosure"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "conditional"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-action/ai-action.md",
+    "manifest": "design-system/components/ai/ai-action/ai-action.agent.json",
+    "implementation": "src/components/ai/ai-action.tsx",
+    "prompt": "design-system/components/ai/ai-action/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-action/ai-action.preview.html",
+    "contract": "design-system/components/ai/ai-action/ai-action.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

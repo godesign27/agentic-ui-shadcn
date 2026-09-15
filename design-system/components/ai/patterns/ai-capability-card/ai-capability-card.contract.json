@@ -1,0 +1,194 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-capability-card",
+  "slug": "ai-capability-card",
+  "name": "AICapabilityCard",
+  "description": "AICapabilityCard is a compact, reusable card for representing a single AI capability, model skill, or agent behavior. Each card pairs an origin chip (System Defined / Client Extended / User Configured / Experimental) with a bold title, a short description, and a layers footnote. Clicking the card opens a detail drawer with the capability's reasoning summary, confidence + trend metrics, autonomy boundaries, and knowledge inputs — making the agent's skills inventoryable and reviewable. A \"View Full Details\" footer link deep-links to a standalone capability page when configured.",
+  "intent": "Compact card that surfaces a specific AI capability or model skill, with origin chip + Inspect affordance.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-capability-card/AICapabilityCard",
+    "exports": [
+      "AICapabilityCard"
+    ],
+    "implementation": "src/components/ai/patterns/ai-capability-card/AICapabilityCard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "origin",
+      "type": "AICapabilityOrigin",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AICapabilityStatus",
+      "required": false
+    },
+    {
+      "name": "iconName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "supportingNote",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onInspect",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewFullPage",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "detail",
+      "type": "AICapabilityDetail",
+      "required": false
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "active"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primaryHover",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "A capability gallery or inspector needs an inventoryable view of agent skills",
+    "Capability origin (system / client / user / experimental) needs to be explicit",
+    "Capabilities need to be marked needs-review or disabled with a clear reason"
+  ],
+  "doNotUse": [
+    "A single binary toggle is enough — use ai-toggle",
+    "You need to show *what an agent did*, not *what it can do* — use ai-card-agent-reasoning",
+    "A long-form capability spec is needed — use a dedicated capability detail page",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-capability-card/ai-capability-card.md",
+    "manifest": "design-system/components/ai/patterns/ai-capability-card/ai-capability-card.agent.json",
+    "implementation": "src/components/ai/patterns/ai-capability-card/AICapabilityCard.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-capability-card/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-capability-card/ai-capability-card.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-capability-card/ai-capability-card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

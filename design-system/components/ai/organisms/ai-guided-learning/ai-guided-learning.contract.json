@@ -1,0 +1,268 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-guided-learning",
+  "slug": "ai-guided-learning",
+  "name": "AIGuidedLearning",
+  "description": "AI Guided Learning is a contextual learning component that introduces new AI features, teaches workflows, and guides users through product changes step by step. It uses an inverse/reverse color treatment to visually stand apart from the surrounding UI — dark on light, light on dark. The component supports five variants (announcement, guided-step, guided-step-media, coach-mark, completion) and four density levels (Basic, Simple, Rich, Robust).",
+  "intent": "Inverse-surface guided learning — feature announcements, product tours, coach marks, and step-by-step workflows.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-guided-learning/AIGuidedLearning",
+    "exports": [
+      "AIGuidedLearning"
+    ],
+    "implementation": "src/components/ai/organisms/ai-guided-learning/AIGuidedLearning.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "GuidedLearningVariant",
+      "required": false
+    },
+    {
+      "name": "density",
+      "type": "GuidedLearningDensity",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "totalSteps",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "primaryActionLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondaryActionLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showClose",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showSkip",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showCaret",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "caretSide",
+      "type": "GuidedLearningCaretSide",
+      "required": false
+    },
+    {
+      "name": "caretAlign",
+      "type": "GuidedLearningCaretAlign",
+      "required": false
+    },
+    {
+      "name": "caretOffset",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "mediaType",
+      "type": "'image' | 'video' | 'none'",
+      "required": false
+    },
+    {
+      "name": "mediaSrc",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mediaAlt",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mediaCaption",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showDoNotShow",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "'default' | 'completed' | 'loading-media' | 'media-unavailable'",
+      "required": false
+    },
+    {
+      "name": "maxWidth",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSkip",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onNext",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onBack",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onPrimaryAction",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSecondaryAction",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "announcement"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "border",
+      "muted"
+    ],
+    "utilities": [
+      "caret-border",
+      "text-accent",
+      "text-muted"
+    ],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryHover",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.decorative.washStrong",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-guided-learning/ai-guided-learning.md",
+    "manifest": "design-system/components/ai/organisms/ai-guided-learning/ai-guided-learning.agent.json",
+    "implementation": "src/components/ai/organisms/ai-guided-learning/AIGuidedLearning.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-guided-learning/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-guided-learning/ai-guided-learning.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-guided-learning/ai-guided-learning.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

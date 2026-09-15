@@ -1,0 +1,239 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:molecules-ai-text-link",
+  "slug": "ai-text-link",
+  "name": "AITextLink",
+  "description": "AITextLink is the canonical inline link for AI explainability surfaces. It supports six variants: text-only, icon-leading, accordion chevron, icon + chevron, external navigation, and attention (orange",
+  "intent": "Not a generic product link. The AI-specific text link treatment used when an AI output needs to expose its reasoning, sources, assumptions, or governance information.",
+  "status": "draft",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/text-link/AITextLink",
+    "exports": [
+      "AITextLink",
+      "AITextLinkGroup"
+    ],
+    "implementation": "src/components/ai/molecules/ai-text-link/AITextLink.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "leadingIcon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "trailingIcon",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showChevron",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AITextLinkVariant",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AITextLinkTone",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AITextLinkSize",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "external",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "(expanded: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "wrap",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "text"
+    }
+  ],
+  "states": [],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primaryHover",
+      "AI.color.brand",
+      "AI.color.brandStrong"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "In response footers for \"Why this?\", \"View sources\", \"View rationale\" explainability actions",
+    "When an accordion link should expand inline assumptions or disclosure content",
+    "For external navigation to audit trails, source records, or governance pages (`variant=\"external\"`)",
+    "Inside `AITextLinkGroup` for a row of related transparency links"
+  ],
+  "doNotUse": [
+    "For primary decisions — use ai-action or ai-button instead",
+    "Orange attention tone for informational links — reserve for escalation, approval, stale data",
+    "Generic product navigation unrelated to AI explainability"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-text-link/ai-text-link.md",
+    "manifest": "design-system/components/ai/molecules/ai-text-link/ai-text-link.agent.json",
+    "implementation": "src/components/ai/molecules/ai-text-link/AITextLink.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-text-link/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-text-link/ai-text-link.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-text-link/ai-text-link.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

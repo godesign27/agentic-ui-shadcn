@@ -1,16 +1,14 @@
 name: Design system
 
 # The enforcement story only counts if it runs without anyone remembering to
-# type it. These four checks are the contract:
+# type it. These checks are the contract:
 #
-#   lint         the code is clean
-#   typecheck    every component compiles — an indexed component that does not
-#                is an inventory that lies
-#   ds:check     the specs still match the source they describe
-#   ds:validate  the contract is internally consistent: every component has its
-#                four files, every AI component declares the accountability its
-#                autonomy requires, and no rule names a component that does not
-#                exist
+#   lint              the code is clean
+#   typecheck         every component compiles — an indexed component that does not
+#                     is an inventory that lies
+#   ds:check          the specs still match the source they describe
+#   ds:validate       the four-file agent contract is internally consistent
+#   contracts:check   local {slug}.contract.json files match generated /contracts/
 #
 # A failure here means an agent reading this repository would be misled.
 
@@ -53,6 +51,9 @@ jobs:
 
       - name: Contract is consistent
         run: npm run ds:validate
+
+      - name: Generated contracts match local files
+        run: npm run contracts:check
 
       - name: Build
         run: npm run build

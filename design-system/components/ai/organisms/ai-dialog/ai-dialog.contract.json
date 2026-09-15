@@ -1,0 +1,188 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:organisms-ai-dialog",
+  "slug": "ai-dialog",
+  "name": "AIDialog",
+  "description": "Primary user-to-AI message entry — full card (AIInputCard) with Add, Skill, Mode, Mic, Send; slim pill (AIDialogSlim) for compact surfaces. Shared border state machine: neutral → focus-blue → filled-purple.",
+  "intent": "Message composer for AI Command Center and chat surfaces. Not a search field — preserves AI-specific affordances (skills, mode, mic).",
+  "status": "active",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-dialog/AIDialog",
+    "exports": [
+      "AIInputCard",
+      "AIDialogSlim",
+      "AIDialog"
+    ],
+    "implementation": "src/components/ai/organisms/ai-dialog/AIDialog.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "inputValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onInputChange",
+      "type": "(v: string) => void",
+      "required": false
+    },
+    {
+      "name": "onSend",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "maxWidth",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "hasMessages",
+      "type": "boolean",
+      "required": true
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "full",
+      "when": "Growing textarea with Ghost `AIDialogButton` toolbar (Add, Skills, Agent mode, Mic) + gradient Send"
+    },
+    {
+      "group": "variant",
+      "name": "slim",
+      "when": "56px pill — combined Add/Mode menu; right button toggles Mic and Send"
+    }
+  ],
+  "states": [
+    {
+      "name": "empty"
+    },
+    {
+      "name": "focused"
+    },
+    {
+      "name": "filled"
+    },
+    {
+      "name": "chat"
+    },
+    {
+      "name": "slim-empty"
+    },
+    {
+      "name": "slim-filled"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.radius.full",
+      "AI.radius.lg",
+      "AI.shadow.action.emphasis",
+      "AI.shadow.input.default",
+      "AI.shadow.input.focus"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Enter to send",
+      "Tab through toolbar controls"
+    ],
+    "requiredAttributes": [
+      "Accessible label on textarea",
+      "Send disabled when input empty",
+      "Accessible names on Mic, Add, and Mode controls"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Primary message entry point in AI Command Center (both idle and chat mode)",
+    "`chatMode=true` for the pinned bottom variant in active conversation",
+    "`AIDialogSlim` in panels, side drawers, and space-constrained surfaces"
+  ],
+  "doNotUse": [
+    "Generic search input — has AI-specific affordances (skills, mode, mic)",
+    "Stripping the Add or Mode controls without design review",
+    "Replacing with a standard Field or Textarea",
+    "Do not use as a generic search input",
+    "Do not strip Add or Mode controls without design review",
+    "Do not substitute standard Field or Textarea",
+    "Do not hardcode border/shadow values — use ai-input.* and ai-send.* tokens",
+    "Do not skip border state machine transitions",
+    "Do not use plain icon buttons in toolbar — use AIDialogButton Ghost"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-dialog/ai-dialog.md",
+    "manifest": "design-system/components/ai/organisms/ai-dialog/ai-dialog.agent.json",
+    "implementation": "src/components/ai/organisms/ai-dialog/AIDialog.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-dialog/ai-dialog.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-dialog/ai-dialog.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

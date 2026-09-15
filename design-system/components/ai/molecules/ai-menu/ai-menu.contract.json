@@ -1,0 +1,206 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-menu",
+  "slug": "ai-menu",
+  "name": "AIMenu",
+  "description": "AIMenu is the AI skin of the standard DS Menu. It keeps the same behavior and prop surface (role=\"menu\", role=\"menuitem\" / role=\"menuitemcheckbox\", submenu cascade, group-title, separator, three sizes) but wears the AI dialog chrome instead of the neutral DS one: --ai-card-bg surface, AI.color.brandBorder, 12px (AI.radius.sm) corners, the layered soft-blue elevation shadow, @ai-menu-item item typography, and AI active/selected accents (AI.color.action.primary fill with white text; AI.color.brand checkmark). Chrome is composed from the AICommandCenterDialog PlusMenu and AIPicker PopoverShell rather than forked, so an AIMenu reads as part of the same AI system as the dialog.",
+  "intent": "A vertical AI-action list — 12px radius, --ai-card-bg surface, brand border, @ai-menu-item type, AI active/selected accents.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-menu/AIMenu",
+    "exports": [
+      "AIMenu"
+    ],
+    "implementation": "src/components/ai/molecules/ai-menu/AIMenu.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "AIMenuSize",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "AIMenuItem[]",
+      "required": true
+    },
+    {
+      "name": "multiSelect",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "inverse",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "(item: AIMenuItem) => void",
+      "required": false
+    },
+    {
+      "name": "embedded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "trigger",
+      "type": "React.ReactNode | ((open: boolean) => React.ReactNode)",
+      "required": true
+    },
+    {
+      "name": "triggerLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "align",
+      "type": "'left' | 'right'",
+      "required": false
+    },
+    {
+      "name": "closeOnSelect",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "normal",
+    "small",
+    "x-small"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandInk",
+      "AI.color.surface.default",
+      "AI.color.text.onAction",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI actions need to appear as a list inside an AI surface",
+    "The menu should read as a sibling of the AI Command Center dialog",
+    "You need submenu / multi-select / group-title item types in AI styling"
+  ],
+  "doNotUse": [
+    "You need the neutral standard styling — use `ds-menu`",
+    "It should be hidden behind a trigger — use `ai-popup-menu`",
+    "It is a form select control — use `ds-dropdown`",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-menu/ai-menu.md",
+    "manifest": "design-system/components/ai/molecules/ai-menu/ai-menu.agent.json",
+    "implementation": "src/components/ai/molecules/ai-menu/AIMenu.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-menu/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-menu/ai-menu.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-menu/ai-menu.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

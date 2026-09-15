@@ -1,0 +1,238 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-generated-dashboard",
+  "slug": "ai-generated-dashboard",
+  "name": "AIGeneratedDashboard",
+  "description": "AIGeneratedDashboard is a page-level pattern that renders the AI’s response to a strategic prompt as a multi-zone living dashboard rather than a single chat message. The starter scenario — Cardiology Expansion Q2 — demonstrates how the AI proposes a Boston cluster re-alignment, surfaces concurrent scenarios (Immunology Launch Readiness, Newark Territory Health Review), shows impact and risk telemetry, and overlays the proposal on a territory map. Every zone carries accountability: confidence, impact, agent attribution, rationale, sources, and an explicit Draft / Submit governance handoff. The component is designed to inhabit the right pane of AICommandCenterSplitView and also to stand alone as a saved artifact.",
+  "intent": "The AI-generated workspace. Scenarios, impact, and map overlays compose into a single governed output the operator can shape, approve, and submit.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-generated-dashboard/AIGeneratedDashboard",
+    "exports": [
+      "AIGeneratedDashboard"
+    ],
+    "implementation": "src/components/ai/patterns/ai-generated-dashboard/AIGeneratedDashboard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "DashboardStatus",
+      "required": false
+    },
+    {
+      "name": "outputType",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "impactScore",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "'draft' | 'live'",
+      "required": false
+    },
+    {
+      "name": "showHeader",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "'standalone' | 'embedded'",
+      "required": false
+    },
+    {
+      "name": "criticalMode",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "mapFocused",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onToggleDraft",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewTrace",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onPromptSelect",
+      "type": "(prompt: string) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "draft"
+    },
+    {
+      "name": "active"
+    },
+    {
+      "name": "generating"
+    },
+    {
+      "name": "updating"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.color.action.primaryHover",
+      "AI.color.brandBorder",
+      "AI.color.brandStrong",
+      "AI.color.brandSurface",
+      "AI.color.companion.border",
+      "AI.color.companion.paper",
+      "AI.color.signal.surface",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.gradient.surface.subtle",
+      "AI.radius.full",
+      "AI.radius.lg",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "A user prompt warrants a multi-zone living output rather than a single chat message",
+    "AI is proposing a strategic action with concurrent scenarios, impact, and governance",
+    "The operator needs to compare options, see telemetry, and submit / escalate from one surface",
+    "Output ownership needs explicit Draft → Submit handoff with audit trail",
+    "Map / territory overlays are part of the AI’s rationale"
+  ],
+  "doNotUse": [
+    "Short conversational responses or simple Q&A",
+    "Single-table or single-chart outputs (use the specific table / scenario placeholder)",
+    "Outputs without governance requirements",
+    "Mobile-only viewports where multi-zone layout would degrade the narrative",
+    "When a user just wants to chat with the agent without producing an artifact",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail",
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-generated-dashboard/ai-generated-dashboard.md",
+    "manifest": "design-system/components/ai/patterns/ai-generated-dashboard/ai-generated-dashboard.agent.json",
+    "implementation": "src/components/ai/patterns/ai-generated-dashboard/AIGeneratedDashboard.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-generated-dashboard/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-generated-dashboard/ai-generated-dashboard.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-generated-dashboard/ai-generated-dashboard.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

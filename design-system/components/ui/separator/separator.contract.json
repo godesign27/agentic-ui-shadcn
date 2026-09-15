@@ -1,0 +1,146 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:separator",
+  "slug": "separator",
+  "name": "Separator",
+  "description": "Radix Separator. Decorative by default, which keeps it out of the accessibility tree.",
+  "intent": "A visible break between groups, without implying they are different kinds of thing.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/separator",
+    "exports": [
+      "Separator"
+    ],
+    "implementation": "src/components/ui/separator.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "orientation",
+      "type": "see source",
+      "required": false,
+      "default": "\"horizontal\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "decorative",
+      "type": "see source",
+      "required": false,
+      "default": "true",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Horizontal",
+      "when": "`Default`"
+    },
+    {
+      "name": "Vertical",
+      "when": "`orientation=\"vertical\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "bg-border"
+    ]
+  },
+  "a11y": {
+    "role": "separator or none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "decorative defaults to true, which sets role=\"none\" and keeps it out of the accessibility tree. That is right for visual grouping.",
+      "Set decorative={false} only when the separation carries meaning a screen-reader user would otherwise miss.",
+      "A vertical separator needs a parent with a resolved height, or it collapses to nothing."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Between sections inside a card or panel",
+    "Between groups in a menu or list",
+    "As a vertical divider in a toolbar, with orientation=\"vertical\""
+  ],
+  "doNotUse": [
+    "Where spacing alone would do — a rule is heavier than a gap",
+    "Between every item in a list",
+    "To create a border — use border utilities",
+    "Separator as a general border",
+    "Vertical separator in a parent with no height"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Leave decorative true unless the break is semantically meaningful.",
+      "Vertical separators need a parent height.",
+      "Prefer spacing over rules when either would work."
+    ],
+    "related": [
+      {
+        "id": "ui:card",
+        "note": "Sectioning inside a card"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/separator/separator.md",
+    "manifest": "design-system/components/ui/separator/separator.agent.json",
+    "implementation": "src/components/ui/separator.tsx",
+    "prompt": "design-system/components/ui/separator/agentic-prompt.md",
+    "preview": "design-system/components/ui/separator/separator.preview.html",
+    "contract": "design-system/components/ui/separator/separator.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

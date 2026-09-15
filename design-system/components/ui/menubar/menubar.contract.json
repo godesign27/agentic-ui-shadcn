@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:menubar",
+  "slug": "menubar",
+  "name": "Menubar",
+  "description": "Radix Menubar: a horizontal row of menus that share focus and open on hover once one is open.",
+  "intent": "A persistent application menu bar, in the desktop-software sense.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/menubar",
+    "exports": [
+      "Menubar",
+      "MenubarCheckboxItem",
+      "MenubarContent",
+      "MenubarGroup",
+      "MenubarItem",
+      "MenubarLabel",
+      "MenubarMenu",
+      "MenubarPortal",
+      "MenubarRadioGroup",
+      "MenubarRadioItem",
+      "MenubarSeparator",
+      "MenubarShortcut",
+      "MenubarSub",
+      "MenubarSubContent",
+      "MenubarSubTrigger",
+      "MenubarTrigger"
+    ],
+    "implementation": "src/components/ui/menubar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "inset",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "align",
+      "type": "see source",
+      "required": false,
+      "default": "\"start\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "alignOffset",
+      "type": "see source",
+      "required": false,
+      "default": "-4",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "sideOffset",
+      "type": "see source",
+      "required": false,
+      "default": "8",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "checked",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Open",
+      "when": "`Click or Enter on a trigger`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-muted",
+      "bg-popover",
+      "text-accent",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "menubar",
+    "keyboard": [
+      "ArrowLeft/ArrowRight — move between top-level menus",
+      "ArrowDown — open the focused menu",
+      "Arrow keys — move within a menu",
+      "Escape — close"
+    ],
+    "requiredAttributes": [],
+    "notes": [
+      "The whole bar is one tab stop with roving focus.",
+      "This pattern is unfamiliar on the web. Only use it where the desktop metaphor is genuinely expected."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Desktop-class applications — editors, IDEs, design tools",
+    "When users expect File, Edit, View"
+  ],
+  "doNotUse": [
+    "A website — use ui:navigation-menu",
+    "A typical web application — a toolbar with ui:dropdown-menu is lighter and more familiar",
+    "Mobile or narrow layouts",
+    "Website navigation",
+    "Mobile layouts",
+    "As a general toolbar"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Desktop-class applications only.",
+      "Use ui:navigation-menu for site navigation.",
+      "Keep top-level items to about five.",
+      "Not suitable for narrow layouts — provide an alternative."
+    ],
+    "related": [
+      {
+        "id": "ui:navigation-menu",
+        "note": "Site navigation"
+      },
+      {
+        "id": "ui:dropdown-menu",
+        "note": "A single menu button"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/menubar/menubar.md",
+    "manifest": "design-system/components/ui/menubar/menubar.agent.json",
+    "implementation": "src/components/ui/menubar.tsx",
+    "prompt": "design-system/components/ui/menubar/agentic-prompt.md",
+    "preview": "design-system/components/ui/menubar/menubar.preview.html",
+    "contract": "design-system/components/ui/menubar/menubar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

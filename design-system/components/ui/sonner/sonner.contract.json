@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sonner",
+  "slug": "sonner",
+  "name": "SonnerToaster",
+  "description": "A Sonner wrapper themed to shadcn tokens. Exports SonnerToaster — deliberately not Toaster, so it cannot collide with ui:toaster at an import site. Reads the theme from the dark class this app actually toggles.",
+  "intent": "The same job as ui:toaster, through a different library with a simpler imperative API.",
+  "status": "stable",
+  "layer": "templates",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/sonner",
+    "exports": [
+      "SonnerToaster"
+    ],
+    "implementation": "src/components/ui/sonner.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Empty",
+      "when": "`No toasts`"
+    },
+    {
+      "name": "Stacked",
+      "when": "`Several toasts`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "background",
+      "border",
+      "foreground",
+      "muted",
+      "primary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-muted",
+      "bg-primary",
+      "border-border",
+      "text-foreground",
+      "text-muted",
+      "text-primary"
+    ]
+  },
+  "a11y": {
+    "role": "region",
+    "keyboard": [
+      "Sonner supplies its own focus and dismissal handling"
+    ],
+    "requiredAttributes": [],
+    "notes": [
+      "Sonner manages its own announcements. Verify against your screen-reader targets — the contract differs from Radix Toast, which requires altText on every action.",
+      "Theme is read from the dark class on <html> via a MutationObserver, matching tailwind darkMode: [\"class\"]. The upstream shadcn snippet reads next-themes, which no provider here mounts — it would report \"system\" regardless and render light toasts on a dark page."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "When you prefer Sonner's imperative toast() API and stacking behaviour",
+    "Promise-based toasts that resolve to success or failure"
+  ],
+  "doNotUse": [
+    "Alongside ui:toaster — running both produces two toast systems and two viewports",
+    "When you need the Radix action and altText contract",
+    "Running alongside ui:toaster",
+    "Re-aliasing SonnerToaster back to Toaster"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Choose Sonner or ui:toaster. Never both — two systems means every toast appears twice.",
+      "The export is SonnerToaster, not Toaster. That is deliberate.",
+      "Sonner actions carry no altText requirement. If you need that accessibility contract, use ui:toast."
+    ],
+    "related": [
+      {
+        "id": "ui:toaster",
+        "note": "The Radix-based alternative"
+      },
+      {
+        "id": "ui:toast",
+        "note": "The Radix primitives"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/sonner/sonner.md",
+    "manifest": "design-system/components/ui/sonner/sonner.agent.json",
+    "implementation": "src/components/ui/sonner.tsx",
+    "prompt": "design-system/components/ui/sonner/agentic-prompt.md",
+    "preview": "design-system/components/ui/sonner/sonner.preview.html",
+    "contract": "design-system/components/ui/sonner/sonner.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-message-footer",
+  "slug": "ai-message-footer",
+  "name": "AIMessageFooter",
+  "description": "Conditional action bar for actionable AI messages — 1–3 footer actions (primary, secondary, ghost). Renders null when hidden or empty.",
+  "intent": "The decision point at the end of every actionable AI response.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-message-footer/AIMessageFooter",
+    "exports": [
+      "AIMessageFooter",
+      "FooterAction"
+    ],
+    "implementation": "src/components/ai/atomic/ai-message-footer/AIMessageFooter.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "actions",
+      "type": "FooterAction[]",
+      "required": true
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "primary"
+    },
+    {
+      "group": "variant",
+      "name": "secondary"
+    },
+    {
+      "group": "variant",
+      "name": "ghost"
+    }
+  ],
+  "states": [
+    {
+      "name": "visible"
+    },
+    {
+      "name": "hidden"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.action.primaryActive",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.radius.md",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "toolbar",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "native button elements for each action"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "When the AI response requires user action (approve, apply, confirm)",
+    "Below any AI output with a clear next step — even if the step is just \"Edit\"",
+    "Awaiting-approval patterns requiring explicit consent"
+  ],
+  "doNotUse": [
+    "Informational-only responses — omit footer (empty actions)",
+    "When `AIFeedbackBar` is the only follow-up",
+    "Informational-only responses — omit footer",
+    "When AIFeedbackBar is the only follow-up",
+    "Do not use AIButton tertiary — use ghost variant here"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Approve",
+        "Suggest"
+      ],
+      "accountability": [
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-message-footer/ai-message-footer.md",
+    "manifest": "design-system/components/ai/atomic/ai-message-footer/ai-message-footer.agent.json",
+    "implementation": "src/components/ai/atomic/ai-message-footer/AIMessageFooter.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-message-footer/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-message-footer/ai-message-footer.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-message-footer/ai-message-footer.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

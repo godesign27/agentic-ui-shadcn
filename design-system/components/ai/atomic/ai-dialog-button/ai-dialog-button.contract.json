@@ -1,0 +1,149 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-dialog-button",
+  "slug": "ai-dialog-button",
+  "name": "AIDialogButton",
+  "description": "Unified Ghost pill/circular AI Dialog toolbar button — icon-only, icon+label, or label+trailing-icon. 34px height, transparent fill, subtle border. Used in AI Dialog toolbar.",
+  "intent": "Consistent Ghost affordance for AI Dialog command bar actions. Not for gradient Send CTA or navigation.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/dialog-button/AIDialogButton",
+    "exports": [
+      "AIDialogButton"
+    ],
+    "implementation": "src/components/ai/atomic/ai-dialog-button/AIDialogButton.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "ghost-icon-only"
+    },
+    {
+      "group": "variant",
+      "name": "ghost-icon-label"
+    },
+    {
+      "group": "variant",
+      "name": "ghost-label-trailing"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "hover"
+    },
+    {
+      "name": "open"
+    },
+    {
+      "name": "disabled"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "aria-label on icon-only buttons",
+      "disabled attribute when disabled=true"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Any toolbar action in the AI input card (Add, Skills, Mode, Mic)",
+    "Mode selectors, skill pickers, or add-content triggers",
+    "Anywhere an AI Dialog action needs a consistent pill or circular touch target with Ghost styling"
+  ],
+  "doNotUse": [
+    "Primary CTA that needs gradient fill — use `AIButton` variant primary or the send button pattern in `ai-dialog`",
+    "Navigation links — use anchors or router links",
+    "Standard `Button` for non-AI product actions",
+    "Do not use for gradient Send CTA — use ai-dialog send pattern",
+    "Do not use for navigation links",
+    "Do not use icon-only without aria-label",
+    "Do not hardcode colors — use ai-dialog-button.* tokens",
+    "Do not substitute plain icon buttons in AI Dialog toolbar"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest",
+        "Confirm"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-dialog-button/ai-dialog-button.md",
+    "manifest": "design-system/components/ai/atomic/ai-dialog-button/ai-dialog-button.agent.json",
+    "implementation": "src/components/ai/atomic/ai-dialog-button/AIDialogButton.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-dialog-button/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-dialog-button/ai-dialog-button.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-dialog-button/ai-dialog-button.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

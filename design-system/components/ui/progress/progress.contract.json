@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:progress",
+  "slug": "progress",
+  "name": "Progress",
+  "description": "Radix Progress: a track with an indicator translated by value. Determinate only in practice.",
+  "intent": "Show how much of a known quantity of work is done.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/progress",
+    "exports": [
+      "Progress"
+    ],
+    "implementation": "src/components/ui/progress.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "value",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Empty",
+      "when": "`value={0}`"
+    },
+    {
+      "name": "In progress",
+      "when": "`0 < value < 100`"
+    },
+    {
+      "name": "Complete",
+      "when": "`value={100}`"
+    },
+    {
+      "name": "Indeterminate",
+      "when": "`value={null}`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-primary",
+      "bg-secondary"
+    ]
+  },
+  "a11y": {
+    "role": "progressbar",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label or aria-labelledby naming what is progressing"
+    ],
+    "notes": [
+      "Radix sets aria-valuenow, aria-valuemin and aria-valuemax.",
+      "Label it — \"Progress\" alone does not say progress of what.",
+      "Show the percentage in text too. The bar alone is hard to read precisely and invisible to some users.",
+      "Announce completion in a live region; the bar reaching 100% is not itself announced."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "File uploads",
+    "Multi-step completion",
+    "Anything where the total is known"
+  ],
+  "doNotUse": [
+    "Unknown duration — a progress bar that sits at an arbitrary percentage is a lie",
+    "Very short operations",
+    "As a slider — this is read-only; use ui:slider for input",
+    "Fabricated progress values",
+    "Unlabelled progress bar",
+    "Using Progress as an input"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Always label the bar.",
+      "Show the numeric value in text alongside.",
+      "Use a spinner for unknown duration, not a fake percentage.",
+      "Announce completion separately."
+    ],
+    "related": [
+      {
+        "id": "ui:slider",
+        "note": "Input along a range"
+      },
+      {
+        "id": "ui:skeleton",
+        "note": "Content loading"
+      },
+      {
+        "id": "ai:ai-progress",
+        "note": "Agentic work with blocked and escalated states"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/progress/progress.md",
+    "manifest": "design-system/components/ui/progress/progress.agent.json",
+    "implementation": "src/components/ui/progress.tsx",
+    "prompt": "design-system/components/ui/progress/agentic-prompt.md",
+    "preview": "design-system/components/ui/progress/progress.preview.html",
+    "contract": "design-system/components/ui/progress/progress.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

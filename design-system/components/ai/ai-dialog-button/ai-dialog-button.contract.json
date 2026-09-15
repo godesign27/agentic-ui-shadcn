@@ -1,0 +1,200 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-dialog-button",
+  "slug": "ai-dialog-button",
+  "name": "AIDialogButton",
+  "description": "A ghost toolbar button in three shapes: icon-only (a 34px circle), icon plus label, or label plus a trailing chevron for dropdowns.",
+  "intent": "A quiet control in the composer toolbar that does not compete with the message.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-dialog-button",
+    "exports": [
+      "AIDialogButton"
+    ],
+    "implementation": "src/components/ai/ai-dialog-button.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "icon",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "trailingIcon",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "isOpen",
+      "type": "boolean",
+      "required": false,
+      "hint": "The ghost toolbar control inside the AI composer. Icon-only, icon + label, or label + trailing icon. Icon-only collapses to a 34px circle and therefore REQUIRES an accessible name — the shape carries no meaning on its own. / export interface AIDialogButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { icon?: React.ReactNode label?: string trailingIcon?: React.ReactNode /** Active when the control owns an open popover or menu."
+    },
+    {
+      "name": "disabled",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Hover",
+      "when": "`Pointer over`"
+    },
+    {
+      "name": "Open",
+      "when": "`isOpen`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "ai-accent",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-accent",
+      "ring-ai-accent",
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — activate"
+    ],
+    "requiredAttributes": [
+      "aria-label when icon-only"
+    ],
+    "notes": [
+      "Icon-only with no aria-label logs a development warning — it has no accessible name at all.",
+      "aria-expanded is set only when a trailing icon is present, since that is what signals a dropdown.",
+      "At 34px it is under the 44px touch guideline. Give the toolbar padding on touch surfaces."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Composer toolbar controls — attach, skills, agent mode, microphone",
+    "Any low-emphasis control beside an input"
+  ],
+  "doNotUse": [
+    "Primary actions — use ai:ai-button",
+    "Outside a composer context",
+    "Icon-only without an accessible name",
+    "Icon-only with no accessible name",
+    "Primary actions",
+    "Use outside a composer"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Icon-only requires aria-label.",
+      "Set isOpen when it owns an open menu.",
+      "Use ai:ai-button for anything primary.",
+      "Pair icon-only controls with ui:tooltip."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-button",
+        "note": "Primary AI actions"
+      },
+      {
+        "id": "ui:tooltip",
+        "note": "Naming icon-only controls"
+      },
+      {
+        "id": "ui:dropdown-menu",
+        "note": "What a trailing chevron opens"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-dialog-button/ai-dialog-button.md",
+    "manifest": "design-system/components/ai/ai-dialog-button/ai-dialog-button.agent.json",
+    "implementation": "src/components/ai/ai-dialog-button.tsx",
+    "prompt": "design-system/components/ai/ai-dialog-button/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-dialog-button/ai-dialog-button.preview.html",
+    "contract": "design-system/components/ai/ai-dialog-button/ai-dialog-button.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

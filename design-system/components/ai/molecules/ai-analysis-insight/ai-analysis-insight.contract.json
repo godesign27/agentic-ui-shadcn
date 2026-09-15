@@ -1,0 +1,252 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-analysis-insight",
+  "slug": "ai-analysis-insight",
+  "name": "AIAnalysisInsight",
+  "description": "AIAnalysisInsight is the reusable inner finding component used inside AIAnalysisMessage and AI report summaries. It renders a labeled finding card with a left accent bar, type label, confidence badge, body text, and optional metric highlight, source indicators, rationale link, and action button. Twelve insight types are supported: Key Trend, Observation, Risk Signal, Opportunity, Anomaly, Recommendation, Watchout, Evidence, Warning, Context, Benchmark, and Prediction. Each type has distinct visual treatment while sharing the same card structure.",
+  "intent": "The individual finding unit inside an AI analysis message. Each insight is labeled by type, confidence-rated, and visually distinct — so users can scan analytical findings without mistaking them for alerts.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight",
+    "exports": [
+      "AIAnalysisInsight"
+    ],
+    "implementation": "src/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "InsightType",
+      "required": true
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "density",
+      "type": "InsightDensity",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "ConfidenceVariant",
+      "required": false
+    },
+    {
+      "name": "risk",
+      "type": "RiskVariant",
+      "required": false
+    },
+    {
+      "name": "reviewIndicator",
+      "type": "ReviewIndicator",
+      "required": false
+    },
+    {
+      "name": "metric",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "sources",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "freshness",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "action",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "actions",
+      "type": "AIAnalysisInsightAction[]",
+      "required": false
+    },
+    {
+      "name": "owner",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "InsightStatus",
+      "required": false
+    },
+    {
+      "name": "showRationale",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showSources",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showAssumptions",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAssumptions",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "accentStyle",
+      "type": "AccentLineStyle",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "high"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.color.border.strong",
+      "AI.color.brandSubtle",
+      "AI.color.signal.surface",
+      "AI.color.text.primary",
+      "AI.radius.full",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "To highlight one analytical finding inside an AI analysis message",
+    "To distinguish trend, observation, risk, opportunity, recommendation, or evidence",
+    "Inside AI report summaries or command center analysis modules",
+    "When users need to scan individual findings quickly without reading a full paragraph"
+  ],
+  "doNotUse": [
+    "System notifications or urgent events — use AINotification instead",
+    "Generic alert cards that are not AI-authored analytical findings",
+    "When plain text is enough — do not add insight structure to simple statements",
+    "Do not use severe colors (red/orange) unless the insight is genuinely urgent or risky",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-analysis-insight/ai-analysis-insight.md",
+    "manifest": "design-system/components/ai/molecules/ai-analysis-insight/ai-analysis-insight.agent.json",
+    "implementation": "src/components/ai/molecules/ai-analysis-insight/AIAnalysisInsight.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-analysis-insight/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-analysis-insight/ai-analysis-insight.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-analysis-insight/ai-analysis-insight.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

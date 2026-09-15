@@ -1,0 +1,137 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:skeleton",
+  "slug": "skeleton",
+  "name": "Skeleton",
+  "description": "A pulsing placeholder block. Sixteen lines: a div with animate-pulse, bg-muted and rounded-md.",
+  "intent": "Show the shape of what is coming, so the wait feels shorter and the layout does not jump.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/skeleton",
+    "exports": [
+      "Skeleton"
+    ],
+    "implementation": "src/components/ui/skeleton.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Pulsing",
+      "when": "`Always`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "muted"
+    ],
+    "utilities": [
+      "bg-muted"
+    ]
+  },
+  "a11y": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-busy=\"true\" on the container, or a role=\"status\" region announcing loading"
+    ],
+    "notes": [
+      "A Skeleton has no semantics of its own. On its own, a screen-reader user hears nothing at all while waiting.",
+      "Wrap the loading region with role=\"status\" aria-live=\"polite\" and an sr-only \"Loading\" — otherwise the wait is silent.",
+      "Announce completion too, or the user does not know the content arrived."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Loading content whose shape is known",
+    "Initial page load",
+    "Anywhere a spinner would leave a blank region"
+  ],
+  "doNotUse": [
+    "Waits under about 300ms — the flash is worse than nothing",
+    "Unknown-shape content — a skeleton that misleads is worse than a spinner",
+    "Indeterminate background work — use ui:progress",
+    "After an error — show the error, not a permanent skeleton",
+    "Skeleton with no announced loading state",
+    "Skeleton persisting through an error",
+    "Shapes that do not match the eventual content"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Mirror the real layout — matching sizes and counts.",
+      "Always pair with an announced loading state; the visual pulse is invisible to screen readers.",
+      "Do not leave a skeleton up after an error.",
+      "Skip it for waits under 300ms."
+    ],
+    "related": [
+      {
+        "id": "ui:progress",
+        "note": "Determinate progress"
+      },
+      {
+        "id": "ui:card",
+        "note": "Common host"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/skeleton/skeleton.md",
+    "manifest": "design-system/components/ui/skeleton/skeleton.agent.json",
+    "implementation": "src/components/ui/skeleton.tsx",
+    "prompt": "design-system/components/ui/skeleton/agentic-prompt.md",
+    "preview": "design-system/components/ui/skeleton/skeleton.preview.html",
+    "contract": "design-system/components/ui/skeleton/skeleton.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

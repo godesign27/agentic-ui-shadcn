@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:radio-group",
+  "slug": "radio-group",
+  "name": "RadioGroup",
+  "description": "Radix RadioGroup with roving focus. The group owns the value; items are stateless.",
+  "intent": "Exactly one choice from a small set, with every option visible.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/radio-group",
+    "exports": [
+      "RadioGroup",
+      "RadioGroupItem"
+    ],
+    "implementation": "src/components/ui/radio-group.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Unselected",
+      "when": "`Not the group value`"
+    },
+    {
+      "name": "Selected",
+      "when": "`Matches the group value`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Arrow key or Tab`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled on group or item`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "border-primary",
+      "ring-ring",
+      "text-primary"
+    ]
+  },
+  "a11y": {
+    "role": "radiogroup",
+    "keyboard": [
+      "Arrow keys — move between and select options",
+      "Tab — enter and leave the group as one stop",
+      "Space — select the focused option"
+    ],
+    "requiredAttributes": [
+      "A label for the group itself, via aria-label or aria-labelledby",
+      "A label per item"
+    ],
+    "notes": [
+      "The whole group is one tab stop. Arrow keys move within it. This is correct and expected — do not add tabIndex to items.",
+      "Arrow-key navigation selects as it moves. If that is wrong for your case, the control should be a ui:select."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Two to five mutually exclusive options where seeing them all aids the decision",
+    "Choices with enough weight to deserve the space"
+  ],
+  "doNotUse": [
+    "More than about five options — use ui:select",
+    "Non-exclusive choices — use ui:checkbox",
+    "A binary on/off setting — use ui:switch",
+    "When no selection is valid — a radio group cannot be unset once set",
+    "A single radio button",
+    "Items with no labels",
+    "Adding tabIndex to items"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Label the group, not only the items.",
+      "Every RadioGroupItem needs a Label with htmlFor.",
+      "Over five options means ui:select.",
+      "Provide a default value unless empty is genuinely valid."
+    ],
+    "related": [
+      {
+        "id": "ui:select",
+        "note": "Many options"
+      },
+      {
+        "id": "ui:checkbox",
+        "note": "Non-exclusive"
+      },
+      {
+        "id": "ui:toggle-group",
+        "note": "Compact exclusive choice in a toolbar"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/radio-group/radio-group.md",
+    "manifest": "design-system/components/ui/radio-group/radio-group.agent.json",
+    "implementation": "src/components/ui/radio-group.tsx",
+    "prompt": "design-system/components/ui/radio-group/agentic-prompt.md",
+    "preview": "design-system/components/ui/radio-group/radio-group.preview.html",
+    "contract": "design-system/components/ui/radio-group/radio-group.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

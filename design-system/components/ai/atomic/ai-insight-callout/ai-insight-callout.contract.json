@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-insight-callout",
+  "slug": "ai-insight-callout",
+  "name": "AIInsightCallout",
+  "description": "Pale brand-blue card surface (`var(--ai-brand-surface)` + brand border) with a leading sparkle glyph, an `AI INSIGHT` eyebrow, and an italic body quote (rendered as a `<blockquote>` for screen-reader accuracy). Four tones (brand / warning / critical / success) follow the metric-card accent system so the callout can mirror the surrounding card status.",
+  "intent": "The \"what does this mean?\" callout. AI text that earns trust by being clearly attributed as AI-generated.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-insight-callout/AIInsightCallout",
+    "exports": [
+      "AIInsightCallout"
+    ],
+    "implementation": "src/components/ai/atomic/ai-insight-callout/AIInsightCallout.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "body",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "eyebrow",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "'brand' | 'warning' | 'critical' | 'success'",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-insight-callout/ai-insight-callout.md",
+    "manifest": "design-system/components/ai/atomic/ai-insight-callout/ai-insight-callout.agent.json",
+    "implementation": "src/components/ai/atomic/ai-insight-callout/AIInsightCallout.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-insight-callout/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-insight-callout/ai-insight-callout.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-insight-callout/ai-insight-callout.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

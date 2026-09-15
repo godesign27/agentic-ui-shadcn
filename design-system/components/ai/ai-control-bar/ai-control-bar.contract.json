@@ -1,0 +1,219 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-control-bar",
+  "slug": "ai-control-bar",
+  "name": "AIControlBar",
+  "description": "State-aware execution controls for a running workstream: pause, resume, redirect and a two-step cancel.",
+  "intent": "The human can always stop the machine.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-control-bar",
+    "exports": [
+      "AIControlBar"
+    ],
+    "implementation": "src/components/ai/ai-control-bar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "state",
+      "type": "ControlBarState",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onPause",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onResume",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCancel",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onRedirect",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCancelConfirm",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Running",
+      "when": "`state=\"running\"`"
+    },
+    {
+      "name": "Paused",
+      "when": "`state=\"paused\"`"
+    },
+    {
+      "name": "Redirect available",
+      "when": "`state=\"redirect-available\"`"
+    },
+    {
+      "name": "Cancel confirm",
+      "when": "`state=\"cancel-confirm\"`"
+    },
+    {
+      "name": "Saved progress",
+      "when": "`state=\"saved-progress\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-muted",
+      "ai-signal",
+      "ai-surface"
+    ],
+    "utilities": [
+      "bg-ai-surface",
+      "border-ai-surface",
+      "text-ai-muted",
+      "text-ai-signal"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Tab between controls"
+    ],
+    "requiredAttributes": [
+      "aria-label on the group — supplied by the component"
+    ],
+    "notes": [
+      "Cancel is two-step by design. A single-click cancel on a long-running agent loses work.",
+      "The confirm message states that progress is kept — reassurance belongs in the moment of hesitation.",
+      "The control set changes with state, so focus can land on a different button than the user expected. Manage focus when the state changes under them."
+    ],
+    "liveRegion": "The cancel-confirm and saved-progress messages use role=\"status\"",
+    "handledByRadix": false
+  },
+  "usage": [
+    "Alongside any AI Led workstream",
+    "Wherever an agent runs long enough that a user may want to intervene",
+    "With ai:ai-progress on a multi-step run"
+  ],
+  "doNotUse": [
+    "For a single short request — there is nothing to pause",
+    "As a generic toolbar",
+    "Where the actions are not actually wired to the agent",
+    "Unwired controls",
+    "Single-click cancel",
+    "Use as a generic toolbar"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Wire every handler to the real agent. A pause that does not pause is worse than none.",
+      "Keep cancel two-step.",
+      "Pair with ai:ai-progress so the user knows what they are pausing.",
+      "This is what makes AI Led mode acceptable — do not ship AI Led without it."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-progress",
+        "note": "What is being controlled"
+      },
+      {
+        "id": "ai:ai-queue-badge",
+        "note": "Per-item state"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm",
+        "Apply"
+      ],
+      "accountability": [
+        "Attribution",
+        "Approval",
+        "Audit trail",
+        "Reversibility"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "always"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-control-bar/ai-control-bar.md",
+    "manifest": "design-system/components/ai/ai-control-bar/ai-control-bar.agent.json",
+    "implementation": "src/components/ai/ai-control-bar.tsx",
+    "prompt": "design-system/components/ai/ai-control-bar/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-control-bar/ai-control-bar.preview.html",
+    "contract": "design-system/components/ai/ai-control-bar/ai-control-bar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

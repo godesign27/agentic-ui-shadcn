@@ -1,0 +1,164 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-queue",
+  "slug": "ai-card-queue",
+  "name": "AICardQueue",
+  "description": "The AI Card Queue surfaces the live execution queue for an agent workstream, letting operators monitor progress, approve individual items, and pause or stop execution. It is the primary control surface for AI Led batch processing.",
+  "intent": "Live view of an agent's execution queue with per-item approval controls, progress tracking, and pause/approve-all governance actions.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-queue/AICardQueue",
+    "exports": [
+      "AICardQueue"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-queue/AICardQueue.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "summary",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "QueueItem[]",
+      "required": false
+    },
+    {
+      "name": "onApproveAll",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onPause",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewDetails",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.signal.default",
+      "AI.color.signal.strong",
+      "AI.color.signal.subtle",
+      "AI.color.surface.emphasis",
+      "AI.radius.lg",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-queue/ai-card-queue.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-queue/ai-card-queue.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-queue/AICardQueue.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-queue/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-queue/ai-card-queue.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-queue/ai-card-queue.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

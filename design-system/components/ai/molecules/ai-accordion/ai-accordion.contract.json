@@ -1,0 +1,176 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-accordion",
+  "slug": "ai-accordion",
+  "name": "AIAccordion",
+  "description": "AIAccordion is the standalone, reusable disclosure used across AI surfaces — a rounded AI card whose header collapses/expands a body panel. It shares the AI Card Brief's look (20px corners, `--ai-card-bg` surface, `--ai-card-border`, raised header when open, `#4D60E6` chevron) so a brief reads as \"AI card + AI accordion,\" but the disclosure behavior lives here and is reusable anywhere.",
+  "intent": "A reusable AI-styled accordion — rounded AI card surface, brand chevron, optional icon / subtitle / status chip — for progressively disclosing generated content.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-accordion/AIAccordion",
+    "exports": [
+      "AIAccordion"
+    ],
+    "implementation": "src/components/ai/molecules/ai-accordion/AIAccordion.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "BriefChipStatus",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "items",
+      "type": "AIAccordionItemProps[]",
+      "required": false
+    },
+    {
+      "name": "caret",
+      "type": "'left' | 'right'",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "keyof typeof AI.radius",
+      "required": false
+    },
+    {
+      "name": "singleOpen",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.radius"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Generated content should be progressively disclosed on an AI surface",
+    "Several related sections need independent expand/collapse",
+    "You want disclosure that visually matches the AI Card Brief",
+    "A header needs an optional status chip, icon, or subtitle"
+  ],
+  "doNotUse": [
+    "You need the neutral product accordion — use `ds-accordion`",
+    "The content is a full task brief with actions — use `ai-card-brief`",
+    "Only a list of findings — use `ai-insight-list`",
+    "A single always-visible block — no disclosure needed",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-accordion/ai-accordion.md",
+    "manifest": "design-system/components/ai/molecules/ai-accordion/ai-accordion.agent.json",
+    "implementation": "src/components/ai/molecules/ai-accordion/AIAccordion.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-accordion/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-accordion/ai-accordion.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-accordion/ai-accordion.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

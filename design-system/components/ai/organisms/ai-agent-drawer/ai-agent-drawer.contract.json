@@ -1,0 +1,204 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-drawer",
+  "slug": "ai-agent-drawer",
+  "name": "AIAgentDrawer",
+  "description": "Composable Guild Agent panel content. Self-contained under components/ai/.",
+  "intent": "Canonical AI assistant panel content for any container.",
+  "status": "beta",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-agent-drawer/AIAgentDrawer",
+    "exports": [
+      "AIAgentDrawer",
+      "AIAgentDrawerPanel",
+      "AIAgentDrawerDemo"
+    ],
+    "implementation": "src/components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "greeting",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "quickSuggestions",
+      "type": "QuickSuggestion[]",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "showTrigger",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AgentDrawerVariant",
+      "required": false
+    },
+    {
+      "name": "headerTone",
+      "type": "AgentDrawerHeaderTone",
+      "required": false
+    },
+    {
+      "name": "onHistory",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onDragHandlePointerDown",
+      "type": "(e: React.PointerEvent) => void",
+      "required": false
+    },
+    {
+      "name": "onDock",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "isDocked",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onMoreOptions",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    },
+    {
+      "group": "variant",
+      "name": "focused-dialog"
+    },
+    {
+      "group": "variant",
+      "name": "hanging-panel"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.brandInk",
+      "AI.color.text.onAction"
+    ]
+  },
+  "a11y": {
+    "role": null,
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Any surface embedding the Guild Agent conversation experience"
+  ],
+  "doNotUse": [
+    "When you need the full drawer shell with resize handle — use ai-assisted-side-drawer instead",
+    "Do not invent dependency atomics",
+    "Do not require an external AI UI package for agents",
+    "Do not render orange avatar ring",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "always"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-agent-drawer/ai-agent-drawer.md",
+    "manifest": "design-system/components/ai/organisms/ai-agent-drawer/ai-agent-drawer.agent.json",
+    "implementation": "src/components/ai/organisms/ai-agent-drawer/AIAgentDrawer.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-agent-drawer/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-agent-drawer/ai-agent-drawer.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-agent-drawer/ai-agent-drawer.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "No accessibility role, keyboard map, or notes declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

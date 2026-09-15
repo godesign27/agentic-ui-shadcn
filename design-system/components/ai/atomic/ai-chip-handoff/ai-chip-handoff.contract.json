@@ -1,0 +1,145 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-chip-handoff",
+  "slug": "ai-chip-handoff",
+  "name": "AIChipHandoff",
+  "description": "Directional ownership chip visualizing transfer between agents, humans, system triggers, or failed handoffs in a compact inline pill.",
+  "intent": "Communicate agent-to-agent, agent-to-human, human-to-agent, system-to-agent, and failed handoff transitions in audit trails and table rows.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/chip-handoff/AIChipHandoff",
+    "exports": [
+      "AIChipHandoff",
+      "AIHandoffChip",
+      "HandoffDirection"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [
+    {
+      "name": "agent-to-agent"
+    },
+    {
+      "name": "agent-to-human"
+    },
+    {
+      "name": "human-to-agent"
+    },
+    {
+      "name": "system-to-agent"
+    },
+    {
+      "name": "failed"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "AI.color.brand",
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "AI.color.signal.strong",
+      "AI.color.signal.default",
+      "AI.color.signal.surface",
+      "AI.radius.full",
+      "AI_TYPOGRAPHY['@brand-caption-1']"
+    ],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label describing from → to handoff (includes 'failed' when applicable)"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Show ownership transfer inline in audit trails, table rows, or timeline summaries",
+    "Communicate agent-to-agent delegation without a full timeline step",
+    "Indicate human escalation or hand-back in compact form",
+    "Mark failed handoff attempts with dashed arrow and red tones"
+  ],
+  "doNotUse": [
+    "Full handoff narrative with timestamps and rationale — use `AIHandoffTimeline` group",
+    "Interactive handoff controls — chip is display-only",
+    "Generic directional labels unrelated to AI ownership transfer",
+    "Do not use emoji or AI Avatar in place of entity glyphs",
+    "Do not use text arrows for failed state — use dashed SVG from bundle",
+    "Do not hardcode brand hex for agent-to-agent — use AI tokens and CSS vars"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-chip-handoff/ai-chip-handoff.md",
+    "manifest": "design-system/components/ai/atomic/ai-chip-handoff/ai-chip-handoff.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-chip-handoff/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-chip-handoff/ai-chip-handoff.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-chip-handoff/ai-chip-handoff.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-chip-quick",
+  "slug": "ai-chip-quick",
+  "name": "AIChipQuick",
+  "description": "Pill-shaped suggested-prompt chip with Lucide icon + label for AI idle state. Standard and isSpecial (All Prompts) variants. Exports QUICK_ACTIONS default set.",
+  "intent": "Suggested action chips surfaced by the AI agent — quick-access prompts before the user types. Hide after first message.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "ai/atomic/chip-quick/AIChipQuick",
+    "exports": [
+      "AIChipQuick",
+      "AIQuickChip",
+      "QUICK_ACTIONS"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "standard"
+    },
+    {
+      "group": "variant",
+      "name": "special"
+    }
+  ],
+  "states": [
+    {
+      "name": "idle"
+    },
+    {
+      "name": "active"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "type=button on chip element"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Use in the idle state of AICommandCenter before any message is sent",
+    "Use to surface 4–8 domain-specific suggested prompts relevant to the user's context",
+    "Use the `isSpecial` \"All Prompts\" chip as the last item to surface the full prompt library"
+  ],
+  "doNotUse": [
+    "Do not show chips after the first message is sent (hide when `hasMessages = true`)",
+    "Do not use more than 8 chips — scanning cost outweighs discoverability benefit",
+    "Do not use generic neutral buttons — chips must use `AIChipQuick` styling",
+    "Do not show chips after the first message is sent",
+    "Do not use more than 8 chips",
+    "Do not use emoji or invented icons — Lucide only",
+    "Do not use generic neutral buttons instead of AIChipQuick"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-chip-quick/ai-chip-quick.md",
+    "manifest": "design-system/components/ai/atomic/ai-chip-quick/ai-chip-quick.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-chip-quick/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-chip-quick/ai-chip-quick.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-chip-quick/ai-chip-quick.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

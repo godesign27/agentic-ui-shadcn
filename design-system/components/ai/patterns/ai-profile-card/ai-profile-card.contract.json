@@ -1,0 +1,197 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-profile-card",
+  "slug": "ai-profile-card",
+  "name": "AIProfileCard",
+  "description": "AIProfileCard is a progressive-density entity summary card optimized for two placement contexts: inline in a chat thread (max-width 520px) and full-width inside a side drawer. Basic density surfaces identity only. Simple adds Decile chip, KOL role chip, and a three-stat row. Rich adds AI badge, confidence badge, sentiment badge, and a brief insight callout. Robust replaces the insight callout with a full AI Recommendation panel with primary and secondary CTAs.",
+  "intent": "Entity profile · 4 densities · 3 themes · chat + drawer contexts",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-profile-card/AIProfileCard",
+    "exports": [
+      "AIProfileCard"
+    ],
+    "implementation": "src/components/ai/patterns/ai-profile-card/AIProfileCard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AIProfileCardDensity",
+      "required": true
+    },
+    {
+      "name": "theme",
+      "type": "AIProfileCardTheme",
+      "required": false
+    },
+    {
+      "name": "context",
+      "type": "AIProfileCardContext",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "specialty",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "organization",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "avatarUrl",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "decile",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "role",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "stats",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "sentiment",
+      "type": "'positive' | 'negative' | 'neutral'",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "'high' | 'medium' | 'low'",
+      "required": false
+    },
+    {
+      "name": "insight",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "recommendation",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "As an inline entity card in a chat thread when the AI surfaces a HCP profile",
+    "Inside a side drawer to show full AI context for a selected entity",
+    "In recommendation flows where AI suggests engagement with a specific person"
+  ],
+  "doNotUse": [
+    "For lists of entities — use AI List or AI Card Queue instead",
+    "When no AI-computed signals are available — use Basic density and omit AI-reserved props",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-profile-card/ai-profile-card.md",
+    "manifest": "design-system/components/ai/patterns/ai-profile-card/ai-profile-card.agent.json",
+    "implementation": "src/components/ai/patterns/ai-profile-card/AIProfileCard.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-profile-card/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-profile-card/ai-profile-card.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-profile-card/ai-profile-card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

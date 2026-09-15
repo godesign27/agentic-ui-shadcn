@@ -1,0 +1,180 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:toggle-group",
+  "slug": "toggle-group",
+  "name": "ToggleGroup",
+  "description": "Radix ToggleGroup in single or multiple mode. Items inherit variant and size from the group through context.",
+  "intent": "A set of related toggles that share a value and a visual group.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/toggle-group",
+    "exports": [
+      "ToggleGroup",
+      "ToggleGroupItem"
+    ],
+    "implementation": "src/components/ui/toggle-group.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the variant values declared in toggleVariants."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the size values declared in toggleVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    },
+    {
+      "group": "variant",
+      "name": "outline"
+    }
+  ],
+  "states": [
+    {
+      "name": "Unselected",
+      "when": "`Not in value`"
+    },
+    {
+      "name": "Selected",
+      "when": "`In value`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Arrow keys`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled on group or item`"
+    }
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Arrow keys — move between items",
+      "Tab — enter and leave as one stop",
+      "Space or Enter — toggle"
+    ],
+    "requiredAttributes": [
+      "aria-label on the group",
+      "aria-label per icon-only item"
+    ],
+    "notes": [
+      "Roving focus: the group is one tab stop.",
+      "type=\"single\" allows deselection unless you handle the empty value — decide whether empty is valid."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Text alignment — left, centre, right",
+    "A compact exclusive choice in a toolbar, with type=\"single\"",
+    "Multiple filters applied together, with type=\"multiple\""
+  ],
+  "doNotUse": [
+    "A form field choice that needs a label and validation — use ui:radio-group",
+    "More than about five options",
+    "Navigation between views — use ui:tabs",
+    "Unlabelled group",
+    "Icon-only items with no accessible name",
+    "Using ToggleGroup for page navigation"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Label the group.",
+      "Set variant and size on the group, not per item.",
+      "Icon-only items need aria-label.",
+      "Decide whether type=\"single\" may be emptied."
+    ],
+    "related": [
+      {
+        "id": "ui:toggle",
+        "note": "A single independent toggle"
+      },
+      {
+        "id": "ui:radio-group",
+        "note": "Form-field exclusive choice"
+      },
+      {
+        "id": "ui:tabs",
+        "note": "View switching"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/toggle-group/toggle-group.md",
+    "manifest": "design-system/components/ui/toggle-group/toggle-group.agent.json",
+    "implementation": "src/components/ui/toggle-group.tsx",
+    "prompt": "design-system/components/ui/toggle-group/agentic-prompt.md",
+    "preview": "design-system/components/ui/toggle-group/toggle-group.preview.html",
+    "contract": "design-system/components/ui/toggle-group/toggle-group.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

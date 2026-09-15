@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-chip",
+  "slug": "ai-chip",
+  "name": "AIChip",
+  "description": "AIChip consolidates four formerly separate chip atoms (memory, brief, status, handoff) into one component discriminated on a `kind` prop. Each kind preserves its own sub-taxonomy: memory `variant`, brief `status`, status `tone`, handoff `direction`. Output is pixel-identical to the former atoms — this is purely an API consolidation so the shared pill conventions live in one place.",
+  "intent": "The single pill atom for the AI system. `kind` selects memory context, task-brief status, outcome status, or an agent handoff — all sharing radius, sizing, and caption typography.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-chip/AIBriefChip",
+    "exports": [
+      "AIChip"
+    ],
+    "implementation": "src/components/ai/atomic/ai-chip/AIBriefChip.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.",
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.border.strong",
+      "AI.color.brand",
+      "AI.color.brandSubtle",
+      "AI.color.brandSurface",
+      "AI.color.signal.default",
+      "AI.color.signal.strong",
+      "AI.color.text.primary",
+      "AI.radius.full"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-chip/ai-chip.md",
+    "manifest": "design-system/components/ai/atomic/ai-chip/ai-chip.agent.json",
+    "implementation": "src/components/ai/atomic/ai-chip/AIBriefChip.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-chip/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-chip/ai-chip.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-chip/ai-chip.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

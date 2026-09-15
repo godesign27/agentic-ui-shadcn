@@ -1,0 +1,234 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-slider",
+  "slug": "ai-slider",
+  "name": "AI Slider",
+  "intent": "AI Slider — aligned to AI Pattern Library nav (atomic).",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-slider/AISlider",
+    "exports": [
+      "AISlider"
+    ],
+    "implementation": "src/components/ai/atomic/ai-slider/AISlider.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "mode",
+      "type": "AISliderMode",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "AISliderTrackState",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "AISliderType",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "ticks",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "labels",
+      "type": "(string | number)[]",
+      "required": false
+    },
+    {
+      "name": "showLabels",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTooltip",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "formatValue",
+      "type": "(value: number) => string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(value: number) => void",
+      "required": false
+    },
+    {
+      "name": "onChangeEnd",
+      "type": "(value: number) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "error"
+    },
+    {
+      "name": "disabled"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandInk",
+      "AI.color.brandStrong",
+      "AI.color.status.error",
+      "AI.color.status.success",
+      "AI.color.status.warning",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": null,
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-slider/ai-slider.md",
+    "manifest": "design-system/components/ai/atomic/ai-slider/ai-slider.agent.json",
+    "implementation": "src/components/ai/atomic/ai-slider/AISlider.tsx",
+    "prompt": null,
+    "preview": "design-system/components/ai/atomic/ai-slider/ai-slider.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-slider/ai-slider.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "No accessibility role, keyboard map, or notes declared."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

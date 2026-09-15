@@ -1,0 +1,252 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-analysis",
+  "slug": "ai-card-analysis",
+  "name": "AICardAnalysis",
+  "description": "AICardAnalysis gives users a structured, scannable summary of an AI analysis without requiring a full dashboard or long-form response. It composes existing atoms — `AICardMetric` for the metric grid, `AIInsightList` for the findings, `AIChipBrief` for source / freshness, `AIWhyThisLink` for rationale / sources / assumptions, `AIButton` for actions — into one reusable block.",
+  "intent": "Compact analysis summary — metrics + insights + trust + actions in one card. Three densities cover chat, drawer, and dashboard surfaces.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-analysis/AICardAnalysis",
+    "exports": [
+      "AICardAnalysis"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-analysis/AICardAnalysis.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AICardAnalysisDensity",
+      "required": true
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "analysisType",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "metrics",
+      "type": "AIAnalysisMetric[]",
+      "required": false
+    },
+    {
+      "name": "metricsColumns",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "insights",
+      "type": "AIInsightItem[]",
+      "required": false
+    },
+    {
+      "name": "insightsTitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxInsights",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "freshness",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "risk",
+      "type": "'low' | 'medium' | 'high'",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAssumptions",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "loadingLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.full",
+      "AI.shadow.card.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI summarizes an analysis with metrics and insights",
+    "Conversational response needs structured output",
+    "Side drawer needs compact analysis",
+    "Generated dashboard needs a summary module",
+    "Users need rationale, confidence, or risk metadata attached to an analysis"
+  ],
+  "doNotUse": [
+    "A simple text answer is enough",
+    "A full dashboard is needed",
+    "A single notification / alert is enough — use `ai-notification`",
+    "A long-form report is required",
+    "There are no metrics or structured insights",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-analysis/ai-card-analysis.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-analysis/ai-card-analysis.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-analysis/AICardAnalysis.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-analysis/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-analysis/ai-card-analysis.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-analysis/ai-card-analysis.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

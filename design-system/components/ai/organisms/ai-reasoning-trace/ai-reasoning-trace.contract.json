@@ -1,0 +1,262 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-reasoning-trace",
+  "slug": "ai-reasoning-trace",
+  "name": "AIReasoningTrace",
+  "description": "AI Process Trace is the step-level execution transparency component for the Guild AI Design System. It shows what process steps, agents, tools, and validations occurred behind the scenes to produce an AI output — not why the output makes sense (that is AI Rationale).",
+  "intent": "Governed process telemetry, not private reasoning. Shows what the AI system did — step by step — so users, admins, and governance reviewers can inspect execution without seeing internal deliberation.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-reasoning-trace/AIReasoningTrace",
+    "exports": [
+      "AIReasoningTrace"
+    ],
+    "implementation": "src/components/ai/organisms/ai-reasoning-trace/AIReasoningTrace.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "TraceOverallStatus",
+      "required": true
+    },
+    {
+      "name": "steps",
+      "type": "TraceStep[]",
+      "required": true
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "expandedStepIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "allowExpandAll",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "allowCopy",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showDurations",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showAuditLink",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showRationaleLink",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showSourcesLink",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "TraceMode",
+      "required": false
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "(expanded: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onToggleStep",
+      "type": "(id: string, expanded: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onExpandAll",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCollapseAll",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCopyTrace",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAuditTrail",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onRetryStep",
+      "type": "(id: string) => void",
+      "required": false
+    },
+    {
+      "name": "onEscalateStep",
+      "type": "(id: string) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "pending"
+    },
+    {
+      "name": "running"
+    },
+    {
+      "name": "complete"
+    },
+    {
+      "name": "skipped"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.brand",
+      "AI.color.brandSubtle",
+      "AI.color.brandSurface"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "When users need visibility into agent execution steps",
+    "When AI Led workflows require operational transparency for admins or governance reviewers",
+    "When a workflow is blocked, failed, or escalated and users need to understand what stopped it",
+    "When support teams need to inspect what the AI system did to produce an output",
+    "When an AI output requires audit-ready process context",
+    "When a complex multi-agent workflow needs step-level traceability"
+  ],
+  "doNotUse": [
+    "Do not use for every simple AI response — use AI Rationale instead",
+    "Do not use as a replacement for AI Rationale (they are siblings, not substitutes)",
+    "Do not show raw hidden chain-of-thought or internal model deliberation",
+    "Do not expose sensitive prompts, user data, or private model reasoning",
+    "Do not overwhelm business users with technical process details by default — use mode=\"presentation\" or keep collapsed",
+    "Do not show fabricated timings, agent names, or tool invocations",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.md",
+    "manifest": "design-system/components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.agent.json",
+    "implementation": "src/components/ai/organisms/ai-reasoning-trace/AIReasoningTrace.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-reasoning-trace/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-reasoning-trace/ai-reasoning-trace.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

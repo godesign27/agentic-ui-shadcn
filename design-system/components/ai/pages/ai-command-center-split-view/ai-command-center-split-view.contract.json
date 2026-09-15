@@ -1,0 +1,179 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-command-center-split-view",
+  "slug": "ai-command-center-split-view",
+  "name": "AICommandCenterSplitView",
+  "description": "AICommandCenterSplitView extends the standard AI Command Center with a split-view work mode. It starts in the same centered dialog state — avatar, greeting, input card, and quick-action chips. When the user submits their first prompt, the UI transitions into a two-pane workspace: the left pane anchors the conversation thread and prompt input; the right pane surfaces conditional AI output (analysis, workflow, table, scenario, draft, or approval flow). The right pane is intentionally modular and placeholder-oriented — it defines the layout pattern without prescribing the final output type.",
+  "intent": "Chat drives the work. The right panel holds the generated output.",
+  "status": "experimental",
+  "layer": "pages",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/pages/ai-command-center-split-view/AICommandCenterSplitView",
+    "exports": [
+      "AICommandCenterSplitView"
+    ],
+    "implementation": "src/components/ai/pages/ai-command-center-split-view/AICommandCenterSplitView.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "outputStatus",
+      "type": "OutputStatus",
+      "required": true
+    },
+    {
+      "name": "outputType",
+      "type": "OutputPlaceholderType",
+      "required": true
+    },
+    {
+      "name": "workflowStep",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onHide",
+      "type": "() => void",
+      "required": true
+    },
+    {
+      "name": "variant",
+      "type": "AICommandCenterVariant",
+      "required": false
+    },
+    {
+      "name": "showBackground",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suggestions",
+      "type": "string[]",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "idle"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "ready"
+    },
+    {
+      "name": "updating"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.brandBorder",
+      "AI.color.brandSurface"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "User prompt produces a generated artifact or output larger than a chat response",
+    "AI generates analysis, workflow, scenario, table, report, draft or recommendation",
+    "User needs to keep chatting while reviewing output",
+    "Output may need refinement through follow-up prompts",
+    "AI Led workflows need a workspace for generated results"
+  ],
+  "doNotUse": [
+    "Simple Q&A or short conversational responses",
+    "Lightweight clarification where a chat thread is sufficient",
+    "When output is only plain text with no structure",
+    "When viewport is too narrow for two panes (< 760px)",
+    "When a standard chat thread is a clearer experience",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail",
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.md",
+    "manifest": "design-system/components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.agent.json",
+    "implementation": "src/components/ai/pages/ai-command-center-split-view/AICommandCenterSplitView.tsx",
+    "prompt": "design-system/components/ai/pages/ai-command-center-split-view/agentic-prompt.md",
+    "preview": "design-system/components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.preview.html",
+    "contract": "design-system/components/ai/pages/ai-command-center-split-view/ai-command-center-split-view.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

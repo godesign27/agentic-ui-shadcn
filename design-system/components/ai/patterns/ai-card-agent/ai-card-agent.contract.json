@@ -1,0 +1,135 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-agent",
+  "slug": "ai-card-agent",
+  "name": "AICardAgent",
+  "description": "AICardAgent is the canonical introduction surface for a named agent in a product. Idle state shows the agent identity (icon + role chip + name + first-person description) and a short capabilities list. Two affordances live at the bottom: Talk (full-width, primary) flips the card to a voice-briefing overlay with a pulsing waveform and a typewriter-streamed message; Chat (square, secondary) opens the AI Assisted Side Panel with a brief inline toast.",
+  "intent": "Named agent entry-point — voice-first introduction with chat fallback.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-agent/AICardAgent",
+    "exports": [
+      "AICardAgent"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-agent/AICardAgent.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "config",
+      "type": "AgentCardConfig",
+      "required": true
+    },
+    {
+      "name": "forceState",
+      "type": "AgentCardState",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "idle"
+    },
+    {
+      "name": "talking"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.shadow.card.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "AI Assisted"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-agent/ai-card-agent.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-agent/ai-card-agent.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-agent/AICardAgent.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-agent/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-agent/ai-card-agent.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-agent/ai-card-agent.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

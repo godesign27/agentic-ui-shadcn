@@ -1,0 +1,217 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-time-picker",
+  "slug": "ai-time-picker",
+  "name": "AITimePicker",
+  "description": "The AI Time Picker mirrors the DS Time Picker (src/timePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a scrollable listbox of time slots with a clock icon affordance — but is restyled onto the Guild AI brand. The trigger carries the AI Action Field treatment: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The menu sits FLUSH against the field (the DS Time Picker signature): the field keeps its top corners rounded when open while the menu carries the bottom radius, so the two read as one continuous brand surface. Items adopt the AI_RAMP indigo ramp — hover uses the brand-subtle tint, the selected slot fills with the action gradient — and the custom scrollbar is brand-tinted. It reads its palette from the AI.* tokens (mirrored to the --color-ai-* / --gradient-ai-* CSS variables): rendered on a surface carrying the AI data-theme, it stays aligned with the rest of the AI system, so applying the AI theme to a DS time picker yields this look. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.",
+  "intent": "The DS Time Picker on the AI surface — AI Action Field trigger, brand-indigo slots, and a gradient-filled selected time. Menu sits flush to the field.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-time-picker/AITimePicker",
+    "exports": [
+      "AITimePicker"
+    ],
+    "implementation": "src/components/ai/molecules/ai-time-picker/AITimePicker.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "selected",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "slots",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "keyof typeof AI_TIME_PICKER_SIZES",
+      "required": false
+    },
+    {
+      "name": "surface",
+      "type": "AITimeSurface",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "focused",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hoverIndex",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "focusIndex",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "scrollHover",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "hover"
+    },
+    {
+      "name": "selected"
+    },
+    {
+      "name": "focused"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandStrong",
+      "AI.color.brandSubtle",
+      "AI.color.brandSurface",
+      "AI.color.companion.",
+      "AI.color.companion.border",
+      "AI.color.companion.highlight",
+      "AI.color.companion.ink",
+      "AI.color.companion.paper",
+      "AI.color.companion.surface",
+      "AI.color.text.onAction",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.gradient.action.full",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.shadow.input.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI-surface form field that needs a single time value",
+    "Any picker that should read as AI-enhanced and match the AI Action Field"
+  ],
+  "doNotUse": [
+    "On a standard DS surface — use the DS Time Picker instead",
+    "Don't detach the menu from the field or drop the flush treatment",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-time-picker/ai-time-picker.md",
+    "manifest": "design-system/components/ai/molecules/ai-time-picker/ai-time-picker.agent.json",
+    "implementation": "src/components/ai/molecules/ai-time-picker/AITimePicker.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-time-picker/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-time-picker/ai-time-picker.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-time-picker/ai-time-picker.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

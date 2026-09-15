@@ -1,0 +1,204 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-badge",
+  "slug": "ai-badge",
+  "name": "AIBadge",
+  "description": "AIBadge is a presentational label — not a button, not a chip. It mirrors the standard DS Badge (src/badge/): the same semantic variant set (neutral · info · success · warning · error) and the same two sizes (default 20px / 12px-bold / 10px-radius pill; small 16px / 10px-bold / 8px-radius pill). It adds two AI-surface extensions: an `emphasis` control (bold = canonical solid fill + inverse text; soft = translucent tint + colored text, for in-card metric highlights) and a `dataviz` variant that colors the badge from the DS categorical chart palette (…12). If the label needs to be clickable, use AIChip instead.",
+  "intent": "The compact label atom for AI status and metrics. Extends the DS Badge with a soft emphasis and a data-viz color mode so metric-delta highlights (e.g. \"+23% engagement\") stay on-system.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-badge/AIBadge",
+    "exports": [
+      "AIBadge",
+      "AI_BADGE_VARIANTS",
+      "AI_BADGE_QUEUE_STATUSES"
+    ],
+    "implementation": "src/components/ai/atomic/ai-badge/AIBadge.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AIBadgeVariant",
+      "required": false
+    },
+    {
+      "name": "appearance",
+      "type": "AIBadgeAppearance",
+      "required": false
+    },
+    {
+      "name": "maxCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "queue",
+      "type": "QueueStatus",
+      "required": false
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "emphasis",
+      "type": "AIBadgeEmphasis",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIBadgeSize",
+      "required": false
+    },
+    {
+      "name": "series",
+      "type": "keyof typeof DATAVIZ",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "neutral"
+    }
+  ],
+  "states": [
+    {
+      "name": "queued"
+    },
+    {
+      "name": "running"
+    },
+    {
+      "name": "blocked"
+    },
+    {
+      "name": "needs-approval"
+    },
+    {
+      "name": "complete"
+    }
+  ],
+  "sizes": [
+    "default",
+    "small"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.signal.strong",
+      "AI.color.status.error",
+      "AI.color.status.success",
+      "AI.color.status.warning",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX",
+    "If the label needs to be clickable, use AIChip instead"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-badge/ai-badge.md",
+    "manifest": "design-system/components/ai/atomic/ai-badge/ai-badge.agent.json",
+    "implementation": "src/components/ai/atomic/ai-badge/AIBadge.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-badge/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-badge/ai-badge.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-badge/ai-badge.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}
