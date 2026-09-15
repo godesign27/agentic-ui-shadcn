@@ -1,0 +1,258 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-dialog",
+  "slug": "ai-dialog",
+  "name": "AIDialogSlim",
+  "description": "The composer. AIInputCard is the full card with a toolbar slot; AIDialogSlim is a single-line pill. Enter submits, Shift+Enter inserts a newline.",
+  "intent": "Where the human writes to the machine.",
+  "status": "stable",
+  "layer": "groups",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-dialog",
+    "exports": [
+      "AIDialogSlim",
+      "AIInputCard"
+    ],
+    "implementation": "src/components/ai/ai-dialog.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "toolbar",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each."
+    },
+    {
+      "name": "suggestions",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "The composer. Where the human writes to the machine. Two shapes: AIInputCard, the full card with a toolbar slot, and AIDialogSlim, a single-line pill for constrained surfaces. ai:ai-dialog-button is built to sit in the toolbar slot. The submit control is always present and always labelled. Enter submits; Shift+Enter inserts a newline — the convention users already expect, and getting it backwards traps people mid-sentence. / interface ComposerBase { value?: string onValueChange?: (value: string) => void onSubmit?: (value: string) => void placeholder?: string disabled?: boolean /** Set while a response is generating. Suppresses submit without hiding it. */ busy?: boolean submitLabel?: string } function useComposer({ value, onValueChange, onSubmit, busy, disabled }: ComposerBase) { const [internal, setInternal] = React.useState(\"\") const current = value ?? internal const set = (next: string) => { if (value === undefined) setInternal(next) onValueChange?.(next) } const canSubmit = current.trim().length > 0 && !busy && !disabled const submit = () => { if (!canSubmit) return onSubmit?.(current.trim()) if (value === undefined) setInternal(\"\") } const onKeyDown = (e: React.KeyboardEvent) => { // Shift+Enter is a newline. Plain Enter sends. if (e.key === \"Enter\" && !e.shiftKey) { e.preventDefault() submit() } } return { current, set, submit, canSubmit, onKeyDown } } export interface AIInputCardProps extends ComposerBase, Omit<React.HTMLAttributes<HTMLDivElement>, \"onSubmit\"> { /** Toolbar controls. Use ai:ai-dialog-button for each. */ toolbar?: React.ReactNode /** Suggested prompts shown above the field. Use ai:ai-chip-quick."
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "placeholder",
+      "type": "see source",
+      "required": false,
+      "default": "\"Ask anything…\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "submitLabel",
+      "type": "see source",
+      "required": false,
+      "default": "\"Send message\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "value",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onValueChange",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onSubmit",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "disabled",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "busy",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Empty",
+      "when": "`No value`"
+    },
+    {
+      "name": "Composing",
+      "when": "`Value present`"
+    },
+    {
+      "name": "Busy",
+      "when": "`busy`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled`"
+    },
+    {
+      "name": "Focused",
+      "when": "`Focus within`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-muted",
+      "ai-surface",
+      "card",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-card",
+      "border-ai-surface",
+      "from-ai-accent",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-muted",
+      "text-foreground",
+      "to-ai-accent"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [
+      "Enter — submit",
+      "Shift+Enter — newline",
+      "Tab — reach the toolbar and submit"
+    ],
+    "requiredAttributes": [
+      "An accessible label — supplied as sr-only from the label prop",
+      "aria-label on the submit button"
+    ],
+    "notes": [
+      "Enter submits and Shift+Enter inserts a newline. Reversing this traps users mid-sentence, so it is not configurable.",
+      "The field carries an sr-only label rather than relying on the placeholder, which disappears on input.",
+      "Focus styling sits on the container via focus-within, so the whole composer reads as one control.",
+      "The submit button is disabled, never hidden — a control that vanishes is harder to find than one that is greyed.",
+      "Both forms are uncontrolled until you pass value; pass value and onValueChange together or neither."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "The message entry point of any AI surface",
+    "Full card for a dedicated chat or console view",
+    "Slim pill where vertical space is constrained"
+  ],
+  "doNotUse": [
+    "As a general text input — use ui:input or ui:textarea",
+    "More than one per surface",
+    "Without a submit control; the button is never hidden, only disabled",
+    "Multiple composers on one surface",
+    "Hiding the submit control",
+    "Inverting the Enter convention",
+    "Use as a general text input"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "One composer per surface.",
+      "Never invert Enter and Shift+Enter.",
+      "Disable submit while busy; do not hide it.",
+      "Put ai:ai-dialog-button controls in the toolbar slot and ai:ai-chip-quick in suggestions.",
+      "Composing is not sending — the human still presses submit."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-dialog-button",
+        "note": "Built for the toolbar slot"
+      },
+      {
+        "id": "ai:ai-chip-quick",
+        "note": "Built for the suggestions slot"
+      },
+      {
+        "id": "ui:textarea",
+        "note": "Non-AI multi-line input"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "always"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-dialog/ai-dialog.md",
+    "manifest": "design-system/components/ai/ai-dialog/ai-dialog.agent.json",
+    "implementation": "src/components/ai/ai-dialog.tsx",
+    "prompt": "design-system/components/ai/ai-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-dialog/ai-dialog.preview.html",
+    "contract": "design-system/components/ai/ai-dialog/ai-dialog.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

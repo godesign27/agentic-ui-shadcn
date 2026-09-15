@@ -1,0 +1,289 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sidebar",
+  "slug": "sidebar",
+  "name": "Sidebar",
+  "description": "The largest component in the inventory at 774 lines. Provider, trigger, rail, inset, header, footer, groups, menus, submenus, badges and skeletons. Collapse state persists in a cookie; on mobile it becomes a ui:sheet.",
+  "intent": "A complete application navigation shell — collapsible, persistent, responsive, and keyboard-reachable.",
+  "status": "stable",
+  "layer": "templates",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/sidebar",
+    "exports": [
+      "Sidebar",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarGroup",
+      "SidebarGroupAction",
+      "SidebarGroupContent",
+      "SidebarGroupLabel",
+      "SidebarHeader",
+      "SidebarInput",
+      "SidebarInset",
+      "SidebarMenu",
+      "SidebarMenuAction",
+      "SidebarMenuBadge",
+      "SidebarMenuButton",
+      "SidebarMenuItem",
+      "SidebarMenuSkeleton",
+      "SidebarMenuSub",
+      "SidebarMenuSubButton",
+      "SidebarMenuSubItem",
+      "SidebarProvider",
+      "SidebarRail",
+      "SidebarSeparator",
+      "SidebarTrigger",
+      "useSidebar"
+    ],
+    "implementation": "src/components/ui/sidebar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"outline\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the variant values declared in sidebarMenuButtonVariants."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the size values declared in sidebarMenuButtonVariants."
+    },
+    {
+      "name": "side",
+      "type": "\"left\" | \"right\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "collapsible",
+      "type": "\"offcanvas\" | \"icon\" | \"none\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "isActive",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "tooltip",
+      "type": "string | React.ComponentProps<typeof TooltipContent>",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "showOnHover",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "showIcon",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "see source",
+      "required": false,
+      "default": "true",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "open",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onOpenChange",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "style",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "onClick",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default"
+    },
+    {
+      "group": "variant",
+      "name": "outline"
+    }
+  ],
+  "states": [
+    {
+      "name": "Expanded",
+      "when": "`Default`"
+    },
+    {
+      "name": "Collapsed (icon)",
+      "when": "`collapsible=\"icon\"`"
+    },
+    {
+      "name": "Collapsed (offcanvas)",
+      "when": "`collapsible=\"offcanvas\"`"
+    },
+    {
+      "name": "Mobile",
+      "when": "`Below the breakpoint`"
+    }
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg"
+  ],
+  "tokens": {
+    "semantic": [
+      "background",
+      "sidebar-accent",
+      "sidebar-border",
+      "sidebar-foreground",
+      "sidebar-ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-sidebar-accent",
+      "bg-sidebar-border",
+      "border-sidebar-border",
+      "ring-sidebar-ring",
+      "text-sidebar-accent",
+      "text-sidebar-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "complementary",
+    "keyboard": [
+      "Cmd/Ctrl+B — toggle, bound by the provider",
+      "Tab through menu items",
+      "Enter — activate"
+    ],
+    "requiredAttributes": [
+      "tooltip on SidebarMenuButton when collapsible=\"icon\"",
+      "isActive plus aria-current on the active route"
+    ],
+    "notes": [
+      "When collapsed to icons, the tooltip prop is the only accessible name a menu button has. Omitting it makes the collapsed sidebar unusable.",
+      "The Cmd+B shortcut is registered globally by the provider. Check it does not collide with your editor surfaces.",
+      "Uses its own --sidebar-* token scale, deliberately distinct from the page palette."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Application shells with persistent navigation",
+    "Dashboards and admin interfaces",
+    "Any layout needing a collapsible nav that survives reloads"
+  ],
+  "doNotUse": [
+    "Marketing sites — use ui:navigation-menu",
+    "Simple layouts where a header is enough",
+    "When you only need a static panel — this brings a provider, a cookie and a keyboard shortcut",
+    "Sidebar without SidebarProvider",
+    "Icon-collapsible menu buttons with no tooltip",
+    "Page tokens instead of sidebar tokens",
+    "Using Sidebar for marketing navigation"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "SidebarProvider must wrap everything, including SidebarInset.",
+      "Always set the tooltip prop on SidebarMenuButton when collapsible=\"icon\".",
+      "Mark the active route with isActive.",
+      "Use the --sidebar-* tokens, not the page tokens.",
+      "Mobile renders as a Sheet — verify both."
+    ],
+    "related": [
+      {
+        "id": "ui:sheet",
+        "note": "What it becomes on mobile"
+      },
+      {
+        "id": "ui:navigation-menu",
+        "note": "Site navigation"
+      },
+      {
+        "id": "ui:tooltip",
+        "note": "Collapsed labels"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/sidebar/sidebar.md",
+    "manifest": "design-system/components/ui/sidebar/sidebar.agent.json",
+    "implementation": "src/components/ui/sidebar.tsx",
+    "prompt": "design-system/components/ui/sidebar/agentic-prompt.md",
+    "preview": "design-system/components/ui/sidebar/sidebar.preview.html",
+    "contract": "design-system/components/ui/sidebar/sidebar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

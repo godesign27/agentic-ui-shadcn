@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-status-pill",
+  "slug": "ai-status-pill",
+  "name": "AIStatusPill",
+  "description": "Tone-driven pill with a leading icon (check for success, alert triangle for warning / critical, dot for neutral / info) and a label. Five tones map to the metric-card accent system so the pill, the card dot, and the bottom rail share one color story.",
+  "intent": "Tone-aware status pill for any card or row that needs a quick \"is this OK?\" read.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-status-pill/AIStatusPill",
+    "exports": [
+      "AIStatusPill"
+    ],
+    "implementation": "src/components/ai/atomic/ai-status-pill/AIStatusPill.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "tone",
+      "type": "AIStatusPillTone",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md'",
+      "required": false
+    },
+    {
+      "name": "showIndicator",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onDark",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-status-pill/ai-status-pill.md",
+    "manifest": "design-system/components/ai/atomic/ai-status-pill/ai-status-pill.agent.json",
+    "implementation": "src/components/ai/atomic/ai-status-pill/AIStatusPill.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-status-pill/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-status-pill/ai-status-pill.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-status-pill/ai-status-pill.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

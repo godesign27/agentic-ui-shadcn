@@ -1,0 +1,215 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-list",
+  "slug": "ai-list",
+  "name": "AIList",
+  "description": "AIList groups related AIListItems under a section heading with optional leading icon, count badge, intro narrative paragraph, and a collapse/expand toggle. Items can render as a vertical stack (default), a 2-up grid (for change/grid layouts), or a compact stack (for side panels and drawers). The section can show loading, empty, error, updating, data-stale, or no-changes states so a single component spans the full briefing lifecycle.",
+  "intent": "Section wrapper for AI-led narrative lists.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-list/AIList",
+    "exports": [
+      "AIList"
+    ],
+    "implementation": "src/components/ai/organisms/ai-list/AIList.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "icon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "AIListItemProps[]",
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": "AIListLayout",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultCollapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIListStatus",
+      "required": false
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "emptyMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "footerAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "(collapsed: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onItemOpen",
+      "type": "(item: AIListItemProps, index: number) => void",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "'ai' | 'tan' | 'neutral'",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "empty"
+    },
+    {
+      "name": "updating"
+    },
+    {
+      "name": "dataStale"
+    },
+    {
+      "name": "error"
+    },
+    {
+      "name": "noChanges"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.radius.full",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-list/ai-list.md",
+    "manifest": "design-system/components/ai/organisms/ai-list/ai-list.agent.json",
+    "implementation": "src/components/ai/organisms/ai-list/AIList.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-list/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-list/ai-list.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-list/ai-list.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

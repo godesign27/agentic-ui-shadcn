@@ -1,0 +1,166 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-to-do",
+  "slug": "ai-to-do",
+  "name": "AIToDo",
+  "description": "AIToDo is the agent's scratch-pad checklist — the calm UI used to surface what the agent has done, what it's working on right now, and what is queued. Done items use solid filled icons (success-green check for completed, brand-blue check with a pulsing ring for in-progress); pending items use a hollow outlined check in gray so the difference between \"done\" and \"to do\" is unmistakable at a glance. Blocked uses the orange review-needed ring. Font weight encodes hierarchy: 700 (heavy) for in-progress so the current step jumps off the list, 500 (medium) for completed, 300 (light) for pending. Every text + background pair clears WCAG AA contrast on COMPANION_TAN[00]. When every item is completed, the list flips to a calm \"Complete\" state: the list icon swaps for RiCheckboxCircleLine, the title turns accent, an \"All done\" badge appears, and the progress bar runs one shimmer sweep before settling.",
+  "intent": "Calm checklist the agent uses to narrate its plan and progress.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-to-do/AIToDo",
+    "exports": [
+      "AIToDo"
+    ],
+    "implementation": "src/components/ai/molecules/ai-to-do/AIToDo.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "AIToDoItem[]",
+      "required": true
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultCollapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "forceComplete",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onItemClick",
+      "type": "(item: AIToDoItem, index: number) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "completed"
+    },
+    {
+      "name": "inProgress"
+    },
+    {
+      "name": "pending"
+    },
+    {
+      "name": "blocked"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.radius.md",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-to-do/ai-to-do.md",
+    "manifest": "design-system/components/ai/molecules/ai-to-do/ai-to-do.agent.json",
+    "implementation": "src/components/ai/molecules/ai-to-do/AIToDo.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-to-do/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-to-do/ai-to-do.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-to-do/ai-to-do.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

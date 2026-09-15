@@ -1,0 +1,211 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-input-field",
+  "slug": "ai-input-field",
+  "name": "AIInputField",
+  "description": "AIInputField is the AI-surface counterpart to the standard DS Field atom (src/field/). It keeps the same scope — a label, a single-line input, and a helper/validation slot with default/warning/error modes — but swaps DS Field’s square bottom-underline for the AI brand surface: a fully-rounded outline (AI.radius.md = 16px), a brand-blue border (AI.color.border.default), the composite AI input shadow at rest (AI.shadow.input.default), and a blue-halo focus shadow (AI.shadow.input.focus). Unlike the DS documentation primitive whose value is a static span, this atom wraps a REAL <input>, so it is directly usable inside an app.",
+  "intent": "The text-entry atom for AI surfaces. Mirrors DS Field’s scope (label · input · helper) but restyled onto the Guild brand surface — rounded outline, brand-blue border, and a soft blue-halo focus.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-input-field/AIInputField",
+    "exports": [
+      "AIInputField"
+    ],
+    "implementation": "src/components/ai/atomic/ai-input-field/AIInputField.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "helper",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIInputFieldSize",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "AIInputFieldMode",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "'default' | 'focused'",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(next: string) => void",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "trailingIcon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "asTrigger",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "normal",
+    "small"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.status",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.radius.md",
+      "AI.shadow.field.",
+      "AI.shadow.field.default",
+      "AI.shadow.field.error",
+      "AI.shadow.field.focus",
+      "AI.shadow.field.warning",
+      "AI.shadow.input."
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-input-field/ai-input-field.md",
+    "manifest": "design-system/components/ai/atomic/ai-input-field/ai-input-field.agent.json",
+    "implementation": "src/components/ai/atomic/ai-input-field/AIInputField.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-input-field/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-input-field/ai-input-field.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-input-field/ai-input-field.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "layout:page-container",
+  "slug": "page-container",
+  "name": "PageContainer",
+  "description": "The layout root named by agents/page-generation.json. Renders <main> by default, so a generated page gets its main landmark without anyone remembering to add one.",
+  "intent": "One max-width, one gutter, one place to change either.",
+  "status": "stable",
+  "layer": "layout",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/layout/page-container",
+    "exports": [
+      "PageContainer",
+      "pageContainerVariants"
+    ],
+    "implementation": "src/components/layout/page-container.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "width",
+      "type": "\"prose\" | \"narrow\" | \"default\" | \"wide\" | \"full\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the width values declared in pageContainerVariants."
+    },
+    {
+      "name": "gutter",
+      "type": "\"none\" | \"default\" | \"loose\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the gutter values declared in pageContainerVariants."
+    },
+    {
+      "name": "spacing",
+      "type": "\"none\" | \"tight\" | \"default\" | \"loose\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the spacing values declared in pageContainerVariants."
+    },
+    {
+      "name": "as",
+      "type": "\"main\" | \"div\" | \"section\" | \"article\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "prose",
+      "when": "max-w-2xl. Long-form reading, where line length matters."
+    },
+    {
+      "group": "variant",
+      "name": "narrow",
+      "when": "max-w-3xl. Settings and forms."
+    },
+    {
+      "group": "variant",
+      "name": "default",
+      "when": "max-w-5xl. Most pages."
+    },
+    {
+      "group": "variant",
+      "name": "wide",
+      "when": "max-w-7xl. Dashboards and tables."
+    },
+    {
+      "group": "variant",
+      "name": "full",
+      "when": "No max-width. Keeps the gutter; drops the constraint."
+    },
+    {
+      "group": "width",
+      "name": "prose"
+    },
+    {
+      "group": "width",
+      "name": "narrow"
+    },
+    {
+      "group": "width",
+      "name": "default"
+    },
+    {
+      "group": "width",
+      "name": "wide"
+    },
+    {
+      "group": "width",
+      "name": "full"
+    },
+    {
+      "group": "gutter",
+      "name": "none"
+    },
+    {
+      "group": "gutter",
+      "name": "default"
+    },
+    {
+      "group": "gutter",
+      "name": "loose"
+    },
+    {
+      "group": "spacing",
+      "name": "none"
+    },
+    {
+      "group": "spacing",
+      "name": "tight"
+    },
+    {
+      "group": "spacing",
+      "name": "default"
+    },
+    {
+      "group": "spacing",
+      "name": "loose"
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`No props`"
+    },
+    {
+      "name": "Full bleed",
+      "when": "`width=\"full\"`"
+    },
+    {
+      "name": "Flush",
+      "when": "`spacing=\"none\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "main",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "Renders <main>, which supplies the main landmark. Exactly one per page — set as=\"div\" for any additional container.",
+      "The gutter never collapses below px-4, so content keeps a 16px side margin at every width, including gutter=\"none\".",
+      "Vertical rhythm uses py-*, never a padding shorthand, so the side gutter cannot be zeroed by accident."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "The outermost wrapper of any generated page",
+    "Any region needing the standard horizontal rhythm",
+    "Satisfying the layout root in the page-generation contract"
+  ],
+  "doNotUse": [
+    "Nested inside another PageContainer — the gutters compound",
+    "Inside a ui:dialog or ui:sheet, which bring their own padding",
+    "For a full-bleed region; use width=\"full\" on a child instead of dropping the container",
+    "Nested containers",
+    "Multiple <main> landmarks",
+    "Removing the side gutter",
+    "Use inside a dialog or sheet"
+  ],
+  "governance": {
+    "namespace": "layout",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "One <main> per page. Additional containers use as=\"div\".",
+      "Do not nest containers.",
+      "Pick width from the content: prose for reading, wide for data.",
+      "Never remove the side gutter."
+    ],
+    "related": [
+      {
+        "id": "ui:card",
+        "note": "Grouping inside the container"
+      },
+      {
+        "id": "ui:sidebar",
+        "note": "SidebarInset owns the main region instead"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/layout/page-container/page-container.md",
+    "manifest": "design-system/components/layout/page-container/page-container.agent.json",
+    "implementation": "src/components/layout/page-container.tsx",
+    "prompt": "design-system/components/layout/page-container/agentic-prompt.md",
+    "preview": "design-system/components/layout/page-container/page-container.preview.html",
+    "contract": "design-system/components/layout/page-container/page-container.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

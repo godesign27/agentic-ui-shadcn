@@ -1,0 +1,177 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:command",
+  "slug": "command",
+  "name": "Command",
+  "description": "A cmdk-based command palette with fuzzy filtering, grouping and keyboard navigation. CommandDialog wraps it in ui:dialog for the familiar Cmd+K overlay.",
+  "intent": "Find and run anything by typing, without knowing where it lives in the interface.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/command",
+    "exports": [
+      "Command",
+      "CommandDialog",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandInput",
+      "CommandItem",
+      "CommandList",
+      "CommandSeparator",
+      "CommandShortcut"
+    ],
+    "implementation": "src/components/ui/command.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Empty query",
+      "when": "`No input`"
+    },
+    {
+      "name": "Filtering",
+      "when": "`Typing`"
+    },
+    {
+      "name": "No results",
+      "when": "`Nothing matches`"
+    },
+    {
+      "name": "Item selected",
+      "when": "`Arrow keys`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "border",
+      "foreground",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-foreground",
+      "text-muted",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "combobox with listbox",
+    "keyboard": [
+      "Arrow keys — move through results",
+      "Enter — run the selected item",
+      "Escape — close",
+      "Cmd/Ctrl+K — the conventional open shortcut, which you must bind yourself"
+    ],
+    "requiredAttributes": [
+      "A placeholder on CommandInput describing what can be searched"
+    ],
+    "notes": [
+      "cmdk supplies combobox and listbox semantics and active-descendant management.",
+      "Always render CommandEmpty. Without it a failed search shows a blank box.",
+      "The Cmd+K binding is yours to add — see src/components/prompt-library/usePromptHotkeys.ts for the pattern already used in this repo."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "A global Cmd+K palette",
+    "Searching a large option set — fifty entries or more",
+    "A combobox where the user types to filter",
+    "Power-user navigation"
+  ],
+  "doNotUse": [
+    "A small known set — use ui:select",
+    "As the only route to a feature — palettes are for acceleration, not discovery",
+    "A primarily touch interface",
+    "Omitting CommandEmpty",
+    "Sole route to a feature",
+    "Items outside CommandList"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "CommandEmpty is mandatory.",
+      "Group once past about ten items.",
+      "Bind the open shortcut yourself; CommandShortcut only renders the hint.",
+      "Never the sole route to a feature.",
+      "Under fifty options with no search need means ui:select."
+    ],
+    "related": [
+      {
+        "id": "ui:dialog",
+        "note": "CommandDialog composes it"
+      },
+      {
+        "id": "ui:select",
+        "note": "Small known sets"
+      },
+      {
+        "id": "ui:popover",
+        "note": "Inline combobox shell"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/command/command.md",
+    "manifest": "design-system/components/ui/command/command.agent.json",
+    "implementation": "src/components/ui/command.tsx",
+    "prompt": "design-system/components/ui/command/agentic-prompt.md",
+    "preview": "design-system/components/ui/command/command.preview.html",
+    "contract": "design-system/components/ui/command/command.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

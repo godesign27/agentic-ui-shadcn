@@ -1,0 +1,390 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-skeleton",
+  "slug": "ai-skeleton",
+  "name": "AISkeleton",
+  "description": "AI Skeleton is the AI-library mirror of DS Skeleton. Every measurement is identical — 48/40 profile, 56×24 controls, 120×24 header, exactly two 16px body lines 16px apart, 280×160 card, 56px table rows, 400×900 panel — so a layout can move between the two libraries without reflowing. Three things change. Corners round: the standard's 0px is a standard-only rule, so blocks take AI.radius.xs, the card takes sm and the panel takes lg. Motion runs by default: the standard ships no keyframes because its Figma page has none, but an AI surface that is thinking should look like it, so `shimmer` defaults to true and the table and panel cascade their sweep down the rows. And the whole loader is brand blue: the standard's neutral #dedcde is replaced by AI.color.brandSubtle, with a translucent AI.color.brand band sweeping across it. The two are the same hue at different strengths, so it still reads as one flat colour under a moving highlight rather than two colours competing. Surfaces, rules, icons and the table checkbox follow the same ramp; only real text — column names, the panel title — stays legible AI.color.brandInk rather than washing out. The two content rules carry over unchanged — the table header is real text, and the panel header is real chrome whose close button stays live while the body loads.",
+  "intent": "Four atoms → three patterns. Brand-blue fill, brand sweep, AI radius. Motion on by default.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-skeleton/AISkeleton",
+    "exports": [
+      "AISkeleton"
+    ],
+    "implementation": "src/components/ai/atomic/ai-skeleton/AISkeleton.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "shimmer",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "stagger",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "AISkeletonCardVariant",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "announce",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "columns",
+      "type": "AISkeletonTableColumn[]",
+      "required": false
+    },
+    {
+      "name": "header",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "cascade",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "ratio",
+      "type": "AISkeletonMediaRatio",
+      "required": false
+    },
+    {
+      "name": "glyph",
+      "type": "'none' | 'play' | 'image'",
+      "required": false
+    },
+    {
+      "name": "lines",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "lineHeight",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "lastLineWidth",
+      "type": "number | string",
+      "required": false
+    },
+    {
+      "name": "avatar",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "avatarShape",
+      "type": "'circle' | 'square'",
+      "required": false
+    },
+    {
+      "name": "avatarSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "trailing",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "divider",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "from",
+      "type": "'assistant' | 'user'",
+      "required": false
+    },
+    {
+      "name": "thinking",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minItemWidth",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "renderItem",
+      "type": "(index: number) => React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "busy",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "opacity",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "delta",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "sparkline",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "bordered",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "axis",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "bars",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "steps",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "'vertical' | 'horizontal'",
+      "required": false
+    },
+    {
+      "name": "helper",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "profile-left"
+    },
+    {
+      "group": "variant",
+      "name": "profile-center"
+    },
+    {
+      "group": "variant",
+      "name": "title"
+    },
+    {
+      "group": "variant",
+      "name": "text"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandInk",
+      "AI.color.brandStrong",
+      "AI.color.brandSubtle",
+      "AI.color.brandSurface",
+      "AI.radius.full",
+      "AI.radius.lg",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.radius.xs",
+      "AI.shadow.card.default",
+      "AI.shadow.card.raised"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Loading states for AI cards, tables, panels and result lists",
+    "Any wait long enough that a spinner would read as a stall",
+    "Agent-populated surfaces where the layout is known before the content",
+    "An agent composing a reply — AISkeletonMessage, with the thinking tail",
+    "Re-fetching data that is already on screen — AISkeletonOverlay, not a full teardown"
+  ],
+  "doNotUse": [
+    "Don't attach click or focus handlers to skeleton blocks",
+    "Don't skeletonize table column headers — the header is real text",
+    "Don't mix a neutral grey placeholder into this loader — the fill is one brand ramp",
+    "Don't announce every skeleton individually to screen readers",
+    "Don't use Overlay for initial load — with nothing underneath it is just a blank plate",
+    "Don't aria-hide the content under an Overlay; stale values are still true, just stale",
+    "Don't use the sweep to imply progress — it carries no value",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-skeleton/ai-skeleton.md",
+    "manifest": "design-system/components/ai/atomic/ai-skeleton/ai-skeleton.agent.json",
+    "implementation": "src/components/ai/atomic/ai-skeleton/AISkeleton.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-skeleton/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-skeleton/ai-skeleton.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-skeleton/ai-skeleton.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

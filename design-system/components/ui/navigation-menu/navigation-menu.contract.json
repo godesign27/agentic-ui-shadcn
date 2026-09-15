@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:navigation-menu",
+  "slug": "navigation-menu",
+  "name": "NavigationMenu",
+  "description": "Radix NavigationMenu with an animated viewport and an indicator. Built for websites rather than applications.",
+  "intent": "Primary site navigation, with room for a rich panel under each top-level item.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/navigation-menu",
+    "exports": [
+      "NavigationMenu",
+      "NavigationMenuContent",
+      "NavigationMenuIndicator",
+      "NavigationMenuItem",
+      "NavigationMenuLink",
+      "NavigationMenuList",
+      "NavigationMenuTrigger",
+      "NavigationMenuViewport",
+      "navigationMenuTriggerStyle"
+    ],
+    "implementation": "src/components/ui/navigation-menu.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Open",
+      "when": "`Hover or focus on a trigger`"
+    },
+    {
+      "name": "Active link",
+      "when": "`data-active`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "border",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-border",
+      "bg-popover",
+      "text-accent",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab — move between top-level items",
+      "Enter or Space — open a panel",
+      "Arrow keys — move within a panel",
+      "Escape — close"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the nav when there is more than one on the page"
+    ],
+    "notes": [
+      "Opens on hover as well as focus, which is right for site navigation and wrong for actions.",
+      "Use navigationMenuTriggerStyle() for links that must match trigger styling.",
+      "On mobile this pattern does not work. Swap to ui:sheet below the breakpoint."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Marketing site headers",
+    "Mega-menus with grouped links and descriptions",
+    "Primary navigation with two levels"
+  ],
+  "doNotUse": [
+    "Application menus — use ui:menubar or a toolbar with ui:dropdown-menu",
+    "Actions rather than navigation",
+    "Mobile — collapse to a ui:sheet instead",
+    "Flat navigation with no second level — plain links are better",
+    "Actions in a navigation menu",
+    "Mobile usage with no fallback",
+    "Application menus"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Navigation only — never actions.",
+      "Use asChild for router integration.",
+      "Provide a ui:sheet fallback on mobile.",
+      "Name the nav when the page has several."
+    ],
+    "related": [
+      {
+        "id": "ui:menubar",
+        "note": "Application menu bar"
+      },
+      {
+        "id": "ui:sheet",
+        "note": "Mobile navigation"
+      },
+      {
+        "id": "ui:breadcrumb",
+        "note": "Location within the hierarchy"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/navigation-menu/navigation-menu.md",
+    "manifest": "design-system/components/ui/navigation-menu/navigation-menu.agent.json",
+    "implementation": "src/components/ui/navigation-menu.tsx",
+    "prompt": "design-system/components/ui/navigation-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/navigation-menu/navigation-menu.preview.html",
+    "contract": "design-system/components/ui/navigation-menu/navigation-menu.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

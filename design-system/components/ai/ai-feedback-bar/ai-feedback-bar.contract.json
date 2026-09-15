@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-feedback-bar",
+  "slug": "ai-feedback-bar",
+  "name": "AIFeedbackBar",
+  "description": "Like, dislike, copy and optional share. Every control is icon-only and therefore carries an accessible name.",
+  "intent": "Let the human correct the record.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-feedback-bar",
+    "exports": [
+      "AIFeedbackBar"
+    ],
+    "implementation": "src/components/ai/ai-feedback-bar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "showDivider",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "sentiment",
+      "type": "Sentiment",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onSentiment",
+      "type": "(value: Exclude<Sentiment, null>) => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onCopy",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "onShare",
+      "type": "() => void",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Neutral",
+      "when": "`sentiment={null}`"
+    },
+    {
+      "name": "Positive",
+      "when": "`sentiment=\"up\"`"
+    },
+    {
+      "name": "Negative",
+      "when": "`sentiment=\"down\"`"
+    },
+    {
+      "name": "Copied",
+      "when": "`After copy`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "ai-accent",
+      "ai-muted",
+      "border",
+      "destructive",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-accent",
+      "border-border",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-muted",
+      "text-destructive",
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [
+      "Tab between controls",
+      "Enter or Space to activate"
+    ],
+    "requiredAttributes": [
+      "aria-label on every control — supplied by the component"
+    ],
+    "notes": [
+      "Thumbs use aria-pressed so the current sentiment is announced, not just shown.",
+      "The copy confirmation goes through a role=\"status\" region — the icon swap alone is invisible to screen readers."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "After every substantive AI response",
+    "Wherever sentiment would improve future output"
+  ],
+  "doNotUse": [
+    "When the feedback goes nowhere — a bar that discards input is a lie about listening",
+    "On trivial responses",
+    "More than once per response",
+    "Feedback that is discarded",
+    "Multiple bars per response",
+    "Removing the accessible names"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Wire the handlers to something real.",
+      "One bar per response.",
+      "Reflect the stored sentiment through the sentiment prop so it survives a re-render."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-message-footer",
+        "note": "Actions rather than sentiment"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-feedback-bar/ai-feedback-bar.md",
+    "manifest": "design-system/components/ai/ai-feedback-bar/ai-feedback-bar.agent.json",
+    "implementation": "src/components/ai/ai-feedback-bar.tsx",
+    "prompt": "design-system/components/ai/ai-feedback-bar/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-feedback-bar/ai-feedback-bar.preview.html",
+    "contract": "design-system/components/ai/ai-feedback-bar/ai-feedback-bar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

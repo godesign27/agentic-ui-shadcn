@@ -1,0 +1,168 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:breadcrumb",
+  "slug": "breadcrumb",
+  "name": "Breadcrumb",
+  "description": "Semantic breadcrumb markup: nav, ordered list, links, and a current page marked with aria-current.",
+  "intent": "Show where this page sits in the hierarchy, and offer a way back up.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/breadcrumb",
+    "exports": [
+      "Breadcrumb",
+      "BreadcrumbEllipsis",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbList",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator"
+    ],
+    "implementation": "src/components/ui/breadcrumb.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "separator",
+      "type": "React.ReactNode",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Link",
+      "when": "`An ancestor level`"
+    },
+    {
+      "name": "Current page",
+      "when": "`BreadcrumbPage`"
+    },
+    {
+      "name": "Collapsed",
+      "when": "`BreadcrumbEllipsis`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "foreground",
+      "muted"
+    ],
+    "utilities": [
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab through the links"
+    ],
+    "requiredAttributes": [
+      "aria-label=\"Breadcrumb\" on the nav — set by the component",
+      "aria-current=\"page\" on the last item — set by BreadcrumbPage"
+    ],
+    "notes": [
+      "The final item must be BreadcrumbPage, not BreadcrumbLink. Linking to the current page is a common and pointless error.",
+      "Separators are aria-hidden so they are not read as content.",
+      "BreadcrumbEllipsis is decorative. If the hidden levels matter, put them in a ui:dropdown-menu behind it."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Hierarchies three or more levels deep",
+    "When users arrive from search and need orientation",
+    "File and folder structures"
+  ],
+  "doNotUse": [
+    "Flat sites with no hierarchy",
+    "As a step indicator for a wizard — breadcrumbs describe location, not progress",
+    "When the hierarchy is only one level deep",
+    "Linking the current page",
+    "Breadcrumbs as a step indicator",
+    "Flat hierarchies"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "The last item is always BreadcrumbPage.",
+      "Use asChild to integrate your router.",
+      "Put collapsed levels behind a real menu, not a bare ellipsis.",
+      "Not a wizard stepper."
+    ],
+    "related": [
+      {
+        "id": "ui:navigation-menu",
+        "note": "Primary site navigation"
+      },
+      {
+        "id": "ui:dropdown-menu",
+        "note": "Revealing collapsed levels"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/breadcrumb/breadcrumb.md",
+    "manifest": "design-system/components/ui/breadcrumb/breadcrumb.agent.json",
+    "implementation": "src/components/ui/breadcrumb.tsx",
+    "prompt": "design-system/components/ui/breadcrumb/agentic-prompt.md",
+    "preview": "design-system/components/ui/breadcrumb/breadcrumb.preview.html",
+    "contract": "design-system/components/ui/breadcrumb/breadcrumb.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

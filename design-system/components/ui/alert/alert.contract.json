@@ -1,0 +1,166 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:alert",
+  "slug": "alert",
+  "name": "Alert",
+  "description": "A static inline message with default and destructive variants. Icons are positioned automatically by the base class.",
+  "intent": "A message that stays on the page because it remains true.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/alert",
+    "exports": [
+      "Alert",
+      "AlertDescription",
+      "AlertTitle"
+    ],
+    "implementation": "src/components/ui/alert.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default",
+      "when": "Informational or neutral state."
+    },
+    {
+      "group": "variant",
+      "name": "destructive",
+      "when": "An error or a risk. Do not use for merely important information."
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`variant=\"default\"`"
+    },
+    {
+      "name": "Destructive",
+      "when": "`variant=\"destructive\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "background",
+      "destructive",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-background",
+      "border-destructive",
+      "text-destructive",
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "alert",
+    "keyboard": [],
+    "requiredAttributes": [
+      "role=\"alert\" is set on the root"
+    ],
+    "notes": [
+      "role=\"alert\" is an assertive live region: it interrupts the screen reader. That is right for an error appearing in response to an action, and wrong for content present on page load — which will be announced over everything else.",
+      "For a message present at load, render a plain styled div instead, or use role=\"status\".",
+      "The destructive variant must not rely on colour alone — keep the icon and the title."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Persistent form-level errors",
+    "Ongoing system state — maintenance, degraded service, quota",
+    "Contextual warnings before the user acts"
+  ],
+  "doNotUse": [
+    "Confirming something that just happened — use ui:toast, which dismisses itself",
+    "A blocking confirmation — use ui:alert-dialog",
+    "So routinely that users learn to ignore it",
+    "Field-level validation — use ui:form and FormMessage",
+    "Colour as the only error signal",
+    "Using Alert for transient confirmations",
+    "Destructive variant for non-errors"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Reserve destructive for errors and risks.",
+      "Always pair the variant with an icon and a title so colour is not the only signal.",
+      "For an alert present on page load, reconsider role=\"alert\" — it will interrupt.",
+      "Transient confirmations belong in ui:toast."
+    ],
+    "related": [
+      {
+        "id": "ui:toast",
+        "note": "Transient"
+      },
+      {
+        "id": "ui:alert-dialog",
+        "note": "Blocking"
+      },
+      {
+        "id": "ui:form",
+        "note": "Field-level errors"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/alert/alert.md",
+    "manifest": "design-system/components/ui/alert/alert.agent.json",
+    "implementation": "src/components/ui/alert.tsx",
+    "prompt": "design-system/components/ui/alert/agentic-prompt.md",
+    "preview": "design-system/components/ui/alert/alert.preview.html",
+    "contract": "design-system/components/ui/alert/alert.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

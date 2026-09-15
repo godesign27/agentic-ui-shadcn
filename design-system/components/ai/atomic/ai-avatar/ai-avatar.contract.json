@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-avatar",
+  "slug": "ai-avatar",
+  "name": "AIAvatar",
+  "description": "Guild AI agent identity — three concentric BRAND blue rings (#B4BDFF → #5A6DFF → #1F2A66) with white cross-star monogram. AIAvatar 34px, BotAvatar 18px. No orange gradient ring.",
+  "intent": "Presentational fixed-color SVG. Same structure for both exports; only size, optional drop-shadow, and a11y differ. Do not theme-adapt fills for dark mode.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-avatar/AIAvatar",
+    "exports": [
+      "AIAvatar",
+      "BotAvatar",
+      "AIAvatar3D"
+    ],
+    "implementation": "src/components/ai/atomic/ai-avatar/AIAvatar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "AIAvatar",
+      "when": "Same three rings + monogram; optional blue `drop-shadow` on SVG"
+    },
+    {
+      "group": "variant",
+      "name": "BotAvatar",
+      "when": "**Identical SVG structure** — smaller size; no drop-shadow; `aria-hidden`"
+    }
+  ],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "bot-inline"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandInk",
+      "AI.color.decorative.wash"
+    ]
+  },
+  "a11y": {
+    "role": "img",
+    "keyboard": [],
+    "requiredAttributes": [
+      "AIAvatar: aria-label on SVG (e.g. Guild Agent)",
+      "BotAvatar: aria-hidden when message text attributes speaker"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "`AIAvatar` (34px) — bot identity in hero idle state of AI Command Center",
+    "`BotAvatar` (18px) — inline attribution beside AI response text",
+    "`AIAvatar3D` — dimensional BRAND blue variant when product spec requires dimensional treatment (separate asset)"
+  ],
+  "doNotUse": [
+    "Generic icon or decoration without AI context",
+    "Custom sizes outside **34px** and **18px** without design review",
+    "**Do not** add an orange gradient ring or recolor rings outside the BRAND ramp — the mark must read as BRAND blue",
+    "**Do not** theme-adapt ring fills to dark mode — see **Presentation & theme** below",
+    "Do not use without AI context",
+    "Do not add orange gradient ring or linearGradient",
+    "Do not use useId() for gradients — component has no gradients",
+    "Do not theme-adapt ring fills for dark mode — use fixed BRAND hex",
+    "Do not use currentColor on circles or monogram",
+    "Do not invent sizes outside 34px and 18px without design review",
+    "Do not treat BotAvatar as structurally different from AIAvatar — same SVG, different default size",
+    "Do not theme-adapt ring fills for dark mode"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-avatar/ai-avatar.md",
+    "manifest": "design-system/components/ai/atomic/ai-avatar/ai-avatar.agent.json",
+    "implementation": "src/components/ai/atomic/ai-avatar/AIAvatar.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-avatar/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-avatar/ai-avatar.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-avatar/ai-avatar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

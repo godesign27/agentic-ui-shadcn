@@ -1,0 +1,155 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:card",
+  "slug": "card",
+  "name": "Card",
+  "description": "Six composable parts. No variants — a card is a container, and its meaning comes from what you put in it.",
+  "intent": "Group related content into a unit the eye reads as one thing.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/card",
+    "exports": [
+      "Card",
+      "CardContent",
+      "CardDescription",
+      "CardFooter",
+      "CardHeader",
+      "CardTitle"
+    ],
+    "implementation": "src/components/ui/card.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "as",
+      "type": "\"h1\" | \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"div\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "card",
+      "muted"
+    ],
+    "utilities": [
+      "bg-card",
+      "text-card",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "A Card is a div. It carries no semantics of its own — that is correct and deliberate.",
+      "CardTitle renders <h3> by default, which is right inside an <h2> section and wrong directly under the page <h1>. Set `as` to match the real outline — screen-reader users navigate by heading, so a page of cards at the wrong level is a broken outline.",
+      "For a card grid, wrap in a ul and each card in an li so the count is announced.",
+      "A whole-card click target needs a real button or link inside — do not attach onClick to the Card div."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Grouping related information with a clear boundary",
+    "Repeating items in a grid or list",
+    "Sectioning a settings or dashboard page",
+    "Empty states"
+  ],
+  "doNotUse": [
+    "Wrapping every element on the page — nesting cards in cards destroys the hierarchy they exist to create",
+    "A single paragraph with no grouping need",
+    "Tabular data — use ui:table",
+    "As a clickable button — put the interactive element inside, or the whole card in a link",
+    "Nested cards",
+    "onClick on the Card div with no focusable child",
+    "Using Card for tabular data"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Do not nest cards.",
+      "Set `as` on CardTitle to match the surrounding heading level. The h3 default is a guess about context it cannot see.",
+      "CardContent has pt-0 — using it without CardHeader leaves the top padding wrong.",
+      "Clickable cards need a real interactive element inside."
+    ],
+    "related": [
+      {
+        "id": "ui:table",
+        "note": "Tabular data"
+      },
+      {
+        "id": "ui:accordion",
+        "note": "Collapsible sections"
+      },
+      {
+        "id": "ui:skeleton",
+        "note": "Loading placeholder"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/card/card.md",
+    "manifest": "design-system/components/ui/card/card.agent.json",
+    "implementation": "src/components/ui/card.tsx",
+    "prompt": "design-system/components/ui/card/agentic-prompt.md",
+    "preview": "design-system/components/ui/card/card.preview.html",
+    "contract": "design-system/components/ui/card/card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

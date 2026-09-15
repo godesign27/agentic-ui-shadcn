@@ -1,0 +1,1872 @@
+{
+  "generatedAt": "2026-09-15T00:18:06.044Z",
+  "brand": "Guild",
+  "source": [
+    "design-system/tokens/semantic.json",
+    "design-system/tokens/primitives.json",
+    "design-system/tokens/aliases.json",
+    "local {slug}.contract.json tokens"
+  ],
+  "catalog": {
+    "purpose": "The token contract an agent is allowed to reference. If a role is not listed here, it does not exist — do not invent one.",
+    "roles": {
+      "surface": [
+        {
+          "token": "background",
+          "utility": "bg-background",
+          "meaning": "The page canvas. One per view."
+        },
+        {
+          "token": "card",
+          "utility": "bg-card",
+          "meaning": "A raised content container sitting on the page canvas."
+        },
+        {
+          "token": "popover",
+          "utility": "bg-popover",
+          "meaning": "Floating surfaces: dropdown, tooltip, select, combobox, hover card."
+        },
+        {
+          "token": "muted",
+          "utility": "bg-muted",
+          "meaning": "A recessed region: skeletons, disabled fills, table stripes, inactive tabs."
+        },
+        {
+          "token": "accent",
+          "utility": "bg-accent",
+          "meaning": "Hover and highlight state for menu items and list rows. Not a brand color."
+        },
+        {
+          "token": "secondary",
+          "utility": "bg-secondary",
+          "meaning": "A lower-emphasis filled surface for secondary buttons and badges."
+        }
+      ],
+      "content": [
+        {
+          "token": "foreground",
+          "utility": "text-foreground",
+          "meaning": "Default body and heading text."
+        },
+        {
+          "token": "muted-foreground",
+          "utility": "text-muted-foreground",
+          "meaning": "Supporting text: descriptions, placeholders, helper text, timestamps."
+        },
+        {
+          "token": "card-foreground",
+          "utility": "text-card-foreground",
+          "meaning": "Text on a card surface."
+        },
+        {
+          "token": "popover-foreground",
+          "utility": "text-popover-foreground",
+          "meaning": "Text on a floating surface."
+        },
+        {
+          "token": "primary-foreground",
+          "utility": "text-primary-foreground",
+          "meaning": "Text on a primary fill."
+        },
+        {
+          "token": "secondary-foreground",
+          "utility": "text-secondary-foreground",
+          "meaning": "Text on a secondary fill."
+        },
+        {
+          "token": "accent-foreground",
+          "utility": "text-accent-foreground",
+          "meaning": "Text on an accent fill."
+        },
+        {
+          "token": "destructive-foreground",
+          "utility": "text-destructive-foreground",
+          "meaning": "Text on a destructive fill."
+        }
+      ],
+      "action": [
+        {
+          "token": "primary",
+          "utility": "bg-primary",
+          "meaning": "The single highest-emphasis action in a region."
+        },
+        {
+          "token": "destructive",
+          "utility": "bg-destructive",
+          "meaning": "Irreversible or damaging actions only. Never decorative."
+        }
+      ],
+      "boundary": [
+        {
+          "token": "border",
+          "utility": "border-border",
+          "meaning": "All dividers and container edges."
+        },
+        {
+          "token": "input",
+          "utility": "border-input",
+          "meaning": "Form control edges specifically."
+        },
+        {
+          "token": "ring",
+          "utility": "ring-ring",
+          "meaning": "Focus indicator. Never remove; never recolor below 3:1."
+        }
+      ],
+      "sidebar": [
+        {
+          "token": "sidebar-background",
+          "utility": "bg-sidebar-background",
+          "meaning": "Sidebar canvas, deliberately distinct from the page canvas."
+        },
+        {
+          "token": "sidebar-foreground",
+          "utility": "text-sidebar-foreground",
+          "meaning": "Sidebar text."
+        },
+        {
+          "token": "sidebar-primary",
+          "utility": "bg-sidebar-primary",
+          "meaning": "Active or selected sidebar item."
+        },
+        {
+          "token": "sidebar-accent",
+          "utility": "bg-sidebar-accent",
+          "meaning": "Sidebar hover state."
+        },
+        {
+          "token": "sidebar-border",
+          "utility": "border-sidebar-border",
+          "meaning": "Sidebar dividers."
+        },
+        {
+          "token": "sidebar-ring",
+          "utility": "ring-sidebar-ring",
+          "meaning": "Sidebar focus indicator."
+        }
+      ],
+      "ai": [
+        {
+          "token": "ai-accent",
+          "utility": "bg-ai-accent",
+          "meaning": "The AI identity color. Marks machine authorship. Forbidden on standard UI.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-accent-strong",
+          "utility": "to-ai-accent-strong",
+          "meaning": "Gradient terminus for the AI primary action.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-accent-active",
+          "utility": "bg-ai-accent-active",
+          "meaning": "Hover, loading and complete states of an AI primary action.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-accent-foreground",
+          "utility": "text-ai-accent-foreground",
+          "meaning": "Text on an AI accent fill.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-surface",
+          "utility": "bg-ai-surface",
+          "meaning": "The soft canvas behind AI-generated regions. The primary attribution affordance.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-surface-border",
+          "utility": "border-ai-surface-border",
+          "meaning": "Edge of an AI region.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-signal",
+          "utility": "text-ai-signal",
+          "meaning": "Requires-review and needs-attention signalling. Never used for generic warnings.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-signal-surface",
+          "utility": "bg-ai-signal-surface",
+          "meaning": "Review pill background.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-signal-border",
+          "utility": "border-ai-signal-border",
+          "meaning": "Review pill edge.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-confidence-high",
+          "utility": "text-ai-confidence-high",
+          "meaning": "High confidence. Must be paired with a text label.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-confidence-medium",
+          "utility": "text-ai-confidence-medium",
+          "meaning": "Medium confidence. Must be paired with a text label.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-confidence-low",
+          "utility": "text-ai-confidence-low",
+          "meaning": "Low confidence. Must be paired with a text label.",
+          "namespace": "ai"
+        },
+        {
+          "token": "ai-muted",
+          "utility": "text-ai-muted",
+          "meaning": "Supporting text inside AI regions.",
+          "namespace": "ai"
+        }
+      ]
+    },
+    "decisionTable": [
+      {
+        "need": "Page background",
+        "use": "bg-background"
+      },
+      {
+        "need": "A card or panel",
+        "use": "bg-card + border-border"
+      },
+      {
+        "need": "A dropdown, tooltip or select menu",
+        "use": "bg-popover text-popover-foreground"
+      },
+      {
+        "need": "Helper or placeholder text",
+        "use": "text-muted-foreground"
+      },
+      {
+        "need": "The main action",
+        "use": "bg-primary text-primary-foreground"
+      },
+      {
+        "need": "A dangerous action",
+        "use": "bg-destructive text-destructive-foreground"
+      },
+      {
+        "need": "A hover state on a list row",
+        "use": "hover:bg-accent hover:text-accent-foreground"
+      },
+      {
+        "need": "A loading placeholder",
+        "use": "bg-muted with animate-pulse"
+      },
+      {
+        "need": "Focus indication",
+        "use": "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      },
+      {
+        "need": "Marking a region as AI-generated",
+        "use": "bg-ai-surface border-ai-surface-border"
+      },
+      {
+        "need": "An AI action the user must approve",
+        "use": "bg-ai-signal-surface text-ai-signal border-ai-signal-border on the review pill"
+      }
+    ],
+    "forbidden": [
+      "Raw hex, rgb() or hsl() literals in component code",
+      "Tailwind palette utilities (bg-slate-900, text-gray-500) — they bypass theming and break dark mode",
+      "Inventing a token name not present in src/index.css",
+      "Using --ai-* tokens outside src/components/ai/"
+    ]
+  },
+  "usedByToken": {
+    "AI.color.border.focus": [
+      "ai:ai-accordion",
+      "ai:ai-checkbox",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-guided-learning",
+      "ai:ai-input-field",
+      "ai:ai-menu",
+      "ai:ai-modal-dialog",
+      "ai:ai-node-connector",
+      "ai:ai-picker-trigger",
+      "ai:ai-radio",
+      "ai:ai-search",
+      "ai:ai-segmented-control",
+      "ai:ai-slider",
+      "ai:ai-standard-card",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-button"
+    ],
+    "AI.color.brand": [
+      "ai:ai-accordion",
+      "ai:ai-agent-response",
+      "ai:ai-agent-task-card",
+      "ai:ai-agent-task-tracker",
+      "ai:ai-badge",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-card-analysis",
+      "ai:ai-card-brief",
+      "ai:ai-card-data-table",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-memory",
+      "ai:ai-card-metric",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-card-workstream",
+      "ai:ai-checkbox",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-guided-learning",
+      "ai:ai-handoff-timeline",
+      "ai:ai-input-field",
+      "ai:ai-insight-list",
+      "ai:ai-led-navigation",
+      "ai:ai-menu",
+      "ai:ai-metric-tile",
+      "ai:ai-modal-dialog",
+      "ai:ai-node-connector",
+      "ai:ai-notification",
+      "ai:ai-objective-card",
+      "ai:ai-picker",
+      "ai:ai-picker-trigger",
+      "ai:ai-radio",
+      "ai:ai-rationale-panel",
+      "ai:ai-reasoning-trace",
+      "ai:ai-search",
+      "ai:ai-segmented-control",
+      "ai:ai-skeleton",
+      "ai:ai-slider",
+      "ai:ai-source-accordion",
+      "ai:ai-source-tile",
+      "ai:ai-stepper",
+      "ai:ai-suggestion-compare",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:ai-toggle",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-agent-stack",
+      "ai:atomic-ai-agent-work-note",
+      "ai:atomic-ai-avatar",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-icon",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-queue-badge",
+      "ai:conversational-ai-output-showcase",
+      "ai:molecules-ai-text-link"
+    ],
+    "AI.radius": [
+      "ai:ai-accordion",
+      "ai:ai-modal-dialog",
+      "ai:ai-tab"
+    ],
+    "ai-signal": [
+      "ai:ai-action",
+      "ai:ai-agent-stack",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-control-bar",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface",
+      "ai:ai-text-link"
+    ],
+    "bg-ai-signal": [
+      "ai:ai-action",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-launcher",
+      "ai:ai-progress",
+      "ai:ai-queue-badge"
+    ],
+    "border-ai-signal": [
+      "ai:ai-action",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-queue-badge"
+    ],
+    "text-ai-signal": [
+      "ai:ai-action",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-control-bar",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-queue-badge",
+      "ai:ai-text-link"
+    ],
+    "AI.color.action.primary": [
+      "ai:ai-agent-drawer",
+      "ai:ai-analysis-insight",
+      "ai:ai-analysis-message",
+      "ai:ai-checkbox",
+      "ai:ai-chip",
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:ai-command-center-split-view",
+      "ai:ai-date-picker",
+      "ai:ai-file-attachment",
+      "ai:ai-generated-dashboard",
+      "ai:ai-guided-learning",
+      "ai:ai-list",
+      "ai:ai-list-item",
+      "ai:ai-list-landing",
+      "ai:ai-menu",
+      "ai:ai-modal-dialog",
+      "ai:ai-picker",
+      "ai:ai-radio",
+      "ai:ai-reasoning-trace",
+      "ai:ai-response-footer",
+      "ai:ai-search",
+      "ai:ai-standard-card",
+      "ai:ai-time-picker",
+      "ai:ai-to-do",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-feedback-bar",
+      "ai:atomic-ai-icon",
+      "ai:atomic-ai-loading-indicators",
+      "ai:atomic-ai-progress",
+      "ai:ds-spinner",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.color.brandInk": [
+      "ai:ai-agent-drawer",
+      "ai:ai-agent-response",
+      "ai:ai-date-picker",
+      "ai:ai-menu",
+      "ai:ai-modal-dialog",
+      "ai:ai-skeleton",
+      "ai:ai-slider",
+      "ai:ai-supervisor-bar",
+      "ai:ai-user-bubble",
+      "ai:atomic-ai-avatar"
+    ],
+    "AI.color.text.onAction": [
+      "ai:ai-agent-drawer",
+      "ai:ai-agent-response",
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-menu",
+      "ai:ai-picker",
+      "ai:ai-segmented-control",
+      "ai:ai-supervisor-bar",
+      "ai:ai-time-picker",
+      "ai:ai-user-bubble",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-message-footer",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.radius.md": [
+      "ai:ai-agent-response",
+      "ai:ai-agent-response-group",
+      "ai:ai-agent-task-tracker",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-generated-dashboard",
+      "ai:ai-input-field",
+      "ai:ai-insight-callout",
+      "ai:ai-insight-list",
+      "ai:ai-node-connector",
+      "ai:ai-objective-card",
+      "ai:ai-search",
+      "ai:ai-skeleton",
+      "ai:ai-source-accordion",
+      "ai:ai-standard-card",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:ai-to-do",
+      "ai:ai-tooltip",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-loading-indicators",
+      "ai:atomic-ai-message-footer"
+    ],
+    "AI.radius.xs": [
+      "ai:ai-agent-response-group",
+      "ai:ai-agent-task-card",
+      "ai:ai-agent-task-tracker",
+      "ai:ai-analysis-insight",
+      "ai:ai-analysis-message",
+      "ai:ai-card-brief",
+      "ai:ai-file-attachment",
+      "ai:ai-list-item",
+      "ai:ai-notification",
+      "ai:ai-skeleton",
+      "ai:ai-slider",
+      "ai:ai-tab",
+      "ai:ai-to-do",
+      "ai:ai-tooltip",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-button"
+    ],
+    "ai-accent": [
+      "ai:ai-agent-stack",
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-loading-indicators",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface",
+      "ai:ai-text-link",
+      "ai:ai-why-this-link"
+    ],
+    "ai-confidence-high": [
+      "ai:ai-agent-stack",
+      "ai:ai-chip-brief",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-icon",
+      "ai:ai-progress",
+      "ai:ai-queue-badge"
+    ],
+    "background": [
+      "ai:ai-agent-stack",
+      "ui:alert",
+      "ui:alert-dialog",
+      "ui:button",
+      "ui:calendar",
+      "ui:dialog",
+      "ui:input",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:select",
+      "ui:sheet",
+      "ui:sidebar",
+      "ui:slider",
+      "ui:sonner",
+      "ui:switch",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toast"
+    ],
+    "border": [
+      "ai:ai-agent-stack",
+      "ai:ai-button",
+      "ai:ai-card-brief",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-memory",
+      "ai:ai-card-queue",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-command-center-split-view",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-feedback-bar",
+      "ai:ai-guided-learning",
+      "ai:ai-handoff-timeline",
+      "ai:ai-queue-badge",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-message-footer",
+      "ui:command",
+      "ui:context-menu",
+      "ui:navigation-menu",
+      "ui:resizable",
+      "ui:scroll-area",
+      "ui:separator",
+      "ui:sonner"
+    ],
+    "destructive": [
+      "ai:ai-agent-stack",
+      "ai:ai-approval-card",
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-feedback-bar",
+      "ai:ai-icon",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "pattern:form-field",
+      "ui:alert",
+      "ui:badge",
+      "ui:button",
+      "ui:form",
+      "ui:toast"
+    ],
+    "muted": [
+      "ai:ai-agent-stack",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-guided-learning",
+      "ai:ai-icon",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface",
+      "ai:ai-text-link",
+      "pattern:form-field",
+      "ui:alert-dialog",
+      "ui:avatar",
+      "ui:breadcrumb",
+      "ui:calendar",
+      "ui:card",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dialog",
+      "ui:dropdown-menu",
+      "ui:form",
+      "ui:input",
+      "ui:menubar",
+      "ui:select",
+      "ui:sheet",
+      "ui:skeleton",
+      "ui:sonner",
+      "ui:table",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toast",
+      "ui:toggle"
+    ],
+    "bg-background": [
+      "ai:ai-agent-stack",
+      "ui:alert",
+      "ui:alert-dialog",
+      "ui:button",
+      "ui:calendar",
+      "ui:dialog",
+      "ui:input",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:select",
+      "ui:sheet",
+      "ui:sidebar",
+      "ui:slider",
+      "ui:sonner",
+      "ui:switch",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toast"
+    ],
+    "bg-muted": [
+      "ai:ai-agent-stack",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface",
+      "ui:avatar",
+      "ui:dropdown-menu",
+      "ui:menubar",
+      "ui:select",
+      "ui:skeleton",
+      "ui:sonner",
+      "ui:table",
+      "ui:tabs",
+      "ui:toggle"
+    ],
+    "border-border": [
+      "ai:ai-agent-stack",
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-feedback-bar",
+      "ai:ai-queue-badge",
+      "ui:sonner"
+    ],
+    "ring-ai-accent": [
+      "ai:ai-agent-stack",
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ai:ai-launcher",
+      "ai:ai-text-link",
+      "ai:ai-why-this-link"
+    ],
+    "ring-ai-confidence-high": [
+      "ai:ai-agent-stack"
+    ],
+    "ring-ai-signal": [
+      "ai:ai-agent-stack"
+    ],
+    "ring-border": [
+      "ai:ai-agent-stack"
+    ],
+    "ring-destructive": [
+      "ai:ai-agent-stack",
+      "ui:toast"
+    ],
+    "text-muted": [
+      "ai:ai-agent-stack",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-guided-learning",
+      "ai:ai-icon",
+      "ai:ai-queue-badge",
+      "ai:ai-text-link",
+      "pattern:form-field",
+      "ui:alert-dialog",
+      "ui:breadcrumb",
+      "ui:calendar",
+      "ui:card",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dialog",
+      "ui:form",
+      "ui:input",
+      "ui:menubar",
+      "ui:select",
+      "ui:sheet",
+      "ui:sonner",
+      "ui:table",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toggle"
+    ],
+    "AI.color.text.primary": [
+      "ai:ai-agent-task-card",
+      "ai:ai-analysis-insight",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-input-field",
+      "ai:ai-objective-card",
+      "ai:ai-picker-trigger",
+      "ai:ai-stepper",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI.radius.sm": [
+      "ai:ai-agent-task-card",
+      "ai:ai-agent-task-tracker",
+      "ai:ai-analysis-insight",
+      "ai:ai-analysis-message",
+      "ai:ai-badge",
+      "ai:ai-card-brief",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-memory",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-card-trust-summary",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-handoff-timeline",
+      "ai:ai-led-navigation",
+      "ai:ai-list",
+      "ai:ai-list-item",
+      "ai:ai-menu",
+      "ai:ai-picker",
+      "ai:ai-picker-trigger",
+      "ai:ai-search",
+      "ai:ai-skeleton",
+      "ai:ai-stepper",
+      "ai:ai-time-picker",
+      "ai:ai-tooltip",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-loading-indicators",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI.color.brandBorder": [
+      "ai:ai-agent-task-tracker",
+      "ai:ai-badge",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-command-center-split-view",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-menu",
+      "ai:ai-modal-dialog",
+      "ai:ai-objective-card",
+      "ai:ai-picker",
+      "ai:ai-picker-trigger",
+      "ai:ai-skeleton",
+      "ai:ai-source-accordion",
+      "ai:ai-source-tile",
+      "ai:ai-standard-card",
+      "ai:ai-stepper",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI.shadow.action.default": [
+      "ai:ai-agent-task-tracker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-guided-learning",
+      "ai:ai-node-connector",
+      "ai:ai-segmented-control",
+      "ai:ai-stepper",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-message-footer"
+    ],
+    "ai-muted": [
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-control-bar",
+      "ai:ai-dialog",
+      "ai:ai-feedback-bar",
+      "ai:ai-loading-indicators",
+      "ai:ai-message-header",
+      "ai:ai-progress"
+    ],
+    "ai-surface": [
+      "ai:ai-agent-work-note",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-chip-quick",
+      "ai:ai-control-bar",
+      "ai:ai-dialog",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-loading-indicators",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface"
+    ],
+    "foreground": [
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ai:ai-launcher",
+      "ai:ai-message-body",
+      "ai:ai-message-header",
+      "ai:ai-progress",
+      "ai:ai-text-link",
+      "ui:alert",
+      "ui:badge",
+      "ui:breadcrumb",
+      "ui:command",
+      "ui:context-menu",
+      "ui:sheet",
+      "ui:sonner",
+      "ui:tabs",
+      "ui:toast"
+    ],
+    "bg-ai-surface": [
+      "ai:ai-agent-work-note",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-chip-quick",
+      "ai:ai-control-bar",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-loading-indicators",
+      "ai:ai-queue-badge",
+      "ai:ai-soft-surface"
+    ],
+    "border-ai-surface": [
+      "ai:ai-agent-work-note",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-chip-quick",
+      "ai:ai-control-bar",
+      "ai:ai-dialog",
+      "ai:ai-launcher",
+      "ai:ai-loading-indicators",
+      "ai:ai-soft-surface"
+    ],
+    "text-ai-muted": [
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-control-bar",
+      "ai:ai-dialog",
+      "ai:ai-feedback-bar",
+      "ai:ai-loading-indicators",
+      "ai:ai-message-header",
+      "ai:ai-progress"
+    ],
+    "text-foreground": [
+      "ai:ai-agent-work-note",
+      "ai:ai-button",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ai:ai-launcher",
+      "ai:ai-message-body",
+      "ai:ai-message-header",
+      "ai:ai-progress",
+      "ai:ai-text-link",
+      "ui:alert",
+      "ui:badge",
+      "ui:breadcrumb",
+      "ui:command",
+      "ui:context-menu",
+      "ui:sheet",
+      "ui:sonner",
+      "ui:tabs",
+      "ui:toast"
+    ],
+    "AI.color.action.primaryActive": [
+      "ai:ai-analysis-insight",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-list-item",
+      "ai:ai-response-footer",
+      "ai:ai-segmented-control",
+      "ai:ai-toggle",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-message-footer"
+    ],
+    "AI.color.border.strong": [
+      "ai:ai-analysis-insight",
+      "ai:ai-chip",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-loading-indicators"
+    ],
+    "AI.color.brandSubtle": [
+      "ai:ai-analysis-insight",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-objective-card",
+      "ai:ai-reasoning-trace",
+      "ai:ai-segmented-control",
+      "ai:ai-skeleton",
+      "ai:ai-source-accordion",
+      "ai:ai-source-tile",
+      "ai:ai-stepper",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-icon",
+      "ai:atomic-ai-progress"
+    ],
+    "AI.color.signal.surface": [
+      "ai:ai-analysis-insight",
+      "ai:ai-generated-dashboard",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-confidence-risk-badge",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI.radius.full": [
+      "ai:ai-analysis-insight",
+      "ai:ai-card-analysis",
+      "ai:ai-card-metric",
+      "ai:ai-chip",
+      "ai:ai-generated-dashboard",
+      "ai:ai-insight-list",
+      "ai:ai-list",
+      "ai:ai-list-item",
+      "ai:ai-list-landing",
+      "ai:ai-node-connector",
+      "ai:ai-notification",
+      "ai:ai-picker",
+      "ai:ai-picker-trigger",
+      "ai:ai-search",
+      "ai:ai-segmented-control",
+      "ai:ai-skeleton",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-confidence-risk-badge",
+      "ai:atomic-ai-progress",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.color.text.secondary": [
+      "ai:ai-analysis-message",
+      "ai:ai-capability-card",
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-date-picker",
+      "ai:ai-input-field",
+      "ai:ai-modal-dialog",
+      "ai:ai-objective-card",
+      "ai:ai-picker",
+      "ai:ai-reasoning-quote",
+      "ai:ai-source-accordion",
+      "ai:ai-source-tile",
+      "ai:ai-stepper",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-icon"
+    ],
+    "text-destructive": [
+      "ai:ai-approval-card",
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-feedback-bar",
+      "ai:ai-icon",
+      "ai:ai-queue-badge",
+      "pattern:form-field",
+      "ui:alert",
+      "ui:badge",
+      "ui:button",
+      "ui:form",
+      "ui:toast"
+    ],
+    "AI.color.signal.strong": [
+      "ai:ai-badge",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-trust-summary",
+      "ai:ai-chip",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-confidence-risk-badge",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI.color.status.error": [
+      "ai:ai-badge",
+      "ai:ai-card-metric",
+      "ai:ai-slider",
+      "ai:ai-stepper",
+      "ai:atomic-ai-button"
+    ],
+    "AI.color.status.success": [
+      "ai:ai-badge",
+      "ai:ai-node-connector",
+      "ai:ai-slider",
+      "ai:ai-stepper",
+      "ai:atomic-ai-progress"
+    ],
+    "AI.color.status.warning": [
+      "ai:ai-badge",
+      "ai:ai-slider",
+      "ai:ai-stepper"
+    ],
+    "accent": [
+      "ai:ai-button",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ai:ai-guided-learning",
+      "ui:button",
+      "ui:calendar",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dialog",
+      "ui:dropdown-menu",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:select",
+      "ui:toggle"
+    ],
+    "bg-accent": [
+      "ai:ai-button",
+      "ai:ai-dialog-button",
+      "ai:ai-feedback-bar",
+      "ui:button",
+      "ui:calendar",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dialog",
+      "ui:dropdown-menu",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:select",
+      "ui:toggle"
+    ],
+    "border-destructive": [
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-queue-badge",
+      "ui:alert",
+      "ui:toast"
+    ],
+    "from-ai-accent": [
+      "ai:ai-button",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog"
+    ],
+    "from-destructive": [
+      "ai:ai-button"
+    ],
+    "text-accent": [
+      "ai:ai-button",
+      "ai:ai-guided-learning",
+      "ui:button",
+      "ui:calendar",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dropdown-menu",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:select",
+      "ui:toggle"
+    ],
+    "text-ai-accent": [
+      "ai:ai-button",
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-chip-memory",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-feedback-bar",
+      "ai:ai-icon",
+      "ai:ai-launcher",
+      "ai:ai-queue-badge",
+      "ai:ai-text-link",
+      "ai:ai-why-this-link"
+    ],
+    "to-ai-accent": [
+      "ai:ai-button",
+      "ai:ai-chip-quick",
+      "ai:ai-dialog",
+      "ai:ai-soft-surface"
+    ],
+    "to-destructive": [
+      "ai:ai-button"
+    ],
+    "AI.color.action.primaryHover": [
+      "ai:ai-capability-card",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-guided-learning",
+      "ai:ai-objective-card",
+      "ai:ai-search",
+      "ai:ai-segmented-control",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-progress",
+      "ai:molecules-ai-text-link"
+    ],
+    "AI.shadow.card.default": [
+      "ai:ai-card-agent",
+      "ai:ai-card-analysis",
+      "ai:ai-card-data-table",
+      "ai:ai-card-metric",
+      "ai:ai-node-connector",
+      "ai:ai-skeleton"
+    ],
+    "AI.color.border.subtle": [
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-reasoning-quote"
+    ],
+    "AI.color.surface.emphasis": [
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-recommendation-compare",
+      "ai:atomic-ai-loading-indicators",
+      "ai:atomic-ai-soft-surface",
+      "ai:ds-spinner"
+    ],
+    "AI.color.surface.subtle": [
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-picker",
+      "ai:ai-stepper",
+      "ai:atomic-ai-feedback-bar",
+      "ai:atomic-ai-soft-surface"
+    ],
+    "AI.gradient.surface.subtle": [
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-generated-dashboard"
+    ],
+    "AI.gradient.surface.subtle.": [
+      "ai:ai-card-agent-reasoning"
+    ],
+    "AI.radius.lg": [
+      "ai:ai-card-agent-reasoning",
+      "ai:ai-card-brief",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-memory",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-card-trust-summary",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-handoff-timeline",
+      "ai:ai-notification",
+      "ai:ai-rationale-panel",
+      "ai:ai-skeleton",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-soft-surface",
+      "ai:organisms-ai-dialog"
+    ],
+    "outline-border": [
+      "ai:ai-card-brief",
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-memory",
+      "ai:ai-card-queue",
+      "ai:ai-command-center-split-view",
+      "ai:ai-handoff-timeline",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-control-bar",
+      "ai:atomic-ai-message-footer"
+    ],
+    "AI.color.border.default": [
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-input-field",
+      "ai:ai-rationale-panel",
+      "ai:ai-search",
+      "ai:ai-time-picker",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-button"
+    ],
+    "AI.color.brandSurface": [
+      "ai:ai-card-learning-feedback",
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-chip",
+      "ai:ai-command-center-split-view",
+      "ai:ai-generated-dashboard",
+      "ai:ai-node-connector",
+      "ai:ai-picker-trigger",
+      "ai:ai-reasoning-trace",
+      "ai:ai-skeleton",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-progress",
+      "ai:atomic-ai-queue-badge"
+    ],
+    "metric-card.accent.teal": [
+      "ai:ai-card-metric"
+    ],
+    "metric-card.accent.indigo": [
+      "ai:ai-card-metric"
+    ],
+    "metric-card.accent.amber": [
+      "ai:ai-card-metric"
+    ],
+    "metric-card.accent.red": [
+      "ai:ai-card-metric"
+    ],
+    "metric-card.accent.green": [
+      "ai:ai-card-metric"
+    ],
+    "metric-card.accent.gray": [
+      "ai:ai-card-metric"
+    ],
+    "AI.shadow.card.raised": [
+      "ai:ai-card-metric",
+      "ai:ai-node-connector",
+      "ai:ai-skeleton"
+    ],
+    "AI.color.companion.paper": [
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-generated-dashboard",
+      "ai:ai-time-picker"
+    ],
+    "AI.color.signal.default": [
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-trust-summary",
+      "ai:ai-chip",
+      "ai:ai-handoff-timeline",
+      "ai:ai-node-connector",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-chip-handoff",
+      "ai:atomic-ai-confidence-risk-badge",
+      "ai:atomic-ai-control-bar"
+    ],
+    "AI.color.signal.subtle": [
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-queue",
+      "ai:ai-card-trust-summary",
+      "ai:ai-workstream-control-panel",
+      "ai:atomic-ai-confidence-risk-badge"
+    ],
+    "AI.color.surface.default": [
+      "ai:ai-card-multi-agent-collaboration",
+      "ai:ai-card-recommendation-compare",
+      "ai:ai-checkbox",
+      "ai:ai-date-picker",
+      "ai:ai-menu",
+      "ai:ai-radio",
+      "ai:ai-standard-card",
+      "ai:atomic-ai-soft-surface"
+    ],
+    "primary": [
+      "ai:ai-checkbox",
+      "ai:ai-node-connector",
+      "ai:ai-radio",
+      "ai:ai-table",
+      "ai:ai-toolbar",
+      "ui:badge",
+      "ui:button",
+      "ui:calendar",
+      "ui:checkbox",
+      "ui:progress",
+      "ui:radio-group",
+      "ui:slider",
+      "ui:sonner",
+      "ui:switch"
+    ],
+    "border-primary": [
+      "ai:ai-checkbox",
+      "ai:ai-node-connector",
+      "ai:ai-radio",
+      "ai:ai-table",
+      "ui:checkbox",
+      "ui:radio-group",
+      "ui:slider"
+    ],
+    "AI.color.": [
+      "ai:ai-chip",
+      "ai:ai-date-picker",
+      "ai:ai-picker-trigger",
+      "ai:ds-spinner"
+    ],
+    "bg-ai-confidence-high": [
+      "ai:ai-chip-brief",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-progress",
+      "ai:ai-queue-badge"
+    ],
+    "bg-destructive": [
+      "ai:ai-chip-brief",
+      "ai:ai-chip-handoff",
+      "ai:ai-progress",
+      "ai:ai-queue-badge",
+      "ui:badge",
+      "ui:button",
+      "ui:toast"
+    ],
+    "border-ai-accent": [
+      "ai:ai-chip-brief",
+      "ai:ai-launcher",
+      "ai:ai-queue-badge"
+    ],
+    "border-ai-confidence-high": [
+      "ai:ai-chip-brief",
+      "ai:ai-queue-badge"
+    ],
+    "text-ai-confidence-high": [
+      "ai:ai-chip-brief",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-icon",
+      "ai:ai-queue-badge"
+    ],
+    "card": [
+      "ai:ai-chip-quick",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-dialog",
+      "ai:ai-launcher",
+      "ui:card"
+    ],
+    "bg-card": [
+      "ai:ai-chip-quick",
+      "ai:ai-confidence-risk-badge",
+      "ai:ai-dialog",
+      "ai:ai-launcher",
+      "ui:card"
+    ],
+    "AI.gradient.action.full": [
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-node-connector",
+      "ai:ai-segmented-control",
+      "ai:ai-stepper",
+      "ai:ai-tab",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-message-footer",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.shadow.action.emphasis": [
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.shadow.input.default": [
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:ai-date-picker",
+      "ai:ai-time-picker",
+      "ai:organisms-ai-dialog"
+    ],
+    "AI.shadow.input.focus": [
+      "ai:ai-command-center-dialog",
+      "ai:ai-command-center-slim",
+      "ai:organisms-ai-dialog"
+    ],
+    "ai-confidence-low": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "ai-confidence-medium": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "bg-ai-confidence-low": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "bg-ai-confidence-medium": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "text-ai-confidence-low": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "text-ai-confidence-medium": [
+      "ai:ai-confidence-risk-badge"
+    ],
+    "AI.color.brandStrong": [
+      "ai:ai-date-picker",
+      "ai:ai-generated-dashboard",
+      "ai:ai-skeleton",
+      "ai:ai-slider",
+      "ai:ai-time-picker",
+      "ai:atomic-ai-agent-work-note",
+      "ai:atomic-ai-button",
+      "ai:atomic-ai-icon",
+      "ai:molecules-ai-text-link"
+    ],
+    "AI.color.companion.border": [
+      "ai:ai-generated-dashboard",
+      "ai:ai-time-picker"
+    ],
+    "caret-border": [
+      "ai:ai-guided-learning"
+    ],
+    "AI.color.decorative.washStrong": [
+      "ai:ai-guided-learning",
+      "ai:atomic-ai-soft-surface"
+    ],
+    "AI.color.status": [
+      "ai:ai-input-field"
+    ],
+    "AI.shadow.field.": [
+      "ai:ai-input-field"
+    ],
+    "AI.shadow.field.default": [
+      "ai:ai-input-field",
+      "ai:ai-search"
+    ],
+    "AI.shadow.field.error": [
+      "ai:ai-input-field"
+    ],
+    "AI.shadow.field.focus": [
+      "ai:ai-input-field",
+      "ai:ai-search"
+    ],
+    "AI.shadow.field.warning": [
+      "ai:ai-input-field"
+    ],
+    "AI.shadow.input.": [
+      "ai:ai-input-field"
+    ],
+    "bg-ai-accent": [
+      "ai:ai-loading-indicators",
+      "ai:ai-progress"
+    ],
+    "text-primary": [
+      "ai:ai-node-connector",
+      "ui:badge",
+      "ui:button",
+      "ui:calendar",
+      "ui:checkbox",
+      "ui:radio-group",
+      "ui:sonner"
+    ],
+    "from-ai-surface": [
+      "ai:ai-soft-surface"
+    ],
+    "from-muted": [
+      "ai:ai-soft-surface"
+    ],
+    "to-ai-signal": [
+      "ai:ai-soft-surface"
+    ],
+    "to-muted": [
+      "ai:ai-soft-surface"
+    ],
+    "via-ai-accent": [
+      "ai:ai-soft-surface"
+    ],
+    "via-ai-surface": [
+      "ai:ai-soft-surface"
+    ],
+    "AI.radius.": [
+      "ai:ai-stepper"
+    ],
+    "AI.color.companion.": [
+      "ai:ai-time-picker"
+    ],
+    "AI.color.companion.highlight": [
+      "ai:ai-time-picker"
+    ],
+    "AI.color.companion.ink": [
+      "ai:ai-time-picker"
+    ],
+    "AI.color.companion.surface": [
+      "ai:ai-time-picker"
+    ],
+    "secondary": [
+      "ai:ai-toolbar",
+      "ui:badge",
+      "ui:button",
+      "ui:progress",
+      "ui:sheet",
+      "ui:slider",
+      "ui:toast"
+    ],
+    "bg-primary": [
+      "ai:ai-toolbar",
+      "ui:badge",
+      "ui:button",
+      "ui:calendar",
+      "ui:checkbox",
+      "ui:progress",
+      "ui:slider",
+      "ui:sonner",
+      "ui:switch"
+    ],
+    "text-secondary": [
+      "ai:ai-toolbar",
+      "ui:badge",
+      "ui:button"
+    ],
+    "AI.color.decorative.wash": [
+      "ai:atomic-ai-avatar",
+      "ai:atomic-ai-soft-surface"
+    ],
+    "AI_TYPOGRAPHY['@brand-caption-1']": [
+      "ai:atomic-ai-chip-handoff"
+    ],
+    "SIGNAL[60]": [
+      "ai:atomic-ai-progress"
+    ],
+    "SIGNAL[70]": [
+      "ai:atomic-ai-progress"
+    ],
+    "NEUTRAL.border": [
+      "ai:atomic-ai-progress"
+    ],
+    "AI_TYPOGRAPHY['@brand-micro-eyebrow']": [
+      "ai:atomic-ai-progress"
+    ],
+    "AI_TYPOGRAPHY['@brand-status-label']": [
+      "ai:atomic-ai-queue-badge"
+    ],
+    "AI_TYPOGRAPHY['@brand-numeric-badge']": [
+      "ai:atomic-ai-queue-badge"
+    ],
+    "ring": [
+      "ui:badge",
+      "ui:button",
+      "ui:calendar",
+      "ui:checkbox",
+      "ui:dialog",
+      "ui:input",
+      "ui:radio-group",
+      "ui:resizable",
+      "ui:select",
+      "ui:sheet",
+      "ui:slider",
+      "ui:switch",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toast",
+      "ui:toggle"
+    ],
+    "bg-secondary": [
+      "ui:badge",
+      "ui:button",
+      "ui:progress",
+      "ui:sheet",
+      "ui:slider",
+      "ui:toast"
+    ],
+    "ring-ring": [
+      "ui:badge",
+      "ui:button",
+      "ui:calendar",
+      "ui:checkbox",
+      "ui:dialog",
+      "ui:input",
+      "ui:radio-group",
+      "ui:resizable",
+      "ui:select",
+      "ui:sheet",
+      "ui:slider",
+      "ui:switch",
+      "ui:tabs",
+      "ui:textarea",
+      "ui:toast",
+      "ui:toggle"
+    ],
+    "input": [
+      "ui:button",
+      "ui:calendar",
+      "ui:input",
+      "ui:select",
+      "ui:switch",
+      "ui:textarea",
+      "ui:toggle"
+    ],
+    "border-input": [
+      "ui:button",
+      "ui:calendar",
+      "ui:input",
+      "ui:select",
+      "ui:textarea",
+      "ui:toggle"
+    ],
+    "popover": [
+      "ui:calendar",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dropdown-menu",
+      "ui:hover-card",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:popover",
+      "ui:select",
+      "ui:tooltip"
+    ],
+    "bg-popover": [
+      "ui:calendar",
+      "ui:command",
+      "ui:context-menu",
+      "ui:dropdown-menu",
+      "ui:hover-card",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:popover",
+      "ui:select",
+      "ui:tooltip"
+    ],
+    "border-ring": [
+      "ui:calendar"
+    ],
+    "text-card": [
+      "ui:card"
+    ],
+    "bg-border": [
+      "ui:command",
+      "ui:context-menu",
+      "ui:navigation-menu",
+      "ui:resizable",
+      "ui:scroll-area",
+      "ui:separator"
+    ],
+    "text-popover": [
+      "ui:command",
+      "ui:context-menu",
+      "ui:dropdown-menu",
+      "ui:hover-card",
+      "ui:menubar",
+      "ui:navigation-menu",
+      "ui:popover",
+      "ui:select",
+      "ui:tooltip"
+    ],
+    "sidebar-accent": [
+      "ui:sidebar"
+    ],
+    "sidebar-border": [
+      "ui:sidebar"
+    ],
+    "sidebar-foreground": [
+      "ui:sidebar"
+    ],
+    "sidebar-ring": [
+      "ui:sidebar"
+    ],
+    "bg-sidebar-accent": [
+      "ui:sidebar"
+    ],
+    "bg-sidebar-border": [
+      "ui:sidebar"
+    ],
+    "border-sidebar-border": [
+      "ui:sidebar"
+    ],
+    "ring-sidebar-ring": [
+      "ui:sidebar"
+    ],
+    "text-sidebar-accent": [
+      "ui:sidebar"
+    ],
+    "text-sidebar-foreground": [
+      "ui:sidebar"
+    ],
+    "bg-input": [
+      "ui:switch"
+    ],
+    "border-muted": [
+      "ui:toast"
+    ]
+  },
+  "componentsMissingTokens": [
+    "ai:ai-accent-line",
+    "ai:ai-accordion",
+    "ai:ai-agent-drawer",
+    "ai:ai-agent-response",
+    "ai:ai-agent-response-group",
+    "ai:ai-agent-task-card",
+    "ai:ai-agent-task-tracker",
+    "ai:ai-analysis-insight",
+    "ai:ai-analysis-message",
+    "ai:ai-anomaly-chart",
+    "ai:ai-assisted-side-drawer",
+    "ai:ai-autocomplete",
+    "ai:ai-avatar",
+    "ai:ai-badge",
+    "ai:ai-breadcrumbs",
+    "ai:ai-capability-card",
+    "ai:ai-card-agent",
+    "ai:ai-card-agent-reasoning",
+    "ai:ai-card-analysis",
+    "ai:ai-card-data-table",
+    "ai:ai-card-multi-agent-collaboration",
+    "ai:ai-card-recommendation-compare",
+    "ai:ai-card-trust-summary",
+    "ai:ai-card-workstream",
+    "ai:ai-chart",
+    "ai:ai-chart-card",
+    "ai:ai-chart-shell",
+    "ai:ai-chip",
+    "ai:ai-command-center",
+    "ai:ai-command-center-dialog",
+    "ai:ai-command-center-slim",
+    "ai:ai-comparison-visualization",
+    "ai:ai-dashboard-visualization-module",
+    "ai:ai-date-picker",
+    "ai:ai-explainable-chart",
+    "ai:ai-file-attachment",
+    "ai:ai-file-upload",
+    "ai:ai-generated-dashboard",
+    "ai:ai-governed-visualization",
+    "ai:ai-inline-visualization",
+    "ai:ai-input-field",
+    "ai:ai-insight-callout",
+    "ai:ai-insight-list",
+    "ai:ai-led-navigation",
+    "ai:ai-list",
+    "ai:ai-list-item",
+    "ai:ai-list-landing",
+    "ai:ai-menu",
+    "ai:ai-message-footer",
+    "ai:ai-metric-tile",
+    "ai:ai-metric-value",
+    "ai:ai-mini-chart",
+    "ai:ai-modal-dialog",
+    "ai:ai-monitoring-visualization",
+    "ai:ai-notification",
+    "ai:ai-objective-card",
+    "ai:ai-picker",
+    "ai:ai-picker-trigger",
+    "ai:ai-popup-menu",
+    "ai:ai-profile-card",
+    "ai:ai-rationale-panel",
+    "ai:ai-reasoning-quote",
+    "ai:ai-reasoning-trace",
+    "ai:ai-response",
+    "ai:ai-response-footer",
+    "ai:ai-scenario-chart",
+    "ai:ai-search",
+    "ai:ai-segmented-control",
+    "ai:ai-skeleton",
+    "ai:ai-slider",
+    "ai:ai-source-accordion",
+    "ai:ai-source-tile",
+    "ai:ai-standard-card",
+    "ai:ai-status-pill",
+    "ai:ai-stepper",
+    "ai:ai-suggestion-compare",
+    "ai:ai-supervisor-bar",
+    "ai:ai-tab",
+    "ai:ai-time-picker",
+    "ai:ai-to-do",
+    "ai:ai-toggle",
+    "ai:ai-tooltip",
+    "ai:ai-trend-indicator",
+    "ai:ai-typography",
+    "ai:ai-user-bubble",
+    "ai:ai-visualization-card",
+    "ai:ai-visualization-module",
+    "ai:ai-visualization-panel",
+    "ai:anomaly-threshold",
+    "ai:atomic-ai-action",
+    "ai:atomic-ai-agent-stack",
+    "ai:atomic-ai-agent-work-note",
+    "ai:atomic-ai-avatar",
+    "ai:atomic-ai-button",
+    "ai:atomic-ai-chip-brief",
+    "ai:atomic-ai-chip-memory",
+    "ai:atomic-ai-chip-quick",
+    "ai:atomic-ai-confidence-risk-badge",
+    "ai:atomic-ai-dialog-button",
+    "ai:atomic-ai-feedback-bar",
+    "ai:atomic-ai-icon",
+    "ai:atomic-ai-launcher",
+    "ai:atomic-ai-loading-indicators",
+    "ai:atomic-ai-message-body",
+    "ai:atomic-ai-message-header",
+    "ai:atomic-ai-soft-surface",
+    "ai:bar-chart",
+    "ai:card-visualizations",
+    "ai:column-chart",
+    "ai:conversational-ai-output-showcase",
+    "ai:conversational-visualizations",
+    "ai:dashboard-visualizations",
+    "ai:ds-spinner",
+    "ai:feed-visualizations",
+    "ai:governed-review-visualizations",
+    "ai:heat-map",
+    "ai:highcharts-guidance",
+    "ai:line-chart",
+    "ai:map-territory",
+    "ai:molecules-ai-text-link",
+    "ai:molecules-ai-why-this-link",
+    "ai:monitoring-anomaly-visualizations",
+    "ai:organisms-ai-dialog",
+    "ai:scenario-comparison",
+    "ai:scenario-comparison-visualizations",
+    "ai:sparkline",
+    "ai:stacked-bar-chart",
+    "ai:standard-chart-guidance",
+    "ai:table-chart-hybrid",
+    "layout:page-container",
+    "ui:accordion",
+    "ui:aspect-ratio",
+    "ui:carousel",
+    "ui:collapsible",
+    "ui:label",
+    "ui:pagination",
+    "ui:toaster",
+    "ui:toggle-group"
+  ]
+}

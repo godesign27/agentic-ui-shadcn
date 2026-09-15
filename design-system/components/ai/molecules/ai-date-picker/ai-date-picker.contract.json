@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-date-picker",
+  "slug": "ai-date-picker",
+  "name": "AIDatePicker",
+  "description": "The AI Date Picker mirrors the DS Date Picker (src/datePicker/) 1:1 in structure and behavior — an Action-Field trigger opening a popover calendar with month/year navigation, a day grid, a today ring, and a today link — but is restyled onto the Guild AI brand. The trigger is the AI Action Field atom (AIInputField, asTrigger) so it stays consistent with every AI form control: rounded ai.radius.md outline, brand-blue border, AI input shadow, and a blue focus halo. The calendar adopts the AI_RAMP indigo ramp: the selected day fills with the action gradient, today carries a brand ring, range preview uses the brand-subtle tint, and the panel sits on a brand-tinted card at ai.radius.lg. Only the palette and radii differ from DS; the anatomy, states, and keyboard model are identical.",
+  "intent": "The DS Date Picker on the AI surface — AI Action Field trigger, brand-indigo day grid, and a gradient-filled selected date.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-date-picker/AIDatePicker",
+    "exports": [
+      "AIDatePicker"
+    ],
+    "implementation": "src/components/ai/molecules/ai-date-picker/AIDatePicker.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "helper",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "'normal' | 'small'",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "'default' | 'warning' | 'error'",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "hover"
+    },
+    {
+      "name": "pressed"
+    },
+    {
+      "name": "selected"
+    },
+    {
+      "name": "selected-hover"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.",
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.color.action.primaryHover",
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandInk",
+      "AI.color.brandStrong",
+      "AI.color.brandSubtle",
+      "AI.color.surface.default",
+      "AI.color.text.onAction",
+      "AI.color.text.primary",
+      "AI.color.text.secondary",
+      "AI.gradient.action.full",
+      "AI.radius.lg",
+      "AI.radius.sm",
+      "AI.shadow.input.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI-surface form field that needs a single calendar date",
+    "Any picker that should read as AI-enhanced and match the AI Action Field"
+  ],
+  "doNotUse": [
+    "On a standard DS surface — use the DS Date Picker instead",
+    "Don't drop the today ring or the AI Action Field trigger",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-date-picker/ai-date-picker.md",
+    "manifest": "design-system/components/ai/molecules/ai-date-picker/ai-date-picker.agent.json",
+    "implementation": "src/components/ai/molecules/ai-date-picker/AIDatePicker.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-date-picker/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-date-picker/ai-date-picker.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-date-picker/ai-date-picker.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

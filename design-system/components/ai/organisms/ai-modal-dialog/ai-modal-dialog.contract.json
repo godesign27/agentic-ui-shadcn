@@ -1,0 +1,152 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-modal-dialog",
+  "slug": "ai-modal-dialog",
+  "name": "AIModalDialog",
+  "intent": "DS Dialog, AI surface theme — AI-blue actions, navy header, rounded corners, frosted indigo backdrop.",
+  "status": "active",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-modal-dialog/AIModalDialog",
+    "exports": [
+      "AIModalDialog"
+    ],
+    "implementation": "src/components/ai/organisms/ai-modal-dialog/AIModalDialog.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "radius",
+      "type": "keyof typeof AI.radius",
+      "required": false
+    },
+    {
+      "name": "isOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "body",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandInk",
+      "AI.color.text.secondary",
+      "AI.radius"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI confirmations, action acknowledgements, and assistant prompts on AI surfaces",
+    "Focused AI tasks that must block other interactions (auth, review-before-run)",
+    "header=\"dark\" + footerButtons for a high-emphasis AI decision moment"
+  ],
+  "doNotUse": [
+    "Don't use on a standard (non-AI) surface — use <DSDialog> instead",
+    "Don't fork ds-dialog.tsx to restyle — theme via the CSS-variable re-anchors",
+    "Don't stack multiple modals or nest interactive dialogs without an explicit pattern",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-modal-dialog/ai-modal-dialog.md",
+    "manifest": "design-system/components/ai/organisms/ai-modal-dialog/ai-modal-dialog.agent.json",
+    "implementation": "src/components/ai/organisms/ai-modal-dialog/AIModalDialog.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-modal-dialog/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-modal-dialog/ai-modal-dialog.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-modal-dialog/ai-modal-dialog.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

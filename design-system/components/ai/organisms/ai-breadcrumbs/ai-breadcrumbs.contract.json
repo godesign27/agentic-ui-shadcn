@@ -1,0 +1,121 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-breadcrumbs",
+  "slug": "ai-breadcrumbs",
+  "name": "AIBreadcrumbs",
+  "description": "The AI-themed variant of the standard DS Breadcrumbs. The single DSBreadcrumbs component (ds/ds-breadcrumbs.tsx) accepts theme=\"standard\" (DS primary teal links) or theme=\"ai\". In the AI theme the link CSS variables are re-anchored — scoped via CSS-variable overrides — to the AI brand blue: links use var(--color-ai-brand), hover uses var(--color-ai-brand-strong), and the current page uses var(--color-ai-brand-ink). Everything else — sizes (Normal 16px / Small 14px / X-Small 12px), Default/Inverse styles, Default/Back types, the swappable page icon with independent icon/text toggles, separators, disabled/focus states, the 2px focus ring, and the \"…\" overflow collapse menu — is shared with the standard breadcrumbs. All colors, radii, and spacing read design-system CSS variables from globals.css; all text uses the \"Open Sans\" face.",
+  "intent": "DS Breadcrumbs, AI surface theme — brand-blue links, brand-ink current page.",
+  "status": "active",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-breadcrumbs/AIBreadcrumbs",
+    "exports": [
+      "AIBreadcrumbs"
+    ],
+    "implementation": "src/components/ai/organisms/ai-breadcrumbs/AIBreadcrumbs.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Navigation trails on AI surfaces that should read as part of the AI experience",
+    "Any breadcrumb where the AI brand accent is preferred over the DS teal",
+    "Deep hierarchies (3+ levels) that benefit from a collapse menu"
+  ],
+  "doNotUse": [
+    "Don't use on a standard (non-AI) surface — use the standard <DSBreadcrumbs> (default theme) instead",
+    "Don't fork ds-breadcrumbs.tsx to restyle — switch the theme prop",
+    "Flat structures (< 3 levels) — breadcrumbs add little value",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-breadcrumbs/ai-breadcrumbs.md",
+    "manifest": "design-system/components/ai/organisms/ai-breadcrumbs/ai-breadcrumbs.agent.json",
+    "implementation": "src/components/ai/organisms/ai-breadcrumbs/AIBreadcrumbs.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-breadcrumbs/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-breadcrumbs/ai-breadcrumbs.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-breadcrumbs/ai-breadcrumbs.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/godesign27/agentic-ui-shadcn/design-system/schemas/component-contract.schema.json",
+  "title": "Guild component contract",
+  "description": "Shared schema for local {slug}.contract.json files. Retrieval-first: agents resolve approved UI from these contracts instead of inventing it. Unknown fields must be recorded in gaps — never guessed. Brand is Guild; Zaidyn / ZAIDYN / ZS / zs-* are forbidden in contract content.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "slug",
+    "name",
+    "status",
+    "layer",
+    "runtime",
+    "figma",
+    "codeConnect",
+    "props",
+    "variants",
+    "states",
+    "tokens",
+    "a11y",
+    "usage",
+    "doNotUse",
+    "governance",
+    "sources",
+    "gaps"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "id": {
+      "type": "string",
+      "pattern": "^(ui|ai|pattern|layout):[a-z0-9-]+$",
+      "description": "Closed-world identifier. Must be unique across local contracts."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Folder name. The authored file is {slug}.contract.json."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Primary export or display name."
+    },
+    "description": { "type": "string" },
+    "intent": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["unknown", "draft", "experimental", "beta", "stable", "deprecated", "active"],
+      "description": "Copied from spec/manifest when declared. unknown when the source does not say. Do not invent approved."
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "foundations",
+        "atomic",
+        "atoms",
+        "molecules",
+        "organisms",
+        "patterns",
+        "pages",
+        "data-viz",
+        "layout",
+        "templates",
+        "groups",
+        "reference",
+        "tokens"
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "platforms", "importPath", "exports", "implementation"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["react", "spec-only", "unknown"] },
+        "platforms": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["web", "react"] }
+        },
+        "importPath": { "type": ["string", "null"] },
+        "exports": { "type": "array", "items": { "type": "string" } },
+        "implementation": {
+          "type": ["string", "null"],
+          "description": "Repo-relative TSX/TS path when one exists."
+        }
+      }
+    },
+    "figma": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fileKey", "nodeId", "url"],
+      "properties": {
+        "fileKey": { "type": ["string", "null"] },
+        "nodeId": { "type": ["string", "null"] },
+        "url": { "type": ["string", "null"] }
+      }
+    },
+    "codeConnect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mapped", "url", "component"],
+      "properties": {
+        "mapped": { "type": "boolean" },
+        "url": { "type": ["string", "null"] },
+        "component": { "type": ["string", "null"] }
+      }
+    },
+    "props": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "type"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "description": "TypeScript type as written in source or a well-formed manifest." },
+          "required": { "type": "boolean" },
+          "default": { "type": "string" },
+          "hint": { "type": "string" }
+        }
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "group": { "type": "string", "description": "variant, size, tone, or another documented group." },
+          "name": { "type": "string" },
+          "when": { "type": "string" }
+        }
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "when": { "type": "string" }
+        }
+      }
+    },
+    "sizes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Size tokens copied from a well-formed manifest or source union. Empty when unknown."
+    },
+    "tokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic", "utilities"],
+      "properties": {
+        "semantic": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Guild semantic token roles. Host zs-* names are omitted, not rewritten."
+        },
+        "utilities": { "type": "array", "items": { "type": "string" } },
+        "ai": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "AI.* JS token paths extracted from implementation, excluding zs-*."
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "keyboard", "requiredAttributes", "notes"],
+      "properties": {
+        "role": { "type": ["string", "null"] },
+        "keyboard": { "type": "array", "items": { "type": "string" } },
+        "requiredAttributes": { "type": "array", "items": { "type": "string" } },
+        "focusManagement": { "type": "string" },
+        "liveRegion": { "type": "string" },
+        "handledByRadix": { "type": "boolean" },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "placeholder": {
+          "type": "boolean",
+          "description": "True when the source a11y block is a generic stub, not a reviewed contract."
+        }
+      }
+    },
+    "usage": { "type": "array", "items": { "type": "string" } },
+    "doNotUse": { "type": "array", "items": { "type": "string" } },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namespace", "brand", "closedWorldIndexed", "agentRules", "related"],
+      "properties": {
+        "namespace": { "type": "string", "enum": ["ui", "ai", "pattern", "layout"] },
+        "brand": { "type": "string", "const": "Guild" },
+        "closedWorldIndexed": {
+          "type": "boolean",
+          "description": "True when this id is listed in components/COMPONENTS_INDEX.json."
+        },
+        "agentRules": { "type": "array", "items": { "type": "string" } },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id"],
+            "properties": {
+              "id": { "type": "string" },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "experienceMetadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "experienceMode": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["AI Assisted", "Adaptive", "AI Led"] }
+            },
+            "aiBehavior": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["Suggest", "Confirm", "Apply", "Approve"] }
+            },
+            "accountability": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Attribution",
+                  "Rationale disclosure",
+                  "Confidence signalling",
+                  "Approval",
+                  "Audit trail",
+                  "Reversibility"
+                ]
+              }
+            },
+            "humanGestureRequired": { "type": "boolean" },
+            "reversible": { "type": "string", "enum": ["always", "conditional", "never", "not-applicable"] }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["spec", "manifest", "implementation", "prompt", "preview", "contract"],
+      "properties": {
+        "spec": { "type": ["string", "null"] },
+        "manifest": { "type": ["string", "null"] },
+        "implementation": { "type": ["string", "null"] },
+        "prompt": { "type": ["string", "null"] },
+        "preview": { "type": ["string", "null"] },
+        "contract": { "type": "string" }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "reason"],
+        "properties": {
+          "field": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated", "curated", "from"],
+      "properties": {
+        "generated": { "type": "boolean" },
+        "curated": { "type": "boolean" },
+        "generatedAt": { "type": "string" },
+        "from": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

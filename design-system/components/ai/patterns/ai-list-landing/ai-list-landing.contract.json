@@ -1,0 +1,173 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-list-landing",
+  "slug": "ai-list-landing",
+  "name": "AIListLanding",
+  "description": "AIListLanding is the AI-led briefing surface for a product home. Instead of a static dashboard, it tells the user what changed, what matters, and what next action deserves attention — in four conditional sections: Territory Health Overview, Recent Impact, Suggested Next Assessments, and What Changed Since You Last Looked. Background defaults to AISoftSurface tone=\"ambient\" — the animated blue/purple/pink orb canvas — so the home immediately reads as AI-led. All sections are AIList groups composed of AIListItem rows; everything is data-driven so the surface can re-shape per product, role, or signal state.",
+  "intent": "Turn a product home page into an AI-led morning briefing.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-list-landing/AIListLanding",
+    "exports": [
+      "AIListLanding"
+    ],
+    "implementation": "src/components/ai/patterns/ai-list-landing/AIListLanding.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "eyebrow",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "lastUpdated",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "backgroundTone",
+      "type": "AISoftSurfaceTone",
+      "required": false
+    },
+    {
+      "name": "sections",
+      "type": "AIListLandingSection[]",
+      "required": false
+    },
+    {
+      "name": "generating",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onItemOpen",
+      "type": "(item: AIListItemProps, sectionId: string, index: number) => void",
+      "required": false
+    },
+    {
+      "name": "onSectionToggle",
+      "type": "(sectionId: string, collapsed: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onAssessmentStart",
+      "type": "(item: AIListItemProps) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.radius.full"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-list-landing/ai-list-landing.md",
+    "manifest": "design-system/components/ai/patterns/ai-list-landing/ai-list-landing.agent.json",
+    "implementation": "src/components/ai/patterns/ai-list-landing/AIListLanding.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-list-landing/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-list-landing/ai-list-landing.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-list-landing/ai-list-landing.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

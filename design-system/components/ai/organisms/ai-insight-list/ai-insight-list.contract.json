@@ -1,0 +1,170 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-insight-list",
+  "slug": "ai-insight-list",
+  "name": "AIInsightList",
+  "description": "AIInsightList is the canonical way to present multiple AI-generated findings together inside a larger surface — an analysis card, a response bubble, a side drawer, or a generated dashboard. Each insight carries a severity (positive / neutral / warning / critical / info / needsReview) and renders with a tone-colored status glyph that has an accessible label so colour isn't the sole signal. Optional metadata per item: source chip, freshness, confidence pill, action link.",
+  "intent": "A semantic list of AI findings — positive / risk / warning / observation / review-needed — with optional source, freshness, confidence, and per-item action.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-insight-list/AIInsightList",
+    "exports": [
+      "AIInsightList"
+    ],
+    "implementation": "src/components/ai/organisms/ai-insight-list/AIInsightList.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "AIInsightItem[]",
+      "required": true
+    },
+    {
+      "name": "density",
+      "type": "AIInsightDensity",
+      "required": false
+    },
+    {
+      "name": "maxVisible",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "showSources",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showActions",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onItemAction",
+      "type": "(item: AIInsightItem) => void",
+      "required": false
+    },
+    {
+      "name": "onShowMore",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.full",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Multiple findings need to appear together",
+    "Insights are part of a larger analysis or output",
+    "User needs to scan positive, negative, and neutral signals",
+    "A response contains findings but not a full dashboard"
+  ],
+  "doNotUse": [
+    "Only one urgent event — use `ai-notification` instead",
+    "A full recommendation comparison — use `ai-card-recommendation-compare`",
+    "A long rationale — use `ai-rationale-panel`",
+    "A table or detailed report — use a data-grid pattern",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-insight-list/ai-insight-list.md",
+    "manifest": "design-system/components/ai/organisms/ai-insight-list/ai-insight-list.agent.json",
+    "implementation": "src/components/ai/organisms/ai-insight-list/AIInsightList.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-insight-list/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-insight-list/ai-insight-list.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-insight-list/ai-insight-list.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

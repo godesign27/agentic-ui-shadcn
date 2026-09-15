@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-queue-badge",
+  "slug": "ai-queue-badge",
+  "name": "AIQueueBadge",
+  "description": "Compact status badge for a single item in an AI execution queue. Pairs contextual icon with status label and optional count bubble.",
+  "intent": "Show queue state (queued, running, blocked, needs-approval, complete) with accessible color and icon coding in dense layouts.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/queue-badge/AIQueueBadge",
+    "exports": [
+      "AIQueueBadge",
+      "QueueStatus"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [
+    {
+      "name": "queued"
+    },
+    {
+      "name": "running"
+    },
+    {
+      "name": "blocked"
+    },
+    {
+      "name": "needs-approval"
+    },
+    {
+      "name": "complete"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "AI.color.brandSurface",
+      "AI.color.brandBorder",
+      "AI.color.brand",
+      "AI.color.text.primary",
+      "AI.color.signal.strong",
+      "AI.color.signal.surface",
+      "AI.radius.sm",
+      "AI_TYPOGRAPHY['@brand-status-label']",
+      "AI_TYPOGRAPHY['@brand-numeric-badge']"
+    ],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [
+      "aria-label derived from label or default status string"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Show queue state on a single pipeline item inside queue cards, sidebars, or table rows",
+    "Communicate dense status at a glance — icon + label + optional count",
+    "Pair with queue list patterns where multiple items need independent status coding"
+  ],
+  "doNotUse": [
+    "General-purpose status chips unrelated to execution queues — use appropriate domain badge",
+    "Interactive status toggles — badge is display-only; use controls for state changes",
+    "Long descriptive text — keep labels short; use tooltips or detail panels for prose",
+    "Do not use as an interactive button or toggle",
+    "Do not hardcode brand hex — use AI tokens and CSS vars",
+    "Do not invent status icons — use bundled SVG icons verbatim"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail",
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-queue-badge/ai-queue-badge.md",
+    "manifest": "design-system/components/ai/atomic/ai-queue-badge/ai-queue-badge.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-queue-badge/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-queue-badge/ai-queue-badge.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-queue-badge/ai-queue-badge.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

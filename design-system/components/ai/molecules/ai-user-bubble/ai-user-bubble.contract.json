@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-user-bubble",
+  "slug": "ai-user-bubble",
+  "name": "AIUserBubble",
+  "description": "AIUserBubble renders a right-aligned message pill representing the user's sent text. Two surface variants: light (default) uses a gray (#E8E6ED) surface for chat threads on dark or brand backgrounds; dark uses a deep indigo (#1F2A66 / AI_RAMP[100]) fill with white text for use on white or light-gray surfaces. Both achieve WCAG AAA contrast ratios. The bubble uses Open Sans at 16px (default) or 14px (medium) with 1.55–1.4 line-height and max-width of 82%.",
+  "intent": "Message container for the human user's input in a conversational AI interface. Visually distinct from AI-generated responses — positioned right-aligned with a light fill.",
+  "status": "active",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-user-bubble/AIUserBubble",
+    "exports": [
+      "AIUserBubble"
+    ],
+    "implementation": "src/components/ai/molecules/ai-user-bubble/AIUserBubble.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "text",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "size",
+      "type": "UserBubbleSize",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "UserBubbleVariant",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "light"
+    },
+    {
+      "group": "variant",
+      "name": "dark"
+    }
+  ],
+  "states": [],
+  "sizes": [
+    "default",
+    "medium"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brandInk",
+      "AI.color.text.onAction"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Use to represent every user-sent message in the AI chat thread",
+    "Use in AICommandCenter's message thread mapped over role:\"user\" entries"
+  ],
+  "doNotUse": [
+    "Do not use for AI responses — those use AIResponsePatterns",
+    "Do not customize the background or border-radius outside the token specification",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-user-bubble/ai-user-bubble.md",
+    "manifest": "design-system/components/ai/molecules/ai-user-bubble/ai-user-bubble.agent.json",
+    "implementation": "src/components/ai/molecules/ai-user-bubble/AIUserBubble.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-user-bubble/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-user-bubble/ai-user-bubble.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-user-bubble/ai-user-bubble.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-response-footer",
+  "slug": "ai-response-footer",
+  "name": "AIResponseFooter",
+  "description": "AIResponseFooter is the optional group component used beneath AI-generated responses, recommendations, summaries, and agent outputs. It provides lightweight trust, attribution, source context, and post-response actions. Uses AIFeedbackBar as a sub-atom — does not duplicate it. Orange is used only for stale data, missing source, or escalation states, never as a default color.",
+  "intent": "Closes the loop after every AI output. Sources ground the claim, freshness signals trust, feedback improves the model — all without competing with the response itself.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-response-footer/AIResponseFooter",
+    "exports": [
+      "AIResponseFooter"
+    ],
+    "implementation": "src/components/ai/molecules/ai-response-footer/AIResponseFooter.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "sources",
+      "type": "AISource[]",
+      "required": false
+    },
+    {
+      "name": "maxVisibleSources",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "attribution",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "updatedAt",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "freshnessLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showDivider",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showFeedback",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showRationale",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showAuditTrail",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "FooterStatus",
+      "required": false
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "layout",
+      "type": "FooterLayout",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onFeedback",
+      "type": "(v: 'up' | 'down') => void",
+      "required": false
+    },
+    {
+      "name": "onShare",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCopy",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSave",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAuditTrail",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onReportIssue",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "stale"
+    },
+    {
+      "name": "missing-source"
+    },
+    {
+      "name": "readonly"
+    },
+    {
+      "name": "audit-ready"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Under AI-generated summaries, recommendations, and insight cards",
+    "Under assistant responses that cite data sources",
+    "When data source visibility improves trust",
+    "When data freshness matters for the decision at hand",
+    "When the response should collect feedback to improve future AI quality",
+    "Under agent outputs that users may share, save, copy or rate"
+  ],
+  "doNotUse": [
+    "Do not use beneath every tiny system message — use compact footer for lightweight assistant messages",
+    "Do not use when the parent component already provides complete source and feedback controls",
+    "Do not use for standard non-AI product content",
+    "Do not use source chips if sources are unknown or fabricated",
+    "Do not show confidence, sources or freshness unless the system can support those claims",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Attribution",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-response-footer/ai-response-footer.md",
+    "manifest": "design-system/components/ai/molecules/ai-response-footer/ai-response-footer.agent.json",
+    "implementation": "src/components/ai/molecules/ai-response-footer/AIResponseFooter.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-response-footer/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-response-footer/ai-response-footer.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-response-footer/ai-response-footer.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

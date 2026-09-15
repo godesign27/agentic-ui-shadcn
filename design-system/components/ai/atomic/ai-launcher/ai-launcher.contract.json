@@ -1,0 +1,224 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-launcher",
+  "slug": "ai-launcher",
+  "name": "AILauncher",
+  "description": "Preferred AI Assisted entry point — near-black pill (avatar + Chat) or avatar-only control opening the side drawer / floating panel.",
+  "intent": "Invite users to open Guild Agent without dominating the product surface; label is always Chat for avatar-chat variant.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/launcher/AILauncher",
+    "exports": [
+      "AILauncher"
+    ],
+    "implementation": "src/components/ai/atomic/ai-launcher/AILauncher.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "LauncherVariant",
+      "required": false
+    },
+    {
+      "name": "surface",
+      "type": "LauncherSurface",
+      "required": false
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "unread",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "unreadCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "highContrast",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "tooltipLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "avatar-chat",
+      "when": "Default pill — avatar + “Chat” label"
+    },
+    {
+      "group": "variant",
+      "name": "avatar-only",
+      "when": "36px circle — compact toolbar / mobile"
+    }
+  ],
+  "states": [
+    {
+      "name": "default",
+      "when": "Resting near-black pill"
+    },
+    {
+      "name": "hover",
+      "when": "Surface `#2F2C3C`, stronger shadow"
+    },
+    {
+      "name": "focus",
+      "when": "2px brand focus ring; tooltip visible"
+    },
+    {
+      "name": "active"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "unread"
+    },
+    {
+      "name": "disabled",
+      "when": "Faded surface, not-allowed cursor"
+    },
+    {
+      "name": "high-contrast",
+      "when": "Forced near-black on light contexts"
+    },
+    {
+      "name": "reduced-motion"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter",
+      "Space",
+      "Tab"
+    ],
+    "requiredAttributes": [
+      "ariaLabel on control",
+      "tooltipLabel for avatar-only variant",
+      "focus-visible ring using ai-launcher.focus.ring"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "Product header, toolbar, or dashboard header on AI Assisted pages",
+    "Persistent or floating assistant trigger",
+    "Standard SaaS pages where AI is available but should not dominate",
+    "`avatar-only` variant — tight toolbars, dense dashboards, mobile headers, collapsed assistant states"
+  ],
+  "doNotUse": [
+    "Long labels like “Ask AI” or “Ask Guild AI”",
+    "Competing visually with primary product actions",
+    "Orange as the launcher surface color",
+    "`avatar-only` without tooltip and accessible label",
+    "Non-AI actions",
+    "Opening full AI Command Center on AI Assisted pages",
+    "Do not use labels other than Chat for avatar-chat variant",
+    "Do not use orange launcher surface",
+    "Do not open Command Center from AI Assisted pages",
+    "Do not use avatar-only without tooltip and ariaLabel",
+    "Do not hardcode hex — use ai-launcher.* tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-launcher/ai-launcher.md",
+    "manifest": "design-system/components/ai/atomic/ai-launcher/ai-launcher.agent.json",
+    "implementation": "src/components/ai/atomic/ai-launcher/AILauncher.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-launcher/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-launcher/ai-launcher.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-launcher/ai-launcher.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

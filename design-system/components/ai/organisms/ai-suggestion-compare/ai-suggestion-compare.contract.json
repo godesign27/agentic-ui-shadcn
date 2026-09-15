@@ -1,0 +1,234 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-suggestion-compare",
+  "slug": "ai-suggestion-compare",
+  "name": "AISuggestionCompare",
+  "description": "AISuggestionCompare is the broader canonical pattern for AI-generated comparisons. It supersedes the v1 `ai-card-recommendation-compare` (kept in the registry for legacy surfaces) and is what new product surfaces should reach for when the AI presents multiple options, scenarios, or next-best actions.",
+  "intent": "Compare AI-generated options — benefit, tradeoff, confidence, risk — and choose, ask for another, or send for approval.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-suggestion-compare/AISuggestionCompare",
+    "exports": [
+      "AISuggestionCompare"
+    ],
+    "implementation": "src/components/ai/organisms/ai-suggestion-compare/AISuggestionCompare.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AISuggestionDensity",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "summary",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "generatedBy",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "suggestions",
+      "type": "AISuggestionItem[]",
+      "required": false
+    },
+    {
+      "name": "layout",
+      "type": "AISuggestionLayout",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AISuggestionStatus",
+      "required": false
+    },
+    {
+      "name": "onSelectSuggestion",
+      "type": "(id: string) => void",
+      "required": false
+    },
+    {
+      "name": "onAskForAnother",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSendForApproval",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAssumptions",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "approvalRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "reviewer",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "loadingLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "updating"
+    },
+    {
+      "name": "selected"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI generates multiple options the user must choose between",
+    "User needs to compare benefits and tradeoffs",
+    "Recommendation needs human choice or human review",
+    "Scenario planning needs side-by-side comparison",
+    "Decision requires approval or escalation",
+    "User may ask for another option"
+  ],
+  "doNotUse": [
+    "There is only one simple recommendation — use `ai-notification`",
+    "A full data table is needed",
+    "The AI is not actually comparing options",
+    "The decision is final — use `ai-change-summary`",
+    "Long-form rationale is needed before comparing — use `ai-rationale-panel`",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.md",
+    "manifest": "design-system/components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.agent.json",
+    "implementation": "src/components/ai/organisms/ai-suggestion-compare/AISuggestionCompare.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-suggestion-compare/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-suggestion-compare/ai-suggestion-compare.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

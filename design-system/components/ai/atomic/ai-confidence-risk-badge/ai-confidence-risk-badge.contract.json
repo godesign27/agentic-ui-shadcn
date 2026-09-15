@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-confidence-risk-badge",
+  "slug": "ai-confidence-risk-badge",
+  "name": "AIConfidenceRiskBadge",
+  "description": "The AI Confidence & Risk Badge is the primary accountability surface for AI outputs. It combines a confidence bar (high/medium/low with % fill), an optional risk chip, a stale-data warning, and a miss",
+  "intent": "Compound accountability badge showing AI output confidence level, risk severity, data freshness, and source availability in a single composable row.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge",
+    "exports": [
+      "AIConfidenceRiskBadge"
+    ],
+    "implementation": "src/components/ai/atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "confidence",
+      "type": "ConfidenceLevel",
+      "required": true
+    },
+    {
+      "name": "risk",
+      "type": "RiskLevel",
+      "required": false
+    },
+    {
+      "name": "staleData",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "missingSource",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.signal.default",
+      "AI.color.signal.strong",
+      "AI.color.signal.subtle",
+      "AI.color.signal.surface",
+      "AI.radius.full"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "See bundle overview"
+  ],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.md",
+    "manifest": "design-system/components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.agent.json",
+    "implementation": "src/components/ai/atomic/ai-confidence-risk-badge/AIConfidenceRiskBadge.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-confidence-risk-badge/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-confidence-risk-badge/ai-confidence-risk-badge.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

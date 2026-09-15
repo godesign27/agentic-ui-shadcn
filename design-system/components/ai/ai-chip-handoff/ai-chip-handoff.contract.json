@@ -1,0 +1,226 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-chip-handoff",
+  "slug": "ai-chip-handoff",
+  "name": "AIChipHandoff",
+  "description": "A directional pill naming the source and target of a handoff: agent to agent, agent to human, human to agent, system to agent, or failed.",
+  "intent": "Show the moment accountability changed hands.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-chip-handoff",
+    "exports": [
+      "AIChipHandoff"
+    ],
+    "implementation": "src/components/ai/ai-chip-handoff.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "direction",
+      "type": "HandoffDirection",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "fromLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "toLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "agent-to-agent",
+      "when": "One agent passed to another. AI tint."
+    },
+    {
+      "group": "variant",
+      "name": "agent-to-human",
+      "when": "The machine handed back. Signal tint — a person now owns it."
+    },
+    {
+      "group": "variant",
+      "name": "human-to-agent",
+      "when": "A person delegated. AI tint."
+    },
+    {
+      "group": "variant",
+      "name": "system-to-agent",
+      "when": "Automated dispatch. Neutral tint."
+    },
+    {
+      "group": "variant",
+      "name": "failed",
+      "when": "The handoff did not complete. Destructive tint."
+    }
+  ],
+  "states": [
+    {
+      "name": "Agent to agent",
+      "when": "`direction=\"agent-to-agent\"`"
+    },
+    {
+      "name": "Agent to human",
+      "when": "`direction=\"agent-to-human\"`"
+    },
+    {
+      "name": "Human to agent",
+      "when": "`direction=\"human-to-agent\"`"
+    },
+    {
+      "name": "System to agent",
+      "when": "`direction=\"system-to-agent\"`"
+    },
+    {
+      "name": "Failed",
+      "when": "`direction=\"failed\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "ai-surface",
+      "border",
+      "destructive",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-signal",
+      "bg-ai-surface",
+      "bg-destructive",
+      "bg-muted",
+      "border-ai-signal",
+      "border-ai-surface",
+      "border-border",
+      "border-destructive",
+      "text-ai-accent",
+      "text-ai-signal",
+      "text-destructive",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [
+      "fromLabel and toLabel"
+    ],
+    "notes": [
+      "Both party names are visible text, so the icons carry no unique meaning.",
+      "An sr-only suffix distinguishes a completed handoff from a failed one."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "In an agent activity log or timeline",
+    "When work transfers between agents or between an agent and a person",
+    "To make it clear who is currently responsible"
+  ],
+  "doNotUse": [
+    "As a general direction indicator",
+    "When no actual transfer occurred",
+    "As a button",
+    "Decorative direction indicators",
+    "Unnamed parties",
+    "Interactive use"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Only render for real transfers.",
+      "Name both parties specifically.",
+      "agent-to-human means a person is now accountable — do not use it loosely."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-agent-stack",
+        "note": "Who is working now"
+      },
+      {
+        "id": "ai:ai-agent-work-note",
+        "note": "What they did"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution",
+        "Audit trail"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-chip-handoff/ai-chip-handoff.md",
+    "manifest": "design-system/components/ai/ai-chip-handoff/ai-chip-handoff.agent.json",
+    "implementation": "src/components/ai/ai-chip-handoff.tsx",
+    "prompt": "design-system/components/ai/ai-chip-handoff/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-chip-handoff/ai-chip-handoff.preview.html",
+    "contract": "design-system/components/ai/ai-chip-handoff/ai-chip-handoff.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

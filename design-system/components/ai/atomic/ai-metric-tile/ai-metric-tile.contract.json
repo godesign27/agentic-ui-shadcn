@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-metric-tile",
+  "slug": "ai-metric-tile",
+  "name": "AIMetricTile",
+  "description": "AIMetricTile is the canonical surface for surfacing a single metric reading — confidence, trend, threshold, target — inside detail drawers, trust panels, and capability inspectors. The tile pairs an uppercase eyebrow (\"CONFIDENCE\", \"TREND\", \"HALT THRESHOLD\") with the metric value rendered in the brand-ink, and an optional qualifier chip tinted by tone (\"High\" in brand blue, \"Medium\" in Guild orange, \"Low\" in Guild orange deep, neutral in helper grey).",
+  "intent": "Compact raised tile for a single metric reading — eyebrow + value + optional qualifier.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-metric-tile/AIMetricTile",
+    "exports": [
+      "AIMetricTile"
+    ],
+    "implementation": "src/components/ai/atomic/ai-metric-tile/AIMetricTile.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "value",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "qualifier",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "qualifierTone",
+      "type": "AIMetricTileQualifierTone",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIMetricTileSize",
+      "required": false
+    },
+    {
+      "name": "accent",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-metric-tile/ai-metric-tile.md",
+    "manifest": "design-system/components/ai/atomic/ai-metric-tile/ai-metric-tile.agent.json",
+    "implementation": "src/components/ai/atomic/ai-metric-tile/AIMetricTile.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-metric-tile/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-metric-tile/ai-metric-tile.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-metric-tile/ai-metric-tile.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

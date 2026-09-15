@@ -1,0 +1,199 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-agent-work-note",
+  "slug": "ai-agent-work-note",
+  "name": "AIAgentWorkNote",
+  "description": "AIAgentWorkNote is a lightweight inline disclosure atom used in chat threads when the agent is actively working, planning, checking context, or summarizing what it is about to do. It gives the user sh",
+  "intent": "Quiet, trustworthy transparency. The agent shows what it is doing without exposing private reasoning.",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-agent-work-note/AIAgentWorkNote",
+    "exports": [
+      "AIAgentWorkNote"
+    ],
+    "implementation": "src/components/ai/atomic/ai-agent-work-note/AIAgentWorkNote.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "WorkNoteStatus",
+      "required": false
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "showChevron",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hideable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hidden",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showViewTrace",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "(open: boolean) => void",
+      "required": false
+    },
+    {
+      "name": "onHide",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewTrace",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "idle"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandStrong"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "When the agent is actively working and the user needs lightweight transparency",
+    "When the agent is planning or checking context before responding",
+    "When a short working summary would reduce user uncertainty",
+    "In chat threads before or during a response",
+    "In AI Command Center, AI Assisted Side Drawer or agentic workstreams"
+  ],
+  "doNotUse": [
+    "Do not use for every response — only when working transparency is needed",
+    "Do not use for final recommendation rationale — use ai-rationale-panel instead",
+    "Do not use as a full process trace — use ai-reasoning-trace instead",
+    "Do not expose hidden chain-of-thought or system prompts",
+    "Do not use when a simple loading indicator is enough",
+    "Do not use for standard product notifications"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-agent-work-note/ai-agent-work-note.md",
+    "manifest": "design-system/components/ai/atomic/ai-agent-work-note/ai-agent-work-note.agent.json",
+    "implementation": "src/components/ai/atomic/ai-agent-work-note/AIAgentWorkNote.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-agent-work-note/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-agent-work-note/ai-agent-work-note.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-agent-work-note/ai-agent-work-note.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

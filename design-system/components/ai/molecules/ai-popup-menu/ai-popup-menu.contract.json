@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-popup-menu",
+  "slug": "ai-popup-menu",
+  "name": "AIMenu",
+  "description": "AIPopupMenu is the AI skin of the standard DS Popup Menu. A hidden AIMenu is revealed on a trigger action (click / keyboard). The trigger carries role=\"button\", aria-haspopup=\"menu\", aria-expanded (toggling with open state), and aria-controls pointing at the menu id. The overlay is position:absolute in the AI dialog chrome (--ai-card-bg, brand border, 12px radius, soft-blue shadow) and closes on outside-click or Escape. Single-select popups close after a pick (closeOnSelect); multi-select popups stay open so several items can be toggled. It reuses the AICommandCenterDialog PlusMenu and AIPicker PopoverShell styling rather than forking, so it reads as part of the same AI system as the dialog.",
+  "intent": "A trigger + hidden AIMenu overlay — AI dialog chrome, opens on click, closes on outside-click / Escape.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-popup-menu/AIPopupMenu",
+    "exports": [
+      "AIMenu"
+    ],
+    "implementation": "src/components/ai/molecules/ai-popup-menu/AIPopupMenu.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI actions should be hidden until a trigger reveals them",
+    "A kebab / header trigger needs an AI-styled overlay menu",
+    "The popup should read as a sibling of the AI Command Center dialog"
+  ],
+  "doNotUse": [
+    "The menu is always visible — use `ai-menu`",
+    "You need the neutral standard styling — use `ds-popup-menu`",
+    "It is a form select control — use `ds-dropdown`",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-popup-menu/ai-popup-menu.md",
+    "manifest": "design-system/components/ai/molecules/ai-popup-menu/ai-popup-menu.agent.json",
+    "implementation": "src/components/ai/molecules/ai-popup-menu/AIPopupMenu.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-popup-menu/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-popup-menu/ai-popup-menu.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-popup-menu/ai-popup-menu.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

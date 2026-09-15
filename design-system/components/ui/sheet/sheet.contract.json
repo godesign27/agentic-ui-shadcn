@@ -1,0 +1,210 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:sheet",
+  "slug": "sheet",
+  "name": "Sheet",
+  "description": "Radix Dialog repositioned to an edge. Four sides via the side variant. Shares every accessibility behaviour with ui:dialog.",
+  "intent": "A modal panel anchored to a screen edge, for content that needs more room than a dialog affords.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/sheet",
+    "exports": [
+      "Sheet",
+      "SheetClose",
+      "SheetContent",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetHeader",
+      "SheetOverlay",
+      "SheetPortal",
+      "SheetTitle",
+      "SheetTrigger"
+    ],
+    "implementation": "src/components/ui/sheet.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "side",
+      "type": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+      "required": false,
+      "default": "\"right\"",
+      "hint": "One of the side values declared in sheetVariants."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "right",
+      "when": "The default. Detail panels, filters, settings."
+    },
+    {
+      "group": "variant",
+      "name": "left",
+      "when": "Navigation, especially mobile."
+    },
+    {
+      "group": "variant",
+      "name": "top",
+      "when": "Announcements and search overlays. Rare."
+    },
+    {
+      "group": "variant",
+      "name": "bottom",
+      "when": "Mobile action sheets. The most reachable position on a phone."
+    },
+    {
+      "group": "side",
+      "name": "top"
+    },
+    {
+      "group": "side",
+      "name": "bottom"
+    },
+    {
+      "group": "side",
+      "name": "left"
+    },
+    {
+      "group": "side",
+      "name": "right"
+    }
+  ],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`open={false}`"
+    },
+    {
+      "name": "Open",
+      "when": "`Trigger activated`"
+    }
+  ],
+  "sizes": [
+    "top",
+    "bottom",
+    "left",
+    "right"
+  ],
+  "tokens": {
+    "semantic": [
+      "background",
+      "foreground",
+      "muted",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-secondary",
+      "ring-ring",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "dialog",
+    "keyboard": [
+      "Escape — close",
+      "Tab — cycle within the trap"
+    ],
+    "requiredAttributes": [
+      "SheetTitle is mandatory"
+    ],
+    "notes": [
+      "Sheet is modal. The page behind it is inert and scroll is locked.",
+      "On narrow screens side=\"right\" and side=\"left\" occupy three-quarters of the width by default."
+    ],
+    "focusManagement": "Identical to ui:dialog — trap on open, return on close.",
+    "handledByRadix": true
+  },
+  "usage": [
+    "Filters, settings or detail panels beside the main content",
+    "Mobile navigation, via side=\"left\"",
+    "A bottom sheet on touch, via side=\"bottom\"",
+    "Longer forms that would make a centred dialog unwieldy"
+  ],
+  "doNotUse": [
+    "A short confirmation — use ui:dialog or ui:alert-dialog",
+    "Content that should persist while the user works elsewhere — a sheet is modal and blocks the page",
+    "Primary navigation on desktop — use ui:sidebar",
+    "SheetContent without SheetTitle",
+    "Nested overlays",
+    "Using a sheet for content that must stay visible while working"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "SheetTitle is mandatory.",
+      "Choose the side from the content, not from habit: left for nav, bottom for touch actions, right for detail.",
+      "Long content needs an inner ui:scroll-area.",
+      "Do not nest sheets or place a dialog inside one."
+    ],
+    "related": [
+      {
+        "id": "ui:dialog",
+        "note": "Centred modal"
+      },
+      {
+        "id": "ui:sidebar",
+        "note": "Persistent navigation"
+      },
+      {
+        "id": "ui:scroll-area",
+        "note": "For long sheet content"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/sheet/sheet.md",
+    "manifest": "design-system/components/ui/sheet/sheet.agent.json",
+    "implementation": "src/components/ui/sheet.tsx",
+    "prompt": "design-system/components/ui/sheet/agentic-prompt.md",
+    "preview": "design-system/components/ui/sheet/sheet.preview.html",
+    "contract": "design-system/components/ui/sheet/sheet.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

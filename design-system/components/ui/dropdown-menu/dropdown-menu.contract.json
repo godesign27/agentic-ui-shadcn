@@ -1,0 +1,207 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:dropdown-menu",
+  "slug": "dropdown-menu",
+  "name": "DropdownMenu",
+  "description": "Radix DropdownMenu with submenus, checkbox items, radio groups, labels, separators and shortcut slots.",
+  "intent": "A list of actions revealed from a button, with proper menu semantics.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/dropdown-menu",
+    "exports": [
+      "DropdownMenu",
+      "DropdownMenuCheckboxItem",
+      "DropdownMenuContent",
+      "DropdownMenuGroup",
+      "DropdownMenuItem",
+      "DropdownMenuLabel",
+      "DropdownMenuPortal",
+      "DropdownMenuRadioGroup",
+      "DropdownMenuRadioItem",
+      "DropdownMenuSeparator",
+      "DropdownMenuShortcut",
+      "DropdownMenuSub",
+      "DropdownMenuSubContent",
+      "DropdownMenuSubTrigger",
+      "DropdownMenuTrigger"
+    ],
+    "implementation": "src/components/ui/dropdown-menu.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "inset",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "sideOffset",
+      "type": "see source",
+      "required": false,
+      "default": "4",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "checked",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Closed",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Open",
+      "when": "`Click, Enter, Space or ArrowDown`"
+    },
+    {
+      "name": "Item focused",
+      "when": "`Arrow keys or hover`"
+    },
+    {
+      "name": "Submenu open",
+      "when": "`Hover or ArrowRight on SubTrigger`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "muted",
+      "popover"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-muted",
+      "bg-popover",
+      "text-accent",
+      "text-popover"
+    ]
+  },
+  "a11y": {
+    "role": "menu",
+    "keyboard": [
+      "ArrowDown or Enter — open",
+      "Arrow keys — move between items",
+      "ArrowRight/ArrowLeft — enter and leave submenus",
+      "Type a letter — typeahead",
+      "Escape — close and return focus",
+      "Tab — close and move on"
+    ],
+    "requiredAttributes": [
+      "An accessible name on the trigger"
+    ],
+    "notes": [
+      "Radix supplies menu, menuitem, menuitemcheckbox and menuitemradio roles plus roving focus.",
+      "DropdownMenuShortcut only renders the hint. Bind the actual key yourself.",
+      "Destructive items still need ui:alert-dialog confirmation — closing the menu is not a confirmation."
+    ],
+    "focusManagement": "Focus enters the menu on open and returns to the trigger on close.",
+    "handledByRadix": true
+  },
+  "usage": [
+    "An overflow or \"more actions\" menu",
+    "A user account menu",
+    "Actions too numerous to sit in a toolbar",
+    "View options, using checkbox or radio items"
+  ],
+  "doNotUse": [
+    "Selecting a form value — use ui:select, which has the right semantics for a value",
+    "Navigating a site — use ui:navigation-menu",
+    "Right-click context — use ui:context-menu",
+    "Two or fewer actions — just show the buttons",
+    "Selecting a form value",
+    "Destructive item with no confirmation",
+    "Items outside DropdownMenuContent",
+    "Unlabelled trigger"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Use ui:select for values, this for actions.",
+      "Group with separators and labels once past about seven items.",
+      "Destructive items get destructive styling and a confirmation step.",
+      "DropdownMenuShortcut is display only — bind the key separately.",
+      "Icon-only triggers need an accessible name."
+    ],
+    "related": [
+      {
+        "id": "ui:select",
+        "note": "Form values"
+      },
+      {
+        "id": "ui:context-menu",
+        "note": "Right-click"
+      },
+      {
+        "id": "ui:menubar",
+        "note": "Persistent application menu bar"
+      },
+      {
+        "id": "ui:command",
+        "note": "Searchable command palette"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/dropdown-menu/dropdown-menu.md",
+    "manifest": "design-system/components/ui/dropdown-menu/dropdown-menu.agent.json",
+    "implementation": "src/components/ui/dropdown-menu.tsx",
+    "prompt": "design-system/components/ui/dropdown-menu/agentic-prompt.md",
+    "preview": "design-system/components/ui/dropdown-menu/dropdown-menu.preview.html",
+    "contract": "design-system/components/ui/dropdown-menu/dropdown-menu.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

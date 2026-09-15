@@ -1,0 +1,123 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-chip-brief",
+  "slug": "ai-chip-brief",
+  "name": "AIChipBrief",
+  "description": "The AI Brief Chip surfaces the live status of an AI task brief inline — wherever a brief is referenced in the UI. It uses a colored dot and a label pill to communicate one of six states without requir",
+  "intent": "Status indicator for agent task briefs. Communicates execution readiness at a glance — from draft to awaiting approval to running.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-chip-brief/AIChipBrief",
+    "exports": [
+      "AIChipBrief"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "See bundle overview"
+  ],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-chip-brief/ai-chip-brief.md",
+    "manifest": "design-system/components/ai/atomic/ai-chip-brief/ai-chip-brief.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-chip-brief/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-chip-brief/ai-chip-brief.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-chip-brief/ai-chip-brief.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

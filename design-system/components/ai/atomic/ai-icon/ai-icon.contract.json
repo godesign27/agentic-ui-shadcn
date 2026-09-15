@@ -1,0 +1,208 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-icon",
+  "slug": "ai-icon",
+  "name": "AIIcon",
+  "description": "AIIcon is the canonical way to render any icon on a Guild AI surface. The icon set itself is the Guild Icon Library — the same `ui-icon-{name}` inventory documented in Foundations → Iconography, whe",
+  "intent": "Not a new icon set — a behavior and color layer applied to standard icons. Every AI icon choice must justify its treatment against the 60-30-10 color rule: 60% neutral, 30% product/semantic, 10% AI identity.",
+  "status": "draft",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-icon/AIIcon",
+    "exports": [
+      "AIIcon"
+    ],
+    "implementation": "src/components/ai/atomic/ai-icon/AIIcon.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "size",
+      "type": "AIIconSize",
+      "required": false
+    },
+    {
+      "name": "treatment",
+      "type": "AIIconTreatment",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AIIconTone",
+      "required": false
+    },
+    {
+      "name": "categoryTone",
+      "type": "AIIconCategoryTone",
+      "required": false
+    },
+    {
+      "name": "container",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "decorative",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "motion",
+      "type": "AIIconMotion",
+      "required": false
+    },
+    {
+      "name": "motionLoop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "idle"
+    },
+    {
+      "name": "active"
+    },
+    {
+      "name": "attention"
+    },
+    {
+      "name": "processing"
+    }
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.brand",
+      "AI.color.brandStrong",
+      "AI.color.brandSubtle",
+      "AI.color.text.secondary"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Check ICON_PATHS before using any icon",
+    "Use neutral treatment for 60% of icons on any surface",
+    "Reserve AI identity treatment for genuine agent output moments",
+    "Pair motion with visible text or status label",
+    "Stop spin animation when processing completes",
+    "Limit alert-ring to 2 cycles maximum",
+    "Mark decorative icons with the `decorative` prop",
+    "Respect prefers-reduced-motion at all times"
+  ],
+  "doNotUse": [
+    "Do not use AI identity treatment on every icon on the surface",
+    "Do not use Signal orange for standard AI output icons — only escalation / stale",
+    "Do not loop attention animations (pulse, nudge) indefinitely",
+    "Do not use motion as the only indicator of state change",
+    "Do not create custom icon shapes outside ICON_PATHS",
+    "Do not use spin for decorative AI presence — use pulse instead",
+    "Do not add shimmer to every AI icon on the page",
+    "Do not skip Lucide fallback documentation — always tag [Lucide] in ICON_PATHS"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-icon/ai-icon.md",
+    "manifest": "design-system/components/ai/atomic/ai-icon/ai-icon.agent.json",
+    "implementation": "src/components/ai/atomic/ai-icon/AIIcon.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-icon/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-icon/ai-icon.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-icon/ai-icon.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:molecules-ai-why-this-link",
+  "slug": "ai-why-this-link",
+  "name": "AIWhyThisLink",
+  "description": "The AI Why This Link provides a lightweight, non-disruptive entry point into AI transparency. It appears inline adjacent to AI-generated content and opens a rationale panel, source list, assumption di",
+  "intent": "Minimal inline entry point to AI transparency. Opens rationale panels, source lists, assumption disclosures, or risk explanations without disrupting the primary flow.",
+  "status": "active",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/why-this-link/AIWhyThisLink",
+    "exports": [
+      "AIWhyThisLink"
+    ],
+    "implementation": "src/components/ai/molecules/ai-why-this-link/AIWhyThisLink.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "WhyThisVariant",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "why-this"
+    },
+    {
+      "group": "variant",
+      "name": "view-rationale"
+    },
+    {
+      "group": "variant",
+      "name": "view-sources"
+    },
+    {
+      "group": "variant",
+      "name": "view-assumptions"
+    },
+    {
+      "group": "variant",
+      "name": "explain-risk"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Inline adjacent to AI recommendations, insights, or flagged outputs",
+    "When a lightweight transparency entry is needed without a full footer link row",
+    "For variant-specific disclosure: rationale, sources, assumptions, or risk context"
+  ],
+  "doNotUse": [
+    "For a row of multiple explainability links — use `AITextLink` + `AITextLinkGroup` instead",
+    "For primary actions or navigation — use ai-button or standard links"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-why-this-link/ai-why-this-link.md",
+    "manifest": "design-system/components/ai/molecules/ai-why-this-link/ai-why-this-link.agent.json",
+    "implementation": "src/components/ai/molecules/ai-why-this-link/AIWhyThisLink.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-why-this-link/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-why-this-link/ai-why-this-link.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-why-this-link/ai-why-this-link.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

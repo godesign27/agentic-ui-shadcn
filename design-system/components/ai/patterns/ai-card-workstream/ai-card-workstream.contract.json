@@ -1,0 +1,180 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-workstream",
+  "slug": "ai-card-workstream",
+  "name": "AICardWorkstream",
+  "description": "AICardWorkstream is the canonical entry-point card for any AI-operated workstream. The icon encodes the workstream type (map / roster / data / forecast); the status pill encodes operational state (active / pending / critical / complete); up to three KPI columns show at-a-glance metrics; a Project Health bar shows progress with color tied to status; the footer carries assignee initials and the last-updated timestamp. Clicking the whole card navigates to the workstream dashboard.",
+  "intent": "Card-style preview of an AI workstream — surfaces just enough state for the user to decide whether to drill in.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-workstream/AICardWorkstream",
+    "exports": [
+      "AICardWorkstream"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-workstream/AICardWorkstream.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "WorkstreamType",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "WorkstreamStatus",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "metrics",
+      "type": "WorkstreamMetric[]",
+      "required": false
+    },
+    {
+      "name": "healthPercent",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "assignees",
+      "type": "WorkstreamAssignee[]",
+      "required": false
+    },
+    {
+      "name": "lastUpdated",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "active"
+    },
+    {
+      "name": "pending"
+    },
+    {
+      "name": "critical"
+    },
+    {
+      "name": "complete"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-workstream/ai-card-workstream.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-workstream/ai-card-workstream.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-workstream/AICardWorkstream.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-workstream/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-workstream/ai-card-workstream.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-workstream/ai-card-workstream.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

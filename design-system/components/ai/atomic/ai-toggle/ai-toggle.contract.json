@@ -1,0 +1,167 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-toggle",
+  "slug": "ai-toggle",
+  "name": "AIToggle",
+  "description": "AIToggle is the canonical binary switch for AI surfaces. The ON state uses the AI brand color (#4D60E6); the OFF state uses a deliberately darker slate (#8D8A93) than DS border so the white thumb stays visible — meeting WCAG 1.4.11 (3:1 minimum) for non-text UI components. Pairs a label with the switch via labelPlacement (start/end/none), supports sm/md sizes, and exposes role=\"switch\" + aria-checked.",
+  "intent": "Track + thumb switch with high-contrast OFF state. White thumb passes 3:1 contrast against both ON and OFF tracks.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-toggle/AIToggle",
+    "exports": [
+      "AIToggle"
+    ],
+    "implementation": "src/components/ai/atomic/ai-toggle/AIToggle.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "checked",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "name": "onChange",
+      "type": "(next: boolean) => void",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "labelPlacement",
+      "type": "AIToggleLabelPlacement",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIToggleSize",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primaryActive",
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-toggle/ai-toggle.md",
+    "manifest": "design-system/components/ai/atomic/ai-toggle/ai-toggle.agent.json",
+    "implementation": "src/components/ai/atomic/ai-toggle/AIToggle.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-toggle/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-toggle/ai-toggle.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-toggle/ai-toggle.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

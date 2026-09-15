@@ -1,0 +1,298 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-data-table",
+  "slug": "ai-card-data-table",
+  "name": "AICardDataTable",
+  "description": "AICardDataTable is the canonical pattern for AI-generated tables across Guild. It supersedes ad-hoc table compositions inside chat bubbles, side drawers, dashboard modules, and review flows.",
+  "intent": "One reusable table block — compact in chat, contextual in a drawer, governed in a review flow. Density picks how much trust + action context comes along.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-data-table/AICardDataTable",
+    "exports": [
+      "AICardDataTable"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-data-table/AICardDataTable.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AIDataTableDensity",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "AIDataTableState",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "intro",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "generatedBy",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "AIDataTableConfidenceLevel",
+      "required": false
+    },
+    {
+      "name": "risk",
+      "type": "AIDataTableRiskLevel",
+      "required": false
+    },
+    {
+      "name": "columns",
+      "type": "AIDataTableColumn[]",
+      "required": false
+    },
+    {
+      "name": "rows",
+      "type": "AIDataTableRow[]",
+      "required": false
+    },
+    {
+      "name": "rowCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "flaggedSummary",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "freshness",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "reviewer",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "approvalRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAssumptions",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewAuditTrail",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewChangeSummary",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "secondaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "tertiaryAction",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "onExpand",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "expandTooltip",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onRetry",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "loadingLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    },
+    {
+      "name": "loading"
+    },
+    {
+      "name": "progressiveLoading"
+    },
+    {
+      "name": "updating"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.shadow.card.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI returns a tabular answer the user wants to scan quickly",
+    "A side drawer or dashboard module needs a compact, source-backed table",
+    "A review flow needs row- and cell-level provenance (applied / pending / suggested / estimated)",
+    "The user must approve, escalate, or apply table-level changes",
+    "Some cells need threshold, freshness, or AI-provenance treatment"
+  ],
+  "doNotUse": [
+    "A single value answer is enough — use `ai-card-metric`",
+    "A full enterprise data grid with sorting / filtering / paging is needed — use the Standard Library table",
+    "No tabular structure is required — use `ai-response-bubble` text",
+    "Long-form rationale is needed — open `ai-rationale-panel` instead of expanding the table card",
+    "The decision is final and the data will not change — use `ai-change-summary`",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Apply",
+        "Approve"
+      ],
+      "accountability": [
+        "Audit trail",
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-data-table/ai-card-data-table.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-data-table/ai-card-data-table.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-data-table/AICardDataTable.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-data-table/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-data-table/ai-card-data-table.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-data-table/ai-card-data-table.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-feedback-bar",
+  "slug": "ai-feedback-bar",
+  "name": "AIFeedbackBar",
+  "description": "AIFeedbackBar renders a horizontal row of icon-only action buttons below each AI response. Tooltips are portal-rendered above the anchored button to escape overflow:hidden parent containers. Like/disl",
+  "intent": "Inline feedback controls surfaced after every AI response. Captures user sentiment to improve future outputs and close the learning loop.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-feedback-bar/AIFeedbackBar",
+    "exports": [
+      "AIFeedbackBar"
+    ],
+    "implementation": "src/components/ai/atomic/ai-feedback-bar/AIFeedbackBar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.surface.subtle"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Attach to every AI response message as the canonical feedback surface",
+    "Use when the user needs to copy, share, tag, or save an AI response",
+    "Use for explicit quality signals (helpful / not helpful)"
+  ],
+  "doNotUse": [
+    "Do not use inside a read-only or print view where interactions are disabled",
+    "Do not show on mid-stream responses — wait until the response is complete"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-feedback-bar/ai-feedback-bar.md",
+    "manifest": "design-system/components/ai/atomic/ai-feedback-bar/ai-feedback-bar.agent.json",
+    "implementation": "src/components/ai/atomic/ai-feedback-bar/AIFeedbackBar.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-feedback-bar/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-feedback-bar/ai-feedback-bar.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-feedback-bar/ai-feedback-bar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

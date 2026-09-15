@@ -1,0 +1,172 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:input",
+  "slug": "input",
+  "name": "Input",
+  "description": "A styled native input. All native props and types pass through; type=\"file\" receives specific styling.",
+  "intent": "A single line of user-supplied text, with the focus and disabled behavior already correct.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/input",
+    "exports": [
+      "Input"
+    ],
+    "implementation": "src/components/ui/input.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "type",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Placeholder",
+      "when": "`Empty`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard or click focus`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled prop`"
+    },
+    {
+      "name": "Invalid",
+      "when": "`Validation failure`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "background",
+      "input",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "border-input",
+      "ring-ring",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "textbox",
+    "keyboard": [
+      "Standard text editing keys"
+    ],
+    "requiredAttributes": [
+      "An associated label via ui:label htmlFor, or aria-label",
+      "aria-describedby pointing at any helper or error text",
+      "aria-invalid when validation fails"
+    ],
+    "notes": [
+      "A placeholder is not a label. It disappears on input and is invisible to some assistive technology.",
+      "type=\"number\" is hostile to screen readers and to users who paste formatted values. Prefer type=\"text\" with inputMode=\"numeric\".",
+      "This component does not render error state. Use ui:form, which wires aria-invalid and aria-describedby for you."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Single-line text, email, password, number, search, url, tel",
+    "File selection via type=\"file\""
+  ],
+  "doNotUse": [
+    "Multi-line text — use ui:textarea",
+    "Choosing from a known set — use ui:select",
+    "Searching a large set with filtering — use ui:command",
+    "Dates — use ui:calendar inside ui:popover",
+    "Any input without a ui:label, which is never acceptable",
+    "Placeholder as the only label",
+    "Error communicated by border colour alone",
+    "Removing the focus ring"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never render an Input without an associated Label.",
+      "Set autoComplete on anything a browser can fill.",
+      "Use ui:form for validation rather than hand-wiring aria-describedby."
+    ],
+    "related": [
+      {
+        "id": "ui:textarea",
+        "note": "Multi-line"
+      },
+      {
+        "id": "ui:label",
+        "note": "Required companion"
+      },
+      {
+        "id": "ui:form",
+        "note": "Validation and error wiring"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/input/input.md",
+    "manifest": "design-system/components/ui/input/input.agent.json",
+    "implementation": "src/components/ui/input.tsx",
+    "prompt": "design-system/components/ui/input/agentic-prompt.md",
+    "preview": "design-system/components/ui/input/input.preview.html",
+    "contract": "design-system/components/ui/input/input.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

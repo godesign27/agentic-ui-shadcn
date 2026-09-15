@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:scroll-area",
+  "slug": "scroll-area",
+  "name": "ScrollArea",
+  "description": "Radix ScrollArea with a custom-styled scrollbar. The root must have a bounded height or nothing scrolls.",
+  "intent": "A scrollable region with a scrollbar that looks the same on every platform.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/scroll-area",
+    "exports": [
+      "ScrollArea",
+      "ScrollBar"
+    ],
+    "implementation": "src/components/ui/scroll-area.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "orientation",
+      "type": "see source",
+      "required": false,
+      "default": "\"vertical\"",
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Not scrollable",
+      "when": "`Content fits`"
+    },
+    {
+      "name": "Scrollable",
+      "when": "`Content overflows`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "bg-border"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [
+      "Arrow keys — scroll when the viewport has focus",
+      "Page Up/Down",
+      "Home/End"
+    ],
+    "requiredAttributes": [],
+    "notes": [
+      "The viewport is keyboard scrollable. Radix handles the focus behaviour.",
+      "The scrollbar fades unless hovered. Some users rely on a persistent scrollbar as an affordance — consider whether that matters on your surface.",
+      "Set an explicit height on the root. Without one, the content simply grows and nothing scrolls."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "A long list inside a fixed-height panel",
+    "Sheet or dialog content that exceeds the viewport",
+    "Anywhere the native scrollbar is visually disruptive"
+  ],
+  "doNotUse": [
+    "The main page scroll — let the browser do it",
+    "Short content that fits",
+    "Where a native scrollbar is genuinely fine, since this adds DOM weight",
+    "ScrollArea with no bounded height",
+    "Wrapping the document scroll"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Always set an explicit height or max-height on the root.",
+      "Add ScrollBar orientation=\"horizontal\" explicitly for horizontal scroll.",
+      "Do not wrap the whole page in a ScrollArea."
+    ],
+    "related": [
+      {
+        "id": "ui:sheet",
+        "note": "Common host for long content"
+      },
+      {
+        "id": "ui:table",
+        "note": "Wrap wide tables for horizontal scroll"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/scroll-area/scroll-area.md",
+    "manifest": "design-system/components/ui/scroll-area/scroll-area.agent.json",
+    "implementation": "src/components/ui/scroll-area.tsx",
+    "prompt": "design-system/components/ui/scroll-area/agentic-prompt.md",
+    "preview": "design-system/components/ui/scroll-area/scroll-area.preview.html",
+    "contract": "design-system/components/ui/scroll-area/scroll-area.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

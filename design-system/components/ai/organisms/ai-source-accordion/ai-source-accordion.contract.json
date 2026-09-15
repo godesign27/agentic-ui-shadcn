@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-source-accordion",
+  "slug": "ai-source-accordion",
+  "name": "AISourceAccordion",
+  "description": "AISourceAccordion is a collapsible, question-scoped multi-select surface used for agent decision prompts (\"Which brand(s) is this campaign for?\", \"Which sources should the agent draw from?\"). A header pairs the question with a live \"N selected\" pill; expanding the accordion reveals a grouped list of selectable AISourceTile rows and — optionally — a free-text row for adding user-authored options and a Continue CTA. Selection state can be controlled or uncontrolled.",
+  "intent": "Collapsible question-scoped multi-select. Stacks selectable AISourceTile rows under a header with a live \"N selected\" pill; optional free-text row + Continue CTA.",
+  "status": "experimental",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-source-accordion/AISourceAccordion",
+    "exports": [
+      "AISourceAccordion"
+    ],
+    "implementation": "src/components/ai/organisms/ai-source-accordion/AISourceAccordion.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "question",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "AISourceAccordionOption[]",
+      "required": false
+    },
+    {
+      "name": "selectedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(ids: string[]) => void",
+      "required": false
+    },
+    {
+      "name": "defaultSelectedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "allowCustom",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "customPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onCustomSubmit",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "ctaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onSubmit",
+      "type": "(selectedIds: string[]) => void",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AISourceTileTone",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.color.brandSubtle",
+      "AI.color.text.secondary",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Agent needs the user to pick one or more items from a short list before proceeding",
+    "A single question governs several selectable options + potentially user-authored additions",
+    "Selection state needs to travel forward as a group (multi-brand picker, source picker, capability picker)"
+  ],
+  "doNotUse": [
+    "A binary yes/no — use AIToggle",
+    "A single-choice picker — a radio group is a better fit (this component is intentionally multi-select)",
+    "A search-based long-tail picker — this component doesn't include filter / search UI",
+    "A form field — for structured input, reach for a native form component",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-source-accordion/ai-source-accordion.md",
+    "manifest": "design-system/components/ai/organisms/ai-source-accordion/ai-source-accordion.agent.json",
+    "implementation": "src/components/ai/organisms/ai-source-accordion/AISourceAccordion.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-source-accordion/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-source-accordion/ai-source-accordion.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-source-accordion/ai-source-accordion.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

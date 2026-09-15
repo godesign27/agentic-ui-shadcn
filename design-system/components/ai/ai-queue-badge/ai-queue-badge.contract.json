@@ -1,0 +1,205 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-queue-badge",
+  "slug": "ai-queue-badge",
+  "name": "AIQueueBadge",
+  "description": "Colour, icon and text together for queued, running, blocked, needs-approval and complete.",
+  "intent": "The state of one item in an agent queue, readable at a glance.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-queue-badge",
+    "exports": [
+      "AIQueueBadge"
+    ],
+    "implementation": "src/components/ai/ai-queue-badge.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "status",
+      "type": "QueueStatus",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Queued",
+      "when": "`status=\"queued\"`"
+    },
+    {
+      "name": "Running",
+      "when": "`status=\"running\"`"
+    },
+    {
+      "name": "Blocked",
+      "when": "`status=\"blocked\"`"
+    },
+    {
+      "name": "Needs approval",
+      "when": "`status=\"needs-approval\"`"
+    },
+    {
+      "name": "Complete",
+      "when": "`status=\"complete\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-confidence-high",
+      "ai-signal",
+      "ai-surface",
+      "border",
+      "destructive",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-confidence-high",
+      "bg-ai-signal",
+      "bg-ai-surface",
+      "bg-destructive",
+      "bg-muted",
+      "border-ai-accent",
+      "border-ai-confidence-high",
+      "border-ai-signal",
+      "border-border",
+      "border-destructive",
+      "text-ai-accent",
+      "text-ai-confidence-high",
+      "text-ai-signal",
+      "text-destructive",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "Colour, icon and text always appear together — colour is never the only signal.",
+      "The spin animation carries motion-reduce:animate-none.",
+      "A bare count pill needs surrounding context; the status word supplies it here."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "In an agent execution queue or task list",
+    "In a table of agent work items",
+    "Wherever per-item state matters"
+  ],
+  "doNotUse": [
+    "As a general status badge — use ui:badge",
+    "For overall progress — use ai:ai-progress",
+    "As a button",
+    "Use as an interactive control",
+    "Generic status",
+    "Colour-only status"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Never a button — pair it with a real control.",
+      "needs-approval must mean a human genuinely has to act.",
+      "Use ui:badge for non-AI status."
+    ],
+    "related": [
+      {
+        "id": "ui:badge",
+        "note": "Generic status"
+      },
+      {
+        "id": "ai:ai-chip-brief",
+        "note": "Task brief readiness"
+      },
+      {
+        "id": "ai:ai-progress",
+        "note": "Overall progress"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution",
+        "Audit trail"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-queue-badge/ai-queue-badge.md",
+    "manifest": "design-system/components/ai/ai-queue-badge/ai-queue-badge.agent.json",
+    "implementation": "src/components/ai/ai-queue-badge.tsx",
+    "prompt": "design-system/components/ai/ai-queue-badge/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-queue-badge/ai-queue-badge.preview.html",
+    "contract": "design-system/components/ai/ai-queue-badge/ai-queue-badge.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

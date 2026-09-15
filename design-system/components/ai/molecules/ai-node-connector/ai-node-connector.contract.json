@@ -1,0 +1,221 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-node-connector",
+  "slug": "ai-node-connector",
+  "name": "node-connector",
+  "description": "An AI Node Connector is the edge drawn between a parent node and a child node on an AI surface. It is a deliberate mirror of the DS Node Connector rather than a new design: the same single open path across four vertices, the same three segments, the same endpoint markers implemented as SVG <marker> stroke caps with orient=\"auto\", the same badge seated on the bottom run over a knockout ellipse, and the same thirteen documented variants in the same order. What changes is the theme, and it changes narrowly. The DS accent — teal #2f6f7b, and its subtle fill #eaf4f6 — becomes AI brand; every neutral stays neutral, read through the DS namespace in ai-tokens.ts. The connector stroke in particular is untouched at #1a1628, so a plain edge in an AI tree is indistinguishable from a plain edge in a standard tree. The one geometric departure is corner language: 8px elbows against 4px, and ai.radius.md on the node card against 2px, because AI surfaces do not use 0-radius corners. On top of that mirror sit four additive capabilities, all default-off. `intent` names the state of the relationship rather than its tone — structural intents (default, suggested, muted) reuse the standard connector's own three line colors, and only the lifecycle intents (active, complete, attention) spend AI color, so color on an edge always means the edge is doing something an org chart could not say. `flow` marches a pathLength-normalised pulse along an active run, decorative and suppressed under prefers-reduced-motion. The badge slot gains confidence, a ring plus percentage on a light disc, and agent, the AI spark. And the node card gains an attention badge — a corner disc marking a node the model has surfaced — plus an optional confidence rule. Take all four away and the component renders the standard connector, re-accented.",
+  "intent": "The standard connector with the theme swapped — plus the four states an agent graph needs.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-node-connector/AINodeCard",
+    "exports": [
+      "node-connector"
+    ],
+    "implementation": "src/components/ai/molecules/ai-node-connector/AINodeCard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "dot",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "keyof typeof ICONS",
+      "required": false
+    },
+    {
+      "name": "teams",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "people",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "trailingCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "state",
+      "type": "AINodeCardState",
+      "required": false
+    },
+    {
+      "name": "action",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "interactive",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "attention",
+      "type": "AINodeAttention",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "active"
+    },
+    {
+      "name": "selected"
+    },
+    {
+      "name": "hover"
+    },
+    {
+      "name": "defocused"
+    },
+    {
+      "name": "disabled"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary"
+    ],
+    "utilities": [
+      "border-primary",
+      "text-primary"
+    ],
+    "ai": [
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.brandSurface",
+      "AI.color.signal.default",
+      "AI.color.status.success",
+      "AI.gradient.action.full",
+      "AI.radius.full",
+      "AI.radius.md",
+      "AI.shadow.action.default",
+      "AI.shadow.card.default",
+      "AI.shadow.card.raised"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Agent graphs, plan trees, lineage views and AI-assisted org charts on an AI surface",
+    "Anywhere a parent/child edge needs to carry lifecycle — proposed, running, done, blocked",
+    "Trees on an AI surface that need to match the standard connector exactly — leave intent at its default"
+  ],
+  "doNotUse": [
+    "Don't use it on a standard surface — use ds-node-connector, so the accent stays teal",
+    "Don't use it as a plain divider or rule — it carries hierarchy meaning",
+    "Don't expect it to lay itself out: width / height / indent come from the caller",
+    "Don't spend a lifecycle intent on a structural edge — color on an edge should mean the edge is doing something",
+    "Don't rely on flow to convey state; it is decorative and off under reduced motion",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-node-connector/ai-node-connector.md",
+    "manifest": "design-system/components/ai/molecules/ai-node-connector/ai-node-connector.agent.json",
+    "implementation": "src/components/ai/molecules/ai-node-connector/AINodeCard.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-node-connector/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-node-connector/ai-node-connector.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-node-connector/ai-node-connector.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

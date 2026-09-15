@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-standard-card",
+  "slug": "ai-standard-card",
+  "name": "AICard",
+  "description": "Themed wrapper over the real DSCard (ds/ds-card.tsx). DSCard is driven entirely by CSS custom properties; AICard scopes it inside a container that overrides those variables — radius → AI.radius.md (16px), border → var(--border) #B2B0B6 (neutral, same as DS Card) or #BECAFE (brand, via borderTone=\"brand\"), footer → #FAFAFA (the same gray as the standard card footer, var(--surface-color-1)), body → #FFFFFF, elevation → soft neutral drop shadow. Header tones (headerTone): body (white, default), neutral (#FAFAFA), brand (var(--color-ai-brand-surface)), tan (var(--color-ai-companion-paper)); surface tones (surfaceTone): plain, brand-gradient (var(--gradient-ai-surface-subtle)), tan. All applied via scoped data-* !important rules (DSCard paints header/section backgrounds inline, so they must be overridden). The shell also composes the header (headerTitle + trailing headerActions) and offers accordion behaviour (collapsible + defaultExpanded via a chevron AIButton). overflow:hidden clips the full-bleed header/footer to the 16px radius. The AI accent (AI.color.action.primary #4D60E6, focus #A6B4FC) is kept for the active/focus states. No fork of the standard component; the structure, slots, and behavior are identical.",
+  "intent": "DS Card, AI surface theme — foundational neutral gray, rounded 16px corners.",
+  "status": "active",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/organisms/ai-standard-card/AICard",
+    "exports": [
+      "AICard"
+    ],
+    "implementation": "src/components/ai/organisms/ai-standard-card/AICard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "borderTone",
+      "type": "AICardBorderTone",
+      "required": false
+    },
+    {
+      "name": "headerTone",
+      "type": "AICardHeaderTone",
+      "required": false
+    },
+    {
+      "name": "hasHeader",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hasFooter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "header",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "body",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "footer",
+      "type": "React.ReactNode",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.focus",
+      "AI.color.brandBorder",
+      "AI.color.surface.default",
+      "AI.radius.md"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "AI dashboards, insight tiles, and settings panels that sit on AI surfaces",
+    "Grouping related content with the foundational neutral gray boundary",
+    "borderTone=\"brand\" + headerTone=\"neutral\" to emphasize an AI-generated card"
+  ],
+  "doNotUse": [
+    "Don't use on a standard (non-AI) surface — use <DSCard> instead",
+    "Don't fork ds-card.tsx to restyle — theme via the CSS-variable scope",
+    "Don't skip header text or aria-label when the card is a distinct landmark",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/organisms/ai-standard-card/ai-standard-card.md",
+    "manifest": "design-system/components/ai/organisms/ai-standard-card/ai-standard-card.agent.json",
+    "implementation": "src/components/ai/organisms/ai-standard-card/AICard.tsx",
+    "prompt": "design-system/components/ai/organisms/ai-standard-card/agentic-prompt.md",
+    "preview": "design-system/components/ai/organisms/ai-standard-card/ai-standard-card.preview.html",
+    "contract": "design-system/components/ai/organisms/ai-standard-card/ai-standard-card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

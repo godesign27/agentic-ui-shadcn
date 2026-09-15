@@ -1,0 +1,119 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-visualization-panel",
+  "slug": "ai-visualization-panel",
+  "name": "VisualizationPanel",
+  "description": "Visualization Panel — stub pending Make sync (Draft).",
+  "intent": "Placeholder for Visualization Panel. Fill from Figma Make ZSD-AI-Design-System-V1.2.",
+  "status": "experimental",
+  "layer": "data-viz",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": null,
+    "exports": [
+      "VisualizationPanel"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [
+    {
+      "name": "default"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": null,
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/data-viz/ai-visualization-panel/ai-visualization-panel.md",
+    "manifest": "design-system/components/ai/data-viz/ai-visualization-panel/ai-visualization-panel.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/data-viz/ai-visualization-panel/agentic-prompt.md",
+    "preview": "design-system/components/ai/data-viz/ai-visualization-panel/ai-visualization-panel.preview.html",
+    "contract": "design-system/components/ai/data-viz/ai-visualization-panel/ai-visualization-panel.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "No accessibility role, keyboard map, or notes declared."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

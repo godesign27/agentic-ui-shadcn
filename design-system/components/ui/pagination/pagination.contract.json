@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:pagination",
+  "slug": "pagination",
+  "name": "Pagination",
+  "description": "Semantic pagination markup using buttonVariants. Presentational only — the page state and routing are yours.",
+  "intent": "Move through a result set that is too large to show at once.",
+  "status": "stable",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/pagination",
+    "exports": [
+      "Pagination",
+      "PaginationContent",
+      "PaginationEllipsis",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationNext",
+      "PaginationPrevious"
+    ],
+    "implementation": "src/components/ui/pagination.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Inactive page",
+      "when": "`Not the current page`"
+    },
+    {
+      "name": "Active page",
+      "when": "`isActive`"
+    },
+    {
+      "name": "Boundary",
+      "when": "`First or last page`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "navigation",
+    "keyboard": [
+      "Tab through the links"
+    ],
+    "requiredAttributes": [
+      "aria-label=\"pagination\" on the nav — set by the component",
+      "aria-current=\"page\" via isActive"
+    ],
+    "notes": [
+      "Renders anchors. For client-side routing, use asChild with your router link.",
+      "Previous and Next are not disabled at the boundaries automatically. Handle that yourself or they lead nowhere.",
+      "Announce the page change in a live region — the content updates silently otherwise."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Paged tables and result lists",
+    "When the total count is known and useful",
+    "When users need to return to a specific page"
+  ],
+  "doNotUse": [
+    "Feeds where infinite scroll suits the content better",
+    "Fewer than about three pages",
+    "When the total is unknown — use a simpler next-and-previous pair",
+    "Enabled previous on page one",
+    "No current-page indication",
+    "Silent page changes"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Disable previous and next at the boundaries yourself.",
+      "Set isActive on the current page.",
+      "Announce page changes in a live region.",
+      "Use asChild for client-side routing."
+    ],
+    "related": [
+      {
+        "id": "ui:table",
+        "note": "The usual companion"
+      },
+      {
+        "id": "ui:button",
+        "note": "buttonVariants supplies the styling"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/pagination/pagination.md",
+    "manifest": "design-system/components/ui/pagination/pagination.agent.json",
+    "implementation": "src/components/ui/pagination.tsx",
+    "prompt": "design-system/components/ui/pagination/agentic-prompt.md",
+    "preview": "design-system/components/ui/pagination/pagination.preview.html",
+    "contract": "design-system/components/ui/pagination/pagination.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-control-bar",
+  "slug": "ai-control-bar",
+  "name": "AIControlBar",
+  "description": "The AI Control Bar gives users runtime governance over an executing AI task. It surfaces contextually appropriate actions — pause, resume, redirect, cancel confirm — based on the current execution sta",
+  "intent": "State-aware execution control bar for AI workstreams. Surfaces contextually appropriate pause, resume, redirect, and cancel actions as the workflow progresses.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-control-bar/AIControlBar",
+    "exports": [
+      "AIControlBar"
+    ],
+    "implementation": "src/components/ai/atomic/ai-control-bar/AIControlBar.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "state",
+      "type": "ControlBarState",
+      "required": true
+    },
+    {
+      "name": "onPause",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onResume",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCancel",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onRedirect",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onCancelConfirm",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "running"
+    },
+    {
+      "name": "paused"
+    },
+    {
+      "name": "redirect-available"
+    },
+    {
+      "name": "cancel-confirm"
+    },
+    {
+      "name": "saved-progress"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.action.primaryHover",
+      "AI.color.brand",
+      "AI.color.signal.default",
+      "AI.color.signal.strong",
+      "AI.color.signal.surface",
+      "AI.radius.md",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "See bundle overview"
+  ],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Confirm"
+      ],
+      "accountability": [
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-control-bar/ai-control-bar.md",
+    "manifest": "design-system/components/ai/atomic/ai-control-bar/ai-control-bar.agent.json",
+    "implementation": "src/components/ai/atomic/ai-control-bar/AIControlBar.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-control-bar/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-control-bar/ai-control-bar.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-control-bar/ai-control-bar.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

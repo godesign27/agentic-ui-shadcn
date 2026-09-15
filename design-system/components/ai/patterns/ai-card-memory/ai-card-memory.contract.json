@@ -1,0 +1,164 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-card-memory",
+  "slug": "ai-card-memory",
+  "name": "AICardMemory",
+  "description": "The AI Card Memory surfaces a single recalled memory entry so users can review its provenance, decide whether to reuse it in the current context, ignore it for this session, or permanently remove it. The AI_RAMP Tan companion palette grounds memory entries in a warm, archive-like aesthetic.",
+  "intent": "Recalled memory entry with provenance, date, and content. Lets users decide whether to reuse, ignore, or permanently remove a recalled context.",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-card-memory/AICardMemory",
+    "exports": [
+      "AICardMemory"
+    ],
+    "implementation": "src/components/ai/patterns/ai-card-memory/AICardMemory.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "MemoryVariant",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onReuse",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onReview",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onIgnore",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onRemove",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "border"
+    ],
+    "utilities": [
+      "outline-border"
+    ],
+    "ai": [
+      "AI.color.brand",
+      "AI.radius.lg",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-card-memory/ai-card-memory.md",
+    "manifest": "design-system/components/ai/patterns/ai-card-memory/ai-card-memory.agent.json",
+    "implementation": "src/components/ai/patterns/ai-card-memory/AICardMemory.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-card-memory/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-card-memory/ai-card-memory.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-card-memory/ai-card-memory.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

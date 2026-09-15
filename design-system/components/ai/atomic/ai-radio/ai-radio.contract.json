@@ -1,0 +1,129 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-radio",
+  "slug": "ai-radio",
+  "name": "AIRadio",
+  "description": "AIRadio is the AI-styled control for mutually-exclusive choices on AI cards, drawers, and settings rows — pick one of several agent modes, risk postures, or output formats. It does NOT reimplement the control — it wraps the standard `DSRadio` (mirror `src/radio/`) and re-anchors the DS selection / focus / text CSS variables to their AI equivalents inside a scoped wrapper. The checked border and center dot become AI brand indigo (#4D60E6) instead of DS teal, the focus ring uses `AI.color.border.focus`, and the label uses `--ai-ds-text` — while every accessibility guarantee, error mode, sizing, disabled state, and native `name`/`value` grouping are inherited from DS unchanged.",
+  "intent": "The DS Radio in AI clothing — same accessible exclusive-choice control, AI brand indigo selection, focus ring, and label styling for AI surfaces.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-radio/AIRadio",
+    "exports": [
+      "AIRadio"
+    ],
+    "implementation": "src/components/ai/atomic/ai-radio/AIRadio.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary"
+    ],
+    "utilities": [
+      "border-primary"
+    ],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.color.surface.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "One choice must be selected from a small, mutually-exclusive set",
+    "Picking an agent mode, risk posture, or output format on an AI surface",
+    "All options should be visible at once (2–5 choices)",
+    "You want the DS radio behavior but AI brand styling"
+  ],
+  "doNotUse": [
+    "Multiple selections are allowed — use `ai-checkbox`",
+    "A binary on/off — use `ai-toggle`",
+    "Many options (6+) — use a select / dropdown",
+    "The neutral product surface — use the standard DS radio",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-radio/ai-radio.md",
+    "manifest": "design-system/components/ai/atomic/ai-radio/ai-radio.agent.json",
+    "implementation": "src/components/ai/atomic/ai-radio/AIRadio.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-radio/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-radio/ai-radio.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-radio/ai-radio.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

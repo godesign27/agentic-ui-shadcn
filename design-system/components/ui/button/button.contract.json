@@ -1,0 +1,229 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:button",
+  "slug": "button",
+  "name": "Button",
+  "description": "The primary interactive control. Six variants spanning full emphasis to bare text, four sizes, and asChild polymorphism for rendering as a link while keeping button styling.",
+  "intent": "The single most important decision available in a region, and every lesser one alongside it.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/button",
+    "exports": [
+      "Button",
+      "buttonVariants"
+    ],
+    "implementation": "src/components/ui/button.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | \"link\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "See variantGuidance in the mirror spec for when to use each."
+    },
+    {
+      "name": "size",
+      "type": "\"default\" | \"sm\" | \"lg\" | \"icon\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "See sizeGuidance in the mirror spec."
+    },
+    {
+      "name": "asChild",
+      "type": "boolean",
+      "required": false,
+      "default": "false",
+      "hint": "Renders the child element instead of the default one, merging props and styles. Use for links that must look like this component."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "default",
+      "when": "The one primary action in a region. Never two."
+    },
+    {
+      "group": "variant",
+      "name": "destructive",
+      "when": "Irreversible or damaging actions only. Always confirm first."
+    },
+    {
+      "group": "variant",
+      "name": "outline",
+      "when": "Secondary actions that still need a visible boundary."
+    },
+    {
+      "group": "variant",
+      "name": "secondary",
+      "when": "Secondary actions on a busy surface where an outline would add noise."
+    },
+    {
+      "group": "variant",
+      "name": "ghost",
+      "when": "Tertiary actions, toolbar controls, and icon buttons inside dense UI."
+    },
+    {
+      "group": "variant",
+      "name": "link",
+      "when": "An action that is semantically navigation but must sit in a button row."
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Hover",
+      "when": "`Pointer over`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard focus`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled prop`"
+    }
+  ],
+  "sizes": [
+    "default",
+    "sm",
+    "lg",
+    "icon"
+  ],
+  "tokens": {
+    "semantic": [
+      "accent",
+      "background",
+      "destructive",
+      "input",
+      "primary",
+      "ring",
+      "secondary"
+    ],
+    "utilities": [
+      "bg-accent",
+      "bg-background",
+      "bg-destructive",
+      "bg-primary",
+      "bg-secondary",
+      "border-input",
+      "ring-ring",
+      "text-accent",
+      "text-destructive",
+      "text-primary",
+      "text-secondary"
+    ]
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter — activate",
+      "Space — activate"
+    ],
+    "requiredAttributes": [
+      "aria-label or visible text content",
+      "aria-label required when size=\"icon\""
+    ],
+    "notes": [
+      "Native button element gives keyboard and screen-reader behavior for free.",
+      "disabled removes the element from the tab order. If the user needs to know why it is disabled, use aria-disabled and handle the click instead.",
+      "When asChild renders an anchor, the element becomes a link: Space no longer activates it and it gains link semantics. That is usually what you want for navigation, and wrong for actions."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Any action the user takes — submit, save, open, confirm, cancel",
+    "As a link that must look like a button, via asChild with an anchor inside",
+    "Icon-only actions, using size=\"icon\" plus an accessible name"
+  ],
+  "doNotUse": [
+    "Navigation between pages that should read as a link — use a plain anchor or variant=\"link\"",
+    "Toggling a binary setting — use ui:switch or ui:toggle so the state is announced",
+    "One choice among several — use ui:radio-group or ui:tabs",
+    "A destructive action on its own — pair variant=\"destructive\" with ui:alert-dialog",
+    "Two primary buttons in one action region",
+    "variant=\"destructive\" on a non-destructive action",
+    "Removing focus-visible styling",
+    "Icon-only button with no accessible name"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "One variant=\"default\" button per action region.",
+      "Label with a verb naming the specific outcome — \"Delete project\", not \"OK\".",
+      "size=\"icon\" without an accessible name is a hard failure.",
+      "Do not restyle via className when a variant already expresses the intent.",
+      "buttonVariants is imported by ui:alert-dialog, ui:calendar, ui:carousel and ui:pagination. Renaming a variant breaks all four silently."
+    ],
+    "related": [
+      {
+        "id": "ui:toggle",
+        "note": "For binary state rather than an action"
+      },
+      {
+        "id": "ui:dropdown-menu",
+        "note": "When one button hides several actions"
+      },
+      {
+        "id": "ui:alert-dialog",
+        "note": "Required companion for destructive actions"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/button/button.md",
+    "manifest": "design-system/components/ui/button/button.agent.json",
+    "implementation": "src/components/ui/button.tsx",
+    "prompt": "design-system/components/ui/button/agentic-prompt.md",
+    "preview": "design-system/components/ui/button/button.preview.html",
+    "contract": "design-system/components/ui/button/button.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

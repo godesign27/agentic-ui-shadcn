@@ -1,0 +1,124 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-assisted-side-drawer",
+  "slug": "ai-assisted-side-drawer",
+  "name": "AIAssistedSideDrawer",
+  "description": "A page-level pattern that layers an AI assistant onto any content workspace. The interior content is always the AIAgentDrawer group (header, conversation thread, quick suggestion chips, input), and the pattern ships three companion variants that govern how that drawer is surfaced.",
+  "intent": "Contextual AI assistant panel that augments the primary workspace without replacing it. Surfaces suggestions, summaries, and explanations inline.",
+  "status": "active",
+  "layer": "pages",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/pages/ai-assisted-side-drawer/AIAssistedSideDrawer",
+    "exports": [
+      "AIAssistedSideDrawer"
+    ],
+    "implementation": "src/components/ai/pages/ai-assisted-side-drawer/AIAssistedSideDrawer.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Use Standard Panel when AI guidance is integral to the page workflow",
+    "Use Floating Panel when AI is supplementary and page space is limited"
+  ],
+  "doNotUse": [
+    "Do not use when the AI interaction is the primary page purpose — use AICommandCenter instead",
+    "Do not use Standard Panel on narrow viewports — prefer Floating Panel",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.md",
+    "manifest": "design-system/components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.agent.json",
+    "implementation": "src/components/ai/pages/ai-assisted-side-drawer/AIAssistedSideDrawer.tsx",
+    "prompt": "design-system/components/ai/pages/ai-assisted-side-drawer/agentic-prompt.md",
+    "preview": "design-system/components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.preview.html",
+    "contract": "design-system/components/ai/pages/ai-assisted-side-drawer/ai-assisted-side-drawer.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

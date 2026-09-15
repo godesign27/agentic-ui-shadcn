@@ -1,0 +1,272 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-search",
+  "slug": "ai-search",
+  "name": "AISearch",
+  "description": "AI Search is a one-for-one port of the standard DS Search onto the AI surface. Both libraries describe the same two component sets — Search (Size x Condensed) and Dropdown Filter (Orientation x Size) — and both build them over a single shared field whose left icon and caret are independent toggles. That shared box is the whole reason the two sets cannot drift apart.",
+  "intent": "The standard Search, themed. Teal becomes AI brand, square corners become rounded, and the field gains a focus ring.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-search/AISearch",
+    "exports": [
+      "AISearch"
+    ],
+    "implementation": "src/components/ai/atomic/ai-search/AISearch.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "AISearchSize",
+      "required": false
+    },
+    {
+      "name": "leftIcon",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "caret",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number | 'fill'",
+      "required": false
+    },
+    {
+      "name": "asSelect",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "focusState",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "React.CSSProperties",
+      "required": false
+    },
+    {
+      "name": "condensed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "button",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onSearch",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "buttonLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "fieldWidth",
+      "type": "number | 'fill'",
+      "required": false
+    },
+    {
+      "name": "busy",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "AIDropdownFilterOrientation",
+      "required": false
+    },
+    {
+      "name": "filterPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "searchPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filterValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "searchValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onFilterChange",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "onSearchChange",
+      "type": "(value: string) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "normal",
+    "small",
+    "x-small"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryHover",
+      "AI.color.border.default",
+      "AI.color.border.focus",
+      "AI.color.brand",
+      "AI.radius.full",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.shadow.field.default",
+      "AI.shadow.field.focus"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Filtering or searching a table, list, or content area on an AI surface",
+    "A dense toolbar that needs a search affordance in one square of space (condensed)",
+    "A category-plus-keyword filter pair over a result set"
+  ],
+  "doNotUse": [
+    "Do not add a button to AIDropdownFilter — it filters live, and a button makes it a different component",
+    "Do not use X-Small; it is annotated not-recommended in both libraries",
+    "Do not square the corners to match the standard — 0px is a standard-only rule and rounding is the AI theme",
+    "Do not re-tint the neutrals; only the accent moves between the two libraries",
+    "For a labelled form input with helper text and validation, use ai-input-field instead",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-search/ai-search.md",
+    "manifest": "design-system/components/ai/atomic/ai-search/ai-search.agent.json",
+    "implementation": "src/components/ai/atomic/ai-search/AISearch.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-search/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-search/ai-search.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-search/ai-search.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-reasoning-quote",
+  "slug": "ai-reasoning-quote",
+  "name": "AIReasoningQuote",
+  "description": "AIReasoningQuote is the canonical way to surface an agent's first-person reasoning inside drawers, detail panels, reasoning cards, and inspector views. The eyebrow names the section (\"REASONING SUMMARY\", \"RATIONALE\", \"SUMMARY\"), and the blockquote renders the agent's short, italicized statement against a brand-tinted left rule. Three tones — `ai` (brand blue), `warning` (Guild orange for risk/guardrail contexts), and `neutral` — keep the atom usable across the AI brand without breaking color discipline.",
+  "intent": "A short, italic blockquote with a tinted left rule — the agent speaking in its own voice without breaking the surrounding chrome.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-reasoning-quote/AIReasoningQuote",
+    "exports": [
+      "AIReasoningQuote"
+    ],
+    "implementation": "src/components/ai/atomic/ai-reasoning-quote/AIReasoningQuote.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "quote",
+      "type": "React.ReactNode",
+      "required": true
+    },
+    {
+      "name": "eyebrow",
+      "type": "string | null",
+      "required": false
+    },
+    {
+      "name": "eyebrowIcon",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AIReasoningQuoteTone",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "AIReasoningQuoteSize",
+      "required": false
+    },
+    {
+      "name": "attribution",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "addQuotes",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.border.subtle",
+      "AI.color.text.secondary"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.md",
+    "manifest": "design-system/components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.agent.json",
+    "implementation": "src/components/ai/atomic/ai-reasoning-quote/AIReasoningQuote.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-reasoning-quote/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-reasoning-quote/ai-reasoning-quote.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

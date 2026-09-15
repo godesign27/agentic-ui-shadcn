@@ -1,0 +1,144 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-message-header",
+  "slug": "ai-message-header",
+  "name": "AIMessageHeader",
+  "description": "Universal AI message attribution row — BotAvatar, agent label (@brand-agent-name), optional right-aligned timestamp.",
+  "intent": "Establishes authorship, agent identity, and recency before the response body.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-message-header/AIMessageHeader",
+    "exports": [
+      "AIMessageHeader"
+    ],
+    "implementation": "src/components/ai/atomic/ai-message-header/AIMessageHeader.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agentLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "'sm' | 'md'",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "md"
+    },
+    {
+      "group": "variant",
+      "name": "sm"
+    }
+  ],
+  "states": [
+    {
+      "name": "md"
+    },
+    {
+      "name": "sm"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [],
+    "requiredAttributes": [
+      "BotAvatar aria-hidden"
+    ],
+    "notes": []
+  },
+  "usage": [
+    "At the top of every AI-generated message, card, or panel output",
+    "Wherever agent identity must be declared before the response body",
+    "When source attribution is required by the Guild accountability layer"
+  ],
+  "doNotUse": [
+    "Streaming inline completions inside a text field — skip the header to reduce visual noise",
+    "System notifications not attributed to a specific AI agent",
+    "Do not invent avatar — use BotAvatar from AIAvatar.tsx",
+    "No orange gradient ring on avatar",
+    "Skip for inline streaming completions inside text fields",
+    "Do not use for unattributed system notifications"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Attribution"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-message-header/ai-message-header.md",
+    "manifest": "design-system/components/ai/atomic/ai-message-header/ai-message-header.agent.json",
+    "implementation": "src/components/ai/atomic/ai-message-header/AIMessageHeader.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-message-header/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-message-header/ai-message-header.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-message-header/ai-message-header.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

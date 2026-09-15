@@ -1,0 +1,215 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-list-item",
+  "slug": "ai-list-item",
+  "name": "AIListItem",
+  "description": "AIListItem is the canonical row used inside AI-led lists. It supports six variants (signal, stable, impact, assessment, change, dataUpdate) plus the rare alert/recommendation. Each item composes a leading icon, an optional eyebrow row (type · label · status pill), a title, a body paragraph, and an optional footer row of chips (metric · source · freshness · confidence). Interactive items show a trailing chevron and lift on hover; informational items render flat.",
+  "intent": "Card row that presents one AI-generated signal, recommendation, or update.",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-list-item/AIListItem",
+    "exports": [
+      "AIListItem"
+    ],
+    "implementation": "src/components/ai/molecules/ai-list-item/AIListItem.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "AIListItemVariant",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIListItemStatus",
+      "required": false
+    },
+    {
+      "name": "body",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "React.ReactNode",
+      "required": false
+    },
+    {
+      "name": "metric",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "freshness",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "'high' | 'medium' | 'low'",
+      "required": false
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "interactive",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "AIListItemTone",
+      "required": false
+    },
+    {
+      "name": "selected",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "signal"
+    }
+  ],
+  "states": [
+    {
+      "name": "needsReview"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.action.primaryActive",
+      "AI.radius.full",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [],
+  "doNotUse": [
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "AI Assisted"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-list-item/ai-list-item.md",
+    "manifest": "design-system/components/ai/molecules/ai-list-item/ai-list-item.agent.json",
+    "implementation": "src/components/ai/molecules/ai-list-item/AIListItem.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-list-item/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-list-item/ai-list-item.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-list-item/ai-list-item.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "usage",
+      "reason": "No \"When to use\" list in the spec. Intent was not copied into usage."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

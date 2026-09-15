@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-agent-stack",
+  "slug": "ai-agent-stack",
+  "name": "AIAgentStack",
+  "description": "The AI Agent Stack compresses a group of AI agents into a compact overlapping avatar row. Each circle shows agent initials with a status-colored ring (active, waiting, complete, error). Overflow beyon",
+  "intent": "Overlapping avatar stack representing multiple agents working in parallel. Status rings encode each agent's execution state at a glance.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@ai/atomic/ai-agent-stack/AIAgentStack",
+    "exports": [
+      "AIAgentStack"
+    ],
+    "implementation": "src/components/ai/atomic/ai-agent-stack/AIAgentStack.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agents",
+      "type": "Agent[]",
+      "required": true
+    },
+    {
+      "name": "maxVisible",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "active"
+    },
+    {
+      "name": "waiting"
+    },
+    {
+      "name": "complete"
+    },
+    {
+      "name": "error"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "See bundle overview"
+  ],
+  "doNotUse": [],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-agent-stack/ai-agent-stack.md",
+    "manifest": "design-system/components/ai/atomic/ai-agent-stack/ai-agent-stack.agent.json",
+    "implementation": "src/components/ai/atomic/ai-agent-stack/AIAgentStack.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-agent-stack/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-agent-stack/ai-agent-stack.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-agent-stack/ai-agent-stack.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "doNotUse",
+      "reason": "No do-not-use / forbidden-usage list declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-task-tracker",
+  "slug": "ai-agent-task-tracker",
+  "name": "AIAgentTaskTracker",
+  "description": "AIAgentTaskTracker is the AI-led supervisory workspace for delegated agentic work. A persistent task registry shows every task a user has delegated to one or more agents, along with the original intent, the mutable execution parameters, the assigned agent or agent stack, the task status, the proactive health signal, and the next action. A Smart-Assist supervisor agent companion strip (AI_RAMP tan) sits at the top of the page; Proactive Agentic Insights surface signals before the user has to ask; a natural-language command bar at the bottom lets the user mutate any task in plain language, with conflict resolution if a structured UI edit and a natural-language edit disagree. Default preview is Rich; full governance example is Robust. No teal anywhere — AI emphasis uses AI_RAMP blue (#4D60E6); Guild orange is reserved for Needs Input / blocked / warning / pending approval; AI_RAMP tan stays on the supervisor agent surface only.",
+  "intent": "Persistent task supervision · Needs Input resolution · Bidirectional UI + natural-language mutation",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-agent-task-tracker/AIAgentTaskTracker",
+    "exports": [
+      "AIAgentTaskTracker"
+    ],
+    "implementation": "src/components/ai/patterns/ai-agent-task-tracker/AIAgentTaskTracker.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AIAgentTaskTrackerDensity",
+      "required": false
+    },
+    {
+      "name": "flow",
+      "type": "AIAgentTaskTrackerFlow",
+      "required": false
+    },
+    {
+      "name": "supervisorAgent",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "supervisorTone",
+      "type": "AISupervisorBarTone",
+      "required": false
+    },
+    {
+      "name": "tasks",
+      "type": "AIAgentTaskCardProps[]",
+      "required": false
+    },
+    {
+      "name": "selectedTaskId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "layout",
+      "type": "'list' | 'board'",
+      "required": false
+    },
+    {
+      "name": "onNewTask",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onSettings",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onExport",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewProcessTrace",
+      "type": "() => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.brandBorder",
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.radius.xs",
+      "AI.shadow.action.default"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Users need to monitor delegated AI tasks",
+    "Multiple tasks or agents are active",
+    "Task state must persist across sessions",
+    "Users need to resolve missing input",
+    "Users need proactive task health insights",
+    "Users need to edit tasks through UI or natural language",
+    "Tasks need cross-device supervision",
+    "Human review, approval, or audit is required"
+  ],
+  "doNotUse": [
+    "A single simple task can be shown in ai-to-do",
+    "A simple status card is enough",
+    "The user only needs a notification",
+    "A full task registry is not required",
+    "The workflow does not involve agentic task delegation",
+    "The output is only a static report",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive",
+        "AI Assisted"
+      ],
+      "accountability": [
+        "Approval",
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-agent-task-tracker/ai-agent-task-tracker.md",
+    "manifest": "design-system/components/ai/patterns/ai-agent-task-tracker/ai-agent-task-tracker.agent.json",
+    "implementation": "src/components/ai/patterns/ai-agent-task-tracker/AIAgentTaskTracker.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-agent-task-tracker/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-agent-task-tracker/ai-agent-task-tracker.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-agent-task-tracker/ai-agent-task-tracker.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

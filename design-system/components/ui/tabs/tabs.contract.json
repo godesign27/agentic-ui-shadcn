@@ -1,0 +1,164 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:tabs",
+  "slug": "tabs",
+  "name": "Tabs",
+  "description": "Radix Tabs with roving focus and automatic activation. Content is unmounted when inactive by default.",
+  "intent": "Switch between peer views of the same subject, where only one is relevant at a time.",
+  "status": "stable",
+  "layer": "organisms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/tabs",
+    "exports": [
+      "Tabs",
+      "TabsContent",
+      "TabsList",
+      "TabsTrigger"
+    ],
+    "implementation": "src/components/ui/tabs.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Inactive",
+      "when": "`Not the current value`"
+    },
+    {
+      "name": "Active",
+      "when": "`Matches the current value`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard focus`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled on a trigger`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "background",
+      "foreground",
+      "muted",
+      "ring"
+    ],
+    "utilities": [
+      "bg-background",
+      "bg-muted",
+      "ring-ring",
+      "text-foreground",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "tablist",
+    "keyboard": [
+      "Arrow keys — move between and activate tabs",
+      "Tab — move into the panel",
+      "Home/End — first or last tab"
+    ],
+    "requiredAttributes": [
+      "aria-label on TabsList when there is no visible heading"
+    ],
+    "notes": [
+      "Radix wires tablist, tab and tabpanel roles plus aria-selected and aria-controls.",
+      "Activation is automatic: arrowing to a tab selects it. For expensive content use activationMode=\"manual\" so arrow keys only move focus.",
+      "Inactive content is unmounted, so form state inside a tab is lost on switch. Use forceMount if that matters."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Alternative views of one object — Overview, Activity, Settings",
+    "Peer sections where the user rarely needs two at once",
+    "Two to six sections with short labels"
+  ],
+  "doNotUse": [
+    "Sequential steps — use a stepper or separate routes; tabs imply order does not matter",
+    "Content the user needs to compare side by side",
+    "More than about six sections, or labels that will not fit",
+    "Content that should be linkable — unless you sync the active tab to the URL",
+    "Tabs as a wizard",
+    "Trigger with no matching content",
+    "More than six tabs"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Label the TabsList when no visible heading names it.",
+      "Every trigger value must match a content value.",
+      "Use activationMode=\"manual\" when panels are expensive to render.",
+      "Tabs are not steps. A wizard needs routes or a stepper.",
+      "Sync to the URL if a tab should be shareable."
+    ],
+    "related": [
+      {
+        "id": "ui:accordion",
+        "note": "Vertical disclosure, several open at once"
+      },
+      {
+        "id": "ui:toggle-group",
+        "note": "Compact filter switching"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/tabs/tabs.md",
+    "manifest": "design-system/components/ui/tabs/tabs.agent.json",
+    "implementation": "src/components/ui/tabs.tsx",
+    "prompt": "design-system/components/ui/tabs/agentic-prompt.md",
+    "preview": "design-system/components/ui/tabs/tabs.preview.html",
+    "contract": "design-system/components/ui/tabs/tabs.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

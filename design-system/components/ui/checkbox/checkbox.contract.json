@@ -1,0 +1,161 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ui:checkbox",
+  "slug": "checkbox",
+  "name": "Checkbox",
+  "description": "Radix Checkbox with a Lucide check indicator. Supports an indeterminate state through checked=\"indeterminate\".",
+  "intent": "An independent yes-or-no choice, or one of several non-exclusive options.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ui/checkbox",
+    "exports": [
+      "Checkbox"
+    ],
+    "implementation": "src/components/ui/checkbox.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Unchecked",
+      "when": "`checked={false}`"
+    },
+    {
+      "name": "Checked",
+      "when": "`checked={true}`"
+    },
+    {
+      "name": "Indeterminate",
+      "when": "`checked=\"indeterminate\"`"
+    },
+    {
+      "name": "Focus-visible",
+      "when": "`Keyboard focus`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled prop`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "primary",
+      "ring"
+    ],
+    "utilities": [
+      "bg-primary",
+      "border-primary",
+      "ring-ring",
+      "text-primary"
+    ]
+  },
+  "a11y": {
+    "role": "checkbox",
+    "keyboard": [
+      "Space — toggle",
+      "Tab — move focus"
+    ],
+    "requiredAttributes": [
+      "An associated label, or aria-label"
+    ],
+    "notes": [
+      "Radix supplies role, aria-checked and the mixed state. Do not add them by hand.",
+      "Group related checkboxes in a fieldset with a legend."
+    ],
+    "handledByRadix": true
+  },
+  "usage": [
+    "Opting in or out of one thing",
+    "Selecting several items from a list",
+    "A parent checkbox summarising children, via the indeterminate state"
+  ],
+  "doNotUse": [
+    "Exactly one choice from several — use ui:radio-group",
+    "A setting that applies immediately — use ui:switch, which reads as a state rather than a selection",
+    "Selecting from many options — use ui:select or ui:command",
+    "Checkbox with no label",
+    "Using a checkbox where exactly one option must be chosen",
+    "Overriding aria-checked"
+  ],
+  "governance": {
+    "namespace": "ui",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Always pair with ui:label using htmlFor.",
+      "Use indeterminate for parent rows rather than a third visual style.",
+      "A checkbox that applies instantly should probably be a ui:switch."
+    ],
+    "related": [
+      {
+        "id": "ui:radio-group",
+        "note": "Exclusive choice"
+      },
+      {
+        "id": "ui:switch",
+        "note": "Immediate setting"
+      },
+      {
+        "id": "ui:form",
+        "note": "Validation"
+      }
+    ]
+  },
+  "sources": {
+    "spec": "design-system/components/ui/checkbox/checkbox.md",
+    "manifest": "design-system/components/ui/checkbox/checkbox.agent.json",
+    "implementation": "src/components/ui/checkbox.tsx",
+    "prompt": "design-system/components/ui/checkbox/agentic-prompt.md",
+    "preview": "design-system/components/ui/checkbox/checkbox.preview.html",
+    "contract": "design-system/components/ui/checkbox/checkbox.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

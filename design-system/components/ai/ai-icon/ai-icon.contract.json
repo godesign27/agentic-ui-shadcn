@@ -1,0 +1,314 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-icon",
+  "slug": "ai-icon",
+  "name": "AIIcon",
+  "description": "Wraps any icon component with sizing, colour treatment, semantic tone, an optional container and motion. Governed by the 60-30-10 rule.",
+  "intent": "A treatment layer over standard icons — not a new icon set.",
+  "status": "beta",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-icon",
+    "exports": [
+      "AIIcon",
+      "aiIconVariants"
+    ],
+    "implementation": "src/components/ai/ai-icon.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "size",
+      "type": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "required": false,
+      "default": "\"md\"",
+      "hint": "See sizeGuidance in the mirror spec."
+    },
+    {
+      "name": "treatment",
+      "type": "\"neutral\" | \"ai\" | \"ai-contained\" | \"semantic\" | \"orange-signal\"",
+      "required": false,
+      "default": "\"neutral\"",
+      "hint": "One of the treatment values declared in aiIconVariants."
+    },
+    {
+      "name": "tone",
+      "type": "\"default\" | \"success\" | \"warning\" | \"error\" | \"blocked\" | \"escalated\"",
+      "required": false,
+      "default": "\"default\"",
+      "hint": "One of the tone values declared in aiIconVariants."
+    },
+    {
+      "name": "container",
+      "type": "\"true\" | \"false\"",
+      "required": false,
+      "hint": "One of the container values declared in aiIconVariants."
+    },
+    {
+      "name": "motion",
+      "type": "\"none\" | \"spin\" | \"pulse\"",
+      "required": false,
+      "default": "\"none\"",
+      "hint": "One of the motion values declared in aiIconVariants."
+    },
+    {
+      "name": "icon",
+      "type": "React.ComponentType<object>",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Not an icon set — a treatment layer over whatever icon you pass. The 60-30-10 rule governs it: about 60% of icons on a surface should be neutral, 30% semantic, and only 10% carry the AI identity colour. Treat `treatment=\"ai\"` as a scarce resource; if every icon is an AI icon, none is. / const aiIconVariants = cva(\"inline-flex shrink-0 items-center justify-center\", { variants: { size: { xs: \"[&_svg]:size-3\", sm: \"[&_svg]:size-4\", md: \"[&_svg]:size-5\", lg: \"[&_svg]:size-6\", xl: \"[&_svg]:size-8\", }, treatment: { neutral: \"text-muted-foreground\", ai: \"text-ai-accent\", \"ai-contained\": \"rounded-lg bg-ai-surface text-ai-accent\", semantic: \"\", \"orange-signal\": \"text-ai-signal\", }, tone: { default: \"\", success: \"text-ai-confidence-high\", warning: \"text-ai-signal\", error: \"text-destructive\", blocked: \"text-destructive\", escalated: \"text-ai-signal\", }, container: { true: \"p-1.5\", false: \"\", }, motion: { none: \"\", spin: \"[&_svg]:animate-spin motion-reduce:[&_svg]:animate-none\", pulse: \"[&_svg]:animate-pulse motion-reduce:[&_svg]:animate-none\", }, }, defaultVariants: { size: \"md\", treatment: \"neutral\", tone: \"default\", container: false, motion: \"none\", }, }) export interface AIIconProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, \"children\">, VariantProps<typeof aiIconVariants> { icon: React.ComponentType<{ className?: string }> /** Required unless decorative. An icon with meaning and no name is invisible."
+    },
+    {
+      "name": "decorative",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "neutral",
+      "when": "About 60% of icons on an AI surface. The default."
+    },
+    {
+      "group": "variant",
+      "name": "ai",
+      "when": "About 10%. The identity colour. Scarce by design."
+    },
+    {
+      "group": "variant",
+      "name": "ai-contained",
+      "when": "A rounded container for prominent AI identity."
+    },
+    {
+      "group": "variant",
+      "name": "semantic",
+      "when": "About 30%. Use with tone for state."
+    },
+    {
+      "group": "variant",
+      "name": "orange-signal",
+      "when": "Review and escalation only."
+    },
+    {
+      "group": "treatment",
+      "name": "neutral"
+    },
+    {
+      "group": "treatment",
+      "name": "ai"
+    },
+    {
+      "group": "treatment",
+      "name": "ai-contained"
+    },
+    {
+      "group": "treatment",
+      "name": "semantic"
+    },
+    {
+      "group": "treatment",
+      "name": "orange-signal"
+    },
+    {
+      "group": "tone",
+      "name": "default"
+    },
+    {
+      "group": "tone",
+      "name": "success"
+    },
+    {
+      "group": "tone",
+      "name": "warning"
+    },
+    {
+      "group": "tone",
+      "name": "error"
+    },
+    {
+      "group": "tone",
+      "name": "blocked"
+    },
+    {
+      "group": "tone",
+      "name": "escalated"
+    },
+    {
+      "group": "container",
+      "name": "true"
+    },
+    {
+      "group": "container",
+      "name": "false"
+    },
+    {
+      "group": "motion",
+      "name": "none"
+    },
+    {
+      "group": "motion",
+      "name": "spin"
+    },
+    {
+      "group": "motion",
+      "name": "pulse"
+    }
+  ],
+  "states": [
+    {
+      "name": "Decorative",
+      "when": "`decorative`"
+    },
+    {
+      "name": "Labelled",
+      "when": "`label`"
+    },
+    {
+      "name": "Spinning",
+      "when": "`motion=\"spin\"`"
+    },
+    {
+      "name": "Pulsing",
+      "when": "`motion=\"pulse\"`"
+    }
+  ],
+  "sizes": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl"
+  ],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-confidence-high",
+      "ai-signal",
+      "ai-surface",
+      "destructive",
+      "muted"
+    ],
+    "utilities": [
+      "bg-ai-surface",
+      "text-ai-accent",
+      "text-ai-confidence-high",
+      "text-ai-signal",
+      "text-destructive",
+      "text-muted"
+    ]
+  },
+  "a11y": {
+    "role": "img or none",
+    "keyboard": [],
+    "requiredAttributes": [
+      "Either label or decorative — one of the two, always"
+    ],
+    "notes": [
+      "Setting neither logs a development warning. An icon with meaning and no name is invisible.",
+      "All motion carries motion-reduce:animate-none.",
+      "Motion must reflect real activity. A permanently spinning icon is noise that trains users to ignore it."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Applying AI identity colour to a standard icon",
+    "Semantic tones for agentic states",
+    "Motion on an icon that reflects real activity"
+  ],
+  "doNotUse": [
+    "As a source of new icons — pass in an existing one",
+    "Applying treatment=\"ai\" broadly; if every icon is an AI icon, none is",
+    "Motion that does not track real work",
+    "Neither labelled nor decorative",
+    "Decorative motion",
+    "Overusing the AI treatment"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Set either label or decorative on every instance.",
+      "Follow 60-30-10 — treatment=\"ai\" is scarce.",
+      "Motion must track real work.",
+      "Reserve orange-signal for review and escalation."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-avatar",
+        "note": "Agent identity, not iconography"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-icon/ai-icon.md",
+    "manifest": "design-system/components/ai/ai-icon/ai-icon.agent.json",
+    "implementation": "src/components/ai/ai-icon.tsx",
+    "prompt": "design-system/components/ai/ai-icon/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-icon/ai-icon.preview.html",
+    "contract": "design-system/components/ai/ai-icon/ai-icon.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

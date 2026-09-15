@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-command-center",
+  "slug": "ai-command-center",
+  "name": "AICommandCenter",
+  "description": "AICommandCenter is the full-page AI workspace. In the idle state it shows the avatar, a welcome heading, quick chips, and a centered input card. Once a message is sent, it transitions to a scroll-pinned chat thread with user bubbles, loading indicators, AI response patterns (analytical, Q&A, actionable, contextual, awaiting-approval), and a feedback bar per response. Background transitions via gradient surface tokens.",
+  "intent": "Full AI chat workspace with idle state, conversation thread, and response patterns. The complete AI Led command surface for agentic tasks and conversational flows.",
+  "status": "active",
+  "layer": "pages",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/pages/ai-command-center/AICommandCenter",
+    "exports": [
+      "AICommandCenter"
+    ],
+    "implementation": "src/components/ai/pages/ai-command-center/AICommandCenter.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "gray"
+    },
+    {
+      "group": "variant",
+      "name": "aqua"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Use as the full AI workspace for any task requiring multi-turn conversation",
+    "Use in gray variant as the default; aqua variant for teal-themed product surfaces"
+  ],
+  "doNotUse": [
+    "Do not use for simple one-shot queries — use a simpler input + result pattern",
+    "Do not nest inside another scrollable container — it manages its own scroll internally",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/pages/ai-command-center/ai-command-center.md",
+    "manifest": "design-system/components/ai/pages/ai-command-center/ai-command-center.agent.json",
+    "implementation": "src/components/ai/pages/ai-command-center/AICommandCenter.tsx",
+    "prompt": "design-system/components/ai/pages/ai-command-center/agentic-prompt.md",
+    "preview": "design-system/components/ai/pages/ai-command-center/ai-command-center.preview.html",
+    "contract": "design-system/components/ai/pages/ai-command-center/ai-command-center.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

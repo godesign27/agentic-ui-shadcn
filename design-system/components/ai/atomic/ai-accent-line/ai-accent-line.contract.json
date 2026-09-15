@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-accent-line",
+  "slug": "ai-accent-line",
+  "name": "AIAccentLine",
+  "description": "AIAccentLine is a presentational atom that renders an edge accent on AI insight cards. It supports 7 styles — gradient, solid, top-bar, glow, dash, double, and none — all driven by a single `style` prop and a `color` prop sourced from the card's insight type.",
+  "intent": "Seven pluggable accent treatments for insight cards — from gradient ribbons to glowing rules — switchable at the AIAnalysisMessage level via a built-in style picker.",
+  "status": "experimental",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-accent-line/AIAccentLine",
+    "exports": [
+      "AIAccentLine",
+      "ACCENT_LINE_STYLES"
+    ],
+    "implementation": "src/components/ai/atomic/ai-accent-line/AIAccentLine.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "color",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "style",
+      "type": "AccentLineStyle",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "On AIAnalysisInsight cards — set via accentStyle prop or AIAnalysisMessage's style picker",
+    "On any custom card surface that needs a branded left-edge treatment",
+    "When visual differentiation between insight types is needed beyond color alone"
+  ],
+  "doNotUse": [
+    "Do not use multiple accent lines stacked on the same card",
+    "Do not use accent lines on user-authored content — only on AI-generated insights",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-accent-line/ai-accent-line.md",
+    "manifest": "design-system/components/ai/atomic/ai-accent-line/ai-accent-line.agent.json",
+    "implementation": "src/components/ai/atomic/ai-accent-line/AIAccentLine.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-accent-line/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-accent-line/ai-accent-line.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-accent-line/ai-accent-line.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

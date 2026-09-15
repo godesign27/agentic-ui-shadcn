@@ -1,0 +1,173 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-message-header",
+  "slug": "ai-message-header",
+  "name": "AIMessageHeader",
+  "description": "Agent avatar, agent name and timestamp. Renders before the body, never after.",
+  "intent": "Establish who is speaking before the user reads a word.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-message-header",
+    "exports": [
+      "AIMessageHeader"
+    ],
+    "implementation": "src/components/ai/ai-message-header.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "agentLabel",
+      "type": "string",
+      "required": true,
+      "hint": "Required. Declared in the component source."
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "required": false,
+      "hint": "Attribution. Renders before the body, never after. This is the component that satisfies the \"Attribution\" obligation for a conversational surface. An AI response without it is unattributed output. / export interface AIMessageHeaderProps extends React.HTMLAttributes<HTMLDivElement> { agentLabel: string /** Pass undefined to hide. Use a machine-readable dateTime on the caller side where possible."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`size=\"md\"`"
+    },
+    {
+      "name": "Compact",
+      "when": "`size=\"sm\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-muted",
+      "foreground"
+    ],
+    "utilities": [
+      "text-ai-muted",
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "none",
+    "keyboard": [],
+    "requiredAttributes": [
+      "agentLabel"
+    ],
+    "notes": [
+      "The avatar is aria-hidden because the agent name sits beside it — announcing both would be redundant.",
+      "A relative timestamp like \"Just now\" goes stale. Prefer a <time dateTime> element supplied by the caller when the exact time matters."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "Above every AI response",
+    "At the top of a generated card or panel",
+    "Anywhere authorship could otherwise be ambiguous"
+  ],
+  "doNotUse": [
+    "For human messages — build a separate header with ui:avatar",
+    "After the body",
+    "When ai:ai-soft-surface already carries a labelled region and a second attribution would be redundant",
+    "Rendering after the body",
+    "Use for human messages",
+    "A generic \"AI\" label where a specific agent name exists"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Render before the body, always.",
+      "Name the agent specifically — \"Research agent\", not \"AI\".",
+      "This is what satisfies the Attribution obligation on a conversational surface."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-message-body",
+        "note": "What follows it"
+      },
+      {
+        "id": "ai:ai-avatar",
+        "note": "The mark it uses"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-message-header/ai-message-header.md",
+    "manifest": "design-system/components/ai/ai-message-header/ai-message-header.agent.json",
+    "implementation": "src/components/ai/ai-message-header.tsx",
+    "prompt": "design-system/components/ai/ai-message-header/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-message-header/ai-message-header.preview.html",
+    "contract": "design-system/components/ai/ai-message-header/ai-message-header.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

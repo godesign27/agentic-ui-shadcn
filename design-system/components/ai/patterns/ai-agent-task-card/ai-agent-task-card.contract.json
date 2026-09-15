@@ -1,0 +1,257 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-agent-task-card",
+  "slug": "ai-agent-task-card",
+  "name": "AIAgentTaskCard",
+  "description": "AIAgentTaskCard is the supporting Group for the AI Agent Task Tracker page pattern, but it is also reusable on its own anywhere a single delegated AI task must be represented — in queues, drawers, dashboards, board columns, or notification surfaces. One component, four density variants: Basic (title + status + agent), Simple (adds task type + progress + primary action), Rich (adds intent, mutable parameters, health, confidence/risk, sources, rationale links), Robust (adds agent stack, Needs Input flow, review/approval state, sources, primary + secondary action row). Status and health always pair a glyph WITH a text label — never color alone. Needs Input rows use Guild orange only; AI emphasis uses AI_RAMP blue (AI.color.brand). No teal anywhere.",
+  "intent": "Delegated task record · 4 densities · Needs Input + Health surfaced",
+  "status": "experimental",
+  "layer": "patterns",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/patterns/ai-agent-task-card/AIAgentTaskCard",
+    "exports": [
+      "AIAgentTaskCard"
+    ],
+    "implementation": "src/components/ai/patterns/ai-agent-task-card/AIAgentTaskCard.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "density",
+      "type": "AIAgentTaskCardDensity",
+      "required": false
+    },
+    {
+      "name": "taskId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "taskType",
+      "type": "AIAgentTaskType",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "AIAgentTaskStatus",
+      "required": false
+    },
+    {
+      "name": "health",
+      "type": "AIAgentTaskHealth",
+      "required": false
+    },
+    {
+      "name": "agent",
+      "type": "AIAgentSummary",
+      "required": false
+    },
+    {
+      "name": "agentStack",
+      "type": "AIAgentSummary[]",
+      "required": false
+    },
+    {
+      "name": "originalIntent",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "parameters",
+      "type": "AIAgentTaskParameter[]",
+      "required": false
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "lastUpdated",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "needsInput",
+      "type": "AIAgentTaskNeedsInput",
+      "required": false
+    },
+    {
+      "name": "confidence",
+      "type": "'high' | 'medium' | 'low'",
+      "required": false
+    },
+    {
+      "name": "risk",
+      "type": "RiskLevel",
+      "required": false
+    },
+    {
+      "name": "sources",
+      "type": "AIAgentTaskSource[]",
+      "required": false
+    },
+    {
+      "name": "reviewState",
+      "type": "object",
+      "required": false
+    },
+    {
+      "name": "primaryAction",
+      "type": "AIAgentTaskAction",
+      "required": false
+    },
+    {
+      "name": "secondaryActions",
+      "type": "AIAgentTaskAction[]",
+      "required": false
+    },
+    {
+      "name": "selected",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewRationale",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewTrace",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onViewSources",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "onResolveInput",
+      "type": "(suggestion?: string) => void",
+      "required": false
+    }
+  ],
+  "variants": [],
+  "states": [
+    {
+      "name": "pending"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand",
+      "AI.color.text.primary",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Representing a single delegated AI task in any list, drawer, dashboard, board column, or notification",
+    "Surfacing Needs Input + suggestion resolution next to the task itself",
+    "Showing confidence + risk + sources on a consequential agentic task"
+  ],
+  "doNotUse": [
+    "For a step inside one in-flight narration — use AIToDo",
+    "For a queue of mixed work items where the durable task identity is not preserved — use AICardQueue",
+    "For a multi-task project / workstream — use AICardWorkstream",
+    "For an agent persona introduction — use AICardAgent",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Led",
+        "Adaptive"
+      ],
+      "accountability": [
+        "Approval"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/patterns/ai-agent-task-card/ai-agent-task-card.md",
+    "manifest": "design-system/components/ai/patterns/ai-agent-task-card/ai-agent-task-card.agent.json",
+    "implementation": "src/components/ai/patterns/ai-agent-task-card/AIAgentTaskCard.tsx",
+    "prompt": "design-system/components/ai/patterns/ai-agent-task-card/agentic-prompt.md",
+    "preview": "design-system/components/ai/patterns/ai-agent-task-card/ai-agent-task-card.preview.html",
+    "contract": "design-system/components/ai/patterns/ai-agent-task-card/ai-agent-task-card.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

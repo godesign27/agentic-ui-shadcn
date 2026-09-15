@@ -1,0 +1,235 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-launcher",
+  "slug": "ai-launcher",
+  "name": "AILauncher",
+  "description": "The assistant entry point. A pill with the bot mark and a label, or the mark alone. Carries active, unread, loading and disabled states.",
+  "intent": "The way in. Recognisable, confident, never instructional.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-launcher",
+    "exports": [
+      "AILauncher"
+    ],
+    "implementation": "src/components/ai/ai-launcher.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "\"avatar-chat\" | \"avatar-only\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "unread",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "unreadCount",
+      "type": "number",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "disabledReason",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "disabled",
+      "type": "see source",
+      "required": false,
+      "hint": "Accepted by this component and passed to the underlying primitive. Named in the component signature, so it is part of this surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "avatar-chat",
+      "when": "The default. Pill with a label — more discoverable."
+    },
+    {
+      "group": "variant",
+      "name": "avatar-only",
+      "when": "Circle. For dense headers, where space is genuinely tight."
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "when": "`Rest`"
+    },
+    {
+      "name": "Active",
+      "when": "`active`"
+    },
+    {
+      "name": "Unread",
+      "when": "`unread`"
+    },
+    {
+      "name": "Loading",
+      "when": "`loading`"
+    },
+    {
+      "name": "Disabled",
+      "when": "`disabled`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-signal",
+      "ai-surface",
+      "card",
+      "foreground"
+    ],
+    "utilities": [
+      "bg-ai-signal",
+      "bg-ai-surface",
+      "bg-card",
+      "border-ai-accent",
+      "border-ai-surface",
+      "ring-ai-accent",
+      "text-ai-accent",
+      "text-ai-signal",
+      "text-foreground"
+    ]
+  },
+  "a11y": {
+    "role": "button",
+    "keyboard": [
+      "Enter or Space — open"
+    ],
+    "requiredAttributes": [
+      "aria-label in avatar-only mode — supplied by the component",
+      "disabledReason when disabled"
+    ],
+    "notes": [
+      "aria-expanded reflects whether the assistant is open, so the control is announced as a disclosure.",
+      "The unread badge carries an accessible label with the count — a bare number means nothing out of context.",
+      "When AI is unavailable, disabledReason explains why. A dead button teaches nothing."
+    ],
+    "handledByRadix": false
+  },
+  "usage": [
+    "The persistent entry point to an assistant",
+    "In an app header or as a floating action",
+    "Anywhere the user should be able to reach the agent"
+  ],
+  "doNotUse": [
+    "More than once per surface",
+    "As a generic button",
+    "Without a disabledReason when AI is unavailable",
+    "Multiple launchers on one surface",
+    "Disabled with no reason",
+    "Instructional or chatty labels"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "One per surface.",
+      "Always give disabledReason when disabling.",
+      "Keep the label plain — \"Chat\", not \"Ask me anything!\"",
+      "Wire aria-expanded to the real drawer state."
+    ],
+    "related": [
+      {
+        "id": "ui:sheet",
+        "note": "The drawer it usually opens"
+      },
+      {
+        "id": "ai:ai-avatar",
+        "note": "The mark it uses"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": true,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-launcher/ai-launcher.md",
+    "manifest": "design-system/components/ai/ai-launcher/ai-launcher.agent.json",
+    "implementation": "src/components/ai/ai-launcher.tsx",
+    "prompt": "design-system/components/ai/ai-launcher/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-launcher/ai-launcher.preview.html",
+    "contract": "design-system/components/ai/ai-launcher/ai-launcher.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

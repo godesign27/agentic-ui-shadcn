@@ -1,0 +1,192 @@
+{
+  "$schema": "../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-loading-indicators",
+  "slug": "ai-loading-indicators",
+  "name": "AILoadingIndicator",
+  "description": "Thinking, working and retrieving indicators. Each announces its status as text through a polite live region; animation is never the only signal.",
+  "intent": "Say that the machine is working, truthfully.",
+  "status": "stable",
+  "layer": "atoms",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/ai-loading-indicators",
+    "exports": [
+      "AILoadingIndicator"
+    ],
+    "implementation": "src/components/ai/ai-loading-indicators.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "variant",
+      "type": "LoaderVariant",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\"",
+      "required": false,
+      "hint": "Optional. Declared in the component source."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "hint": "Merged with the component classes via cn(). Use for layout only — never to override a variant that already exists."
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "thinking",
+      "when": "Short model latency. Dots."
+    },
+    {
+      "group": "variant",
+      "name": "working",
+      "when": "A tool call or longer operation. Spinner."
+    },
+    {
+      "group": "variant",
+      "name": "retrieving",
+      "when": "Fetching context or sources. Spinner."
+    }
+  ],
+  "states": [
+    {
+      "name": "Thinking",
+      "when": "`variant=\"thinking\"`"
+    },
+    {
+      "name": "Working",
+      "when": "`variant=\"working\"`"
+    },
+    {
+      "name": "Retrieving",
+      "when": "`variant=\"retrieving\"`"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [
+      "ai-accent",
+      "ai-muted",
+      "ai-surface"
+    ],
+    "utilities": [
+      "bg-ai-accent",
+      "bg-ai-surface",
+      "border-ai-surface",
+      "text-ai-muted"
+    ]
+  },
+  "a11y": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": [
+      "The label is the accessible signal. Animation is decorative and aria-hidden.",
+      "All animation carries motion-reduce:animate-none, so the text still communicates under reduced motion.",
+      "Unmount it when the work finishes and announce the result — a live region that simply disappears says nothing."
+    ],
+    "liveRegion": "role=\"status\" with aria-live=\"polite\"",
+    "handledByRadix": false
+  },
+  "usage": [
+    "While a model request is genuinely in flight",
+    "While a tool call or retrieval is running",
+    "Between a user message and the first token of a response"
+  ],
+  "doNotUse": [
+    "To simulate effort — a deliberate pause to seem thoughtful is forbidden",
+    "For determinate work with a known total — use ai:ai-progress",
+    "For content loading — use ui:skeleton",
+    "Simulated thinking time",
+    "Animation with no status text",
+    "Use for content loading"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [
+      "Must track real in-flight work. Never animate to simulate effort.",
+      "Announce the outcome when it unmounts.",
+      "Use ai:ai-progress when the total is known."
+    ],
+    "related": [
+      {
+        "id": "ai:ai-progress",
+        "note": "Determinate agentic work"
+      },
+      {
+        "id": "ui:skeleton",
+        "note": "Content loading"
+      }
+    ],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ],
+      "accountability": [
+        "Attribution"
+      ],
+      "humanGestureRequired": false,
+      "reversible": "not-applicable"
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/ai-loading-indicators/ai-loading-indicators.md",
+    "manifest": "design-system/components/ai/ai-loading-indicators/ai-loading-indicators.agent.json",
+    "implementation": "src/components/ai/ai-loading-indicators.tsx",
+    "prompt": "design-system/components/ai/ai-loading-indicators/agentic-prompt.md",
+    "preview": "design-system/components/ai/ai-loading-indicators/ai-loading-indicators.preview.html",
+    "contract": "design-system/components/ai/ai-loading-indicators/ai-loading-indicators.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

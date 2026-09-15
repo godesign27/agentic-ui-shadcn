@@ -1,0 +1,131 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:conversational-ai-output-showcase",
+  "slug": "conversational-ai-output-showcase",
+  "name": "ConversationalAIOutputShowcase",
+  "description": "The Conversational AI Output Showcase is the primary educational reference for the Wave 1 AI component library. It presents all 18 components — 8 atoms and 10 groups — in a single scrollable page that explains the three-tier experience model, maps components to their primary surfaces, provides a live pattern gallery with scaled previews, and walks through a complete end-to-end AI Led workflow. The page is designed to be shared with product designers, engineers, and AI product managers as an on-boarding and decision-support resource.",
+  "intent": "The definitive reference for Wave 1 conversational AI output patterns. Maps every atom and group component to its experience tier, surface, behaviour verbs, and accountability tokens — with live interactive examples.",
+  "status": "active",
+  "layer": "pages",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/pages/conversational-ai-output-showcase/ConversationalAIOutputShowcase",
+    "exports": [
+      "ConversationalAIOutputShowcase"
+    ],
+    "implementation": "src/components/ai/pages/conversational-ai-output-showcase/ConversationalAIOutputShowcase.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.brand"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "On-boarding new product designers or engineers to the Guild AI system",
+    "Deciding which components belong in a new AI Led or AI Assisted surface",
+    "Presenting the AI component library to stakeholders or design review",
+    "Exploring how atoms compose into groups in a real workflow context"
+  ],
+  "doNotUse": [
+    "As a substitute for individual component documentation — always link to the detail page for anatomy, tokens, and code",
+    "In production applications — this is a documentation surface, not a reusable UI pattern",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.md",
+    "manifest": "design-system/components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.agent.json",
+    "implementation": "src/components/ai/pages/conversational-ai-output-showcase/ConversationalAIOutputShowcase.tsx",
+    "prompt": "design-system/components/ai/pages/conversational-ai-output-showcase/agentic-prompt.md",
+    "preview": "design-system/components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.preview.html",
+    "contract": "design-system/components/ai/pages/conversational-ai-output-showcase/conversational-ai-output-showcase.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

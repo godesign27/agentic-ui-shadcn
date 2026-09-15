@@ -1,0 +1,151 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-command-center-slim",
+  "slug": "ai-command-center-slim",
+  "name": "AICommandCenterSlim",
+  "description": "AICommandCenterSlim is a minimal single-row variant of the AI Command Center. The input lives in a pill-shaped bar — everything in one row. The right action button shows a microphone by default (talk-first); when the user types, the mic transitions to an ArrowUp send button with the AI gradient fill. No quick chips, no placeholder copy, no subtext. Intended for surfaces where the AI bar needs to coexist with other content rather than owning the full page.",
+  "intent": "Compact single-line AI prompt bar for lightweight contexts. Adapts between idle and active modes without a full command center footprint.",
+  "status": "experimental",
+  "layer": "pages",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/pages/ai-command-center-slim/AICommandCenterSlim",
+    "exports": [
+      "AICommandCenterSlim"
+    ],
+    "implementation": "src/components/ai/pages/ai-command-center-slim/AICommandCenterSlim.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [
+    {
+      "name": "inputValue",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "onInputChange",
+      "type": "(v: string) => void",
+      "required": true
+    },
+    {
+      "name": "onSend",
+      "type": "() => void",
+      "required": true
+    }
+  ],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "gray"
+    },
+    {
+      "group": "variant",
+      "name": "aqua"
+    }
+  ],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.text.onAction",
+      "AI.gradient.action.full",
+      "AI.shadow.action.emphasis",
+      "AI.shadow.input.default",
+      "AI.shadow.input.focus"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Use when the AI bar shares space with other content on the page",
+    "Use for lightweight voice-or-text entry points that don't require a full command center"
+  ],
+  "doNotUse": [
+    "Do not use when quick-action chips are needed — use AICommandCenter instead",
+    "Do not use when multi-line input is expected",
+    "Do not invent dependency atomics — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens",
+    "Do not require an external AI UI package for agent implementations — use co-located TSX"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ],
+      "aiBehavior": [
+        "Suggest"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/pages/ai-command-center-slim/ai-command-center-slim.md",
+    "manifest": "design-system/components/ai/pages/ai-command-center-slim/ai-command-center-slim.agent.json",
+    "implementation": "src/components/ai/pages/ai-command-center-slim/AICommandCenterSlim.tsx",
+    "prompt": "design-system/components/ai/pages/ai-command-center-slim/agentic-prompt.md",
+    "preview": "design-system/components/ai/pages/ai-command-center-slim/ai-command-center-slim.preview.html",
+    "contract": "design-system/components/ai/pages/ai-command-center-slim/ai-command-center-slim.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx",
+      "tsx-props"
+    ]
+  }
+}

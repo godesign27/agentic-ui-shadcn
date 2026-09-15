@@ -1,0 +1,156 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-chip-memory",
+  "slug": "ai-chip-memory",
+  "name": "AIChipMemory",
+  "description": "Inline memory context chip — five variants (using, previous, available, ignored, removed) with custom memory SVG icon and companion/brand token surfaces.",
+  "intent": "Communicate how the AI relates to stored context — active recall, available, dismissed, or removed memory.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "spec-only",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/chip-memory/AIChipMemory",
+    "exports": [
+      "AIChipMemory",
+      "AIMemoryChip"
+    ],
+    "implementation": null
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [
+    {
+      "group": "variant",
+      "name": "using-memory"
+    },
+    {
+      "group": "variant",
+      "name": "previous-context"
+    },
+    {
+      "group": "variant",
+      "name": "memory-available"
+    },
+    {
+      "group": "variant",
+      "name": "memory-ignored"
+    },
+    {
+      "group": "variant",
+      "name": "memory-removed"
+    }
+  ],
+  "states": [
+    {
+      "name": "using-memory",
+      "when": "Q3 strategy brief"
+    },
+    {
+      "name": "previous-context",
+      "when": "Prior conversation"
+    },
+    {
+      "name": "memory-available",
+      "when": "Org chart v2"
+    },
+    {
+      "name": "memory-ignored",
+      "when": "Old org chart"
+    },
+    {
+      "name": "memory-removed",
+      "when": "Deprecated brief"
+    }
+  ],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": []
+  },
+  "a11y": {
+    "role": "status",
+    "keyboard": [],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Below AI responses to show which memory sources are active",
+    "In memory management panels to indicate recall state",
+    "To distinguish available vs ignored vs removed context items"
+  ],
+  "doNotUse": [
+    "For task status — use `AIChipBrief`",
+    "For agent handoff direction — use `AIChipHandoff`",
+    "For idle suggested prompts — use `AIChipQuick`",
+    "Do not use emoji for memory icon",
+    "Do not use Lucide Brain icon — use bundled MemoryIcon SVG",
+    "Do not use for task status — use AIChipBrief",
+    "Do not hardcode companion hex — use VARIANT_CONFIG CSS vars"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-chip-memory/ai-chip-memory.md",
+    "manifest": "design-system/components/ai/atomic/ai-chip-memory/ai-chip-memory.agent.json",
+    "implementation": null,
+    "prompt": "design-system/components/ai/atomic/ai-chip-memory/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-chip-memory/ai-chip-memory.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-chip-memory/ai-chip-memory.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "runtime",
+      "reason": "No implementation TSX found next to the spec or under src/components. Recorded as spec-only."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json"
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:ai-tooltip",
+  "slug": "ai-tooltip",
+  "name": "AITooltip",
+  "description": "AITooltip is the AI-styled counterpart of the DS Tooltip system for AI surfaces (cards, drawers, generated dashboards). It is a re-skin, not a re-implementation: the tooltip / popover geometry, CSS border-triangle arrow math, size scale (Normal 16px / Small 14px), arrow directions (top / bottom / left / right) and positions (start / center / end), and the popover section structure are all ported verbatim from the DS Tooltip building blocks.",
+  "intent": "The DS Tooltip in AI clothing — same border-triangle arrows and popover geometry, AI brand indigo footer/confirmation buttons, and AI-softened corners (6px tooltips, 16px cards).",
+  "status": "experimental",
+  "layer": "molecules",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/molecules/ai-tooltip/AITooltip",
+    "exports": [
+      "AITooltip"
+    ],
+    "implementation": "src/components/ai/molecules/ai-tooltip/AITooltip.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.radius.md",
+      "AI.radius.sm",
+      "AI.radius.xs"
+    ]
+  },
+  "a11y": {
+    "role": "group",
+    "keyboard": [
+      "Ensure keyboard focus order matches visual order"
+    ],
+    "requiredAttributes": [],
+    "notes": [],
+    "placeholder": true
+  },
+  "usage": [
+    "Truncated label or icon-hint disclosure on an AI surface",
+    "A contextual popover with title / body / actions on an AI card or drawer",
+    "Destructive-action confirmation on an AI surface (No / Yes)",
+    "You want the DS tooltip behavior but AI brand styling"
+  ],
+  "doNotUse": [
+    "The neutral product surface — use the standard `ds-tooltip`",
+    "Don't embed forms or primary navigation — use a dialog for complex content",
+    "Don't use for validation errors — use the DS validation / field component",
+    "Don't use the Default (dark) confirmation on a dark background — use Inverse there",
+    "Do not invent dependency atoms — use bundled canonical sources",
+    "Do not hardcode brand hex — use AI tokens"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": false,
+    "agentRules": [],
+    "related": []
+  },
+  "sources": {
+    "spec": "design-system/components/ai/molecules/ai-tooltip/ai-tooltip.md",
+    "manifest": "design-system/components/ai/molecules/ai-tooltip/ai-tooltip.agent.json",
+    "implementation": "src/components/ai/molecules/ai-tooltip/AITooltip.tsx",
+    "prompt": "design-system/components/ai/molecules/ai-tooltip/agentic-prompt.md",
+    "preview": "design-system/components/ai/molecules/ai-tooltip/ai-tooltip.preview.html",
+    "contract": "design-system/components/ai/molecules/ai-tooltip/ai-tooltip.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    },
+    {
+      "field": "a11y",
+      "reason": "Manifest accessibility block is a generic placeholder, not a reviewed contract."
+    },
+    {
+      "field": "governance",
+      "reason": "AI component has no schema-valid experienceMetadata (modes/behaviors/accountability). Not inferred."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}

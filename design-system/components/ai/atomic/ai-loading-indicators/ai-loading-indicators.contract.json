@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../../schemas/component-contract.schema.json",
+  "schemaVersion": 1,
+  "id": "ai:atomic-ai-loading-indicators",
+  "slug": "ai-loading-indicators",
+  "name": "AILoadingIndicators",
+  "description": "Three distinct loading patterns for AI response stages. AIWorkingIndicator shows animated pulsing dots during generation. AIThinkingIndicator shows collapsible reasoning steps with done/active/pending",
+  "intent": "A family of loading states that communicate AI thinking, processing, and progress. Different variants map to different task lengths and complexity levels.",
+  "status": "active",
+  "layer": "atomic",
+  "runtime": {
+    "kind": "react",
+    "platforms": [
+      "web",
+      "react"
+    ],
+    "importPath": "@/components/ai/atomic/ai-loading-indicators/AILoadingIndicators",
+    "exports": [
+      "AIWorkingIndicator",
+      "AIThinkingIndicator",
+      "AIGettingInfoIndicator",
+      "AIGettingInfoIndicatorTan"
+    ],
+    "implementation": "src/components/ai/atomic/ai-loading-indicators/AILoadingIndicators.tsx"
+  },
+  "figma": {
+    "fileKey": null,
+    "nodeId": null,
+    "url": null
+  },
+  "codeConnect": {
+    "mapped": false,
+    "url": null,
+    "component": null
+  },
+  "props": [],
+  "variants": [],
+  "states": [],
+  "sizes": [],
+  "tokens": {
+    "semantic": [],
+    "utilities": [],
+    "ai": [
+      "AI.color.action.primary",
+      "AI.color.border.strong",
+      "AI.color.surface.emphasis",
+      "AI.radius.md",
+      "AI.radius.sm"
+    ]
+  },
+  "a11y": {
+    "role": "varies",
+    "keyboard": [
+      "Tab"
+    ],
+    "requiredAttributes": [],
+    "notes": []
+  },
+  "usage": [
+    "Show AIWorkingIndicator immediately when a message is sent",
+    "Swap in AIThinkingIndicator when the model emits reasoning steps",
+    "Show AIGettingInfoIndicator when a tool call / data fetch is in progress",
+    "Use `theme=\"tan\"` on companion / AI Assisted surfaces (dark tan border)",
+    "Use `theme=\"gray\"` for neutral subdued contexts",
+    "Use `theme=\"white\"` on light surfaces where the pill should read as white"
+  ],
+  "doNotUse": [
+    "Do not show all three indicators at the same time — use them sequentially",
+    "Do not keep any indicator visible after the response has fully rendered",
+    "Do not use for long-running measurable progress — use ai-progress instead"
+  ],
+  "governance": {
+    "namespace": "ai",
+    "brand": "Guild",
+    "closedWorldIndexed": true,
+    "agentRules": [],
+    "related": [],
+    "experienceMetadata": {
+      "experienceMode": [
+        "AI Assisted",
+        "Adaptive",
+        "AI Led"
+      ],
+      "accountability": [
+        "Audit trail"
+      ]
+    }
+  },
+  "sources": {
+    "spec": "design-system/components/ai/atomic/ai-loading-indicators/ai-loading-indicators.md",
+    "manifest": "design-system/components/ai/atomic/ai-loading-indicators/ai-loading-indicators.agent.json",
+    "implementation": "src/components/ai/atomic/ai-loading-indicators/AILoadingIndicators.tsx",
+    "prompt": "design-system/components/ai/atomic/ai-loading-indicators/agentic-prompt.md",
+    "preview": "design-system/components/ai/atomic/ai-loading-indicators/ai-loading-indicators.preview.html",
+    "contract": "design-system/components/ai/atomic/ai-loading-indicators/ai-loading-indicators.contract.json"
+  },
+  "gaps": [
+    {
+      "field": "figma",
+      "reason": "No Figma file, node, or Code Connect mapping in the spec or manifest."
+    },
+    {
+      "field": "codeConnect",
+      "reason": "No Code Connect mapping declared."
+    },
+    {
+      "field": "props",
+      "reason": "No well-formed props in the manifest and none extracted from TSX. Not guessed."
+    },
+    {
+      "field": "variants",
+      "reason": "No variants declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "states",
+      "reason": "No states declared in manifest, source unions, or spec table."
+    },
+    {
+      "field": "tokens",
+      "reason": "No Guild semantic tokens declared in the manifest or extracted from TSX. Not guessed."
+    }
+  ],
+  "origin": {
+    "generated": true,
+    "curated": false,
+    "generatedAt": "2026-09-15T00:18:05.777Z",
+    "from": [
+      "md",
+      "agent.json",
+      "tsx"
+    ]
+  }
+}
